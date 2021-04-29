@@ -1,0 +1,93 @@
+<template>
+  <header>
+    <div class="container">
+      <div class="contents clearfix">
+        <div class="logotip">
+          <nuxt-link to="/">
+            <img src="~/static/logotip.png" alt="logotip">
+          </nuxt-link>
+        </div>
+        <div class="header-nav">
+          <el-popover
+            popper-class="popover-nav"
+            v-model="visible"
+            placement="bottom"
+            width="auto"
+            right="0"
+            trigger="click"
+          >
+            <el-button slot="reference" 
+              class="header-cat"
+              @click="drawer = true"
+            >Каталог
+            <i class="el-icon-menu"></i>
+            </el-button>
+            <ul 
+              v-if="visibleNav" 
+              class="transition-box">
+              <li
+                v-for="category in categoryNavbar"
+                :key="category.id"
+                size="mini" @click="visible = false"
+              >
+                <nuxt-link :to="`/catalog/${category.id}`">
+                  <i class="el-icon-picture-outline-round"></i> 
+                  {{ category.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+            <ul 
+              v-else
+              class="transition-box">
+              <li>
+                Wavin
+              </li>
+            </ul>
+            <div 
+            v-on:click="visibleNav=!visibleNav"
+            class="header-nav-refresh">
+              <i class="el-icon-refresh"></i>
+            </div>
+          </el-popover>
+            <no-ssr>
+              <ModalLogout />
+            </no-ssr>
+            <no-ssr>
+              <BasketModal />
+            </no-ssr>
+        </div>
+      </div>
+    </div>
+   
+  </header>
+</template>
+
+<script>
+import ModalLogout from '~/components/ModalLogout.vue'
+import BasketModal from '~/components/BasketModal.vue'
+  export default {
+    components:{
+      ModalLogout,
+      BasketModal,
+    },
+    data() {
+      return {
+        visible: false,
+        categoryNavbar:[],
+        visibleNav:true,
+      };
+    },
+    computed:{
+    },
+    async mounted(){
+      this.categoryNavbar = await this.$store.dispatch('category/getCategory');
+    },
+    methods: {
+    },
+
+  }
+</script>
+
+<style scoped>
+
+</style>
