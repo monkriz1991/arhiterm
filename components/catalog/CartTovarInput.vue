@@ -25,6 +25,8 @@
     </div>
 </template>
 
+
+
 <script>
   export default {
     props:['id_product','product','n'],
