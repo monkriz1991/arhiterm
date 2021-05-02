@@ -27,10 +27,10 @@
                             {{product.name}}
                         </nuxt-link> 
                     <div class="catalog-list-block-price">
-                        <strong>315.53</strong>
+                        <strong>{{price[idx]}}</strong>
                          <span>руб/м2</span>
                         <div class="catalog-list-block-cost">
-                            <strong>315.53 - 1103.10</strong>
+                            <strong>{{price[idx]}} - {{count[idx]}}</strong>
                             <span>руб/м2</span>
                         </div>
                     </div>
@@ -38,8 +38,12 @@
                     <div 
                     v-if="show.includes(idx)"
                     class="catalog-list-input">
-                        <CartTovarInput :id_product="product.id" :product="product.product" :n="idx"/>
-                        <CartTovarChar/>
+                        <CartTovarInput :count.sync="count[idx]"
+                                        :price.sync="price[idx]" 
+                                        :id_product="product.id" 
+                                        :product="product.product" 
+                                        :n="idx"/>
+                        <CartTovarChar :count="count[idx]"/>
                     </div>
                 </div>
             </el-col>
@@ -53,9 +57,11 @@ import CartTovarChar from '~/components/catalog/CartTovarChar.vue'
 export default {
     data() {
         return {
+            price:[],
+            count:[],
             show:[],
             num: 1,
-            radio: '1',
+            radio: null,
             id_product:0
         };
     },
@@ -63,16 +69,29 @@ export default {
         CartTovarInput,
         CartTovarChar,
     },
+    /**
+     * хук перед маннтированием страница, но после создания
+     */
+    beforeMount(){
+       this.updatePriceAndCountInPage();
+    },
     computed:{
         productsList(){
             return this.$store.getters['product/productList']
         }
     },
-    async mounted(){
-        
-    },
     methods : {
+        /**
+         * Функция обновляет количество товара и цены продукта на странице
+         */
+        updatePriceAndCountInPage(){
+            for(let i in this.productsList){
+                this.price[i] = this.productsList[i].product[0].price;
+                this.count[i] = this.productsList[i].product[0].count;
+            }
+        },
         toggleActive(idx) {
+            this.radio = idx;
             if (this.show.includes(idx)) {
                 this.show = this.show.filter(entry => entry !== idx);
                 return; 
