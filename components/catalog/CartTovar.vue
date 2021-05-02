@@ -86,8 +86,13 @@ export default {
          */
         updatePriceAndCountInPage(){
             for(let i in this.productsList){
-                this.price[i] = this.productsList[i].product[0].price;
-                this.count[i] = this.productsList[i].product[0].count;
+                try{
+                    this.price[i] = this.productsList[i].product[0].price;
+                    this.count[i] = this.productsList[i].product[0].count;
+                }catch{
+                    this.price[i] = '';
+                    this.count[i] = '';
+                } 
             }
         },
         toggleActive(idx) {
