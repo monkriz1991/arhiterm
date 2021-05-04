@@ -52,7 +52,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     proxy: false,
-    baseURL: "http://178.172.173.172:8001"
+    baseURL: "https://new.arhiterm.by"
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
