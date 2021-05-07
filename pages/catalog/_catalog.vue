@@ -20,9 +20,17 @@ export default {
         Breadcrumb,
         Paginated
     },
-    async fetch({store,params}){
-        await store.dispatch('category/getCategoryNested',params.catalog)
-        await store.dispatch('product/getProductList',params.catalog)
+    async asyncData ({ app, params, route, error }) {
+    try {
+            await app.store.dispatch('category/getCategoryNested',params.catalog)
+            await app.store.dispatch('product/getProductList',params.catalog)
+        } catch (err) {
+            console.log(err)
+            return error({
+            statusCode: 404,
+            message: 'Товар не найдена или сервер не доступен'
+        })
+        }
     },
     data() {
         return {

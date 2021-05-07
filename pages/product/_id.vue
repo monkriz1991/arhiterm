@@ -20,8 +20,16 @@ import Tabs from '~/components/product/Tabs.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Cost from '~/components/product/Cost.vue'
 export default ({
-    async fetch({store,params}){
-        await store.dispatch('tovar/getProductItem',params.id)
+  async asyncData ({ app, params, route, error }) {
+        try {
+            await app.store.dispatch('tovar/getProductItem',params.id)
+        } catch (err) {
+        console.log(err)
+        return error({
+            statusCode: 404,
+            message: 'Товар не найдена или сервер не доступен'
+        })
+        }
     },
     components:{
         Galery,
