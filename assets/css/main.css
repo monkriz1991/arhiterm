@@ -516,8 +516,8 @@ border: 1px solid #fff;
 .catalog-list-block-button{
     float: right;
     position: absolute;
-    bottom: -15px;
-    left: -15px;
+    bottom: -10px;
+    left: -10px;
     z-index: 15;
     background: #fff;
     padding: 3px;
@@ -825,4 +825,13 @@ width: 100%;
 } */
 .catalog-list-input .cost-product-price-tovar{
     display: none;
+}
+body .el-form-item{
+    margin-bottom: 10px;
+}
+body .el-form-item__label{
+    line-height: 30px;
+}
+body .el-dialog__body{
+    padding: 30px 20px 20px;
 }
