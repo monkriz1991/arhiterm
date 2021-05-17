@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar />
+    <Breadcrumb />
     <nuxt />
     <Footer />
     <Upscroll/>
@@ -12,6 +13,7 @@
 import Navbar from '~/components/Navbar.vue'
 import Footer from '~/components/Footer.vue'
 import Upscroll from '~/components/Upscroll.vue'
+import Breadcrumb from '~/components/Breadcrumb.vue'
 export default ({
   data() {
       return {
@@ -21,6 +23,7 @@ export default ({
     Navbar,
     Footer,
     Upscroll,
+    Breadcrumb,
   },
 
 })

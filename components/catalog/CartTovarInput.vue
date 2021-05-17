@@ -9,18 +9,19 @@
         </div>
         <div class="cost-product-input">
             <strong>Размер</strong>
-            <el-radio-group    v-model="radio" size="mini">
+            <el-radio-group v-model="radio" size="mini">
                 <el-radio  
-                v-for="(item,idx) in product" :key="idx"
+                v-for="(item,idx) in product_data" :key="idx"
                 @change="changePrice(item)"
-                :label="item.id" border>{{item.name}}</el-radio>
+                :label="item.id"
+                border>{{item.name}}</el-radio>
             </el-radio-group>
         </div>
         <el-button type="danger" :disabled="count>0?false:true">В корзину</el-button>
         <div 
       
         class="cost-product-price-catalog">
-            <span>{{radio}}</span>
+            <span>{{priceCart}}</span>
             <strong>руб/м2</strong>
         </div>
     </div>
@@ -30,24 +31,60 @@
 
 <script>
   export default {
-    props:['id_product','product','n','price','count'],
+    created() {
+     // console.log(this.product)  //undefined;
+    },
+    props:{
+      product_data:{
+        type:Array,
+        default(){
+          return{}
+        }
+      }
+    },
     components:{
     },
     data() {
       return {
         num: 1,
-        radio: this.id_product,
+        radio: '',
+        priceCart:'',
+        price:[],
+        count:[],
+        id_filter:[],
 
       };
     },
+    computed:{
+      //updatePriceAndCountInPage()
+    },
     methods: {
       changePrice(item){
-        this.$emit('update:price', item.price);
-        this.$emit('update:count', item.count);
+         this.$emit('Sendprice', item.price);
+        // this.$emit('update:count', item.count);
+       // this.radio = item.id;
+       
+        this.priceCart = item.price
       },
       handleChange(value) {
-          console.log(value)
-      }
+         
+      },
+        /**
+       * Функция обновляет количество товара и цены продукта на странице
+       */
+      // updatePriceAndCountInPage(){
+      //     for(let i in this.productsList){
+      //         try{
+      //             this.price[i] = this.productsList[i].product[0].price;
+      //             this.count[i] = this.productsList[i].product[0].count;
+      //             this.id_filter[i] = this.productsList[i].product[0].id;
+      //         }catch{
+      //             this.price[i] = '';
+      //             this.count[i] = '';
+      //             this.id_filter[i] = '';
+      //         } 
+      //     }
+      // },
     }
   };
 </script>
