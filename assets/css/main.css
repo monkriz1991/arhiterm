@@ -56,7 +56,7 @@ img {
 .popover-nav>ul li a{
     text-decoration: none;
     padding: 10px 5px;
-    float: left;
+    /* float: left; */
     border-radius: 4px;
     font-size: 13px;
     font-weight: 500;
@@ -773,9 +773,9 @@ float: left;
 width: 100%;
 margin: 10px 0;
 }
-.catalog-list-input>button{
+/* .catalog-list-input>button{
 
-}
+} */
 .catalog-list-input-cost{
 float: left;
 width: 100%;
