@@ -4,20 +4,42 @@
     height="350px"
     trigger="click"
   >
-    <el-carousel-item v-for="item in 4" :key="item">
-      <h3>{{ item }}</h3>
+    <el-carousel-item 
+      v-for="(item,idx) in slides" :key="idx"
+    >
+      <div class="slider-block">
+        <div class="slider-content">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+        <img class="slider-image" 
+          :src="item.img"
+          :alt="item.title" 
+        />
+      </div>
+
     </el-carousel-item>
   </el-carousel>
 </template>
 
 <script>
-
+import { mapGetters,mapActions } from 'vuex'
 export default ({
     data() {
         return {
-
         }
     },
+    computed:{
+      ...mapGetters({
+        slides: 'main/sliderItems'
+      })
+    },
+    mounted(){
+      this.getSlider()
+    },
+    methods:{
+      ...mapActions('main',['getSlider'])
+    }
 })
 </script>
 

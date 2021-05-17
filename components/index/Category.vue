@@ -3,11 +3,11 @@
     <h4>Категории</h4>
         <el-row :gutter="20">
         <el-col 
-        v-for="item in 4" :key="item"
+        v-for="item in category" :key="item.id"
         :xs="12" :sm="12" :md="12" :lg="6" :xl="6">
-            <nuxt-link to="/" class="nuxt-link-cat">
+            <nuxt-link :to="`/catalog/${item.id}`" class="nuxt-link-cat">
                 <div class="index-topcat-block">
-                    <strong>Трубы и фитинги для внутренней канализации
+                    <strong>{{item.name}}
                         <span>140 / наименований</span>
                     </strong>
                     
@@ -23,3 +23,26 @@
         </el-row>
     </div>
 </template>
+
+
+
+<script>
+import { mapGetters,mapActions } from 'vuex'
+export default ({
+    data() {
+        return {
+        }
+    },
+    computed:{
+      ...mapGetters({
+        category: 'category/categoryIndex'
+      })
+    },
+    mounted(){
+      this.getCategoryIndex()
+    },
+    methods:{
+      ...mapActions('category',['getCategoryIndex'])
+    }
+})
+</script>

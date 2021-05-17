@@ -39,8 +39,15 @@
             <ul 
               v-else
               class="transition-box">
-              <li>
-                Wavin
+              <li
+                v-for="item in manufacturer.results"
+                :key="item.id"
+                size="mini" @click="visible = false"
+              >
+                <nuxt-link :to="`/catalog/${item.id}`">
+                  <!-- <i class="el-icon-picture-outline-round"></i>  -->
+                  {{ item.name }}
+                </nuxt-link>
               </li>
             </ul>
             <div 
@@ -58,7 +65,6 @@
         </div>
       </div>
     </div>
-   
   </header>
 </template>
 
@@ -74,6 +80,7 @@ import BasketModal from '~/components/BasketModal.vue'
       return {
         visible: false,
         categoryNavbar:[],
+        manufacturer:[],
         visibleNav:true,
       };
     },
@@ -81,6 +88,7 @@ import BasketModal from '~/components/BasketModal.vue'
     },
     async mounted(){
       this.categoryNavbar = await this.$store.dispatch('category/getCategory');
+      this.manufacturer = await this.$store.dispatch('category/getManufacturer');
     },
     methods: {
     },

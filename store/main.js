@@ -1,4 +1,5 @@
 
+//const sleep = m => new Promise(r => setTimeout(r, m))
 export const state = ()=>({
     sliderItems:[],
 })
@@ -10,10 +11,8 @@ export const mutations = {
 }
 
 export const actions = {
-    async getSlider({commit}){
-        
+    async getSlider({commit}){      
         let slide = await this.$axios.$get(`/administrate/get/slider/`);
-        console.log('asdasdasd')
         commit('setSlider',slide.results)
         return slide.results
     }

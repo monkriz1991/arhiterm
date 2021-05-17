@@ -3,6 +3,9 @@
 export const state = () =>({
     categoryNavbar: [],
     categoryNested: [],
+    categoryIndex: [],
+    manufacturer:[],
+    manufacturerIndex:[],
 })
 
 export const mutations = {
@@ -11,6 +14,15 @@ export const mutations = {
     },
     setCategoryNested (state,categoryNested) {
         state.categoryNested = categoryNested
+    },
+    setCategoryIndex (state,categoryIndex) {
+        state.categoryIndex = categoryIndex
+    },
+    setManufacturer(state,manufacturer) {
+        state.manufacturer = manufacturer
+    },
+    setManufacturerIndex(state,manufacturerIndex) {
+        state.manufacturerIndex = manufacturerIndex
     }
 }
 
@@ -27,14 +39,36 @@ export const actions = {
     async getCategoryNested ({ commit},id) {
         // await sleep(50)
         let category = await this.$axios.$get(`/catalog/categories/${id}/`);   
-        commit('setCategoryNested', category.child)
-        return category.child
+        commit('setCategoryNested', category)
+        return category
+    },
+    async getCategoryIndex ({ commit}) {
+        // await sleep(50)
+        let category = await this.$axios.$get(`/catalog/categories/?limit=4`);   
+        commit('setCategoryIndex', category.results)
+        return category.results
+    },
+    async getManufacturer({ commit}) {
+        // await sleep(50)
+        let result = await this.$axios.$get(`/manufacturer/get/`);   
+        commit('setManufacturer', result)
+        return result
+    },
+    async getManufacturerIndex({ commit}) {
+        // await sleep(50)
+        let result = await this.$axios.$get(`/manufacturer/random/get/`);   
+        commit('setManufacturerIndex', result)
+        return result
     }
 }
 
 export const getters = {
     categoryNavbar: state => state.categoryNavbar,
-    categoryNested: state => state.categoryNested 
+    categoryNested: state => state.categoryNested,
+    categoryIndex: state => state.categoryIndex,
+    manufacturer: state => state.manufacturer,
+    manufacturerIndex: state => state.manufacturerIndex  
+    
     
 }
 

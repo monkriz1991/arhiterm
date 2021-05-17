@@ -3,7 +3,7 @@
         <div class="cat-filter">
             <!-- <h3>{{categoriesNested.name}}</h3> -->
             <ul
-            v-for="category in categoriesNested"
+            v-for="category in categoriesNested.child"
             :key="category.id"
             >
                 <li class="cat-filter-title">

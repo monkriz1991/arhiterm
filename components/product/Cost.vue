@@ -4,13 +4,16 @@
             <span>1.92</span>
             <strong>руб./м</strong>
         </div>
-        <CartTovarInput/>
+        <CartTovarInput
+        :product_data="product_data"
+        />
     </div>
 </template>
 
 <script>
 import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
   export default {
+    props:['product_data'],
     components:{
         CartTovarInput,
     },
