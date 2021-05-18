@@ -53,7 +53,7 @@ export default {
     width: 100%;
 }
 .title-h2{
-    max-width: 410px;
+    max-width: 430px;
     font-size: 15px;
     margin: 0px 0 60px;
     float: left;
