@@ -58,7 +58,7 @@ export default {
     margin: 0px 0 60px;
     float: left;
     font-weight: 500;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 .subtitle {
   font-weight: 300;
