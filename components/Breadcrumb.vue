@@ -1,6 +1,9 @@
 <template>
     <div class="container">
-        <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb 
+        v-if="this.$route.name!='index'"
+        separator-class="el-icon-arrow-right"
+        >
         <el-breadcrumb-item :to="{ path: '/' }">Главная</el-breadcrumb-item>
             <el-breadcrumb-item
                 v-for="(item, i) in breadcrumbs"
@@ -9,8 +12,6 @@
             >
                 {{item.text}}
             </el-breadcrumb-item>
-            <a href="">{{nameCat.name}}</a>
-            <a href="">{{nameProduct.name}}</a>
         </el-breadcrumb>
     </div>
 </template>
@@ -44,15 +45,17 @@ export default {
         let text = ''
         for (let i = 0; i < pathArray.length; ++i) {
             breadcrumb += "/" + pathArray[i]  
-            if(i ==0){
-                text = pathArray[i]   
-            } 
+            if(pathArray[i]=='catalog'){
+                text=this.nameCat.name;
+            }else if(pathArray[i]=='product'){
+                text=this.nameProduct.name;
+            }
         }
         breadCrumbs.push({
             href: breadcrumb, 
             text: text
         })
-        return breadCrumbs
+            return breadCrumbs
         }
     },
 };

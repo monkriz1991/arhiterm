@@ -6,9 +6,7 @@
             {{product.manufacturer_name}}
         </h2>
         <Galery/>
-        <!-- <Cost
-        :product_data="product"
-        /> -->
+        <Cost :product_data="product.product" />
         <div class="tabs-product">
             <Tabs/>
         </div>

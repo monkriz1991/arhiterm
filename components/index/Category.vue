@@ -11,7 +11,7 @@
                         <span>140 / наименований</span>
                     </strong>
                     
-                    <img src="~/assets/img/cat_1.png" alt="">
+                    <img :src="item.img" :alt="item.name">
                 </div>
             </nuxt-link>
         </el-col>

@@ -2,7 +2,7 @@
     <div class="index-brand">
     <h4>Производители</h4>
         <el-row >
-            <hooper :itemsToShow="4">
+            <hooper :settings="hooperSettings">
                 <slide
                     v-for="item in category.results" :key="item.id"
                 >
@@ -24,7 +24,7 @@
                 <hooper-navigation slot="hooper-addons"></hooper-navigation>
                 <hooper-pagination slot="hooper-addons"></hooper-pagination>
             </hooper>
-            <div class="index-brand-all">
+            <div hidden class="index-brand-all">
                 <nuxt-link to="/">
                     Все производители
                 </nuxt-link>
@@ -50,6 +50,21 @@ export default ({
     },
     data() {
         return {
+            hooperSettings: {
+                infiniteScroll: true,
+                wheelControl:false,
+                breakpoints: {
+                    1800: {
+                        itemsToShow: 4
+                    },
+                    1500: {
+                        itemsToShow: 4
+                    },
+                    1100: {
+                        itemsToShow: 2
+                    },
+                }
+            }
         }
     },
     computed:{
@@ -65,3 +80,12 @@ export default ({
     }
 })
 </script>
+
+<style>
+.hooper-indicator{
+    background-color: #e3e3e3;
+}
+.hooper-pagination{
+    bottom: -5px;
+}
+</style>

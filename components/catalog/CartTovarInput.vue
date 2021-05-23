@@ -13,11 +13,15 @@
                 <el-radio  
                 v-for="(item,idx) in product_data" :key="idx"
                 @change="changePrice(item)"
-                :label="item.id"
+                :label="idx"
                 border>{{item.name}}</el-radio>
             </el-radio-group>
         </div>
-        <el-button type="danger" :disabled="count>0?false:true">В корзину</el-button>
+        <el-button 
+          type="danger" 
+          :disabled="count>0?false:false"
+          @click="addToCart"
+        >В корзину</el-button>
         <div 
       
         class="cost-product-price-catalog">
@@ -34,57 +38,34 @@
     created() {
      // console.log(this.product)  //undefined;
     },
-    props:{
-      product_data:{
-        type:Array,
-        default(){
-          return{}
-        }
-      }
-    },
+    props:["product_data","price"],
     components:{
     },
     data() {
       return {
         num: 1,
-        radio: '',
-        priceCart:'',
-        price:[],
+        radio:0,
+        priceCart:this.product_data[0]!=undefined?this.product_data[0].price:0,
         count:[],
-        id_filter:[],
 
       };
     },
     computed:{
-      //updatePriceAndCountInPage()
     },
     methods: {
       changePrice(item){
-         this.$emit('Sendprice', item.price);
-        // this.$emit('update:count', item.count);
-       // this.radio = item.id;
-       
+        this.$emit('update:price', item.price);
+       // this.$emit('Sendprice', item.price,this.idx)
+        //this.radio = item.id;
+      //  this.$emit()
         this.priceCart = item.price
+      },
+      addToCart(){
+        this.$emit('addToCart',this.product_data[0])
       },
       handleChange(value) {
          
-      },
-        /**
-       * Функция обновляет количество товара и цены продукта на странице
-       */
-      // updatePriceAndCountInPage(){
-      //     for(let i in this.productsList){
-      //         try{
-      //             this.price[i] = this.productsList[i].product[0].price;
-      //             this.count[i] = this.productsList[i].product[0].count;
-      //             this.id_filter[i] = this.productsList[i].product[0].id;
-      //         }catch{
-      //             this.price[i] = '';
-      //             this.count[i] = '';
-      //             this.id_filter[i] = '';
-      //         } 
-      //     }
-      // },
+      }
     }
   };
 </script>

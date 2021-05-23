@@ -71,6 +71,7 @@
 <script>
 import ModalLogout from '~/components/ModalLogout.vue'
 import BasketModal from '~/components/BasketModal.vue'
+import {mapGetters,mapActions} from 'vuex'
   export default {
     components:{
       ModalLogout,
@@ -79,19 +80,26 @@ import BasketModal from '~/components/BasketModal.vue'
     data() {
       return {
         visible: false,
-        categoryNavbar:[],
-        manufacturer:[],
         visibleNav:true,
       };
     },
     computed:{
-    },
-    async mounted(){
-      this.categoryNavbar = await this.$store.dispatch('category/getCategory');
-      this.manufacturer = await this.$store.dispatch('category/getManufacturer');
+      ...mapGetters({
+        categoryNavbar: 'category/categoryNavbar',
+        manufacturer: 'category/manufacturer',
+      })
     },
     methods: {
+      ...mapActions({
+        getCategory:'category/getCategory',
+        getManufacturer:'category/getManufacturer'
+      })
     },
+    mounted(){
+      this.getCategory(),
+      this.getManufacturer()
+    },
+
 
   }
 </script>
