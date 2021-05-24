@@ -953,6 +953,7 @@ body .el-dialog__body{
 .basket-tov-desk-left>strong{
     height: 40px;
     overflow: hidden;
+    float: left;
 }
 .basket-tov-cost>span{
     margin: 4px 6px 0px 3px;

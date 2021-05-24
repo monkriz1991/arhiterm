@@ -4,7 +4,7 @@
             <el-input-number 
             v-model="num" 
             size="mini"
-            @change="handleChange" :min="1" :max="10"
+            @change="handleChange" :min="1"
             ></el-input-number>
         </div>
         <div class="cost-product-input">
@@ -32,7 +32,6 @@
 </template>
 
 
-
 <script>
   export default {
     created() {
@@ -44,6 +43,8 @@
     data() {
       return {
         num: 1,
+        active_id:null,
+        input_cost:this.product_data[0]!=undefined?this.product_data[0].price:0,
         radio:0,
         priceCart:this.product_data[0]!=undefined?this.product_data[0].price:0,
         count:[],
@@ -54,17 +55,16 @@
     },
     methods: {
       changePrice(item){
+        this.active_id = item;
+        this.input_cost = item.price,
         this.$emit('update:price', item.price);
-       // this.$emit('Sendprice', item.price,this.idx)
-        //this.radio = item.id;
-      //  this.$emit()
         this.priceCart = item.price
       },
       addToCart(){
-        this.$emit('addToCart',this.product_data[0])
+        this.$emit('addToCart',this.active_id==null?this.product_data[0]:this.active_id)
       },
       handleChange(value) {
-         
+         this.priceCart = this.input_cost*value
       }
     }
   };

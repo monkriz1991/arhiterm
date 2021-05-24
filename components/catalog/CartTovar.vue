@@ -44,7 +44,9 @@
                         @Sendprice = "updatePriceAndCountInPage" 
                         @addToCart = "addToCart"
                         />
-                        <CartTovarChar/>
+                        <CartTovarChar
+                        :product_filter="product.product"
+                        />
                     </div>
                 </div>
             </el-col>
@@ -120,14 +122,24 @@ export default {
             }
             
         },
+        /**
+         * 
+         */
         addToCart(data){
-            for(let i in this.productsList){
-                if(data.parent == this.productsList[i].id){
-                    data = this.productsList[i].product.filter((item)=> item.id == data.id);
-                } 
-            }
-           console.log(data)
-            this.ADD_TO_CART(data)
+            let cart = JSON.parse(JSON.stringify(this.productsList.find(i=>i.id==data.parent)));
+            console.log(cart)
+            let ret =  cart.product.filter((item)=> item.id == data.id);
+            cart.product = ret;
+            cart['price']=123;
+            cart['count'] =45678;
+            // for(let i in this.productsList){
+            //     if(data.parent == this.productsList[i].id){
+            //         this.productsList[i].product = this.productsList[i].product.filter((item)=> item.id == data.id);
+            //         data = this.productsList[i];
+            //     } 
+            // }
+           
+            this.ADD_TO_CART(cart)
         }
     }    
 }
