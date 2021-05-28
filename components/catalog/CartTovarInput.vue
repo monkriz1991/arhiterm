@@ -9,17 +9,18 @@
         </div>
         <div class="cost-product-input">
             <strong>Размер</strong>
-            <el-radio-group v-model="radio" size="mini">
-                <el-radio  
-                v-for="(item,idx) in product_data" :key="idx"
-                @change="changePrice(item)"
-                :label="idx"
-                border>{{item.name}}</el-radio>
-            </el-radio-group>
+              <el-radio  
+              v-for="(item,idx) in product_data" :key="idx"
+              @change="changePrice(item)"
+              :label="idx"
+              v-model="radio"
+              :disabled="disableRadio"
+              size="mini"
+              border>{{item.name}}</el-radio>
         </div>
         <el-button 
           type="danger" 
-          :disabled="count>0?false:false"
+          :disabled="disableButton"
           @click="addToCart"
         >В корзину</el-button>
         <div 
@@ -48,6 +49,8 @@
         radio:0,
         priceCart:this.product_data[0]!=undefined?this.product_data[0].price:0,
         count:[],
+        disableButton: false,
+        disableRadio: false
 
       };
     },
@@ -59,12 +62,17 @@
         this.input_cost = item.price,
         this.$emit('update:price', item.price);
         this.priceCart = item.price
+        this.$emit('NewChar', item)
+        console.log(item)
       },
       addToCart(){
-        this.$emit('addToCart',this.active_id==null?this.product_data[0]:this.active_id)
+        this.$emit('addToCart',{data:this.active_id==null?this.product_data[0]:this.active_id,'count_el':this.count,'cost':this.priceCart})
+        this.disableButton = true
+        
       },
       handleChange(value) {
-         this.priceCart = this.input_cost*value
+         this.priceCart = Math.floor(this.input_cost*value*100)/100
+         this.count = value
       }
     }
   };

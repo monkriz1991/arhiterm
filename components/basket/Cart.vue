@@ -25,11 +25,11 @@
                 </div>
                 <div class="basket-tov-calc">
                     <el-input-number size="mini" 
-                    v-model="num4"
+                    v-model="item.count_el"
                     ></el-input-number>
                 </div>
                 <div class="basket-tov-summ">
-                    <strong>102</strong>
+                    <strong>{{item.cost}}</strong>
                     <span>руб.</span>
                 </div>
                 <div class="basket-tov-dell">

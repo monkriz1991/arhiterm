@@ -43,9 +43,11 @@
                         :product_data="product.product"
                         @Sendprice = "updatePriceAndCountInPage" 
                         @addToCart = "addToCart"
+                        @NewChar = "funNewChar"
                         />
                         <CartTovarChar
                         :product_filter="product.product"
+                        :new_char="funChar"
                         />
                     </div>
                 </div>
@@ -68,6 +70,7 @@ export default {
             price:[],
             oneprice:[],
             lastprice:[],
+            funChar:[]
         };
     },
     components:{
@@ -81,9 +84,9 @@ export default {
        this.updatePriceAndCountInPage();
     },
     computed:{
-        productsList(){
-            return this.$store.getters['product/productList']
-        },
+        ...mapGetters({
+            productsList: 'product/productList'
+        }),
     },
     methods : {
         ...mapActions({
@@ -127,19 +130,16 @@ export default {
          */
         addToCart(data){
             let cart = JSON.parse(JSON.stringify(this.productsList.find(i=>i.id==data.parent)));
-            console.log(cart)
-            let ret =  cart.product.filter((item)=> item.id == data.id);
+            let ret =  cart.product.filter((item)=> item.id == data.data.id);
             cart.product = ret;
-            cart['price']=123;
-            cart['count'] =45678;
-            // for(let i in this.productsList){
-            //     if(data.parent == this.productsList[i].id){
-            //         this.productsList[i].product = this.productsList[i].product.filter((item)=> item.id == data.id);
-            //         data = this.productsList[i];
-            //     } 
-            // }
-           
+            cart['price']=data.cost;
+            cart['count'] =data.count_el;
+
             this.ADD_TO_CART(cart)
+        },
+        funNewChar(data){
+            return this.funChar = data
+            
         }
     }    
 }

@@ -21,6 +21,6 @@ import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
     },
     methods: {
 
-    }
+    },
   };
 </script>

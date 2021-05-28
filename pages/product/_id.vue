@@ -1,14 +1,28 @@
 <template>
     <div class="container">
-        <h1 class="h1-product">{{product.name}}</h1>
+        <h1 class="h1-product">{{productItem.name}}</h1>
         <h2 class="h2-product">
             <i class="el-icon-office-building"></i>
-            {{product.manufacturer_name}}
+            {{productItem.manufacturer_name}}
         </h2>
         <Galery/>
-        <Cost :product_data="product.product" />
+        <div class="cost-product-section">
+            <div class="cost-product-price">
+                <span>{{price}}</span>
+                <strong>руб./м</strong>
+            </div>
+            <CartTovarInput 
+            :price.sync="price"
+            :product_data="productItem.product"
+            @addToCart = "addToCart"
+            @NewChar = "funNewChar" 
+            />
+        </div>
         <div class="tabs-product">
-            <Tabs/>
+            <Tabs 
+            :product_data="productItem.product"
+            :new_char="funChar"
+             />
         </div>
     </div>
 </template>
@@ -16,14 +30,16 @@
 <script>
 import Galery from '~/components/product/Galery.vue'
 import Tabs from '~/components/product/Tabs.vue'
-import Cost from '~/components/product/Cost.vue'
-import { mapGetters } from 'vuex'
+import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
+import { mapGetters,mapActions } from 'vuex'
 export default ({
     created() {
     },
     async asyncData ({ app, params, route, error }) {
         try {
-            await app.store.dispatch('tovar/getProductItem',params.id)
+            let result = await app.store.dispatch('tovar/getProductItem',params.id)
+            let price = result.product[0].price
+            return{price}
         } catch (err) {
         return error({
             statusCode: 404,
@@ -31,16 +47,39 @@ export default ({
         })
         }
     },
+    data(){
+        return{
+            funChar:[]
+        }
+    },
     components:{
         Galery,
         Tabs,
-        Cost,
+        CartTovarInput,
     },
     computed:{
-        ...mapGetters('tovar',{
-            product : 'productItem'
+        ...mapGetters({
+            productItem: 'tovar/productItem'
         })
+        //this.price = this.productItem.product[0].price,
     },
-
+    methods:{
+        ...mapActions({
+           ADD_TO_CART: 'main/ADD_TO_CART'
+        }),
+        addToCart(data){
+            let cart = JSON.parse(JSON.stringify(this.productItem));
+            let ret =  cart.product.filter((item)=> item.id == data.data.id);
+            cart.product = ret;
+            cart['cost']= data.cost;
+            cart['count_el'] = data.count_el;
+            console.log(cart)
+            this.ADD_TO_CART(cart)
+        },
+        funNewChar(data){
+            return this.funChar = data
+            
+        }
+    }
 })
 </script>

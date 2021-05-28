@@ -18,6 +18,7 @@ export const actions = {
         // await sleep(50)
         let product = await this.$axios.$get(`/catalog/product/?cat=${id}`);  
         commit('setProductList', product.results)
+        console.log(product.results.length)
         return product.results
     }
 }
