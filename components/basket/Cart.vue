@@ -33,7 +33,9 @@
                     <span>руб.</span>
                 </div>
                 <div class="basket-tov-dell">
-                    <i class="el-icon-delete"></i>
+                    <i
+                    @click="cartDell(idx)" 
+                    class="el-icon-delete"></i>
                 </div>
             </div>
         </div>
@@ -49,7 +51,10 @@ export default {
             num4:1,
         }
     },
-    metodts:{
+    methods:{
+        cartDell(idx){
+            this.$emit('cartDell',idx)
+        }
     }
 }
 </script>

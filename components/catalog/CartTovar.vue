@@ -18,7 +18,7 @@
                             v-on:click="toggleActive(idx)"
                             type="danger" plain  size="mini" circle
                             >
-                                <i class="el-icon-setting"></i>
+                                <i :class="[show.includes(idx)?'el-icon-close':'el-icon-setting' ]"></i>
                             </el-button>
                         </div>
                     </div>
@@ -27,7 +27,12 @@
                             {{product.name}}
                         </nuxt-link> 
                     <div class="catalog-list-block-price">
-                        <strong>{{price[idx]}}</strong>
+                        <strong>{{price[idx]}} 
+                            <div class="catalog-list-block-discount">
+                                <strong>1.33</strong>
+                                <span>руб/м2</span>
+                            </div>
+                        </strong>
                         <span>руб/м2</span>
                         <div class="catalog-list-block-cost">
                             <strong>{{oneprice[idx]}} - {{lastprice[idx]}}</strong>
@@ -113,14 +118,10 @@ export default {
                     this.price[i] = this.productsList[i].product[0].price;
                     this.oneprice[i] = this.productsList[i].product[0].price;
                     this.lastprice[i] = this.productsList[i].product.slice(-1)[0].price;
-                    //this.count[i] = this.productsList[i].product[0].count;
-                    //this.id_filter[i] = this.productsList[i].product[0].id;
                 }catch{
                     this.price[i] = pr;
                     this.lastprice[i] = '';
                     this.oneprice[i] = '';
-                   // this.count[i] = '';
-                   // this.id_filter[i] = '';
                 } 
             }
             
@@ -129,12 +130,11 @@ export default {
          * 
          */
         addToCart(data){
-            let cart = JSON.parse(JSON.stringify(this.productsList.find(i=>i.id==data.parent)));
+            let cart = JSON.parse(JSON.stringify(this.productsList.find(i=>i.id==data.data.parent)));
             let ret =  cart.product.filter((item)=> item.id == data.data.id);
             cart.product = ret;
-            cart['price']=data.cost;
-            cart['count'] =data.count_el;
-
+            cart['cost'] = data.cost;
+            cart['count_el'] = data.count_el;
             this.ADD_TO_CART(cart)
         },
         funNewChar(data){

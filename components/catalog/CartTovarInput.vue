@@ -3,6 +3,7 @@
         <div class="cost-product-amount">
             <el-input-number 
             v-model="num" 
+            :disabled="disableButton"
             size="mini"
             @change="handleChange" :min="1"
             ></el-input-number>
@@ -11,7 +12,7 @@
             <strong>Размер</strong>
               <el-radio  
               v-for="(item,idx) in product_data" :key="idx"
-              @change="changePrice(item)"
+              @change="changePrice(item,idx)"
               :label="idx"
               v-model="radio"
               :disabled="disableRadio"
@@ -22,7 +23,11 @@
           type="danger" 
           :disabled="disableButton"
           @click="addToCart"
-        >В корзину</el-button>
+          :class="{'disabled': disableButton === true}"
+        >
+          <span v-if="disableButton === false">В корзину</span>
+          <span v-else>В корзине</span>
+        </el-button>
         <div 
       
         class="cost-product-price-catalog">
@@ -34,9 +39,9 @@
 
 
 <script>
+import {mapGetters,mapActions} from 'vuex'
   export default {
     created() {
-     // console.log(this.product)  //undefined;
     },
     props:["product_data","price"],
     components:{
@@ -48,31 +53,51 @@
         input_cost:this.product_data[0]!=undefined?this.product_data[0].price:0,
         radio:0,
         priceCart:this.product_data[0]!=undefined?this.product_data[0].price:0,
-        count:[],
+        count:1,
         disableButton: false,
         disableRadio: false
 
       };
     },
+    beforeMount(){
+       this.editProduct(this.product_data[0]);
+    },
     computed:{
+      ...mapGetters({
+        basket:'main/basket'
+      })
     },
     methods: {
       changePrice(item){
-        this.active_id = item;
-        this.input_cost = item.price,
-        this.$emit('update:price', item.price);
+        this.active_id = item
+        this.input_cost = item.price
+        this.$emit('update:price', item.price)
         this.priceCart = item.price
         this.$emit('NewChar', item)
-        console.log(item)
+        this.disableButton = false
+        this.num = 1
+        this.editProduct(item)
       },
+      /** Добавление товара в корзину */
       addToCart(){
         this.$emit('addToCart',{data:this.active_id==null?this.product_data[0]:this.active_id,'count_el':this.count,'cost':this.priceCart})
         this.disableButton = true
         
       },
+      /** Изменение кол. товара */
       handleChange(value) {
          this.priceCart = Math.floor(this.input_cost*value*100)/100
          this.count = value
+      },
+      /** Обновление кол. товара и блокировка кнопок добавить в корзину и inputnumber */
+      editProduct(item){
+        for(let i in this.basket){
+          if(this.basket[i].product[0].id == item.id){
+            this.disableButton = true
+            this.num = this.basket[i].count_el
+            this.handleChange(this.basket[i].count_el) 
+          }
+        }
       }
     }
   };

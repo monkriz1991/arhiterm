@@ -3,14 +3,11 @@
     <div class="index-slider">
       <Slider />
     </div>
-    <h1 class="title">arhiterm</h1>
-    <h2 class="title-h2">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-        Accusamus tempora libero temporibus!
-    </h2>
+    <div class="title" v-html="indexItem.h1"></div>
+    <div class="title-h2" v-html="indexItem.h5"></div>
       <Category />
       <Brand />
-      <ContentPrev />
+      <ContentPrev :indexItem="indexItem" />
   </div>
 </template>
 
@@ -19,6 +16,7 @@ import Slider from '~/components/index/Slider.vue'
 import Category from '~/components/index/Category.vue'
 import Brand from '~/components/index/Brand.vue'
 import ContentPrev from '~/components/index/ContentPrev.vue'
+import {mapActions,mapGetters} from 'vuex'
 export default {
 
   data() {
@@ -27,6 +25,9 @@ export default {
     }
   },
   computed:{
+    ...mapGetters({
+      indexItem:'main/indexItem'
+    })
   },
   components:{
     Slider,
@@ -35,8 +36,12 @@ export default {
     ContentPrev,
   },
   methods:{
+    ...mapActions({
+        getIndex: 'main/getIndex'
+    }),
   },
   mounted(){
+    this.getIndex()
   },
 }
 </script>

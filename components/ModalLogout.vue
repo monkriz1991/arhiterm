@@ -8,13 +8,14 @@
 
         <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="Вход" name="first">
-                <el-form :model="form">
+                <el-form :model="login">
                     <el-form-item label="Логин" >
-                    <el-input placeholder="Введите Ваш email" v-model="form.name" autocomplete="off"></el-input>
+                    <el-input placeholder="Введите Ваш email" v-model="login.name" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="Пароль" >
-                    <el-input placeholder="Ввидите пароль" v-model="form.password" show-password></el-input>
+                    <el-input placeholder="Ввидите пароль" v-model="login.password" show-password></el-input>
                     </el-form-item>
+                    <el-button @click="userLogin">Login</el-button>
                 </el-form>
             </el-tab-pane>
             <el-tab-pane label="Регистрация" name="second">reg</el-tab-pane>
@@ -22,7 +23,7 @@
         </el-tabs>
         <span slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible = false">Закрыть</el-button>
-            <el-button type="primary" @click="dialogFormVisible = false">Confirm</el-button>
+            
         </span>
         </el-dialog>
     </div>
@@ -32,6 +33,10 @@
   export default {
     data() {
       return {
+        login:{
+          name:'',
+          password:'',
+        },
         activeName: 'first',
         dialogFormVisible: false,
         form: {
@@ -48,9 +53,17 @@
       };
     },
     methods: {
+     async userLogin() {
+        try {
+          let response = await this.$auth.loginWith('local', { data: this.login })
+          console.log(response)
+        } catch (err) {
+          console.log(err)
+        }
+      },
       handleClick(tab, event) {
         //console.log(tab, event);
-      }
+      },
     }
   };
 </script>

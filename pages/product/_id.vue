@@ -10,6 +10,10 @@
             <div class="cost-product-price">
                 <span>{{price}}</span>
                 <strong>руб./м</strong>
+                <div class="catalog-list-block-discount">
+                    <strong>1.33</strong>
+                    <span>руб/м2</span>
+                </div>
             </div>
             <CartTovarInput 
             :price.sync="price"
@@ -73,7 +77,7 @@ export default ({
             cart.product = ret;
             cart['cost']= data.cost;
             cart['count_el'] = data.count_el;
-            console.log(cart)
+            cart['status'] = 'basket'
             this.ADD_TO_CART(cart)
         },
         funNewChar(data){

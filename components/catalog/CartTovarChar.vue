@@ -13,8 +13,10 @@
                 <span>{{item.value}}</span>
             </p>
             <div
+            class="cost-product-char-all"
             @click="showChar"
-            >all</div>
+            :class="{'cost-all-top': show_char === true}"
+            ><i class="el-icon-d-arrow-right"></i></div>
         </div>
     </div>
 </template>
@@ -37,7 +39,6 @@ export default {
     },
     methods:{
         showChar(idx){
-            console.log()
             this.show_char = !this.show_char
         }
     },

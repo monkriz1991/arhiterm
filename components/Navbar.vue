@@ -56,6 +56,9 @@
               <i class="el-icon-refresh"></i>
             </div>
           </el-popover>
+          <nuxt-link class="link-navbar" :to="`/mounters`">
+            Монтажники
+          </nuxt-link>
             <no-ssr>
               <ModalLogout />
             </no-ssr>

@@ -1,16 +1,31 @@
 <template>
     <div class="index-desc">
-        <div class="index-desc-block">
+        <div class="index-desc-block" :style="{background:indexItem.bg_color}">
             <div class="index-desc-text">
-                <h4>Выберайте лучшее!</h4>
-                <span>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                    Consequatur aliquam!
-                </span>
+                <div v-html="indexItem.title_block"></div>
+                <div v-html="indexItem.description"></div>
             </div>
             <div class="index-desc-img">
-                <img src="~/assets/img/cat_2.png" alt="">
+                <img :src="indexItem.img" alt="">
             </div>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    props:['indexItem'],
+    data() {
+    return {
+    }
+    },
+    computed:{
+    },
+    components:{
+    },
+    methods:{
+    },
+    mounted(){
+    },
+}
+</script>

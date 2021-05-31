@@ -7,6 +7,7 @@
             <Cart 
             v-if="basket.length"
             :cart_data="basket"
+            @cartDell = "cartDell"
             />
             <h4 v-else>Корзина пуста 😢</h4>
             <span slot="footer" class="dialog-footer">
@@ -19,7 +20,7 @@
 
 <script>
 import Cart from '/components/basket/Cart'
-import {mapGetters} from 'vuex'
+import {mapGetters,mapActions} from 'vuex'
   export default {
     components:{
       Cart
@@ -34,5 +35,13 @@ import {mapGetters} from 'vuex'
         basket:'main/basket',
       })
     },
+    methods:{
+      ...mapActions({
+        DELL_CART_BASKET:'main/DELL_CART_BASKET'
+      }),
+      cartDell(data){
+        this.DELL_CART_BASKET(data)
+      }
+    }
   };
 </script>
