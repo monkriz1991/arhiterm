@@ -436,7 +436,9 @@ header .contents {
 .cat-filter .el-checkbox-group{
     float: left;
     width: 100%;
-    margin: 0 0 10px;
+    margin: 0 0 15px;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 0 0 5px;
 }
 .cat-filter .el-checkbox-group .el-checkbox{
     float: left;
@@ -598,6 +600,9 @@ border: 1px solid #fff;
 }
 .catalog-list-block-button button{
     font-size: 15px;
+    color: #fa9600 !important;
+    background: #fff2df !important;
+    border-color: #fff2df !important;
 }
 
 .h1-product{
@@ -875,9 +880,9 @@ width: 100%;
     transition: opacity 1s;
 }
 .activeButCat>.el-button--danger.is-plain {
-    background: #dd6161;
-    border-color: #dd6161;
-    color: #FFF;
+    background: #fa9600 !important;
+    border-color: #fa9600 !important;
+    color: #FFF !important;
     outline: 0;
 }
 .catalog-list-input .cost-product-char p{
@@ -924,7 +929,7 @@ width: 100%;
     display: none;
 }
 body .el-form-item{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 body .el-form-item__label{
     line-height: 30px;
@@ -1148,4 +1153,20 @@ text-align: right;
 }
 .basket-tov-desk-type>span>span{
     font-size: 11px;
+}
+.header-logout .el-dialog{
+    padding: 20px;
+    border-radius: 6px;
+}
+.header-logout form .el-button{
+    float: right;
+    margin: 10px 0 0 0;
+}
+.header-logout .el-select{
+    float: left;
+    width: 100%;
+}
+.header-logout label.el-checkbox{
+    float: left;
+    width: 100%;   
 }

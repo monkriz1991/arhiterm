@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import ModalLogout from '~/components/ModalLogout.vue'
+import ModalLogout from '~/components/aut/ModalLogout.vue'
 import BasketModal from '~/components/BasketModal.vue'
 import {mapGetters,mapActions} from 'vuex'
   export default {

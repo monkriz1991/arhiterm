@@ -62,9 +62,37 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: [/^element-ui/]
-  }
+    transpile: [/^element-ui/,'vee-validate/dist/rules'],
+  },
   
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+           type: 'Token'
+        },
+        user: {
+          property: '',
+        },
+        endpoints: {
+          login: { url: '/signin/backend/signin/', method: 'post', propertyName: 'token' },
+          logout: false,
+          user: { url: '/users/mydata/', method: 'get' }
+        },
+        // tokenRequired: true,
+        tokenType: '',
+      },
+    },
+    redirect: {
+      login: '/',
+      home: '/',
+      callback: false,
+      logout: false
+    }
+  },
+
 
 
 }
