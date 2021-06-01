@@ -15,13 +15,14 @@
                 >
                    <label class="cat-filter-check">
                        <span>{{filters.name}}</span>
-                    </label> 
-                    <el-checkbox 
+                    </label>
+                    <el-checkbox
                     v-for="checkbox in filters.filter_value"
                     :key="checkbox.id"
-                    :label="checkbox.value"
+                    v-model="checkList"
+                    :label="checkbox.id"
                     @change="checkFil(checkbox.id)"
-                    >
+                    >{{checkbox.value}}
                     </el-checkbox>
                 </el-checkbox-group>
             </ul>
@@ -42,8 +43,13 @@ export default {
             return this.$store.getters['category/categoryNested']
         }
     },
+  watch:{
+    checkList(nv){
+      console.log(this.checkList);
+    }
+  },
     async mounted(){
-        
+
       //this.categoriesNested = await this.$store.dispatch('category/getCategoryNested');
     },
     methods:{
