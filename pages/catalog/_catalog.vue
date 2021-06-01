@@ -1,19 +1,23 @@
 <template>
     <div class="container">
+        <Breadcrumb/>
         <Sidebar/>
         <CartTovar/>
         <Paginated/>
-    </div>    
+
+    </div>
 </template>
 
 <script>
 import Sidebar from '~/components/catalog/Sidebar.vue'
 import CartTovar from '~/components/catalog/CartTovar.vue'
+import Breadcrumb from '~/components/Breadcrumb.vue'
 import Paginated from '~/components/catalog/Paginated.vue'
 export default {
     components:{
         Sidebar,
         CartTovar,
+        Breadcrumb,
         Paginated
     },
     async asyncData ({ app, params, route, error }) {
@@ -37,7 +41,7 @@ export default {
     methods:{
     },
     mounted(){
-        
+
     },
 }
 </script>
