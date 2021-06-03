@@ -3,7 +3,8 @@
 export const state = ()=>({
     sliderItems:[],
     basket:[],
-    indexItem:[]
+    indexItem:[],
+    userItem:[]
 })
 
 export const mutations = {
@@ -18,6 +19,9 @@ export const mutations = {
     },
     REMOVE_FROM_CART(state,idx){
         state.basket.splice(idx,1)
+    },
+    setUser(state,userItem){
+        state.userItem = userItem
     }
 }
 
@@ -37,6 +41,10 @@ export const actions = {
     },
     DELL_CART_BASKET({commit},idx){
         commit('REMOVE_FROM_CART',idx)
+    },
+    addUserList({ commit},results) {
+        commit('setUser', results)
+        return results
     }
 } 
 
@@ -44,6 +52,7 @@ export const getters = {
     sliderItems: state => state.sliderItems,
     basket: state => state.basket,
     indexItem: state => state.indexItem,
+    userItem: state => state.userItem
 }
 
 

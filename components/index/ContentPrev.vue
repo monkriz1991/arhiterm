@@ -6,8 +6,12 @@
                 <div v-html="indexItem.description"></div>
             </div>
             <div class="index-desc-img">
-                <img :src="indexItem.img" alt="">
+                <el-image
+                    :src="indexItem.img"
+                    fit="cover">
+                </el-image>
             </div>
+            
         </div>
     </div>
 </template>
@@ -17,9 +21,14 @@ export default {
     props:['indexItem'],
     data() {
     return {
+        image:'',
     }
     },
     computed:{
+        imgBlock(){
+            this.image = this.indexItem.img
+            return this.image
+        }
     },
     components:{
     },

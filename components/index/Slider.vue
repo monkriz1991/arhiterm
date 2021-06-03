@@ -1,25 +1,29 @@
 <template>
-  <el-carousel 
-    :autoplay="false"
-    height="350px"
-    trigger="click"
-  >
-    <el-carousel-item 
-      v-for="(item,idx) in slides" :key="idx"
+  <div class="index-slider">
+    <el-carousel 
+      :autoplay="false"
+      height="350px"
+      trigger="click"
     >
-      <div class="slider-block">
-        <div class="slider-content">
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.description }}</p>
+    <no-ssr>
+      <el-carousel-item 
+        v-for="(item,idx) in slides" :key="idx"
+      >
+        <div class="slider-block">
+          <div class="slider-content">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+          <img class="slider-image" 
+            :src="item.img"
+            :alt="item.title" 
+          />
         </div>
-        <img class="slider-image" 
-          :src="item.img"
-          :alt="item.title" 
-        />
-      </div>
 
-    </el-carousel-item>
-  </el-carousel>
+      </el-carousel-item>
+      </no-ssr>
+    </el-carousel>
+  </div>
 </template>
 
 <script>

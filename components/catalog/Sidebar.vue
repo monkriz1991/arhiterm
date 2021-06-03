@@ -19,9 +19,9 @@
                     <el-checkbox 
                     v-for="checkbox in filters.filter_value"
                     :key="checkbox.id"
-                    :label="checkbox.value"
-                    @change="checkFil(checkbox.id)"
-                    >
+                    :label="checkbox.id"
+                    @change="checkFil"
+                    >{{checkbox.value}}
                     </el-checkbox>
                 </el-checkbox-group>
             </ul>
@@ -35,6 +35,7 @@ export default {
         return {
             //categoriesNested:[]
             checkList:[],
+            checkFilId:[],
         };
     },
     computed:{
@@ -47,7 +48,7 @@ export default {
       //this.categoriesNested = await this.$store.dispatch('category/getCategoryNested');
     },
     methods:{
-        checkFil(id){
+        checkFil(){
             console.log(this.checkList)
         }
     },

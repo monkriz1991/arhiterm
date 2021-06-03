@@ -25,6 +25,7 @@
 
 
 <script>
+import {mapGetters,mapActions} from 'vuex'
   //import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
   export default {
     components:{
@@ -41,6 +42,9 @@
       };
     },
     methods: {
+    ...mapActions({
+        addUserList: 'main/addUserList'
+    }),
     userLogin() {
         this.$refs.login.validate((valid) => {
           if (valid) {
@@ -53,6 +57,7 @@
       async userAuto(){
         try {
           let response = await this.$auth.loginWith('local', { data: this.login })
+          this.addUserList(this.$auth.user)
           console.log(response)
         } catch (err) {
           this.errors = [];

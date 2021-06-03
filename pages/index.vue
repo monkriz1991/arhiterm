@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <div class="index-slider">
       <Slider />
-    </div>
     <div class="title" v-html="indexItem.h1"></div>
     <div class="title-h2" v-html="indexItem.h5"></div>
       <Category />
