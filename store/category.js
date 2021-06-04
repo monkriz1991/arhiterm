@@ -3,6 +3,7 @@
 export const state = () =>({
     categoryNavbar: [],
     categoryNested: [],
+    categoryManuf: [],
     categoryIndex: [],
     manufacturer:[],
     manufacturerIndex:[],
@@ -14,6 +15,9 @@ export const mutations = {
     },
     setCategoryNested (state,categoryNested) {
         state.categoryNested = categoryNested
+    },
+    setCategoryManuf(state,categoryManuf){
+        state.categoryManuf = categoryManuf
     },
     setCategoryIndex (state,categoryIndex) {
         state.categoryIndex = categoryIndex
@@ -42,6 +46,12 @@ export const actions = {
         commit('setCategoryNested', category)
         return category
     },
+    async getCategoryManuf({ commit},id) {
+        // await sleep(50)
+        let manufacturer = await this.$axios.$get(`/manufacturer/get/?cats=${id}`);   
+        commit('setCategoryManuf', manufacturer)
+        return manufacturer
+    },
     async getCategoryIndex ({ commit}) {
         // await sleep(50)
         let category = await this.$axios.$get(`/catalog/categories/?limit=4`);   
@@ -65,6 +75,7 @@ export const actions = {
 export const getters = {
     categoryNavbar: state => state.categoryNavbar,
     categoryNested: state => state.categoryNested,
+    categoryManuf: state => state.categoryManuf,
     categoryIndex: state => state.categoryIndex,
     manufacturer: state => state.manufacturer,
     manufacturerIndex: state => state.manufacturerIndex  
