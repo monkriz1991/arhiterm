@@ -19,10 +19,21 @@
                     <el-checkbox
                     v-for="checkbox in filters.filter_value"
                     :key="checkbox.id"
-                    v-model="checkList"
                     :label="checkbox.id"
-                    @change="checkFil(checkbox.id)"
+                    @change="checkFil"
                     >{{checkbox.value}}
+                    </el-checkbox>
+                </el-checkbox-group>
+                <el-checkbox-group v-model="checkListManuf">
+                    <label class="cat-filter-check">
+                       <span>Производители</span>
+                    </label>
+                    <el-checkbox
+                    v-for="checkbox in categoryManuf.results"
+                    :key="checkbox.id"
+                    :label="checkbox.id"
+                    @change="checkFil"
+                    >{{checkbox.name}}
                     </el-checkbox>
                 </el-checkbox-group>
             </ul>
@@ -31,29 +42,27 @@
 </template>
 
 <script>
+import {mapActions,mapGetters} from 'vuex'
 export default {
     data() {
         return {
             //categoriesNested:[]
             checkList:[],
+            checkFilId:[],
+            checkListManuf:[],
         };
     },
     computed:{
-        categoriesNested(){
-            return this.$store.getters['category/categoryNested']
-        }
+        ...mapGetters({
+            categoriesNested: 'category/categoryNested',
+            categoryManuf: 'category/categoryManuf',
+        })
     },
-  watch:{
-    checkList(nv){
-      console.log(this.checkList);
-    }
-  },
     async mounted(){
 
-      //this.categoriesNested = await this.$store.dispatch('category/getCategoryNested');
     },
     methods:{
-        checkFil(id){
+        checkFil(){
             console.log(this.checkList)
         }
     },

@@ -59,9 +59,14 @@
           <nuxt-link class="link-navbar" :to="`/mounters`">
             Монтажники
           </nuxt-link>
+            <div v-if="$auth.loggedIn">
+              <Menyuser/>
+            </div>
+            <div v-else>
             <no-ssr>
               <ModalLogout />
             </no-ssr>
+            </div>
             <no-ssr>
               <BasketModal />
             </no-ssr>
@@ -74,11 +79,13 @@
 <script>
 import ModalLogout from '~/components/aut/ModalLogout.vue'
 import BasketModal from '~/components/BasketModal.vue'
+import Menyuser from '~/components/aut/Menyuser.vue'
 import {mapGetters,mapActions} from 'vuex'
   export default {
     components:{
       ModalLogout,
       BasketModal,
+      Menyuser,
     },
     data() {
       return {
