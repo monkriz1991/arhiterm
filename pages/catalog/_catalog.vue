@@ -23,7 +23,7 @@ export default {
     async asyncData ({ app, params, route, error }) {
     try {
             await app.store.dispatch('category/getCategoryNested',params.catalog)
-            await app.store.dispatch('product/getProductList',params.catalog)
+            await app.store.dispatch('product/getProductList',[params.catalog])
             await app.store.dispatch('category/getCategoryManuf',params.catalog)
         } catch (err) {
             console.log(err)

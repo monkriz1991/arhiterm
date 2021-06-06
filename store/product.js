@@ -34,8 +34,7 @@ export const actions = {
             args[1] = 1;
         }
         let offset = (args[1]-1)*state.productLimit;
-        let product = await this.$axios.$get(
-          `/catalog/product/?cat=${id}&limit=${state.productLimit}&offset=${offset}`);
+        let product = await this.$axios.$get(`/catalog/product/?cat=${id}&limit=${state.productLimit}&offset=${offset}`);
         commit('setProductList', product.results)
         commit('setCountProduct', product.count) // получаем общее количество товаров в категории
         commit('setProduxtLoading',false)
