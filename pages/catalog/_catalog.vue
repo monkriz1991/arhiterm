@@ -2,8 +2,8 @@
     <div class="container">
         <Breadcrumb/>
         <Sidebar/>
-        <CartTovar/>
-        <Paginated/>
+        <CartTovar ref="CartTovar" />
+        <Paginated @changePage="toPage"/>
 
     </div>
 </template>
@@ -40,6 +40,10 @@ export default {
     computed:{
     },
     methods:{
+      toPage(page){
+        console.log(page)
+        this.$store.dispatch('product/getProductList',[this.$route.params.catalog,page]);
+      }
     },
     mounted(){
 
