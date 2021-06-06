@@ -15,8 +15,8 @@
                 >
                    <label class="cat-filter-check">
                        <span>{{filters.name}}</span>
-                    </label> 
-                    <el-checkbox 
+                    </label>
+                    <el-checkbox
                     v-for="checkbox in filters.filter_value"
                     :key="checkbox.id"
                     :label="checkbox.id"
@@ -27,8 +27,8 @@
                 <el-checkbox-group v-model="checkListManuf">
                     <label class="cat-filter-check">
                        <span>Производители</span>
-                    </label> 
-                    <el-checkbox 
+                    </label>
+                    <el-checkbox
                     v-for="checkbox in categoryManuf.results"
                     :key="checkbox.id"
                     :label="checkbox.id"

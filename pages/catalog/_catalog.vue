@@ -1,19 +1,23 @@
 <template>
     <div class="container">
+        <Breadcrumb/>
         <Sidebar/>
-        <CartTovar/>
-        <Paginated/>
-    </div>    
+        <CartTovar ref="CartTovar" />
+        <Paginated @changePage="toPage"/>
+
+    </div>
 </template>
 
 <script>
 import Sidebar from '~/components/catalog/Sidebar.vue'
 import CartTovar from '~/components/catalog/CartTovar.vue'
+import Breadcrumb from '~/components/Breadcrumb.vue'
 import Paginated from '~/components/catalog/Paginated.vue'
 export default {
     components:{
         Sidebar,
         CartTovar,
+        Breadcrumb,
         Paginated
     },
     async asyncData ({ app, params, route, error }) {
@@ -36,9 +40,13 @@ export default {
     computed:{
     },
     methods:{
+      toPage(page){
+        console.log(page)
+        this.$store.dispatch('product/getProductList',[this.$route.params.catalog,page]);
+      }
     },
     mounted(){
-        
+
     },
 }
 </script>

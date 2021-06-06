@@ -1,8 +1,8 @@
 <template>
     <div class="catalog-list">
         <el-row :gutter="20">
-            <el-col 
-            :xs="12" :sm="12" :md="12" :lg="12" :xl="12" 
+            <el-col
+            :xs="12" :sm="12" :md="12" :lg="12" :xl="12"
             v-for="(product,idx) in productsList" :key="idx"
             >
                 <div class="catalog-list-block" :class="{ activeImgBlock: show.includes(idx) }">
@@ -14,7 +14,7 @@
                         >
                         </el-image>
                         <div class="catalog-list-block-button" :class="{ activeButCat: show.includes(idx) }">
-                            <el-button 
+                            <el-button
                             v-on:click="toggleActive(idx)"
                             type="danger" plain  size="mini" circle
                             >
@@ -22,12 +22,12 @@
                             </el-button>
                         </div>
                     </div>
-                    <div class="catalog-list-block-desc"> 
+                    <div class="catalog-list-block-desc">
                         <nuxt-link :to="`/product/${product.id}`">
                             {{product.name}}
-                        </nuxt-link> 
+                        </nuxt-link>
                     <div class="catalog-list-block-price">
-                        <strong>{{price[idx]}} 
+                        <strong>{{price[idx]}}
                             <div class="catalog-list-block-discount">
                                 <strong>1.33</strong>
                                 <span>руб/м2</span>
@@ -39,14 +39,14 @@
                             <span>руб/м2</span>
                         </div>
                     </div>
-                    </div> 
-                    <div 
+                    </div>
+                    <div
                     v-if="show.includes(idx)"
                     class="catalog-list-input">
-                        <CartTovarInput 
+                        <CartTovarInput
                         :price.sync="price[idx]"
                         :product_data="product.product"
-                        @Sendprice = "updatePriceAndCountInPage" 
+                        @Sendprice = "updatePriceAndCountInPage"
                         @addToCart = "addToCart"
                         @NewChar = "funNewChar"
                         />
@@ -101,7 +101,7 @@ export default {
             this.radio = idx;
             if (this.show.includes(idx)) {
                 this.show = this.show.filter(entry => entry !== idx);
-                return; 
+                return;
             }else{
                 this.show =[]
             }
@@ -122,12 +122,12 @@ export default {
                     this.price[i] = pr;
                     this.lastprice[i] = '';
                     this.oneprice[i] = '';
-                } 
+                }
             }
-            
+
         },
         /**
-         * 
+         *
          */
         addToCart(data){
             let cart = JSON.parse(JSON.stringify(this.productsList.find(i=>i.id==data.data.parent)));
@@ -139,8 +139,8 @@ export default {
         },
         funNewChar(data){
             return this.funChar = data
-            
+
         }
-    }    
+    }
 }
 </script>
