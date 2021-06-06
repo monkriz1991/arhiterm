@@ -18,7 +18,7 @@ import {mapGetters} from "vuex";
 export default {
     data() {
         return {
-          page:1,
+          page:this.$route.query.page!==undefined?parseInt(this.$route.query.page):1,
         }
     },
      computed:{
