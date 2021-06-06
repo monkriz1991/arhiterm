@@ -26,10 +26,6 @@ export default {
             countProduct: 'product/countProduct',
             productLimit: 'product/productLimit'
         }),
-       pages(){
-         console.log(Math.ceil(this.countProduct/this.productLimit))
-          return Math.ceil(this.countProduct/this.productLimit)
-       }
     },
     methods:{
       paginate(){
