@@ -22,12 +22,16 @@ export default {
     },
     async asyncData ({ app, params, route, error }) {
     try {
-            await app.store.dispatch('category/getCategoryNested',params.catalog)
+        await app.store.dispatch('category/getCategoryNested',params.catalog)
+        if(route.query.page===undefined){
             await app.store.dispatch('product/getProductList',[params.catalog])
-            await app.store.dispatch('category/getCategoryManuf',params.catalog)
-        } catch (err) {
-            console.log(err)
-            return error({
+        }else{
+            await app.store.dispatch('product/getProductList',[params.catalog,route.query.page])
+        }
+        await app.store.dispatch('category/getCategoryManuf',params.catalog)
+    } catch (err) {
+        console.log(err)
+        return error({
             statusCode: 404,
             message: 'Товар не найдена или сервер не доступен'
         })
@@ -41,7 +45,8 @@ export default {
     },
     methods:{
       toPage(page){
-        console.log(page)
+        console.log(this.$route.path)
+        history.replaceState(null, null, `${this.$route.path}?page=${page}`);
         this.$store.dispatch('product/getProductList',[this.$route.params.catalog,page]);
       }
     },
