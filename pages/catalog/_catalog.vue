@@ -1,14 +1,15 @@
 <template>
     <div class="container">
         <Breadcrumb/>
-        <Sidebar/>
+        <Sidebar @updateData="updateData" />
         <CartTovar ref="CartTovar" />
-        <Paginated @changePage="toPage"/>
+        <Paginated @changePage="updateData"/>
 
     </div>
 </template>
 
 <script>
+
 import Sidebar from '~/components/catalog/Sidebar.vue'
 import CartTovar from '~/components/catalog/CartTovar.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
@@ -21,13 +22,10 @@ export default {
         Paginated
     },
     async asyncData ({ app, params, route, error }) {
+      let parametrs = await app.$parseUrl(route);
     try {
         await app.store.dispatch('category/getCategoryNested',params.catalog)
-        if(route.query.page===undefined){
-            await app.store.dispatch('product/getProductList',[params.catalog])
-        }else{
-            await app.store.dispatch('product/getProductList',[params.catalog,route.query.page])
-        }
+        await app.store.dispatch('product/getProductList',parametrs)
         await app.store.dispatch('category/getCategoryManuf',params.catalog)
     } catch (err) {
         console.log(err)
@@ -44,10 +42,10 @@ export default {
     computed:{
     },
     methods:{
-      toPage(page){
-        console.log(this.$route.path)
-        history.replaceState(null, null, `${this.$route.path}?page=${page}`);
-        this.$store.dispatch('product/getProductList',[this.$route.params.catalog,page]);
+      updateData(){
+        let parametrs = this.$parseUrl(this.$route);
+                console.log(parametrs)
+        this.$store.dispatch('product/getProductList',parametrs);
       }
     },
     mounted(){
