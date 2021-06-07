@@ -17,7 +17,7 @@
         </el-tabs>
         <!-- <span slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible = false">Закрыть</el-button>
-
+            
         </span> -->
         </el-dialog>
     </div>

@@ -4,7 +4,7 @@
             <span class="el-dropdown-link">
                 <div class="demo-type">
                     <div>
-                        <el-avatar icon="el-icon-user-solid"></el-avatar>
+                        <el-avatar icon="el-icon-user-solid"></el-avatar> 
                     </div>
                 </div>
                 <span class="demo-type-span">{{$auth.user.username}}</span>
@@ -43,7 +43,7 @@
             this.$auth.logout();
         },
     },
-
+    
   }
 </script>
 

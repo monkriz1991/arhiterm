@@ -106,7 +106,7 @@ img {
 .clearfix:after {
     clear: both;
 }
-
+  
 .container {
     padding-right: 15px;
     padding-left: 15px;
@@ -339,7 +339,7 @@ header .contents {
     text-align: left;
     display: flex;
     flex-flow: column-reverse;
-    background: linear-gradient(
+    background: linear-gradient( 
 4deg
  , rgb(0 0 0 / 25%), rgb(0 0 0 / 0%));
 }
@@ -510,7 +510,7 @@ width: 75%;
 /*.catalog-list-block .el-image:hover{
  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
 transition: .3s;
-border: 1px solid #fff;
+border: 1px solid #fff; 
 }*/
 .catalog-list-block-desc>a:hover .catalog-list-block .el-image{
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
@@ -615,7 +615,7 @@ border: 1px solid #fff;
 .catalog-list-block-button button:hover{
     background: #fa9600 !important;
     border-color: #fa9600 !important;
-    color: #FFF !important;
+    color: #FFF !important;  
 }
 .h1-product{
     float: left;
@@ -628,7 +628,7 @@ border: 1px solid #fff;
 }
 .h2-product{
     float: left;
-    width: 100%;
+    width: 100%;  
     margin: 0px 0 30px;
     font-size: 14px;
     font-weight: 600;
@@ -733,7 +733,7 @@ border: 1px solid #fff;
 .cost-product-input{
     float: left;
     width: 100%;
-    margin: 0px 0 20px 0;
+    margin: 0px 0 20px 0;  
 }
 .cost-product-price>span{
     float: left;
@@ -802,7 +802,7 @@ border: 1px solid #fff;
     bottom: -2px;
 }
 .cost-product-char-all{
-    transform: rotate(
+    transform: rotate( 
     90deg
     );
     /* padding: 5px; */
@@ -820,7 +820,7 @@ border: 1px solid #fff;
     color: #ff7601 !important;
 }
 .cost-all-top{
-    transform: rotate(
+    transform: rotate( 
 270deg
  );
 }
@@ -1185,12 +1185,12 @@ text-align: right;
 }
 .header-logout label.el-checkbox{
     float: left;
-    width: 100%;
+    width: 100%; 
 }
 .navbar-user{
     float: right;
     padding: 0px 0px 0px 0;
-    cursor: pointer;
+    cursor: pointer;  
 }
 .navbar-user .demo-type{
     float: left;
@@ -1213,7 +1213,7 @@ text-align: right;
 }
 .navbar-user .el-menu.el-menu--horizontal{
     border: none;
-}
+} 
 body .navbar-user .el-icon-user-solid{
     margin-right: 0px;
 }
