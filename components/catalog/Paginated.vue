@@ -29,7 +29,7 @@ export default {
     },
     methods:{
       paginate(){
-        this.$addQuery('page',this.page,this.$route);
+        this.$addQuery('page',this.page,this.$route,this.$route.params.catalog);
         this.$emit('changePage',this.page);
       }
     },

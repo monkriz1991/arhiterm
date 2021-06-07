@@ -2,7 +2,7 @@
     <div class="index-topcat">
     <h4>Категории</h4>
         <el-row :gutter="20">
-        <el-col 
+        <el-col
         v-for="item in category" :key="item.id"
         :xs="12" :sm="12" :md="12" :lg="6" :xl="6">
             <nuxt-link :to="`/catalog/${item.id}`" class="nuxt-link-cat">
@@ -10,7 +10,7 @@
                     <strong>{{item.name}}
                         <span>140 / наименований</span>
                     </strong>
-                    
+
                     <img :src="item.img" :alt="item.name">
                 </div>
             </nuxt-link>

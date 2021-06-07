@@ -22,7 +22,8 @@ export default {
         Paginated
     },
     async asyncData ({ app, params, route, error }) {
-      let parametrs = await app.$parseUrl(route);
+      let parametrs = {};
+      console.log(parametrs)
     try {
       parametrs['cat'] = params.catalog;
         await app.store.dispatch('category/getCategoryNested',params.catalog)

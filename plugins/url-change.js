@@ -6,7 +6,8 @@
  */
 export default ({app,route,params}, inject)=>{
   var saved=route.query;
-  function delQuery(key){
+  var savedCat = null;
+  function delQuery(key,cat){
     let uri = "?";
     let cop = Object.assign(route.query)
     for(let i in saved){
@@ -17,11 +18,12 @@ export default ({app,route,params}, inject)=>{
           uri+=`${i}=${saved[i]}&`
         }
       }
-      app.router.replace({path:'/catalog/1','query':saved});
+      savedCat = cat;
+      app.router.replace({path:'/catalog/'+cat,'query':saved});
     uri = uri.slice(0, -1)
      toUri(uri);
   }
-  async function addQuery(key,val,route){
+  async function addQuery(key,val,route,cat){
       let uri = "?";
       let exist = false;
       for(let i in route.query){
@@ -32,10 +34,10 @@ export default ({app,route,params}, inject)=>{
           uri+=`${i}=${route.query[i]}&`
         }
       }
-
+      savedCat = cat;
       saved[key]=val;
       try{
-        await app.router.replace({path:'/catalog/1','query':saved});
+        await app.router.replace({path:'/catalog/'+cat,'query':saved});
       }catch (e){
 
 
@@ -52,7 +54,12 @@ export default ({app,route,params}, inject)=>{
   function toUri(uri){
     // history.replaceState(null, null, `${route.path}${uri}`);
   }
+  function clearSaved(cat){
+    if(savedCat!=cat){
+      saved = {}
+    }
 
+  }
   function parseUrl(){
   let parametrs = {"cat":route.params.catalog}
     for(let i in route.query){
@@ -60,7 +67,8 @@ export default ({app,route,params}, inject)=>{
     }
     return parametrs
 }
-  inject('addQuery', function(key,val,route){addQuery(key,val,route)})
+  inject('addQuery', function(key,val,route,c){addQuery(key,val,route,c)})
   inject('parseUrl', function(params){return parseUrl(params)})
-  inject('delQuery', function(k){ delQuery(k)})
+  inject('delQuery', function(k,c){ delQuery(k,c)})
+  inject('clearSaved', function(c){ clearSaved(c)})
 }
