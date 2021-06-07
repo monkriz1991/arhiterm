@@ -35,7 +35,7 @@ img {
     color: #333;
     font-weight: 500;
     margin: 0 0 0 25px;
-    padding: 8px 10px;
+    padding: 6px 10px;
 }
 .link-navbar:hover{
     color: rgb(104, 0, 0);
@@ -1185,11 +1185,12 @@ text-align: right;
 }
 .header-logout label.el-checkbox{
     float: left;
-    width: 100%;   
+    width: 100%; 
 }
 .navbar-user{
     float: right;
     padding: 0px 0px 0px 0;
+    cursor: pointer;  
 }
 .navbar-user .demo-type{
     float: left;
@@ -1237,12 +1238,19 @@ body .navbar-user .navbar-user-item{
     padding: 0 20px !important;
     min-width: 200px;
 }
-.navbar-user-item a{
+.navbar-user-item a,.navbar-user-item span{
     text-decoration: none;
     color: #333;
     font-weight: 500;
     float: left;
     width: 100%;
+}
+.navbar-user .el-icon--right {
+    margin-top: 10px;
+}
+.demo-type-span{
+    padding: 7px 0 0;
+    float: left;
 }
 .navbar-user .el-menu{
     border-right: none;
