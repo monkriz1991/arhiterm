@@ -304,9 +304,11 @@ header .contents {
 .index-topcat-block>img{
     float: left;
     width: 45%;
+    height: 150px;
+    object-fit: contain;
 }
 .index-topcat .nuxt-link-cat,.index-brand .nuxt-link-cat{
-    margin: 0 0 20px 0;
+    margin: 0 0 10px 0;
     float: left;
 }
 .index-brand-block{
@@ -369,7 +371,7 @@ header .contents {
 .index-desc{
     float: left;
     width: 100%;
-    margin: 110px 0 50px;
+    margin: 150px 0 50px;
 }
 .index-desc-block{
     padding: 80px 60px 65px;

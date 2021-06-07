@@ -1,7 +1,6 @@
 <template>
   <div>
     <Navbar />
-    <Breadcrumb />
     <nuxt />
     <Footer />
     <Upscroll/>

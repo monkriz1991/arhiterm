@@ -43,7 +43,7 @@ import {mapGetters,mapActions} from 'vuex'
   export default {
     created() {
     },
-    props:["product_data","price"],
+    props:["product_data","price","discont"],
     components:{
     },
     data() {
@@ -54,6 +54,7 @@ import {mapGetters,mapActions} from 'vuex'
         radio:0,
         priceCart:this.product_data[0]!=undefined?this.product_data[0].price:0,
         count:1,
+        discont_price:this.product_data[0].discont,
         disableButton: false,
         disableRadio: false
 
@@ -70,10 +71,11 @@ import {mapGetters,mapActions} from 'vuex'
     methods: {
       changePrice(item){
         this.active_id = item
-        this.input_cost = item.price
+        this.input_cost = item.discont==null?item.price:item.discont
         this.$emit('update:price', item.price)
-        this.priceCart = item.price
+        this.priceCart = item.discont==null?item.price:item.discont
         this.$emit('NewChar', item)
+        this.$emit('update:discont',item.discont)
         this.disableButton = false
         this.num = 1
         this.editProduct(item)

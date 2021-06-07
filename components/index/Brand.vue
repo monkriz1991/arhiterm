@@ -1,7 +1,7 @@
 <template>
     <div class="index-brand">
     <h4>Производители</h4>
-        <el-row >
+        <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide
                     v-for="item in category.results" :key="item.id"
@@ -86,6 +86,6 @@ export default ({
     background-color: #e3e3e3;
 }
 .hooper-pagination{
-    bottom: -5px;
+    bottom: -15px;
 }
 </style>

@@ -10,7 +10,7 @@
                     {{ category.name }}
                 </li>
                 <el-checkbox-group v-model="checkList"
-                v-for="(filters,key) in category.filters"
+                v-for="filters in category.filters"
                 :key="filters.id"
                 >
                    <label class="cat-filter-check">
