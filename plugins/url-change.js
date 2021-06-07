@@ -17,7 +17,7 @@ export default ({app,route,params}, inject)=>{
           uri+=`${i}=${saved[i]}&`
         }
       }
-      app.router.replace({'query':saved});
+      app.router.replace({path:'/catalog/1','query':saved});
     uri = uri.slice(0, -1)
      toUri(uri);
   }
@@ -35,7 +35,7 @@ export default ({app,route,params}, inject)=>{
 
       saved[key]=val;
       try{
-        await app.router.replace({'query':saved});
+        await app.router.replace({path:'/catalog/1','query':saved});
       }catch (e){
 
 
@@ -50,7 +50,7 @@ export default ({app,route,params}, inject)=>{
   }
 
   function toUri(uri){
-    history.replaceState(null, null, `${route.path}${uri}`);
+    // history.replaceState(null, null, `${route.path}${uri}`);
   }
 
   function parseUrl(){

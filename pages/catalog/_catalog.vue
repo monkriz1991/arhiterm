@@ -24,6 +24,7 @@ export default {
     async asyncData ({ app, params, route, error }) {
       let parametrs = await app.$parseUrl(route);
     try {
+      parametrs['cat'] = params.catalog;
         await app.store.dispatch('category/getCategoryNested',params.catalog)
         await app.store.dispatch('product/getProductList',parametrs)
         await app.store.dispatch('category/getCategoryManuf',params.catalog)
@@ -44,7 +45,7 @@ export default {
     methods:{
       updateData(){
         let parametrs = this.$parseUrl(this.$route);
-                console.log(parametrs)
+        parametrs['cat'] = this.$route.params.catalog;
         this.$store.dispatch('product/getProductList',parametrs);
       }
     },
