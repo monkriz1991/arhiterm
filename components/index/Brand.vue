@@ -1,7 +1,7 @@
 <template>
     <div class="index-brand">
     <h4>Производители</h4>
-        <el-row >
+        <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide
                     v-for="item in category.results" :key="item.id"
@@ -14,8 +14,8 @@
                                 </strong>
                                 <span>{{item.name}}</span>
                             </div>
-                            <img 
-                                :src="item.img" 
+                            <img
+                                :src="item.img"
                                 :alt="item.name"
                             >
                         </div>
@@ -36,9 +36,9 @@
 
 <script>
 import { mapGetters,mapActions } from 'vuex'
-import { Hooper, Slide, 
+import { Hooper, Slide,
 Pagination as HooperPagination,
-Navigation  as HooperNavigation 
+Navigation  as HooperNavigation
 } from 'hooper';
 import 'hooper/dist/hooper.css';
 export default ({
@@ -86,6 +86,6 @@ export default ({
     background-color: #e3e3e3;
 }
 .hooper-pagination{
-    bottom: -5px;
+    bottom: -15px;
 }
 </style>

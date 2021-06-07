@@ -1,5 +1,5 @@
 <template>
-    <div class="catalog-list">
+    <div class="catalog-list" v-loading="loading">
         <el-row :gutter="20">
             <el-col
             :xs="12" :sm="12" :md="12" :lg="12" :xl="12"
@@ -29,7 +29,7 @@
                     <div class="catalog-list-block-price">
                         <strong>{{price[idx]}}
                             <div class="catalog-list-block-discount">
-                                <strong>1.33</strong>
+                                <strong>{{discont[idx]}}</strong>
                                 <span>руб/м2</span>
                             </div>
                         </strong>
@@ -45,6 +45,7 @@
                     class="catalog-list-input">
                         <CartTovarInput
                         :price.sync="price[idx]"
+                        :discont.sync="discont[idx]"
                         :product_data="product.product"
                         @Sendprice = "updatePriceAndCountInPage"
                         @addToCart = "addToCart"
@@ -73,14 +74,19 @@ export default {
             radio: null,
             id_product:0,
             price:[],
+            discont:[],
             oneprice:[],
             lastprice:[],
-            funChar:[]
+            funChar:[],
+            loading: false
         };
     },
     components:{
         CartTovarInput,
         CartTovarChar,
+    },
+    mounted(){
+        //this.hidePreload()
     },
     /**
      * хук перед маннтированием страница, но после создания
@@ -90,7 +96,7 @@ export default {
     },
     computed:{
         ...mapGetters({
-            productsList: 'product/productList'
+            productsList: 'product/productList',
         }),
     },
     methods : {
@@ -116,12 +122,14 @@ export default {
             for(let i in this.productsList){
                 try{
                     this.price[i] = this.productsList[i].product[0].price;
+                    this.discont[i] = this.productsList[i].product[0].discont;
                     this.oneprice[i] = this.productsList[i].product[0].price;
                     this.lastprice[i] = this.productsList[i].product.slice(-1)[0].price;
                 }catch{
                     this.price[i] = pr;
                     this.lastprice[i] = '';
                     this.oneprice[i] = '';
+                    this.discont[i] = '';
                 }
             }
 
@@ -140,6 +148,11 @@ export default {
         funNewChar(data){
             return this.funChar = data
 
+        },
+        hidePreload(){
+            setTimeout(() => {
+            this.loading=!this.loading;
+            }, 1000);
         }
     }
 }

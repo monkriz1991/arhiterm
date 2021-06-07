@@ -1,8 +1,8 @@
 <template>
     <div class="header-logout">
         <el-button @click="dialogFormVisible = true">
-            Личный кабинет
-            <i class="el-icon-user"></i>
+          Личный кабинет
+          <i class="el-icon-user"></i>
         </el-button>
         <el-dialog title="Личный кабинет" :visible.sync="dialogFormVisible"  width="32%">
 
@@ -17,7 +17,7 @@
         </el-tabs>
         <!-- <span slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible = false">Закрыть</el-button>
-            
+
         </span> -->
         </el-dialog>
     </div>
