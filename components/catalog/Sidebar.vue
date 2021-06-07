@@ -10,7 +10,7 @@
                     {{ category.name }}
                 </li>
                 <el-checkbox-group v-model="checkList"
-                v-for="filters in category.filters"
+                v-for="(filters,key) in category.filters"
                 :key="filters.id"
                 >
                    <label class="cat-filter-check">
@@ -20,7 +20,7 @@
                     v-for="checkbox in filters.filter_value"
                     :key="checkbox.id"
                     :label="checkbox.id"
-                    @change="checkFil"
+                    @change="checkFil()"
                     >{{checkbox.value}}
                     </el-checkbox>
                 </el-checkbox-group>
@@ -32,7 +32,7 @@
                     v-for="checkbox in categoryManuf.results"
                     :key="checkbox.id"
                     :label="checkbox.id"
-                    @change="checkFil"
+                    @change="filterByManufacturer"
                     >{{checkbox.name}}
                     </el-checkbox>
                 </el-checkbox-group>
@@ -59,12 +59,42 @@ export default {
         })
     },
     async mounted(){
-
+      if(this.$route.query.manuf!==undefined) {
+        this.checkListManuf = JSON.parse(decodeURI(this.$route.query.manuf))
+      }
+      if(this.$route.query.card_filter!==undefined) {
+        this.checkList = JSON.parse(decodeURI(this.$route.query.card_filter))
+      }
     },
     methods:{
-        checkFil(){
-            console.log(this.checkList)
+      updateData(){
+        if(this.$route.query.page!=1){
+          try{
+            this.$addQuery('page',1,this.$route);
+          }catch (e){
+
+          }
+
         }
+            this.$emit('updateData')
+      },
+        checkFil(){
+          if(this.checkList.length){
+              this.$addQuery('card_filter',JSON.stringify(this.checkList),this.$route);
+          }else{
+               this.$delQuery('card_filter');
+          }
+          this.updateData()
+        },
+        filterByManufacturer(){
+          if(this.checkListManuf.length){
+              this.$addQuery('manuf',JSON.stringify(this.checkListManuf),this.$route);
+          }else{
+               this.$delQuery('manuf');
+          }
+          this.updateData()
+      },
+
     },
 }
 </script>

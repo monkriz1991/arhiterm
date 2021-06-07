@@ -29,6 +29,7 @@ export default {
     },
     methods:{
       paginate(){
+        this.$addQuery('page',this.page,this.$route);
         this.$emit('changePage',this.page);
       }
     },
