@@ -19,14 +19,12 @@
         <el-form-item 
         prop="password"
         label="Пароль"
-
         >
           <el-input placeholder="Ввидите пароль" v-model="form.password" show-password autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item 
         prop="checkPass"
         label="Повторите пароль"
-
         >
           <el-input placeholder="Повторите пароль" v-model="form.checkPass" show-password autocomplete="off"></el-input>
         </el-form-item>
@@ -72,10 +70,10 @@
         },
         rules: {
           password: [
-            { validator: validatePass, trigger: 'blur' }
+            { validator: validatePass, trigger: ['blur', 'change']}
           ],
           checkPass: [
-            { validator: validatePass2, trigger: 'blur' }
+            { validator: validatePass2, trigger: ['blur', 'change'] }
           ],
           type: [
             { required: true, message: 'Выберите ваш тип', trigger: 'change' }

@@ -946,7 +946,7 @@ width: 100%;
     display: none;
 }
 body .el-form-item{
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 body .el-form-item__label{
     line-height: 30px;
@@ -1268,4 +1268,8 @@ body .navbar-user .navbar-user-item{
 }
 .navbar-user ul .el-submenu__icon-arrow{
     margin-top: -4px;
+}
+.dialog-back-block{
+    width: 100%;
+    margin: 0 0 20px;
 }

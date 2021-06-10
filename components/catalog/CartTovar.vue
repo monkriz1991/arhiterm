@@ -152,7 +152,7 @@ export default {
         hidePreload(){
             setTimeout(() => {
             this.loading=!this.loading;
-            }, 1000);
+            }, 500);
         }
     }
 }

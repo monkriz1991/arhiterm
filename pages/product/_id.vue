@@ -11,12 +11,13 @@
                 <span>{{price}}</span>
                 <strong>руб./м</strong>
                 <div class="catalog-list-block-discount">
-                    <strong>1.33</strong>
+                    <strong>{{discont}}</strong>
                     <span>руб/м2</span>
                 </div>
             </div>
             <CartTovarInput 
             :price.sync="price"
+            :discont.sync="discont"
             :product_data="productItem.product"
             @addToCart = "addToCart"
             @NewChar = "funNewChar" 
@@ -43,7 +44,8 @@ export default ({
         try {
             let result = await app.store.dispatch('tovar/getProductItem',params.id)
             let price = result.product[0].price
-            return{price}
+            let discont = result.product[0].discont
+            return{price,discont}
         } catch (err) {
         return error({
             statusCode: 404,
@@ -53,7 +55,7 @@ export default ({
     },
     data(){
         return{
-            funChar:[]
+            funChar:[],
         }
     },
     components:{

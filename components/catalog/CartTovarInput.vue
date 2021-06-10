@@ -52,7 +52,7 @@ import {mapGetters,mapActions} from 'vuex'
         active_id:null,
         input_cost:this.product_data[0]!=undefined?this.product_data[0].price:0,
         radio:0,
-        priceCart:this.product_data[0]!=undefined?this.product_data[0].price:0,
+        priceCart:0,
         count:1,
         discont_price:this.product_data[0].discont,
         disableButton: false,
@@ -62,6 +62,7 @@ import {mapGetters,mapActions} from 'vuex'
     },
     beforeMount(){
        this.editProduct(this.product_data[0]);
+       this.discontStart(this.product_data[0])
     },
     computed:{
       ...mapGetters({
@@ -100,7 +101,17 @@ import {mapGetters,mapActions} from 'vuex'
             this.handleChange(this.basket[i].count_el) 
           }
         }
-      }
+      },
+      discontStart(item){
+        if(item.discont!=null){
+          this.priceCart = item.discont
+          this.input_cost = item.discont
+        }else{
+          this.priceCart = item!=undefined?item.price:0
+          this.input_cost = item!=undefined?item.price:0
+        }
+        this.editProduct(item)
+      },
     }
   };
 </script>
