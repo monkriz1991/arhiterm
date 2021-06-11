@@ -24,8 +24,11 @@
                     <span>руб.</span>
                 </div>
                 <div class="basket-tov-calc">
-                    <el-input-number size="mini" 
+                    <el-input-number 
+                    size="mini" 
+                    :min="1"
                     v-model="item.count_el"
+                    @change="changeQuantyty(item.id,item.count_el,item.product[0].price)"
                     ></el-input-number>
                 </div>
                 <div class="basket-tov-summ">
@@ -48,13 +51,18 @@ export default {
     props:['cart_data'],
     data() {
         return{
-            num4:1,
+            cost_product:''
         }
     },
     methods:{
         cartDell(idx){
             this.$emit('cartDell',idx)
-        }
+        },
+        changeQuantyty(id,val,price){
+            this.cost_product = Math.floor(price*val*100)/100
+            this.$emit('cartUpdate',{'id':id,'count_el':val,'cost':this.cost_product})
+        },
+        
     }
 }
 </script>

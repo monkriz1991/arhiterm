@@ -4,7 +4,7 @@
             <span class="el-dropdown-link">
                 <div class="demo-type">
                     <div>
-                        <el-avatar icon="el-icon-user-solid"></el-avatar> 
+                        <el-avatar :src="$auth.user.img" icon="el-icon-user-solid"></el-avatar> 
                     </div>
                 </div>
                 <span class="demo-type-span">{{$auth.user.username}}</span>
@@ -12,7 +12,7 @@
             </span>
             <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item class="navbar-user-item">
-                    <nuxt-link :to="`/cabinet/${$auth.user.id}`">
+                    <nuxt-link :to="`/cabinet`">
                     <i class="el-icon-user"></i>
                     Профиль</nuxt-link>
                 </el-dropdown-item>

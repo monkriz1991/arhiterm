@@ -1,6 +1,15 @@
 <template>
     <el-form :model="form" ref="form" status-icon :rules="rules">
         <el-form-item 
+        prop="name"
+        label="Имя" 
+        :rules="[
+          { required: true, message: 'Пожалуйста введите ваше имя', trigger: 'blur' }
+        ]"
+        >
+          <el-input  placeholder="Введите Ваше имя" v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item 
         prop="username"
         label="Логин" 
         :rules="[
@@ -62,6 +71,7 @@
       };
       return {
         form: {
+          name:'',
           username: '',
           type: '',
           password: '',

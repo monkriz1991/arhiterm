@@ -20,6 +20,14 @@ export const mutations = {
     REMOVE_FROM_CART(state,idx){
         state.basket.splice(idx,1)
     },
+    UPDATE_FROM_CART(state,data){
+        state.basket.map(function(item){
+            if(item.id==data.id){
+                item.cost = data.cost
+                item.count_el = data.count_el
+            } 
+        })
+    },
     setUser(state,userItem){
         state.userItem = userItem
     }
@@ -41,6 +49,9 @@ export const actions = {
     },
     DELL_CART_BASKET({commit},idx){
         commit('REMOVE_FROM_CART',idx)
+    },
+    UPDATE_CART_BASKET({commit},data){
+        commit('UPDATE_FROM_CART',data)
     },
     addUserList({ commit},results) {
         commit('setUser', results)

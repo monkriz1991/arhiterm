@@ -88,9 +88,9 @@ export default {
     },
     redirect: {
       login: '/',
-      home: '/',
+      home: '/cabinet',
       callback: false,
-      logout: false
+      logout: '/'
     }
   },
 

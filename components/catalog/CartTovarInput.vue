@@ -54,7 +54,7 @@ import {mapGetters,mapActions} from 'vuex'
         radio:0,
         priceCart:0,
         count:1,
-        discont_price:this.product_data[0].discont,
+        discont_price:this.product_data[0].discont!=null?this.product_data[0].discont:0,
         disableButton: false,
         disableRadio: false
 
@@ -63,6 +63,7 @@ import {mapGetters,mapActions} from 'vuex'
     beforeMount(){
        this.editProduct(this.product_data[0]);
        this.discontStart(this.product_data[0])
+       
     },
     computed:{
       ...mapGetters({
