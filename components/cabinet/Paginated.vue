@@ -1,5 +1,5 @@
 <template >
-    <div  class="catalog-paginated">
+    <div  class="cabinet-paginated">
         <el-pagination
             layout="prev, pager, next"
             :page-size="100"
@@ -30,3 +30,10 @@ export default {
     },
 }
 </script>
+<style>
+.cabinet-paginated{
+    float: left;
+    width: 100%;
+    margin: 20px 0 0;
+}
+</style>

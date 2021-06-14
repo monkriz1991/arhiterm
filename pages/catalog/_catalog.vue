@@ -44,10 +44,11 @@ export default {
     computed:{
     },
     methods:{
-      updateData(){
+      async updateData(){
         let parametrs = this.$parseUrl(this.$route);
         parametrs['cat'] = this.$route.params.catalog;
-        this.$store.dispatch('product/getProductList',parametrs);
+        await this.$store.dispatch('product/getProductList',parametrs);
+        // this.$refs.CartTovar.updatePriceAndCountInPage()
       }
     },
     mounted(){

@@ -48,6 +48,7 @@ import {mapGetters,mapActions} from 'vuex'
     userLogin() {
         this.$refs.login.validate((valid) => {
           if (valid) {
+            this.$router.replace({path:this.$route.path,'query':{}});
             this.userAuto()
           } else {
             return false;

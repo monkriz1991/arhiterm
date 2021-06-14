@@ -13,7 +13,9 @@
                         lazy
                         >
                         </el-image>
-                        <div class="catalog-list-block-button" :class="{ activeButCat: show.includes(idx) }">
+                        <div
+                        v-show="idx"
+                        class="catalog-list-block-button" :class="{ activeButCat: show.includes(idx) }">
                             <el-button
                             v-on:click="toggleActive(idx)"
                             type="danger" plain  size="mini" circle
@@ -23,9 +25,10 @@
                         </div>
                     </div>
                     <div class="catalog-list-block-desc">
-                        <nuxt-link :to="`/product/${product.id}`">
+                        <nuxt-link v-if="idx" :to="`/product/${product.id}`">
                             {{product.name}}
                         </nuxt-link>
+                        <span v-else>{{product.name}}</span>
                     <div class="catalog-list-block-price">
                         <strong>{{price[idx]}}
                             <div class="catalog-list-block-discount">
@@ -37,6 +40,7 @@
                         <div class="catalog-list-block-cost">
                             <strong>{{oneprice[idx]}} - {{lastprice[idx]}}</strong>
                             <span>руб/м2</span>
+                            {{product.filter_id_show}}
                         </div>
                     </div>
                     </div>
@@ -67,8 +71,17 @@ import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
 import CartTovarChar from '~/components/catalog/CartTovarChar.vue'
 import {mapGetters,mapActions} from 'vuex'
 export default {
+    beforeCreate(){
+
+        //this.hidePreload()
+
+        setTimeout(() => {
+            this.loading=!this.loading;
+        }, 500);    
+    },
     data() {
         return {
+            loading: true,
             show:[],
             num: 1,
             radio: null,
@@ -78,7 +91,7 @@ export default {
             oneprice:[],
             lastprice:[],
             funChar:[],
-            loading: false
+            
         };
     },
     components:{
@@ -94,12 +107,26 @@ export default {
     beforeMount(){
        this.updatePriceAndCountInPage();
     },
+    beforeUpdate(){
+        
+    },
     computed:{
         ...mapGetters({
             productsList: 'product/productList',
+            statusLoading: 'product/productLoading'
         }),
     },
+    watch:{
+        productsList(){
+            this.updatePriceAndCountInPage()
+        }
+    },
     methods : {
+        hidePreload(item){
+            setTimeout(() => {
+            this.loading=!this.loading;
+            }, 500);
+        },
         ...mapActions({
            ADD_TO_CART: 'main/ADD_TO_CART'
         }),
@@ -118,7 +145,6 @@ export default {
        * Функция обновляет количество товара и цены продукта на странице
        */
         updatePriceAndCountInPage(pr,id){
-
             for(let i in this.productsList){
                 try{
                     this.price[i] = this.productsList[i].product[0].price;
@@ -132,7 +158,6 @@ export default {
                     this.discont[i] = '';
                 }
             }
-
         },
         /**
          *
@@ -149,11 +174,9 @@ export default {
             return this.funChar = data
 
         },
-        hidePreload(){
-            setTimeout(() => {
-            this.loading=!this.loading;
-            }, 500);
-        }
+        // updateData(){
+        //     this.updatePriceAndCountInPage();
+        // }
     }
 }
 </script>

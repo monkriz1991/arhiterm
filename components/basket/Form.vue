@@ -133,9 +133,9 @@ export default ({
         return{
         activeName: '1',
         Form: {
-          name: this.$auth.loggedIn!=''?this.$auth.user.name:'',
-          username: this.$auth.loggedIn!=''?this.$auth.user.username:'',
-          nameCompany:this.$auth.loggedIn!=''?this.$auth.user.nameCompany:'',
+          name: this.$auth.loggedIn.first_name!=''&& this.$auth.loggedIn==true?this.$auth.user.first_name:'',
+          username: this.$auth.loggedIn.username!=''&& this.$auth.loggedIn==true?this.$auth.user.username:'',
+          nameCompany:this.$auth.loggedIn.nameCompany!=''&& this.$auth.loggedIn==true?this.$auth.user.nameCompany:'',
           type: '',
           password: '',
           checkPass: '',

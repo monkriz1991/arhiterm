@@ -9,7 +9,7 @@
             ></el-input-number>
         </div>
         <div class="cost-product-input">
-            <strong>Размер</strong>
+            <strong>{{name_radioGroup}}</strong>
               <el-radio  
               v-for="(item,idx) in product_data" :key="idx"
               @change="changePrice(item,idx)"
@@ -17,7 +17,28 @@
               v-model="radio"
               :disabled="disableRadio"
               size="mini"
-              border>{{item.name}}</el-radio>
+              border>
+                <strong 
+                v-if="item.filter_show_value"
+                >{{item.filter_show_value}}</strong>
+                <strong v-else>
+                  {{item.name}}
+                </strong>
+                <el-popover
+                v-if="item.count==0"
+                placement="bottom"
+                width="200"
+                trigger="click"
+                content="Данной позиции нет на складе!">
+                  <el-button 
+                  slot="reference" 
+                  icon="el-icon-warning-outline"
+                  size="mini"
+                  circle
+                  ></el-button>
+                </el-popover>
+              </el-radio>
+              
         </div>
         <el-button 
           type="danger" 
@@ -56,7 +77,8 @@ import {mapGetters,mapActions} from 'vuex'
         count:1,
         discont_price:this.product_data[0].discont!=null?this.product_data[0].discont:0,
         disableButton: false,
-        disableRadio: false
+        disableRadio: false,
+        name_radioGroup:this.product_data[0].filter_show_name!=null?this.product_data[0].filter_show_name:'Артикул',
 
       };
     },
@@ -76,6 +98,7 @@ import {mapGetters,mapActions} from 'vuex'
         this.input_cost = item.discont==null?item.price:item.discont
         this.$emit('update:price', item.price)
         this.priceCart = item.discont==null?item.price:item.discont
+        this.name_radioGroup = item.filter_show_name!=null?item.filter_show_name:'Артикул'
         this.$emit('NewChar', item)
         this.$emit('update:discont',item.discont)
         this.disableButton = false

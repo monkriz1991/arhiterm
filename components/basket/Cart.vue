@@ -2,7 +2,7 @@
     <div>
         <div 
         class="basket-tov"
-        v-for="(item,idx) in cart_data" :key="idx"
+        v-for="(item,idx) in cart_data_tov" :key="idx"
         >
             <div class="basket-tov-img">
                 <img :src="item.img">
@@ -22,6 +22,9 @@
                 <div class="basket-tov-cost">
                     <strong>{{item.product[0].price}}</strong>
                     <span>руб.</span>
+                        <div class="basket-block-discount">
+                            <strong>{{item.product[0].discont}}</strong>
+                        </div>
                 </div>
                 <div class="basket-tov-calc">
                     <el-input-number 
@@ -42,6 +45,23 @@
                 </div>
             </div>
         </div>
+        <div class="basket-itog">
+            <div class="basket-itog-summ">
+                <span>Товаров на:</span>
+                <strong><span>руб.</span></strong>
+            </div>
+            <div class="basket-itog-summ">
+                <span>Скидка:</span>
+                <strong><span>руб.</span></strong>
+            </div>
+            <div class="basket-itog-summ">
+                <div class="">
+                    <span>Сумма заказаных позиций</span>
+                </div>
+                <span>Итого с уётом заказных позиций:</span>
+                <strong><span>руб.</span></strong>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -51,8 +71,12 @@ export default {
     props:['cart_data'],
     data() {
         return{
-            cost_product:''
+            cost_product:'',
+            cart_data_tov:JSON.parse(JSON.stringify(this.cart_data))
         }
+    },
+    computed:{
+
     },
     methods:{
         cartDell(idx){
@@ -66,3 +90,12 @@ export default {
     }
 }
 </script>
+<style scoped>
+.basket-itog{
+    float: left;
+    width: 100%;
+}
+.basket-itog-summ{
+    float: right;
+}
+</style>
