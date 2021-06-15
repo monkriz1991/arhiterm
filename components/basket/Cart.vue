@@ -118,6 +118,7 @@ export default {
     methods:{
         cartDell(idx){
             this.$emit('cartDell',idx)
+            this.amount()
         },
         changeQuantyty(id,id_cart,val,price){
             this.cost_product = Math.floor(price*val*100)/100

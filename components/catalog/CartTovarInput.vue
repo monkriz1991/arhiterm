@@ -117,7 +117,7 @@ import {mapGetters,mapActions} from 'vuex'
         this.$emit('addToCart',{data:this.active_id==null?this.product_data[0]:this.active_id,'count_el':this.count,'cost':this.priceCart})
         this.disableButton = true
         this.classBasket = 'in-basket'
-        this.arr_basket_id.push(this.active_id.id)
+        this.arr_basket_id.push(this.active_id==null?this.product_data[0].id:this.active_id.id)
         
       },
       /** Изменение кол. товара */
@@ -147,9 +147,9 @@ import {mapGetters,mapActions} from 'vuex'
         }
        // this.editProduct(item)
       },
-        findMatch(id) {
-            return this.arr_basket_id.includes(id);
-        }
+      findMatch(id) {
+          return this.arr_basket_id.includes(id);
+      }
     }
   };
 </script>
