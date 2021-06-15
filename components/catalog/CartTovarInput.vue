@@ -17,8 +17,11 @@
               v-model="radio"
               :disabled="disableRadio"
               size="mini"
-              :class="classBasket"
+              :class="{ 'check-backet': findMatch(item.id) }"
               border>
+              <i 
+              v-show="findMatch(item.id)"
+              class="el-icon-shopping-cart-2"></i>
                 <strong 
                 v-if="item.filter_show_value"
                 >{{item.filter_show_value}}</strong>
@@ -72,6 +75,7 @@ import {mapGetters,mapActions} from 'vuex'
       return {
         num: 1,
         active_id:null,
+        arr_basket_id:[],
         classBasket:'none-basket',
         input_cost:this.product_data[0]!=undefined?this.product_data[0].price:0,
         radio:0,
@@ -87,6 +91,7 @@ import {mapGetters,mapActions} from 'vuex'
     beforeMount(){
        this.editProduct(this.product_data[0]);
        this.discontStart(this.product_data[0])
+       //this.editToBasket(this.product_data)
        
     },
     computed:{
@@ -111,6 +116,8 @@ import {mapGetters,mapActions} from 'vuex'
       addToCart(){
         this.$emit('addToCart',{data:this.active_id==null?this.product_data[0]:this.active_id,'count_el':this.count,'cost':this.priceCart})
         this.disableButton = true
+        this.classBasket = 'in-basket'
+        this.arr_basket_id.push(this.active_id.id)
         
       },
       /** Изменение кол. товара */
@@ -119,10 +126,11 @@ import {mapGetters,mapActions} from 'vuex'
          this.count = value
       },
       /** Обновление кол. товара и блокировка кнопок добавить в корзину и inputnumber */
-      editProduct(item){
+      editProduct(item){ 
         for(let i in this.basket){
+          this.arr_basket_id.push(this.basket[i].product[0].id)
           if(this.basket[i].product[0].id == item.id){
-            this.classBasket = 'in-basket'
+            //this.classBasket = 'in-basket'
             this.disableButton = true
             this.num = this.basket[i].product[0].count_el
             this.handleChange(this.basket[i].product[0].count_el) 
@@ -137,8 +145,11 @@ import {mapGetters,mapActions} from 'vuex'
           this.priceCart = item!=undefined?item.price:0
           this.input_cost = item!=undefined?item.price:0
         }
-        this.editProduct(item)
+       // this.editProduct(item)
       },
+        findMatch(id) {
+            return this.arr_basket_id.includes(id);
+        }
     }
   };
 </script>
@@ -149,5 +160,24 @@ body .el-popover--plain {
     font-size: 12px;
     font-weight: 500;
     text-align: center;
+}
+.cost-product-input .check-backet{
+      border: 1px solid #fa9600  ;
+}
+.cost-product-input .check-backet.is-bordered.is-checked{
+  border-color: #fa9600  !important;
+}
+.cost-product-input .check-backet.is-checked .el-radio__inner{
+  border-color: #fa9600  !important;
+  background: #fa9600  !important;
+}
+.cost-product-input .el-icon-shopping-cart-2{
+  position: absolute;
+  bottom: -3px;
+  background: #fff;
+  font-size: 12px;
+  left: -5px;
+  color: #fa9600;
+  border-radius: 50%;
 }
 </style>
