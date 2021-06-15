@@ -1,8 +1,8 @@
 <template>
     <div class="cost-product-block">
         <div class="cost-product-amount">
-            <el-input-number 
-            v-model="num" 
+            <el-input-number
+            v-model="num"
             :disabled="disableButton"
             size="mini"
             @change="handleChange" :min="1"
@@ -10,7 +10,7 @@
         </div>
         <div class="cost-product-input">
             <strong>{{name_radioGroup}}</strong>
-              <el-radio  
+              <el-radio
               v-for="(item,idx) in product_data" :key="idx"
               @change="changePrice(item,idx)"
               :label="idx"
@@ -19,10 +19,10 @@
               size="mini"
               :class="{ 'check-backet': findMatch(item.id) }"
               border>
-              <i 
+              <i
               v-show="findMatch(item.id)"
               class="el-icon-shopping-cart-2"></i>
-                <strong 
+                <strong
                 v-if="item.filter_show_value"
                 >{{item.filter_show_value}}</strong>
                 <strong v-else>
@@ -34,18 +34,18 @@
                 width="240"
                 trigger="click"
                 content="Данной позиции нет на складе!">
-                  <el-button 
-                  slot="reference" 
+                  <el-button
+                  slot="reference"
                   icon="el-icon-warning-outline"
                   size="mini"
                   circle
                   ></el-button>
                 </el-popover>
               </el-radio>
-              
+
         </div>
-        <el-button 
-          type="danger" 
+        <el-button
+          type="danger"
           :disabled="disableButton"
           @click="addToCart"
           :class="{'disabled': disableButton === true}"
@@ -53,8 +53,8 @@
           <span v-if="disableButton === false">В корзину</span>
           <span v-else>В корзине</span>
         </el-button>
-        <div 
-      
+        <div
+
         class="cost-product-price-catalog">
             <span>{{priceCart}}</span>
             <strong>руб/м2</strong>
@@ -92,12 +92,24 @@ import {mapGetters,mapActions} from 'vuex'
        this.editProduct(this.product_data[0]);
        this.discontStart(this.product_data[0])
        //this.editToBasket(this.product_data)
-       
+
     },
     computed:{
       ...mapGetters({
         basket:'main/basket'
       })
+    },
+    watch:{
+      basket:{
+        handler(val){
+          console.log(val)
+          for(let i of val){
+            console.log(this.active_id)
+               this.editProduct(i.product[0].id);
+          }
+        },
+         deep: true
+      }
     },
     methods: {
       changePrice(item){
@@ -110,7 +122,7 @@ import {mapGetters,mapActions} from 'vuex'
         this.$emit('update:discont',item.discont)
         this.disableButton = false
         this.num = 1
-        this.editProduct(item)
+        this.editProduct(item.id)
       },
       /** Добавление товара в корзину */
       addToCart(){
@@ -126,14 +138,14 @@ import {mapGetters,mapActions} from 'vuex'
          this.count = value
       },
       /** Обновление кол. товара и блокировка кнопок добавить в корзину и inputnumber */
-      editProduct(item){ 
+      editProduct(item){
         for(let i in this.basket){
           this.arr_basket_id.push(this.basket[i].product[0].id)
-          if(this.basket[i].product[0].id == item.id){
+          if(this.basket[i].product[0].id == item){
             //this.classBasket = 'in-basket'
             this.disableButton = true
             this.num = this.basket[i].product[0].count_el
-            this.handleChange(this.basket[i].product[0].count_el) 
+            this.handleChange(this.basket[i].product[0].count_el)
           }
         }
       },

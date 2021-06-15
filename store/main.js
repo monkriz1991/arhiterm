@@ -28,7 +28,7 @@ export const mutations = {
                     item.product[0].cost = data.cost
                     item.product[0].count_el = data.count_el
                 }
-            } 
+            }
         })
     },
     setUser(state,userItem){
@@ -37,7 +37,7 @@ export const mutations = {
 }
 
 export const actions = {
-    async getSlider({commit}){      
+    async getSlider({commit}){
         let slide = await this.$axios.$get(`/administrate/get/slider/`);
         commit('setSlider',slide.results)
         return slide.results
@@ -45,7 +45,7 @@ export const actions = {
     ADD_TO_CART({commit},product){
         commit('SET_CART',product)
     },
-    async getIndex({commit}){      
+    async getIndex({commit}){
         let results = await this.$axios.$get(`/admin/pages/pages/1/`);
         commit('setIndex',results)
         return results
@@ -60,7 +60,7 @@ export const actions = {
         commit('setUser', results)
         return results
     }
-} 
+}
 
 export const getters = {
     sliderItems: state => state.sliderItems,
@@ -77,4 +77,3 @@ export default {
     getters,
   }
 
-  
