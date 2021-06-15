@@ -77,9 +77,8 @@ export default ({
             let cart = JSON.parse(JSON.stringify(this.productItem));
             let ret =  cart.product.filter((item)=> item.id == data.data.id);
             cart.product = ret;
-            cart['cost']= data.cost;
-            cart['count_el'] = data.count_el;
-            cart['status'] = 'basket'
+            cart.product[0]['cost']= data.cost;
+            cart.product[0]['count_el'] = data.count_el;
             this.ADD_TO_CART(cart)
         },
         funNewChar(data){

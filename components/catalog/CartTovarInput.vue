@@ -17,6 +17,7 @@
               v-model="radio"
               :disabled="disableRadio"
               size="mini"
+              :class="classBasket"
               border>
                 <strong 
                 v-if="item.filter_show_value"
@@ -26,8 +27,8 @@
                 </strong>
                 <el-popover
                 v-if="item.count==0"
-                placement="bottom"
-                width="200"
+                placement="top"
+                width="240"
                 trigger="click"
                 content="Данной позиции нет на складе!">
                   <el-button 
@@ -71,6 +72,7 @@ import {mapGetters,mapActions} from 'vuex'
       return {
         num: 1,
         active_id:null,
+        classBasket:'none-basket',
         input_cost:this.product_data[0]!=undefined?this.product_data[0].price:0,
         radio:0,
         priceCart:0,
@@ -120,9 +122,10 @@ import {mapGetters,mapActions} from 'vuex'
       editProduct(item){
         for(let i in this.basket){
           if(this.basket[i].product[0].id == item.id){
+            this.classBasket = 'in-basket'
             this.disableButton = true
-            this.num = this.basket[i].count_el
-            this.handleChange(this.basket[i].count_el) 
+            this.num = this.basket[i].product[0].count_el
+            this.handleChange(this.basket[i].product[0].count_el) 
           }
         }
       },
@@ -139,3 +142,12 @@ import {mapGetters,mapActions} from 'vuex'
     }
   };
 </script>
+
+<style>
+body .el-popover--plain {
+    padding: 10px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+}
+</style>

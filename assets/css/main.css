@@ -1159,7 +1159,7 @@ color: #000;
 }
 .basket-tov-desk-kod>span{
     float: left;
-    font-size: 12px;
+    font-size: 11px;
     padding: 3px 5px;
     border-radius: 3px;
     background: #e8ebf1;
@@ -1191,7 +1191,7 @@ text-align: right;
 }
 .basket-tov-desk-type>span{
     float: left;
-    font-size: 12px;
+    font-size: 11px;
     padding: 3px 5px;
     border-radius: 3px;
     background: #e8ebf1;

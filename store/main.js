@@ -24,8 +24,10 @@ export const mutations = {
     UPDATE_FROM_CART(state,data){
         state.basket.map(function(item){
             if(item.id==data.id){
-                item.cost = data.cost
-                item.count_el = data.count_el
+                if(item.product[0].id==data.id_cart){
+                    item.product[0].cost = data.cost
+                    item.product[0].count_el = data.count_el
+                }
             } 
         })
     },

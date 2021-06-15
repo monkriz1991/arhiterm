@@ -40,7 +40,6 @@
                         <div class="catalog-list-block-cost">
                             <strong>{{oneprice[idx]}} - {{lastprice[idx]}}</strong>
                             <span>руб/м2</span>
-                            {{product.filter_id_show}}
                         </div>
                     </div>
                     </div>
@@ -166,8 +165,8 @@ export default {
             let cart = JSON.parse(JSON.stringify(this.productsList.find(i=>i.id==data.data.parent)));
             let ret =  cart.product.filter((item)=> item.id == data.data.id);
             cart.product = ret;
-            cart['cost'] = data.cost;
-            cart['count_el'] = data.count_el;
+            cart.product[0]['cost'] = data.cost;
+            cart.product[0]['count_el'] = data.count_el;
             this.ADD_TO_CART(cart)
         },
         funNewChar(data){
