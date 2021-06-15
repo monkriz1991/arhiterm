@@ -103,7 +103,7 @@ export default {
                 '2000': 10,
             },
             cost_product:'',
-            cart_data_tov:JSON.parse(JSON.stringify(this.cart_data))
+            cart_data_tov:this.cart_data
         }
     },
     beforeMount(){

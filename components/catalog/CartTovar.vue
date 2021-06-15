@@ -14,7 +14,7 @@
                         >
                         </el-image>
                         <div
-                        v-show="idx"
+                        v-show="price[idx]"
                         class="catalog-list-block-button" :class="{ activeButCat: show.includes(idx) }">
                             <el-button
                             v-on:click="toggleActive(idx)"
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="catalog-list-block-desc">
-                        <nuxt-link v-if="idx" :to="`/product/${product.id}`">
+                        <nuxt-link v-if="price[idx]" :to="`/product/${product.id}`">
                             {{product.name}}
                         </nuxt-link>
                         <span v-else>{{product.name}}</span>
