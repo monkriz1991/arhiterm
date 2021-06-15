@@ -25,6 +25,7 @@ export default {
       let parametrs = {};
       console.log(parametrs)
     try {
+        let parametrs = app.$parseUrl(route);
       parametrs['cat'] = params.catalog;
         await app.store.dispatch('category/getCategoryNested',params.catalog)
         await app.store.dispatch('product/getProductList',parametrs)
