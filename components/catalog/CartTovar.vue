@@ -47,6 +47,7 @@
                     v-if="show.includes(idx)"
                     class="catalog-list-input">
                         <CartTovarInput
+                          ref="cartTovarInput"
                         :price.sync="price[idx]"
                         :discont.sync="discont[idx]"
                         :product_data="product.product"
@@ -76,7 +77,7 @@ export default {
 
         setTimeout(() => {
             this.loading=!this.loading;
-        }, 500);    
+        }, 500);
     },
     data() {
         return {
@@ -90,7 +91,7 @@ export default {
             oneprice:[],
             lastprice:[],
             funChar:[],
-            
+
         };
     },
     components:{
@@ -107,7 +108,7 @@ export default {
        this.updatePriceAndCountInPage();
     },
     beforeUpdate(){
-        
+
     },
     computed:{
         ...mapGetters({
@@ -117,6 +118,8 @@ export default {
     },
     watch:{
         productsList(){
+          console.log("sddsd")
+          // this.$refs.cartTovarInput.editProduct()
             this.updatePriceAndCountInPage()
         }
     },

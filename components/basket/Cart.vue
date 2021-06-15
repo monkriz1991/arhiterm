@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div 
+        <div
         class="basket-tov"
         v-for="(item,idx) in cart_data_tov" :key="idx"
         >
@@ -12,9 +12,9 @@
                     width="200"
                     trigger="click"
                     content="Данной позиции нет на складе!">
-                    <el-button 
+                    <el-button
                     type="danger"
-                    slot="reference" 
+                    slot="reference"
                     icon="el-icon-warning-outline"
                     size="mini"
                     circle
@@ -41,8 +41,8 @@
                         </div>
                 </div>
                 <div class="basket-tov-calc">
-                    <el-input-number 
-                    size="mini" 
+                    <el-input-number
+                    size="mini"
                     :min="1"
                     v-model="item.product[0].count_el"
                     @change="changeQuantyty(item.id,item.product[0].id,item.product[0].count_el,item.product[0].discont!=null?item.product[0].discont:item.product[0].price)"
@@ -54,7 +54,7 @@
                 </div>
                 <div class="basket-tov-dell">
                     <i
-                    @click="cartDell(idx)" 
+                    @click="cartDell(idx)"
                     class="el-icon-delete"></i>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                     <strong>{{for_amount_none}}<span>руб.</span></strong>
                 </div>
                 <span
-                v-if="for_amount_none==0"
+                v-if="for_amount_none===0"
                 >Итого:</span>
                 <span v-else>Итого с уётом заказных позиций:</span>
                 <strong>{{for_amount_itog}}<span>руб.</span></strong>
@@ -103,7 +103,7 @@ export default {
                 '2000': 10,
             },
             cost_product:'',
-            cart_data_tov:this.cart_data
+
         }
     },
     beforeMount(){
@@ -113,10 +113,14 @@ export default {
 
     },
     computed:{
-
+      cart_data_tov(){
+        this.amount()
+        return JSON.parse(JSON.stringify(this.cart_data))
+      }
     },
     methods:{
         cartDell(idx){
+          this.amount()
             this.$emit('cartDell',idx)
         },
         changeQuantyty(id,id_cart,val,price){
@@ -128,15 +132,15 @@ export default {
             this.for_amount = 0
             this.for_amount_discount_persent = 0
             this.for_amount_none = 0
-            for(let i in this.cart_data_tov){
-                this.for_amount += this.cart_data_tov[i].product[0].cost
-                if(this.cart_data_tov[i].product[0].count==0){
-                    this.for_amount_none += this.cart_data_tov[i].product[0].cost
+            for(let i in this.cart_data){
+                this.for_amount += this.cart_data[i].product[0].cost
+                if(this.cart_data[i].product[0].count===0){
+                    this.for_amount_none += this.cart_data[i].product[0].cost
                 }
             }
             this.for_amount = Math.floor(this.for_amount*100)/100
             this.for_amount_none = Math.floor(this.for_amount_none*100)/100
-          
+
           for(let i in this.discount_arr){
               if(this.for_amount>=Number([i])){
                 this.for_amount_discount_persent = this.discount_arr[i]
@@ -147,7 +151,7 @@ export default {
           this.for_amount_itog = this.for_amount - this.for_amount_discount
           this.for_amount_itog = Math.floor(this.for_amount_itog*100)/100
         }
-        
+
     }
 }
 </script>
@@ -193,6 +197,6 @@ export default {
 .basket-tov-img>span{
     position: absolute;
     left: -10px;
-    bottom: -10px;   
+    bottom: -10px;
 }
 </style>
