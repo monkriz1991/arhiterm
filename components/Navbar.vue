@@ -38,7 +38,7 @@
             </ul>
             <ul 
               v-else
-              class="transition-box">
+              class="transition-box manufacturer-navbar-ul">
               <li
                 v-for="item in manufacturer.results"
                 :key="item.id"

@@ -1304,3 +1304,10 @@ body .navbar-user .navbar-user-item{
     width: 100%;
     margin: 0 0 20px;
 }
+.manufacturer-navbar-ul{
+
+}
+.popover-nav .manufacturer-navbar-ul li{
+    width: auto;
+    margin: 0 20px 0 0;
+}

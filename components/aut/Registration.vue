@@ -19,7 +19,7 @@
         >
         <el-input placeholder="Введите Ваш email" v-model="form.username" autocomplete="off"></el-input>
         </el-form-item>
-          <el-form-item label="Форма" prop="type">
+          <el-form-item label="Аккаунт" prop="type">
             <el-select v-model="form.type" placeholder="Укажите тип">
               <el-option label="Физ. лицо" value="1"></el-option>
               <el-option label="Юр. лицо" value="2"></el-option>

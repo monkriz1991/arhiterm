@@ -31,9 +31,9 @@
                 <el-popover
                 v-if="item.count==0"
                 placement="top"
-                width="240"
+                width="200"
                 trigger="click"
-                content="Данной позиции нет на складе!">
+                content="Позиция под заказ!">
                   <el-button
                   slot="reference"
                   icon="el-icon-warning-outline"
@@ -89,7 +89,7 @@ import {mapGetters,mapActions} from 'vuex'
       };
     },
     beforeMount(){
-       this.editProduct(this.product_data[0]);
+       this.editProduct(this.product_data[0].id);
        this.discontStart(this.product_data[0])
        //this.editToBasket(this.product_data)
 

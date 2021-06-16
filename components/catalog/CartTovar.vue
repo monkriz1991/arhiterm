@@ -46,8 +46,9 @@
                     <div
                     v-if="show.includes(idx)"
                     class="catalog-list-input">
+
                         <CartTovarInput
-                          ref="cartTovarInput"
+                        ref="cartTovarInput"
                         :price.sync="price[idx]"
                         :discont.sync="discont[idx]"
                         :product_data="product.product"
