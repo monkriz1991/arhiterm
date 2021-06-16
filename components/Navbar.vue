@@ -16,14 +16,14 @@
             right="0"
             trigger="click"
           >
-            <el-button slot="reference" 
+            <el-button slot="reference"
               class="header-cat"
               @click="drawer = true"
             >Каталог
             <i class="el-icon-menu"></i>
             </el-button>
-            <ul 
-              v-if="visibleNav" 
+            <ul
+              v-if="visibleNav"
               class="transition-box">
               <li
                 v-for="category in categoryNavbar"
@@ -31,12 +31,12 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/${category.id}`">
-                  <i class="el-icon-picture-outline-round"></i> 
+                  <i class="el-icon-picture-outline-round"></i>
                   {{ category.name }}
                 </nuxt-link>
               </li>
             </ul>
-            <ul 
+            <ul
               v-else
               class="transition-box manufacturer-navbar-ul">
               <li
@@ -50,7 +50,7 @@
                 </nuxt-link>
               </li>
             </ul>
-            <div 
+            <div
             v-on:click="visibleNav=!visibleNav"
             class="header-nav-refresh">
               <i class="el-icon-refresh"></i>

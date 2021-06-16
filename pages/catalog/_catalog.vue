@@ -23,9 +23,11 @@ export default {
     },
     async asyncData ({ app, params, route, error }) {
       let parametrs = {};
-      console.log(parametrs)
+      for(let i in route.query){
+        parametrs[i]=route.query[i];
+      }
+      console.log(route)
     try {
-        let parametrs = app.$parseUrl(route);
       parametrs['cat'] = params.catalog;
         await app.store.dispatch('category/getCategoryNested',params.catalog)
         await app.store.dispatch('product/getProductList',parametrs)
@@ -53,7 +55,6 @@ export default {
       }
     },
     mounted(){
-
     },
 }
 </script>
