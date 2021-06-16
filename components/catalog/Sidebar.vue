@@ -68,31 +68,40 @@ export default {
     },
     methods:{
       updateData(){
+            setTimeout(this.sendUpdate(),100);
+      },
+      sendUpdate(){
+        this.$emit('updateData')
+      },
+        checkFil(){
+          if(this.$route.query.page!=1){
+          try{
+            this.$addQuery('page',1,this.$route,this.$route.params.catalog);
+          }catch (e){
+
+          }
+        }
+          if(this.checkList.length){
+              this.$addQuery('card_filter',JSON.stringify(this.checkList),this.$route,this.$route.params.catalog);
+          }else{
+               this.$delQuery('card_filter',this.$route.params.catalog);
+          }
+          setTimeout(this.updateData,100)
+        },
+        filterByManufacturer(){
         if(this.$route.query.page!=1){
           try{
             this.$addQuery('page',1,this.$route,this.$route.params.catalog);
           }catch (e){
 
           }
-
         }
-            this.$emit('updateData')
-      },
-        checkFil(){
-          if(this.checkList.length){
-              this.$addQuery('card_filter',JSON.stringify(this.checkList),this.$route,this.$route.params.catalog);
-          }else{
-               this.$delQuery('card_filter',this.$route.params.catalog);
-          }
-          this.updateData()
-        },
-        filterByManufacturer(){
           if(this.checkListManuf.length){
               this.$addQuery('manuf',JSON.stringify(this.checkListManuf),this.$route,this.$route.params.catalog);
           }else{
                this.$delQuery('manuf',this.$route.params.catalog);
           }
-          this.updateData()
+          setTimeout(this.updateData,100)
       },
 
     },

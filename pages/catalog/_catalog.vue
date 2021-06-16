@@ -23,11 +23,19 @@ export default {
     },
     async asyncData ({ app, params, route, error }) {
       let parametrs = {};
-      for(let i in route.query){
-        parametrs[i]=route.query[i];
-      }
       console.log(route)
+      app.$UpdsaveArr(route)
+      if(route.query['card_filter']!==undefined){
+          parametrs['card_filter'] = route.query['card_filter'];
+        }
+        if(route.query['page']!==undefined){
+          parametrs['page'] = route.query['page'];
+        }
+        if(route.query['manuf']!==undefined){
+          parametrs['manuf'] = route.query['manuf'];
+        }
     try {
+
       parametrs['cat'] = params.catalog;
         await app.store.dispatch('category/getCategoryNested',params.catalog)
         await app.store.dispatch('product/getProductList',parametrs)
@@ -47,14 +55,29 @@ export default {
     computed:{
     },
     methods:{
-      async updateData(){
-        let parametrs = this.$parseUrl(this.$route);
+
+       updateData(){
+        let parametrs = {};
+        if(this.$route.query['card_filter']!==undefined){
+          parametrs['card_filter'] = this.$route.query['card_filter'];
+        }
+        if(this.$route.query['manuf']!==undefined){
+          parametrs['manuf'] = this.$route.query['manuf'];
+        }
+        if(this.$route.query['page']!==undefined){
+          parametrs['page'] = this.$route.query['page'];
+        }
         parametrs['cat'] = this.$route.params.catalog;
-        await this.$store.dispatch('product/getProductList',parametrs);
+        console.log(parametrs)
+        this.sendQuery(parametrs);
         // this.$refs.CartTovar.updatePriceAndCountInPage()
+      },
+      async sendQuery(parametrs){
+        await this.$store.dispatch('product/getProductList',parametrs);
       }
     },
     mounted(){
+
     },
 }
 </script>

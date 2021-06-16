@@ -30,8 +30,12 @@ export default {
     methods:{
       paginate(){
         this.$addQuery('page',this.page,this.$route,this.$route.params.catalog);
-        this.$emit('changePage',this.page);
-      }
+        setTimeout(this.updateData,100);
+        ;
+      },
+      updateData(){
+          this.$emit('changePage',this.page);
+      },
     },
     mounted(){
 
