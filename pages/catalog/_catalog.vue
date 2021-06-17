@@ -9,7 +9,9 @@
 </template>
 
 <script>
-
+function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
 import Sidebar from '~/components/catalog/Sidebar.vue'
 import CartTovar from '~/components/catalog/CartTovar.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
@@ -23,9 +25,8 @@ export default {
     },
     async asyncData ({ app, params, route, error }) {
       let parametrs = {};
-      console.log(route)
       app.$UpdsaveArr(route)
-      if(route.query['card_filter']!==undefined){
+        if(route.query['card_filter']!==undefined){
           parametrs['card_filter'] = route.query['card_filter'];
         }
         if(route.query['page']!==undefined){
@@ -52,6 +53,23 @@ export default {
         return {
         }
     },
+    watch:{
+      $route (to, from){
+        this.$UpdsaveArr(to);
+        let parametrs = {};
+        if(to.query['card_filter']!==undefined){
+          parametrs['card_filter'] = to.query['card_filter'];
+        }
+        if(to.query['page']!==undefined){
+          parametrs['page'] = to.query['page'];
+        }
+        if(to.query['manuf']!==undefined){
+          parametrs['manuf'] = to.query['manuf'];
+        }
+         parametrs['cat'] = to.params.catalog;
+       this.sendQuery(parametrs)
+      }
+  },
     computed:{
     },
     methods:{
@@ -70,7 +88,6 @@ export default {
         parametrs['cat'] = this.$route.params.catalog;
         console.log(parametrs)
         this.sendQuery(parametrs);
-        // this.$refs.CartTovar.updatePriceAndCountInPage()
       },
       async sendQuery(parametrs){
         await this.$store.dispatch('product/getProductList',parametrs);
