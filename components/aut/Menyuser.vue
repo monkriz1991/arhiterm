@@ -17,7 +17,7 @@
                     Профиль</nuxt-link>
                 </el-dropdown-item>
                 <el-dropdown-item class="navbar-user-item">
-                    <nuxt-link to="/myBasket">
+                    <nuxt-link to="/userCabinet/store">
                     <i class="el-icon-shopping-cart-full"></i>
                     Мои покупки</nuxt-link>
                 </el-dropdown-item>

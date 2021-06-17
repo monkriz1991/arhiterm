@@ -72,7 +72,9 @@ export default {
       local: {
         token: {
           property: 'token',
-           type: 'Token'
+          maxAge: 60*60*24*5,
+          global: true,
+          type: 'Token'
         },
         user: {
           property: '',

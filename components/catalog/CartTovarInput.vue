@@ -113,6 +113,7 @@ import {mapGetters,mapActions} from 'vuex'
     },
     methods: {
       changePrice(item){
+        this.count = 1
         this.active_id = item
         this.input_cost = item.discont==null?item.price:item.discont
         this.$emit('update:price', item.price)
@@ -192,4 +193,7 @@ body .el-popover--plain {
   color: #fa9600;
   border-radius: 50%;
 }
+.cost-product-input .el-radio--mini.is-bordered {
+    padding: 6px 10px 0 10px;
+}    
 </style>

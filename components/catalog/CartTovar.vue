@@ -25,23 +25,25 @@
                         </div>
                     </div>
                     <div class="catalog-list-block-desc">
-                        <nuxt-link v-if="price[idx]" :to="`/product/${product.id}`">
+                        <nuxt-link 
+                        :class="{disabledLink:!price[idx]}"
+                        :to="`/product/${product.id}`"
+                        >
                             {{product.name}}
                         </nuxt-link>
-                        <span v-else>{{product.name}}</span>
-                    <div class="catalog-list-block-price">
-                        <strong>{{price[idx]}}
-                            <div class="catalog-list-block-discount">
-                                <strong>{{discont[idx]}}</strong>
+                        <div class="catalog-list-block-price">
+                            <strong>{{price[idx]}}
+                                <div class="catalog-list-block-discount">
+                                    <strong>{{discont[idx]}}</strong>
+                                    <span>руб/м2</span>
+                                </div>
+                            </strong>
+                            <span>руб/м2</span>
+                            <div class="catalog-list-block-cost">
+                                <strong>{{oneprice[idx]}} - {{lastprice[idx]}}</strong>
                                 <span>руб/м2</span>
                             </div>
-                        </strong>
-                        <span>руб/м2</span>
-                        <div class="catalog-list-block-cost">
-                            <strong>{{oneprice[idx]}} - {{lastprice[idx]}}</strong>
-                            <span>руб/м2</span>
                         </div>
-                    </div>
                     </div>
                     <div
                     v-if="show.includes(idx)"
@@ -183,3 +185,8 @@ export default {
     }
 }
 </script>
+<style>
+.disabledLink{
+    pointer-events: none;
+}
+</style>
