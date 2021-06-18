@@ -2,6 +2,7 @@
     <div>
         <el-upload
         class="avatar-uploader"
+        :http-request="upload"
         :action="`/users/mydata/${$auth.user.id}/`"
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
@@ -33,7 +34,7 @@ export default ({
         this.imageUrl = URL.createObjectURL(file.raw);
 
 
-      //updateUser()
+        //updateUser()
 
       },
       beforeAvatarUpload(file) {
@@ -44,32 +45,16 @@ export default ({
           this.$message.error('Avatar picture size can not exceed 2MB!');
         }
         return isLt2M;
-      }
+      },
+      async upload(upload) {
+        var formData = new FormData();
+        formData.append('img', upload.file);
+        let data = await this.$axios.patch(upload.action, formData)
+        this.url = data.data.img;
+        console.log(data)
+      },
+
     },
-    actionImg(){
-      console.log('okoko')
-    },
-    async updateUser(){
-      let formData = new FormData(); // создаем форму
-      formData.append('img', this.files); //записываем туда фотки из компонента (в данном случае из <v-img>)
-      reader.addEventListener("load", function () {
-        this.imagePreview = reader.result;
-        this.user.img = this.imagePreview;
-      }.bind(this), false);
-
-      formData.append('username', this.user.username);
-      formData.append('is_staff', this.user.is_staff?this.user.is_staff:false);
-      formData.append('is_superuser', this.user.is_superuser?this.user.is_superuser:false);
-      formData.append('sex', this.user.sex?this.user.sex:1);
-      formData.append('is_active', true);
-
-      let res = await this.$axios.put(`/users/mydata/${this.$auth.user.id}/`,formData);
-      if(res.status=='200'){
-
-      }else{
-
-      }
-    }
 })
 </script>
 
