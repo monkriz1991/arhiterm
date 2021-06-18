@@ -4,10 +4,17 @@
         <el-collapse accordion>
             <el-collapse-item name="idx">
                 <template slot="title">
-                Позиций в корзине: {{basket_for.length}}
-                <span>На сумму:
-                    <strong>{{allCost}} руб.</strong>
-                </span>
+                <div class="cab-block-basket-templ">
+                    <div class="basket-templ-status">
+                        <span>Не закрыта</span>
+                    </div>
+                    <span hidden>Позиций:<strong>{{basket_for.length}}</strong></span>
+                </div>
+                <div class="cab-block-basket-templ">
+                    <span>Итого:
+                        <strong>{{allCost}}<span>руб.</span></strong>
+                    </span>
+                </div>
                 </template>
                 <div
                 v-for="(item,idx) in basket_for" :key="idx"
@@ -19,11 +26,12 @@
                     <div class="cab-block-basket-left">
                         <strong>{{item.name}}</strong>
                         <div class="basket-left-item">
-                            <span>{{item.product[0].count_el}} м2</span>
-                            <span><span>Стоимость:</span>{{item.product[0].cost}}руб.</span>
+                            <span><strong>{{item.product[0].count_el}}<span>м2</span></strong></span>
+                            <span><span>Стоимость:</span>
+                            <strong>{{item.product[0].cost}}<span>руб.</span></strong></span>
                         </div>
                         <div class="basket-left-item">
-                            <span>{{item.product[0].name}}</span>
+                            <span>{{item.product[0].name}}</span><b>/</b>
                             <span>{{item.product[0].filter_show_name}}</span>
                             <span>{{item.product[0].filter_show_value}}</span>
                         </div>   
@@ -102,5 +110,49 @@ export default {
     margin: 0 20px 2px 0;
     font-weight: 500;
     width: 100%;
+}
+.basket-left-item>span{
+    margin: 0 10px 0 0;
+}
+.basket-left-item>span>strong{
+font-size: 13px;
+}
+.basket-left-item>span>strong>span{
+    font-size: 12px;
+    margin: 0 0 0 1px;
+}
+.basket-left-item b{
+    font-size: 9px;
+    margin: 0 10px 0 0;
+    opacity: 0.4;
+}
+.cab-block-basket-templ{
+    float: left;
+}
+.cab-block-basket-templ>span{
+    font-size: 13px;
+    margin: 0px 0px 0 0px;
+    float: left;
+}
+.cab-block-basket-templ>span>strong{
+    margin: 0 0 0 4px;
+    font-size: 15px;
+}
+.cab-block-basket-templ>span>strong>span{
+    font-size: 12px;
+    margin: 0 0 0 2px;
+}
+.basket-templ-status{
+    float: left;
+    margin: 0 30px 0 0;
+}
+.basket-templ-status>span{
+    float: left;
+    margin: 0 30px 0 0;
+    padding: 3px 5px;
+    border-radius: 3px;
+    background: #ff8d2a;
+    font-size: 11px;
+    color: #fff;
 }
 </style>
