@@ -66,6 +66,20 @@ export default {
         this.checkList = JSON.parse(decodeURI(this.$route.query.card_filter))
       }
     },
+  watch:{
+      $route (to, from){
+        if(to.query.manuf!==undefined) {
+        this.checkListManuf = JSON.parse(decodeURI(to.query.manuf))
+      }else{
+        this.checkListManuf = []
+        }
+      if(to.query.card_filter!==undefined) {
+        this.checkList = JSON.parse(decodeURI(to.query.card_filter))
+      }else{
+        this.checkList = []
+      }
+      }
+  },
     methods:{
       updateData(){
             setTimeout(this.sendUpdate(),100);

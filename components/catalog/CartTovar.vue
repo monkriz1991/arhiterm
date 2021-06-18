@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="catalog-list-block-desc">
-                        <nuxt-link 
+                        <nuxt-link
                         :class="{disabledLink:!price[idx]}"
                         :to="`/product/${product.id}`"
                         >
@@ -121,8 +121,6 @@ export default {
     },
     watch:{
         productsList(){
-          console.log("sddsd")
-          // this.$refs.cartTovarInput.editProduct()
             this.updatePriceAndCountInPage()
         }
     },
