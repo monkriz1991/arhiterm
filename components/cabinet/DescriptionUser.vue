@@ -2,7 +2,7 @@
     <div class="profile-cab-right">
         <h1 class="h1-user">{{$auth.user.first_name}}</h1>
         <el-form :model="form" :rules="rules" ref="form" class="form-user-cab">
-            <el-form-item 
+            <el-form-item
             prop="username"
             label="Логин:"
             :rules="[
@@ -12,7 +12,7 @@
             >
                 <el-input :disabled="!disableForm" placeholder="Введите Ваш email" v-model="form.username" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item 
+            <el-form-item
             prop="first_name"
             label="Имя:"
             :rules="[
@@ -21,7 +21,7 @@
             >
                 <el-input :disabled="!disableForm"  placeholder="Введите Ваше имя" v-model="form.first_name" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item 
+            <el-form-item
             prop="last_name"
             label="Фамилия:"
             :rules="[
@@ -30,7 +30,7 @@
             >
                 <el-input :disabled="!disableForm"  placeholder="Введите фамилию" v-model="form.last_name" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item 
+            <el-form-item
             prop="phone_number"
             label="Телефон:"
             :rules="[
@@ -39,24 +39,25 @@
             >
                 <el-input :disabled="!disableForm"  placeholder="Введите ваш телефон" v-model="form.phone_number" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item 
-            label="Форма" 
+            <el-form-item
+            label="Форма"
             prop="type"
             >
-                <el-select :disabled="!disableForm" v-model="form.type" placeholder="Укажите тип">
+                <el-select :disabled="!disableForm" v-model="form.type_of_user" placeholder="Укажите тип">
                 <el-option label="Физ. лицо" value="1"></el-option>
                 <el-option label="Юр. лицо" value="2"></el-option>
                 </el-select>
             </el-form-item>
-            <el-button 
-            class="but-icon-save" 
-            v-show="disableForm" 
+            <el-button
+            class="but-icon-save"
+            v-show="disableForm"
             size="mini"
+            @click="saveForm"
             >Сохранить</el-button>
-        </el-form>   
-        <el-button 
-        class="but-icon-edit" 
-        icon="el-icon-edit" 
+        </el-form>
+        <el-button
+        class="but-icon-edit"
+        icon="el-icon-edit"
         size="mini"
         @click="editForm()"
         >Редактировать</el-button>
@@ -72,18 +73,48 @@ export default {
               first_name:this.$auth.user.first_name!=''?this.$auth.user.first_name:'',
               last_name:this.$auth.user.last_name!=''?this.$auth.user.last_name:'',
               username:this.$auth.user.username!=''?this.$auth.user.username:'',
+              email:this.$auth.user.username!=''?this.$auth.user.username:'',
               phone_number:this.$auth.user.phone_number!=''?this.$auth.user.phone_number:'',
-              type:'',
+              type_of_user:this.$auth.user.type_of_user?''+this.$auth.user.type_of_user:'',
           },
           rules:{
 
           }
-      }  
+      }
     },
     methods:{
         editForm(){
             this.disableForm = !this.disableForm
-        }
+        },
+      /**
+       * отправка запроса на сохранение данных на сервер
+       * @returns {Promise<void>}
+       */
+      async saveForm() {
+          try{
+              let data = await this.$axios.patch(`/users/mydata/${this.$auth.user.id}/`, this.form)
+          this.$message({
+            message: 'сохранено',
+            showClose: true,
+            duration:1000,
+            type: 'success'
+        });
+          }catch(error){
+              this.parseError(error)
+          }
+      },
+      /**
+       * обработка ошибок отправки запросов
+       * @param error
+       */
+      parseError(error){
+        this.$message({
+            message: 'Произошла ошибка сохранения. Попробуйте снова. Если данные не сохраняются обратитесь к менеджеру.',
+            showClose: true,
+            duration:4000,
+            type: 'error'
+        });
+      }
     }
 }
 </script>
@@ -101,7 +132,7 @@ export default {
 }
 .form-user-cab .el-form-item__content {
     line-height: initial;
-}    
+}
 .form-user-cab .el-form-item__label {
     line-height: initial;
     float: left;
