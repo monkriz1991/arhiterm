@@ -1,0 +1,119 @@
+<template>
+<div class="cat-filter-section">
+        <div class="cat-filter">
+            <!-- <h3>{{categoriesNested.name}}</h3> -->
+            <ul
+            v-for="category in categoriesNested"
+            :key="category.id"
+            >
+                <li class="cat-filter-title">
+                    {{ category.name }}
+                </li>
+              <ul
+              v-for="cat in category.child"
+              :key="cat.id"
+              >
+                <li class="cat-filter-title">
+                    {{ cat.name }}
+                </li>
+                <el-checkbox-group v-model="checkList"
+                v-for="filters in cat.filters"
+                :key="filters.id"
+                >
+                   <label class="cat-filter-check">
+                       <span>{{filters.name}}</span>
+                    </label>
+                    <el-checkbox
+                    v-for="checkbox in filters.filter_value"
+                    :key="checkbox.id"
+                    :label="checkbox.id"
+                    @change="checkFil()"
+                    >{{checkbox.value}}
+                    </el-checkbox>
+                </el-checkbox-group>
+            </ul>
+            </ul>
+        </div>
+    </div>
+</template>
+
+<script>
+import {mapGetters} from "vuex";
+
+export default {
+  name: "sidebarFactory",
+  props:[],
+  data(){
+    return{
+            checkList:[],
+            checkFilId:[],
+            checkListManuf:[],
+    }
+  },
+  computed:{
+        ...mapGetters({
+            categoriesNested: 'category/categoryNestedFactory',
+        })
+    },
+  beforeRouteUpdate(to,from,next){
+
+  },
+   watch:{
+      $route (to, from){
+      console.log(this.checkList,'mount')
+      if(to.query.card_filter!==undefined) {
+        this.checkList = JSON.parse(decodeURI(to.query.card_filter))
+      }else{
+        this.checkList = []
+      }
+      this.updateData()
+      }
+  },
+   async mounted(){
+      if(this.$route.query.card_filter!==undefined) {
+        this.checkList = JSON.parse(decodeURI(this.$route.query.card_filter))
+      }else{
+        this.checkList = []
+      }
+    },
+  methods:{
+      updateData(){
+            setTimeout(this.sendUpdate(),100);
+      },
+      sendUpdate(){
+        this.$emit('updateData')
+      },
+        checkFil(){
+          if(this.$route.query.page!=1){
+          try{
+            this.$addQueryFactory('page',1,this.$route,this.$route.params.id);
+          }catch (e){
+
+          }
+        }
+          if(this.checkList.length){
+              this.addParam('card_filter',JSON.stringify(this.checkList));
+          }else{
+               this.delParam('card_filter');
+          }
+        },
+    addParam(key,val){
+        let params = JSON.parse(JSON.stringify(this.$route.query));
+        params[key] = val;
+        this.setUrl(params)
+    },
+    delParam(key){
+        let params = JSON.parse(JSON.stringify(this.$route.query));
+        delete params[key];
+        this.setUrl(params)
+    },
+    setUrl(params){
+        this.$router.replace({path:'/catalog/factory/'+this.$route.params.id,'query':params});
+    }
+  },
+}
+</script>
+
+<style scoped>
+
+</style>
