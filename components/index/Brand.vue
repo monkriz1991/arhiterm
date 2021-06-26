@@ -6,7 +6,7 @@
                 <slide
                     v-for="item in category.results" :key="item.id"
                 >
-                    <nuxt-link :to="`/catalog/${item.id}`" class="nuxt-link-cat">
+                    <nuxt-link :to="`/catalog/factory/${item.id}`" class="nuxt-link-cat">
                         <div class="index-brand-block">
                             <div class="index-brand-block-desc">
                                 <strong v-if="item.description !== 'undefined'">
@@ -14,8 +14,8 @@
                                 </strong>
                                 <span>{{item.name}}</span>
                             </div>
-                            <img 
-                                :src="item.img" 
+                            <img
+                                :src="item.img"
                                 :alt="item.name"
                             >
                         </div>
@@ -36,9 +36,9 @@
 
 <script>
 import { mapGetters,mapActions } from 'vuex'
-import { Hooper, Slide, 
+import { Hooper, Slide,
 Pagination as HooperPagination,
-Navigation  as HooperNavigation 
+Navigation  as HooperNavigation
 } from 'hooper';
 import 'hooper/dist/hooper.css';
 export default ({
