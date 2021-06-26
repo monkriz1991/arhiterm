@@ -44,7 +44,26 @@ export const actions = {
         commit('setCountProduct', product.count) // получаем общее количество товаров в категории
         commit('setProductLoading',false)
         return product.results
-    }
+    },
+  async getProductListManufacturer ({ commit,state}, args) {
+        commit('setProductLoading',true)
+        let id = args['manuf']
+    delete args['manuf'];
+        if(args['page']===undefined){
+            args['page'] = 1;
+        }
+        let uri = "";
+        for(let i in args){
+          uri+=`&${i}=${args[i]}`
+        }
+        let offset = (args['page']-1)*state.productLimit;
+        let product = await this.$axios.$get(`/catalog/product/?manuf=[${id}]&limit=${state.productLimit}&offset=${offset}${uri}`).catch(function (e){
+          console.log(e)});
+         commit('setProductList', product.results)
+         commit('setCountProduct', product.count) // получаем общее количество товаров в категории
+         commit('setProductLoading',false)
+         return product.results
+    },
 }
 
 export const getters = {
