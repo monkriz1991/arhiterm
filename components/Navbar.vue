@@ -44,7 +44,7 @@
                 :key="item.id"
                 size="mini" @click="visible = false"
               >
-                <nuxt-link :to="`/catalog/${item.id}`">
+                <nuxt-link :to="`/catalog/factory/${item.id}`">
                   <!-- <i class="el-icon-picture-outline-round"></i>  -->
                   {{ item.name }}
                 </nuxt-link>
