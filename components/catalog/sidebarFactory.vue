@@ -55,9 +55,25 @@ export default {
             categoriesNested: 'category/categoryNestedFactory',
         })
     },
+  beforeRouteUpdate(to,from,next){
+
+  },
+   watch:{
+      $route (to, from){
+      console.log(this.checkList,'mount')
+      if(to.query.card_filter!==undefined) {
+        this.checkList = JSON.parse(decodeURI(to.query.card_filter))
+      }else{
+        this.checkList = []
+      }
+      this.updateData()
+      }
+  },
    async mounted(){
       if(this.$route.query.card_filter!==undefined) {
         this.checkList = JSON.parse(decodeURI(this.$route.query.card_filter))
+      }else{
+        this.checkList = []
       }
     },
   methods:{
@@ -80,7 +96,6 @@ export default {
           }else{
                this.delParam('card_filter');
           }
-          setTimeout(this.updateData,100)
         },
     addParam(key,val){
         let params = JSON.parse(JSON.stringify(this.$route.query));
