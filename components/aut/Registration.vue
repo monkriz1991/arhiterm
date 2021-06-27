@@ -1,17 +1,17 @@
 <template>
     <el-form :model="form" ref="form" status-icon :rules="rules">
-        <el-form-item 
+        <el-form-item
         prop="name"
-        label="Имя" 
+        label="Имя"
         :rules="[
           { required: true, message: 'Пожалуйста введите ваше имя', trigger: 'blur' }
         ]"
         >
           <el-input  placeholder="Введите Ваше имя" v-model="form.name" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item 
+        <el-form-item
         prop="username"
-        label="Логин" 
+        label="Логин"
         :rules="[
           { required: true, message: 'Пожалуйста введите ваш email', trigger: 'blur' },
           { type: 'email', message: 'Пожалуйста введите корректный email', trigger: ['blur', 'change'] }
@@ -21,17 +21,17 @@
         </el-form-item>
           <el-form-item label="Аккаунт" prop="type">
             <el-select v-model="form.type" placeholder="Укажите тип">
-              <el-option label="Физ. лицо" value="1"></el-option>
-              <el-option label="Юр. лицо" value="2"></el-option>
+              <el-option label="Физ. лицо" value="2"></el-option>
+              <el-option label="Юр. лицо" value="1"></el-option>
             </el-select>
           </el-form-item>
-        <el-form-item 
+        <el-form-item
         prop="password"
         label="Пароль"
         >
           <el-input placeholder="Ввидите пароль" v-model="form.password" show-password autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item 
+        <el-form-item
         prop="checkPass"
         label="Повторите пароль"
         >
@@ -111,10 +111,11 @@
          let registrationinfo = {
           username: this.form.username,
           password: this.form.password,
-          password2:this.form.checkPass
+          password2:this.form.checkPass,
+          type_of_user:parseInt(this.form.type),
          }
             console.log(registrationinfo);
-            await this.$axios.post('registration/backend/registration/',registrationinfo).then(response => { 
+            await this.$axios.post('registration/backend/registration/',registrationinfo).then(response => {
                 console.log(response)
             })
             .catch(error => {
@@ -126,7 +127,7 @@
                         this.errors.push(`${i}: ${s}`);
                     }
                 }
-            }); 
+            });
 
       }
 
