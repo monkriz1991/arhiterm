@@ -99,6 +99,7 @@ export default {
             duration:1000,
             type: 'success'
         });
+        await this.$auth.fetchUser()
           }catch(error){
               this.parseError(error)
           }

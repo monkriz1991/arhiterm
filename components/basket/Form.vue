@@ -131,17 +131,17 @@ export default ({
             }
         };
         return{
-        activeName: this.$auth.loggedIn.type_of_user!=''&& this.$auth.loggedIn==true?'2':'1',
+        activeName: this.$store.state.auth.user.type_of_user!=''&& this.$store.state.auth.loggedIn==true?'2':'1',
         Form: {
-          name: this.$auth.loggedIn.first_name!=''&& this.$auth.loggedIn==true?this.$auth.user.first_name:'',
-          username: this.$auth.loggedIn.username!=''&& this.$auth.loggedIn==true?this.$auth.user.username:'',
-          nameCompany:this.$auth.loggedIn.nameCompany!=''&& this.$auth.loggedIn==true?this.$auth.user.nameCompany:'',
+          name: this.$store.state.auth.user.first_name!=''&& this.$store.state.auth.loggedIn==true?this.$store.state.auth.user.first_name:'',
+          username: this.$store.state.auth.user.username!=''&& this.$store.state.auth.loggedIn==true?this.$store.state.auth.user.username:'',
+          nameCompany:this.$store.state.auth.user.nameCompany!=''&& this.$store.state.auth.loggedIn==true?this.$store.state.auth.user.nameCompany:'',
           type: '',
           password: '',
           checkPass: '',
           del:'',
           pay:'',
-          typ: this.$auth.loggedIn.type_of_user!=''&& this.$auth.loggedIn==true?this.$auth.user.type_of_user:'',
+          typ: this.$store.state.auth.user.type_of_user!=''&& this.$store.state.auth.loggedIn==true?this.$store.state.auth.user.type_of_user:'',
           yrAdres:'',
           adres:'',
           desc: ''
