@@ -1,11 +1,11 @@
 <template>
     <el-form :model="Form" :rules="rules" ref="Form" class="form-basket">
         <el-collapse v-model="activeName" accordion @change="handleChange">
-        <el-collapse-item title="Тип плательщика" name="1">
+        <el-collapse-item :disabled="Form.typ != ''"  title="Тип плательщика" name="1">
             <el-form-item prop="typ">
                 <el-radio-group v-model="Form.typ">
-                <el-radio label="Физ. лицо"></el-radio>
-                <el-radio label="Юр. лицо"></el-radio>
+                <el-radio :label="1">{{'Физ. лицо'}}</el-radio>
+                <el-radio :label="2">{{'Юр. лицо'}}</el-radio>
                 </el-radio-group>
                 <div 
                 class="but-next-form"
@@ -31,11 +31,11 @@
             <el-form-item prop="pay" class="radio-pay">
                 <el-radio-group v-model="Form.pay">
                 <el-radio label="Безналичный расчёт"></el-radio>
-                <el-radio v-show="Form.typ=='Физ. лицо'" label="Наличный расчет"></el-radio>
-                <el-radio v-show="Form.typ=='Физ. лицо'" label="Банковской картой онлайн"></el-radio>
-                <el-radio v-show="Form.typ=='Физ. лицо'" label="Банковской картой через терминал"></el-radio>
-                <el-radio v-show="Form.typ=='Физ. лицо'" label="Через систему «Расчет» (ЕРИП)"></el-radio>
-                <el-radio v-show="Form.typ=='Физ. лицо'" label="Картами рассрочки без переплат сроком на 2 месяца"></el-radio>
+                <el-radio v-show="Form.typ=='1'" label="Наличный расчет"></el-radio>
+                <el-radio v-show="Form.typ=='1'" label="Банковской картой онлайн"></el-radio>
+                <el-radio v-show="Form.typ=='1'" label="Банковской картой через терминал"></el-radio>
+                <el-radio v-show="Form.typ=='1'" label="Через систему «Расчет» (ЕРИП)"></el-radio>
+                <el-radio v-show="Form.typ=='1'" label="Картами рассрочки без переплат сроком на 2 месяца"></el-radio>
                 </el-radio-group>
                 <div 
                 class="but-next-form"
@@ -46,7 +46,7 @@
         </el-collapse-item>
         <el-collapse-item :disabled="Form.pay == ''" title="Данные покупателя" name="4" class="collapse-data">
         <el-form-item 
-        v-if="Form.typ=='Юр. лицо'"
+        v-if="Form.typ=='2'"
         prop="nameCompany"
         label="Название компании" 
         :rules="[
@@ -74,7 +74,7 @@
         >
         <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш email" v-model="Form.username" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item v-if="Form.typ=='Юр. лицо'" label="Юр. Адрес">
+        <el-form-item v-if="Form.typ=='2'" label="Юр. Адрес">
             <el-input :disabled="$auth.loggedIn!=''" 
             type="textarea" v-model="Form.yrAdres"></el-input>
         </el-form-item>
@@ -131,7 +131,7 @@ export default ({
             }
         };
         return{
-        activeName: '1',
+        activeName: this.$auth.loggedIn.type_of_user!=''&& this.$auth.loggedIn==true?'2':'1',
         Form: {
           name: this.$auth.loggedIn.first_name!=''&& this.$auth.loggedIn==true?this.$auth.user.first_name:'',
           username: this.$auth.loggedIn.username!=''&& this.$auth.loggedIn==true?this.$auth.user.username:'',
@@ -141,7 +141,7 @@ export default ({
           checkPass: '',
           del:'',
           pay:'',
-          typ: '',
+          typ: this.$auth.loggedIn.type_of_user!=''&& this.$auth.loggedIn==true?this.$auth.user.type_of_user:'',
           yrAdres:'',
           adres:'',
           desc: ''

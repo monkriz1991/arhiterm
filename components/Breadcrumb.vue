@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <el-breadcrumb 
         v-if="this.$route.name!='index'"
         separator-class="el-icon-arrow-right"
