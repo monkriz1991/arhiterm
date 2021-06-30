@@ -1561,6 +1561,8 @@ body .navbar-user .navbar-user-item{
     display: flex;
     align-items: center;
     text-align: left;
+
+    
 }
 .mounter-form .el-input__inner{
     width: 100% !important;
