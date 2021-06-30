@@ -24,15 +24,17 @@
             <el-input placeholder="Ввидите пароль" v-model="form.password" show-password autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item 
-            prop="checkPass"
+            prop="password2"
             label="Повторите пароль"
             >
-            <el-input placeholder="Повторите пароль" v-model="form.checkPass" show-password autocomplete="off"></el-input>
+            <el-input placeholder="Повторите пароль" v-model="form.password2" show-password autocomplete="off"></el-input>
             </el-form-item>   
            
             <span  class="dialog-footer">
                 <el-button @click="dialogVisible = false">Выход</el-button>
-                <el-button type="primary" @click="dialogVisible = false">Сохранить</el-button>
+                <el-button type="primary" 
+                @click="changePassword"
+                >Сохранить</el-button>
             </span>
         </el-form> 
         </el-dialog>
@@ -48,8 +50,8 @@ export default {
         if (value === '') {
         callback(new Error('Введите новый пароль'));
         } else {
-        if (this.form.checkPass  !== '') {
-            this.$refs.form.validateField('checkPass');
+        if (this.form.password2  !== '') {
+            this.$refs.form.validateField('password2');
         }
         callback();
         }
@@ -67,20 +69,59 @@ export default {
         dialogVisible: false,
         form: {
         password: '',
-        checkPass: '',
+        password2: '',
         oldPassword:'',
         },
         rules: {
         password: [
             { validator: validatePass, trigger: ['blur', 'change']}
         ],
-        checkPass: [
+        password2: [
             { validator: validatePass2, trigger: ['blur', 'change'] }
         ],
         }
     }
         
     },
+    methods:{
+      /**
+       * отправка запроса на сохранение данных на сервер
+       * @returns {Promise<void>}
+       */
+      async changePassword() {
+          try{
+            let data = await this.$axios.patch(`/change_password/backend/change_password/${this.$auth.user.id}/`, this.form)
+          console.log(data)
+          this.$message({
+            message: 'сохранено',
+            showClose: true,
+            duration:1000,
+            type: 'success'
+        });
+        await this.$auth.fetchUser()
+          }catch(error){
+              this.parseError(error)
+            this.$message({
+            message: 'Страрый пароль не подходит',
+            showClose: true,
+            duration:1000,
+            type: 'warning'
+        });
+          }
+      },
+      /**
+       * обработка ошибок отправки запросов
+       * @param error
+       */
+      parseError(error){
+        this.$message({
+            message: 'Произошла ошибка сохранения. Попробуйте снова. Если данные не сохраняются обратитесь к менеджеру.',
+            showClose: true,
+            duration:4000,
+            type: 'error'
+        });
+      }
+    }
 }
 </script>
 <style>

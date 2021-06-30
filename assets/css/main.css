@@ -437,6 +437,8 @@ header .contents {
 .cat-filter ul{
     padding: 0;
     margin: 0 0 10px 0;
+    float: left;
+    width: 100%;
 }
 .cat-filter ul li{
     list-style: none;
@@ -1310,6 +1312,7 @@ body .navbar-user .navbar-user-item{
 .popover-nav .manufacturer-navbar-ul li{
     width: auto;
     margin: 0 20px 0 0;
+    padding: 0 20px 0 0;
 }
 .mount-filter-section{
     float: left;
@@ -1543,4 +1546,39 @@ body .navbar-user .navbar-user-item{
 }
 .monter-galery-plus:hover{
     color: #207bd6;
+}
+.mounter-form .el-form-item__content{
+    width: 100% !important;
+    max-width: 430px !important;
+}
+.mounter-form .el-form-item__label{
+    width: 100% !important;
+    line-height: initial;
+    float: left;
+    font-size: 12px;
+    font-weight: 500;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+.mounter-form .el-input__inner{
+    width: 100% !important;
+    height: 30px;
+    font-size: 13px;
+    padding: 0 35px 0 0px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-radius: 0px;
+    border-bottom: 1px solid #DCDFE6;
+}
+.mounter-form .el-form-item{
+    margin: 0 0 5px !important;
+}
+.mounter-form .el-checkbox__label{
+    font-size: 12px;
+}
+.but-icon-save-mounter{
+    margin: 20px 0 0 !important;
 }

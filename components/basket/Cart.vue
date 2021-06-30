@@ -132,6 +132,7 @@ export default {
         amount(){
             this.for_amount = 0
             this.for_amount_discount_persent = 0
+            this.for_amount_discount = 0
             this.for_amount_none = 0
             for(let i in this.cart_data){
                 this.for_amount += this.cart_data[i].product[0].cost

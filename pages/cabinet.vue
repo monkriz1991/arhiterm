@@ -71,17 +71,18 @@ export default ({
     margin: 0px 0 10px;
 }
 .profile-cab-right .but-icon-edit{
-    font-size: 10px;
+    font-size: 11px;
     margin: 10px 0 0 0;
     border: 1px solid #fff;
+    padding: 10px 15px;
 }
 .profile-cab-right:after{
     content: '';
     height: 1px;
-    border-bottom: 1px solid #e2e2e2;
+    /* border-bottom: 1px solid #e2e2e2; */
     width: 147px;
     position: absolute;
     bottom: 12px;
-    left: 140px;
+    left: 145px;
 }
 </style>
