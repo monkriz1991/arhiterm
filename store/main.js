@@ -71,7 +71,6 @@ export const actions = {
           filter.limit = 2;
         }
         let results = await this.$axios.$get(`/cart/cartUser/?offset=${filter.offset}&limit=${filter.limit}`);
-    console.log(results)
         commit('setAllBaskets',results.results)
         commit('setCountBasket',results.count)
         return results
