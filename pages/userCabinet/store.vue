@@ -4,8 +4,9 @@
         <NavbarCabinet/>
         <h1 class="h1-user-cab">Мои корзины</h1>
         <Basket
-        v-if="basket"
-        :basket_for="basket"
+        v-if="allBaskets!==undefined"
+        v-for="(b,k) in allBaskets" :key="k"
+        :basket_for.sync="b"
         />
         <h4 v-else>У вас нет открытых корзин</h4>
         <Paginated/>
@@ -14,7 +15,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 import NavbarCabinet from '~/components/cabinet/NavbarCabinet.vue'
 import Basket from '~/components/cabinet/Basket.vue'
 import Paginated from '~/components/cabinet/Paginated.vue'
@@ -24,7 +25,10 @@ export default {
 
       }
     },
-    components:{
+  mounted() {
+      this.getAllBaskets()
+  },
+  components:{
         NavbarCabinet,
         Basket,
         Paginated
@@ -32,7 +36,13 @@ export default {
     computed:{
         ...mapGetters({
             basket:'main/basket',
-        }) 
-    }
+            allBaskets:'main/allBaskets',
+        })
+    },
+  methods:{
+      ...mapActions({
+        getAllBaskets:'main/getallBaskets',
+      })
+  }
 }
 </script>

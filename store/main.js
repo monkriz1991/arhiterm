@@ -4,6 +4,8 @@
 export const state = ()=>({
     sliderItems:[],
     basket:[],
+    allBaskets:[],
+    countAllBaskets:0,
     indexItem:[],
     userItem:[]
 })
@@ -17,6 +19,9 @@ export const mutations = {
     },
     setIndex(state,indexItem){
         state.indexItem = indexItem
+    },
+    setAllBaskets(state,indexItem){
+        state.allBaskets = indexItem
     },
     REMOVE_FROM_CART(state,idx){
         state.basket.splice(idx,1)
@@ -33,7 +38,10 @@ export const mutations = {
     },
     setUser(state,userItem){
         state.userItem = userItem
-    }
+    },
+  setCountBasket(state,data){
+    this.state.countAllBaskets = data;
+  }
 }
 
 export const actions = {
@@ -48,6 +56,23 @@ export const actions = {
     async getIndex({commit}){
         let results = await this.$axios.$get(`/admin/pages/pages/1/`);
         commit('setIndex',results)
+        return results
+    },
+  /**
+   * получает корзины пользователя с Бэка
+   * @param commit
+   * @param filter - object like at {limit:<int>,offset:<int>}
+   * @returns {Promise<any>}
+   */
+    async getallBaskets({commit},filter){
+        if(filter===undefined){
+          filter = {}
+          filter.offset = 0;
+          filter.limit = 10;
+        }
+        let results = await this.$axios.$get(`/cart/cartUser/?offset=${filter.offset}&limit=${filter.limit}`);
+        commit('setAllBaskets',results.results)
+        commit('setCountBasket',results.count)
         return results
     },
     DELL_CART_BASKET({commit},idx){
@@ -66,7 +91,8 @@ export const getters = {
     sliderItems: state => state.sliderItems,
     basket: state => state.basket,
     indexItem: state => state.indexItem,
-    userItem: state => state.userItem
+    userItem: state => state.userItem,
+    allBaskets: state => state.allBaskets
 }
 
 
