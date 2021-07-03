@@ -22,6 +22,11 @@
                     Мои покупки</nuxt-link>
                 </el-dropdown-item>
                 <el-dropdown-item class="navbar-user-item">
+                    <nuxt-link to="/userCabinet/mounter">
+                    <i class="el-icon-eleme"></i>
+                    Страница монтажника</nuxt-link>
+                </el-dropdown-item>
+                <el-dropdown-item class="navbar-user-item">
                     <span @click="logout">
                     <i class="el-icon-arrow-left"></i>
                     Выход</span>

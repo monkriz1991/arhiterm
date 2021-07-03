@@ -4,6 +4,8 @@
         <i class="el-icon-user"></i>Профиль</nuxt-link>
         <nuxt-link :to="`/userCabinet/store`" active-class="activ-link-cab">
         <i class="el-icon-shopping-cart-full"></i>Мои покупки</nuxt-link>
+        <nuxt-link :to="`/userCabinet/mounter`" active-class="activ-link-cab">
+        <i class="el-icon-eleme"></i>Страница монтажника</nuxt-link>
     </div>
 </template>
 
