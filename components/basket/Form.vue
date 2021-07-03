@@ -7,7 +7,7 @@
                 <el-radio :label="1">{{'Физ. лицо'}}</el-radio>
                 <el-radio :label="2">{{'Юр. лицо'}}</el-radio>
                 </el-radio-group>
-                <div 
+                <div
                 class="but-next-form"
                 v-show="Form.typ"
                 @click="disabledForm(2)"
@@ -20,7 +20,7 @@
                 <el-radio label="Курьером"></el-radio>
                 <el-radio label="Самовывоз"></el-radio>
                 </el-radio-group>
-                <div 
+                <div
                 class="but-next-form"
                 v-show="Form.del"
                 @click="disabledForm(3)"
@@ -37,7 +37,7 @@
                 <el-radio v-show="Form.typ=='1'" label="Через систему «Расчет» (ЕРИП)"></el-radio>
                 <el-radio v-show="Form.typ=='1'" label="Картами рассрочки без переплат сроком на 2 месяца"></el-radio>
                 </el-radio-group>
-                <div 
+                <div
                 class="but-next-form"
                 v-show="Form.pay"
                 @click="disabledForm(4)"
@@ -45,28 +45,28 @@
             </el-form-item>
         </el-collapse-item>
         <el-collapse-item :disabled="Form.pay == ''" title="Данные покупателя" name="4" class="collapse-data">
-        <el-form-item 
+        <el-form-item
         v-if="Form.typ=='2'"
         prop="nameCompany"
-        label="Название компании" 
+        label="Название компании"
         :rules="[
           { required: true, message: 'Пожалуйста введите название вашей компании', trigger: 'blur' }
         ]"
         >
         <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите название вашей компании" v-model="Form.nameCompany" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item 
+        <el-form-item
         prop="name"
-        label="Имя" 
+        label="Имя"
         :rules="[
           { required: true, message: 'Пожалуйста введите ваше имя', trigger: 'blur' }
         ]"
         >
         <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваше имя" v-model="Form.name" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item 
+        <el-form-item
         prop="username"
-        label="Логин" 
+        label="Логин"
         :rules="[
           { required: true, message: 'Пожалуйста введите ваш email', trigger: 'blur' },
           { type: 'email', message: 'Пожалуйста введите корректный email', trigger: ['blur', 'change'] }
@@ -75,7 +75,7 @@
         <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш email" v-model="Form.username" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item v-if="Form.typ=='2'" label="Юр. Адрес">
-            <el-input :disabled="$auth.loggedIn!=''" 
+            <el-input :disabled="$auth.loggedIn!=''"
             type="textarea" v-model="Form.yrAdres"></el-input>
         </el-form-item>
         <el-form-item label="Адрес доставки">
@@ -84,14 +84,14 @@
         <el-form-item label="Комментарий к заказу">
             <el-input type="textarea" v-model="Form.desc"></el-input>
         </el-form-item>
-        <el-form-item 
+        <el-form-item
         v-if="!$auth.loggedIn"
         prop="password"
         label="Пароль"
         >
           <el-input placeholder="Ввидите пароль" v-model="Form.password" show-password autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item 
+        <el-form-item
         v-if="!$auth.loggedIn"
         prop="checkPass"
         label="Повторите пароль"
@@ -99,7 +99,7 @@
             <el-input placeholder="Повторите пароль" v-model="Form.checkPass" show-password autocomplete="off"></el-input>
         </el-form-item>
             <span v-show="Form.pay != ''" class="dialog-footer">
-                <el-button  @click="AddOrder" type="primary">Оформить заказ</el-button>
+                <el-button  @click="addOrder" type="primary">Оформить заказ</el-button>
             </span>
         </el-collapse-item>
         </el-collapse>
@@ -107,9 +107,12 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default ({
     created() {
     },
+
     data(){
         var validatePass = (rule, value, callback) => {
             if (value === '') {
@@ -131,17 +134,17 @@ export default ({
             }
         };
         return{
-        activeName: this.$store.state.auth.user.type_of_user!=''&& this.$store.state.auth.loggedIn==true?'2':'1',
+        activeName: this.$store.state.auth.loggedIn?this.$store.state.auth.user.type_of_user!==''&& this.$store.state.auth.loggedIn===true?'2':'1':'',
         Form: {
-          name: this.$store.state.auth.user.first_name!=''&& this.$store.state.auth.loggedIn==true?this.$store.state.auth.user.first_name:'',
-          username: this.$store.state.auth.user.username!=''&& this.$store.state.auth.loggedIn==true?this.$store.state.auth.user.username:'',
-          nameCompany:this.$store.state.auth.user.nameCompany!=''&& this.$store.state.auth.loggedIn==true?this.$store.state.auth.user.nameCompany:'',
+          name: this.$store.state.auth.loggedIn?this.$store.state.auth.user.first_name!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.first_name:'':'',
+          username: this.$store.state.auth.loggedIn?this.$store.state.auth.user.username!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.username:'':'',
+          nameCompany:this.$store.state.auth.loggedIn?this.$store.state.auth.user.nameCompany!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.nameCompany:'':'',
           type: '',
           password: '',
           checkPass: '',
           del:'',
           pay:'',
-          typ: this.$store.state.auth.user.type_of_user!=''&& this.$store.state.auth.loggedIn==true?this.$store.state.auth.user.type_of_user:'',
+          typ: this.$store.state.auth.loggedIn?(this.$store.state.auth.user.type_of_user!==''&& this.$store.state.auth.loggedIn===true)?this.$store.state.auth.user.type_of_user:'':'',
           yrAdres:'',
           adres:'',
           desc: ''
@@ -159,7 +162,9 @@ export default ({
     components:{
     },
     computed:{
-
+      ...mapGetters({
+        basket:'main/basket',
+      })
     },
     methods:{
         disabledForm(item){
@@ -168,14 +173,15 @@ export default ({
         handleChange(val) {
             //console.log(val);
         },
-        AddOrder(){
-
+        async addOrder(){
             if(this.$auth.loggedIn == true){
-
+              this.unaftorized()
             }else{
                 this.$refs.Form.validate((valid) => {
                 if (valid) {
                     //this.registerUser()
+                  this.unaftorized()
+
                     alert('submit!');
                 } else {
                     console.log('error submit!!');
@@ -184,6 +190,10 @@ export default ({
                 });
             }
         },
+      async unaftorized(){
+          let data = await this.$axios.post('add/to/cart',{form:this.Form,basket:this.basket});
+          console.log(data)
+      },
         async registerUser(){
 
             let registrationinfo = {
@@ -192,7 +202,7 @@ export default ({
             password2:this.form.checkPass
             }
                 console.log(registrationinfo);
-                await this.$axios.post('registration/backend/registration/',registrationinfo).then(response => { 
+                await this.$axios.post('registration/backend/registration/',registrationinfo).then(response => {
                     console.log(response)
                 })
                 .catch(error => {
@@ -204,7 +214,7 @@ export default ({
                             this.errors.push(`${i}: ${s}`);
                         }
                     }
-                }); 
+                });
 
         }
     }
@@ -240,14 +250,14 @@ export default ({
 .header-basket .radio-pay label{
     float: left;
     width: 100%;
-    margin: 0 0 10px;  
+    margin: 0 0 10px;
 }
 .header-basket .el-dialog__body{
     padding: 10px 30px 20px;
 }
 .el-collapse-item__header{
     font-size: 15px;
-    color: #000000;   
+    color: #000000;
 }
 .form-basket .el-radio__input.is-checked .el-radio__inner {
     border-color: #f28906 !important;
