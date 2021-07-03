@@ -107,11 +107,12 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default ({
     created() {
     },
+  props:['dialogForm'],
 
     data(){
         var validatePass = (rule, value, callback) => {
@@ -167,6 +168,9 @@ export default ({
       })
     },
     methods:{
+      ...mapActions({
+        addUserList: 'main/addUserList'
+    }),
         disabledForm(item){
             this.activeName = String(item)
         },
@@ -181,8 +185,6 @@ export default ({
                 if (valid) {
                     //this.registerUser()
                   this.unaftorized()
-
-                    alert('submit!');
                 } else {
                     console.log('error submit!!');
                     return false;
@@ -192,31 +194,12 @@ export default ({
         },
       async unaftorized(){
           let data = await this.$axios.post('add/to/cart',{form:this.Form,basket:this.basket});
-          console.log(data)
+          if(!this.$auth.loggedIn) {
+            await this.$auth.loginWith('local', {data:{username: this.Form.username, password: this.Form.password}})
+            this.addUserList(this.$auth.user)
+          }
+          this.$emit('update:dialogForm',false)
       },
-        async registerUser(){
-
-            let registrationinfo = {
-            username: this.form.username,
-            password: this.form.password,
-            password2:this.form.checkPass
-            }
-                console.log(registrationinfo);
-                await this.$axios.post('registration/backend/registration/',registrationinfo).then(response => {
-                    console.log(response)
-                })
-                .catch(error => {
-                    this.errors = [];
-                    let str = "";
-                    for(let i in error.response.data){
-                        for (let s of error.response.data[i]){
-                            str += `${i}: ${s}`;
-                            this.errors.push(`${i}: ${s}`);
-                        }
-                    }
-                });
-
-        }
     }
 })
 </script>
