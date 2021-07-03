@@ -69,8 +69,14 @@ export default {
             allBaskets:'main/allBaskets',
         })
     },
+  watch:{
+    allBaskets(){
+      this.amount()
+    }
+  },
     methods:{
         amount(){
+          this.allCost = 0;
           console.log(this.basket_for)
           if(!this.basket_for.closed){
             this.status = "в обработке"

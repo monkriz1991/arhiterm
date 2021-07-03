@@ -40,7 +40,7 @@ export const mutations = {
         state.userItem = userItem
     },
   setCountBasket(state,data){
-    this.state.countAllBaskets = data;
+    state.countAllBaskets = data;
   }
 }
 
@@ -68,9 +68,10 @@ export const actions = {
         if(filter===undefined){
           filter = {}
           filter.offset = 0;
-          filter.limit = 10;
+          filter.limit = 2;
         }
         let results = await this.$axios.$get(`/cart/cartUser/?offset=${filter.offset}&limit=${filter.limit}`);
+    console.log(results)
         commit('setAllBaskets',results.results)
         commit('setCountBasket',results.count)
         return results
@@ -92,7 +93,8 @@ export const getters = {
     basket: state => state.basket,
     indexItem: state => state.indexItem,
     userItem: state => state.userItem,
-    allBaskets: state => state.allBaskets
+    allBaskets: state => state.allBaskets,
+    countAllBaskets: state => state.countAllBaskets
 }
 
 
