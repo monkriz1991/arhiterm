@@ -4,7 +4,7 @@
             <i class="el-icon-shopping-cart-full"></i>
         </el-button>
         <el-dialog title="Корзина" :visible.sync="dialogFormVisible"  width="60%">
-            <Cart 
+            <Cart
             v-if="basket.length"
             v-show="dialogForm"
             :cart_data="basket"
@@ -21,7 +21,7 @@
                 <el-button icon="el-icon-arrow-left" @click="dialogForm = true">В корзину</el-button>
               </el-button-group>
             </div>
-            <Form v-show="!dialogForm"/>
+            <Form :dialogForm.sync="dialogFormVisible" v-show="!dialogForm"/>
         </el-dialog>
     </div>
 </template>

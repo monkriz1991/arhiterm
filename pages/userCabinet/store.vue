@@ -26,7 +26,6 @@ export default {
       }
     },
   mounted() {
-      this.getAllBaskets()
   },
   components:{
         NavbarCabinet,
@@ -40,9 +39,7 @@ export default {
         })
     },
   methods:{
-      ...mapActions({
-        getAllBaskets:'main/getallBaskets',
-      })
+
   }
 }
 </script>
