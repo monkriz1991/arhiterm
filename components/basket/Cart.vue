@@ -102,7 +102,7 @@ export default {
                 '1000': 7,
                 '2000': 10,
             },
-            cost_product:'',
+            cost_product:0,
 
         }
     },
@@ -135,13 +135,15 @@ export default {
             this.for_amount_discount = 0
             this.for_amount_none = 0
             for(let i in this.cart_data){
-                this.for_amount += this.cart_data[i].product[0].cost
+                this.for_amount += Number(this.cart_data[i].product[0].cost)
                 if(this.cart_data[i].product[0].count===0){
                     this.for_amount_none += this.cart_data[i].product[0].cost
                 }
             }
+            console.log(this.for_amount)
             this.for_amount = Math.floor(this.for_amount*100)/100
             this.for_amount_none = Math.floor(this.for_amount_none*100)/100
+            
 
           for(let i in this.discount_arr){
               if(this.for_amount>=Number([i])){
