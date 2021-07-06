@@ -2,7 +2,7 @@
     <div  class="catalog-paginated">
         <el-pagination
             layout="prev, pager, next"
-            :total="1000">
+            :total="100">
         </el-pagination>
     </div>
 </template>

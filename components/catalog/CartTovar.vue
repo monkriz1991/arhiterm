@@ -2,7 +2,7 @@
     <div class="catalog-list" v-loading="loading">
         <el-row :gutter="20">
             <el-col
-            :xs="12" :sm="12" :md="12" :lg="12" :xl="12"
+            :xs="24" :sm="12" :md="12" :lg="12" :xl="12"
             v-for="(product,idx) in productsList" :key="idx"
             >
                 <div class="catalog-list-block" :class="{ activeImgBlock: show.includes(idx) }">
@@ -78,13 +78,13 @@ export default {
 
         //this.hidePreload()
 
-        setTimeout(() => {
-            this.loading=!this.loading;
-        }, 500);
+        // setTimeout(() => {
+        //     this.loading=!this.loading;
+        // }, 500);
     },
     data() {
         return {
-            loading: true,
+            loading: false,
             show:[],
             num: 1,
             radio: null,

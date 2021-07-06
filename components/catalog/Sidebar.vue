@@ -16,25 +16,42 @@
                    <label class="cat-filter-check">
                        <span>{{filters.name}}</span>
                     </label>
-                    <el-checkbox
-                    v-for="checkbox in filters.filter_value"
-                    :key="checkbox.id"
-                    :label="checkbox.id"
-                    @change="checkFil()"
-                    >{{checkbox.value}}
-                    </el-checkbox>
+                      <el-collapse-transition>
+                        <div v-show="show.includes(filters.id)">
+                          <el-checkbox
+                          v-for="checkbox in filters.filter_value"
+                          :key="checkbox.id"
+                          :label="checkbox.id"
+                          @change="checkFil()"
+                          >{{checkbox.value}}
+                          </el-checkbox>
+                        </div>
+                      </el-collapse-transition>
+                    <el-button
+                    v-show="buttonDown"
+                    @click="toggleActive(filters.id)" type="text"
+                    icon="el-icon-arrow-down"></el-button>
                 </el-checkbox-group>
+                
                 <el-checkbox-group v-model="checkListManuf">
                     <label class="cat-filter-check">
                        <span>Производители</span>
                     </label>
-                    <el-checkbox
-                    v-for="checkbox in categoryManuf.results"
-                    :key="checkbox.id"
-                    :label="checkbox.id"
-                    @change="filterByManufacturer"
-                    >{{checkbox.name}}
-                    </el-checkbox>
+                    <el-collapse-transition>
+                        <div v-show="show.includes('manuf')">
+                          <el-checkbox
+                          v-for="checkbox in categoryManuf.results"
+                          :key="checkbox.id"
+                          :label="checkbox.id"
+                          @change="filterByManufacturer"
+                          >{{checkbox.name}}
+                          </el-checkbox>
+                        </div>
+                      </el-collapse-transition>
+                    <el-button 
+                    v-show="buttonDown"
+                    @click="toggleActive('manuf')" type="text"
+                    icon="el-icon-arrow-down"></el-button>
                 </el-checkbox-group>
             </ul>
         </div>
@@ -44,12 +61,28 @@
 <script>
 import {mapActions,mapGetters} from 'vuex'
 export default {
+    created() {
+      //this.showArr()
+      if (process.browser){
+        
+        if(window.innerWidth>991){
+            
+        }else{
+          
+        }
+      
+      }
+      
+    },
     data() {
         return {
             //categoriesNested:[]
             checkList:[],
             checkFilId:[],
             checkListManuf:[],
+            show: [],
+            width:0,
+            buttonDown:false
         };
     },
     computed:{
@@ -64,6 +97,11 @@ export default {
       }
       if(this.$route.query.card_filter!==undefined) {
         this.checkList = JSON.parse(decodeURI(this.$route.query.card_filter))
+      }
+      if (process.browser){
+        window.addEventListener('resize', this.updateWidth);
+
+        this.updateWidth()
       }
     },
   watch:{
@@ -117,7 +155,31 @@ export default {
           }
           setTimeout(this.updateData,100)
       },
-
+        toggleActive(idx) {
+            if (this.show.includes(idx)) {
+                this.show = this.show.filter(entry => entry !== idx);
+                return;
+            }else{
+                //this.show =[]
+            }
+            this.show.push(idx);
+        },
+        updateWidth() {
+          this.width = window.innerWidth;
+          if(this.width<=991){
+            this.show = []
+            this.buttonDown = true 
+          }else{
+            this.showArr()
+          }
+        },
+        showArr(){
+          for(let i in this.categoriesNested.child[0].filters){
+              this.show[i] = this.categoriesNested.child[0].filters[i].id;   
+          }
+          this.show.push('manuf');    
+          this.buttonDown = false    
+        }
     },
 }
 </script>

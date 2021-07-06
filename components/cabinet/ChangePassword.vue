@@ -12,10 +12,10 @@
 
         <el-form :model="form" ref="form" status-icon :rules="rules">
             <el-form-item 
-            prop="oldPassword"
+            prop="old_password"
             label="Текущий пароль"
             >
-            <el-input placeholder="Ввидите текущий пароль" v-model="form.oldPassword" show-password autocomplete="off"></el-input>
+            <el-input placeholder="Ввидите текущий пароль" v-model="form.old_password" show-password autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item 
             prop="password"
@@ -31,8 +31,8 @@
             </el-form-item>   
            
             <span  class="dialog-footer">
-                <el-button @click="dialogVisible = false">Выход</el-button>
                 <el-button type="primary" 
+                :disabled="disabled"
                 @click="changePassword"
                 >Сохранить</el-button>
             </span>
@@ -57,20 +57,25 @@ export default {
         }
     };
     var validatePass2 = (rule, value, callback) => {
+        
         if (value === '') {
+        this.disabled=true    
         callback(new Error('Введите пароль повторно'));
         } else if (value !== this.form.password) {
+        this.disabled=true
         callback(new Error('Введённый пароль не совпадает!'));
         } else {
+        this.disabled=false
         callback();
         }
     };
     return{
+        disabled:true,
         dialogVisible: false,
         form: {
         password: '',
         password2: '',
-        oldPassword:'',
+        old_password:'',
         },
         rules: {
         password: [
@@ -91,7 +96,6 @@ export default {
       async changePassword() {
           try{
             let data = await this.$axios.patch(`/change_password/backend/change_password/${this.$auth.user.id}/`, this.form)
-          console.log(data)
           this.$message({
             message: 'сохранено',
             showClose: true,
@@ -100,6 +104,7 @@ export default {
         });
         await this.$auth.fetchUser()
           }catch(error){
+              console.log(error)
               this.parseError(error)
             this.$message({
             message: 'Страрый пароль не подходит',
@@ -114,12 +119,12 @@ export default {
        * @param error
        */
       parseError(error){
-        this.$message({
-            message: 'Произошла ошибка сохранения. Попробуйте снова. Если данные не сохраняются обратитесь к менеджеру.',
-            showClose: true,
-            duration:4000,
-            type: 'error'
-        });
+        // this.$message({
+        //     message: 'Произошла ошибка сохранения. Попробуйте снова. Если данные не сохраняются обратитесь к менеджеру.',
+        //     showClose: true,
+        //     duration:4000,
+        //     type: 'error'
+        // });
       }
     }
 }

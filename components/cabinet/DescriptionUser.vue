@@ -37,7 +37,12 @@
             { message: 'Пожалуйста ваш телефон', trigger: 'blur' }
             ]"
             >
-                <el-input :disabled="!disableForm"  placeholder="Введите ваш телефон" v-model="form.phone_number" autocomplete="off"></el-input>
+                <el-input 
+                :disabled="!disableForm"  
+                v-mask="'+############'"
+                placeholder="+375(__)___-____" 
+                v-model="form.phone_number" autocomplete="off"
+                ></el-input>
             </el-form-item>
             <el-form-item
             label="Форма"
@@ -89,7 +94,11 @@
 </template>
 
 <script>
+import {mask} from 'vue-the-mask'
 export default {
+    directives: {mask},
+    components:{
+    },
     data() {
       return{
           disableForm:false,

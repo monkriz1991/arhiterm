@@ -24,11 +24,18 @@
 
 <script>
   export default {
+    mounted() {
+      if (process.browser){
+        window.addEventListener('resize', this.updateWidth);
+        this.updateWidth();
+      }
+    },
     props:['product_data','new_char'],
     data() {
       return {
         char_start:this.product_data[0],
-        tabPosition: 'left'
+        tabPosition: 'left',
+        width: 0,
       };
     },
     watch: {
@@ -38,9 +45,17 @@
     },
     methods:{
       showChar(idx){
-          console.log()
           this.show_char = !this.show_char
-      }
+      },
+      updateWidth() {
+        this.width = window.innerWidth;
+        if(this.width<=991){
+          this.tabPosition = 'top'
+        }else{
+          this.tabPosition = 'left'
+        }
+      },
     },
+
   };
 </script>

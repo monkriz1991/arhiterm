@@ -35,7 +35,9 @@
                             <span>{{item.product_data.name}}</span><b>/</b>
                             <span>на складе {{item.product_data.count}}</span>
                           <br>
-                          <el-badge style="margin-left: 40px;" v-for="(i,k) in item.product_data.filter_dict" :value="i.value" class="item">
+                          <el-badge style="margin-left: 40px;" 
+                          v-for="(i,k) in item.product_data.filter_dict" 
+                          :key="k"  :value="i.value" >
                             <el-button size="small">{{i.name}}</el-button>
                           </el-badge>
                         </div>
