@@ -174,8 +174,10 @@ export default {
           }
         },
         showArr(){
+          if (this.categoriesNested.child[0]!=undefined){
           for(let i in this.categoriesNested.child[0].filters){
               this.show[i] = this.categoriesNested.child[0].filters[i].id;   
+          }
           }
           this.show.push('manuf');    
           this.buttonDown = false    
