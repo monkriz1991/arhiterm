@@ -1,9 +1,16 @@
 <template>
-  <div>
+<div>
+<div  v-show="loading" v-loading="loading">
+</div>
+
+  <div
+  v-show="!loading"
+   >
     <Navbar />
     <nuxt />
     <Footer />
     <Upscroll/>
+  </div>
   </div>
 </template>
 
@@ -14,8 +21,17 @@ import Footer from '~/components/Footer.vue'
 import Upscroll from '~/components/Upscroll.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 export default ({
+    created(){
+
+  },
+    mounted() {
+      setTimeout(() => {
+        this.loading = false;
+      }, 2000);
+    },
   data() {
       return {
+        loading:true
       };
   },
   components:{

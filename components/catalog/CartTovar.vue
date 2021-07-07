@@ -1,5 +1,15 @@
 <template>
     <div class="catalog-list" v-loading="loading">
+        <div class="catalog-list-tags">
+            <el-tag
+            :key="tag"
+            v-for="tag in dynamicTags"
+            closable
+            :disable-transitions="false"
+            @close="handleClose(tag)">
+            {{tag}}
+            </el-tag>
+        </div>
         <el-row :gutter="20">
             <el-col
             :xs="24" :sm="12" :md="12" :lg="12" :xl="12"
@@ -84,6 +94,7 @@ export default {
     },
     data() {
         return {
+            dynamicTags: ['Tag 1', 'Tag 2', 'Tag 3'],
             loading: false,
             show:[],
             num: 1,
@@ -177,6 +188,9 @@ export default {
             return this.funChar = data
 
         },
+        handleClose(tag) {
+            this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+        },
         // updateData(){
         //     this.updatePriceAndCountInPage();
         // }
@@ -187,4 +201,5 @@ export default {
 .disabledLink{
     pointer-events: none;
 }
+
 </style>

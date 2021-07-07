@@ -385,6 +385,7 @@ header .contents {
     background: #333;
     float: left;
     width: 100%;
+    position: relative;
 }
 .index-desc-text{
     float: left;
@@ -1594,7 +1595,14 @@ body .navbar-user .navbar-user-item{
 .cat-filter-section{
 
 }
-
+.catalog-list-tags{
+    width: 100%;
+    margin: 0 0 5px;
+    padding: 0 10px;
+} 
+.catalog-list-tags>span{
+    margin: 0 10px 0 0;
+}
 @media (max-width: 1100px){
     .catalog-list-img{
         width: 170px;
@@ -1949,4 +1957,24 @@ body .navbar-user .navbar-user-item{
         width: 100px;
         height: 100px;
     }     
+    .catalog-list-tags {
+        margin: 0 0 10px;
+        padding: 0px 0px;
+    }
+    .catalog-list-tags .el-tag {
+        height: 26px;
+        line-height: 26px;
+        font-size: 9px;
+    }    
+}
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+.el-loading-mask {
+    position: fixed !important;
 }

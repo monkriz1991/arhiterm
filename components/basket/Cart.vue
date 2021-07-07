@@ -140,7 +140,6 @@ export default {
                     this.for_amount_none += this.cart_data[i].product[0].cost
                 }
             }
-            console.log(this.for_amount)
             this.for_amount = Math.floor(this.for_amount*100)/100
             this.for_amount_none = Math.floor(this.for_amount_none*100)/100
             

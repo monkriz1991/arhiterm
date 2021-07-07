@@ -1,7 +1,28 @@
 <template>
-    <div class="container">
+    <div 
+    class="container">
         <Breadcrumb/>
-        <Sidebar @updateData="updateData" />
+        <div v-if="adaptivSidebar">
+          <Sidebar @updateData="updateData" />
+        </div>
+        <el-drawer
+        v-else
+        class="darwer-catalog"
+        :visible.sync="drawer"
+        :direction="direction"
+        :with-header="true">
+          <Sidebar @updateData="updateData" />
+        </el-drawer>
+
+        <el-button 
+        v-if="!adaptivSidebar" 
+        @click="drawer = true" 
+        class="drawer-button"
+        icon="el-icon-finished"
+        size="small"
+        >
+          Фильтры
+        </el-button>
         <CartTovar ref="CartTovar" />
         <Paginated @changePage="updateData"/>
 
@@ -17,6 +38,15 @@ import CartTovar from '~/components/catalog/CartTovar.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Paginated from '~/components/catalog/Paginated.vue'
 export default {
+  created(){
+    //this.loading=true
+  },
+      mounted() {
+        if (process.browser){                 
+          window.addEventListener('resize', this.updateWidth);  
+          this.updateWidth()        
+        }
+    },
     components:{
         Sidebar,
         CartTovar,
@@ -51,6 +81,11 @@ export default {
     },
     data() {
         return {
+          adaptivSidebar:true,
+          drawer: false,
+          direction: 'ltr',
+          width:0,
+          
         }
     },
     watch:{
@@ -91,10 +126,39 @@ export default {
       },
       async sendQuery(parametrs){
         await this.$store.dispatch('product/getProductList',parametrs);
-      }
-    },
-    mounted(){
-
+      },
+        updateWidth() {
+          this.width = window.innerWidth;
+          if(window.innerWidth>991){
+              this.adaptivSidebar = true
+          }else{
+            this.adaptivSidebar = false
+            
+          }
+        },
     },
 }
 </script>
+<style>
+.darwer-catalog .el-drawer{
+  width: 80% !important;
+}
+.darwer-catalog .el-drawer__body{
+    overflow: auto;
+    height: 100%;
+    padding: 0 20px;
+}
+.darwer-catalog .cat-filter-title{
+  display: none;
+}
+.darwer-catalog .cat-filter .el-checkbox-group .el-checkbox {
+    margin: 0 0 12px;
+}
+.darwer-catalog .el-drawer__header {
+    margin-bottom: 15px;
+    padding: 15px 20px 0;
+}
+.drawer-button{
+  margin:0 0 15px;
+}
+</style>
