@@ -27,7 +27,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/element-ui',
-    '~/plugins/url-change.js'
+    '~/plugins/url-change.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -38,7 +38,17 @@ export default {
     // https://go.nuxtjs.dev/eslint
     //'@nuxtjs/eslint-module'
     '@nuxtjs/pwa',
+    '@nuxtjs/fontawesome',
   ],
+
+  fontawesome:{
+    component:'fa',
+    icons:{
+      solid:true,
+      brands:true,
+      pharmacy:true,
+    }
+  },
   pwa: {
     icon: {
       /* icon options */
@@ -100,7 +110,6 @@ export default {
       logout: '/'
     }
   },
-
 
 
 }

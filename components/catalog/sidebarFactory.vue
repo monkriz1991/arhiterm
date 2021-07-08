@@ -3,35 +3,35 @@
         <div class="cat-filter">
             <!-- <h3>{{categoriesNested.name}}</h3> -->
             <ul
-            v-for="category in categoriesNested"
-            :key="category.id"
+            v-for="(category,idx)  in categoriesNested"
+            :key="idx"
             >
                 <li class="cat-filter-title">
-                    {{ category.name }}
+                    <!-- {{ category.name }} -->
                 </li>
-              <ul
-              v-for="cat in category.child"
-              :key="cat.id"
-              >
-                <li class="cat-filter-title">
-                    {{ cat.name }}
-                </li>
-                <el-checkbox-group v-model="checkList"
-                v-for="filters in cat.filters"
-                :key="filters.id"
+                <ul
+                v-for="(cat,idx)  in category.child"
+                :key="idx"
                 >
-                   <label class="cat-filter-check">
-                       <span>{{filters.name}}</span>
-                    </label>
-                    <el-checkbox
-                    v-for="checkbox in filters.filter_value"
-                    :key="checkbox.id"
-                    :label="checkbox.id"
-                    @change="checkFil()"
-                    >{{checkbox.value}}
-                    </el-checkbox>
-                </el-checkbox-group>
-            </ul>
+                  <li class="cat-filter-title">
+                      <!-- {{ cat.name }} -->
+                  </li>
+                  <el-checkbox-group v-model="checkList"
+                  v-for="filters in cat.filters"
+                  :key="filters.id"
+                  >
+                    <label class="cat-filter-check">
+                        <span>{{filters.name}}</span>
+                      </label>
+                      <el-checkbox
+                      v-for="checkbox in filters.filter_value"
+                      :key="checkbox.id"
+                      :label="checkbox.id"
+                      @change="checkFil()"
+                      >{{checkbox.value}}
+                      </el-checkbox>
+                  </el-checkbox-group>
+              </ul>
             </ul>
         </div>
     </div>
@@ -41,26 +41,26 @@
 import {mapGetters} from "vuex";
 
 export default {
-  name: "sidebarFactory",
-  props:[],
+  //name: "sidebarFactory",
+  props:['categoriesNested'],
   data(){
     return{
-            checkList:[],
-            checkFilId:[],
-            checkListManuf:[],
+      checkList:[],
+      checkFilId:[],
+      checkListManuf:[],
     }
   },
   computed:{
-        ...mapGetters({
-            categoriesNested: 'category/categoryNestedFactory',
-        })
+        // ...mapGetters({
+        //   categoriesNested: 'category/categoryNestedFactory',
+        // })
     },
   beforeRouteUpdate(to,from,next){
 
   },
    watch:{
       $route (to, from){
-      console.log(this.checkList,'mount')
+      //console.log(this.checkList,'mount')
       if(to.query.card_filter!==undefined) {
         this.checkList = JSON.parse(decodeURI(to.query.card_filter))
       }else{

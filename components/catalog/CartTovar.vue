@@ -22,6 +22,7 @@
                         fit="contain"
                         lazy
                         >
+                        
                         </el-image>
                         <div
                         v-show="price[idx]"
@@ -84,6 +85,7 @@ import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
 import CartTovarChar from '~/components/catalog/CartTovarChar.vue'
 import {mapGetters,mapActions} from 'vuex'
 export default {
+    props:['productsList'],
     beforeCreate(){
 
         //this.hidePreload()
@@ -126,8 +128,7 @@ export default {
     },
     computed:{
         ...mapGetters({
-            productsList: 'product/productList',
-            statusLoading: 'product/productLoading'
+           // productsList: 'product/productList',
         }),
     },
     watch:{

@@ -1,9 +1,13 @@
 <template>
     <div 
     class="container">
+    <!-- <fa :icon="['fas', 'band-aid']"/> -->
         <Breadcrumb/>
         <div v-if="adaptivSidebar">
-          <Sidebar @updateData="updateData" />
+          <Sidebar 
+          @updateData="updateData" 
+          :categoriesNested.sync="categoriesNested"
+          :categoryManuf.sync="categoryManuf" />
         </div>
         <el-drawer
         v-else
@@ -11,7 +15,10 @@
         :visible.sync="drawer"
         :direction="direction"
         :with-header="true">
-          <Sidebar @updateData="updateData" />
+          <Sidebar 
+          @updateData="updateData"
+          :categoriesNested.sync="categoriesNested"
+          :categoryManuf.sync="categoryManuf" />
         </el-drawer>
 
         <el-button 
@@ -23,7 +30,7 @@
         >
           Фильтры
         </el-button>
-        <CartTovar ref="CartTovar" />
+        <CartTovar ref="CartTovar" :productsList.sync="productsList"/>
         <Paginated @changePage="updateData"/>
 
     </div>
@@ -38,14 +45,14 @@ import CartTovar from '~/components/catalog/CartTovar.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Paginated from '~/components/catalog/Paginated.vue'
 export default {
-  created(){
-    //this.loading=true
-  },
-      mounted() {
-        if (process.browser){                 
-          window.addEventListener('resize', this.updateWidth);  
-          this.updateWidth()        
-        }
+    created(){
+      //this.loading=true
+    },
+    mounted() {
+      if (process.browser){                 
+        window.addEventListener('resize', this.updateWidth);  
+        this.updateWidth()        
+      }
     },
     components:{
         Sidebar,
@@ -68,9 +75,10 @@ export default {
     try {
 
       parametrs['cat'] = params.catalog;
-        await app.store.dispatch('category/getCategoryNested',params.catalog)
-        await app.store.dispatch('product/getProductList',parametrs)
-        await app.store.dispatch('category/getCategoryManuf',params.catalog)
+      let categoriesNested =  await app.store.dispatch('category/getCategoryNested',params.catalog)
+      let productsList =  await app.store.dispatch('product/getProductList',parametrs)
+      let categoryManuf = await app.store.dispatch('category/getCategoryManuf',params.catalog)
+      return{categoriesNested,productsList,categoryManuf}
     } catch (err) {
         console.log(err)
         return error({
@@ -125,7 +133,7 @@ export default {
         this.sendQuery(parametrs);
       },
       async sendQuery(parametrs){
-        await this.$store.dispatch('product/getProductList',parametrs);
+        this.productsList = await this.$store.dispatch('product/getProductList',parametrs);
       },
         updateWidth() {
           this.width = window.innerWidth;
@@ -140,25 +148,7 @@ export default {
 }
 </script>
 <style>
-.darwer-catalog .el-drawer{
-  width: 80% !important;
-}
-.darwer-catalog .el-drawer__body{
-    overflow: auto;
-    height: 100%;
-    padding: 0 20px;
-}
-.darwer-catalog .cat-filter-title{
-  display: none;
-}
-.darwer-catalog .cat-filter .el-checkbox-group .el-checkbox {
-    margin: 0 0 12px;
-}
-.darwer-catalog .el-drawer__header {
-    margin-bottom: 15px;
-    padding: 15px 20px 0;
-}
 .drawer-button{
-  margin:0 0 15px;
+margin:0 0 15px;
 }
 </style>

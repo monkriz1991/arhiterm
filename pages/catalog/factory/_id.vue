@@ -1,8 +1,33 @@
 <template>
     <div class="container">
         <Breadcrumb/>
-        <Sidebar @updateData="updateData" />
-        <CartTovar ref="CartTovar" />
+        <div v-if="adaptivSidebar">
+        <Sidebar 
+        @updateData="updateData" 
+        :categoriesNested.sync="categoriesNested"
+        />
+        </div>
+        <el-drawer
+        v-else
+        class="darwer-catalog"
+        :visible.sync="drawer"
+        :direction="direction"
+        :with-header="true">
+          <Sidebar 
+          @updateData="updateData"
+          :categoriesNested.sync="categoriesNested"
+           />
+        </el-drawer>
+        <el-button 
+        v-if="!adaptivSidebar" 
+        @click="drawer = true" 
+        class="drawer-button"
+        icon="el-icon-finished"
+        size="small"
+        >
+          Фильтры
+        </el-button>
+        <CartTovar ref="CartTovar" :productsList.sync="productsList" />
         <Paginated @changePage="updateData"/>
 
     </div>
@@ -23,6 +48,12 @@ export default {
         Breadcrumb,
         Paginated
     },
+    mounted() {
+      if (process.browser){                 
+        window.addEventListener('resize', this.updateWidth);  
+        this.updateWidth()        
+      }
+    },
     async asyncData ({ app, params, route, error }) {
       let parametrs = {};
       app.$UpdsaveArr(route)
@@ -33,12 +64,16 @@ export default {
           parametrs['page'] = route.query['page'];
         }
       parametrs['manuf'] = params.id;
-        await app.store.dispatch('category/getCategoryNestedFactory',params.id)
-        await app.store.dispatch('product/getProductListManufacturer',parametrs)
-
+       let categoriesNested = await app.store.dispatch('category/getCategoryNestedFactory',params.id)
+       let productsList = await app.store.dispatch('product/getProductListManufacturer',parametrs)
+     return{categoriesNested,productsList}
     },
     data() {
         return {
+          adaptivSidebar:true,
+          drawer: false,
+          direction: 'ltr',
+          width:0,
         }
     },
     watch:{
@@ -73,12 +108,23 @@ export default {
       },
       async sendQuery(parametrs){
          if (parametrs['manuf']!==undefined){
-           await this.$store.dispatch('product/getProductListManufacturer',parametrs);
+          this.productsList = await this.$store.dispatch('product/getProductListManufacturer',parametrs);
          }
-      }
-    },
-    mounted(){
-
+      },
+      updateWidth() {
+        this.width = window.innerWidth;
+        if(window.innerWidth>991){
+            this.adaptivSidebar = true
+        }else{
+          this.adaptivSidebar = false
+          
+        }
+      },
     },
 }
 </script>
+<style>
+.drawer-button{
+margin:0 0 15px;
+}
+</style>

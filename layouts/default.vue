@@ -1,16 +1,17 @@
 <template>
-<div>
-<div  v-show="loading" v-loading="loading">
-</div>
+  <div>
+    <div 
+     v-loading="loading">
+    </div>
 
-  <div
-  v-show="!loading"
-   >
-    <Navbar />
-    <nuxt />
-    <Footer />
-    <Upscroll/>
-  </div>
+    <div
+    :class="{ loading_lay: loading }"
+    >
+      <Navbar />
+      <nuxt />
+      <Footer />
+      <Upscroll/>
+    </div>
   </div>
 </template>
 
@@ -98,5 +99,9 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+.loading_lay{
+  opacity:0;
+  visibility: hidden;
 }
 </style>
