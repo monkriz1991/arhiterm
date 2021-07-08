@@ -105,7 +105,11 @@ export default {
       logout: '/'
     }
   },
-
+cookie: {
+            options: {
+                sameSite: 'lax',
+            },
+        },
 
 
 }
