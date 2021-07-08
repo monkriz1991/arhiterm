@@ -96,7 +96,7 @@ export default {
     },
     data() {
         return {
-            dynamicTags: ['Tag 1', 'Tag 2', 'Tag 3'],
+            dynamicTags: [],
             loading: false,
             show:[],
             num: 1,
@@ -251,7 +251,7 @@ export default {
           if(to.query.manuf!==undefined) {
         let checkListManuf = JSON.parse(decodeURI(to.query.manuf))
 
-          this.checkListManuf =  this.parseCheckboxes(to,this.ListManuf.results,'manuf')
+          this.checkListManuf =  this.parseCheckboxes(to,this.categoryManuf.results,'manuf')
       }else{
         this.checkListManuf = []
         }
