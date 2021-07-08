@@ -1,5 +1,5 @@
 <template>
-    <div 
+    <div
     class="container">
     <!-- <fa :icon="['fas', 'band-aid']"/> -->
         <Breadcrumb/>
@@ -21,16 +21,19 @@
           :categoryManuf.sync="categoryManuf" />
         </el-drawer>
 
-        <el-button 
-        v-if="!adaptivSidebar" 
-        @click="drawer = true" 
+        <el-button
+        v-if="!adaptivSidebar"
+        @click="drawer = true"
         class="drawer-button"
         icon="el-icon-finished"
         size="small"
         >
           Фильтры
         </el-button>
-        <CartTovar ref="CartTovar" :productsList.sync="productsList"/>
+        <CartTovar ref="CartTovar" :productsList.sync="productsList"
+        :categoriesNested.sync="categoriesNested"
+        :categoryManuf.sync="categoryManuf" 
+        />
         <Paginated @changePage="updateData"/>
 
     </div>
@@ -45,20 +48,20 @@ import CartTovar from '~/components/catalog/CartTovar.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Paginated from '~/components/catalog/Paginated.vue'
 export default {
-    created(){
-      //this.loading=true
-    },
-    mounted() {
-      if (process.browser){                 
-        window.addEventListener('resize', this.updateWidth);  
-        this.updateWidth()        
-      }
+  created(){
+    //this.loading=true
+  },
+      mounted() {
+        if (process.browser){
+          window.addEventListener('resize', this.updateWidth);
+          this.updateWidth()
+        }
     },
     components:{
         Sidebar,
         CartTovar,
         Breadcrumb,
-        Paginated
+        Paginated,
     },
     async asyncData ({ app, params, route, error }) {
       let parametrs = {};
@@ -93,7 +96,7 @@ export default {
           drawer: false,
           direction: 'ltr',
           width:0,
-          
+
         }
     },
     watch:{
@@ -129,7 +132,6 @@ export default {
           parametrs['page'] = this.$route.query['page'];
         }
         parametrs['cat'] = this.$route.params.catalog;
-        console.log(parametrs)
         this.sendQuery(parametrs);
       },
       async sendQuery(parametrs){
@@ -141,7 +143,7 @@ export default {
               this.adaptivSidebar = true
           }else{
             this.adaptivSidebar = false
-            
+
           }
         },
     },
