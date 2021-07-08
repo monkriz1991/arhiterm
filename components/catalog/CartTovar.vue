@@ -105,6 +105,9 @@ export default {
             oneprice:[],
             lastprice:[],
             funChar:[],
+            checkListManuf:[],
+            checkList:[],
+            cats:[],
 
         };
     },
@@ -113,7 +116,7 @@ export default {
         CartTovarChar,
     },
     mounted(){
-        //this.hidePreload()
+        this.parser(this.$route)
     },
     /**
      * хук перед маннтированием страница, но после создания
@@ -127,15 +130,30 @@ export default {
     computed:{
         ...mapGetters({
             productsList: 'product/productList',
-            statusLoading: 'product/productLoading'
+            statusLoading: 'product/productLoading',
+            ListManuf: 'category/categoryManuf',
+            listCat: 'category/categoryNested'
         }),
     },
     watch:{
         productsList(){
             this.updatePriceAndCountInPage()
-        }
+        },
+      $route (to, from){
+        this.parser(to)
+      }
     },
     methods : {
+      parseCheckboxes(to,cats, key){
+        console.log(cats)
+         let checkList = JSON.parse(decodeURI(to.query[key]))
+        let newkey = 'name'
+        if (key ==='card_filter'){
+            newkey = 'value'
+        }
+        this.cats = cats
+         return  cats.map(function(x){if(checkList.includes(x.id)){return x[newkey]}}).filter(function( element ) {return element !== undefined;})
+      },
         hidePreload(item){
             setTimeout(() => {
             this.loading=!this.loading;
@@ -190,10 +208,69 @@ export default {
         },
         handleClose(tag) {
             this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+          let a = this.ListManuf.results.find(x=>x.name===tag)
+          if(a!==undefined){
+            let data2 = JSON.parse(decodeURI(this.$route.query.manuf))
+            let res = data2.splice(JSON.parse(decodeURI(this.$route.query.manuf)).indexOf(a.id),1)
+              if(data2.length){
+                this.addParam('manuf',JSON.stringify(data2));
+              }else{
+                this.delParam('manuf');
+              }
+          }
+
+          let b = this.cats.find(x=>x.value===tag)
+          if(b!==undefined){
+            let data = JSON.parse(decodeURI(this.$route.query.card_filter))
+            let res1 = data.splice(JSON.parse(decodeURI(this.$route.query.card_filter)).indexOf(b.id),1)
+              if(data.length){
+                this.addParam('card_filter',JSON.stringify(data));
+              }else{
+                this.delParam('card_filter');
+              }
+          }
         },
-        // updateData(){
-        //     this.updatePriceAndCountInPage();
-        // }
+        addParam(key,val){
+        let params = JSON.parse(JSON.stringify(this.$route.query));
+        params[key] = val;
+        this.setUrl(params)
+    },
+    delParam(key){
+        let params = JSON.parse(JSON.stringify(this.$route.query));
+        delete params[key];
+        this.setUrl(params)
+    },
+    setUrl(params){
+          if(this.$route.params.catalog!==undefined){
+              this.$router.replace({path:'/catalog/'+this.$route.params.catalog,'query':params});
+          }
+          if(this.$route.params.id!==undefined){
+              this.$router.replace({path:'/catalog/factory/'+this.$route.params.id,'query':params});
+          }
+    },
+      parser(to){
+          if(to.query.manuf!==undefined) {
+        let checkListManuf = JSON.parse(decodeURI(to.query.manuf))
+
+          this.checkListManuf =  this.parseCheckboxes(to,this.ListManuf.results,'manuf')
+      }else{
+        this.checkListManuf = []
+        }
+      if(to.query.card_filter!==undefined) {
+        let cats = []
+        for(let a of this.listCat.child){
+          for(let i of a.filters){
+              for(let j of i.filter_value){
+                cats.push(j)
+              }
+          }
+        }
+       this.checkList = this.parseCheckboxes(to,cats,'card_filter')
+      }else{
+        this.checkList = []
+      }
+      this.dynamicTags = this.checkList.concat(this.checkListManuf)
+      }
     }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div 
+    <div
     class="container">
         <Breadcrumb/>
         <div v-if="adaptivSidebar">
@@ -14,9 +14,9 @@
           <Sidebar @updateData="updateData" />
         </el-drawer>
 
-        <el-button 
-        v-if="!adaptivSidebar" 
-        @click="drawer = true" 
+        <el-button
+        v-if="!adaptivSidebar"
+        @click="drawer = true"
         class="drawer-button"
         icon="el-icon-finished"
         size="small"
@@ -42,16 +42,16 @@ export default {
     //this.loading=true
   },
       mounted() {
-        if (process.browser){                 
-          window.addEventListener('resize', this.updateWidth);  
-          this.updateWidth()        
+        if (process.browser){
+          window.addEventListener('resize', this.updateWidth);
+          this.updateWidth()
         }
     },
     components:{
         Sidebar,
         CartTovar,
         Breadcrumb,
-        Paginated
+        Paginated,
     },
     async asyncData ({ app, params, route, error }) {
       let parametrs = {};
@@ -85,7 +85,7 @@ export default {
           drawer: false,
           direction: 'ltr',
           width:0,
-          
+
         }
     },
     watch:{
@@ -121,7 +121,6 @@ export default {
           parametrs['page'] = this.$route.query['page'];
         }
         parametrs['cat'] = this.$route.params.catalog;
-        console.log(parametrs)
         this.sendQuery(parametrs);
       },
       async sendQuery(parametrs){
@@ -133,7 +132,7 @@ export default {
               this.adaptivSidebar = true
           }else{
             this.adaptivSidebar = false
-            
+
           }
         },
     },

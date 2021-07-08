@@ -93,6 +93,11 @@ export default {
         tokenType: '',
       },
     },
+    cookie: {
+            options: {
+                sameSite: 'lax',
+            },
+        },
     redirect: {
       login: '/',
       home: '/cabinet',
@@ -100,7 +105,11 @@ export default {
       logout: '/'
     }
   },
-
+cookie: {
+            options: {
+                sameSite: 'lax',
+            },
+        },
 
 
 }
