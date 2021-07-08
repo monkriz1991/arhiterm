@@ -18,7 +18,7 @@
           >
             <el-button slot="reference"
               class="header-cat"
-              @click="drawer = true"
+              @click="drawerMeny = true"
             >Каталог
             <i class="el-icon-menu"></i>
             </el-button>
@@ -60,7 +60,26 @@
             Монтажники
           </nuxt-link>
             <div v-if="$auth.loggedIn">
-              <Menyuser/>
+
+              <div v-if="adaptivSidebar">
+                <Menyuser/>
+              </div>
+              <el-drawer
+              v-else
+              class="darwer-meny"
+              :visible.sync="drawer"
+              :direction="direction"
+              :with-header="true">
+                <MenyuserMobail :visible.sync="drawer" />
+              </el-drawer>
+                <el-button 
+                v-if="!adaptivSidebar" 
+                @click="drawer = true" 
+                class="drawer-button-meny"
+                icon="el-icon-more"
+                size="small"
+                >
+                </el-button>
             </div>
             <div v-else>
             <no-ssr>
@@ -70,6 +89,9 @@
             <no-ssr>
               <BasketModal />
             </no-ssr>
+            <div class="top-phone">
+              <i class="el-icon-phone"></i>
+            </div>
         </div>
       </div>
     </div>
@@ -80,17 +102,24 @@
 import ModalLogout from '~/components/aut/ModalLogout.vue'
 import BasketModal from '~/components/BasketModal.vue'
 import Menyuser from '~/components/aut/Menyuser.vue'
+import MenyuserMobail from '~/components/aut/MenyuserMobail.vue'
 import {mapGetters,mapActions} from 'vuex'
   export default {
     components:{
       ModalLogout,
       BasketModal,
       Menyuser,
+      MenyuserMobail,
     },
     data() {
       return {
+        drawerMeny:false,
         visible: false,
         visibleNav:true,
+        adaptivSidebar:true,
+        drawer: false,
+        direction: 'rtl',
+        width:0,
       };
     },
     computed:{
@@ -103,17 +132,42 @@ import {mapGetters,mapActions} from 'vuex'
       ...mapActions({
         getCategory:'category/getCategory',
         getManufacturer:'category/getManufacturer'
-      })
+      }),
+        updateWidth() {
+          this.width = window.innerWidth;
+          if(window.innerWidth>991){
+              this.adaptivSidebar = true
+          }else{
+            this.adaptivSidebar = false
+            
+          }
+        },
     },
     mounted(){
       this.getCategory(),
       this.getManufacturer()
+      if (process.browser){                 
+        window.addEventListener('resize', this.updateWidth);  
+        this.updateWidth()        
+      }
     },
 
 
   }
 </script>
 
-<style scoped>
+<style>
+.drawer-button-meny{
+  float: right;
+}
+.darwer-meny .el-drawer{
+  width: 100% !important;
+}
+.drawer-button-meny{
+  padding: 7px 12px;
+  margin: 0 0 0 5px;
+}
+.top-phone{
 
+}
 </style>

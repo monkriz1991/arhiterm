@@ -22,6 +22,7 @@
                         fit="contain"
                         lazy
                         >
+                        
                         </el-image>
                         <div
                         v-show="price[idx]"
@@ -84,6 +85,7 @@ import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
 import CartTovarChar from '~/components/catalog/CartTovarChar.vue'
 import {mapGetters,mapActions} from 'vuex'
 export default {
+    props:['productsList','categoriesNested','categoryManuf'],
     beforeCreate(){
 
         //this.hidePreload()
@@ -94,7 +96,7 @@ export default {
     },
     data() {
         return {
-            dynamicTags: ['Tag 1', 'Tag 2', 'Tag 3'],
+            dynamicTags: [],
             loading: false,
             show:[],
             num: 1,
@@ -129,10 +131,7 @@ export default {
     },
     computed:{
         ...mapGetters({
-            productsList: 'product/productList',
-            statusLoading: 'product/productLoading',
-            ListManuf: 'category/categoryManuf',
-            listCat: 'category/categoryNested'
+
         }),
     },
     watch:{
@@ -208,7 +207,7 @@ export default {
         },
         handleClose(tag) {
             this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
-          let a = this.ListManuf.results.find(x=>x.name===tag)
+          let a = this.categoryManuf.results.find(x=>x.name===tag)
           if(a!==undefined){
             let data2 = JSON.parse(decodeURI(this.$route.query.manuf))
             let res = data2.splice(JSON.parse(decodeURI(this.$route.query.manuf)).indexOf(a.id),1)
@@ -252,13 +251,13 @@ export default {
           if(to.query.manuf!==undefined) {
         let checkListManuf = JSON.parse(decodeURI(to.query.manuf))
 
-          this.checkListManuf =  this.parseCheckboxes(to,this.ListManuf.results,'manuf')
+          this.checkListManuf =  this.parseCheckboxes(to,this.categoryManuf.results,'manuf')
       }else{
         this.checkListManuf = []
         }
       if(to.query.card_filter!==undefined) {
         let cats = []
-        for(let a of this.listCat.child){
+        for(let a of this.categoriesNested.child){
           for(let i of a.filters){
               for(let j of i.filter_value){
                 cats.push(j)

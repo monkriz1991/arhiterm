@@ -29,6 +29,25 @@ body .el-button{
 img {
     vertical-align: middle;
 }
+.darwer-catalog .el-drawer{
+    width: 80% !important;
+  }
+.darwer-catalog .el-drawer__body{
+    overflow: auto;
+    height: 100%;
+    padding: 0 20px;
+}
+.darwer-catalog .cat-filter-title{
+display: none;
+}
+.darwer-catalog .cat-filter .el-checkbox-group .el-checkbox {
+    margin: 0 0 12px;
+}
+.darwer-catalog .el-drawer__header {
+    margin-bottom: 15px;
+    padding: 15px 20px 0;
+}
+
 .link-navbar{
     float: left;
     text-decoration: none;
@@ -226,7 +245,7 @@ header .contents {
 }
 .header-basket{
     float: right;
-    margin: 0 30px;
+    margin: 0 20px 0 30px;
 }
 .header-basket>button{
     font-size: 23px;
@@ -1070,7 +1089,7 @@ body .el-dialog__body{
 }
 
 .basket-tov-cost>strong{
-    font-size: 16px;
+    font-size: 15px;
 }
 .basket-tov-cost>strong>span{
     font-size: 10px;
@@ -1603,6 +1622,14 @@ body .navbar-user .navbar-user-item{
 .catalog-list-tags>span{
     margin: 0 10px 0 0;
 }
+.top-phone {
+    float: right;
+    margin: 0 3px;
+    font-size: 20px;
+    padding: 0px 5px;
+    color: #409EFF;
+    cursor: pointer;
+}
 @media (max-width: 1100px){
     .catalog-list-img{
         width: 170px;
@@ -1711,14 +1738,16 @@ body .navbar-user .navbar-user-item{
     }
     .logotip img {
         max-height: 100%;
-        width: 80px;
+        width: 96px;
     }
     .header-nav{
         margin: 0 0 0 10px;
     }
     .header-nav .header-cat {
-        padding: 8px 10px;
-        font-size: 11px;
+        padding: 8px 4px;
+        font-size: 13px;
+        background: none;
+        border: none;
     }   
     .header-logout>button {
         border: none;
@@ -1742,16 +1771,22 @@ body .navbar-user .navbar-user-item{
         margin-left: 5px;
     }
     .link-navbar {
-        /* display: none; */
-        width: 12px;
+        display: none;
+        /* width: 12px;
         margin: 0px 0px 0 2px;
         float: left;
         overflow: hidden;
-        padding: 0;
+        padding: 0; */
     }
-    .header-basket {
+    .header-basket,.top-phone {
         float: right;
-        margin: 0 10px;
+        margin: 0 3px;
+        font-size: 20px;
+        padding: 0px 5px;
+        color: #409EFF;
+    }
+    .header-basket,.top-phone i{
+
     }
     footer {
         margin: 60px 0 0 0;
@@ -1821,10 +1856,10 @@ body .navbar-user .navbar-user-item{
         font-size: 11px !important;
     }
     .header-basket .el-dialog__body {
-        padding: 10px 10px 20px;
+        padding: 10px 10px 20px !important;
     }
     .el-dialog__header {
-        padding: 20px 10px 10px;
+        padding: 20px 10px 10px !important;
     }
     .el-dialog__title {
         font-size: 15px;
@@ -1852,12 +1887,12 @@ body .navbar-user .navbar-user-item{
     }
     .basket-tov-cost {
         padding: 15px 0px 0 0px;
-        width: 50%;
+        width: 48%;
         height: auto;
     }
     .basket-tov-calc {
         padding: 10px 0;
-        width: 50%;
+        width: 52%;
         justify-content: left;
         height: auto;
     }
@@ -1965,6 +2000,44 @@ body .navbar-user .navbar-user-item{
         height: 26px;
         line-height: 26px;
         font-size: 9px;
+    } 
+    .hooper{
+        touch-action: none;
+        -ms-touch-action: none;
+    }   
+    .header-nav-refresh {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        font-size: 30px;
+        cursor: pointer;
+        color: #ff5200;
+    }
+    .popover-nav {
+        left: 15px !important;
+        right: 15px !important;
+        box-shadow: 0 2px 12px 0 rgb(0 0 0 / 8%) !important;
+        border-top: 0px solid #e2e2e2 !important;
+        border-bottom: 0px solid #e2e2e2 !important;
+        border-radius: 5px !important;
+        padding: 10px 40px 10px 10px !important;
+        border-right: 0px solid #e2e2e2 !important;
+        border-left: 0px solid #e2e2e2 !important;
+    }
+    .el-dialog{
+        margin-top: 5vh !important;
+    }
+    .el-dialog .el-dialog__headerbtn{
+        top: 12px;
+        right: 12px;
+        font-size: 25px;
+    }
+    .el-dialog .el-input-number--mini .el-input__inner {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .el-dialog .el-dialog__footer {
+        padding: 10px 10px 15px;
     }    
 }
 .page-enter-active,

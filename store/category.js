@@ -47,15 +47,15 @@ export const actions = {
     async getCategoryNested ({ commit},id) {
         // await sleep(50)
         let category = await this.$axios.$get(`/catalog/categories/${id}/`);
+        
         commit('setCategoryNested', category)
         return category
     },
   async getCategoryNestedFactory ({ commit},id) {
         // await sleep(50)
         let category = await this.$axios.$get(`/catalog/categories/?manuf=${id}&limit=99999`);
-    console.log(category)
         commit('setCategoryNestedFactory', category.results)
-        return category
+        return category.results
     },
     async getCategoryManuf({ commit},id) {
         // await sleep(50)

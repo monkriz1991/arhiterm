@@ -1,16 +1,17 @@
 <template>
-  <div class="index-slider">
+  <div class="index-slider" >
     <el-carousel 
       :autoplay="false"
       height="350px"
       trigger="click"
     >
     <no-ssr>
-      <el-carousel-item 
+      <el-carousel-item  
         v-for="(item,idx) in slides" :key="idx"
+        
       >
-        <div class="slider-block">
-          <div class="slider-content">
+        <div class="slider-block" >
+          <div class="slider-content" >
             <h3>{{ item.title }}</h3>
             <p>{{ item.description }}</p>
           </div>
@@ -29,6 +30,8 @@
 <script>
 import { mapGetters,mapActions } from 'vuex'
 export default ({
+  components:{
+  },
     data() {
         return {
         }
@@ -42,7 +45,8 @@ export default ({
       this.getSlider()
     },
     methods:{
-      ...mapActions('main',['getSlider'])
+      ...mapActions('main',['getSlider']),
+      
     }
 })
 </script>

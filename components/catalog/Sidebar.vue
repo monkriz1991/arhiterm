@@ -45,6 +45,7 @@
 <script>
 import {mapActions,mapGetters} from 'vuex'
 export default {
+  props:['categoriesNested','categoryManuf'],
     created() {
       
     },
@@ -59,8 +60,8 @@ export default {
     },
     computed:{
         ...mapGetters({
-            categoriesNested: 'category/categoryNested',
-            categoryManuf: 'category/categoryManuf',
+           // categoriesNested: 'category/categoryNested',
+            //categoryManuf: 'category/categoryManuf',
         })
     },
     async mounted(){
