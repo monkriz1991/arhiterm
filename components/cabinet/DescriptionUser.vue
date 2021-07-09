@@ -1,6 +1,6 @@
 <template>
     <div class="profile-cab-right">
-        <h1 class="h1-user">{{$auth.user.first_name}}</h1>
+        <h1 class="h1-user">{{$auth.user!==null?$auth.user.first_name:''}}</h1>
         <el-form :model="form" :rules="rules" ref="form" class="form-user-cab">
             <el-form-item
             prop="username"
@@ -37,10 +37,10 @@
             { message: 'Пожалуйста ваш телефон', trigger: 'blur' }
             ]"
             >
-                <el-input 
-                :disabled="!disableForm"  
+                <el-input
+                :disabled="!disableForm"
                 v-mask="'+############'"
-                placeholder="+375(__)___-____" 
+                placeholder="+375(__)___-____"
                 v-model="form.phone_number" autocomplete="off"
                 ></el-input>
             </el-form-item>
@@ -103,14 +103,14 @@ export default {
       return{
           disableForm:false,
           form:{
-              first_name:this.$auth.user.first_name!=''?this.$auth.user.first_name:'',
-              last_name:this.$auth.user.last_name!=''?this.$auth.user.last_name:'',
-              username:this.$auth.user.username!=''?this.$auth.user.username:'',
-              email:this.$auth.user.username!=''?this.$auth.user.username:'',
-              phone_number:this.$auth.user.phone_number!=''?this.$auth.user.phone_number:'',
-              type_of_user:this.$auth.user.type_of_user?''+this.$auth.user.type_of_user:'',
-              company_name:this.$auth.user.company_name!=null?''+this.$auth.user.company_name:'',
-              legal_address:this.$auth.user.legal_address!=null?''+this.$auth.user.legal_address:'',
+              first_name:this.checkUser('first_name'),
+              last_name:this.checkUser('last_name'),
+              username:this.checkUser('username'),
+              email:this.checkUser('username'),
+              phone_number:this.checkUser('phone_number'),
+              type_of_user:this.checkUser('type_of_user'),
+              company_name:this.checkUser('company_name'),
+              legal_address:this.checkUser('legal_address'),
           },
           rules:{
 
@@ -118,6 +118,9 @@ export default {
       }
     },
     methods:{
+      checkUser(p){
+        return this.$auth.user!==null?this.$auth.user[p]:''
+      },
         editForm(){
             this.disableForm = !this.disableForm
         },
@@ -127,7 +130,7 @@ export default {
        */
       async saveForm() {
           try{
-            let data = await this.$axios.patch(`/users/mydata/${this.$auth.user.id}/`, this.form)
+            let data = await this.$axios.patch(`/users/mydata/${this.$auth.user!==null?this.$auth.user.id:''}/`, this.form)
           this.$message({
             message: 'сохранено',
             showClose: true,
