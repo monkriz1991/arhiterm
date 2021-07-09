@@ -3,11 +3,11 @@
         <el-upload
         class="avatar-uploader"
         :http-request="upload"
-        :action="`/users/mydata/${$auth.user.id}/`"
+        :action="`/users/mydata/${$auth.user!==null?$auth.user.id:''}/`"
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
         :before-upload="beforeAvatarUpload">
-        <img v-if="url" :src="url" class="avatar">
+        <img v-if="url" :src="url!==null?url:''" class="avatar">
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
     </div>
@@ -20,7 +20,7 @@ export default ({
     },
     data(){
         return{
-            url:this.$auth.user.img,
+            url:this.$auth.user!==null?this.$auth.user.img:'',
             imageUrl: '',
         }
     },
