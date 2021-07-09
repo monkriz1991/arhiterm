@@ -1618,9 +1618,13 @@ body .navbar-user .navbar-user-item{
     width: 100%;
     margin: 0 0 5px;
     padding: 0 10px;
+    min-height: 33px;
 } 
 .catalog-list-tags>span{
-    margin: 0 10px 0 0;
+    margin: 0 5px 5px 0;
+    height: 28px;
+    line-height: 28px;
+    font-size: 11px;
 }
 .top-phone {
     float: right;

@@ -30,10 +30,12 @@
         >
           Фильтры
         </el-button>
+        <transition >
         <CartTovar ref="CartTovar" :productsList.sync="productsList"
         :categoriesNested.sync="categoriesNested"
         :categoryManuf.sync="categoryManuf" 
         />
+        </transition>
         <Paginated @changePage="updateData"/>
 
     </div>

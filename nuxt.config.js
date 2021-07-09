@@ -46,7 +46,6 @@ export default {
     icons:{
       solid:true,
       brands:true,
-      pharmacy:true,
     }
   },
   pwa: {
@@ -81,7 +80,6 @@ export default {
     transpile: [/^element-ui/,'vee-validate/dist/rules'],
   },
 
-
   auth: {
     strategies: {
       local: {
@@ -104,10 +102,10 @@ export default {
       },
     },
     cookie: {
-            options: {
-                sameSite: 'lax',
-            },
-        },
+      options: {
+          sameSite: 'lax',
+      },
+    },
     redirect: {
       login: '/',
       home: '/cabinet',
