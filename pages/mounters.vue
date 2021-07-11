@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <Breadcrumb/>
-        <Sidebar/>
-        <Catalog :mounters="mounters"/>
+        <Sidebar @updateData="updData"/>
+        <Catalog :mounters.sync="mounters"/>
         <Paginated/>
     </div>
 </template>
@@ -15,7 +15,7 @@ import Paginated from '~/components/mounters/Paginated.vue'
 export default {
     async asyncData ({ app, params, route, error }) {
     try {
-        let mounters = await app.store.dispatch('mounters/getMountertList')
+        let mounters = await app.store.dispatch('mounters/getMountertList',route)
 
         return{mounters}
     } catch (err) {
@@ -25,7 +25,7 @@ export default {
             message: 'Товар не найдена или сервер не доступен'
         })
         }
-        
+
     },
     components:{
         Sidebar,
@@ -40,9 +40,12 @@ export default {
     computed:{
     },
     methods:{
+      async updData(){
+         let mounters = await this.$store.dispatch('mounters/getMountertList',this.$route)
+      }
     },
     mounted(){
-        
+
     },
 }
 </script>
