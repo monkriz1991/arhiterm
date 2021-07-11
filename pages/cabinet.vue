@@ -5,11 +5,13 @@
         <div class="profile-cab">
             <div class="profile-cab-left">
                 <Avatar/>
-                <ChangePassword/>
-                <el-button 
-                @click="logout"
-                icon="el-icon-arrow-left" size="small"
-                >Выход</el-button>
+                <div class="profile-cab-left-pass">
+                    <ChangePassword/>
+                    <el-button 
+                    @click="logout"
+                    icon="el-icon-arrow-left" size="small"
+                    >Выход</el-button>
+                </div>
             </div>
             <DescriptionUser/>
         </div>

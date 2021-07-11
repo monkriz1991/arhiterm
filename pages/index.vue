@@ -45,34 +45,4 @@ export default {
 </script>
 <style>
 
-.title {
-    display: block;
-    font-weight: 900;
-    font-size: 23px;
-    color: #35495e;
-    letter-spacing: 1px;
-    float: left;
-    margin: 20px 0 10px;
-    width: 100%;
-}
-.title-h2{
-    max-width: 430px;
-    font-size: 15px;
-    margin: 0px 0 60px;
-    float: left;
-    font-weight: 500;
-    line-height: 1.5;
-}
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-
 </style>

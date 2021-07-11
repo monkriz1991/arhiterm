@@ -1,8 +1,15 @@
 <template>
     <div class="header-logout">
-        <el-button @click="dialogFormVisible = true">
+        <el-button 
+        v-if="width>991"
+        @click="dialogFormVisible = true">
           Личный кабинет
           <i class="el-icon-user"></i>
+        </el-button>
+        <el-button 
+        v-else
+        icon="el-icon-user"
+        @click="dialogFormVisible = true">
         </el-button>
         <el-dialog title="Личный кабинет" :visible.sync="dialogFormVisible"  width="32%">
 
@@ -15,10 +22,6 @@
             </el-tab-pane>
             <el-tab-pane label="Восстановить пароль" name="secondFry">Восстановить пароль</el-tab-pane>
         </el-tabs>
-        <!-- <span slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible = false">Закрыть</el-button>
-            
-        </span> -->
         </el-dialog>
     </div>
 </template>
@@ -36,11 +39,27 @@ import Login from '~/components/aut/Login.vue'
       return {
         activeName: 'first',
         dialogFormVisible: false,
+        width:0,
       };
+    },
+    mounted(){
+      if (process.browser){                 
+        window.addEventListener('resize', this.updateWidth);  
+        this.updateWidth()        
+      }
     },
     methods: {
       handleClick(tab, event) {
         //console.log(tab, event);
+      },
+      updateWidth() {
+        this.width = window.innerWidth;
+        if(window.innerWidth>991){
+            this.adaptivSidebar = true
+        }else{
+          this.adaptivSidebar = false
+          
+        }
       },
     }
   };

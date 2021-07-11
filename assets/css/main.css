@@ -9,6 +9,7 @@ footer{
 }
 .hooper{
     height: auto !important;
+    margin: 20px 0 0;
 }
 body .el-button{
     font-size: 13px;
@@ -318,6 +319,7 @@ header .contents {
     flex-flow: column;
     height: 150px;
     justify-content: center;
+    padding: 0 0 0 15px;
 }
 .index-topcat-block>strong>span{
     width: 100%;
@@ -410,6 +412,7 @@ header .contents {
     float: left;
     width: 60%;
     color: #fff;
+    padding: 0 20px 0 0;
 }
 .index-desc-text h4{
     float: left;
@@ -523,7 +526,7 @@ width: 75%;
     margin: 0 0 10px;
 }
 .catalog-list-img{
-    height: 180px;
+    height: 185px;
     margin: 0 0 0px;
     width: 190px;
     float: left;
@@ -608,7 +611,7 @@ border: 1px solid #fff;
     position: absolute;
     top: -10px;
     color: #e11e1e;
-    margin: 0 0 0 55px;
+    margin: -5px 0 0 60px;
 }
 .catalog-list-block-discount>strong{
     font-size: 14px;
@@ -636,25 +639,24 @@ border: 1px solid #fff;
 .catalog-list-block-cost>span{
     font-size: 9px;
     font-weight: 600;
-    margin: 3px 0 0 2px;
+    margin: 5px 0 0 3px;
     float: left;
 }
 .catalog-list-block-button{
     float: right;
     position: absolute;
-    bottom: -10px;
-    left: -10px;
+    bottom: 0px;
+    left: 0px;
     z-index: 15;
     background: #fff;
     padding: 3px;
     border-radius: 50%;
-    /* transition: all .5s; */
 }
 .catalog-list-block-button button{
     font-size: 15px;
-    color: #fa9600 !important;
-    background: #fff2df !important;
-    border-color: #fff2df !important;
+    color: #ff870b !important;
+    background: #ffffff !important;
+    border-color: #ff870b !important;
 }
 .catalog-list-block-button button:hover{
     background: #fa9600 !important;
@@ -800,11 +802,16 @@ border: 1px solid #fff;
     float: left;
     width: 100%;
 }
+.cost-row{
+    margin-left: -5px;
+    margin-right: 0px;
+}
 .cost-product-input .el-radio{
-    margin-right: 5px !important;
-    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-left: 5px !important;
     margin: 0 0 5px;
     position: relative;
+    width: 23.5%;
 }
 .cost-product-amount{
     float: left;
@@ -883,7 +890,7 @@ border: 1px solid #fff;
     border-radius: 6px;
     left: 0px;
     right: 0px;
-    margin: 192px 0 0 0;
+    margin: 198px 0 0 0;
     box-shadow: 0px 6px 18px -13px #333;
 }
 .catalog-list-input .cost-product-input{
@@ -959,7 +966,7 @@ width: 100%;
 .cost-product-block .cost-product-price-catalog{
     width: auto;
     float: right;
-    margin: 4px 0 0 0;
+    margin: 0px 0 0 0;
 }
 .cost-product-block .cost-product-price-catalog span{
     font-size: 19px;
@@ -1628,11 +1635,131 @@ body .navbar-user .navbar-user-item{
 }
 .top-phone {
     float: right;
-    margin: 0 3px;
+    margin: 4px 3px;
+}
+.top-phone button{
     font-size: 20px;
-    padding: 0px 5px;
+    padding: 0px 0px;
     color: #409EFF;
-    cursor: pointer;
+    border: none;
+}
+.title {
+    display: block;
+    letter-spacing: 1px;
+    float: left;
+    margin: 20px 0 10px;
+    width: 100%;
+}
+.title h1{
+    font-weight: 900;
+    font-size: 23px;
+    color: #35495e;
+}
+.title-h2{
+    max-width: 430px;
+    font-size: 15px;
+    margin: 0px 0 50px;
+    float: left;
+    font-weight: 500;
+    line-height: 1.5;
+    width: 100%;
+}
+.subtitle {
+  font-weight: 300;
+  font-size: 42px;
+  color: #526488;
+  word-spacing: 5px;
+  padding-bottom: 15px;
+}
+
+.links {
+  padding-top: 15px;
+}
+.cab-user-colaps{
+    float: left;
+    width: 100%;
+}
+.cab-block-basket{
+    float: left;
+    width: 100%;
+    margin: 0 0 5px;
+}
+.cab-block-basket-img{
+    float: left;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.cab-block-basket-img img{
+    max-height: 100%;
+    max-width: 100%;
+}
+.cab-block-basket-left{
+    margin: 0 0 0 90px;
+}
+.cab-block-basket-left>strong{
+    float: left;
+    width: 100%;
+    margin: 0 0 5px;
+    height: 26px;
+    overflow: hidden;
+    line-height: 1.2;
+    font-weight: 600;
+    font-size: 12px;
+}
+.basket-left-item{
+    float: left;
+    margin: 0 20px 2px 0;
+    font-weight: 500;
+    width: 100%;
+}
+.basket-left-item>span{
+    margin: 0 10px 0 0;
+}
+.basket-left-item>span>strong{
+font-size: 13px;
+}
+.basket-left-item>span>strong>span{
+    font-size: 12px;
+    margin: 0 0 0 1px;
+}
+.basket-left-item b{
+    font-size: 9px;
+    margin: 0 10px 0 0;
+    opacity: 0.4;
+}
+.cab-block-basket-templ{
+    float: left;
+}
+.cab-block-basket-templ>span{
+    font-size: 13px;
+    margin: 0px 0px 0 0px;
+    float: left;
+}
+.cab-block-basket-templ>span>strong{
+    margin: 0 0 0 4px;
+    font-size: 15px;
+}
+.cab-block-basket-templ>span>strong>span{
+    font-size: 12px;
+    margin: 0 0 0 2px;
+}
+.basket-templ-status{
+    float: left;
+    margin: 0 30px 0 0;
+}
+.basket-templ-status>span{
+    float: left;
+    margin: 0 30px 0 0;
+    padding: 3px 5px;
+    border-radius: 3px;
+    background: #ff8d2a;
+    font-size: 11px;
+    color: #fff;
+    width: 100%;
 }
 @media (max-width: 1100px){
     .catalog-list-img{
@@ -1690,34 +1817,60 @@ body .navbar-user .navbar-user-item{
     }
     .title-h2{
         margin: 0px 0 20px !important;
+        float: left;
+        width: 100%;
     }
     .index-topcat-block{
-        height: 90px;
+        display: block;
+        height: auto;
     }
     .index-topcat-block>img{
-        padding: 0 0 0 10px;
+        padding: 0 0 0 0px;
+        width: 100%;
+        height: 70px;
     }
     .index-topcat-block>strong{
-        font-size: 10px;
+        font-size: 12px;
+        width: 100%;
+        display: block;
+        margin: 10px 0 0;
+        height: 60px;
+        font-weight: 700;
     }
+    .index-topcat-block>strong>span {
+        width: 100%;
+        font-size: 10px;
+        padding: 10px 0 0;
+        float: left;
+    }
+    .index-topcat .nuxt-link-cat, .index-brand .nuxt-link-cat {
+        margin: 0 0 15px 0;
+    }
+    .index-topcat, .index-brand {
+        margin: 10px 0 0;
+    }        
     .index-desc-block{
-        padding: 25px;
+        padding: 30px 20px;
+    }
+    .slider-content{
+        padding: 100px 50px 30px;
     }
     .index-desc-text h4{
-        font-size: 14px;
+        font-size: 13px;
     }
     .index-desc-img .el-image{
-        top: -60px;
-        height: 140px;
+        top: -55px;
+        height: 120px;
+        border-radius: 8px;
     }
     .index-desc-text p{
         font-size: 9px;
     }
     .index-desc{
-        margin: 80px 0 0px;
+        margin: 60px 0 0px;
     }
     .index-brand-block{
-        height: 160px;
+        height: 150px;
     }
     .catalog-list-img {
         width: 150px;
@@ -1755,8 +1908,8 @@ body .navbar-user .navbar-user-item{
     }   
     .header-logout>button {
         border: none;
-        font-size: 9px;
-        padding: 10px 0px;
+        font-size: 20px;
+        padding: 4px 0px 4px 5px;
     } 
     .popover-nav .popper__arrow {
         left: 140px !important;
@@ -1775,17 +1928,15 @@ body .navbar-user .navbar-user-item{
         margin-left: 5px;
     }
     .link-navbar {
-        display: none;
-        /* width: 12px;
-        margin: 0px 0px 0 2px;
-        float: left;
-        overflow: hidden;
-        padding: 0; */
+        margin: 0 0 0 5px;
+        padding: 4px 10px;
+        font-size: 13px;
+        line-height: 1.5;
     }
     .header-basket,.top-phone {
         float: right;
         margin: 0 3px;
-        font-size: 20px;
+        font-size: 19px;
         padding: 0px 5px;
         color: #409EFF;
     }
@@ -1793,7 +1944,7 @@ body .navbar-user .navbar-user-item{
 
     }
     footer {
-        margin: 60px 0 0 0;
+        margin: 40px 0 0 0;
         padding: 30px 0;
     }
     .el-backtop{
@@ -1806,11 +1957,12 @@ body .navbar-user .navbar-user-item{
         padding: 10px 0px 10px;
     }
     .header-logout .el-dialog__header {
-        padding: 0px 0px 10px;
+        padding: 0px 10px 10px !important;
+        float: left;
     }
     .header-basket>button {
         font-size: 20px;
-        padding: 3px 5px;
+        padding: 3px 10px 3px 3px;
     }
     .el-dialog__title {
         font-size: 15px !important;
@@ -1854,13 +2006,18 @@ body .navbar-user .navbar-user-item{
         font-size: 15px;
     } 
     header {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     .el-breadcrumb{
         font-size: 11px !important;
     }
     .header-basket .el-dialog__body {
         padding: 10px 10px 20px !important;
+    }
+
+    .header-logout .el-dialog__body{
+        display: inline-block;
+        width: 100%;
     }
     .el-dialog__header {
         padding: 20px 10px 10px !important;
@@ -1937,8 +2094,8 @@ body .navbar-user .navbar-user-item{
         font-size: 12px;
     }     
     .nav-cabinet a {
-        padding: 8px 3px;
-        font-size: 11px;
+        padding: 8px 8px !important;
+        font-size: 12px !important;    
     }
     .profile-cab-right {
         padding: 0 0 0 10px !important;
@@ -1999,6 +2156,7 @@ body .navbar-user .navbar-user-item{
     .catalog-list-tags {
         margin: 0 0 10px;
         padding: 0px 0px;
+        min-height: auto;
     }
     .catalog-list-tags .el-tag {
         height: 26px;
@@ -2043,6 +2201,62 @@ body .navbar-user .navbar-user-item{
     .el-dialog .el-dialog__footer {
         padding: 10px 10px 15px;
     }    
+    .index-brand .hooper-pagination{
+        display: none;
+    }
+    .index-brand-block img {
+        padding: 20px 0px 55px;
+    }    
+    .el-breadcrumb{
+        display: none;
+    }
+    .cabinet-avatar{
+        float: left;
+    }
+    .cabinet-avatar .avatar{
+        width: 130px;
+        height: 130px;
+    }
+    .profile-cab-left-pass{
+        margin: 0 0 0 150px;
+    }
+    .profile-cab-left-pass button{
+        font-size: 12px;
+    }
+    .h1-user{
+        margin: 10px 0 10px;
+        font-size: 18px;
+    }
+    .dialog-changePass .el-dialog__body{
+        padding: 10px 10px 10px !important;
+    }
+    .h1-user-cab{
+        font-size: 15px !important;
+    }
+    .basket-templ-status {
+        float: left;
+        margin: 0 10px 0 0;
+    }
+    .cab-block-basket-templ>span {
+        font-size: 11px;
+    }
+    .cab-block-basket {
+        margin: 10px 0 5px;
+    }        
+    .basket-templ-status>span {
+        margin: 0 10px 0 0;
+    }    
+    .cab-block-basket-left>strong {
+        margin: 0 0 10px;
+        height: auto;
+    }    
+    .mounter-add-block button{
+        font-size: 11px;
+    }
+}
+.navbar-user-mobail a{
+    text-decoration: none;
+    color: #333;
 }
 .page-enter-active,
 .page-leave-active {

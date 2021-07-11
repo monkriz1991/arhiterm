@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="cabinet-avatar">
         <el-upload
         class="avatar-uploader"
         :http-request="upload"

@@ -7,9 +7,15 @@
             size="mini"
             @change="handleChange" :min="1"
             ></el-input-number>
+          <div
+          class="cost-product-price-catalog">
+              <span>{{priceCart}}</span>
+              <strong>руб/м2</strong>
+          </div>
         </div>
         <div class="cost-product-input">
             <strong>{{name_radioGroup}}</strong>
+            <div class="cost-row">
               <el-radio
               v-for="(item,idx) in product_data" :key="idx"
               @change="changePrice(item,idx)"
@@ -42,7 +48,7 @@
                   ></el-button>
                 </el-popover>
               </el-radio>
-
+            </div>
         </div>
         <el-button
           type="danger"
@@ -53,12 +59,6 @@
           <span v-if="disableButton === false">В корзину</span>
           <span v-else>В корзине</span>
         </el-button>
-        <div
-
-        class="cost-product-price-catalog">
-            <span>{{priceCart}}</span>
-            <strong>руб/м2</strong>
-        </div>
     </div>
 </template>
 

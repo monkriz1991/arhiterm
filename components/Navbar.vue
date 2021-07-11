@@ -9,6 +9,7 @@
         </div>
         <div class="header-nav">
           <el-popover
+            v-if="width>991"
             popper-class="popover-nav"
             v-model="visible"
             placement="bottom"
@@ -56,11 +57,12 @@
               <i class="el-icon-refresh"></i>
             </div>
           </el-popover>
-          <nuxt-link class="link-navbar" :to="`/mounters`">
+          <nuxt-link
+          v-if="width>991"
+          class="link-navbar" :to="`/mounters`">
             Монтажники
           </nuxt-link>
             <div v-if="$auth.loggedIn">
-
               <div v-if="adaptivSidebar">
                 <Menyuser/>
               </div>
@@ -72,14 +74,14 @@
               :with-header="true">
                 <MenyuserMobail :visible.sync="drawer" />
               </el-drawer>
-                <el-button 
-                v-if="!adaptivSidebar" 
-                @click="drawer = true" 
-                class="drawer-button-meny"
-                icon="el-icon-more"
-                size="small"
-                >
-                </el-button>
+              <el-button 
+              v-if="!adaptivSidebar" 
+              @click="drawer = true" 
+              class="drawer-button-meny"
+              icon="el-icon-more"
+              size="small"
+              >
+              </el-button>
             </div>
             <div v-else>
             <no-ssr>
@@ -90,9 +92,100 @@
               <BasketModal />
             </no-ssr>
             <div class="top-phone">
-              <i class="el-icon-phone"></i>
+              <el-button
+              icon="el-icon-phone"
+              @click="dialogVisible = true">
+              </el-button>
             </div>
+            <el-dialog
+              title="Контакты"
+              :visible.sync="dialogVisible"
+              width="30%"
+              >
+            </el-dialog>
         </div>
+      </div>
+      <div 
+      v-if="width<991"
+      class="contents-mobail">
+          <el-popover
+            popper-class="popover-nav"
+            v-model="visible"
+            placement="bottom"
+            width="auto"
+            right="0"
+            trigger="click"
+          >
+            <el-button slot="reference"
+              class="header-cat"
+              @click="drawerMeny = true"
+            >Каталог
+            <i class="el-icon-menu"></i>
+            </el-button>
+            <ul
+              v-if="visibleNav"
+              class="transition-box">
+              <li
+                v-for="category in categoryNavbar"
+                :key="category.id"
+                size="mini" @click="visible = false"
+              >
+                <nuxt-link :to="`/catalog/${category.id}`">
+                  <i class="el-icon-picture-outline-round"></i>
+                  {{ category.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+            <ul
+              v-else
+              class="transition-box manufacturer-navbar-ul">
+              <li
+                v-for="item in manufacturer.results"
+                :key="item.id"
+                size="mini" @click="visible = false"
+              >
+                <nuxt-link :to="`/catalog/factory/${item.id}`">
+                  <!-- <i class="el-icon-picture-outline-round"></i>  -->
+                  {{ item.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+            <div
+            v-on:click="visibleNav=!visibleNav"
+            class="header-nav-refresh">
+              <i class="el-icon-refresh"></i>
+            </div>
+          </el-popover>
+          <nuxt-link
+          class="link-navbar" :to="`/mounters`">
+            Монтажники
+          </nuxt-link>
+          <el-button 
+          @click="showButton()"
+          v-if="show==true"
+          class="button-search"
+          icon="el-icon-close" 
+          circle>
+          </el-button>
+          <el-button 
+          @click="showButton()"
+          v-else
+          class="button-search"
+          icon="el-icon-search"
+          circle>
+          </el-button>
+          <transition name="el-fade-in-linear">
+            <div v-show="show" class="block-search">
+              <el-autocomplete
+                v-model="state"
+                :fetch-suggestions="querySearchAsync"
+                :trigger-on-focus="false"
+                placeholder="Введите запрос..."
+                @select="handleSelect"
+                popper-class="block-search-input"
+              ></el-autocomplete>
+            </div>
+          </transition>
       </div>
     </div>
   </header>
@@ -120,6 +213,11 @@ import {mapGetters,mapActions} from 'vuex'
         drawer: false,
         direction: 'rtl',
         width:0,
+        dialogVisible: false,
+        links: [],
+        state: '',
+        timeout:  null,
+        show: false
       };
     },
     computed:{
@@ -133,25 +231,55 @@ import {mapGetters,mapActions} from 'vuex'
         getCategory:'category/getCategory',
         getManufacturer:'category/getManufacturer'
       }),
-        updateWidth() {
-          this.width = window.innerWidth;
-          if(window.innerWidth>991){
-              this.adaptivSidebar = true
-          }else{
-            this.adaptivSidebar = false
-            
-          }
-        },
+      updateWidth() {
+        this.width = window.innerWidth;
+        if(window.innerWidth>991){
+            this.adaptivSidebar = true
+        }else{
+          this.adaptivSidebar = false
+          
+        }
+      },
+      loadAll() {
+        return [
+          { "value": "vue", "link": "https://github.com/vuejs/vue" },
+         ];
+      },
+      querySearchAsync(queryString, cb) {
+        var links = this.links;
+        var results = queryString ? links.filter(this.createFilter(queryString)) : links;
+       if(results==''){
+         results =[ { "value":'По данному запросу ничего не найдено'}]
+       }
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+ 
+          cb(results);
+        }, 2000 * Math.random());
+      },
+      createFilter(queryString) {
+        return (link) => {
+          return (link.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+        };
+      },
+      handleSelect(item) {
+        this.state=''
+        this.show = false
+      },
+      showButton(){
+        this.show =!this.show
+        this.state=''
+      }
     },
     mounted(){
-      this.getCategory(),
+      this.getCategory()
       this.getManufacturer()
+      this.links = this.loadAll()
       if (process.browser){                 
         window.addEventListener('resize', this.updateWidth);  
         this.updateWidth()        
       }
     },
-
 
   }
 </script>
@@ -169,5 +297,40 @@ import {mapGetters,mapActions} from 'vuex'
 }
 .top-phone{
 
+}
+.contents-mobail{
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
+    padding: 5px 0;
+    margin: 5px 0 5px;
+    position: relative;
+}
+.contents-mobail .header-cat{
+  float: left;
+  padding: 7px 12px;
+  border: none;
+}
+.contents-mobail .button-search{
+    float: right;
+    padding: 8px 8px 7px;
+    font-size: 11px;
+}
+.block-search{
+  position: absolute;
+  right: 35px;
+  left: 0;
+}
+.block-search .el-autocomplete{
+  width: 100%;
+}
+.block-search .el-input input{
+  height: 28px;
+  line-height: 28px;
+  font-size: 12px;
+}
+.block-search-input .el-scrollbar__view li{
+  font-size: 11px;
 }
 </style>

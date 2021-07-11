@@ -7,11 +7,10 @@
         :xs="12" :sm="12" :md="12" :lg="6" :xl="6">
             <nuxt-link :to="`/catalog/${item.id}`" class="nuxt-link-cat">
                 <div class="index-topcat-block">
+                    <img :src="item.img" :alt="item.name">
                     <strong>{{item.name}}
                         <span>140 / наименований</span>
                     </strong>
-
-                    <img :src="item.img" :alt="item.name">
                 </div>
             </nuxt-link>
         </el-col>
