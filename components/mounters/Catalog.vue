@@ -23,35 +23,35 @@
                         </nuxt-link>
                         <div class="mounters-block-left-tags">
                             <i class="el-icon-setting"></i>
-                            <strong>Монтаж отопления</strong>
-                            <strong>Монтаж водоснабжения</strong>
+                            <strong v-for="(i,k) in mounter.tag_s" :key="k">{{i.name}}</strong>
                         </div>
                         <p>{{mounter.description}}</p>
                         <span><i class="el-icon-place"></i>Минск</span>
                     </div>
                 </div>
             </el-col>
-        </el-row>        
+        </el-row>
     </div>
 </template>
 
 <script>
 import {mapActions,mapGetters} from 'vuex'
 export default {
-    props:['mounters'],
     data() {
         return{
 
         }
     },
     computed:{
-
+        ...mapGetters({
+          mounters:'mounters/mountertList',
+        }),
     },
     methods:{
 
     },
     mounted(){
-        
+
     }
 }
 </script>
