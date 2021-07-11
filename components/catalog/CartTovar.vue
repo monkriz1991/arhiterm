@@ -22,7 +22,7 @@
                         fit="contain"
                         lazy
                         >
-                        
+
                         </el-image>
                         <div
                         v-show="price[idx]"
@@ -144,7 +144,6 @@ export default {
     },
     methods : {
       parseCheckboxes(to,cats, key){
-        console.log(cats)
          let checkList = JSON.parse(decodeURI(to.query[key]))
         let newkey = 'name'
         if (key ==='card_filter'){

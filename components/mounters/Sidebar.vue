@@ -9,13 +9,13 @@
                    <label class="cat-filter-check">
                        <span>Укажите тип работ</span>
                     </label>
-                    <el-checkbox
-                    label="tag"
+                    <el-checkbox v-for="(v,k) in tags" :key="k"
+                    :label="v.id"
                     @change="checkFil()"
-                    >tag
+                    >{{v.name}} ({{v.count}})
                     </el-checkbox>
                 </el-checkbox-group>
-            </ul>    
+            </ul>
     </div>
 </template>
 
@@ -23,14 +23,58 @@
 export default {
     data(){
         return{
-            checkList:[]
+            checkList:[],
+            tags:[],
         }
     },
     methods:{
+      async getTags(){
+          let data = await this.$axios.get(`mounters/all_tags/?limit=9999999`);
+          this.tags = data.data.results;
+      },
         checkFil(){
+        this.addOnlyParam('page',1);
+        setTimeout(this.updateData,100);
+               if(this.checkList.length){
+              this.addParam('tags',JSON.stringify(this.checkList));
+          }else{
+               this.delParam('tags');
+          }
 
+               setTimeout(this.updateData,100);
+        },
+      updateData(){
+          this.$emit('updateData')
+      },
+      addParam(key,val){
+        let params = JSON.parse(JSON.stringify(this.$route.query));
+        params[key] = val;
+        this.setUrl(params)
+    },
+      addOnlyParam(key,val){
+        let params = JSON.parse(JSON.stringify(this.$route.query));
+        params[key] = val;
+        this.$route.query[key] = val ;
+    },
+    delParam(key){
+        let params = JSON.parse(JSON.stringify(this.$route.query));
+        delete params[key];
+        this.setUrl(params)
+    },
+    setUrl(params){
+          this.$router.replace({path:'/mounters/','query':params}).catch(f=>console.log("erorr repalce"));
+    },
+      checkCheckers(){
+        let params = JSON.parse(JSON.stringify(this.$route.query));
+        if(params.tags!==undefined){
+          this.checkList = JSON.parse(params.tags);
         }
-    }
+      }
+    },
+  mounted() {
+      this.getTags();
+      this.checkCheckers();
+  }
 }
 </script>
 <style>
