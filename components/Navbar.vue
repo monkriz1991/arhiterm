@@ -102,6 +102,19 @@
               :visible.sync="dialogVisible"
               width="30%"
               >
+              <div class="phone-modal-block">
+                <div class="phone-modal-block-el">
+                  <span>Менеджер</span>
+                  <p>
+                    <a href="">+375 29 999-99-99</a>
+                    <strong>MTC</strong>
+                  </p>
+                  <p>
+                    <a href="">+375 29 999-99-44</a>
+                    <strong>A1</strong>
+                  </p>
+                </div>
+              </div>  
             </el-dialog>
         </div>
       </div>
@@ -299,13 +312,16 @@ import {mapGetters,mapActions} from 'vuex'
 
 }
 .contents-mobail{
-    float: left;
-    width: 100%;
-    border-bottom: 1px solid #e2e2e2;
-    border-top: 1px solid #e2e2e2;
-    padding: 5px 0;
-    margin: 5px 0 5px;
-    position: relative;
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #e2e2e2;
+  border-top: 1px solid #e2e2e2;
+  padding: 5px 0;
+  margin: 10px 0 5px;
+  position: relative;
+}
+.el-drawer__header {
+    padding: 20px 15px 0;
 }
 .contents-mobail .header-cat{
   float: left;

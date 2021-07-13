@@ -11,7 +11,7 @@
                     placement="top"
                     width="200"
                     trigger="click"
-                    content="Данной позиции нет на складе!">
+                    content="Позиция под заказ!">
                     <el-button
                     type="danger"
                     slot="reference"

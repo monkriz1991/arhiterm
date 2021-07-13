@@ -17,10 +17,15 @@
             >
                 <div class="catalog-list-block" :class="{ activeImgBlock: show.includes(idx) }">
                     <div class="catalog-list-img" :class="{ activeImgCat: show.includes(idx) }">
+                        <div
+                        v-if="product.manufacturer_name"
+                        class="catalog-manuf">
+                            <i class="el-icon-office-building"></i>
+                            {{product.manufacturer_name}}
+                        </div>
                         <el-image
                         :src="product.img"
                         fit="contain"
-                        lazy
                         >
 
                         </el-image>
@@ -33,6 +38,7 @@
                             >
                                 <i :class="[show.includes(idx)?'el-icon-close':'el-icon-setting' ]"></i>
                             </el-button>
+
                         </div>
                     </div>
                     <div class="catalog-list-block-desc">
@@ -110,6 +116,7 @@ export default {
             checkListManuf:[],
             checkList:[],
             cats:[],
+            visible:false
 
         };
     },

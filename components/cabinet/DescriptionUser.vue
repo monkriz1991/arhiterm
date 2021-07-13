@@ -75,6 +75,8 @@
             </el-form-item>
             <el-button
             class="but-icon-save"
+            type="warning"
+            plain
             v-show="disableForm"
             size="mini"
             @click="saveForm"
@@ -82,6 +84,8 @@
         </el-form>
         <el-button
         class="but-icon-edit"
+        type="primary"
+        plain
         size="mini"
         @click="editForm()"
         >

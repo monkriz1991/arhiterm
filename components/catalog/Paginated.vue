@@ -31,6 +31,12 @@ export default {
       paginate(){
         this.$addQuery('page',this.page,this.$route,this.$route.params.catalog);
         setTimeout(this.updateData,100);
+        if (process.browser){
+            window.scrollTo({
+                    top: 100,
+                    behavior: 'smooth'
+            });
+        }
         ;
       },
       updateData(){

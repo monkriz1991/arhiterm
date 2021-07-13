@@ -28,9 +28,15 @@ export default {
         }),
     },
     methods:{
-          paginate(){
+      paginate(){
         this.addParam('page',this.page);
         this.getAllBaskets({limit:this.limit,offset:((this.page-1)*this.limit)});
+          if (process.browser){
+            window.scrollTo({
+                    top: 100,
+                    behavior: 'smooth'
+            });
+          }
       },
       addParam(key,val){
         let params = JSON.parse(JSON.stringify(this.$route.query));

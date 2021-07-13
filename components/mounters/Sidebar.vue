@@ -1,5 +1,5 @@
 <template>
-    <div class="mount-filter-section">
+    <div class="mount-filter-section cat-filter">
             <ul>
                 <li class="cat-filter-title">
                     Монтажники

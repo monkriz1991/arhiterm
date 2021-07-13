@@ -50,14 +50,14 @@ import CartTovar from '~/components/catalog/CartTovar.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Paginated from '~/components/catalog/Paginated.vue'
 export default {
-  created(){
-    //this.loading=true
-  },
-      mounted() {
-        if (process.browser){
-          window.addEventListener('resize', this.updateWidth);
-          this.updateWidth()
-        }
+    created(){
+      //this.loading=true
+    },
+    mounted() {
+      if (process.browser){
+        window.addEventListener('resize', this.updateWidth);
+        this.updateWidth()
+      }
     },
     components:{
         Sidebar,
@@ -121,7 +121,6 @@ export default {
     computed:{
     },
     methods:{
-
        updateData(){
         let parametrs = {};
         if(this.$route.query['card_filter']!==undefined){
@@ -139,15 +138,15 @@ export default {
       async sendQuery(parametrs){
         this.productsList = await this.$store.dispatch('product/getProductList',parametrs);
       },
-        updateWidth() {
-          this.width = window.innerWidth;
-          if(window.innerWidth>991){
-              this.adaptivSidebar = true
-          }else{
-            this.adaptivSidebar = false
+      updateWidth() {
+        this.width = window.innerWidth;
+        if(window.innerWidth>991){
+            this.adaptivSidebar = true
+        }else{
+          this.adaptivSidebar = false
 
-          }
-        },
+        }
+      },
     },
 }
 </script>

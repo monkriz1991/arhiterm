@@ -110,10 +110,7 @@
 import {mapActions, mapGetters} from "vuex";
 
 export default ({
-    created() {
-    },
   props:['dialogForm'],
-
     data(){
         var validatePass = (rule, value, callback) => {
             if (value === '') {
@@ -145,7 +142,7 @@ export default ({
           checkPass: '',
           del:'',
           pay:'',
-          typ: this.$store.state.auth.loggedIn?(this.$store.state.auth.user.type_of_user!==''&& this.$store.state.auth.loggedIn===true)?this.$store.state.auth.user.type_of_user:'':'',
+          typ: this.$store.state.auth.loggedIn?this.$store.state.auth.user.type_of_user!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.type_of_user:'':'',
           yrAdres:'',
           adres:'',
           desc: ''
@@ -165,40 +162,40 @@ export default ({
     computed:{
       ...mapGetters({
         basket:'main/basket',
-      })
+      }),
     },
     methods:{
       ...mapActions({
         addUserList: 'main/addUserList'
     }),
-        disabledForm(item){
-            this.activeName = String(item)
-        },
-        handleChange(val) {
-            //console.log(val);
-        },
-        async addOrder(){
-            if(this.$auth.loggedIn == true){
-              this.unaftorized()
-            }else{
-                this.$refs.Form.validate((valid) => {
-                if (valid) {
-                    //this.registerUser()
-                  this.unaftorized()
-                } else {
-                    console.log('error submit!!');
-                    return false;
-                }
-                });
+    disabledForm(item){
+        this.activeName = String(item)
+    },
+    handleChange(val) {
+        //console.log(val);
+    },
+    async addOrder(){
+        if(this.$auth.loggedIn == true){
+            this.unaftorized()
+        }else{
+            this.$refs.Form.validate((valid) => {
+            if (valid) {
+                //this.registerUser()
+                this.unaftorized()
+            } else {
+                console.log('error submit!!');
+                return false;
             }
-        },
-      async unaftorized(){
-          let data = await this.$axios.post('add/to/cart',{form:this.Form,basket:this.basket});
-          if(!this.$auth.loggedIn) {
-            await this.$auth.loginWith('local', {data:{username: this.Form.username, password: this.Form.password}})
-            this.addUserList(this.$auth.user)
-          }
-          this.$emit('update:dialogForm',false)
+            });
+        }
+    },
+    async unaftorized(){
+        let data = await this.$axios.post('add/to/cart',{form:this.Form,basket:this.basket});
+        if(!this.$auth.loggedIn) {
+        await this.$auth.loginWith('local', {data:{username: this.Form.username, password: this.Form.password}})
+        this.addUserList(this.$auth.user)
+        }
+        this.$emit('update:dialogForm',false)
       },
     }
 })

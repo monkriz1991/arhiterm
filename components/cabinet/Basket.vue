@@ -14,7 +14,7 @@
                     <span>Итого:
                         <strong>{{allCost}}<span>руб.</span></strong>
                     </span>
-                  <span> {{ '   ' + new Date(basket_for.date_upd).toLocaleString('ru')}}</span>
+                  <span class="cab-block-basket-data"> {{ '   ' + new Date(basket_for.date_upd).toLocaleString('ru')}}</span>
                 </div>
                 </template>
                 <div
@@ -27,19 +27,24 @@
                     <div class="cab-block-basket-left">
                         <strong>{{item.card_data.name}}</strong>
                         <div class="basket-left-item">
-                            <span><strong>{{item.count}}<span> - едениц кратно упаковке</span></strong></span>
+                            <span hidden>
+                                <strong>{{item.count}}<span> - едениц кратно упаковке</span>
+                                </strong>
+                            </span>
                             <span><span>Стоимость:</span>
                             <strong>{{item.price}}<span>руб.</span></strong></span>
                         </div>
                         <div class="basket-left-item">
                             <span>{{item.product_data.name}}</span><b>/</b>
                             <span>на складе {{item.product_data.count}}</span>
-                          <br>
-                          <el-badge style="margin-left: 40px;" 
-                          v-for="(i,k) in item.product_data.filter_dict" 
-                          :key="k"  :value="i.value" >
-                            <el-button size="small">{{i.name}}</el-button>
-                          </el-badge>
+                            <div class="cost-product-char">
+                                <p
+                                    v-for="(i,k) in item.product_data.filter_dict" :key="k"
+                                >
+                                    <strong>{{i.name}}</strong>
+                                    <span>{{i.value}}</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

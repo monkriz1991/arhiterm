@@ -14,7 +14,10 @@
             <h4 v-else>Корзина пуста 😢</h4>
             <span v-show="dialogForm" slot="footer" class="dialog-footer">
                 <el-button @click="dialogFormVisible = false">Продолжить покупки</el-button>
-                <el-button type="primary" @click="dialogForm = false">Оформить заказ</el-button>
+                <el-button 
+                v-if="basket.length" 
+                type="primary" 
+                @click="dialogForm = false">Оформить заказ</el-button>
             </span>
             <div v-show="!dialogForm" class="dialog-back-block">
               <el-button-group>

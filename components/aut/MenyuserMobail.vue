@@ -31,9 +31,11 @@
                 Страница монтажника
                 </nuxt-link>
             </el-menu-item>
-            <el-menu-item index="1-4" @click="logout">
-                <i class="el-icon-arrow-left"></i>
-                <span>Выход</span>
+            <el-menu-item index="1-4">
+                <div class="menu-item-exit" @click="logout">
+                  <i class="el-icon-arrow-left"></i>
+                  <span>Выход</span>
+                </div>
             </el-menu-item>
       </el-submenu>
       <el-menu-item index="2"  @click="closeMeny">
