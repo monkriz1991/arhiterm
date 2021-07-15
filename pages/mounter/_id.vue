@@ -1,14 +1,13 @@
 <template>
     <div class="container">
-        <Breadcrumb/>   
-        <h1 class="h1-mounter">                            
+        <Breadcrumb/>
+        <h1 class="h1-mounter">
             {{mounter.whoiam.first_name}}
             {{mounter.whoiam.last_name}}
         </h1>
         <div class="mounter-tags">
             <i class="el-icon-setting"></i>
-            <strong>Монтаж отопления</strong>
-            <strong>Монтаж водоснабжения</strong>
+          <strong v-for="(tag,k) in mounter.tag_s" :key="k"><nuxt-link :to="`/mounters?page=1&tags=[${tag.id}]`">{{tag.name}}</nuxt-link></strong>
         </div>
         <div class="mounter-img">
             <el-image
@@ -25,12 +24,12 @@
                 <i class="el-icon-place"></i>
                 <span>Минск</span>
             </div>
-            <div class="mounter-phone">
+            <div class="mounter-phone" v-for="(p,k) in mounter.phone_s" :key="k">
                 <i class="el-icon-phone-outline"></i>
-                <a href="">+375 (29) 849-90-23</a>
+                <a href="" >{{p.phone_number}}</a>
             </div>
         </div>
-        <GaleryMounters/>
+        <GaleryMounters :portfolio="mounter.portfolio"/>
     </div>
 </template>
 
@@ -41,7 +40,7 @@ export default {
     async asyncData ({ app, params, route, error }) {
         try {
             let mounter = await app.store.dispatch('mounters/getMounter',params.id)
-
+          console.log(mounter)
             return{mounter}
         } catch (err) {
         return error({
@@ -57,8 +56,8 @@ export default {
     data() {
 
       return{
-          
-      }  
+
+      }
     },
 }
 </script>
