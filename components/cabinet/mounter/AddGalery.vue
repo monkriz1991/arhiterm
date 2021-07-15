@@ -1,11 +1,11 @@
 <template>
     <div class="mounter-add-block">
-        <el-button 
-        type="primary" 
+        <el-button
+        type="primary"
         @click="outerVisible = true">
         Добавить работу
         </el-button>
-        
+
         <el-dialog width="40%" title="" :visible.sync="outerVisible">
             <div class="mounter-form form-100">
                 <el-form :model="form" :rules="rules" ref="form" class="form-user-cab">
@@ -13,9 +13,16 @@
                     <div class="mounter-form-galery">
                         <strong>Добавить изображения</strong>
                         <el-upload
-                        action="https://jsonplaceholder.typicode.com/posts/"
+                        action=""
                         list-type="picture-card"
-                        :on-remove="handleRemove">
+                        :auto-upload="false"
+                        :multiple="true"
+                        :http-request="uploadImg"
+                        :file-list="fileList"
+                        :on-change="onChangeFile"
+                        :before-remove="beforeRemove"
+                        :on-remove="onRemoveFile"
+                        >
                         <i class="el-icon-plus"></i>
                         </el-upload>
                         <el-dialog :visible.sync="dialogVisible">
@@ -50,14 +57,14 @@
 
                     <el-button
                     class="but-icon-save-mounter"
-                    type="primary" 
+                    type="primary"
                     size="mini"
                     @click="saveForm"
                     >Сохранить</el-button>
                 </el-form>
             </div>
 
-            
+
             <div slot="footer" class="dialog-footer">
             </div>
         </el-dialog>
@@ -68,6 +75,7 @@
 export default {
     data(){
         return{
+            fileList:[],
             outerVisible: false,
             innerVisible: false,
             dialogImageUrl: '',
@@ -84,9 +92,57 @@ export default {
         }
     },
     methods:{
-        saveForm(){
+      onChangeFile (file, fileList) {
+        this.fileList = []
+        for (let x of fileList) {
+          if (x.raw) {
+            this.fileList.push(x.raw)
+          }
+        }
+      },
+      beforeRemove (file, fileList) {
+
+    },
+         // remove file
+    onRemoveFile (file, fileList) {
+      this.fileList = []
+      for (let x of fileList) {
+        if (x.raw) {
+          this.fileList.push(x.raw)
+        }
+      }
+    },
+        async saveForm(){
+          let method = "POST";
+          let form = new FormData();
+          let dataImg = [];
+
+          form.append('address',this.form.city)
+          form.append('description',this.form.desc)
+          form.append('title',this.form.title)
+          form.append('user',this.$auth.user.id)
+          form.append('link',this.form.link);
+          let newPortfolio = await this.$axios({
+            data:form,
+            url:'/portfolio/portfolio/',
+            method:method
+          });
+
+          for(let img of this.fileList){
+            let formImg = new FormData();
+          formImg.append('parent',newPortfolio.data.id)
+            formImg.append('img',img)
+            await this.$axios({ url:'/portfolio/img/',
+                              method:'POST',
+                              headers: { "Content-Type": "multipart/form-data" },
+                              data: formImg
+          });
+          }
 
         },
+      uploadImg(){
+        console.log('tipo save')
+      },
         handleRemove(file, fileList) {
             console.log(file, fileList);
         },
