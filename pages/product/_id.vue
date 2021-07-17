@@ -9,22 +9,24 @@
         <div class="cost-product-section">
             <div class="cost-product-price">
                 <span>{{price}}</span>
-                <strong>руб./м</strong>
+                <strong>руб./{{result.units}}</strong>
                 <div class="catalog-list-block-discount">
                     <strong>{{discont}}</strong>
-                    <span>руб/м2</span>
+                    <span>руб/{{result.units}}</span>
                 </div>
             </div>
-            <CartTovarInput 
+            <CartTovarInput
             :price.sync="price"
             :discont.sync="discont"
             :product_data="productItem.product"
+            :units="result.units"
+            :multiplicity="result.multiplicity"
             @addToCart = "addToCart"
-            @NewChar = "funNewChar" 
+            @NewChar = "funNewChar"
             />
         </div>
         <div class="tabs-product">
-            <Tabs 
+            <Tabs
             :product_data="productItem.product"
             :new_char="funChar"
              />
@@ -45,7 +47,8 @@ export default ({
             let result = await app.store.dispatch('tovar/getProductItem',params.id)
             let price = result.product[0].price
             let discont = result.product[0].discont
-            return{price,discont}
+                 console.log(result)
+            return{price,discont,result}
         } catch (err) {
         return error({
             statusCode: 404,
@@ -83,7 +86,7 @@ export default ({
         },
         funNewChar(data){
             return this.funChar = data
-            
+
         }
     }
 })

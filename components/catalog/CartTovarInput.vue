@@ -3,14 +3,15 @@
         <div class="cost-product-amount">
             <el-input-number
             v-model="num"
+            :step="multiplicity"
             :disabled="disableButton"
             size="mini"
-            @change="handleChange" :min="1"
+            @change="handleChange" :min="multiplicity"
             ></el-input-number>
           <div
           class="cost-product-price-catalog">
               <span>{{priceCart}}</span>
-              <strong>руб/м2</strong>
+              <strong>руб/{{units}}</strong>
           </div>
         </div>
         <div class="cost-product-input">
@@ -68,7 +69,7 @@ import {mapGetters,mapActions} from 'vuex'
   export default {
     created() {
     },
-    props:["product_data","price","discont"],
+    props:["product_data","price","discont",'units','multiplicity'],
     components:{
     },
     data() {
@@ -131,7 +132,7 @@ import {mapGetters,mapActions} from 'vuex'
         this.disableButton = true
         this.classBasket = 'in-basket'
         this.arr_basket_id.push(this.active_id==null?this.product_data[0].id:this.active_id.id)
-        
+
       },
       /** Изменение кол. товара */
       handleChange(value) {
@@ -195,5 +196,5 @@ body .el-popover--plain {
 }
 .cost-product-input .el-radio--mini.is-bordered {
     padding: 6px 10px 0 10px;
-}    
+}
 </style>
