@@ -4,8 +4,8 @@
     <!-- <fa :icon="['fas', 'band-aid']"/> -->
         <Breadcrumb/>
         <div v-if="adaptivSidebar">
-          <Sidebar 
-          @updateData="updateData" 
+          <Sidebar
+          @updateData="updateData"
           :categoriesNested.sync="categoriesNested"
           :categoryManuf.sync="categoryManuf" />
         </div>
@@ -15,7 +15,7 @@
         :visible.sync="drawer"
         :direction="direction"
         :with-header="true">
-          <Sidebar 
+          <Sidebar
           @updateData="updateData"
           :categoriesNested.sync="categoriesNested"
           :categoryManuf.sync="categoryManuf" />
@@ -33,7 +33,7 @@
         <transition >
         <CartTovar ref="CartTovar" :productsList.sync="productsList"
         :categoriesNested.sync="categoriesNested"
-        :categoryManuf.sync="categoryManuf" 
+        :categoryManuf.sync="categoryManuf"
         />
         </transition>
         <Paginated @changePage="updateData"/>
