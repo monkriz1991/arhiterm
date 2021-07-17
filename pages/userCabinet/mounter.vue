@@ -4,7 +4,7 @@
         <h1 class="h1-user-cab">Страница монтажника</h1>
         <Form/>
         <AddGalery/>
-        <Project/>
+        <Project :key="k":portfolio="i" v-for="(i,k) in portfolios"/>
     </div>
 </template>
 
@@ -22,8 +22,17 @@ export default {
     },
     data() {
      return{
-
-     }   
+        portfolios:[],
+     }
     },
+  mounted() {
+      this.portfolioGet()
+  },
+  methods:{
+      async portfolioGet(){
+        let data = await this.$axios.get(`/portfolio/portfolio/?limit=200`);
+        this.portfolios = data.data.results;
+      }
+  }
 }
 </script>
