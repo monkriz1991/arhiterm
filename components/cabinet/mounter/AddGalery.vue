@@ -18,7 +18,7 @@
                         :auto-upload="false"
                         :multiple="true"
                         :http-request="uploadImg"
-                        :file-list="fileList"
+                        :file-list="fileList1"
                         :on-change="onChangeFile"
                         :before-remove="beforeRemove"
                         :on-remove="onRemoveFile"
@@ -76,6 +76,7 @@ export default {
     data(){
         return{
             fileList:[],
+          fileList1:[],
             outerVisible: false,
             innerVisible: false,
             dialogImageUrl: '',
