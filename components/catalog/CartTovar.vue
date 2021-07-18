@@ -52,13 +52,13 @@
                             <strong>{{price[idx]}}
                                 <div class="catalog-list-block-discount">
                                     <strong>{{discont[idx]}}</strong>
-                                    <span>руб/м2</span>
+                                    <span>руб/{{product.units}}</span>
                                 </div>
                             </strong>
-                            <span>руб/м2</span>
+                            <span>руб/{{product.units}}</span>
                             <div class="catalog-list-block-cost">
                                 <strong>{{oneprice[idx]}} - {{lastprice[idx]}}</strong>
-                                <span>руб/м2</span>
+                                <span>руб/{{product.units}}</span>
                             </div>
                         </div>
                     </div>
@@ -69,6 +69,8 @@
                         <CartTovarInput
                         ref="cartTovarInput"
                         :price.sync="price[idx]"
+                        :units="product.units"
+                        :multiplicity="product.multiplicity"
                         :discont.sync="discont[idx]"
                         :product_data="product.product"
                         @Sendprice = "updatePriceAndCountInPage"
