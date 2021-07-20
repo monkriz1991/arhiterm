@@ -637,6 +637,7 @@ border: 1px solid #fff;
     font-size: 12px;
     font-weight: 600;
     float: left;
+    margin: 2px 0 0;
 }
 .catalog-list-block-cost>span{
     font-size: 9px;

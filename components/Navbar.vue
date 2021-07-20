@@ -61,7 +61,7 @@
           v-if="width>991"
           class="link-navbar" :to="`/mounters`">
             Монтажники
-          </nuxt-link>
+          </nuxt-link>  
             <div v-if="$auth.loggedIn">
               <div v-if="adaptivSidebar">
                 <Menyuser/>
@@ -116,6 +116,34 @@
                 </div>
               </div>  
             </el-dialog>
+            <div class="search-navbar">
+              <el-button 
+              @click="showButton()"
+              v-if="show==true"
+              class="button-search"
+              icon="el-icon-close" 
+              circle>
+              </el-button>
+              <el-button 
+              @click="showButton()"
+              v-else
+              class="button-search"
+              icon="el-icon-search"
+              circle>
+              </el-button>
+              <transition name="el-fade-in-linear">
+                <div v-show="show" class="block-search">
+                  <el-autocomplete
+                    v-model="state"
+                    :fetch-suggestions="querySearchAsync"
+                    :trigger-on-focus="false"
+                    placeholder="Введите запрос..."
+                    @select="handleSelect"
+                    popper-class="block-search-input"
+                  ></el-autocomplete>
+                </div>
+              </transition>
+            </div> 
         </div>
       </div>
       <div 
@@ -348,5 +376,24 @@ import {mapGetters,mapActions} from 'vuex'
 }
 .block-search-input .el-scrollbar__view li{
   font-size: 11px;
+}
+.search-navbar{
+    float: right;
+    position: relative;
+}
+.search-navbar>button{
+    padding: 9px !important;
+    margin: 0 30px 0 0;
+}
+.search-navbar .block-search{
+    top: 0px;
+    right: 70px;
+    width: 400px;
+    left: auto;
+}
+.search-navbar .block-search .el-input__inner{
+    height: 33px;
+    line-height: 32px;
+    font-size: 13px;
 }
 </style>
