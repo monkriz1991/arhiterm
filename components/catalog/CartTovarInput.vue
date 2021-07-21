@@ -134,8 +134,18 @@ import {mapGetters,mapActions} from 'vuex'
         this.arr_basket_id.push(this.active_id==null?this.product_data[0].id:this.active_id.id)
 
       },
+      roundToNearest(number, multiple) {
+          return Math.round(number / multiple) * multiple;
+      },
+      sleep(){
+
+      },
       /** Изменение кол. товара */
       handleChange(value) {
+        if(value%this.multiplicity!==0){
+          this.num = this.roundToNearest(value, this.multiplicity);
+          setTimeout(this.sleep,100)
+        }
          this.priceCart = Math.floor(this.input_cost*value*100)/100
          this.count = value
       },
