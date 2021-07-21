@@ -61,7 +61,7 @@
           v-if="width>991"
           class="link-navbar" :to="`/mounters`">
             Монтажники
-          </nuxt-link>  
+          </nuxt-link>
             <div v-if="$auth.loggedIn">
               <div v-if="adaptivSidebar">
                 <Menyuser/>
@@ -74,9 +74,9 @@
               :with-header="true">
                 <MenyuserMobail :visible.sync="drawer" />
               </el-drawer>
-              <el-button 
-              v-if="!adaptivSidebar" 
-              @click="drawer = true" 
+              <el-button
+              v-if="!adaptivSidebar"
+              @click="drawer = true"
               class="drawer-button-meny"
               icon="el-icon-more"
               size="small"
@@ -114,17 +114,17 @@
                     <strong>A1</strong>
                   </p>
                 </div>
-              </div>  
+              </div>
             </el-dialog>
             <div class="search-navbar">
-              <el-button 
+              <el-button
               @click="showButton()"
               v-if="show==true"
               class="button-search"
-              icon="el-icon-close" 
+              icon="el-icon-close"
               circle>
               </el-button>
-              <el-button 
+              <el-button
               @click="showButton()"
               v-else
               class="button-search"
@@ -140,13 +140,17 @@
                     placeholder="Введите запрос..."
                     @select="handleSelect"
                     popper-class="block-search-input"
-                  ></el-autocomplete>
+                  >
+                    <template slot-scope="{ item }">
+                  <nuxt-link :to="'/product/'+item.id"><div class="value">{{ item.name }}</div></nuxt-link>
+                </template>
+                  </el-autocomplete>
                 </div>
               </transition>
-            </div> 
+            </div>
         </div>
       </div>
-      <div 
+      <div
       v-if="width<991"
       class="contents-mobail">
           <el-popover
@@ -201,14 +205,14 @@
           class="link-navbar" :to="`/mounters`">
             Монтажники
           </nuxt-link>
-          <el-button 
+          <el-button
           @click="showButton()"
           v-if="show==true"
           class="button-search"
-          icon="el-icon-close" 
+          icon="el-icon-close"
           circle>
           </el-button>
-          <el-button 
+          <el-button
           @click="showButton()"
           v-else
           class="button-search"
@@ -224,7 +228,12 @@
                 placeholder="Введите запрос..."
                 @select="handleSelect"
                 popper-class="block-search-input"
-              ></el-autocomplete>
+              >
+                 <template slot-scope="{ item }">
+                  <nuxt-link :to="'/product/'+item.id"><div class="value">{{ item.name }}</div></nuxt-link>
+                </template>
+
+              </el-autocomplete>
             </div>
           </transition>
       </div>
@@ -278,7 +287,7 @@ import {mapGetters,mapActions} from 'vuex'
             this.adaptivSidebar = true
         }else{
           this.adaptivSidebar = false
-          
+
         }
       },
       loadAll() {
@@ -288,15 +297,11 @@ import {mapGetters,mapActions} from 'vuex'
       },
       querySearchAsync(queryString, cb) {
         var links = this.links;
-        var results = queryString ? links.filter(this.createFilter(queryString)) : links;
-       if(results==''){
-         results =[ { "value":'По данному запросу ничего не найдено'}]
-       }
-        clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => {
- 
-          cb(results);
-        }, 2000 * Math.random());
+        let results = [ { "value":'По данному запросу ничего не найдено'}];
+        this.$axios.get(`/catalog/search/?search=${queryString}&limit=9999999`).then(function (result){
+            cb(result.data.results);
+          console.log(result.data.results)
+        }).catch(function (e){results = [ { "value":'По данному запросу ничего не найдено'}];})
       },
       createFilter(queryString) {
         return (link) => {
@@ -316,9 +321,9 @@ import {mapGetters,mapActions} from 'vuex'
       this.getCategory()
       this.getManufacturer()
       this.links = this.loadAll()
-      if (process.browser){                 
-        window.addEventListener('resize', this.updateWidth);  
-        this.updateWidth()        
+      if (process.browser){
+        window.addEventListener('resize', this.updateWidth);
+        this.updateWidth()
       }
     },
 
