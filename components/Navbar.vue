@@ -105,13 +105,9 @@
               <div class="phone-modal-block">
                 <div class="phone-modal-block-el">
                   <span>Менеджер</span>
-                  <p>
-                    <a href="">+375 29 999-99-99</a>
-                    <strong>MTC</strong>
-                  </p>
-                  <p>
-                    <a href="">+375 29 999-99-44</a>
-                    <strong>A1</strong>
+                  <p v-for="(phone,k) in phones" :key="k">
+                    <a href="">{{phone.phone_number}}</a>
+                    <strong>{{phone.operator}}</strong>
                   </p>
                 </div>
               </div>
@@ -265,6 +261,7 @@ import {mapGetters,mapActions} from 'vuex'
         width:0,
         dialogVisible: false,
         links: [],
+        phones:[],
         state: '',
         timeout:  null,
         show: false
@@ -315,9 +312,14 @@ import {mapGetters,mapActions} from 'vuex'
       showButton(){
         this.show =!this.show
         this.state=''
+      },
+      async getPhones(){
+        let data = await this.$axios.get(`/users/phones/?limit=9999`);
+        this.phones = data.data.results;
       }
     },
     mounted(){
+      this.getPhones();
       this.getCategory()
       this.getManufacturer()
       this.links = this.loadAll()
