@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div 
+    <div
      v-loading="loading">
     </div>
 
@@ -32,7 +32,8 @@ export default ({
     },
   data() {
       return {
-        loading:true
+        loading:true,
+        history:[],
       };
   },
   components:{
@@ -41,6 +42,18 @@ export default ({
     Upscroll,
     Breadcrumb,
   },
+  watch:{
+      $route (to, from){
+        this.history.push(to)
+        if(this.history.length>5){
+          this.history.splice(0,1)
+        }
+        this.$nuxt.history = this.history;
+      }
+  },
+  methods:{
+
+  }
 
 })
 </script>
