@@ -263,14 +263,20 @@ export default {
       }else{
         this.checkListManuf = []
         }
-      if(to.query.card_filter!==undefined) {
+      if(to.query.card_filter!==undefined && Array.isArray(this.categoriesNested)) {
         let cats = []
-        for(let a of this.categoriesNested.child){
-          for(let i of a.filters){
-              for(let j of i.filter_value){
-                cats.push(j)
+        for(let a of this.categoriesNested){
+          console.log(a)
+          if(a.list_filter){
+            for(let i of a.list_filter){
+              if(i.chice) {
+                for (let j of i.chice) {
+                  cats.push(j)
+                }
               }
           }
+          }
+
         }
        this.checkList = this.parseCheckboxes(to,cats,'card_filter')
       }else{

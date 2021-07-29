@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-breadcrumb 
+        <el-breadcrumb
         v-if="this.$route.name!='index'"
         separator-class="el-icon-arrow-right"
         >
@@ -8,9 +8,9 @@
             <el-breadcrumb-item
                 v-for="(item, i) in breadcrumbs"
                 :key="i"
-                :to="{path:item.href}"
+                :to="{path:item.fullPath}"
             >
-                {{item.text}}
+                {{names[item.name]?names[item.name]:item.name}}
             </el-breadcrumb-item>
         </el-breadcrumb>
     </div>
@@ -22,6 +22,12 @@ import {mapGetters} from 'vuex'
 export default {
     data(){
         return{
+          names:{
+            "index":"Главная",
+            "catalog-catalog":"Каталог",
+            "product-id":"Продукт",
+            "mounters":"Монтажники"
+          }
         }
     },
     // props:{
@@ -38,24 +44,7 @@ export default {
             nameProduct:'tovar/productItem'
         }),
         breadcrumbs () {
-        let pathArray = this.$route.path.split('/')
-        pathArray.shift()
-        const breadCrumbs = []
-        let breadcrumb = ''
-        let text = ''
-        for (let i = 0; i < pathArray.length; ++i) {
-            breadcrumb += "/" + pathArray[i]  
-            if(pathArray[i]=='catalog'){
-                text=this.nameCat.name;
-            }else if(pathArray[i]=='product'){
-                text=this.nameProduct.name;
-            }
-        }
-        breadCrumbs.push({
-            href: breadcrumb, 
-            text: text
-        })
-            return breadCrumbs
+        return this.$nuxt.history;
         }
     },
 };
