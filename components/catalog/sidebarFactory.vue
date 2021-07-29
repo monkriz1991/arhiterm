@@ -9,29 +9,23 @@
                 <li class="cat-filter-title">
                     <!-- {{ category.name }} -->
                 </li>
-                <ul
-                v-for="(cat,idx)  in category.child"
-                :key="idx"
-                >
-                  <li class="cat-filter-title">
-                      <!-- {{ cat.name }} -->
-                  </li>
+
                   <el-checkbox-group v-model="checkList"
-                  v-for="filters in cat.filters"
+                  v-for="filters in category.list_filter"
                   :key="filters.id"
                   >
                     <label class="cat-filter-check">
                         <span>{{filters.name}}</span>
                       </label>
                       <el-checkbox
-                      v-for="checkbox in filters.filter_value"
+                      v-for="checkbox in filters.chice"
                       :key="checkbox.id"
                       :label="checkbox.id"
                       @change="checkFil()"
                       >{{checkbox.value}}
                       </el-checkbox>
                   </el-checkbox-group>
-              </ul>
+
             </ul>
         </div>
     </div>

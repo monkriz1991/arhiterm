@@ -2,29 +2,26 @@
     <div class="cat-filter-section">
         <div class="cat-filter">
             <!-- <h3>{{categoriesNested.name}}</h3> -->
-            <ul
-            v-for="category in categoriesNested.child"
-            :key="category.id"
-            >
+            <ul>
                 <li class="cat-filter-title">
-                    {{ category.name }}
+                    {{ categoriesNested.name }}
                 </li>
                 <el-checkbox-group v-model="checkList"
-                v-for="filters in category.filters"
+                v-for="filters in categoriesNested.list_filter"
                 :key="filters.id"
                 >
                    <label class="cat-filter-check">
                        <span>{{filters.name}}</span>
                     </label>
                     <el-checkbox
-                    v-for="checkbox in filters.filter_value"
+                    v-for="checkbox in filters.chice"
                     :key="checkbox.id"
                     :label="checkbox.id"
                     @change="checkFil()"
                     >{{checkbox.value}}
                     </el-checkbox>
                 </el-checkbox-group>
-                
+
                 <el-checkbox-group v-model="checkListManuf">
                     <label class="cat-filter-check">
                        <span>Производители</span>
@@ -47,7 +44,7 @@ import {mapActions,mapGetters} from 'vuex'
 export default {
   props:['categoriesNested','categoryManuf'],
     created() {
-      
+
     },
     data() {
         return {
