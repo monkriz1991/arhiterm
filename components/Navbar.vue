@@ -119,7 +119,7 @@
             <div class="search-navbar">
               <el-button
               @click="showButton()"
-              v-if="show==true"
+              v-if="show==true&&width>991"
               class="button-search"
               icon="el-icon-close"
               circle>
@@ -127,6 +127,7 @@
               <el-button
               @click="showButton()"
               v-else
+              v-show="width>991"
               class="button-search"
               icon="el-icon-search"
               circle>
@@ -134,11 +135,12 @@
               <transition name="el-fade-in-linear">
                 <div v-show="show" class="block-search">
                   <el-autocomplete
+                    v-show="width>991"
                     v-model="state"
                     :fetch-suggestions="querySearchAsync"
                     :trigger-on-focus="false"
                     placeholder="Введите запрос..."
-                    @select="handleSelect"
+                    @change="handleSelect"
                     popper-class="block-search-input"
                   >
                     <template slot-scope="{ item }">
@@ -226,7 +228,7 @@
                 :fetch-suggestions="querySearchAsync"
                 :trigger-on-focus="false"
                 placeholder="Введите запрос..."
-                @select="handleSelect"
+                @change="handleSelect"
                 popper-class="block-search-input"
               >
                  <template slot-scope="{ item }">

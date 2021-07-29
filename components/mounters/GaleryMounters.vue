@@ -5,6 +5,7 @@
             <div class="monter-galery-img">
                 <el-image
                     v-for="(i,k) in p.images"
+                    v-show="k<2"
                     :src="i.img"
                     :preview-src-list="p.images.map(x=>x.img)" :key="k">
                 </el-image>
