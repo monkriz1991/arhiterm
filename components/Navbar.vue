@@ -398,7 +398,7 @@ import {mapGetters,mapActions} from 'vuex'
 .search-navbar .block-search{
     top: 0px;
     right: 70px;
-    width: 400px;
+    width: 420px;
     left: auto;
 }
 .search-navbar .block-search .el-input__inner{

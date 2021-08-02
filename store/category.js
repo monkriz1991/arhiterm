@@ -71,7 +71,7 @@ export const actions = {
     },
     async getManufacturer({ commit}) {
         // await sleep(50)
-        let result = await this.$axios.$get(`/manufacturer/get/`);
+        let result = await this.$axios.$get(`/manufacturer/get/?limit=99999`);
         commit('setManufacturer', result)
         return result
     },
