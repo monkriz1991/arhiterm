@@ -46,6 +46,7 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/factory/${item.id}`">
+                <el-image :src="item.img"></el-image>
                   <!-- <i class="el-icon-picture-outline-round"></i>  -->
                   {{ item.name }}
                 </nuxt-link>
@@ -188,7 +189,7 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/factory/${item.id}`">
-                  <!-- <i class="el-icon-picture-outline-round"></i>  -->
+                  
                   {{ item.name }}
                 </nuxt-link>
               </li>

@@ -91,7 +91,7 @@ display: none;
 }
 .popover-nav>ul li a{
     text-decoration: none;
-    padding: 7px 5px;
+    padding: 7px 8px;
     /* float: left; */
     border-radius: 6px;
     font-size: 13px;
@@ -115,6 +115,17 @@ display: none;
     /* width: 100%; */
     margin: 0 10px 0px 0px;
     font-size: 27px;
+}
+.popover-nav>ul li a .el-image{
+    width: 60px;
+    margin: 0 10px 0 0px;
+    display: flex;
+    height: 40px;
+}
+.popover-nav>ul li a .el-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 .clearfix:before {
     display: table;
@@ -1391,8 +1402,8 @@ body .navbar-user .navbar-user-item{
 }
 .popover-nav .manufacturer-navbar-ul li{
     width: auto;
-    margin: 0 20px 0 0;
-    padding: 0 20px 0 0;
+    margin: 0 0px 0 0;
+    padding: 0 0px 0 0;
 }
 .mount-filter-section{
     float: left;
