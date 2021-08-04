@@ -66,7 +66,6 @@ export default {
       parametrs['manuf'] = params.id;
        let categoriesNested = await app.store.dispatch('category/getCategoryNestedFactory',params.id)
       let factori = await $axios.$get(`/manufacturer/get/${params.id}/`)
-      console.log(factori)
        let productsList = await app.store.dispatch('product/getProductListManufacturer',parametrs)
      return{categoriesNested,productsList,factori}
     },
