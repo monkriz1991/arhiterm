@@ -3,29 +3,22 @@
         <div class="cat-filter">
             <!-- <h3>{{categoriesNested.name}}</h3> -->
             <ul
-            v-for="(category,idx)  in categoriesNested"
+            v-for="(category,idx)  in categoriesNested.filters"
             :key="idx"
             >
                 <li class="cat-filter-title">
-                    <!-- {{ category.name }} -->
+                     {{ category.name }}
                 </li>
 
-                  <el-checkbox-group v-model="checkList"
-                  v-for="filters in category.list_filter"
-                  :key="filters.id"
-                  >
-                    <label class="cat-filter-check">
-                        <span>{{filters.name}}</span>
-                      </label>
+
                       <el-checkbox
-                      v-for="checkbox in filters.chice"
+                        v-model="checkList"
+                      v-for="checkbox in category.chice"
                       :key="checkbox.id"
                       :label="checkbox.id"
                       @change="checkFil()"
                       >{{checkbox.value}}
                       </el-checkbox>
-                  </el-checkbox-group>
-
             </ul>
         </div>
     </div>
@@ -64,6 +57,7 @@ export default {
       }
   },
    async mounted(){
+     console.log(this.categoriesNested)
       if(this.$route.query.card_filter!==undefined) {
         this.checkList = JSON.parse(decodeURI(this.$route.query.card_filter))
       }else{
