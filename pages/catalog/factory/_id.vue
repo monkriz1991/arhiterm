@@ -2,9 +2,9 @@
     <div class="container">
         <Breadcrumb/>
         <div v-if="adaptivSidebar">
-        <Sidebar 
-        @updateData="updateData" 
-        :categoriesNested.sync="categoriesNested"
+        <Sidebar
+        @updateData="updateData"
+        :categoriesNested.sync="factori"
         />
         </div>
         <el-drawer
@@ -13,14 +13,14 @@
         :visible.sync="drawer"
         :direction="direction"
         :with-header="true">
-          <Sidebar 
+          <Sidebar
           @updateData="updateData"
-          :categoriesNested.sync="categoriesNested"
+          :categoriesNested.sync="factori"
            />
         </el-drawer>
-        <el-button 
-        v-if="!adaptivSidebar" 
-        @click="drawer = true" 
+        <el-button
+        v-if="!adaptivSidebar"
+        @click="drawer = true"
         class="drawer-button"
         icon="el-icon-finished"
         size="small"
@@ -49,12 +49,12 @@ export default {
         Paginated
     },
     mounted() {
-      if (process.browser){                 
-        window.addEventListener('resize', this.updateWidth);  
-        this.updateWidth()        
+      if (process.browser){
+        window.addEventListener('resize', this.updateWidth);
+        this.updateWidth()
       }
     },
-    async asyncData ({ app, params, route, error }) {
+    async asyncData ({ app, params, route, error, $axios}) {
       let parametrs = {};
       app.$UpdsaveArr(route)
         if(route.query['card_filter']!==undefined){
@@ -65,8 +65,9 @@ export default {
         }
       parametrs['manuf'] = params.id;
        let categoriesNested = await app.store.dispatch('category/getCategoryNestedFactory',params.id)
+      let factori = await $axios.$get(`/manufacturer/get/${params.id}/`)
        let productsList = await app.store.dispatch('product/getProductListManufacturer',parametrs)
-     return{categoriesNested,productsList}
+     return{categoriesNested,productsList,factori}
     },
     data() {
         return {
@@ -117,7 +118,7 @@ export default {
             this.adaptivSidebar = true
         }else{
           this.adaptivSidebar = false
-          
+
         }
       },
     },
