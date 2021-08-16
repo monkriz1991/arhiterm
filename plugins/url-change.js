@@ -28,7 +28,26 @@ export default ({app,route,params}, inject)=>{
 
       }
   }
+    async function addQueryFactory(key,val,route,cat){
 
+      savedCat = cat;
+      saved[key]=val;
+      try{
+        await app.router.replace({path:'/catalog/factory/'+cat,'query':saved});
+      }catch (e){
+
+      }
+  }
+    async function addQueryMounters(key,val,route,cat){
+
+      savedCat = cat;
+      saved[key]=val;
+      try{
+        await app.router.replace({path:'/mounters/','query':saved});
+      }catch (e){
+
+      }
+  }
   function clearSaved(cat){
     if(savedCat!=cat){
       saved = {}
@@ -46,6 +65,8 @@ export default ({app,route,params}, inject)=>{
     return parametrs
 }
   inject('addQuery', function(key,val,route,c){addQuery(key,val,route,c)})
+  inject('addQueryFactory', function(key,val,route,c){addQueryFactory(key,val,route,c)})
+  inject('addQueryMounters', function(key,val,route,c){addQueryMounters(key,val,route,c)})
   inject('parseUrl', function(params){return parseUrl(params)})
   inject('delQuery', function(k,c){ delQuery(k,c)})
   inject('clearSaved', function(c){ clearSaved(c)})

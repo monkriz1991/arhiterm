@@ -40,7 +40,7 @@ function sleep(ms) {
 import Sidebar from '~/components/catalog/sidebarFactory.vue'
 import CartTovar from '~/components/catalog/CartTovar.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
-import Paginated from '~/components/catalog/Paginated.vue'
+import Paginated from '~/components/catalog/PaginatedFactory.vue'
 export default {
     components:{
         Sidebar,
@@ -64,7 +64,7 @@ export default {
           parametrs['page'] = route.query['page'];
         }
       parametrs['manuf'] = params.id;
-       let categoriesNested = await app.store.dispatch('category/getCategoryNestedFactory',params.id)
+       let categoriesNested = await app.store.dispatch('category/getCategory1NestedFactory',params.id)
       let factori = await $axios.$get(`/manufacturer/get/${params.id}/`)
        let productsList = await app.store.dispatch('product/getProductListManufacturer',parametrs)
      return{categoriesNested,productsList,factori}
@@ -104,7 +104,6 @@ export default {
           parametrs['page'] = this.$route.query['page'];
         }
         parametrs['manuf'] = this.$route.params.id;
-        console.log(parametrs)
         this.sendQuery(parametrs);
       },
       async sendQuery(parametrs){
