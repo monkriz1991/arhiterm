@@ -36,7 +36,7 @@
         :categoryManuf.sync="categoryManuf"
         />
         </transition>
-        <Paginated @changePage="updateData"/>
+        <Paginated @func="$addQuery" @changePage="updateData"/>
 
     </div>
 </template>

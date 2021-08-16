@@ -15,7 +15,7 @@
                         v-model="checkList"
                       v-for="checkbox in category.chice"
                       :key="checkbox.id"
-                      :label="checkbox.id"
+                      :label="`${checkbox.id}||${category.id}`"
                       @change="checkFil()"
                       >{{checkbox.value}}
                       </el-checkbox>

@@ -16,7 +16,7 @@
                     <el-checkbox
                     v-for="checkbox in filters.chice"
                     :key="checkbox.id"
-                    :label="checkbox.id"
+                    :label="`${checkbox.id}||${filters.id}`"
                     @change="checkFil()"
                     >{{checkbox.value}}
                     </el-checkbox>

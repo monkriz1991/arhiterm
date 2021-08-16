@@ -30,7 +30,7 @@ export default {
           this.$emit('updateData')
       },
       paginate(){
-        this.$addQuery('page',this.page,this.$route,this.$route.params.catalog);
+        this.$addQueryMounters('page',this.page,this.$route,this.$route.params.catalog);
         setTimeout(this.updateData,100);
         if (process.browser){
           window.scrollTo({

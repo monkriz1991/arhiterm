@@ -23,7 +23,7 @@
         </el-button>
         <div class="catalog-list-tags"></div>
         <Catalog :mounters.sync="mounters"/>
-        <Paginated/>
+        <Paginated @updateData="updData"/>
     </div>
 </template>
 
@@ -79,7 +79,7 @@ export default {
                 this.adaptivSidebar = true
             }else{
             this.adaptivSidebar = false
-            
+
             }
         },
     },
