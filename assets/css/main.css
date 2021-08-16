@@ -691,7 +691,30 @@ border: 1px solid #fff;
     width: 100%;
     margin: 0 0 10px;
 }
-
+.tabs-description{
+    line-height: 1.5;
+    font-size: 14px;
+}
+.tabs-description p{
+    float: left;
+    width: 100%;
+    margin: 0 0 10px;
+}
+.tabs-description ul{
+    float: left;
+    width: 100%;
+    padding: 10px 0 0 15px;
+}
+.tabs-description ul li strong{
+font-weight: 500;
+}
+.tabs-description h4{
+    font-weight: 600;
+    float: left;
+    width: 100%;
+    margin: 10px 0 0 ;
+    text-decoration: underline;
+}
 .h1-product{
     float: left;
     width: 100%;
