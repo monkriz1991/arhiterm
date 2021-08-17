@@ -84,7 +84,6 @@ export default {
           newForm.append('description', this.form.desc);
           newForm.append('price', this.form.price);
           let data = await this.$axios.patch(`/mounters/mydata/${this.$auth.user.moiunter}/`, this.mounter);
-          console.log(this.form)
         },
         handleChange(val) {
 

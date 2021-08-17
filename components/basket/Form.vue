@@ -175,7 +175,8 @@ export default ({
     },
     methods:{
       ...mapActions({
-        addUserList: 'main/addUserList'
+        addUserList: 'main/addUserList',
+        remove_basket:'main/DELL_CART_BASKET_ALL'
     }),
     disabledForm(item){
         this.activeName = String(item)
@@ -204,7 +205,10 @@ export default ({
         await this.$auth.loginWith('local', {data:{username: this.Form.username, password: this.Form.password}})
         this.addUserList(this.$auth.user)
         }
-        this.$emit('update:dialogForm',false)
+
+        this.$emit('updateDialogForm',false)
+      this.$
+       this.remove_basket()
       },
     }
 })
