@@ -14,9 +14,9 @@
             <h4 v-else>Корзина пуста 😢</h4>
             <span v-show="dialogForm" slot="footer" class="dialog-footer">
                 <el-button @click="dialogFormVisible = false">Продолжить покупки</el-button>
-                <el-button 
-                v-if="basket.length" 
-                type="primary" 
+                <el-button
+                v-if="basket.length"
+                type="primary"
                 @click="dialogForm = false">Оформить заказ</el-button>
             </span>
             <div v-show="!dialogForm" class="dialog-back-block">
@@ -24,7 +24,7 @@
                 <el-button icon="el-icon-arrow-left" @click="dialogForm = true">В корзину</el-button>
               </el-button-group>
             </div>
-            <Form :dialogForm.sync="dialogFormVisible" v-show="!dialogForm"/>
+            <Form :dialogForm.sync="dialogFormVisible" @updateDialogForm="updateDialogForm" v-show="!dialogForm"/>
         </el-dialog>
     </div>
 </template>
@@ -50,6 +50,11 @@ import {mapGetters,mapActions} from 'vuex'
       })
     },
     methods:{
+      updateDialogForm(){
+        this.dialogFormVisible = false;
+        this.dialogForm = true;
+        this.$forceUpdate();
+      },
       ...mapActions({
         DELL_CART_BASKET:'main/DELL_CART_BASKET',
         UPDATE_CART_BASKET:'main/UPDATE_CART_BASKET'

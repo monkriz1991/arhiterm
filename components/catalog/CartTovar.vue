@@ -157,9 +157,18 @@ export default {
         let newkey = 'name'
         if (key ==='card_filter'){
             newkey = 'value'
+          let nrerr = []
+          for(let i of checkList){
+            nrerr.push(i.split("||")[0])
+          }
+          checkList = nrerr;
         }
+        console.log(checkList)
         this.cats = cats
-         return  cats.map(function(x){if(checkList.includes(x.id)){return x[newkey]}}).filter(function( element ) {return element !== undefined;})
+        console.log(cats)
+        let res = cats.map(function(x){if(checkList.includes(""+x.id)){return x[newkey]}}).filter(function( element ) {return element !== undefined;})
+        console.log(res)
+         return  res
       },
         hidePreload(item){
             setTimeout(() => {
@@ -263,17 +272,18 @@ export default {
       }else{
         this.checkListManuf = []
         }
-      if(to.query.card_filter!==undefined && Array.isArray(this.categoriesNested)) {
+        console.log(this.categoriesNested)
+      if(to.query.card_filter!==undefined && Array.isArray(this.categoriesNested.list_filter)) {
         let cats = []
-        for(let a of this.categoriesNested){
+        for(let a of this.categoriesNested.list_filter){
           console.log(a)
-          if(a.list_filter){
-            for(let i of a.list_filter){
-              if(i.chice) {
-                for (let j of i.chice) {
-                  cats.push(j)
-                }
-              }
+          if(a.chice){
+            for(let i of a.chice){
+              // if(i.chice) {
+              //   for (let j of i.chice) {
+                  cats.push(i)
+              //   }
+              // }
           }
           }
 

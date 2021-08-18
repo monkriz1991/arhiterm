@@ -117,6 +117,12 @@
             console.log(registrationinfo);
             await this.$axios.post('registration/backend/registration/',registrationinfo).then(response => {
                 console.log(response)
+              if(response.status===201){
+              this.$auth.loginWith('local', { data: {username:registrationinfo.username, password:registrationinfo.password} }).then(function(){
+                this.addUserList(this.$auth.user)
+              })
+
+              }
             })
             .catch(error => {
                 this.errors = [];
