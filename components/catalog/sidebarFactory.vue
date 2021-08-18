@@ -1,24 +1,23 @@
 <template>
 <div class="cat-filter-section">
         <div class="cat-filter">
-            <!-- <h3>{{categoriesNested.name}}</h3> -->
+             <h3  class="cat-filter-title">{{categoriesNested.name}}</h3>
             <ul
             v-for="(category,idx)  in categoriesNested.filters"
             :key="idx"
             >
-                <li class="cat-filter-title">
-                     {{ category.name }}
+                <li class="cat-filter-check">
+                     <span>{{ category.name }}</span>
                 </li>
 
-
-                      <el-checkbox
-                        v-model="checkList"
-                      v-for="checkbox in category.chice"
-                      :key="checkbox.id"
-                      :label="`${checkbox.id}||${category.id}`"
-                      @change="checkFil()"
-                      >{{checkbox.value}}
-                      </el-checkbox>
+                    <el-checkbox
+                      v-model="checkList"
+                    v-for="checkbox in category.chice"
+                    :key="checkbox.id"
+                    :label="`${checkbox.id}||${category.id}`"
+                    @change="checkFil()"
+                    >{{checkbox.value}}
+                    </el-checkbox>
             </ul>
         </div>
     </div>
@@ -102,6 +101,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

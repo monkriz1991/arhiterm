@@ -4,7 +4,7 @@
 export const state = () =>({
     productList: [],
     countProduct:0,
-    productLimit:6,
+    productLimit:10,
     productLoading:false,
 })
 
