@@ -2157,14 +2157,19 @@ font-size: 13px;
         margin: 0 5px 0px 0px;
     }
     .popover-nav>ul li a {
-        padding: 5px 10px 5px 0;
+        padding: 5px 10px 5px 0px;
         font-size: 11px;
     }  
     .popover-nav .manufacturer-navbar-ul li {
         width: auto;
-        margin: 0 10px 0 0;
-        padding: 0 10px 0 0;
+        margin: 0 5px 5px 0px;
+        padding: 0 0px 0 0;
     } 
+    .popover-nav .manufacturer-navbar-ul li a{
+        padding: 6px 10px 6px 10px;
+        font-size: 11px;
+        height: auto;
+    }
     .el-checkbox-group .el-button--text{
         float: left;
         width: 100%;
@@ -2341,7 +2346,7 @@ font-size: 13px;
         position: absolute;
         right: 6px;
         bottom: 0px;
-        font-size: 25px;
+        font-size: 26px;
         cursor: pointer;
         color: #ff5200;
         width: 100%;
@@ -2355,9 +2360,10 @@ font-size: 13px;
         border-top: 0px solid #e2e2e2 !important;
         border-bottom: 0px solid #e2e2e2 !important;
         border-radius: 5px !important;
-        padding: 10px 10px 30px 10px !important;
+        padding: 10px 10px 40px 10px !important;
         border-right: 0px solid #e2e2e2 !important;
         border-left: 0px solid #e2e2e2 !important;
+        top: 80px !important;
     }
     .el-dialog{
         margin-top: 5vh !important;
