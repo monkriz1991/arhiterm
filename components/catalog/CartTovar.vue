@@ -153,6 +153,7 @@ export default {
     },
     methods : {
       parseCheckboxes(to,cats, key){
+        let res = [];
          let checkList = JSON.parse(decodeURI(to.query[key]))
         let newkey = 'name'
         if (key ==='card_filter'){
@@ -162,12 +163,17 @@ export default {
             nrerr.push(i.split("||")[0])
           }
           checkList = nrerr;
+          this.cats = cats
+         res = cats.map(function(x){if(checkList.includes(""+x.id)){return x[newkey]}}).filter(function( element ) {return element !== undefined;})
+
         }
-    
-        this.cats = cats
-        console.log(cats)
-        let res = cats.map(function(x){if(checkList.includes(""+x.id)){return x[newkey]}}).filter(function( element ) {return element !== undefined;})
-        console.log(res)
+        if (key ==='manuf'){
+          res = cats.map(function(x){
+            if(checkList.includes(x.id)){
+               return x.name
+            }
+          }).filter(function( element ) {return element !== undefined;})
+        }
          return  res
       },
         hidePreload(item){
@@ -272,7 +278,7 @@ export default {
       }else{
         this.checkListManuf = []
         }
- 
+
       if(this.categoriesNested!=undefined&&to.query.card_filter!==undefined && Array.isArray(this.categoriesNested.list_filter)) {
         let cats = []
         for(let a of this.categoriesNested.list_filter){
