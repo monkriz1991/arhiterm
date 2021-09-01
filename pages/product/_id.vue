@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <Breadcrumb/>
         <h1 class="h1-product">{{productItem.name}}</h1>
         <h2 class="h2-product">
             <i class="el-icon-office-building"></i>
@@ -35,6 +36,7 @@
 </template>
 
 <script>
+import Breadcrumb from '~/components/Breadcrumb.vue'
 import Galery from '~/components/product/Galery.vue'
 import Tabs from '~/components/product/Tabs.vue'
 import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
@@ -65,6 +67,7 @@ export default ({
         Galery,
         Tabs,
         CartTovarInput,
+        Breadcrumb
     },
     computed:{
         ...mapGetters({

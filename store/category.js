@@ -60,8 +60,9 @@ export const actions = {
 
     async getCategoryManuf({ commit},id) {
         // await sleep(50)
-        let manufacturer = await this.$axios.$get(`/manufacturer/get/?cats=${id}`);
+        let manufacturer = await this.$axios.$get(`/manufacturer/get/?cats=${id}&limit=99999`);
         commit('setCategoryManuf', manufacturer)
+        console.log(manufacturer)
         return manufacturer
     },
     async getCategoryIndex ({ commit}) {

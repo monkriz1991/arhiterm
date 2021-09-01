@@ -4,7 +4,7 @@
         <h1 class="h1-user-cab">Страница монтажника</h1>
         <Form/>
         <AddGalery/>
-        <Project :key="k":portfolio="i" v-for="(i,k) in portfolios"/>
+        <Project :key="k" :portfolio="i" v-for="(i,k) in portfolios"/>
     </div>
 </template>
 

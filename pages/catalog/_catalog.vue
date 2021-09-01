@@ -7,7 +7,9 @@
           <Sidebar
           @updateData="updateData"
           :categoriesNested.sync="categoriesNested"
-          :categoryManuf.sync="categoryManuf" />
+          :categoryManuf.sync="categoryManuf"
+          :adaptivSidebar.sync="adaptivSidebar"
+           />
         </div>
         <el-drawer
         v-else
@@ -18,7 +20,9 @@
           <Sidebar
           @updateData="updateData"
           :categoriesNested.sync="categoriesNested"
-          :categoryManuf.sync="categoryManuf" />
+          :categoryManuf.sync="categoryManuf"
+          :adaptivSidebar.sync="adaptivSidebar"
+          />
         </el-drawer>
 
         <el-button

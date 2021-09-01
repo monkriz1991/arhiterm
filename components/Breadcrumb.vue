@@ -6,11 +6,22 @@
         >
         <el-breadcrumb-item :to="{ path: '/' }">Главная</el-breadcrumb-item>
             <el-breadcrumb-item
-                v-for="(item, i) in breadcrumbs"
-                :key="i"
-                :to="{path:item.fullPath}"
+            v-if="this.$route.name!='product-id'"
+                :to="nameCat.id"
             >
-                {{names[item.name]?names[item.name]:item.name}}
+                {{nameCat.name}}
+            </el-breadcrumb-item>
+            <el-breadcrumb-item
+            v-if="this.$route.name=='product-id'"
+                :to="nameCat.id"
+            >
+                {{nameCat.name}}
+            </el-breadcrumb-item>
+            <el-breadcrumb-item
+                v-if="this.$route.name=='product-id'"
+                :to="nameProduct.id"
+            >
+                {{nameProduct.name}}
             </el-breadcrumb-item>
         </el-breadcrumb>
     </div>
@@ -27,7 +38,8 @@ export default {
             "catalog-catalog":"Каталог",
             "product-id":"Продукт",
             "mounters":"Монтажники"
-          }
+          },
+          items:[]
         }
     },
     // props:{
@@ -38,14 +50,26 @@ export default {
     //     }
     //   }
     // },
+    watch:{
+        $route(){
+            this.getRoute()
+        }
+    },
     computed: {
         ...mapGetters({
             nameCat:'category/categoryNested',
             nameProduct:'tovar/productItem'
         }),
-        breadcrumbs () {
-        return this.$nuxt.history;
+
+    },
+    methods:{
+        getRoute(){
+            this.items = this.$route.matched
+           // console.log(this.$route)
         }
     },
+    created(){
+        this.getRoute()
+    }
 };
 </script>

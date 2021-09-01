@@ -5,6 +5,7 @@
         <Sidebar
         @updateData="updateData"
         :categoriesNested.sync="factori"
+        :adaptivSidebar.sync="adaptivSidebar"
         />
         </div>
         <el-drawer
@@ -16,6 +17,7 @@
           <Sidebar
           @updateData="updateData"
           :categoriesNested.sync="factori"
+          :adaptivSidebar.sync="adaptivSidebar"
            />
         </el-drawer>
         <el-button

@@ -8,7 +8,7 @@
             <div class="index-desc-img">
                 <el-image
                     :src="indexItem.img"
-                    fit="cover">
+                    fit="contain">
                 </el-image>
             </div>
             

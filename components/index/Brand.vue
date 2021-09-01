@@ -80,12 +80,3 @@ export default ({
     }
 })
 </script>
-
-<style>
-.hooper-indicator{
-    background-color: #e3e3e3;
-}
-.hooper-pagination{
-    bottom: -15px;
-}
-</style>

@@ -1,7 +1,10 @@
 <template>
 <div class="cat-filter-section">
         <div class="cat-filter">
-             <h3  class="cat-filter-title">{{categoriesNested.name}}</h3>
+            <div class=" cat-filter-img">
+              <el-image :src="categoriesNested.img"></el-image>
+              <h1  class="cat-filter-title">{{categoriesNested.name}}</h1>
+            </div>
             <ul
             v-for="(category,idx)  in categoriesNested.filters"
             :key="idx"
@@ -11,13 +14,37 @@
                 </li>
 
                     <el-checkbox
-                      v-model="checkList"
-                    v-for="checkbox in category.chice"
-                    :key="checkbox.id"
+                    v-model="checkList"
+                    v-for="(checkbox,idx) in category.chice"
+                    :key="idx"
                     :label="`${checkbox.id}||${category.id}`"
+                    v-show="idx<=6&&adaptivSidebar==true  || adaptivSidebar==false"
                     @change="checkFil()"
                     >{{checkbox.value}}
                     </el-checkbox>
+                      <el-popover
+                        placement="right"
+                        popper-class="popover-filter"
+                        trigger="click"
+                        v-if="category.chice.length>7&&adaptivSidebar==true"
+                        >
+                          <div class="cat-filter cat-filter-all">
+                            <el-checkbox
+                            v-model="checkList"
+                            v-for="(checkbox,idx) in category.chice"
+                            :key="idx"
+                            :label="`${checkbox.id}||${category.id}`"
+                            v-show="idx>6"
+                            @change="checkFil()"
+                            >{{checkbox.value}}
+                            </el-checkbox>
+                          </div>
+                        <el-button slot="reference" 
+                        icon="el-icon-arrow-right"
+                        >
+                        Показать больше</el-button>
+                      </el-popover>
+
             </ul>
         </div>
     </div>
@@ -28,7 +55,7 @@ import {mapGetters} from "vuex";
 
 export default {
   //name: "sidebarFactory",
-  props:['categoriesNested'],
+  props:['categoriesNested','adaptivSidebar'],
   data(){
     return{
       checkList:[],

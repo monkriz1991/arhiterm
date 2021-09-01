@@ -1,11 +1,10 @@
 <template>
     <div class="cat-filter-section">
         <div class="cat-filter">
-            <!-- <h3>{{categoriesNested.name}}</h3> -->
+              <h1 class="cat-filter-title">
+                  {{ categoriesNested.name }}
+              </h1>
             <ul>
-                <li class="cat-filter-title">
-                    {{ categoriesNested.name }}
-                </li>
                 <el-checkbox-group v-model="checkList"
                 v-for="filters in categoriesNested.list_filter"
                 :key="filters.id"
@@ -14,12 +13,36 @@
                        <span>{{filters.name}}</span>
                     </label>
                     <el-checkbox
-                    v-for="checkbox in filters.chice"
-                    :key="checkbox.id"
+                    v-for="(checkbox,idx) in filters.chice"
+                    :key="idx"
                     :label="`${checkbox.id}||${filters.id}`"
+                    v-show="idx<=6&&adaptivSidebar==true  || adaptivSidebar==false"
                     @change="checkFil()"
                     >{{checkbox.value}}
                     </el-checkbox>
+
+                      <el-popover
+                        placement="right"
+                        popper-class="popover-filter"
+                        trigger="click"
+                        v-if="filters.chice.length>7&&adaptivSidebar==true"
+                        v-model="visibleCheck[filters.id]">
+                          <div class="cat-filter cat-filter-all">
+                            <el-checkbox
+                            v-for="(checkbox,idx) in filters.chice"
+                            :key="idx"
+                            :label="`${checkbox.id}||${filters.id}`"
+                            v-show="idx>6"
+                            @change="checkFil()"
+                            >{{checkbox.value}}
+                            </el-checkbox>
+                          </div>
+                        <el-button slot="reference" 
+                        icon="el-icon-arrow-right"
+                        @click="visibleCheck[filters.id]=!visibleCheck[filters.id]">
+                        Показать больше</el-button>
+                      </el-popover>
+
                 </el-checkbox-group>
 
                 <el-checkbox-group v-model="checkListManuf">
@@ -27,22 +50,46 @@
                        <span>Производители</span>
                     </label>
                     <el-checkbox
-                    v-for="checkbox in categoryManuf.results"
-                    :key="checkbox.id"
+                    v-for="(checkbox,idx) in categoryManuf.results"
+                    :key="idx"
                     :label="checkbox.id"
+                    v-show="idx<=5&&adaptivSidebar==true  || adaptivSidebar==false"
                     @change="filterByManufacturer"
                     >{{checkbox.name}}
                     </el-checkbox>
+
+                      <el-popover
+                        placement="right"
+                        trigger="click"
+                        popper-class="popover-filter"
+                        v-if="categoryManuf.results.length>6&&adaptivSidebar==true"
+                        >
+                          <div class="cat-filter cat-filter-all">
+                            <el-checkbox
+                            v-for="(checkbox,idx) in categoryManuf.results"
+                            :key="idx"
+                            :label="checkbox.id"
+                            v-show="idx>5&&adaptivSidebar==true"
+                            @change="filterByManufacturer"
+                            >{{checkbox.name}}
+                            </el-checkbox>
+                          </div>
+                        <el-button icon="el-icon-arrow-right" slot="reference" >
+                        Показать больше</el-button>
+                      </el-popover>
+
+
                 </el-checkbox-group>
             </ul>
         </div>
+
     </div>
 </template>
 
 <script>
 import {mapActions,mapGetters} from 'vuex'
 export default {
-  props:['categoriesNested','categoryManuf'],
+  props:['categoriesNested','categoryManuf','adaptivSidebar'],
     created() {
 
     },
@@ -53,6 +100,7 @@ export default {
             checkList:[],
             checkFilId:[],
             checkListManuf:[],
+            visibleCheck:[],
         };
     },
     computed:{

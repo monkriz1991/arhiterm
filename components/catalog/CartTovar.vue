@@ -163,7 +163,7 @@ export default {
           }
           checkList = nrerr;
         }
-        console.log(checkList)
+    
         this.cats = cats
         console.log(cats)
         let res = cats.map(function(x){if(checkList.includes(""+x.id)){return x[newkey]}}).filter(function( element ) {return element !== undefined;})
@@ -272,8 +272,8 @@ export default {
       }else{
         this.checkListManuf = []
         }
-        console.log(this.categoriesNested)
-      if(to.query.card_filter!==undefined && Array.isArray(this.categoriesNested.list_filter)) {
+ 
+      if(this.categoriesNested!=undefined&&to.query.card_filter!==undefined && Array.isArray(this.categoriesNested.list_filter)) {
         let cats = []
         for(let a of this.categoriesNested.list_filter){
           console.log(a)

@@ -9,7 +9,7 @@
                 <div class="index-topcat-block">
                     <img :src="item.img" :alt="item.name">
                     <strong>{{item.name}}
-                        <span>140 / наименований</span>
+                        <!-- <span>140 / наименований</span> -->
                     </strong>
                 </div>
             </nuxt-link>
