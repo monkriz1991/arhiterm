@@ -27,6 +27,13 @@ export default {
             productLimit: 'product/productLimit'
         }),
     },
+  watch:{
+      '$route.query'(to){
+        if(to.page!==undefined){
+          this.page = to.page-0;
+        }
+      }
+  },
     methods:{
       paginate(){
         this.$addQueryFactory('page',this.page,this.$route,this.$route.params.id);
