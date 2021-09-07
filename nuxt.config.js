@@ -11,6 +11,7 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
+      { name: 'google', content: 'notranslate' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' }
     ],
@@ -47,10 +48,10 @@ export default {
 
   fontawesome:{
     component:'fa',
-    icons:{
-      solid:true,
-      brands:true,
-    }
+    // icons:{
+    //   solid:true,
+    //   brands:true,
+    // }
   },
   pwa: {
     icon: {
