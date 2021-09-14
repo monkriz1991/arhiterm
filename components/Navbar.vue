@@ -32,7 +32,7 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/${category.id}`">
-                  <i class="el-icon-picture-outline-round"></i>
+                  <fa icon="enevelope" />
                   {{ category.name }}
                 </nuxt-link>
               </li>
@@ -55,7 +55,8 @@
             <div
             v-on:click="visibleNav=!visibleNav"
             class="header-nav-refresh">
-              <i class="el-icon-refresh"></i>
+              <i v-if="visibleNav==true" class="el-icon-download"></i>
+              <i v-else class="el-icon-upload2"></i>
             </div>
           </el-popover>
           <nuxt-link
@@ -197,7 +198,8 @@
             <div
             v-on:click="visibleNav=!visibleNav"
             class="header-nav-refresh">
-              <i class="el-icon-refresh"></i>
+              <i v-if="visibleNav==true" class="el-icon-download"></i>
+              <i v-else class="el-icon-upload2"></i>
             </div>
           </el-popover>
           <nuxt-link

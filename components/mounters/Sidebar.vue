@@ -7,12 +7,12 @@
                 <el-checkbox-group v-model="checkList"
                 >
                    <label class="cat-filter-check">
-                       <span>Укажите тип работ</span>
+                       <span>Специализация</span>
                     </label>
                     <el-checkbox v-for="(v,k) in tags" :key="k"
                     :label="v.id"
                     @change="checkFil()"
-                    >{{v.name}} ({{v.count}})
+                    >{{v.name}}
                     </el-checkbox>
                 </el-checkbox-group>
             </ul>

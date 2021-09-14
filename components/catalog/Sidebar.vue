@@ -47,7 +47,8 @@
 
                 <el-checkbox-group v-model="checkListManuf">
                     <label class="cat-filter-check">
-                       <span>Производители</span>
+                       <span>Производители 
+                        <span v-if="categoriesNested.id=='1'|| categoriesNested.id=='2'||categoriesNested.id=='3'">/ Серия</span></span>
                     </label>
                     <el-checkbox
                     v-for="(checkbox,idx) in categoryManuf.results"

@@ -277,15 +277,28 @@ header .contents {
 }
 .header-nav-refresh{
     position: absolute;
-    right: 20px;
-    font-size: 30px;
+    right: 10px;
+    font-size: 26px;
     top: 10px;
     cursor: pointer;
-    color: #ff5200;
+    color: #76797f;
+    display: flex;
+    padding: 10px;
+    bottom: 10px;
+    align-items: center;
+    /* background: #f8f9fc; */
+    border: 1px solid #eeeeee;
+    border-radius: 6px;
 }
-/* .header-nav-refresh i{
-
-} */
+.header-nav-refresh:hover{
+    background: #f8f9fc;
+    color: #353535;
+    border: 1px solid #f8f9fc;
+}
+.header-nav-refresh i{
+    transform: rotate(
+        -90deg);
+} 
 .el-row {
     margin-bottom: 20px;
 }
@@ -2430,14 +2443,19 @@ font-size: 13px;
     }   
     .header-nav-refresh {
         position: absolute;
-        right: 6px;
-        bottom: 0px;
-        font-size: 26px;
+        right: 5px;
+        bottom: 5px;
+        left: 5px;
+        font-size: 23px;
         cursor: pointer;
-        color: #ff5200;
-        width: 100%;
+        /* width: 100%; */
         text-align: center;
         top: auto;
+        justify-content: center;
+        padding: 3px;
+    }
+    .header-nav-refresh i{
+
     }
     .popover-nav {
         left: 15px !important;
