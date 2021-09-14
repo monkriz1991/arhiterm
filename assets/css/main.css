@@ -1524,13 +1524,13 @@ body .navbar-user .navbar-user-item{
 }
 .catalog-manuf{
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 6px;
+    left: 3px;
     z-index: 12;
-    background: #fefefe;
+    background: rgb(255 255 255 / 85%);
     padding: 2px 4px;
     border-radius: 4px;
-    color: #e8961c;
+    color: #ea7803;
     font-size: 10px;
     font-weight: 600;
 }

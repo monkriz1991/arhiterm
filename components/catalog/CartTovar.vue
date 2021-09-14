@@ -36,7 +36,7 @@
                             v-on:click="toggleActive(idx)"
                             type="danger" plain  size="mini" circle
                             >
-                                <i :class="[show.includes(idx)?'el-icon-close':'el-icon-setting' ]"></i>
+                                <i :class="[show.includes(idx)?'el-icon-close':'el-icon-sell' ]"></i>
                             </el-button>
 
                         </div>
