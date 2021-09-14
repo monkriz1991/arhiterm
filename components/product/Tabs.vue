@@ -14,7 +14,9 @@
             </p>
         </div>
     </el-tab-pane>
-    <el-tab-pane label="Описание">
+    <el-tab-pane
+     v-if="$store.state.tovar.productItem.description!=''"
+     label="Описание">
         <div 
         class="tabs-description"
         v-html="$store.state.tovar.productItem.description"></div>
