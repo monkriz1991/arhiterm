@@ -19,7 +19,7 @@
         class="tabs-description"
         v-html="$store.state.tovar.productItem.description"></div>
     </el-tab-pane>
-    <el-tab-pane label="Сертификаты">Role</el-tab-pane>
+    <!-- <el-tab-pane label="Сертификаты">Role</el-tab-pane> -->
   </el-tabs>
 </template>
 
