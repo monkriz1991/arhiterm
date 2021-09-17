@@ -7,7 +7,8 @@ export const state = ()=>({
     allBaskets:[],
     countAllBaskets:0,
     indexItem:[],
-    userItem:[]
+    userItem:[],
+    basket_cost:[],
 })
 
 export const mutations = {
@@ -26,7 +27,7 @@ export const mutations = {
     REMOVE_FROM_CART(state,idx){
         state.basket.splice(idx,1)
     },
-  REMOVE_FROM_CART_ALL(state,idx){
+    REMOVE_FROM_CART_ALL(state,idx){
         state.basket = []
     },
     UPDATE_FROM_CART(state,data){
@@ -37,7 +38,12 @@ export const mutations = {
                     item.product[0].count_el = data.count_el
                 }
             }
-        })
+        }) 
+    },
+    BASKET_COST(state,data){
+        state.basket_cost = data
+        console.log(state.basket_cost)
+
     },
     setUser(state,userItem){
         state.userItem = userItem
@@ -87,6 +93,9 @@ export const actions = {
     UPDATE_CART_BASKET({commit},data){
         commit('UPDATE_FROM_CART',data)
     },
+    BASKET_FROM_COST({commit},data){
+        commit('BASKET_COST',data)
+    },
     addUserList({ commit},results) {
         commit('setUser', results)
         return results
@@ -96,6 +105,7 @@ export const actions = {
 export const getters = {
     sliderItems: state => state.sliderItems,
     basket: state => state.basket,
+    basket_cost: state => state.basket_cost,
     indexItem: state => state.indexItem,
     userItem: state => state.userItem,
     allBaskets: state => state.allBaskets,

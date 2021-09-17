@@ -167,6 +167,7 @@ export default ({
     computed:{
       ...mapGetters({
         basket:'main/basket',
+        basket_cost:'main/basket_cost',
       }),
       typeUser:function (){
         this.$forceUpdate();
@@ -200,8 +201,9 @@ export default ({
         }
     },
     async unaftorized(){
-        let data = await this.$axios.post('add/to/cart',{form:this.Form,basket:this.basket});
-        if(!this.$auth.loggedIn) {
+        let data = await this.$axios.post('add/to/cart',{form:this.Form,basket:this.basket,basket_cost:this.basket_cost});
+       console.log(data)
+       if(!this.$auth.loggedIn) {
         await this.$auth.loginWith('local', {data:{username: this.Form.username, password: this.Form.password}})
         this.addUserList(this.$auth.user)
         }

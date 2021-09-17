@@ -10,6 +10,7 @@
             :cart_data="basket"
             @cartDell = "cartDell"
             @cartUpdate = "cartUpdate"
+            @basketCostUpdate = "basketCostUpdate"
             />
             <h4 v-else>Корзина пуста 😢</h4>
             <span v-show="dialogForm" slot="footer" class="dialog-footer">
@@ -57,13 +58,17 @@ import {mapGetters,mapActions} from 'vuex'
       },
       ...mapActions({
         DELL_CART_BASKET:'main/DELL_CART_BASKET',
-        UPDATE_CART_BASKET:'main/UPDATE_CART_BASKET'
+        UPDATE_CART_BASKET:'main/UPDATE_CART_BASKET',
+        BASKET_COST:'main/BASKET_FROM_COST',
       }),
       cartDell(data){
         this.DELL_CART_BASKET(data)
       },
       cartUpdate(data){
         this.UPDATE_CART_BASKET(data)
+      },
+      basketCostUpdate(data){
+        this.BASKET_COST(data)
       }
     }
   };

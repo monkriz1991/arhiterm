@@ -47,11 +47,11 @@ export default {
   ],
 
   fontawesome:{
-    component:'fa',
-    // icons:{
-    //   solid:true,
-    //   brands:true,
-    // }
+    //component:'fa',
+    icons:{
+      solid:true,
+      brands:true,
+    }
   },
   pwa: {
     icon: {

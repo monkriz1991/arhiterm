@@ -125,6 +125,12 @@ display: none;
     margin: 0 10px 0px 0px;
     font-size: 27px;
 }
+.popover-nav>ul li a svg{
+    float: left;
+    margin: 0 10px 0 0;
+    font-size: 15px;
+    color: #797979;
+}
 .popover-nav>ul li a .el-image{
     width: 60px;
     margin: 0 10px 0 0px;

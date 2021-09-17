@@ -32,7 +32,9 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/${category.id}`">
-                  <fa icon="enevelope" />
+                  <font-awesome-icon
+                  v-if="category.title!=''"
+                   :icon="['fas',category.title]" />
                   {{ category.name }}
                 </nuxt-link>
               </li>
@@ -55,8 +57,8 @@
             <div
             v-on:click="visibleNav=!visibleNav"
             class="header-nav-refresh">
-              <i v-if="visibleNav==true" class="el-icon-download"></i>
-              <i v-else class="el-icon-upload2"></i>
+              <font-awesome-icon v-if="visibleNav==true" :icon="['fab','whmcs']" />
+              <font-awesome-icon v-else :icon="['fas','stream']" />
             </div>
           </el-popover>
           <nuxt-link
@@ -198,8 +200,8 @@
             <div
             v-on:click="visibleNav=!visibleNav"
             class="header-nav-refresh">
-              <i v-if="visibleNav==true" class="el-icon-download"></i>
-              <i v-else class="el-icon-upload2"></i>
+              <font-awesome-icon v-if="visibleNav==true" :icon="['fab','whmcs']" />
+              <font-awesome-icon v-else :icon="['fas','stream']" />
             </div>
           </el-popover>
           <nuxt-link
