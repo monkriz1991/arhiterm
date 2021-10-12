@@ -12,7 +12,7 @@
 
 
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters,mapActions} from "vuex";
 
 export default {
     data() {
@@ -30,7 +30,7 @@ export default {
         if(to.page!==undefined){
           this.page = to.page-0;
         }
-      }
+      },
   },
     methods:{
       updateData(){
@@ -38,7 +38,7 @@ export default {
       },
       paginate(){
         this.$addQueryMounters('page',this.page,this.$route,this.$route.params.catalog);
-        setTimeout(this.updateData,100);
+        setTimeout(this.updateData,100);               
         if (process.browser){
           window.scrollTo({
                   top: 100,

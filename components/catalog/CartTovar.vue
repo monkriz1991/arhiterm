@@ -15,28 +15,32 @@
             :xs="24" :sm="12" :md="12" :lg="12" :xl="12"
             v-for="(product,idx) in productsList" :key="idx"
             >
-                <div class="catalog-list-block" :class="{ activeImgBlock: show.includes(idx) }">
-                    <div class="catalog-list-img" :class="{ activeImgCat: show.includes(idx) }">
+                <div class="catalog-list-block" :class="{ activeImgBlock: show.includes(idx)&&activeButCatMeny==true }">
+                    <div class="catalog-list-img" :class="{ activeImgCat: show.includes(idx)&&activeButCatMeny==true }">
                         <div
                         v-if="product.manufacturer_name"
                         class="catalog-manuf">
                             <i class="el-icon-office-building"></i>
                             {{product.manufacturer_name}}
                         </div>
+                        <nuxt-link
+                        :class="{disabledLink:!price[idx]}"
+                        :to="`/product/${product.id}`"
+                        >
                         <el-image
                         :src="product.img"
                         fit="contain"
                         >
-
                         </el-image>
+                        </nuxt-link>
                         <div
                         v-show="price[idx]"
-                        class="catalog-list-block-button" :class="{ activeButCat: show.includes(idx) }">
+                        class="catalog-list-block-button" :class="{ activeButCat: show.includes(idx)&&activeButCatMeny==true }">
                             <el-button
                             v-on:click="toggleActive(idx)"
                             type="danger" plain  size="mini" circle
                             >
-                                <i :class="[show.includes(idx)?'el-icon-close':'el-icon-shopping-cart-1' ]"></i>
+                                <i :class="[show.includes(idx)&&activeButCatMeny==true?'el-icon-close':'el-icon-shopping-cart-1' ]"></i>
                             </el-button>
 
                         </div>
@@ -48,34 +52,39 @@
                         >
                             {{product.name}}
                         </nuxt-link>
-                        <div class="catalog-list-block-price">
-                            <strong>{{price[idx]}}
-                                <div class="catalog-list-block-discount">
+                        <div 
+                        class="catalog-list-block-price">
+                            <strong :class="{ butDiscount: discont[idx]}">
+                                {{price[idx]}}
+                                <div v-if="discont[idx]" 
+                                class="catalog-list-block-discount">
                                     <strong>{{discont[idx]}}</strong>
                                     <span>руб/{{product.units}}</span>
                                 </div>
                             </strong>
                             <span>руб/{{product.units}}</span>
                             <div class="catalog-list-block-cost">
-                                <strong>{{oneprice[idx]}} - {{lastprice[idx]}}</strong>
+                                <b>от</b><strong>{{oneprice[idx]}}</strong> 
+                                <b>до</b><strong>{{lastprice[idx]}}</strong>
                                 <span>руб/{{product.units}}</span>
                             </div>
                         </div>
                     </div>
                     <div
-                    v-if="show.includes(idx)"
+                    v-if="show.includes(idx)&&activeButCatMeny==true"
                     class="catalog-list-input">
 
                         <CartTovarInput
                         ref="cartTovarInput"
                         :price.sync="price[idx]"
                         :units="product.units"
-                        :multiplicity="product.multiplicity"
+                        :multiplicity.sync="product.multiplicity"
                         :discont.sync="discont[idx]"
                         :product_data="product.product"
                         @Sendprice = "updatePriceAndCountInPage"
                         @addToCart = "addToCart"
                         @NewChar = "funNewChar"
+                        @showBasket = "showBasket"
                         />
                         <CartTovarChar
                         :product_filter="product.product"
@@ -85,12 +94,19 @@
                 </div>
             </el-col>
         </el-row>
+        <no-ssr>
+        <BasketModal  
+        @clickModal = "toggleModal"
+        @closeBasket = "closeBasket"
+        :dialogFormVisibleModal="dialogFormVisibleModal"/>
+        </no-ssr> 
     </div>
 </template>
 
 <script>
 import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
 import CartTovarChar from '~/components/catalog/CartTovarChar.vue'
+import BasketModal from '~/components/BasketModal.vue'
 import {mapGetters,mapActions} from 'vuex'
 export default {
     props:['productsList','categoriesNested','categoryManuf'],
@@ -102,6 +118,9 @@ export default {
         //     this.loading=!this.loading;
         // }, 500);
     },
+    // async mounted(){
+    //     this.ButCatMeny()
+    // },
     data() {
         return {
             dynamicTags: [],
@@ -118,17 +137,22 @@ export default {
             checkListManuf:[],
             checkList:[],
             cats:[],
-            visible:false
+            visible:false,
+            activeButCatMeny:false,
+            dialogFormVisibleModal:false,
 
         };
     },
     components:{
         CartTovarInput,
         CartTovarChar,
+        BasketModal,
     },
     mounted(){
         this.parser(this.$route)
+        
     },
+
     /**
      * хук перед маннтированием страница, но после создания
      */
@@ -140,12 +164,15 @@ export default {
     },
     computed:{
         ...mapGetters({
-
+            activeButCatMenyItem:'main/activeButCatMenyItem',
         }),
     },
     watch:{
         productsList(){
             this.updatePriceAndCountInPage()
+        },
+        activeButCatMenyItem(data) { 
+            this.fromSateButCatMeny(data)
         },
       $route (to, from){
         this.parser(to)
@@ -182,9 +209,12 @@ export default {
             }, 500);
         },
         ...mapActions({
-           ADD_TO_CART: 'main/ADD_TO_CART'
+           ADD_TO_CART: 'main/ADD_TO_CART',
+           ButCatMeny: 'main/newSateButCatMeny',
         }),
         toggleActive(idx) {
+            this.activeButCatMeny = true
+            this.fromSateButCatMeny(this.activeButCatMeny)
             this.radio = idx;
             if (this.show.includes(idx)) {
                 this.show = this.show.filter(entry => entry !== idx);
@@ -192,7 +222,9 @@ export default {
             }else{
                 this.show =[]
             }
+            
             this.show.push(idx);
+            
         },
 
         /**
@@ -222,6 +254,7 @@ export default {
             cart.product = ret;
             cart.product[0]['cost'] = data.cost;
             cart.product[0]['count_el'] = data.count_el;
+            cart.product[0]['multiplicity'] = data.multiplicity;
             this.ADD_TO_CART(cart)
         },
         funNewChar(data){
@@ -282,7 +315,6 @@ export default {
       if(this.categoriesNested!=undefined&&to.query.card_filter!==undefined && Array.isArray(this.categoriesNested.list_filter)) {
         let cats = []
         for(let a of this.categoriesNested.list_filter){
-          console.log(a)
           if(a.chice){
             for(let i of a.chice){
               // if(i.chice) {
@@ -299,8 +331,42 @@ export default {
         this.checkList = []
       }
       this.dynamicTags = this.checkList.concat(this.checkListManuf)
-      }
+      },
+        showBasket(dialogVisible){
+            this.dialogFormVisibleModal = dialogVisible
+        },
+        toggleModal(val,noCloseNotify) { 
+            this.dialogFormVisibleModal = val;
+            this.show =[]
+            this.fromSateButCatMeny(this.activeButCatMeny)
+            if(noCloseNotify==false){
+                this.$notify.closeAll()
+            }
+        },
+        fromSateButCatMeny(data){
+            if(data==false){
+                this.show =[]
+            }
+            this.activeButCatMeny = data
+            this.ButCatMeny(data)
+        },
+        closeBasket(val){ 
+            if(val==true){
+                this.openNotify()
+            }
+        },
+        openNotify() {
+            this.$notify({
+            type: 'success',
+            title: 'Заказ успешно оформлен',
+            dangerouslyUseHTMLString: true,
+            duration:4500,
+            message: 'На Вашу почту была выслана информация о заказе!',
+            // offset: 100
+            });
+        }, 
     }
+
 }
 </script>
 <style>

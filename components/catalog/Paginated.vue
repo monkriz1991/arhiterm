@@ -13,7 +13,7 @@
 
 
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters,mapActions} from "vuex";
 
 export default {
     data() {
@@ -24,7 +24,8 @@ export default {
      computed:{
         ...mapGetters({
             countProduct: 'product/countProduct',
-            productLimit: 'product/productLimit'
+            productLimit: 'product/productLimit',
+            activeButCatMenyItem:'main/activeButCatMenyItem',
         }),
     },
   watch:{
@@ -35,9 +36,13 @@ export default {
       }
   },
     methods:{
+      ...mapActions({
+        ButCatMeny: 'main/newSateButCatMeny',
+      }),
       paginate(){
         this.$addQuery('page',this.page,this.$route,this.$route.params.catalog);
         setTimeout(this.updateData,100);
+        this.fromSateButCatMeny(false)
         if (process.browser){
             window.scrollTo({
                     top: 100,
@@ -49,6 +54,9 @@ export default {
       updateData(){
           this.$emit('changePage',this.page);
       },
+      fromSateButCatMeny(data){
+        this.ButCatMeny(data)
+      }
     },
     mounted(){
 

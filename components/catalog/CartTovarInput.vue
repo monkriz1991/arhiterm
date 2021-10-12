@@ -8,10 +8,30 @@
             size="mini"
             @change="handleChange" :min="multiplicity"
             ></el-input-number>
+            <span class="units"><b>|</b>{{units}}</span>
+                <el-popover
+                v-if="multiplicity>1"
+                placement="top"
+                width="325"
+                trigger="click">
+                  <div>
+                    Данная позиция укзана в стоимости за 1 {{units}},<br>  
+                    но рассчитывается исходя из минимально<br> 
+                    <span v-if="units=='шт'">продоваемого количества</span>
+                    <span v-else>продоваемого размера</span>!
+                  </div>
+                  <el-button
+                  slot="reference"
+                  icon="el-icon-warning-outline"
+                  size="mini"
+                  circle
+                  ></el-button>
+                </el-popover>
+
           <div
           class="cost-product-price-catalog">
               <span>{{priceCart}}</span>
-              <strong>руб/{{units}}</strong>
+              <strong>руб</strong>
           </div>
         </div>
         <div class="cost-product-input">
@@ -60,6 +80,7 @@
           <span v-if="disableButton === false">В корзину</span>
           <span v-else>В корзине</span>
         </el-button>
+     
     </div>
 </template>
 
@@ -67,10 +88,11 @@
 <script>
 import {mapGetters,mapActions} from 'vuex'
   export default {
-    created() {
-    },
+    // created() {
+    // },
     props:["product_data","price","discont",'units','multiplicity'],
     components:{
+      
     },
     data() {
       return {
@@ -82,6 +104,7 @@ import {mapGetters,mapActions} from 'vuex'
         radio:0,
         priceCart:0,
         count:1,
+       // multiplicity:this.multiplicity,
         discont_price:this.product_data[0].discont!=null?this.product_data[0].discont:0,
         disableButton: false,
         disableRadio: false,
@@ -89,11 +112,9 @@ import {mapGetters,mapActions} from 'vuex'
 
       };
     },
-    beforeMount(){
-       this.editProduct(this.product_data[0].id);
+    mounted(){
        this.discontStart(this.product_data[0])
-       //this.editToBasket(this.product_data)
-
+       this.editProduct(this.product_data[0].id);
     },
     computed:{
       ...mapGetters({
@@ -102,37 +123,44 @@ import {mapGetters,mapActions} from 'vuex'
     },
     watch:{
       basket:{
-        handler(val){
-          console.log(val)
+        handler(val,arr){
+          if(arr.length==0){
+            this.editProduct('arrNull');
+          }
+          for(let i of arr){
+            this.editProduct(i.product[0].id);
+          }
           for(let i of val){
-            console.log(this.active_id)
-               this.editProduct(i.product[0].id);
+            if(this.active_id!=null&&this.active_id.id==i.product[0].id){
+              this.editProduct(i.product[0].id);
+            }
           }
         },
-         deep: true
-      }
+       deep: true
+      },
     },
     methods: {
       changePrice(item){
-        this.count = 1
+        this.count = this.multiplicity   
         this.active_id = item
-        this.input_cost = item.discont==null?item.price:item.discont
+        this.input_cost = item.discont==null?Math.round(item.price*this.multiplicity*100)/100 :Math.round(item.discont*this.multiplicity*100)/100 
         this.$emit('update:price', item.price)
-        this.priceCart = item.discont==null?item.price:item.discont
+        this.priceCart = item.discont==null?Math.round(item.price*this.multiplicity*100)/100 :Math.round(item.discont*this.multiplicity*100)/100 
         this.name_radioGroup = item.filter_show_name!=null?item.filter_show_name:'Артикул'
         this.$emit('NewChar', item)
         this.$emit('update:discont',item.discont)
         this.disableButton = false
         this.num = 1
         this.editProduct(item.id)
+
       },
       /** Добавление товара в корзину */
       addToCart(){
-        this.$emit('addToCart',{data:this.active_id==null?this.product_data[0]:this.active_id,'count_el':this.count,'cost':this.priceCart})
+        this.$emit('addToCart',{data:this.active_id==null?this.product_data[0]:this.active_id,'count_el':this.count,'cost':this.priceCart,'multiplicity':this.multiplicity})
         this.disableButton = true
         this.classBasket = 'in-basket'
         this.arr_basket_id.push(this.active_id==null?this.product_data[0].id:this.active_id.id)
-
+        this.open()
       },
       roundToNearest(number, multiple) {
           return Math.round(number / multiple) * multiple;
@@ -140,39 +168,74 @@ import {mapGetters,mapActions} from 'vuex'
       sleep(){
 
       },
-      /** Изменение кол. товара */
-      handleChange(value) {
-        if(value%this.multiplicity!==0){
-          this.num = this.roundToNearest(value, this.multiplicity);
-          setTimeout(this.sleep,100)
-        }
-         this.priceCart = Math.floor(this.input_cost*value*100)/100
-         this.count = value
-      },
       /** Обновление кол. товара и блокировка кнопок добавить в корзину и inputnumber */
       editProduct(item){
+
+        if(item=='arrNull'){
+          this.handleChange(this.multiplicity)
+        }
+        this.arr_basket_id = []
+        this.disableButton = false
+        this.classBasket = 'none-basket'
         for(let i in this.basket){
           this.arr_basket_id.push(this.basket[i].product[0].id)
-          if(this.basket[i].product[0].id == item){
-            //this.classBasket = 'in-basket'
+          if(this.basket[i].product[0].id == item){   
             this.disableButton = true
-            this.num = this.basket[i].product[0].count_el
-            this.handleChange(this.basket[i].product[0].count_el)
+              if(this.active_id!=null&&this.basket[i].product[0].id!=this.active_id.id){
+                this.disableButton = false
+              }
+              if(this.active_id!=null&&this.basket[i].product[0].id==this.active_id.id){
+                this.num = this.basket[i].product[0].count_el    
+                this.handleChange(this.basket[i].product[0].count_el) 
+              }
+              if(this.active_id==null&&this.basket[i].product[0].id){
+                this.num = this.basket[i].product[0].count_el    
+                this.handleChange(this.basket[i].product[0].count_el) 
+              }
           }
         }
       },
       discontStart(item){
+        
         if(item.discont!=null){
-          this.priceCart = item.discont
-          this.input_cost = item.discont
+          this.priceCart =  Math.round(item.discont*this.multiplicity*100)/100
+          this.input_cost = Math.round(item.discont*this.multiplicity*100)/100
         }else{
-          this.priceCart = item!=undefined?item.price:0
-          this.input_cost = item!=undefined?item.price:0
+          this.priceCart = item!=undefined?Math.round(item.price*this.multiplicity*100)/100:0
+          this.input_cost = item!=undefined?Math.round(item.price*this.multiplicity*100)/100:0
         }
-       // this.editProduct(item)
+      },
+      /** Изменение кол. товара */
+      handleChange(value) {
+          
+          this.num = value
+          if(value%this.multiplicity!==0){
+            this.num = this.roundToNearest(value, this.multiplicity);
+            setTimeout(this.sleep,100) 
+          }
+          this.count = value  
+            
+          if(this.multiplicity>1){
+            value = value/this.multiplicity
+          }
+         
+          this.priceCart = Math.round(this.input_cost*value*100)/100
       },
       findMatch(id) {
           return this.arr_basket_id.includes(id);
+      },
+      open() {
+        const h = this.$createElement;
+        this.$notify({
+          //title: 'Товар в корзине',
+          dangerouslyUseHTMLString: true,
+          duration:3000,
+          message: h('el-button',{on:{click:this.dialogBasketModal},class:'el-icon-shopping-cart-full'},'Перейти в корзину'),
+         // offset: 100
+        });
+      },
+      dialogBasketModal(){
+        this.$emit('showBasket',true)
       }
     }
   };

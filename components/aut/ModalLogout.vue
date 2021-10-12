@@ -11,7 +11,11 @@
         icon="el-icon-user"
         @click="dialogFormVisible = true">
         </el-button>
-        <el-dialog title="Личный кабинет" :visible.sync="dialogFormVisible"  width="32%">
+        <el-dialog 
+        title="Личный кабинет" 
+        append-to-body
+        :visible.sync="dialogFormVisible"  
+        width="32%">
 
         <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="Вход" name="first">

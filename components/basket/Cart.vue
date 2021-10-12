@@ -35,7 +35,7 @@
                 </div>
                 <div class="basket-tov-cost">
                     <strong>{{item.product[0].price}}</strong>
-                    <span>руб.</span>
+                    <span>руб./{{item.units}}</span>
                         <div class="basket-block-discount">
                             <strong>{{item.product[0].discont}}</strong>
                         </div>
@@ -43,10 +43,12 @@
                 <div class="basket-tov-calc">
                     <el-input-number
                     size="mini"
-                    :min="1"
+                    :min="item.product[0].multiplicity"
+                    :step="item.product[0].multiplicity"
                     v-model="item.product[0].count_el"
                     @change="changeQuantyty(item.id,item.product[0].id,item.product[0].count_el,item.product[0].discont!=null?item.product[0].discont:item.product[0].price)"
-                    ></el-input-number>
+                    ></el-input-number>                   
+                    <span class="units"><b>|</b>{{item.units}}</span> 
                 </div>
                 <div class="basket-tov-summ">
                     <strong>{{item.product[0].cost}}</strong>
@@ -77,7 +79,7 @@
                 <span
                 v-if="for_amount_none===0"
                 >Итого:</span>
-                <span v-else>Итого с уётом заказных позиций:</span>
+                <span v-else>Итого с учётом заказных позиций:</span>
                 <strong>{{for_amount_itog}}<span>руб.</span></strong>
             </div>
         </div>
@@ -123,11 +125,13 @@ export default {
           this.amount()
             this.$emit('cartDell',idx)
             this.amount()
+            this.$emit('basketCostUpdate',{'for_amount':this.for_amount,'for_amount_discount':this.for_amount_discount,'for_amount_discount_persent':this.for_amount_discount_persent,'for_amount_none':this.for_amount_none,'for_amount_itog':this.for_amount_itog})
         },
         changeQuantyty(id,id_cart,val,price){
             this.cost_product = Math.floor(price*val*100)/100
             this.$emit('cartUpdate',{'id':id,'id_cart':id_cart,'count_el':val,'cost':this.cost_product})
             this.amount()
+            this.$emit('basketCostUpdate',{'for_amount':this.for_amount,'for_amount_discount':this.for_amount_discount,'for_amount_discount_persent':this.for_amount_discount_persent,'for_amount_none':this.for_amount_none,'for_amount_itog':this.for_amount_itog})
         },
         amount(){
             this.for_amount = 0
@@ -153,13 +157,13 @@ export default {
           this.for_amount_itog = this.for_amount - this.for_amount_discount
           this.for_amount_itog = Math.floor(this.for_amount_itog*100)/100
 
-          this.$emit('basketCostUpdate',{'for_amount':this.for_amount,'for_amount_discount':this.for_amount_discount,'for_amount_discount_persent':this.for_amount_discount_persent,'for_amount_none':this.for_amount_none,'for_amount_itog':this.for_amount_itog})
+         
         }
 
     }
 }
 </script>
-<style scoped>
+<style>
 .basket-itog{
     float: left;
     width: 100%;

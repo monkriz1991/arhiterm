@@ -1,6 +1,17 @@
 <template>
     <div class="container">
         <Breadcrumb/>
+        <div 
+        class="back-wrapper">
+            <el-button
+            text
+            :ripple="false"
+            icon="el-icon-back"
+            size="mini"
+            circle
+            @click.prevent="to">
+            </el-button>
+        </div>
         <h1 class="h1-product">{{productItem.name}}</h1>
         <h2 class="h2-product">
             <i class="el-icon-office-building"></i>
@@ -9,9 +20,9 @@
         <Galery/>
         <div class="cost-product-section">
             <div class="cost-product-price">
-                <span>{{price}}</span>
+                <span :class="{ butDiscount: discont}">{{price}}</span>
                 <strong>руб./{{result.units}}</strong>
-                <div class="catalog-list-block-discount">
+                <div v-if="discont" class="catalog-list-block-discount">
                     <strong>{{discont}}</strong>
                     <span>руб/{{result.units}}</span>
                 </div>
@@ -21,9 +32,10 @@
             :discont.sync="discont"
             :product_data="productItem.product"
             :units="result.units"
-            :multiplicity="result.multiplicity"
+            :multiplicity.sync="result.multiplicity"
             @addToCart = "addToCart"
             @NewChar = "funNewChar"
+            @showBasket = "showBasket"
             />
         </div>
         <div class="tabs-product">
@@ -32,6 +44,13 @@
             :new_char="funChar"
              />
         </div>
+        <no-ssr>
+        <BasketModal  
+        @clickModal = "toggleModal"
+        @closeBasket = "closeBasket"
+        :dialogFormVisibleModal="dialogFormVisibleModal"
+        />
+        </no-ssr> 
     </div>
 </template>
 
@@ -40,6 +59,7 @@ import Breadcrumb from '~/components/Breadcrumb.vue'
 import Galery from '~/components/product/Galery.vue'
 import Tabs from '~/components/product/Tabs.vue'
 import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
+import BasketModal from '~/components/BasketModal.vue'
 import { mapGetters,mapActions } from 'vuex'
 export default ({
     created() {
@@ -49,7 +69,6 @@ export default ({
             let result = await app.store.dispatch('tovar/getProductItem',params.id)
             let price = result.product[0].price
             let discont = result.product[0].discont
-                 console.log(result)
             return{price,discont,result}
         } catch (err) {
         return error({
@@ -61,13 +80,15 @@ export default ({
     data(){
         return{
             funChar:[],
+            dialogFormVisibleModal:false,
         }
     },
     components:{
         Galery,
         Tabs,
         CartTovarInput,
-        Breadcrumb
+        Breadcrumb,
+        BasketModal
     },
     computed:{
         ...mapGetters({
@@ -85,12 +106,41 @@ export default ({
             cart.product = ret;
             cart.product[0]['cost']= data.cost;
             cart.product[0]['count_el'] = data.count_el;
+            cart.product[0]['multiplicity'] = data.multiplicity;
+            console.log(cart)
             this.ADD_TO_CART(cart)
         },
         funNewChar(data){
             return this.funChar = data
 
-        }
+        },
+        showBasket(dialogVisible){
+            this.dialogFormVisibleModal = dialogVisible
+        },
+        toggleModal(val,noCloseNotify) { 
+            this.dialogFormVisibleModal = val;
+            if(noCloseNotify==false){
+                this.$notify.closeAll()
+            }
+        },
+        to() {
+            this.$router.go(-1);
+        },
+        closeBasket(val){ 
+            if(val==true){
+                this.openNotify()
+            }
+        },
+        openNotify() {
+            this.$notify({
+            type: 'success',
+            title: 'Заказ успешно оформлен',
+            dangerouslyUseHTMLString: true,
+            duration:4500,
+            message: 'На Вашу почту была выслана информация о заказе!',
+            // offset: 100
+            });
+        },       
     }
 })
 </script>

@@ -3,7 +3,8 @@
     <h4>Категории</h4>
         <el-row :gutter="20">
         <el-col
-        v-for="item in category" :key="item.id"
+        v-for="item in category.results" :key="item.id"
+        v-show="item.show_in_start==true"
         :xs="12" :sm="12" :md="12" :lg="6" :xl="6">
             <nuxt-link :to="`/catalog/${item.id}`" class="nuxt-link-cat">
                 <div class="index-topcat-block">

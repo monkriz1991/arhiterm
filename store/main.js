@@ -9,6 +9,7 @@ export const state = ()=>({
     indexItem:[],
     userItem:[],
     basket_cost:[],
+    activeButCatMenyItem:false,
 })
 
 export const mutations = {
@@ -42,15 +43,18 @@ export const mutations = {
     },
     BASKET_COST(state,data){
         state.basket_cost = data
-        console.log(state.basket_cost)
+       // console.log(state.basket_cost)
 
     },
     setUser(state,userItem){
         state.userItem = userItem
     },
-  setCountBasket(state,data){
-    state.countAllBaskets = data;
-  }
+    setCountBasket(state,data){
+        state.countAllBaskets = data;
+    },
+    setactiveButCatMeny(state,data){
+        state.activeButCatMenyItem = data;
+    }
 }
 
 export const actions = {
@@ -99,6 +103,10 @@ export const actions = {
     addUserList({ commit},results) {
         commit('setUser', results)
         return results
+    },
+    newSateButCatMeny({ commit},results) {
+        commit('setactiveButCatMeny', results)
+        return results
     }
 }
 
@@ -109,7 +117,8 @@ export const getters = {
     indexItem: state => state.indexItem,
     userItem: state => state.userItem,
     allBaskets: state => state.allBaskets,
-    countAllBaskets: state => state.countAllBaskets
+    countAllBaskets: state => state.countAllBaskets,
+    activeButCatMenyItem: state => state.activeButCatMenyItem
 }
 
 

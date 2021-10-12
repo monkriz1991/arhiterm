@@ -6,7 +6,7 @@
       @open="handleOpen"
       @close="handleClose"
       ref="menu">
-      <el-submenu index="1">
+      <el-submenu  v-if="$auth.loggedIn&&width<991" index="1">
         <template slot="title">
             <div class="avatar-meny-user">
                 <el-avatar :src="$auth.user.img"></el-avatar> 
@@ -38,23 +38,38 @@
                 </div>
             </el-menu-item>
       </el-submenu>
-      <el-menu-item index="2"  @click="closeMeny">
+      <el-menu-item v-if="width<991" index="2"  @click="closeMeny">
            <nuxt-link :to="`/mounters`">
             Монтажники
           </nuxt-link>
       </el-menu-item>
       <el-menu-item index="3"  @click="closeMeny">
-           <nuxt-link :to="`/mounters`">
-            Доставка и оплата
-          </nuxt-link>
-      </el-menu-item>
-            <el-menu-item index="4"  @click="closeMeny">
-           <nuxt-link :to="`/mounters`">
+           <nuxt-link :to="`/info/about`">
             О нас
           </nuxt-link>
       </el-menu-item>
-            <el-menu-item index="5"  @click="closeMeny">
-           <nuxt-link :to="`/mounters`">
+      <el-menu-item index="4"  @click="closeMeny">
+           <nuxt-link :to="`/info/dostavka`">
+            Доставка
+          </nuxt-link>
+      </el-menu-item>
+      <el-menu-item index="5"  @click="closeMeny">
+           <nuxt-link :to="`/info/payment`">
+            Оплата
+          </nuxt-link>
+      </el-menu-item>
+      <el-menu-item hidden index="6"  @click="closeMeny">
+           <nuxt-link :to="`/info/rassrochka`">
+            Рассрочка
+          </nuxt-link>
+      </el-menu-item>
+      <el-menu-item index="7"  @click="closeMeny">
+           <nuxt-link :to="`/info/certificates`">
+            Сертификаты
+          </nuxt-link>
+      </el-menu-item>
+      <el-menu-item index="8"  @click="closeMeny">
+           <nuxt-link :to="`/info/contacts`">
             Контакты
           </nuxt-link>
       </el-menu-item>
@@ -66,7 +81,7 @@
 
 <script>
   export default {
-    props:['visible'],
+    props:['visible','width'],
     data() {
       return {
       };

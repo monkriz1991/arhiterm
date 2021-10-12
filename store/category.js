@@ -62,14 +62,14 @@ export const actions = {
         // await sleep(50)
         let manufacturer = await this.$axios.$get(`/manufacturer/get/?cats=${id}&limit=99999`);
         commit('setCategoryManuf', manufacturer)
-        console.log(manufacturer)
+        
         return manufacturer
     },
     async getCategoryIndex ({ commit}) {
         // await sleep(50)
-        let category = await this.$axios.$get(`/catalog/categories/?limit=4`);
-        commit('setCategoryIndex', category.results)
-        return category.results
+        let category = await this.$axios.$get(`/catalog/categories/?limit=44`);
+        commit('setCategoryIndex', category)
+        return category
     },
     async getManufacturer({ commit}) {
         // await sleep(50)

@@ -14,7 +14,7 @@
                 ><span>Далее</span></div>
             </el-form-item>
         </el-collapse-item>
-        <el-collapse-item :disabled="typeUser == ''"  title="Доставка" name="2">
+        <el-collapse-item :disabled="Form.typ==''"  title="Доставка" name="2">
             <el-form-item prop="del">
                 <el-radio-group v-model="Form.del">
                 <el-radio label="Курьером"></el-radio>
@@ -30,12 +30,12 @@
         <el-collapse-item :disabled="Form.del == ''" title="Оплата" name="3">
             <el-form-item prop="pay" class="radio-pay">
                 <el-radio-group v-model="Form.pay">
-                <el-radio label="Безналичный расчёт"></el-radio>
-                <el-radio v-show="typeUser=='1'" label="Наличный расчет"></el-radio>
-                <el-radio v-show="typeUser=='1'" label="Банковской картой онлайн"></el-radio>
-                <el-radio v-show="typeUser=='1'" label="Банковской картой через терминал"></el-radio>
-                <el-radio v-show="typeUser=='1'" label="Через систему «Расчет» (ЕРИП)"></el-radio>
-                <el-radio v-show="typeUser=='1'" label="Картами рассрочки без переплат сроком на 2 месяца"></el-radio>
+                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Безналичный расчёт"></el-radio>
+                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Наличный расчет"></el-radio>
+                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Банковской картой онлайн"></el-radio>
+                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Банковской картой через терминал"></el-radio>
+                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Через систему «Расчет» (ЕРИП)"></el-radio>
+                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Картами рассрочки без переплат сроком на 2 месяца"></el-radio>
                 </el-radio-group>
                 <div
                 class="but-next-form"
@@ -46,7 +46,7 @@
         </el-collapse-item>
         <el-collapse-item :disabled="Form.pay == ''" title="Данные покупателя" name="4" class="collapse-data">
         <el-form-item
-        v-if="typeUser=='2'"
+        v-if="typeUser=='2'||Form.typ=='2'"
         prop="nameCompany"
         label="Название компании"
         :rules="[
@@ -74,7 +74,7 @@
         >
         <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш email" v-model="Form.username" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item v-if="typeUser=='2'" label="Юр. Адрес">
+        <el-form-item v-if="typeUser=='2'||Form.typ=='2'" label="Юр. Адрес">
             <el-input :disabled="$auth.loggedIn!=''"
             type="textarea" v-model="Form.yrAdres"></el-input>
         </el-form-item>
@@ -98,17 +98,33 @@
         >
             <el-input placeholder="Повторите пароль" v-model="Form.checkPass" show-password autocomplete="off"></el-input>
         </el-form-item>
+
+            <div class="form-basket-aut">
+                <div class="form-basket-aut-content" v-if="!$auth.loggedIn">
+                    <no-ssr>
+                    <ModalLogout />
+                    </no-ssr>
+                    <b>|</b>
+                    <span>Если у вас уже есть аккаунт на сайте, 
+                        вы можете пройти авторизацию,<br>
+                        товарные позиции в корзине останутся доступны.
+                    </span>
+                </div>
+            </div>
+
             <span v-show="Form.pay != ''" class="dialog-footer">
                 <el-button  @click="addOrder" type="primary">Оформить заказ</el-button>
             </span>
+
         </el-collapse-item>
         </el-collapse>
+
     </el-form>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
-
+import ModalLogout from '~/components/aut/ModalLogout.vue'
 export default ({
   props:['dialogForm'],
     data(){
@@ -136,16 +152,16 @@ export default ({
         Form: {
           name: this.$store.state.auth.loggedIn?this.$store.state.auth.user.first_name!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.first_name:'':'',
           username: this.$store.state.auth.loggedIn?this.$store.state.auth.user.username!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.username:'':'',
-          nameCompany:this.$store.state.auth.loggedIn?this.$store.state.auth.user.nameCompany!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.nameCompany:'':'',
+          nameCompany:this.$store.state.auth.loggedIn?this.$store.state.auth.user.company_name!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.company_name:'':'',
           type: '',
           password: '',
           checkPass: '',
           del:'',
           pay:'',
-          typ: this.$store.state.auth.loggedIn?this.$store.state.auth.user.type_of_user!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.type_of_user:'':'',
-          yrAdres:'',
+          typ: '',
+          yrAdres:this.$store.state.auth.loggedIn?this.$store.state.auth.user.legal_address!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.legal_address:'':'',
           adres:'',
-          desc: ''
+          desc: '',
         },
         rules: {
           password: [
@@ -158,20 +174,28 @@ export default ({
         }
     },
     components:{
+        ModalLogout
     },
-  watch:{
-      $auth(newv){
-        this.$forceUpdate();
-      }
-  },
+    watch:{
+        $auth(newv){
+            this.$forceUpdate();
+        },
+        'Form.typ':function(newVal){
+            if(this.$store.state.auth.user==false){
+                this.typ = newVal
+            }
+        },
+
+    },
     computed:{
       ...mapGetters({
         basket:'main/basket',
         basket_cost:'main/basket_cost',
       }),
       typeUser:function (){
-        this.$forceUpdate();
-        return this.$store.state.auth.user?this.$store.state.auth.user.type_of_user:''
+            this.$forceUpdate();
+            return this.$store.state.auth.user?this.$store.state.auth.user.type_of_user:''
+        
       }
     },
     methods:{
@@ -202,20 +226,49 @@ export default ({
     },
     async unaftorized(){
         let data = await this.$axios.post('add/to/cart',{form:this.Form,basket:this.basket,basket_cost:this.basket_cost});
-       console.log(data)
+
        if(!this.$auth.loggedIn) {
         await this.$auth.loginWith('local', {data:{username: this.Form.username, password: this.Form.password}})
         this.addUserList(this.$auth.user)
         }
 
         this.$emit('updateDialogForm',false)
-      this.$
-       this.remove_basket()
+        this.$
+        this.remove_basket()
+
       },
+
     }
 })
 </script>
 <style>
+.form-basket-aut{
+    float: left;
+    width: 100%;
+}
+.form-basket-aut-content{
+    float: left;
+    width: 100%;
+    margin: 20px 0;
+}
+.form-basket-aut span{
+    max-width: 500px;
+    float: left;
+    width: 100%;
+}
+.form-basket-aut b{
+    float: left;
+    margin: 9px 15px 8px 0;
+}
+.form-basket-aut .header-logout{
+    float: left;
+    margin: 0 15px 0 0;
+}
+.form-basket-aut .header-logout button{
+    background-color: #f2f8ff;
+    font-size: 12px;
+    padding: 12px 20px;
+}
 .header-basket .el-form-item{
     margin-bottom: 0px;
 }

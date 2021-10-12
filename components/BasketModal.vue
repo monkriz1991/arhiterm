@@ -1,8 +1,6 @@
 <template>
     <div class="header-basket">
-        <el-button type="text" @click="dialogFormVisible = true">
-            <i class="el-icon-shopping-cart-full"></i>
-        </el-button>
+
         <el-dialog title="Корзина" :visible.sync="dialogFormVisible"  width="60%">
             <Cart
             v-if="basket.length"
@@ -35,6 +33,17 @@ import Cart from '/components/basket/Cart'
 import Form from '/components/basket/Form'
 import {mapGetters,mapActions} from 'vuex'
   export default {
+    props:['dialogFormVisibleModal'],
+    watch:{
+      dialogFormVisibleModal: function(newVal) { 
+        this.dialogFormVisible = newVal
+      },
+      dialogFormVisible: function(newVal,noCloseNotify) { 
+        this.$emit('clickModal',newVal,noCloseNotify);
+        this.fromSateButCatMeny(false)
+      }
+      
+    },
     components:{
       Cart,
       Form
@@ -43,23 +52,28 @@ import {mapGetters,mapActions} from 'vuex'
       return {
         dialogFormVisible: false,
         dialogForm:true,
+        noCloseNotify:false
       }
     },
     computed:{
       ...mapGetters({
         basket:'main/basket',
+        activeButCatMenyItem:'main/activeButCatMenyItem',
       })
     },
     methods:{
       updateDialogForm(){
+        this.$emit('closeBasket',true);
+        this.noCloseNotify = true
         this.dialogFormVisible = false;
-        this.dialogForm = true;
+        this.dialogForm = true;    
         this.$forceUpdate();
       },
       ...mapActions({
         DELL_CART_BASKET:'main/DELL_CART_BASKET',
         UPDATE_CART_BASKET:'main/UPDATE_CART_BASKET',
         BASKET_COST:'main/BASKET_FROM_COST',
+        ButCatMeny: 'main/newSateButCatMeny',
       }),
       cartDell(data){
         this.DELL_CART_BASKET(data)
@@ -69,7 +83,11 @@ import {mapGetters,mapActions} from 'vuex'
       },
       basketCostUpdate(data){
         this.BASKET_COST(data)
-      }
+      },
+      fromSateButCatMeny(data){
+        this.ButCatMeny(data)
+      },
+
     }
   };
 </script>

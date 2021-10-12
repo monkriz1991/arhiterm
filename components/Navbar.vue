@@ -32,9 +32,10 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/${category.id}`">
-                  <font-awesome-icon
+                  <el-image :src="category.img"></el-image>
+                  <!-- <font-awesome-icon
                   v-if="category.title!=''"
-                   :icon="['fas',category.title]" />
+                   :icon="['fas',category.title]" /> -->
                   {{ category.name }}
                 </nuxt-link>
               </li>
@@ -57,8 +58,10 @@
             <div
             v-on:click="visibleNav=!visibleNav"
             class="header-nav-refresh">
-              <font-awesome-icon v-if="visibleNav==true" :icon="['fab','whmcs']" />
-              <font-awesome-icon v-else :icon="['fas','stream']" />
+            <span v-if="visibleNav==true" >Бренды</span>
+            <span v-else>Каталог</span>
+              <!-- <font-awesome-icon v-if="visibleNav==true"  :icon="['fab','whmcs']" />
+              <font-awesome-icon v-else :icon="['fas','stream']" /> -->
             </div>
           </el-popover>
           <nuxt-link
@@ -66,20 +69,17 @@
           class="link-navbar" :to="`/mounters`">
             Монтажники
           </nuxt-link>
-            <div v-if="$auth.loggedIn">
-              <div v-if="adaptivSidebar">
-                <Menyuser/>
-              </div>
+            <div>
               <el-drawer
-              v-else
               class="darwer-meny"
               :visible.sync="drawer"
               :direction="direction"
               :with-header="true">
-                <MenyuserMobail :visible.sync="drawer" />
+                <MenyuserMobail 
+                :width.sync = "width"
+                :visible.sync ="drawer" />
               </el-drawer>
               <el-button
-              v-if="!adaptivSidebar"
               @click="drawer = true"
               class="drawer-button-meny"
               icon="el-icon-more"
@@ -87,13 +87,24 @@
               >
               </el-button>
             </div>
+            <div  v-if="$auth.loggedIn">
+              <Menyuser/>
+            </div>
             <div v-else>
             <no-ssr>
               <ModalLogout />
             </no-ssr>
             </div>
             <no-ssr>
-              <BasketModal />
+              <BasketModal  
+              @clickModal = "toggleModal"
+              @closeBasket = "closeBasket"
+              :dialogFormVisibleModal="dialogFormVisibleModal"/>
+              <div class="nav-button-basket">
+                <el-button  type="text" @click="dialogFormVisibleModal=true">
+                  <i class="el-icon-shopping-cart-full"></i>
+              </el-button>
+              </div>
             </no-ssr>
             <div class="top-phone">
               <el-button
@@ -271,7 +282,8 @@ import {mapGetters,mapActions} from 'vuex'
         phones:[],
         state: '',
         timeout:  null,
-        show: false
+        show: false,
+        dialogFormVisibleModal: false,
       };
     },
     computed:{
@@ -285,6 +297,27 @@ import {mapGetters,mapActions} from 'vuex'
         getCategory:'category/getCategory',
         getManufacturer:'category/getManufacturer'
       }),
+      toggleModal(val,noCloseNotify) { 
+          this.dialogFormVisibleModal = val;
+          if(noCloseNotify==false){
+              this.$notify.closeAll()
+          }
+      },
+      closeBasket(val){ 
+        if(val==true){
+            this.openNotify()
+        }
+      },
+      openNotify() {
+          this.$notify({
+          type: 'success',
+          title: 'Заказ успешно оформлен',
+          dangerouslyUseHTMLString: true,
+          duration:4500,
+          message: 'На Вашу почту была выслана информация о заказе!',
+          // offset: 100
+          });
+      }, 
       updateWidth() {
         this.width = window.innerWidth;
         if(window.innerWidth>991){
@@ -340,74 +373,5 @@ import {mapGetters,mapActions} from 'vuex'
 </script>
 
 <style>
-.drawer-button-meny{
-  float: right;
-}
-.darwer-meny .el-drawer{
-  width: 100% !important;
-}
-.drawer-button-meny{
-  padding: 7px 12px;
-  margin: 0 0 0 5px;
-}
-.top-phone{
 
-}
-.contents-mobail{
-  float: left;
-  width: 100%;
-  border-bottom: 1px solid #e2e2e2;
-  border-top: 1px solid #e2e2e2;
-  padding: 5px 0;
-  margin: 10px 0 5px;
-  position: relative;
-}
-.el-drawer__header {
-    padding: 20px 15px 0;
-}
-.contents-mobail .header-cat{
-  float: left;
-  padding: 7px 12px;
-  border: none;
-}
-.contents-mobail .button-search{
-    float: right;
-    padding: 8px 8px 7px;
-    font-size: 11px;
-}
-.block-search{
-  position: absolute;
-  right: 35px;
-  left: 0;
-}
-.block-search .el-autocomplete{
-  width: 100%;
-}
-.block-search .el-input input{
-  height: 28px;
-  line-height: 28px;
-  font-size: 12px;
-}
-.block-search-input .el-scrollbar__view li{
-  font-size: 11px;
-}
-.search-navbar{
-    float: right;
-    position: relative;
-}
-.search-navbar>button{
-    padding: 9px !important;
-    margin: 0 30px 0 0;
-}
-.search-navbar .block-search{
-    top: 0px;
-    right: 70px;
-    width: 420px;
-    left: auto;
-}
-.search-navbar .block-search .el-input__inner{
-    height: 33px;
-    line-height: 32px;
-    font-size: 13px;
-}
 </style>

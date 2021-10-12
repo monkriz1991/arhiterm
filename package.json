@@ -21,6 +21,7 @@
     "nuxt-vuex-localstorage": "^1.3.0",
     "vee-validate": "^3.4.8",
     "vue-the-mask": "^0.11.1",
+    "vue-yandex-maps": "^0.10.12",
     "vuex": "^3.6.2"
   },
   "devDependencies": {

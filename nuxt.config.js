@@ -33,6 +33,7 @@ export default {
   plugins: [
     '@/plugins/element-ui',
     '~/plugins/url-change.js',
+    { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
