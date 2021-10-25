@@ -8,7 +8,7 @@ export const state = ()=>({
     countAllBaskets:0,
     indexItem:[],
     userItem:[],
-    basket_cost:[],
+    basket_cost:{},
     activeButCatMenyItem:false,
 })
 
@@ -30,6 +30,9 @@ export const mutations = {
     },
     REMOVE_FROM_CART_ALL(state,idx){
         state.basket = []
+    },
+    REMOVE_FROM_COST_ALL(state,idx){
+        state.basket_cost = {}
     },
     UPDATE_FROM_CART(state,data){
         state.basket.map(function(item){
@@ -93,6 +96,9 @@ export const actions = {
     },
     DELL_CART_BASKET_ALL({commit}){
         commit('REMOVE_FROM_CART_ALL')
+    },
+    DELL_CART_BASKET_COST({commit}){
+        commit('REMOVE_FROM_COST_ALL')
     },
     UPDATE_CART_BASKET({commit},data){
         commit('UPDATE_FROM_CART',data)

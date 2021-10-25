@@ -12,13 +12,13 @@
                 <el-popover
                 v-if="multiplicity>1"
                 placement="top"
-                width="325"
+                width="220"
                 trigger="click">
                   <div>
-                    Данная позиция укзана в стоимости за 1 {{units}},<br>  
-                    но рассчитывается исходя из минимально<br> 
-                    <span v-if="units=='шт'">продоваемого количества</span>
-                    <span v-else>продоваемого размера</span>!
+                    Стоимость указана за 1 {{units}},<br>  
+                    заказ кратно
+                    <span v-if="units=='шт'">{{multiplicity}} {{units}}</span>
+                    <span v-else>{{multiplicity}} {{units}}</span>
                   </div>
                   <el-button
                   slot="reference"

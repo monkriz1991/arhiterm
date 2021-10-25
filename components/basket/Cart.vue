@@ -134,6 +134,7 @@ export default {
             this.$emit('basketCostUpdate',{'for_amount':this.for_amount,'for_amount_discount':this.for_amount_discount,'for_amount_discount_persent':this.for_amount_discount_persent,'for_amount_none':this.for_amount_none,'for_amount_itog':this.for_amount_itog})
         },
         amount(){
+            
             this.for_amount = 0
             this.for_amount_discount_persent = 0
             this.for_amount_discount = 0
@@ -146,7 +147,6 @@ export default {
             }
             this.for_amount = Math.floor(this.for_amount*100)/100
             this.for_amount_none = Math.floor(this.for_amount_none*100)/100
-            
           for(let i in this.discount_arr){
               if(this.for_amount>=Number([i])){
                 this.for_amount_discount_persent = this.discount_arr[i]
@@ -156,7 +156,7 @@ export default {
           }
           this.for_amount_itog = this.for_amount - this.for_amount_discount
           this.for_amount_itog = Math.floor(this.for_amount_itog*100)/100
-
+            this.$emit('basketCostUpdate',{'for_amount':this.for_amount,'for_amount_discount':this.for_amount_discount,'for_amount_discount_persent':this.for_amount_discount_persent,'for_amount_none':this.for_amount_none,'for_amount_itog':this.for_amount_itog})
          
         }
 

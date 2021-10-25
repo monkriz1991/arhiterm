@@ -201,7 +201,8 @@ export default ({
     methods:{
       ...mapActions({
         addUserList: 'main/addUserList',
-        remove_basket:'main/DELL_CART_BASKET_ALL'
+        remove_basket:'main/DELL_CART_BASKET_ALL',
+        remove_cost: 'main/DELL_CART_BASKET_COST'
     }),
     disabledForm(item){
         this.activeName = String(item)
@@ -235,7 +236,7 @@ export default ({
         this.$emit('updateDialogForm',false)
         this.$
         this.remove_basket()
-
+        this.remove_cost()
       },
 
     }
