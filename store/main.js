@@ -10,6 +10,7 @@ export const state = ()=>({
     userItem:[],
     basket_cost:{},
     activeButCatMenyItem:false,
+    top:[],
 })
 
 export const mutations = {
@@ -24,6 +25,9 @@ export const mutations = {
     },
     setAllBaskets(state,indexItem){
         state.allBaskets = indexItem
+    },
+    setTop(state,top){
+        state.top = top
     },
     REMOVE_FROM_CART(state,idx){
         state.basket.splice(idx,1)
@@ -68,6 +72,11 @@ export const actions = {
     },
     ADD_TO_CART({commit},product){
         commit('SET_CART',product)
+    },
+    async getTop({commit}){
+        let results = await this.$axios.$get(`/catalog/product/?cat=8&limit=10`);
+        commit('setTop',results.results)
+        return results.results
     },
     async getIndex({commit}){
         let results = await this.$axios.$get(`/admin/pages/pages/1/`);
@@ -124,7 +133,8 @@ export const getters = {
     userItem: state => state.userItem,
     allBaskets: state => state.allBaskets,
     countAllBaskets: state => state.countAllBaskets,
-    activeButCatMenyItem: state => state.activeButCatMenyItem
+    activeButCatMenyItem: state => state.activeButCatMenyItem,
+    top: state => state.top
 }
 
 
