@@ -256,10 +256,12 @@ header{
     width: 100%;
 }
 .header-nav .header-cat{
-    padding: 10px 20px;
-    background: #f8f8f8;
+    padding: 9px 20px;
+    background: #ee3800;
     border: 0px solid #DCDFE6;
     float: left;
+    color: #fff;
+    box-shadow: 0px 0px 9px -3px #6c6c6c;
 }
 .header-logout>button{
     border: none;
@@ -370,7 +372,7 @@ header .contents {
     float: left;
     width: 65%;
     display: flex;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.4;
     font-weight: 600;
     color: #333;
@@ -399,7 +401,7 @@ header .contents {
     width: 80px;
     position: absolute;
     border-radius: 50%;
-    background: #ff7600;
+    /* background: #ff7600; */
     /* border: 1px solid #e6e6e6; */
 }
 .index-topcat .nuxt-link-cat,.index-brand .nuxt-link-cat{
@@ -450,7 +452,7 @@ header .contents {
     /* background: rgba(0,0,0,0.03922); */
     border: 1px solid #e6e6e6;
     padding: 20px;
-    border-radius: 36px;
+    border-radius: 10px;
     color: #fff;
     text-align: left;
     display: flex;
@@ -493,7 +495,7 @@ header .contents {
     margin: 150px 0 50px;
 }
 .index-desc-block{
-    padding: 80px 60px 65px;
+    padding: 65px 60px 65px;
     border-radius: 10px;
     background: #333;
     float: left;
@@ -599,14 +601,15 @@ header .contents {
     align-items: center;
     text-align: left;
     margin: 0 0 0 110px;
-    height: 90px;
+    height: 95px;
 }
 .index-top-block-desc> span{
     width: 100%;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     margin: 5px 0 5px;
-    color: #494949;
+    color: #373737;
+    overflow: hidden;
 }
 .index-top-block-desc> strong{
     width: 100%;
@@ -723,13 +726,20 @@ header .contents {
 .search-navbar .block-search{
     top: 0px;
     right: 70px;
-    width: 420px;
+    width: 490px;
     left: auto;
 }
 .search-navbar .block-search .el-input__inner{
     height: 33px;
     line-height: 32px;
     font-size: 13px;
+}
+.header-cat:focus, .header-cat:hover {
+    color: #ffffff !important;
+    border-color: #ee3800 !important;
+    background-color: #fb470f !important;
+    box-shadow: 0px 0px 9px 6px #ececec;
+    transition: .2s;
 }
 .cat-filter .cat-filter-check{
     font-size: 11px;
@@ -1084,7 +1094,7 @@ font-weight: 500;
     font-weight: 600;
     line-height: 1.3;
     max-width: 700px;
-    color: #e8961c;
+    color: #ff7300;
 }
 .galery{
     float: left;
@@ -2153,8 +2163,22 @@ body .navbar-user .navbar-user-item{
 .top-phone button{
     font-size: 20px;
     padding: 4px 5px;
-    color: #409EFF;
+    color: #171717;
     border: none;
+}
+.nav-button-basket button{
+    color: #171717;
+}
+.top-phone button i, .nav-button-basket button i,.header-logout>button i,.button-search  i,.drawer-button-meny i{
+    font-weight: 600;
+}
+.header-logout>button i{
+    font-size: 18px;
+    height: 9px;
+    float: right;
+    position: relative;
+    top: -2px;
+    margin: 0 0 0 5px;
 }
 .title {
     display: block;
