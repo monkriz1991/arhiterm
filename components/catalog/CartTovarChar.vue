@@ -1,12 +1,12 @@
 <template>
     <div class="cost-product-block-char">
-        <div
+        <!-- <div
         class="cost-product-char-all"
         @click="showChar"
         :class="{'cost-all-top': show_char === true}"
         >
             <i class="el-icon-d-arrow-right"></i>
-        </div>
+        </div> -->
         <div class="cost-product-char">
             <p v-show="show_char">
                 <strong>Код товара</strong>
@@ -30,7 +30,7 @@ export default {
     data() {
         return{
             char_start:this.product_filter[0],
-            show_char:false
+            show_char:true
         }
     },
     computed:{

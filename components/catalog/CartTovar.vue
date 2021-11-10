@@ -15,8 +15,8 @@
             :xs="24" :sm="12" :md="12" :lg="12" :xl="12"
             v-for="(product,idx) in productsList" :key="idx"
             >
-                <div class="catalog-list-block" :class="{ activeImgBlock: show.includes(idx)&&activeButCatMeny==true }">
-                    <div class="catalog-list-img" :class="{ activeImgCat: show.includes(idx)&&activeButCatMeny==true }">
+                <div class="catalog-list-block">
+                    <div class="catalog-list-img" >
                         <div
                         v-if="product.manufacturer_name"
                         class="catalog-manuf">
@@ -35,12 +35,12 @@
                         </nuxt-link>
                         <div
                         v-show="price[idx]"
-                        class="catalog-list-block-button" :class="{ activeButCat: show.includes(idx)&&activeButCatMeny==true }">
+                        class="catalog-list-block-button">
                             <el-button
                             v-on:click="toggleActive(idx)"
                             type="danger" plain  size="mini" circle
                             >
-                                <i :class="[show.includes(idx)&&activeButCatMeny==true?'el-icon-close':'el-icon-shopping-cart-1' ]"></i>
+                                <i :class="['el-icon-shopping-cart-1']"></i>
                             </el-button>
 
                         </div>
@@ -70,8 +70,13 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <el-dialog
+                :visible="show.includes(idx)&&centerDialogVisible"
+                :before-close="handleClose"
+                width="30%"
+                center>
                     <div
-                    v-if="show.includes(idx)&&activeButCatMeny==true"
                     class="catalog-list-input">
 
                         <CartTovarInput
@@ -89,9 +94,9 @@
                         <CartTovarChar
                         :product_filter="product.product"
                         :new_char="funChar"
-                        />
+                        />   
                     </div>
-                </div>
+                </el-dialog>
             </el-col>
         </el-row>
         <no-ssr>
@@ -140,7 +145,7 @@ export default {
             visible:false,
             activeButCatMeny:false,
             dialogFormVisibleModal:false,
-
+            centerDialogVisible: false,
         };
     },
     components:{
@@ -213,10 +218,12 @@ export default {
            ButCatMeny: 'main/newSateButCatMeny',
         }),
         toggleActive(idx) {
+            this.centerDialogVisible = true
             this.activeButCatMeny = true
             this.fromSateButCatMeny(this.activeButCatMeny)
             this.radio = idx;
             if (this.show.includes(idx)) {
+                
                 this.show = this.show.filter(entry => entry !== idx);
                 return;
             }else{
@@ -365,6 +372,10 @@ export default {
             // offset: 100
             });
         }, 
+        handleClose(done) {
+            this.centerDialogVisible = false
+            this.show =[]
+      }
     }
 
 }
