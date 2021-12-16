@@ -73,7 +73,7 @@
                 </div>
                 <el-dialog
                 :visible="show.includes(idx)&&centerDialogVisible"
-                :before-close="handleClose"
+                :before-close="handleCloseModal"
                 width="30%"
                 center>
                     <div
@@ -269,6 +269,7 @@ export default {
 
         },
         handleClose(tag) {
+            debugger;
             this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
           let a = this.categoryManuf.results.find(x=>x.name===tag)
           if(a!==undefined){
@@ -372,7 +373,7 @@ export default {
             // offset: 100
             });
         }, 
-        handleClose(done) {
+        handleCloseModal(done) {
             this.centerDialogVisible = false
             this.show =[]
       }
