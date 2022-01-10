@@ -32,7 +32,15 @@
  
             </div>
             <div class="footer-img">
-
+                 <img src="~/assets/img/3_small.png"/>
+                 <img src="~/assets/img/BGPB_Cashalot_card_small.png"/>
+                 <img src="~/assets/img/Cherepaha.jpg"/>
+                 <img src="~/assets/img/erip.png"/>
+                 <img src="~/assets/img/FUN_40.jpg"/>
+                 <img src="~/assets/img/halva_small.png"/>
+                 <img src="~/assets/img/mps-_-bepaid_belkart.png"/>
+                 <img src="~/assets/img/KP_small.png"/>
+                 <img src="~/assets/img/mtbank-_86_.png"/>
             </div>
         </div>
         
