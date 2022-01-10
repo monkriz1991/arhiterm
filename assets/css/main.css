@@ -1155,8 +1155,8 @@ border: 1px solid #fff;
 }
 .catalog-list-block-button button{
     font-size: 15px;
-    color: #ff870b !important;
-    background: #ffffff !important;
+    color: #ffffff !important;
+    background: #ff870b !important;
     border-color: #ff870b !important;
 }
 .catalog-list-block-button button:hover{
