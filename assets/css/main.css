@@ -274,6 +274,13 @@ margin: 0 0 20px;
     color:#fff;
     transition: .4s;
 }
+.footer-yr{
+    float: left;
+    width: 100%;
+    font-size: 11px;
+    /* opacity: 0.8; */
+    color: #fccfbe;
+}
 header{
 
 }
@@ -1098,7 +1105,7 @@ border: 1px solid #fff;
 }
 .catalog-list-block-cost{
     float: left;
-    width: 110%;
+    width: 120%;
     margin: 2px 0 0;
     opacity: 0.5;
 }
