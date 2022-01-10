@@ -46,7 +46,7 @@ export const mutations = {
                     item.product[0].count_el = data.count_el
                 }
             }
-        }) 
+        })
     },
     BASKET_COST(state,data){
         state.basket_cost = data
