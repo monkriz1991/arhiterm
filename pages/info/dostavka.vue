@@ -77,7 +77,7 @@
 
                 <ymap-marker
                     marker-id="2"
-                    :coords="[53.993301,27.67571]"
+                    :coords="[53.99052,27.68232]"
                     :balloon="{header: 'Склад',body:'Минский район, деревня Боровляны, улица 40 лет Победы, 19'}"
                     marker-type="placemark"
                     cluster-name="1"
