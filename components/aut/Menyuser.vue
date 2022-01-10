@@ -7,7 +7,7 @@
                         <el-avatar :src="$auth.user.img" icon="el-icon-user-solid"></el-avatar> 
                     </div>
                 </div>
-                <span class="demo-type-span">Моё меню</span>
+                <span class="demo-type-span"></span>
                 <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">

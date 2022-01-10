@@ -16,7 +16,7 @@
                     v-for="(checkbox,idx) in filters.chice"
                     :key="idx"
                     :label="`${checkbox.id}||${filters.id}`"
-                    v-show="idx<=6&&adaptivSidebar==true  || adaptivSidebar==false"
+                    v-show="idx<=7&&adaptivSidebar==true  || adaptivSidebar==false"
                     @change="checkFil()"
                     >{{checkbox.value}}
                     </el-checkbox>
@@ -25,14 +25,14 @@
                         placement="right"
                         popper-class="popover-filter"
                         trigger="click"
-                        v-if="filters.chice.length>7&&adaptivSidebar==true"
+                        v-if="filters.chice.length>8&&adaptivSidebar==true"
                         v-model="visibleCheck[filters.id]">
                           <div class="cat-filter cat-filter-all">
                             <el-checkbox
                             v-for="(checkbox,idx) in filters.chice"
                             :key="idx"
                             :label="`${checkbox.id}||${filters.id}`"
-                            v-show="idx>6"
+                            v-show="idx>7"
                             @change="checkFil()"
                             >{{checkbox.value}}
                             </el-checkbox>

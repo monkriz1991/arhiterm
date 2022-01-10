@@ -1,10 +1,10 @@
 <template>
-    <div class="header-logout">
+    <div class="header-logout button-nav-meny">
         <el-button 
         v-if="width>991"
         @click="dialogFormVisible = true">
-          Личный кабинет
           <i class="el-icon-user"></i>
+          <span class="button-nav-text">Кабинет</span>
         </el-button>
         <el-button 
         v-else
@@ -12,7 +12,7 @@
         @click="dialogFormVisible = true">
         </el-button>
         <el-dialog 
-        title="Личный кабинет" 
+        title="Кабинет" 
         append-to-body
         :visible.sync="dialogFormVisible"  
         width="32%">

@@ -1,5 +1,6 @@
 <template>
     <footer>
+        <div class="footer-bg"></div>
         <div class="container">
             <div>
                 Юр. адрес и почтовый адрес: 220125, Беларусь, Минская обл.,<br> 

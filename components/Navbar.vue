@@ -1,13 +1,8 @@
 <template>
-  <header>
+  <header class="header-tempalte">
     <div class="container">
       <div class="contents clearfix">
-        <div class="logotip">
-          <nuxt-link to="/">
-            <img src="~/static/logotip.png" alt="logotip">
-          </nuxt-link>
-        </div>
-        <div class="header-nav">
+        <div class="header-cat-desc">
           <el-popover
             v-if="width>991"
             popper-class="popover-nav"
@@ -20,8 +15,8 @@
             <el-button slot="reference"
               class="header-cat"
               @click="drawerMeny = true"
-            >Каталог
-            <i class="el-icon-menu"></i>
+            >
+            <i class="el-icon-s-data"></i>
             </el-button>
             <ul
               v-if="visibleNav"
@@ -63,7 +58,14 @@
               <!-- <font-awesome-icon v-if="visibleNav==true"  :icon="['fab','whmcs']" />
               <font-awesome-icon v-else :icon="['fas','stream']" /> -->
             </div>
-          </el-popover>
+          </el-popover>  
+        </div>  
+        <div class="logotip">
+          <nuxt-link to="/">
+            <img src="~/static/logotip.png" alt="logotip">
+          </nuxt-link>
+        </div>
+        <div class="header-nav">
           <nuxt-link
           v-if="width>991"
           class="link-navbar" :to="`/mounters`">
@@ -100,16 +102,18 @@
               @clickModal = "toggleModal"
               @closeBasket = "closeBasket"
               :dialogFormVisibleModal="dialogFormVisibleModal"/>
-              <div class="nav-button-basket">
+              <div class="nav-button-basket button-nav-meny">
                 <el-button  type="text" @click="dialogFormVisibleModal=true">
                   <i class="el-icon-shopping-cart-full"></i>
+                  <span class="button-nav-text">Корзина</span>
               </el-button>
               </div>
             </no-ssr>
-            <div class="top-phone">
+            <div class="top-phone button-nav-meny">
               <el-button
               icon="el-icon-phone"
               @click="dialogVisible = true">
+              <span class="button-nav-text">Контакты</span>
               </el-button>
             </div>
             <el-dialog
@@ -252,6 +256,7 @@
           </transition>
       </div>
     </div>
+    <div class="header-bg"></div>
   </header>
 </template>
 

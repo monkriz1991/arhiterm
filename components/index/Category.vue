@@ -5,7 +5,7 @@
         <el-col
         v-for="item in category.results" :key="item.id"
         v-show="item.show_in_start==true"
-        :xs="12" :sm="12" :md="12" :lg="6" :xl="6">
+        :xs="12" :sm="12" :md="12" :lg="5" :xl="6">
             <nuxt-link :to="`/catalog/${item.id}`" class="nuxt-link-cat">
                 <div class="index-topcat-block">
                     <div class="category-in-cyrcle"></div>

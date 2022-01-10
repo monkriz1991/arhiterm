@@ -12,7 +12,7 @@
                                 <strong v-if="item.description !== 'undefined'">
                                     {{item.description}}
                                 </strong>
-                                <span>{{item.name}}</span>
+                                <!-- <span>{{item.name}}</span> -->
                             </div>
                             <img
                                 :src="item.img"
