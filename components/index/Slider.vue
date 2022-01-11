@@ -10,12 +10,18 @@
         v-for="(item,idx) in slides" :key="idx"
         
       >
+      
         <div class="slider-block" >
+          
           <div class="slider-content" >
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
+            <video-player v-if="item.video!=null" src="https://www.youtube.com/watch?v=lZlY5jRw7_Q"/>
+            <nuxt-link :to="item.link">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+            </nuxt-link>
           </div>
           <img class="slider-image" 
+            v-if="item.img!='https://new.arhiterm.by/media/img/noimg.png'"
             :src="item.img"
             :alt="item.title" 
           />
@@ -29,8 +35,11 @@
 
 <script>
 import { mapGetters,mapActions } from 'vuex'
+import VideoPlayer from 'nuxt-video-player'
+require('nuxt-video-player/src/assets/css/main.css')
 export default ({
   components:{
+    VideoPlayer
   },
     data() {
         return {
