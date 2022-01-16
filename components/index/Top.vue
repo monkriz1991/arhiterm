@@ -1,6 +1,6 @@
 <template>
     <div class="index-top">
-    <h4>Лучшее предложение</h4>
+    <h4>Акции</h4>
         <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide

@@ -1,11 +1,11 @@
 <template>
     <div class="index-topcat">
-    <h4>Категории</h4>
+    <h4>Каталог</h4>
         <el-row :gutter="20">
         <el-col
         v-for="item in category.results" :key="item.id"
         v-show="item.show_in_start==true"
-        :xs="12" :sm="12" :md="12" :lg="5" :xl="6">
+         :sm="12" :md="12"  :xl="6" :lg="5" :xs="12">
             <nuxt-link :to="`/catalog/${item.id}`" class="nuxt-link-cat">
                 <div class="index-topcat-block">
                     <div class="category-in-cyrcle"></div>

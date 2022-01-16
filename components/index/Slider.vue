@@ -14,8 +14,10 @@
         <div class="slider-block" >
           
           <div class="slider-content" >
-            <video-player v-if="item.video!=null" src="https://www.youtube.com/watch?v=lZlY5jRw7_Q"/>
-            <nuxt-link :to="item.link">
+            <!-- <video-player v-if="item.video!=null" src="https://www.youtube.com/watch?v=lZlY5jRw7_Q"/> -->
+            <!-- <embed v-if="item.video!=null" :src="item.video" type="video/quicktime" width="640" height="480"> -->
+            
+            <video class="video-slider" v-if="item.video!=null" muted="" autoplay="" loop="" webkit-playsinline="" playsinline="" :src="item.video"></video><nuxt-link :to="item.link">
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>
             </nuxt-link>
@@ -35,11 +37,8 @@
 
 <script>
 import { mapGetters,mapActions } from 'vuex'
-import VideoPlayer from 'nuxt-video-player'
-require('nuxt-video-player/src/assets/css/main.css')
 export default ({
   components:{
-    VideoPlayer
   },
     data() {
         return {

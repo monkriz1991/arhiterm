@@ -1,5 +1,5 @@
 <template>
-    <div class="index-desc">
+    <div hidden class="index-desc">
         <div class="index-desc-block" :style="{background:indexItem.bg_color}">
             <div class="index-desc-text">
                 <h1>Архитерм</h1>

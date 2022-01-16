@@ -16,7 +16,10 @@
               class="header-cat"
               @click="drawerMeny = true"
             >
-            <i class="el-icon-s-data"></i>
+            <svg id="book-svg" xmlns="http://www.w3.org/2000/svg" width="25.013" height="20.255" viewBox="0 0 25.013 20.255">
+              <path id="Path_587" data-name="Path 587" d="M3.586,7.691,7.908,9.144a8.071,8.071,0,0,0,5.042.031c3.785-.939,11.98-2.565,12.063-2.583l-.305-1.54-.054.011-7.811-1.1a11.21,11.21,0,0,0-3.1.08L3.3,6.068a3.06,3.06,0,0,0-2.122,5.41,3.05,3.05,0,0,0-.015,4.813,3.066,3.066,0,0,0,.968,5.326l7.528,2.407a3.369,3.369,0,0,0,1.514.064L24.392,21.06s-.079-.342-.175-.765a.785.785,0,0,0-.941-.59L11.245,22.46A3.387,3.387,0,0,1,9.731,22.4L2.614,20.121a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972c0-.007,4.355,1.384,6.138,1.952a3.369,3.369,0,0,0,1.514.064l13.215-3.027s-.079-.343-.175-.765a.785.785,0,0,0-.941-.59L11.245,17.658a3.4,3.4,0,0,1-1.514-.064L2.614,15.318a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972s4.414,1.408,6.211,1.982a3.366,3.366,0,0,0,1.513.064l13.215-3.028s-.079-.342-.175-.765a.785.785,0,0,0-.941-.589L11.318,12.883A3.37,3.37,0,0,1,9.8,12.82L2.686,10.545a1.5,1.5,0,0,1,.9-2.854Z" transform="translate(0 -3.891)"/>
+            </svg>
+            <span class="button-nav-text">Каталог</span>
             </el-button>
             <ul
               v-if="visibleNav"
@@ -28,9 +31,6 @@
               >
                 <nuxt-link :to="`/catalog/${category.id}`">
                   <el-image :src="category.img"></el-image>
-                  <!-- <font-awesome-icon
-                  v-if="category.title!=''"
-                   :icon="['fas',category.title]" /> -->
                   {{ category.name }}
                 </nuxt-link>
               </li>
@@ -45,7 +45,6 @@
               >
                 <nuxt-link :to="`/catalog/factory/${item.id}`">
                 <el-image :src="item.img"></el-image>
-                  <!-- <i class="el-icon-picture-outline-round"></i>  -->
                   {{ item.name }}
                 </nuxt-link>
               </li>
@@ -55,8 +54,6 @@
             class="header-nav-refresh">
             <span v-if="visibleNav==true" >Бренды</span>
             <span v-else>Каталог</span>
-              <!-- <font-awesome-icon v-if="visibleNav==true"  :icon="['fab','whmcs']" />
-              <font-awesome-icon v-else :icon="['fas','stream']" /> -->
             </div>
           </el-popover>  
         </div>  
@@ -67,6 +64,7 @@
         </div>
         <div class="header-nav">
           <nuxt-link
+          hidden
           v-if="width>991"
           class="link-navbar" :to="`/mounters`">
             Монтажники
@@ -194,8 +192,11 @@
             <el-button slot="reference"
               class="header-cat"
               @click="drawerMeny = true"
-            >Каталог
-            <i class="el-icon-menu"></i>
+            >
+            <svg id="book-svg" xmlns="http://www.w3.org/2000/svg" width="25.013" height="20.255" viewBox="0 0 25.013 20.255">
+              <path id="Path_587" data-name="Path 587" d="M3.586,7.691,7.908,9.144a8.071,8.071,0,0,0,5.042.031c3.785-.939,11.98-2.565,12.063-2.583l-.305-1.54-.054.011-7.811-1.1a11.21,11.21,0,0,0-3.1.08L3.3,6.068a3.06,3.06,0,0,0-2.122,5.41,3.05,3.05,0,0,0-.015,4.813,3.066,3.066,0,0,0,.968,5.326l7.528,2.407a3.369,3.369,0,0,0,1.514.064L24.392,21.06s-.079-.342-.175-.765a.785.785,0,0,0-.941-.59L11.245,22.46A3.387,3.387,0,0,1,9.731,22.4L2.614,20.121a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972c0-.007,4.355,1.384,6.138,1.952a3.369,3.369,0,0,0,1.514.064l13.215-3.027s-.079-.343-.175-.765a.785.785,0,0,0-.941-.59L11.245,17.658a3.4,3.4,0,0,1-1.514-.064L2.614,15.318a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972s4.414,1.408,6.211,1.982a3.366,3.366,0,0,0,1.513.064l13.215-3.028s-.079-.342-.175-.765a.785.785,0,0,0-.941-.589L11.318,12.883A3.37,3.37,0,0,1,9.8,12.82L2.686,10.545a1.5,1.5,0,0,1,.9-2.854Z" transform="translate(0 -3.891)"/>
+            </svg>
+            <span class="button-nav-text">Каталог</span>
             </el-button>
             <ul
               v-if="visibleNav"
@@ -206,7 +207,7 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/${category.id}`">
-                  <i class="el-icon-picture-outline-round"></i>
+                  <el-image :src="category.img"></el-image>
                   {{ category.name }}
                 </nuxt-link>
               </li>
@@ -220,7 +221,7 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/factory/${item.id}`">
-                  
+                  <el-image :src="item.img"></el-image>
                   {{ item.name }}
                 </nuxt-link>
               </li>

@@ -10,6 +10,7 @@
         v-else
         icon="el-icon-user"
         @click="dialogFormVisible = true">
+        <span class="button-nav-text">Кабинет</span>
         </el-button>
         <el-dialog 
         title="Кабинет" 

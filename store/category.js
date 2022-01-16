@@ -52,7 +52,7 @@ export const actions = {
     },
     async getCategoryNested ({ commit},id) {
         // await sleep(50)
-        let category = await this.$axios.$get(`/catalog/categories/${id}/`);
+        let category = await this.$axios.$get(`/catalog/categories/${id}/?ordering=-position`);
 
         commit('setCategoryNested', category)
         return category
