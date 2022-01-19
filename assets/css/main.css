@@ -2842,6 +2842,11 @@ font-size: 13px;
     padding: 0 !important;
 }
 @media (max-width: 1100px){
+    .back-wrapper{
+        width: 29px;
+        margin: 15px 10px 10px 0 !important;
+
+    }
     .catalog-list-img{
         width: 170px;
     }
@@ -3230,6 +3235,7 @@ font-size: 13px;
     }    
     .el-breadcrumb{
         font-size: 11px !important;
+        margin: 10px 0 20px;
     }
     .header-basket .el-dialog__body {
         padding: 10px 10px 20px !important;
