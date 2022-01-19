@@ -1,17 +1,6 @@
 <template>
-    <div class="container">
+    <div class="container"> 
         <Breadcrumb/>
-        <div 
-        class="back-wrapper">
-            <el-button
-            text
-            :ripple="false"
-            icon="el-icon-back"
-            size="mini"
-            circle
-            @click.prevent="to">
-            </el-button>
-        </div>
         <h1 class="h1-product">{{productItem.name}}</h1>
         <h2 class="h2-product">
             <i class="el-icon-office-building"></i>
@@ -123,9 +112,7 @@ export default ({
                 this.$notify.closeAll()
             }
         },
-        to() {
-            this.$router.go(-1);
-        },
+
         closeBasket(val){ 
             if(val==true){
                 this.openNotify()

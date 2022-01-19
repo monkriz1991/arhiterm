@@ -1,9 +1,11 @@
 <template>
   <div class="index-slider" >
     <el-carousel 
-      :autoplay="false"
+      :autoplay="true"
       height="350px"
       trigger="click"
+      arrow="always"
+      :interval="43000"
     >
     <no-ssr>
       <el-carousel-item  
@@ -13,14 +15,13 @@
       
         <div class="slider-block" >
           
-          <div class="slider-content" >
-            <!-- <video-player v-if="item.video!=null" src="https://www.youtube.com/watch?v=lZlY5jRw7_Q"/> -->
-            <!-- <embed v-if="item.video!=null" :src="item.video" type="video/quicktime" width="640" height="480"> -->
-            
+          <div class="slider-content" :style="{background:item.color}">
+            <div v-loading="loading" class="preload-video">
             <video class="video-slider" v-if="item.video!=null" muted="" autoplay="" loop="" webkit-playsinline="" playsinline="" :src="item.video"></video><nuxt-link :to="item.link">
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>
             </nuxt-link>
+            </div>
           </div>
           <img class="slider-image" 
             v-if="item.img!='https://new.arhiterm.by/media/img/noimg.png'"
@@ -42,6 +43,7 @@ export default ({
   },
     data() {
         return {
+          loading: false
         }
     },
     computed:{

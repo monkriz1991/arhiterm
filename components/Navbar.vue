@@ -147,6 +147,7 @@
               </el-button>
               <transition name="el-fade-in-linear">
                 <div v-show="show" class="block-search">
+                  <i class="el-icon-search"></i>
                   <el-autocomplete
                     v-show="width>991"
                     v-model="state"
@@ -156,6 +157,7 @@
                     @change="handleSelect"
                     popper-class="block-search-input"
                   >
+                  
                     <template slot-scope="{ item }">
                   <nuxt-link :to="'/product/'+item.id">
                   <div class="search-block">
@@ -258,14 +260,28 @@
                 :fetch-suggestions="querySearchAsync"
                 :trigger-on-focus="false"
                 placeholder="Введите запрос..."
-                @change="handleSelect"
+                @select="handleSelect"
                 popper-class="block-search-input"
               >
                  <template slot-scope="{ item }">
-                  <nuxt-link :to="'/product/'+item.id"><div class="value">{{ item.name }}</div></nuxt-link>
+                  <nuxt-link :to="'/product/'+item.id">
+                    <div class="search-block">
+                    <div class="search-block-img">
+                      <img :src="item.img" alt="" />
+                    </div>  
+                    <div class="search-block-desc">
+                      <span>
+                        <i class="el-icon-office-building"></i>
+                        {{ item.manufacturername }}
+                      </span>
+                      {{ item.name }}
+                    </div>
+                  </div>
+                  </nuxt-link>
                 </template>
-
+              
               </el-autocomplete>
+              
             </div>
           </transition>
       </div>
@@ -301,7 +317,7 @@ import {mapGetters,mapActions} from 'vuex'
         phones:[],
         state: '',
         timeout:  null,
-        show: false,
+        show: true,
         dialogFormVisibleModal: false,
       };
     },
@@ -365,12 +381,12 @@ import {mapGetters,mapActions} from 'vuex'
         };
       },
       handleSelect(item) {
-        this.state=''
-        this.show = false
+        // this.state=''
+        // this.show = false
       },
       showButton(){
-        this.show =!this.show
-        this.state=''
+        // this.show =!this.show
+        // this.state=''
       },
       async getPhones(){
         let data = await this.$axios.get(`/users/phones/?limit=9999`);

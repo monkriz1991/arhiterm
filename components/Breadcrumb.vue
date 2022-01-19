@@ -1,21 +1,43 @@
 <template>
     <div>
+        <div 
+        class="">
+            <el-button
+            v-if="this.$route.name=='product-id'"
+            text
+            :ripple="false"
+            icon="el-icon-back"
+            size="mini"
+            class="back-wrapper"
+            circle
+            @click.prevent="to">
+            </el-button>
+        </div>
         <el-breadcrumb
         v-if="this.$route.name!='index'"
         separator-class="el-icon-arrow-right"
         >
         <el-breadcrumb-item :to="{ path: '/' }">Главная</el-breadcrumb-item>
             <el-breadcrumb-item
-            v-if="this.$route.name!='product-id'"
-                :to="nameCat.id"
+            v-if="this.$route.name=='catalog-catalog'"
             >
-                {{nameCat.name}}
+                <nuxt-link :to="`/catalog/${nameCat.id}`">
+                    {{nameCat.name}}
+                </nuxt-link>
             </el-breadcrumb-item>
             <el-breadcrumb-item
-            v-if="this.$route.name=='product-id'"
-                :to="nameCat.id"
+            v-else-if="this.$route.name=='catalog-factory-id'"
             >
-                {{nameCat.name}}
+                <nuxt-link :to="`/catalog/${factory.id}`">
+                    {{factory.name}}
+                </nuxt-link>
+            </el-breadcrumb-item>
+            <el-breadcrumb-item
+            v-else-if="this.$route.name=='product-id'"
+            >
+                <nuxt-link :to="`/catalog/${factory_name}${results_id}`">
+                    {{results_prod}}
+                </nuxt-link>
             </el-breadcrumb-item>
             <el-breadcrumb-item
                 v-if="this.$route.name=='product-id'"
@@ -31,6 +53,7 @@
 <script>
 import {mapGetters} from 'vuex'
 export default {
+    props:['factori'],
     data(){
         return{
           names:{
@@ -39,17 +62,15 @@ export default {
             "product-id":"Продукт",
             "mounters":"Монтажники"
           },
+          results_prod:null,
+          results_id:null,
+          queryString:null,
+          factory:this.factori?this.factori!=''?this.factori:'':'',
+          factory_name:'',
           items:[]
         }
     },
-    // props:{
-    //   crumb:{
-    //     type:Array,
-    //     default(){
-    //       return{}
-    //     }
-    //   }
-    // },
+
     watch:{
         $route(){
             this.getRoute()
@@ -65,11 +86,52 @@ export default {
     methods:{
         getRoute(){
             this.items = this.$route.matched
-           // console.log(this.$route)
+        },
+        to() {
+            this.$router.go(-1);
+        },
+        getPath(queryString){
+
         }
+    },
+    beforeMount(){
+        this.queryString = this.$route.params.id
+       
     },
     created(){
         this.getRoute()
-    }
+    },
+    mounted(){
+      if(this.queryString!=undefined){
+          if(this.$nuxt.context.from!=undefined){
+          if(this.$nuxt.context.from.name!='catalog-factory-id'){
+            this.$axios.get(`/catalog/search/${this.queryString}`).then(result =>(
+                this.results_prod = result.data.cat[0],
+                      this.$axios.get(`/catalog/categories/${this.results_prod}`).then(result =>(
+                          this.results_prod = result.data.name,
+                          this.results_id = result.data.id
+                      ))  
+                
+            ))
+            }else if(this.$nuxt.context.from.name=='catalog-factory-id'){
+                this.$axios.get(`/catalog/search/${this.queryString}`).then(result =>(
+                    this.results_prod = result.data.manufacturername,
+                    this.results_id = result.data.manufacturer
+                    
+                ))    
+                this.factory_name = 'factory/'  
+            }
+        }else{
+            this.$axios.get(`/catalog/search/${this.queryString}`).then(result =>(
+                this.results_prod = result.data.cat[0],
+                      this.$axios.get(`/catalog/categories/${this.results_prod}`).then(result =>(
+                          this.results_prod = result.data.name,
+                          this.results_id = result.data.id
+                      ))  
+                
+            ))
+        }
+      }
+    },
 };
 </script>

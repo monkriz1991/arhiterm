@@ -1,6 +1,8 @@
 <template>
     <div class="container">
-        <Breadcrumb/>
+        <Breadcrumb
+        :factori.sync="factori"
+        />
         <div v-if="adaptivSidebar">
         <Sidebar
         @updateData="updateData"
