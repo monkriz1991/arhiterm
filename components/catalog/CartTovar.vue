@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="catalog-list-block-desc">
-                                                <div
+                        <div
                         v-if="product.manufacturer_name"
                         class="catalog-manuf">
                             <i class="el-icon-office-building"></i>
@@ -58,11 +58,11 @@
                             <strong :class="{ butDiscount: discont[idx]}">
                                 <b>от</b>
                                 {{price[idx]}}
-                                <div v-if="discont[idx]" 
+                                <!-- <div v-if="discont[idx]" 
                                 class="catalog-list-block-discount">
                                     <strong>{{discont[idx]}}</strong>
                                     <span>руб/{{product.units}}</span>
-                                </div>
+                                </div> -->
                             </strong>
                             <span>руб/{{product.units}}</span>
                             <!-- <div class="catalog-list-block-cost">

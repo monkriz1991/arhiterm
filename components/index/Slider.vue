@@ -16,8 +16,9 @@
         <div class="slider-block" >
           
           <div class="slider-content" :style="{background:item.color}">
-            <div v-loading="loading" class="preload-video">
-            <video class="video-slider" v-if="item.video!=null" muted="" autoplay="" loop="" webkit-playsinline="" playsinline="" :src="item.video"></video><nuxt-link :to="item.link">
+            <div  v-loading="loading" :class="[item.video!=null?'preload-video':'']">
+            <video class="video-slider" v-if="item.video!=null"  preload="auto" muted="" autoplay="" loop="" webkit-playsinline="" playsinline="" :src="item.video"></video>
+            <nuxt-link :to="item.link">
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>
             </nuxt-link>

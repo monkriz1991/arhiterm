@@ -13,7 +13,7 @@
                        <span>{{filters.name}}</span>
                     </label>
                     <el-checkbox
-                    v-for="(checkbox,idx) in filters.chice"
+                    v-for="(checkbox,idx) in even(filters.chice)"
                     :key="idx"
                     :label="`${checkbox.id}||${filters.id}`"
                     v-show="idx<=7&&adaptivSidebar==true  || adaptivSidebar==false"
@@ -29,7 +29,7 @@
                         v-model="visibleCheck[filters.id]">
                           <div class="cat-filter cat-filter-all">
                             <el-checkbox
-                            v-for="(checkbox,idx) in filters.chice"
+                            v-for="(checkbox,idx) in even(filters.chice)"
                             :key="idx"
                             :label="`${checkbox.id}||${filters.id}`"
                             v-show="idx>7"
@@ -178,6 +178,13 @@ export default {
             }
             this.show.push(idx);
         },
+          even: function(arrays) {
+            // Set slice() to avoid to generate an infinite loop!
+            return arrays.slice().sort(function(a, b) {
+              return a.position - b.position;
+            });
+          }
+
     },
 }
 </script>

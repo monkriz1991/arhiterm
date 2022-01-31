@@ -52,7 +52,7 @@ export const actions = {
     },
     async getCategoryNested ({ commit},id) {
         // await sleep(50)
-        let category = await this.$axios.$get(`/catalog/categories/${id}/?ordering=-position`);
+        let category = await this.$axios.$get(`/catalog/categories/${id}/?ordering=position`);
 
         commit('setCategoryNested', category)
         return category
@@ -73,13 +73,13 @@ export const actions = {
     },
     async getManufacturer({ commit}) {
         // await sleep(50)
-        let result = await this.$axios.$get(`/manufacturer/get/?limit=99999`);
+        let result = await this.$axios.$get(`/manufacturer/get/?is_active=true&limit=99999`);
         commit('setManufacturer', result)
         return result
     },
     async getManufacturerIndex({ commit}) {
         // await sleep(50)
-        let result = await this.$axios.$get(`/manufacturer/random/get/`);
+        let result = await this.$axios.$get(`/manufacturer/random/get/?show_in_start=true`);
         commit('setManufacturerIndex', result)
         return result
     }

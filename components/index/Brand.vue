@@ -1,6 +1,6 @@
 <template>
     <div class="index-brand">
-    <h4>Производители</h4>
+    <h4>Бренды</h4>
         <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide

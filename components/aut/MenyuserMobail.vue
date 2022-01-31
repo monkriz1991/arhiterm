@@ -38,7 +38,7 @@
                 </div>
             </el-menu-item>
       </el-submenu>
-      <el-menu-item v-if="width<991" index="2"  @click="closeMeny">
+      <el-menu-item hidden v-if="width<991" index="2"  @click="closeMeny">
            <nuxt-link :to="`/mounters`">
             Монтажники
           </nuxt-link>

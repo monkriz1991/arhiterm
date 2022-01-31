@@ -259,13 +259,13 @@ body .el-popover--plain {
   background: #fa9600  !important;
 }
 .cost-product-input .el-icon-shopping-cart-2{
-  position: absolute;
-  bottom: -3px;
-  background: #fff;
-  font-size: 12px;
-  left: -5px;
-  color: #fa9600;
-  border-radius: 50%;
+    position: absolute;
+    bottom: -8px;
+    background: #fff;
+    font-size: 16px;
+    left: -5px;
+    color: #fa9600;
+    border-radius: 50%;
 }
 .cost-product-input .el-radio--mini.is-bordered {
     padding: 6px 10px 0 10px;
