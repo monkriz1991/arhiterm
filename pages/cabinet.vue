@@ -73,10 +73,10 @@ export default ({
     margin: 0px 0 10px;
 }
 .profile-cab-right .but-icon-edit{
-    font-size: 11px;
+    font-size: 12px;
     margin: 10px 0 0 0;
     border: 1px solid #fff;
-    padding: 10px 15px;
+    padding: 12px 20px;
 }
 .profile-cab-right:after{
     content: '';

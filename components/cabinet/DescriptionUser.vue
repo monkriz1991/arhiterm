@@ -217,13 +217,13 @@ export default {
 }
 .form-user-cab .but-icon-save{
     color: #ff7e40;
-    font-size: 11px;
+    font-size: 12px;
     border: 1px solid #fff;
     position: absolute;
     left: 248px;
-    bottom: -52px;
+    bottom: -57px;
     z-index: 10;
-    padding: 10px 15px;
+    padding: 12px 20px;
 }
 .form-user-cab .el-input__icon {
     line-height: 26px;

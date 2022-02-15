@@ -415,6 +415,7 @@ header .contents {
     border: 1px solid #e0e6ec;
     border-radius: 8px;
     text-transform: uppercase;
+    max-width: 71px;
 }
 .header-nav-refresh:hover{
     background: #f8f9fc;
@@ -1117,9 +1118,24 @@ border: 1px solid #fff;
     color:#000;
 }
 .cost-product-input .el-radio__label>span{
+    bottom: auto;
+    top: 0px;
+    right: 0px;
+    left: auto;
     position: absolute;
-    right: -5px;
-    top: -5px;
+}
+.cost-product-input .el-radio__label>span:last-child{
+    bottom: 0px;
+    top: auto;
+    right: 0px;
+    left: auto;
+}
+.cost-product-input .el-radio__label>span:last-child .el-button{
+    color: #0f0f0f;
+    padding: 8px 4px;
+    border-radius: 4px;
+    background: #ffff;
+    border-left: 1px solid #e2e2e2;
 }
 .cost-product-input .el-radio__label>span .el-button{
     padding: 2px;
@@ -1137,6 +1153,21 @@ border: 1px solid #fff;
     /* color: #dd6161; */
     color: #686868;
     position: relative;
+}
+.el-popover .cost-product-char p>strong{
+    font-size: 11px;
+}
+.el-popover .cost-product-char p>span{
+    font-size: 11px;
+    font-weight: 600;
+}
+.el-popover .cost-product-char p{
+    margin: 0px 0 5px;
+    border-bottom: 0px dotted #e2e2e2;
+}
+.el-popover .cost-product-char{
+    padding: 0 0 0 0;
+    margin: -5px 0 -15px;
 }
 .catalog-list-block-price>strong{
     font-size: 21px;
@@ -1427,7 +1458,7 @@ font-weight: 500;
 .cost-product-input{
     float: left;
     width: 100%;
-    margin: 0px 0 20px 0;  
+    margin: 0px 0 25px 0;  
 }
 .cost-product-price>span{
     float: left;
@@ -1459,10 +1490,33 @@ font-weight: 500;
     margin-left: 5px !important;
     margin: 0 0 5px;
     position: relative;
-    min-width: 23.5%;
+    min-width: 32.1%;
+    height: 32px !important;
+    padding: 8px 30px 0 10px !important;
+    border-radius: 4px !important;
 }
 .cost-product-section .cost-product-input .el-radio{
-    min-width: 18.9%;
+    min-width: 32.3%;
+}
+.cost-product-amount .el-input__inner{
+    border: 0px solid !important;
+}
+.el-input-number span{
+    background: transparent !important;
+}
+.el-form .butt-form{
+    margin: 20px 0 0 0;
+    background-color: #f90!important;
+    border-color: #f90!important;
+}
+.el-form .butt-form:hover{
+    background-color: #ffac30 !important;
+    border-color: #ffac30 !important;
+}
+.el-checkbox-group  .el-checkbox{
+    float: left;
+    width: 100%;
+    margin: 10px 0 0 0;
 }
 .cost-product-amount{
     float: left;
@@ -1481,6 +1535,16 @@ font-weight: 500;
 .cost-product-block .el-button--danger.is-disabled{
     background-color: #fabf68 !important;
     border-color: #fabf68 !important;
+}
+.form-type-acc{
+    margin: 20px 0 5px 0;
+}
+.form-type-acc label{
+    line-height: 35px;
+}
+.form-type-acc .el-select{
+    margin: 0 0 0 120px;
+    display: block;
 }
 .back-wrapper{
     float: left;
@@ -1600,11 +1664,12 @@ font-weight: 500;
     border: 1px solid #fff;
 }
 .cost-product-block>.el-button{
-    padding: 10px 24px !important;
-    font-size: 12px !important;
-    color: #FFF;
-    background-color: #ff9900 !important;
-    border-color: #ff9900 !important;
+    padding: 12px 28px!important;
+    font-size: 13px!important;
+    color: #fff;
+    background-color: #f90!important;
+    border-color: #f90!important;
+    border-radius: 9px;
 }
 .catalog-list-input>div>.el-button.is-disabled{
     background-color: #f3c784!important;
@@ -1657,6 +1722,7 @@ width: 100%;
 }
 .catalog-list-input .el-radio__label{
     font-size: 10px !important;
+    padding-left: 5px !important;
 }
 .cost-product-block .cost-product-price-catalog{
     width: auto;

@@ -68,6 +68,25 @@
                   circle
                   ></el-button>
                 </el-popover>
+
+                <el-popover
+                placement="top"
+                width="320"
+                trigger="click">
+                  <div>
+                    <CartTovarChar
+                    :product_filter="product_data"
+                    />
+                  </div>
+                  <el-button
+                  slot="reference"
+                  icon="el-icon-setting"
+                  size="mini"
+                  circle
+                  ></el-button>
+                </el-popover>
+
+
               </el-radio>
             </div>
         </div>
@@ -77,7 +96,7 @@
           @click="addToCart"
           :class="{'disabled': disableButton === true}"
         >
-          <span v-if="disableButton === false">В корзину</span>
+          <span v-if="disableButton === false">Добавить в корзину</span>
           <span v-else>В корзине</span>
         </el-button>
      
@@ -87,12 +106,13 @@
 
 <script>
 import {mapGetters,mapActions} from 'vuex'
+import CartTovarChar from '~/components/catalog/CartTovarChar.vue'
   export default {
     // created() {
     // },
     props:["product_data","price","discont",'units','multiplicity'],
     components:{
-      
+      CartTovarChar,
     },
     data() {
       return {

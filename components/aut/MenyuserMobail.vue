@@ -25,12 +25,12 @@
                 Мои покупки
                 </nuxt-link>
             </el-menu-item>
-            <el-menu-item index="1-3"  @click="closeMeny">
+            <!-- <el-menu-item index="1-3"  @click="closeMeny">
                 <nuxt-link to="/userCabinet/mounter">
                 <i class="el-icon-eleme"></i>
                 Страница монтажника
                 </nuxt-link>
-            </el-menu-item>
+            </el-menu-item> -->
             <el-menu-item index="1-4">
                 <div class="menu-item-exit" @click="logout">
                   <i class="el-icon-arrow-left"></i>

@@ -19,7 +19,7 @@
         >
         <el-input placeholder="Ввидите пароль" v-model="login.password" show-password></el-input>
         </el-form-item>
-        <el-button @click="userLogin" type="primary">Вход</el-button>
+        <el-button @click="userLogin" type="primary" class="butt-form">Вход</el-button>
     </el-form>
 </template>
 
