@@ -14,10 +14,10 @@
                 <nuxt-link :to="`/info/payment`">
                     Оплата
                 </nuxt-link>
-                <el-divider direction="vertical"></el-divider>
+                <!-- <el-divider direction="vertical"></el-divider>
                 <nuxt-link :to="`/info/certificates`">
                     Сертификаты
-                </nuxt-link>
+                </nuxt-link> -->
                 <el-divider direction="vertical"></el-divider>
                 <nuxt-link :to="`/info/contacts`">
                     Контакты
