@@ -68,25 +68,6 @@
                   circle
                   ></el-button>
                 </el-popover>
-
-                <el-popover
-                placement="top"
-                width="320"
-                trigger="click">
-                  <div>
-                    <CartTovarChar
-                    :product_filter="product_data"
-                    />
-                  </div>
-                  <el-button
-                  slot="reference"
-                  icon="el-icon-setting"
-                  size="mini"
-                  circle
-                  ></el-button>
-                </el-popover>
-
-
               </el-radio>
             </div>
         </div>
@@ -94,9 +75,9 @@
           type="danger"
           :disabled="disableButton"
           @click="addToCart"
-          :class="{'disabled': disableButton === true}"
+          :class="{'hiden-class': disableButton === 'hiden'}"
         >
-          <span v-if="disableButton === false">Добавить в корзину</span>
+          <span v-if="disableButton === false">В корзину</span>
           <span v-else>В корзине</span>
         </el-button>
      
@@ -106,13 +87,12 @@
 
 <script>
 import {mapGetters,mapActions} from 'vuex'
-import CartTovarChar from '~/components/catalog/CartTovarChar.vue'
   export default {
     // created() {
     // },
     props:["product_data","price","discont",'units','multiplicity'],
     components:{
-      CartTovarChar,
+      
     },
     data() {
       return {
@@ -163,15 +143,19 @@ import CartTovarChar from '~/components/catalog/CartTovarChar.vue'
       changePrice(item){
         this.count = this.multiplicity   
         this.active_id = item
-        this.input_cost = item.discont==null?Math.round(item.price*this.multiplicity*100)/100 :Math.round(item.discont*this.multiplicity*100)/100 
+        this.input_cost = item.discont==null?Math.ceil(item.price*this.multiplicity*100)/100 :Math.ceil(item.discont*this.multiplicity*100)/100 
         this.$emit('update:price', item.price)
-        this.priceCart = item.discont==null?Math.round(item.price*this.multiplicity*100)/100 :Math.round(item.discont*this.multiplicity*100)/100 
+        this.priceCart = item.discont==null?Math.ceil(item.price*this.multiplicity*100)/100 :Math.ceil(item.discont*this.multiplicity*100)/100 
         this.name_radioGroup = item.filter_show_name!=null?item.filter_show_name:'Артикул'
         this.$emit('NewChar', item)
         this.$emit('update:discont',item.discont)
         this.disableButton = false
         this.num = 1
         this.editProduct(item.id)
+
+      if(item.price=='0.00'){
+        this.disableButton = 'hiden'
+      }
 
       },
       /** Добавление товара в корзину */
@@ -183,7 +167,7 @@ import CartTovarChar from '~/components/catalog/CartTovarChar.vue'
         this.open()
       },
       roundToNearest(number, multiple) {
-          return Math.round(number / multiple) * multiple;
+          return Math.ceil(number / multiple) * multiple;
       },
       sleep(){
 
@@ -218,11 +202,11 @@ import CartTovarChar from '~/components/catalog/CartTovarChar.vue'
       discontStart(item){
         
         if(item.discont!=null){
-          this.priceCart =  Math.round(item.discont*this.multiplicity*100)/100
-          this.input_cost = Math.round(item.discont*this.multiplicity*100)/100
+          this.priceCart =  Math.ceil(item.discont*this.multiplicity*100)/100
+          this.input_cost = Math.ceil(item.discont*this.multiplicity*100)/100
         }else{
-          this.priceCart = item!=undefined?Math.round(item.price*this.multiplicity*100)/100:0
-          this.input_cost = item!=undefined?Math.round(item.price*this.multiplicity*100)/100:0
+          this.priceCart = item!=undefined?Math.ceil(item.price*this.multiplicity*100)/100:0
+          this.input_cost = item!=undefined?Math.ceil(item.price*this.multiplicity*100)/100:0
         }
       },
       /** Изменение кол. товара */
@@ -239,7 +223,7 @@ import CartTovarChar from '~/components/catalog/CartTovarChar.vue'
             value = value/this.multiplicity
           }
          
-          this.priceCart = Math.round(this.input_cost*value*100)/100
+          this.priceCart = Math.ceil(this.input_cost*value*100)/100
       },
       findMatch(id) {
           return this.arr_basket_id.includes(id);

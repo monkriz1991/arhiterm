@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="body-payment">
-		<h1>Контакты</h1>
+		<h1>Контакты / График работы</h1>
 
 		<div class="contact-block">
 			<div class="contact-block-title">
@@ -12,14 +12,19 @@
 			</div>
 			<div class="contact-block-inf">
 				<div class="contact-block-desc">
+					<span>Понедельник - Четверг</span>
+					<span>Офис с 8:30 до 17:30</span>
+					<span>Пятница</span>
+					<span>Офис с 8:30 до 17:00</span>
+					<span>Суббота, Воскресенье - Выходной</span><br>
 					<span>220125, Беларусь, Минск</span>
 					<span>ул. Лопатина, 7а/1, офис 904, Бизнес-центр «Премьер»</span>
 					<strong>1,6 км от МКАД!</strong>
 					<strong>1 км от Стройрынка «Уручье»!</strong>
 				</div>
 				<div class="contact-block-phone">
-					<a href="">+375 (29) 343-16-16 <span>(МТС)</span></a>
-					<a href="">+375 (33) 343-16-16 <span>(А1)</span></a>
+					<a href="tel:+375293431616">+375 (29) 343-16-16 <span>(МТС)</span></a>
+					<a href="tel:+375333431616">+375 (33) 343-16-16 <span>(А1)</span></a>
 				</div>
 				<div class="contact-block-phone-all">
 					<p>
@@ -44,14 +49,19 @@
 			</div>
 			<div class="contact-block-inf">
 				<div class="contact-block-desc">
+					<span>Понедельник - Четверг</span>
+					<span>Офис с 8:30 до 16:30</span>
+					<span>Пятница</span>
+					<span>Офис с 8:30 до 16:00</span>
+					<span>Суббота, Воскресенье - Выходной</span><br>
 					<span>Беларусь, Минская обл., Боровляны, ул. 40 лет Победы, 19</span>
 					<strong>Езжайте прямо по ул. 40 лет Победы до указателя "Архитерм",<br> 
 					стоящего по левой стороне дороги → поверните налево и проезжайте прямо до упора к складу!</strong>
 				</div>
 				<div class="contact-block-phone">
 					<strong>Выписка документов на складе:</strong>
-					<a href="">375 (17) 265-48-57 <span>(Городской)</span></a>
-					<a href="">+375 (44) 741-11-92 <span>(А1)</span></a>
+					<a href="tel:+375172654857">375 (17) 265-48-57 <span>(Городской)</span></a>
+					<a href="tel:+375447411192">+375 (44) 741-11-92 <span>(А1)</span></a>
 				</div>
 
 			</div>

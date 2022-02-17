@@ -61,7 +61,7 @@ export default {
     props:['basket_for'],
     data() {
         return{
-          status:'не закрыта',
+          status:'заказ',
             allCost:0
         }
     },
@@ -86,9 +86,9 @@ export default {
           this.allCost = 0;
           console.log(this.basket_for)
           if(!this.basket_for.closed){
-            this.status = "в обработке"
+            this.status = "заказ"
           }else{
-            this.status = "готово"
+            this.status = "заказ"
           }
             for(let i of this.basket_for.cart_prodicts){
                 this.allCost += i.sum_price-0

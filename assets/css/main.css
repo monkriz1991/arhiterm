@@ -405,7 +405,7 @@ header .contents {
     font-size: 10px;
     top: 10px;
     cursor: pointer;
-    color: #4f6174;
+    color: #fe870c;
     display: flex;
     padding: 10px;
     bottom: 10px;
@@ -419,7 +419,7 @@ header .contents {
 }
 .header-nav-refresh:hover{
     background: #f8f9fc;
-    color: #353535;
+    color: #fe870c;
     border: 1px solid #f8f9fc;
 }
 .header-nav-refresh i{
@@ -434,8 +434,11 @@ header .contents {
     margin: 0 0 10px 0;
     opacity: 0.7;
 }
+.header-nav-refresh svg path{
+    fill: #fe870c;
+}
 .button-nav-meny{
-
+    float: right;
 }
 .button-nav-meny button{
     float: left;
@@ -451,6 +454,9 @@ header .contents {
     width: 100%;
     position: relative;
     font-size: 12px;
+    text-align: center;
+    line-height: 1;
+    font-weight: 500;
 }
 .button-nav-text{
     color: #f6b9a3;
@@ -463,6 +469,7 @@ header .contents {
     text-align: center;
     font-size: 24px !important;
     margin: 0 0 10px 0 !important;
+    color: #fff;
 }
 .button-nav-meny button:hover,.button-nav-meny button:focus{
     background: transparent;
@@ -470,7 +477,7 @@ header .contents {
     background-color: transparent;
 }
 
-.button-nav-meny button:hover .button-nav-text{
+.button-nav-meny button:hover .button-nav-text,.button-nav-meny:hover .button-nav-text{
     color: #fff !important;
     transition: .4s;
 }
@@ -1117,6 +1124,9 @@ border: 1px solid #fff;
 .catalog-list-block-desc>a:hover,.catalog-list-block-desc>span{
     color:#000;
 }
+.hiden-class{
+    display: none !important;
+}
 .cost-product-input .el-radio__label>span{
     bottom: auto;
     top: 0px;
@@ -1153,6 +1163,18 @@ border: 1px solid #fff;
     /* color: #dd6161; */
     color: #686868;
     position: relative;
+}
+.pod-zak-form{
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    font-size: 12px;
+    /* max-width: 74px; */
+    left: 0px;
+    background: #00000073;
+    padding: 28px 22px 5px 10px;
+    border-radius: 5px;
+    color: #fff;
 }
 .el-popover .cost-product-char p>strong{
     font-size: 11px;
@@ -1868,6 +1890,9 @@ body .el-dialog__body{
     align-items: center;
     justify-content: center;
     position: relative;
+    /* border: 1px solid #e2e2e2; */
+    /* padding: 5px; */
+    border-radius: 4px;
 }
 .basket-tov-img img{
     max-width: 100%;
@@ -1916,7 +1941,7 @@ body .el-dialog__body{
 .basket-tov-cost{
     float: left;
     padding: 0 0px 0 10px;
-    width: 15%;
+    width: 17%;
     justify-content: left;
     height: 70px;
     display: flex;
@@ -1953,9 +1978,9 @@ body .el-dialog__body{
     display: flex;
     align-items: center;
     height: 70px;
-    padding: 0 0px 0 15px;
-    width: 15%;
-    justify-content: center;
+    padding: 0 0px 0 10px;
+    width: 18%;
+    justify-content: left;
 }
 .basket-tov-summ>strong{
 font-size: 16px;
@@ -1973,7 +1998,7 @@ font-size: 16px;
     align-items: center;
     height: 70px;
     justify-content: center;
-    width: 10%;
+    width: 5%;
 }
 .basket-tov-dell i{
 cursor: pointer;
@@ -2987,6 +3012,16 @@ font-size: 13px;
     }
 }
 @media (max-width: 991px){
+    .navbar-user .el-icon--right{
+        font-size: 13px;
+    }
+    .header-basket .el-dialog__footer{
+        padding: 20px 10px 10px !important;
+    }
+    .navbar-user {
+        float: right;
+        padding: 0px 0px 0px 10px;
+    }
     .catalog-list-block img {
         padding: 20px;
     }
@@ -3232,7 +3267,7 @@ font-size: 13px;
         width: 95% !important;
     }
     .dialog-footer .el-button,.el-button-group>.el-button:first-child:last-child {
-        font-size: 10px;
+        font-size: 11px;
         padding: 8px 10px;
     }
     .el-button+.el-button {
@@ -3256,11 +3291,11 @@ font-size: 13px;
     }
     .drawer-button-meny {
         padding: 0px 0px !important;
-        margin: 0 0 0 15px !important;
+        margin: 5px 0 0 10px !important;
         background: transparent !important;
         border: none !important;
         color: #fff !important;
-        font-size: 25px !important;
+        font-size: 19px !important;
     }
     .popover-nav>ul li a .el-image {
         height: 40px;
@@ -3407,6 +3442,17 @@ font-size: 13px;
         width: 52%;
         justify-content: left;
         height: auto;
+        display: flex;
+        flex-flow: column;
+    }
+    .basket-tov-calc .units {
+        margin: 0 0 0 0px;
+        font-size: 13px;
+        width: 100%;
+        text-align: center;
+    }
+    .basket-tov-calc .el-input-number {
+        width: 100% !important;
     }
     .basket-tov-summ {
         height: auto;
@@ -3526,6 +3572,7 @@ font-size: 13px;
         left: 5px;
         font-size: 23px;
         cursor: pointer;
+        max-width: 100%;
         /* width: 100%; */
         text-align: center;
         top: auto;
@@ -3650,10 +3697,10 @@ font-size: 13px;
         font-size: 11px;
     }
     .cost-product-input .el-radio{
-        min-width: 23.3%;
+        min-width: 29.3%;
     }
     .cost-product-section .cost-product-input .el-radio{
-        min-width: 23.5%;
+        min-width: 29.3%;
     }
     .darwer-meny .el-drawer{
         width: 100% !important;

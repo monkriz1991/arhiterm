@@ -132,13 +132,12 @@
               </div>
             </no-ssr>
             <div class="top-phone button-nav-meny">
-              <el-button
-              icon="el-icon-phone-outline"
-              @click="dialogVisible = true">
-              <span class="button-nav-text">Контакты</span>
-              </el-button>
+                <nuxt-link :to="`/info/contacts`" class="button-nav-meny">
+                  <i class="el-icon-phone-outline"></i>
+                  <span class="button-nav-text">Контакты</span>
+                </nuxt-link>
             </div>
-            <el-dialog
+            <!-- <el-dialog
               title="Контакты"
               :visible.sync="dialogVisible"
               width="30%"
@@ -152,7 +151,7 @@
                   </p>
                 </div>
               </div>
-            </el-dialog>
+            </el-dialog> -->
             <div class="search-navbar">
               <el-button
               @click="showButton()"

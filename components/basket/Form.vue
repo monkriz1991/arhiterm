@@ -74,6 +74,16 @@
         >
         <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш email" v-model="Form.username" autocomplete="off"></el-input>
         </el-form-item>
+        <el-form-item
+        prop="phone_number"
+        label="Телефон"
+        :rules="[
+          { required: true, message: 'Пожалуйста введите ваш Телефон', trigger: 'blur' },
+        ]"
+        >
+        <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш Телефон" v-model="Form.phone_number" autocomplete="off"></el-input>
+        </el-form-item>
+
         <el-form-item v-if="typeUser=='2'||Form.typ=='2'" label="Юр. Адрес">
             <el-input :disabled="$auth.loggedIn!=''"
             type="textarea" v-model="Form.yrAdres"></el-input>
@@ -113,7 +123,10 @@
             </div>
 
             <span v-show="Form.pay != ''" class="dialog-footer">
-                <el-button  @click="addOrder" type="primary">Оформить заказ</el-button>
+                <el-button 
+                v-if="Form.phone_number!=''" 
+                @click="addOrder" type="primary">Оформить заказ</el-button>
+                <span v-else>Заполните Телефон в профиле личного кабинета!</span>
             </span>
 
         </el-collapse-item>
@@ -161,6 +174,7 @@ export default ({
           typ: '',
           yrAdres:this.$store.state.auth.loggedIn?this.$store.state.auth.user.legal_address!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.legal_address:'':'',
           adres:'',
+          phone_number:this.$store.state.auth.loggedIn?this.$store.state.auth.user.phone_number!==''&& this.$store.state.auth.loggedIn===true?this.$store.state.auth.user.phone_number:'':'',
           desc: '',
         },
         rules: {
@@ -185,7 +199,21 @@ export default ({
                 this.typ = newVal
             }
         },
-
+        '$store.state.auth.user.phone_number': function (val) {
+            this.Form.phone_number = this.$store.state.auth.user.phone_number
+        },
+        '$store.state.auth.user.company_name': function (val) {
+            this.Form.company_name = this.$store.state.auth.user.company_name
+        },
+        '$store.state.auth.user.first_name': function (val) {
+            this.Form.first_name = this.$store.state.auth.user.first_name
+        },
+        '$store.state.auth.user.username': function (val) {
+            this.Form.username = this.$store.state.auth.user.username
+        },
+        '$store.state.auth.user.legal_address': function (val) {
+            this.Form.yrAdres = this.$store.state.auth.user.legal_address
+        }
     },
     computed:{
       ...mapGetters({
@@ -218,6 +246,7 @@ export default ({
             if (valid) {
                 //this.registerUser()
                 this.unaftorized()
+                
             } else {
                 console.log('error submit!!');
                 return false;
@@ -226,17 +255,28 @@ export default ({
         }
     },
     async unaftorized(){
+        try {
         let data = await this.$axios.post('add/to/cart',{form:this.Form,basket:this.basket,basket_cost:this.basket_cost});
+        
+        if(!this.$auth.loggedIn) {
+            
+            await this.$auth.loginWith('local', {data:{username: this.Form.username,phone_number:this.Form.phone_number,password: this.Form.password}})
 
-       if(!this.$auth.loggedIn) {
-        await this.$auth.loginWith('local', {data:{username: this.Form.username, password: this.Form.password}})
-        this.addUserList(this.$auth.user)
-        }
+            this.addUserList(this.$auth.user)
+            }
+
 
         this.$emit('updateDialogForm',false)
         this.$
         this.remove_basket()
         this.remove_cost()
+
+        }catch (error) {
+        this.$message({
+          message: 'Данный email уже зарегистрирован в базе!',
+          type: 'warning'
+        });
+        }
       },
 
     }

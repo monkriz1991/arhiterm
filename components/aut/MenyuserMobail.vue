@@ -63,11 +63,11 @@
             Рассрочка
           </nuxt-link>
       </el-menu-item>
-      <el-menu-item index="7"  @click="closeMeny">
+      <!-- <el-menu-item index="7"  @click="closeMeny">
            <nuxt-link :to="`/info/certificates`">
             Сертификаты
           </nuxt-link>
-      </el-menu-item>
+      </el-menu-item> -->
       <el-menu-item index="8"  @click="closeMeny">
            <nuxt-link :to="`/info/contacts`">
             Контакты
