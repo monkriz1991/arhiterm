@@ -2,7 +2,7 @@
 <no-ssr>
     <div class="container">
         <NavbarCabinet/>
-        <h1 class="h1-user-cab">Мои корзины</h1>
+        <h1 class="h1-user-cab">Мои заказы</h1>
         <Basket
         v-if="allBaskets!==undefined"
         v-for="(b,k) in allBaskets" :key="k"

@@ -33,7 +33,7 @@
                 <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Безналичный расчёт"></el-radio>
                 <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Наличный расчет"></el-radio>
                 <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Банковской картой онлайн"></el-radio>
-                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Банковской картой через терминал"></el-radio>
+                <!-- <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Банковской картой через терминал"></el-radio> -->
                 <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Через систему «Расчет» (ЕРИП)"></el-radio>
                 <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Картами рассрочки без переплат сроком на 2 месяца"></el-radio>
                 </el-radio-group>
@@ -88,8 +88,13 @@
             <el-input :disabled="$auth.loggedIn!=''"
             type="textarea" v-model="Form.yrAdres"></el-input>
         </el-form-item>
-        <el-form-item label="Адрес доставки">
-            <el-input type="textarea" v-model="Form.adres"></el-input>
+        <el-form-item v-if="Form.del=='Курьером'" label="Адрес доставки" prop="adres"
+        :rules="[
+        { required: true, message: 'Пожалуйста введите Адрес доставки', trigger: 'blur' },
+        ]"
+        >
+            <el-input type="textarea" 
+            v-model="Form.adres"></el-input>
         </el-form-item>
         <el-form-item label="Комментарий к заказу">
             <el-input type="textarea" v-model="Form.desc"></el-input>
@@ -126,7 +131,7 @@
                 <el-button 
                 v-if="Form.phone_number!=''" 
                 @click="addOrder" type="primary">Оформить заказ</el-button>
-                <span v-else>Заполните Телефон в профиле личного кабинета!</span>
+                <span v-show="$auth.loggedIn" v-else >Заполните контактный Телефон в профиле личного кабинета</span>
             </span>
 
         </el-collapse-item>
@@ -305,11 +310,7 @@ export default ({
     float: left;
     margin: 0 15px 0 0;
 }
-.form-basket-aut .header-logout button{
-    background-color: #f2f8ff;
-    font-size: 12px;
-    padding: 12px 20px;
-}
+
 .header-basket .el-form-item{
     margin-bottom: 0px;
 }

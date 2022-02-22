@@ -3,7 +3,7 @@
         <nuxt-link :to="`/cabinet`" exact active-class="activ-link-cab">
         <i class="el-icon-user"></i>Профиль</nuxt-link>
         <nuxt-link :to="`/userCabinet/store`" active-class="activ-link-cab">
-        <i class="el-icon-shopping-cart-full"></i>Мои покупки</nuxt-link>
+        <i class="el-icon-shopping-cart-full"></i>Мои заказы</nuxt-link>
         <nuxt-link v-if="$auth.user?$auth.user.is_maunter:false" :to="`/userCabinet/mounter`" active-class="activ-link-cab">
         <i class="el-icon-eleme"></i>Монтажник</nuxt-link>
     </div>

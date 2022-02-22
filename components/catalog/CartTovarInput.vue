@@ -103,7 +103,7 @@ import {mapGetters,mapActions} from 'vuex'
         input_cost:this.product_data[0]!=undefined?this.product_data[0].price:0,
         radio:0,
         priceCart:0,
-        count:1,
+        count:this.multiplicity,
        // multiplicity:this.multiplicity,
         discont_price:this.product_data[0].discont!=null?this.product_data[0].discont:0,
         disableButton: false,

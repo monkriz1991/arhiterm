@@ -301,6 +301,24 @@ header{
     /* background: #ff7400; */
     background: linear-gradient(to right,#ff7700 0,#ed3600 100%) no-repeat;
 }
+.form-basket-aut .form-basket-aut-content button{
+    background-color: #f2f8ff;
+    font-size: 12px;
+    padding: 8px 20px !important;
+}
+.form-basket-aut-content button i{
+    float: left;
+    width: auto !important;
+    margin: 0 5px 0px 0 !important;
+    color: #333;
+    font-size: 17px !important;
+}
+.form-basket-aut-content button span{
+    float: left;
+    width: auto !important;
+    color: #333;
+    top: 1px;
+}
 .logotip{
     float: left;
     display: flex;
@@ -405,7 +423,7 @@ header .contents {
     font-size: 10px;
     top: 10px;
     cursor: pointer;
-    color: #fe870c;
+    color: #ed3600;
     display: flex;
     padding: 10px;
     bottom: 10px;
@@ -435,7 +453,7 @@ header .contents {
     opacity: 0.7;
 }
 .header-nav-refresh svg path{
-    fill: #fe870c;
+    fill: #ed3600;
 }
 .button-nav-meny{
     float: right;
