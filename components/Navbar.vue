@@ -27,6 +27,7 @@
               <li
                 v-for="category in categoryNavbar"
                 :key="category.id"
+                v-show="category.show_in_start==true"
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/${category.id}`">
@@ -79,8 +80,8 @@
             </svg>
               Каталог</span>
             </div>
-          </el-popover>  
-        </div>  
+          </el-popover>
+        </div>
         <div class="logotip">
           <nuxt-link to="/">
             <img src="~/static/logotip.png" alt="logotip">
@@ -99,7 +100,7 @@
               :visible.sync="drawer"
               :direction="direction"
               :with-header="true">
-                <MenyuserMobail 
+                <MenyuserMobail
                 :width.sync = "width"
                 :visible.sync ="drawer" />
               </el-drawer>
@@ -120,7 +121,7 @@
             </no-ssr>
             </div>
             <no-ssr>
-              <BasketModal  
+              <BasketModal
               @clickModal = "toggleModal"
               @closeBasket = "closeBasket"
               :dialogFormVisibleModal="dialogFormVisibleModal"/>
@@ -180,13 +181,13 @@
                     @change="handleSelect"
                     popper-class="block-search-input"
                   >
-                  
+
                     <template slot-scope="{ item }">
                   <nuxt-link :to="'/product/'+item.id">
                   <div class="search-block">
                     <div class="search-block-img">
                       <img :src="item.img" alt="" />
-                    </div>  
+                    </div>
                     <div class="search-block-desc">
                       <span>
                         <i class="el-icon-office-building"></i>
@@ -318,7 +319,7 @@
                     <div class="search-block">
                     <div class="search-block-img">
                       <img :src="item.img" alt="" />
-                    </div>  
+                    </div>
                     <div class="search-block-desc">
                       <span>
                         <i class="el-icon-office-building"></i>
@@ -329,9 +330,9 @@
                   </div>
                   </nuxt-link>
                 </template>
-              
+
               </el-autocomplete>
-              
+
             </div>
           </transition>
       </div>
@@ -383,13 +384,13 @@ import {mapGetters,mapActions} from 'vuex'
         getCategory:'category/getCategory',
         getManufacturer:'category/getManufacturer'
       }),
-      toggleModal(val,noCloseNotify) { 
+      toggleModal(val,noCloseNotify) {
           this.dialogFormVisibleModal = val;
           if(noCloseNotify==false){
               this.$notify.closeAll()
           }
       },
-      closeBasket(val){ 
+      closeBasket(val){
         if(val==true){
             this.openNotify()
         }
@@ -403,7 +404,7 @@ import {mapGetters,mapActions} from 'vuex'
           message: 'На Вашу почту была выслана информация о заказе!',
           // offset: 100
           });
-      }, 
+      },
       updateWidth() {
         this.width = window.innerWidth;
         if(window.innerWidth>991){
