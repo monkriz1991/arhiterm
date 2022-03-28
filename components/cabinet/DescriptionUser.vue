@@ -51,10 +51,11 @@
                 <el-select :disabled="!disableForm" v-model="form.type_of_user" placeholder="Укажите тип">
                 <el-option label="Физ. лицо" value="1"></el-option>
                 <el-option label="Юр. лицо" value="2"></el-option>
+                
                 </el-select>
             </el-form-item>
             <el-form-item
-            v-show="form.type_of_user=='2'"
+            v-show="form.type_of_user=='2'||form.type_of_user=='Юр. лицо'"
             prop="company_name"
             label="Название компании:"
             :rules="[
@@ -64,7 +65,7 @@
                 <el-input :disabled="!disableForm"  placeholder="Введите название компании" v-model="form.company_name" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item
-            v-show="form.type_of_user=='2'"
+            v-show="form.type_of_user=='2'||form.type_of_user=='Юр. лицо'"
             prop="legal_address"
             label="Юр. адрес:"
             :rules="[
@@ -112,9 +113,9 @@ export default {
               username:this.checkUser('username'),
               email:this.checkUser('username'),
               phone_number:this.checkUser('phone_number'),
-              type_of_user:this.checkUser('type_of_user'),
               company_name:this.checkUser('company_name'),
               legal_address:this.checkUser('legal_address'),
+              type_of_user:this.checkUser('type_of_user'),
           },
           rules:{
 
@@ -123,7 +124,13 @@ export default {
     },
     methods:{
       checkUser(p){
-        return this.$auth.user!==null?this.$auth.user[p]:''
+          if(this.$auth.user[p] == this.$auth.user.type_of_user && this.$auth.user.type_of_user==1){
+            return 'Физ. лицо'
+          }else if(this.$auth.user[p] == this.$auth.user.type_of_user && this.$auth.user.type_of_user==2){
+            return 'Юр. лицо'
+          }
+         
+        return this.$auth.user!==null&&this.$auth.user[p]!=this.$auth.user.type_of_user?this.$auth.user[p]:''
       },
         editForm(){
             this.disableForm = !this.disableForm

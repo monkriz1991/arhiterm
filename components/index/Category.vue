@@ -35,15 +35,16 @@ export default ({
         }
     },
     computed:{
-      ...mapGetters({
-        category: 'category/categoryIndex'
-      })
+        ...mapGetters({
+            category: 'category/categoryIndex'
+        }),
     },
     mounted(){
       this.getCategoryIndex()
     },
     methods:{
-      ...mapActions('category',['getCategoryIndex'])
-    }
+        ...mapActions('category',['getCategoryIndex']),
+    },
+
 })
 </script>

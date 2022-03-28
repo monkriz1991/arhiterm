@@ -25,7 +25,7 @@
               v-if="visibleNav"
               class="transition-box">
               <li
-                v-for="category in categoryNavbar"
+                v-for="category in even(categoryNavbar)"
                 :key="category.id"
                 size="mini" @click="visible = false"
               >
@@ -227,7 +227,7 @@
               v-if="visibleNav"
               class="transition-box">
               <li
-                v-for="category in categoryNavbar"
+                v-for="category in even(categoryNavbar)"
                 :key="category.id"
                 size="mini" @click="visible = false"
               >
@@ -442,6 +442,11 @@ import {mapGetters,mapActions} from 'vuex'
       async getPhones(){
         let data = await this.$axios.get(`/users/phones/?limit=9999`);
         this.phones = data.data.results;
+      },
+      even: function(arrays) {
+        return arrays.slice().sort(function(a, b) {
+            return a.position - b.position;
+        });
       }
     },
     mounted(){

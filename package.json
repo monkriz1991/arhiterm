@@ -13,8 +13,10 @@
   "dependencies": {
     "@algoz098/vue-player": "^0.4.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@naumstory/nuxtjs-yandex-metrika": "^1.0.5",
     "@nuxtjs/auth-next": "5.0.0-1622309801.87126e3",
     "@nuxtjs/axios": "^5.13.1",
+    "add": "^2.0.6",
     "core-js": "^3.9.1",
     "element-ui": "^2.15.1",
     "hooper": "^0.3.4",

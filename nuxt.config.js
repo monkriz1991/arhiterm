@@ -66,7 +66,18 @@ export default {
     '@nuxtjs/auth-next',
     ['nuxt-vuex-localstorage', {
       localStorage: ['main'] //  If not entered, “localStorage” is the default value
-    }]
+    }],
+    [
+      '@naumstory/nuxtjs-yandex-metrika',
+      {
+        id: '7416499',
+        webvisor: true
+        // clickmap:true,
+        // useCDN:false,
+        // trackLinks:true,
+        // accurateTrackBounce:true,
+      }
+    ]
   ],
 
 
