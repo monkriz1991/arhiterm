@@ -41,14 +41,14 @@
     text-align: center;
     order: 1;
 }
-h1 {
+.site h1 {
   font-family: "Cabin Sketch", cursive;
   font-size: 3em;
   text-align: center;
   order: 1;
 }
 
-h1 small {
+.site .h1 small {
   font-family: "Cabin Sketch", cursive;
   display: block;
   text-align: center;
@@ -110,7 +110,7 @@ footer {
     padding: 4em 3em 1em 0em;
   }
 
-  h1 {
+  .site h1 {
     text-align: right;
     order: 2;
     padding-bottom: 2em;
