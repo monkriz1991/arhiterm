@@ -34,12 +34,14 @@
 @import url("https://fonts.googleapis.com/css?family=Cabin+Sketch");
 
 .page404{
-    font-family: "Cabin Sketch", cursive;
+font-family: "Cabin Sketch", cursive;
     font-size: 21px;
     /* text-decoration: none; */
     color: #000;
-    text-align: center;
+    text-align: right;
     order: 1;
+    width: 100%;
+    float: left;
 }
 .site h1 {
   font-family: "Cabin Sketch", cursive;
