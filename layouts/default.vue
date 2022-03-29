@@ -22,6 +22,7 @@ import Footer from '~/components/Footer.vue'
 import Upscroll from '~/components/Upscroll.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 export default ({
+  layout: 'error',
     created(){
 
   },

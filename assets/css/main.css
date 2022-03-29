@@ -3140,6 +3140,7 @@ font-size: 13px;
         height: 40%;
         width: 35%;
         top: 25%;
+        right: 1%;
     }
     .index-topcat-block>strong{
         font-size: 12px;
@@ -3166,7 +3167,7 @@ font-size: 13px;
         padding: 30px 20px;
     }
     .slider-content{
-        padding: 90px 30px 30px;
+        padding: 60px 100px 30px 30px;
     }
     .slider-content h3{
         font-size: 20px !important;
