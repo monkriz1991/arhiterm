@@ -128,6 +128,19 @@ export default ({
             // offset: 100
             });
         },       
+    },
+    head() {
+      return {
+        title: this.productItem.name,
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content:  this.productItem.description.replace(/(&lt;|<([^>]+)>)/ig,"")
+          }
+        ]
+      }
     }
 })
 </script>
