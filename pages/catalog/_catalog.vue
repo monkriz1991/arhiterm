@@ -152,6 +152,19 @@ export default {
         }
       },
     },
+    head() {
+      return {
+        title: this.categoriesNested.name,
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content:  this.categoriesNested.description.replace(/(&lt;|<([^>]+)>)/ig,"")
+          }
+        ]
+      }
+    }
 }
 </script>
 <style>
