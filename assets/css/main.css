@@ -3031,7 +3031,13 @@ font-size: 13px;
 }
 @media (max-width: 991px){
     .navbar-user .el-icon--right{
-        font-size: 13px;
+        font-size: 10px;
+        position: absolute;
+        right: -5px;
+        top: -10px;
+        background: #fd7200;
+        padding: 3px;
+        border-radius: 50%;
     }
     .header-basket .el-dialog__footer{
         padding: 20px 10px 10px !important;
@@ -3388,6 +3394,7 @@ font-size: 13px;
         font-size: 11px;
         max-width: 100%;
         height: 65px;
+        overflow-wrap: anywhere;
     }  
     .popover-nav .manufacturer-navbar-ul li {
         width: 50%;
