@@ -13,12 +13,12 @@
             <h4 v-else>Корзина пуста 😢</h4>
             <span v-show="dialogForm" slot="footer" class="dialog-footer">
                 <el-button @click="dialogFormVisible = false">Продолжить покупки</el-button>
-                <!-- <el-button
+                <el-button
                 v-if="basket.length"
                 type="primary"
-                @click="dialogForm = false">Оформить заказ</el-button> -->
+                @click="dialogForm = false">Оформить заказ</el-button>
             </span>
-                <span style="
+                <!-- <span style="
     border-radius: 5px;
     float: left;
     padding: 10px;
@@ -27,7 +27,7 @@
     font-size: 15px;
     width: 100%;
 ">Уважаемые клиенты, в данный момент заказы не обрабатываются, технические работы<br> будут завершены в ближайшее время. 
-                Приносим извенения за доставленные неудобства.</span>
+                Приносим извенения за доставленные неудобства.</span> -->
             <div v-show="!dialogForm" class="dialog-back-block">
               <el-button-group>
                 <el-button icon="el-icon-arrow-left" @click="dialogForm = true">В корзину</el-button>
