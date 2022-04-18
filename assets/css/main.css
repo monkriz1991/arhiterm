@@ -2980,6 +2980,53 @@ font-size: 13px;
     left: 0;
     right: 0;
 }
+.body-payment p{
+    width: 100%;
+    display: inline-block;
+}
+
+.body-payment h4{
+    margin: 20px 0 10px;
+}
+.question-div-info{
+    width: 100%;
+    margin: 40px 0 10px;
+}
+.question-div-info p{
+    font-size: 14px;
+    border-bottom: dotted 1px #9a9a9a;
+    line-height: 1.8;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.b-page-personal{
+    font-size: 14px;
+}
+.b-page-personal p,.b-page-personal div{
+    font-size: 14px;
+    margin: 0 0 15px;
+    line-height: 1.5;
+    float: left;
+    width: 100%;
+}
+.personal-data-link{
+    float: left;
+    margin: 0;
+    width: 100%;
+    line-height: 1.5;
+    font-size: 12px;
+    text-decoration: none;
+}
+.personal-data-link-footer{
+    float: left;
+    margin: 20px 0 0 0;
+    width: 100%;
+    line-height: 1.5;
+    text-decoration: none;
+    color: #fccfbe;
+    font-size: 14px;
+}
 @media (max-width: 1100px){
     .back-wrapper{
         width: 29px;
@@ -3102,7 +3149,7 @@ font-size: 13px;
         font-size: 12px;
     }  
     .body-payment h4 {
-        margin: 0px 0 15px;
+        margin: 15px 0 15px;
     }  
     .contact-block-img {
         float: left;

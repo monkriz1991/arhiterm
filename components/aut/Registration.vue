@@ -37,7 +37,8 @@
         >
           <el-input placeholder="Повторите пароль" v-model="form.checkPass" show-password autocomplete="off"></el-input>
         </el-form-item>
-          <el-form-item label="Пользовательское соглашение" prop="deal">
+          <el-form-item label="Выбрав пункт Принимаю, я соглашаюсь с" prop="deal">
+            <nuxt-link class="personal-data-link" :to="`/info/personal_data_rules`">Политикой обработки персональных данных</nuxt-link>
             <el-checkbox-group v-model="form.deal">
               <el-checkbox label="Принимаю" name="deal"></el-checkbox>
             </el-checkbox-group>

@@ -55,7 +55,7 @@
       </el-menu-item>
       <el-menu-item index="5"  @click="closeMeny">
            <nuxt-link :to="`/info/payment`">
-            Оплата
+            Условия оплаты / заказа / возврата
           </nuxt-link>
       </el-menu-item>
       <el-menu-item hidden index="6"  @click="closeMeny">
