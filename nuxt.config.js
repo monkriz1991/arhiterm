@@ -68,7 +68,7 @@ export default {
       localStorage: ['main'] //  If not entered, “localStorage” is the default value
     }],
     [
-      '@naumstory/nuxtjs-yandex-metrika',
+      '@nuxtjs/yandex-metrika',
       {
         id: '7416499',
         webvisor: true

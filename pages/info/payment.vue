@@ -145,51 +145,51 @@
                 <form action="" id="for_print">
                     <table>
                         <tr>
-                            <td><strong>полное наименование</strong></td>
-                            <td><span>общество с ограниченной ответственностью «архитерм»</span></td>
+                            <td><strong>Полное наименование</strong></td>
+                            <td><span>Общество с ограниченной ответственностью «Архитерм»</span></td>
                         </tr>
                         <tr>
-                            <td><strong>юридический адрес</strong></td>
-                            <td><span>220125, беларусь, минская обл., минский р-н, боровлянский с/с, дер. копище, ул. лопатина, 7а/1, оф. 904</span></td>
+                            <td><strong>Юридический Адрес</strong></td>
+                            <td><span>220125, Беларусь, Минская обл., Минский р-н, Боровлянский с/с, дер. Копище, ул. Лопатина, 7а/1, оф. 904</span></td>
                         </tr>
                         <tr>
-                            <td><strong>адрес для корреспонденции</strong></td>
-                            <td><span>220125, беларусь, минская обл., минский р-н, боровлянский с/с, дер. копище, ул. лопатина, 7а/1, оф. 904</span></td>
+                            <td><strong>Адрес для корреспонденции</strong></td>
+                            <td><span>220125, Беларусь, Минская обл., Минский р-н, Боровлянский с/с, дер. Копище, ул. Лопатина, 7а/1, оф. 904</span></td>
                         </tr>
                         <tr>
-                            <td><strong>управляющий</strong></td>
+                            <td><strong>Управляющий</strong></td>
                             <td><span>Гладкова Наталья Михайловна</span></td>
                         </tr>
                         <tr>
-                            <td><strong>действует на основании</strong></td>
-                            <td><span>устава</span></td>
+                            <td><strong>Действует на основании</strong></td>
+                            <td><span>Устава</span></td>
                         </tr>
                         <tr>
-                            <td><b>унп</b></td>
+                            <td><b>УНП</b></td>
                             <td><span>190997472</span></td>
                         </tr>
                         <tr>
-                            <td><b>окпо</b></td>
+                            <td><b>ОКПО</b></td>
                             <td><span>377952535000</span></td>
                         </tr>
                         <tr>
-                            <td><strong>расчетный счет</strong></td>
-                            <td><span >by83olmp30121000096870000933</span></td>
+                            <td><strong>Расчетный счет</strong></td>
+                            <td><span >BY83OLMP30121000096870000933</span></td>
                         </tr>
                         <tr>
-                            <td><strong>bic swift</strong></td>
-                            <td><span>olmpby2x</span></td>
+                            <td><strong>BIC SWIFT</strong></td>
+                            <td><span>OLMPBY2X</span></td>
                         </tr>
                         <tr>
-                            <td><strong>наименование банка</strong></td>
-                            <td><span>минская областная дирекция оао «белгазпромбанк», г. минск, ул. могилевская, 41</span></td>
+                            <td><strong>Наименование банка</strong></td>
+                            <td><span>ОАО "Белгазпромбанк" г.Минск, ул.Притыцкого, 60/2</span></td>
                         </tr>
                         <tr>
-                            <td><b>регистрационный номер интернет-магазина в торговом реестре республики беларусь</b></td>
+                            <td><b>Регистрационный номер интернет-магазина в торговом реестре Республики Беларусь</b></td>
                             <td><span>422717 от 01.08.2018 г.</span></td>
                         </tr>
                         <tr>
-                            <td><b>телефон / факс</b></td>
+                            <td><b>Телефон / факс</b></td>
                             <td><span>8 (017) 343-16-16</span></td>
                         </tr>
                         <tr>
@@ -214,10 +214,20 @@
         <br>
         <p><strong>Для физических лиц:</strong></p>
         <p>После проведения оплаты, вместе с любым товаром, Вы получаете товарный и кассовый чек, которые подтверждают факт покупки товаров в интернет-магазине arhiterm.by.</p>
+                <el-image
+      style="width: 240px; height: 100px"
+      :src="chek"
+      fit="cover"
+      :preview-src-list="Listchek"></el-image>
         <p><br></p>
 
         <p><strong>Для юридических лиц:</strong></p>
         <p>После оплаты и отгрузки товара, Вы получаете счет и ТТН, которые подтверждают факт приобретения товаров в ООО "Архитерм".</p>
+        <el-image
+      style="width: 240px; height: 100px"
+      :src="nk"
+      fit="cover"
+      :preview-src-list="Listnk"></el-image>
         <p><br></p>
 
         <h4>Условия возврата товара</h4>
@@ -310,6 +320,14 @@ export default {
 
   data() {
     return {
+        chek:require('~/assets/img/chek.png'),
+        nk:require('~/assets/img/nk.png'),
+        Listchek:[
+            require('~/assets/img/chek.png')
+        ],
+        Listnk:[
+            require('~/assets/img/nk.png')
+        ],
         activeName:'',
         activeNamePay:'',
     }
