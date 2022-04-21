@@ -2983,6 +2983,7 @@ font-size: 13px;
 .body-payment p{
     width: 100%;
     display: inline-block;
+    margin: 0 0 10px;
 }
 
 .body-payment h4{
