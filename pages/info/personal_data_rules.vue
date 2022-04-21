@@ -28,7 +28,7 @@
         <div>—&nbsp;пользователей мобильного приложения arhiterm. by,</div>
         <div>—&nbsp;клиентов при обращении в&nbsp;контакт-центр ООО<span style="margin-right: 0.44em;"> </span><span style="margin-left: -0.44em;">«</span>Архитерм»,</div>
         <div>
-            —&nbsp;клиентов&nbsp;— потребителей при приобретении товаров, услуг, работ, иных программ и&nbsp;сервисов в&nbsp;магазинах ООО<span style="margin-right: 0.44em;"> </span><span style="margin-left: -0.44em;">«</span>Архитерм», интернет-магазине arhiterm.by.<br> 
+            —&nbsp;клиентов&nbsp;— потребителей при приобретении товаров<span style="margin-right: 0.44em;"> </span>в интернет-магазине arhiterm.by.<br> 
             <p></p>
             <p>1.1.3. действует в&nbsp;отношении всех персональных данных, которые обрабатывает Оператор;</p>
             <p>
