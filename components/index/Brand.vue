@@ -54,14 +54,17 @@ export default ({
                 infiniteScroll: true,
                 wheelControl:false,
                 breakpoints: {
+                    300: {
+                        itemsToShow: 2
+                    },
+                    1100: {
+                        itemsToShow: 2
+                    },
                     1800: {
                         itemsToShow: 4
                     },
                     1500: {
                         itemsToShow: 4
-                    },
-                    1100: {
-                        itemsToShow: 2
                     },
                 }
             }

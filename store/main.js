@@ -74,7 +74,7 @@ export const actions = {
         commit('SET_CART',product)
     },
     async getTop({commit}){
-        let results = await this.$axios.$get(`/catalog/product/?cat=8&limit=10`);
+        let results = await this.$axios.$get(`/catalog/product/?is_sale=true&limit=25&ordering=position`);
         commit('setTop',results.results)
         return results.results
     },

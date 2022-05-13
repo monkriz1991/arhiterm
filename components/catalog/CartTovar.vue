@@ -51,7 +51,8 @@
                         :class="{disabledLink:!price[idx]}"
                         :to="`/product/${product.id}`"
                         >
-                            {{product.name}}
+                            <span v-if="product.name.length<65">{{product.name}}</span>
+                            <span v-else>{{product.name.substring(0,65)+".." }}</span>
                         </nuxt-link>
                         <div 
                         class="catalog-list-block-price">

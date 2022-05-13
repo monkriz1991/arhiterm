@@ -1,6 +1,6 @@
 <template>
     <div class="index-top">
-    <h4>Акции</h4>
+    <h4>Популярные товары</h4>
         <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide
@@ -12,11 +12,13 @@
                                 :src="item.img"
                                 :alt="item.name"
                             >
+                            
                             <div class="index-top-block-desc">
-                                <!-- <strong v-if="item.description !== 'undefined'">
-                                    {{item.description}}
-                                </strong> -->
-                                <span>{{item.name}}</span>
+                                <strong>
+                                    {{item.manufacturer_name}}
+                                </strong>
+                                <span v-if="item.name.length<50">{{item.name}}</span>
+                                <span v-else>{{item.name.substring(0,50)+".." }}</span>
                             </div>
                             <div class="index-top-cost">
                                 <b>от</b><strong

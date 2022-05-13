@@ -71,10 +71,10 @@ export default {
       '@nuxtjs/yandex-metrika',
       {
         id: '7416499',
-        webvisor: true
-        // clickmap:true,
-        // useCDN:false,
-        // trackLinks:true,
+        webvisor: true,
+        clickmap:true,
+        usetriggerEventCDN:true,
+        trackLinks:true,
         // accurateTrackBounce:true,
       }
     ]
