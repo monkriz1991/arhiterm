@@ -1851,7 +1851,7 @@ body .el-dialog__body{
     align-items: flex-start;
     flex-direction: column;
     text-align: left;
-    max-width: 410px;
+    max-width: 400px;
 }
 
 /* .el-carousel__item:nth-child(2n) .slider-content{
