@@ -1,6 +1,7 @@
 
 //const sleep = m => new Promise(r => setTimeout(r, m))
 
+
 export const state = ()=>({
     sliderItems:[],
     basket:[],
@@ -46,7 +47,7 @@ export const mutations = {
                     item.product[0].count_el = data.count_el
                 }
             }
-        }) 
+        })
     },
     BASKET_COST(state,data){
         state.basket_cost = data
