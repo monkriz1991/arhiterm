@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: git pull
         uses: fifsky/ssh-action@master
         with:
@@ -39,4 +38,4 @@ jobs:
           command: |
             cd /var/www/www-root/data/www/arhiterm.by/arhiterm
             npm run build && npm run generate
-            pm2 restart pumpskills
+            pm2 restart Arhiterm.by
