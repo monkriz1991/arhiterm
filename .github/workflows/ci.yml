@@ -1,45 +1,42 @@
 name: ci
 
+
 on:
   push:
     branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
+      - realease/1.0
 
 jobs:
-  ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [14]
+  deploy-admin:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@master
 
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v2.1.2
+      - name: git pull
+        uses: fifsky/ssh-action@master
         with:
-          node-version: ${{ matrix.node }}
-          check-latest: true
-
-      - name: Cache node_modules 📦
-        uses: actions/cache@v2
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          pass: ${{ secrets.SSH_PASS }}
+          command: |
+            cd ~/pumpskills
+            ${{ secrets.SCRIPT }}
+      - name: install packages
+        uses: fifsky/ssh-action@master
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies 👨🏻‍💻
-        run: npm ci
-
-      - name: Run linter 👀
-        run: npm run lint
-
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          pass: ${{ secrets.SSH_PASS }}
+          command: |
+            cd ~/pumpskills
+            npm install
+      - name: build
+        uses: fifsky/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          pass: ${{ secrets.SSH_PASS }}
+          command: |
+            cd ~/pumpskills
+            npm run build && npm run generate
+            pm2 restart pumpskills
