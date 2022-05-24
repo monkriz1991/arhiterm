@@ -30,7 +30,7 @@
                 v-show="category.show_in_start==true"
                 size="mini" @click="visible = false"
               >
-                <nuxt-link :to="`/catalog/${category.id}`">
+                <nuxt-link @click.native="handlerLoading" :to="`/catalog/${category.id}`">
                   <el-image :src="category.img"></el-image>
                   {{ category.name }}
                 </nuxt-link>
@@ -44,7 +44,7 @@
                 :key="item.id"
                 size="mini" @click="visible = false"
               >
-                <nuxt-link :to="`/catalog/factory/${item.id}`">
+                <nuxt-link @click.native="handlerLoading" :to="`/catalog/factory/${item.id}`">
                 <el-image :src="item.img"></el-image>
                   {{ item.name }}
                 </nuxt-link>
@@ -183,7 +183,7 @@
                   >
 
                     <template slot-scope="{ item }">
-                  <nuxt-link :to="'/product/'+item.id">
+                  <nuxt-link @click.native="handlerLoading" :to="'/product/'+item.id">
                   <div class="search-block">
                     <div class="search-block-img">
                       <img :src="item.img" alt="" />
@@ -232,7 +232,7 @@
                 :key="category.id"
                 size="mini" @click="visible = false"
               >
-                <nuxt-link :to="`/catalog/${category.id}`">
+                <nuxt-link @click.native="handlerLoading" :to="`/catalog/${category.id}`">
                   <el-image :src="category.img"></el-image>
                   {{ category.name }}
                 </nuxt-link>
@@ -246,7 +246,7 @@
                 :key="item.id"
                 size="mini" @click="visible = false"
               >
-                <nuxt-link :to="`/catalog/factory/${item.id}`">
+                <nuxt-link @click.native="handlerLoading" :to="`/catalog/factory/${item.id}`">
                   <el-image :src="item.img"></el-image>
                   {{ item.name }}
                 </nuxt-link>
@@ -315,7 +315,7 @@
                 popper-class="block-search-input"
               >
                  <template slot-scope="{ item }">
-                  <nuxt-link :to="'/product/'+item.id">
+                  <nuxt-link @click.native="handlerLoading" :to="'/product/'+item.id">
                     <div class="search-block">
                     <div class="search-block-img">
                       <img :src="item.img" alt="" />
@@ -382,8 +382,12 @@ import {mapGetters,mapActions} from 'vuex'
     methods: {
       ...mapActions({
         getCategory:'category/getCategory',
-        getManufacturer:'category/getManufacturer'
+        getManufacturer:'category/getManufacturer',
+        setLoading: 'main/newLoadingItem',
       }),
+      handlerLoading(item){
+        this.setLoading(true)
+      },
       toggleModal(val,noCloseNotify) {
           this.dialogFormVisibleModal = val;
           if(noCloseNotify==false){
@@ -448,7 +452,7 @@ import {mapGetters,mapActions} from 'vuex'
         return arrays.slice().sort(function(a, b) {
             return a.position - b.position;
         });
-      }
+      },
     },
     mounted(){
       this.getPhones();
