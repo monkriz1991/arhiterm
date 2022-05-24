@@ -9,16 +9,27 @@
         <Galery/>
         <div class="cost-product-section">
             <div class="cost-product-price">
+                <strong class="">Стоимость ( руб. ) за - 1 {{result.units}}.</strong>
+                <b>:</b>
                 <span :class="{ butDiscount: discont}">{{price}}</span>
-                <strong>руб./{{result.units}}</strong>
+                
                 <div v-if="discont" class="catalog-list-block-discount">
                     <strong>{{discont}}</strong>
                     <span>руб/{{result.units}}</span>
                 </div>
             </div>
+            <div class="kod-product">
+                <!-- <span>Код</span> -->
+                <el-tooltip class="item" effect="dark" content="Код товара" placement="top-start">
+                <i class="el-icon-info"></i>
+                </el-tooltip>
+                <b>:</b>
+                <strong>{{kodProduct}}</strong>
+            </div>
             <CartTovarInput
             :price.sync="price"
             :discont.sync="discont"
+            :kodProduct.sync="kodProduct"
             :product_data="productItem.product"
             :units="result.units"
             :multiplicity.sync="result.multiplicity"
@@ -58,7 +69,8 @@ export default ({
             let result = await app.store.dispatch('tovar/getProductItem',params.id)
             let price = result.product[0].price
             let discont = result.product[0].discont
-            return{price,discont,result}
+            let kodProduct = result.product[0].name
+            return{price,discont,result,kodProduct}
         } catch (err) {
         return error({
             statusCode: 404,

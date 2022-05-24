@@ -58,6 +58,7 @@
                         class="catalog-list-block-price">
                             <strong :class="{ butDiscount: discont[idx]}">
                                 <b>от</b>
+                                <!-- <i class="el-icon-price-tag"></i> -->
                                 {{price[idx]}}
                                 <!-- <div v-if="discont[idx]" 
                                 class="catalog-list-block-discount">

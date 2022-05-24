@@ -1081,15 +1081,15 @@ padding: 50px 0 0;
     cursor: pointer;
     position: relative;
     /* border: 1px solid #f4f4f4; */
-    margin: 0 0 20px;
+    margin: 0 0 15px;
 }
 .catalog-list-img{
-    height: 185px;
+    height: 170px;
     margin: 0 0 0px;
-    width: 180px;
+    width: 170px;
     float: left;
     border-radius: 7px;
-    border: 1px solid #ffffff;
+    border: 1px solid #cacaca;
     position: relative;
 }
 .catalog-list-img:hover{
@@ -1134,19 +1134,19 @@ border: 1px solid #fff;
 
 }
 .catalog-list-block-desc{
-    margin: 0px 0 0 190px;
+    margin: 0px 0 0 180px;
     display: block;
 }
 .catalog-list-block-desc>a,.catalog-list-block-desc>span{
     float: left;
     width: 100%;
-    height: 126px;
+    height: 100px;
     font-size: 13px;
     overflow: hidden;
-    line-height: 1.4;
+    line-height: 1.3;
     text-decoration: none;
-    color: #565656;
-    font-weight: 900;
+    color: #373737;
+    font-weight: 700;
     display: flex;
     align-items: center;
     margin: 0 0 15px;
@@ -1165,17 +1165,16 @@ border: 1px solid #fff;
     position: absolute;
 }
 .cost-product-input .el-radio__label>span:last-child{
-    bottom: 0px;
-    top: auto;
-    right: 0px;
+    top: -4px;
+    right: -4px;
     left: auto;
 }
 .cost-product-input .el-radio__label>span:last-child .el-button{
-    color: #0f0f0f;
-    padding: 8px 4px;
-    border-radius: 4px;
-    background: #ffff;
-    border-left: 1px solid #e2e2e2;
+    padding: 3px;
+    border-radius: 50%;
+    background: rgba(255,255,255,1);
+    font-size: 21px;
+    color: #ff8f8f;
 }
 .cost-product-input .el-radio__label>span .el-button{
     padding: 2px;
@@ -1190,8 +1189,7 @@ border: 1px solid #fff;
 .catalog-list-block-price{
     float: left;
     width: 100%;
-    /* color: #dd6161; */
-    color: #686868;
+    color: #2f2f2f;
     position: relative;
 }
 .pod-zak-form{
@@ -1222,21 +1220,34 @@ border: 1px solid #fff;
     margin: -5px 0 -15px;
 }
 .catalog-list-block-price>strong{
-    font-size: 21px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 900;
     line-height: 1;
     float: left;
 }
 .catalog-list-block-price>strong b{
-    font-size: 12px;
-    font-weight: 600;
+    top: 8px;
+    float: left;
+    font-size: 11px;
+    font-weight: 900;
+    margin: -6px 0px 0px 0;
+    color: #393939;
+    /* background: #eeeeee; */
+    border-radius: 7px;
+    padding: 5px 7px 0px 0;
+    /* width: 30px; */
+    /* height: 30px; */
     position: relative;
-    top: -1px;
+    text-align: center;
+    /* border: 2px solid #b8b8b8;*/
+}
+.catalog-list-block-price>strong b i{
+    font-weight: 900;
 }
 .catalog-list-block-price>span{
-    font-size: 9px;
-    font-weight: 600;
-    margin: 6px 0 0 5px;
+    font-size: 10px;
+    font-weight: 800;
+    margin: 6px 0 0 3px;
     float: left;
 }
 .catalog-list-block-discount{
@@ -1283,19 +1294,23 @@ border: 1px solid #fff;
 .catalog-list-block-button{
     float: right;
     position: absolute;
-    bottom: 0px;
-    left: 0px;
+    bottom: -10px;
+    left: -10px;
     z-index: 15;
     background: #fff;
     padding: 3px;
     border-radius: 50%;
 }
 .catalog-list-block-button button{
-    font-size: 15px;
-    color: #ffffff !important;
-    background: #ff870b !important;
-    border-color: #ff870b !important;
+    font-size: 28px;
+    color: #181818 !important;
+    background: #ffffff !important;
+    border-color: #ffffff!important;
     width: auto !important;
+    /* width: 32px !important; */
+    /* height: 32px; */
+    text-align: center;
+    align-items: center;
 }
 .catalog-list-block-button button:hover{
     background: #fa9600 !important;
@@ -1409,7 +1424,7 @@ font-weight: 500;
     font-weight: 600;
     line-height: 1.3;
     max-width: 700px;
-    color: #ff7300;
+    color: #ff6b00;
 }
 .galery{
     float: left;
@@ -1480,7 +1495,7 @@ font-weight: 500;
 .tabs-product{
     float: left;
     width: 100%;
-    margin: 60px 0 30px;
+    margin: 50px 0 20px;
 }
 .tabs-product .el-tabs__content{
     padding: 0 15px;
@@ -1501,60 +1516,121 @@ font-weight: 500;
     width: 50%;
     padding: 10px 15px 10px 30px;
 }
+.cost-product-price b{
+    float: left;
+    margin: 3px 5px 0;
+}
 .cost-product-price{
     float: left;
     width: 100%;
-    margin: 0 0 20px 0;
+    margin: 0 0 10px 0;
     position: relative;
 }
 .cost-product-input{
     float: left;
     width: 100%;
-    margin: 0px 0 25px 0;  
+    margin: 0px 0 30px 0;  
 }
 .cost-product-price>span{
     float: left;
-    font-size: 25px;
+    font-size: 15px;
     font-weight: 700;
-    color: #686868;
-    /* color: #df4d19;*/
+    color: #2f2f2f;
 }
 .cost-product-price>strong{
-    font-size: 14px;
-    font-weight: 500;
-    padding: 9px 0 0 5px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 6px 0 0 2px;
     float: left;
-    color: #686868;
 }
 .cost-product-input>strong{
     margin: 0 0 10px;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
     float: left;
     width: 100%;
+    text-decoration: underline;
+}
+.cost-product-price-catalog .el-input-number{
+    float: right;
 }
 .cost-row{
     margin-left: -5px;
-    margin-right: 0px;
+    margin-right: -5px;
+}
+.cost-div{
+    padding: 0 2.5px 5px;
+    float: left;
+    width: 25%;
+    height: 55px;
+}
+.cost-div .el-radio__input{
+    display: none;
+}
+.cost-div .el-radio__label {
+    font-size: 13px;
+    padding-left: 0px;
+    float: left;
+    line-height: 1.3;
 }
 .cost-product-input .el-radio{
-    margin-right: 0px !important;
-    margin-left: 5px !important;
-    margin: 0 0 5px;
+    margin: 0px !important;
     position: relative;
-    min-width: 32.1%;
-    height: 32px !important;
-    padding: 8px 30px 0 10px !important;
-    border-radius: 4px !important;
+    width: 100%;
+    height: 100% !important;
+    padding: 6px 6px 6px 6px !important;
+    border-radius: 7px !important;
+    white-space: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.cost-product-input .el-radio strong{
+    font-size: 12px;
+    font-weight: 600;
 }
 .cost-product-section .cost-product-input .el-radio{
     min-width: 32.3%;
 }
-.cost-product-amount .el-input__inner{
-    border: 0px solid !important;
+.cost-product-amount .el-popover__reference-wrapper{
+    float: right;
+    margin: 1px 0px 0 10px;
+}
+.cost-product-amount .el-input-number{
+    float: right;
+}
+.cost-product-amount .el-input__inner,.basket-tov-calc .el-input__inner{
+    height: 32px !important;
+    line-height: 31px !important;
+    border: 1px solid #b6b6b6 !important;
+    position: absolute;
+    right: 40px !important;
+    left: 40px !important;
+    width: auto;
+    padding: 0 !important;
+    font-weight: 500;
+    border-radius: 7px;
+    text-align: center;
 }
 .el-input-number span{
-    background: transparent !important;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    width: 32px !important;
+    height: 32px !important;
+    height: auto;
+    text-align: center;
+    background: #e4e6e8 !important;
+    color: #606266;
+    cursor: pointer;
+    border-radius: 50% !important;
+    
+    padding: 5px 0 0 0 !important;
+}
+.el-input-number span i{
+    font-weight: 900 !important;
+    font-size: 13px;
 }
 .el-form .butt-form{
     margin: 20px 0 0 0;
@@ -1576,8 +1652,9 @@ font-weight: 500;
     margin: 0px 0 20px;
 }
 .cost-product-amount .units{
-    margin: 0 0 0 5px;
+    margin: 5px 0px 0 10px;
     font-size: 13px;
+    float: right;
 }
 .cost-product-amount .units b{
     margin: 0 3px 0px 0px;
@@ -1716,13 +1793,23 @@ font-weight: 500;
     border: 1px solid #fff;
 }
 .cost-product-block>.el-button{
-    padding: 12px 28px!important;
-    font-size: 13px!important;
-    color: #fff;
+    padding: 16px 42px!important;
+    font-size: 14px!important;
+    color: #ffffff;
     background-color: #f90!important;
     border-color: #f90!important;
-    border-radius: 9px;
+    border-radius: 7px;
+    /* text-transform: uppercase; */
+    font-weight: 600;
+    /* width: 50%; */
+    box-shadow: 0px 11px 33px -11px #f90;
 }
+.el-dialog__wrapper .cost-product-block>.el-button{
+    padding: 14px 38px!important;
+    font-size: 13px!important;
+    margin: 0 0 15px;
+}
+
 .catalog-list-input>div>.el-button.is-disabled{
     background-color: #f3c784!important;
     border-color: #f3c784!important;
@@ -1756,6 +1843,36 @@ width: 100%;
     margin: 10px 0 0 5px;
     float: left;
 }
+.kod-product{
+    float: left;
+    margin: 0px 0 15px 0px;
+    padding: 0px 0px;
+    border-radius: 19px;
+    font-size: 11px;
+    color: #f90;
+    width: 100%;
+}
+.kod-product span{
+    width: 35px;
+    /* height: 24px; */
+    border-radius: 9px;
+    border: 2px solid;
+    float: left;
+    font-weight: 700;
+    font-size: 9px;
+    text-align: center;
+    padding: 2px 0 0 0;
+    margin: -2px 5px 0 0px;
+    background: #f90;
+    color: #fff;
+}
+.kod-product strong{
+    font-size: 13px;
+}
+.kod-product i{
+    font-size: 14px;
+    cursor: pointer;
+}
 .activeButCat{
     z-index: 30;
     transition: opacity 1s;
@@ -1778,27 +1895,28 @@ width: 100%;
 }
 .cost-product-block .cost-product-price-catalog{
     width: auto;
-    float: right;
-    margin: 0px 0 0 0;
+    float: left;
+    margin: 0px 0 0 0px;
+    color: #2f2f2f;
+    padding: 0px 0 0 0;
+    line-height: 1.2;
 }
 .cost-product-block .cost-product-price-catalog span{
-    font-size: 19px;
+    font-size: 28px;
     float: left;
-    font-weight: 700;
-    color: #686868;
+    font-weight: 900;
 }
 .cost-product-block .cost-product-price-catalog strong{
-    font-size: 10px;
-    font-weight: 600;
-    padding: 10px 0 0 5px;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 13px 0 0 4px;
     float: left;
-    color: #686868;
 }
 .el-input-number span{
     background: #fff;
 }
 .el-radio.is-bordered.is-checked {
-    border-color: #b3b3b3 !important;
+    border-color: #818181 !important;
 }
 .el-radio__input.is-checked+.el-radio__label {
     color: #4f4f4f !important;
@@ -1919,7 +2037,7 @@ body .el-dialog__body{
     width: 100%;
     padding: 0px;
     display: inline-block;
-    margin: 0 0 10px;
+    margin: 0 0 20px;
 }
 .basket-tov-img{
     float: left;
@@ -1982,7 +2100,7 @@ body .el-dialog__body{
     padding: 0 0px 0 10px;
     width: 17%;
     justify-content: left;
-    height: 70px;
+    height: 90px;
     display: flex;
     align-items: center;
     position: relative;
@@ -2003,20 +2121,21 @@ body .el-dialog__body{
 }
 .basket-tov-calc{
     float: left;
-    padding: 0 0px 0 0px;
+    padding: 20px 0px 0 0px;
     width: 20%;
-    justify-content: center;
-    height: 70px;
+    justify-content: space-around;
+    height: 90px;
     display: flex;
     align-items: center;
     position: relative;
+    flex-direction: column;
 }
 .basket-tov-summ{
     float: left;
     text-align: center;
     display: flex;
     align-items: center;
-    height: 70px;
+    height: 90px;
     padding: 0 0px 0 10px;
     width: 18%;
     justify-content: left;
@@ -2224,12 +2343,13 @@ body .navbar-user .navbar-user-item{
     background: rgb(255 255 255 / 85%);
     padding: 0px 0px 0;
     border-radius: 4px;
-    color: #9a9a9a;
-    font-size: 9px;
+    /* color: #ff6b00; */
+    color: #818080;
+    font-size: 10px;
     font-weight: 600;
     cursor: default;
     float: left;
-    margin: 0px 0 5px 0px;
+    margin: 10px 0 5px 0px;
 }
 .catalog-manuf i{
     
@@ -2907,15 +3027,16 @@ font-size: 13px;
 
 }
 .basket-tov-calc .el-input-number{
-    width: 115px !important;
+    width: 100% ;
 }
 .basket-tov-calc .units b {
     margin: 0 3px 0px 0px;
     font-weight: 400;
     font-size: 10px;
+    display: none;
 }
 .basket-tov-calc .units{
-    margin: 0 0 0 5px;
+    margin: 15px 0 0 5px;
     font-size: 13px;
 }
 .butDiscount{
@@ -3065,7 +3186,7 @@ font-size: 13px;
         font-size: 12px;
     }
     .catalog-list-block-price>strong{
-        font-size: 21px;
+        font-size: 20px;
     }
     .catalog-list-block-price>span{
         margin: 6px 0 0 5px;
@@ -3298,7 +3419,7 @@ font-size: 13px;
         margin: 0px 0 0 165px;
     }
     .catalog-list-block-desc>a, .catalog-list-block-desc>span {
-        height: 100px;
+        height: 90px;
     }
     .catalog-list-input{
         margin: 0px 0 0 0;

@@ -11,6 +11,7 @@ export const state = ()=>({
     basket_cost:{},
     activeButCatMenyItem:false,
     top:[],
+    loadingItem:true,
 })
 
 export const mutations = {
@@ -61,6 +62,9 @@ export const mutations = {
     },
     setactiveButCatMeny(state,data){
         state.activeButCatMenyItem = data;
+    },
+    setLoadingItem(state,data){
+        state.loadingItem = data;
     }
 }
 
@@ -122,6 +126,10 @@ export const actions = {
     newSateButCatMeny({ commit},results) {
         commit('setactiveButCatMeny', results)
         return results
+    },
+    newLoadingItem({ commit},results) {
+        commit('setLoadingItem', results)
+        return results
     }
 }
 
@@ -134,6 +142,7 @@ export const getters = {
     allBaskets: state => state.allBaskets,
     countAllBaskets: state => state.countAllBaskets,
     activeButCatMenyItem: state => state.activeButCatMenyItem,
+    loadingItem: state => state.loadingItem,
     top: state => state.top
 }
 

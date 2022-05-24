@@ -235,7 +235,8 @@ export default ({
       ...mapActions({
         addUserList: 'main/addUserList',
         remove_basket:'main/DELL_CART_BASKET_ALL',
-        remove_cost: 'main/DELL_CART_BASKET_COST'
+        remove_cost: 'main/DELL_CART_BASKET_COST',
+        setLoading: 'main/newLoadingItem',
     }),
     disabledForm(item){
         this.activeName = String(item)
@@ -261,6 +262,8 @@ export default ({
     },
     async unaftorized(){
         try {
+        this.setLoading(true)
+        this.$emit('updateDialogForm',false)
         let data = await this.$axios.post('add/to/cart',{form:this.Form,basket:this.basket,basket_cost:this.basket_cost});
         
         if(!this.$auth.loggedIn) {
@@ -271,10 +274,11 @@ export default ({
             }
 
 
-        this.$emit('updateDialogForm',false)
+        
         this.$
         this.remove_basket()
         this.remove_cost()
+        
 
         }catch (error) {
         this.$message({
