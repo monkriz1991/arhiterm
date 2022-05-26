@@ -57,7 +57,7 @@
                             <span v-else>{{product.name.substring(0,65)+".." }}</span>
                         </nuxt-link>
                         <div class="catalog-list-block-price">
-                            <b>от</b>
+                            <b v-if="product.product.length>1&&product.product.length!=0">от</b>
                             <strong :class="{ butDiscount: discont[idx]}">
                                 <!-- <i class="el-icon-price-tag"></i> -->
                                 {{price[idx]}}
@@ -67,7 +67,7 @@
                                     <span>руб/{{product.units}}</span>
                                 </div> -->
                             </strong>
-                            <span>руб/{{product.units}}</span>
+                            <span v-if="product.product.length!=0">руб/{{product.units}}</span>
                             <!-- <div class="catalog-list-block-cost">
                                 <b>от</b><strong>{{oneprice[idx]}}</strong> 
                                 <b>до</b><strong>{{lastprice[idx]}}</strong>
