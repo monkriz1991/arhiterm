@@ -7,7 +7,7 @@
           { required: true, message: 'Пожалуйста введите ваше имя', trigger: 'blur' }
         ]"
         >
-          <el-input  placeholder="Введите Ваше имя" v-model="form.name" autocomplete="off"></el-input>
+          <el-input prefix-icon="el-icon-user" placeholder="Введите Ваше имя" v-model="form.name" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
         prop="username"
@@ -17,9 +17,9 @@
           { type: 'email', message: 'Пожалуйста введите корректный email', trigger: ['blur', 'change'] }
         ]"
         >
-        <el-input placeholder="Введите Ваш email" v-model="form.username" autocomplete="off"></el-input>
+        <el-input prefix-icon="el-icon-message" placeholder="Введите Ваш email" v-model="form.username" autocomplete="off"></el-input>
         </el-form-item>
-          <el-form-item label="Аккаунт" prop="type" class="form-type-acc">
+          <el-form-item label="Аккаунт" prop="type">
             <el-select v-model="form.type" placeholder="Укажите тип">
               <el-option label="Физ. лицо" value="2"></el-option>
               <el-option label="Юр. лицо" value="1"></el-option>
@@ -29,13 +29,13 @@
         prop="password"
         label="Пароль"
         >
-          <el-input placeholder="Ввидите пароль" v-model="form.password" show-password autocomplete="off"></el-input>
+          <el-input prefix-icon="el-icon-key" placeholder="Ввидите пароль" v-model="form.password" show-password autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
         prop="checkPass"
         label="Повторите пароль"
         >
-          <el-input placeholder="Повторите пароль" v-model="form.checkPass" show-password autocomplete="off"></el-input>
+          <el-input prefix-icon="el-icon-key" placeholder="Повторите пароль" v-model="form.checkPass" show-password autocomplete="off"></el-input>
         </el-form-item>
           <el-form-item label="Выбрав пункт Принимаю, я соглашаюсь с" prop="deal">
             <nuxt-link class="personal-data-link" :to="`/info/personal_data_rules`">Политикой обработки персональных данных</nuxt-link>

@@ -20,6 +20,7 @@
                     :label="`${checkbox.id}||${category.id}`"
                     v-show="idx<=6&&adaptivSidebar==true  || adaptivSidebar==false"
                     @change="checkFil()"
+                    :disabled="isDisabled"
                     >{{checkbox.value}}
                     </el-checkbox>
                       <el-popover
@@ -36,6 +37,7 @@
                             :label="`${checkbox.id}||${category.id}`"
                             v-show="idx>6"
                             @change="checkFil()"
+                            :disabled="isDisabled"
                             >{{checkbox.value}}
                             </el-checkbox>
                           </div>
@@ -61,6 +63,7 @@ export default {
       checkList:[],
       checkFilId:[],
       checkListManuf:[],
+      isDisabled:false
     }
   },
   computed:{
@@ -93,11 +96,15 @@ export default {
   methods:{
       updateData(){
             setTimeout(this.sendUpdate(),100);
+            setTimeout(() => {
+              this.isDisabled = false
+            }, 1500);
       },
       sendUpdate(){
         this.$emit('updateData')
       },
         checkFil(){
+          this.isDisabled = true
           if(this.$route.query.page!=1){
           try{
             this.$addQueryFactory('page',1,this.$route,this.$route.params.id);

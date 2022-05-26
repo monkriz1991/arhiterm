@@ -515,6 +515,57 @@ header .contents {
     padding: 10px 0;
     background-color: #f9fafc;
 }
+.modal-logout{
+
+}
+.modal-logout>.el-dialog{
+    padding: 5%;
+    border-radius: 10px;
+}
+.modal-logout .el-form-item__label{
+    display: none;
+}
+.modal-logout .el-form-item{
+    margin-bottom: 10px;
+}
+.modal-logout .el-tabs__header {
+    margin: 0 0 25px;
+}
+.modal-logout .el-input__icon {
+    padding: 3px 0 0 0;
+}
+.modal-logout .el-form-item__error {
+    color: #F56C6C;
+    font-size: 11px;
+    line-height: 1;
+    position: absolute;
+    top: 65%;
+    right: 7px;
+    z-index: 12;
+    background: #f2f2f0;
+    padding: 0px;
+    border-radius: 4px;
+}
+.modal-logout .el-form-item__content .el-form-item__error{
+    background: transparent;
+}
+.modal-logout .el-tabs__content {
+    overflow: inherit;
+    position: relative;
+}
+.modal-logout .el-input__inner{
+    -webkit-appearance: none;
+    background-color: #f2f2f0;
+    border-radius: 4px;
+    border: 1px solid rgba(227,227,232,.5);
+    color: #2f2f32;
+    height: 50px;
+    line-height: 40px;
+    font-size: 15px;
+    padding: 0 35px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    width: 100%;
+}
 .index-topcat,.index-brand{
     float: left;
     width: 100%;
@@ -897,7 +948,7 @@ header .contents {
     background-color: #ff7300 !important;;
 }
 .el-tabs__item:hover {
-    color: #d86100 !important;;
+    color: #ff7300 !important;
     cursor: pointer;
 }
 .contents-mobail{
@@ -1003,7 +1054,7 @@ header .contents {
 .cat-filter .el-checkbox__label {
     font-size: 12px;
     display: block;
-    margin: 0 10px 0 10px;
+    margin: 0 0px 0 15px;
     float: none;
     line-height: 1.6;
     white-space: normal;
@@ -1023,11 +1074,11 @@ header .contents {
     list-style: none;
 }
 .cat-filter .el-checkbox__inner {
-    border: 1px solid #d4d8e1;
+    border: 1px solid #a9b1c2;
     border-radius: 4px;
     box-sizing: border-box;
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
 }    
 .cat-filter .el-checkbox-group{
     float: left;
@@ -1048,7 +1099,7 @@ header .contents {
     margin: 10px 0 25px;
     font-size: 17px;
     font-weight: 900;
-    color: #535353;
+    color: #222222;
     white-space: nowrap;
 }
 .cat-filter-check{
@@ -1077,7 +1128,7 @@ padding: 50px 0 0;
     width: 100%;
     background: #fff;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px 0 10px 10px;
     cursor: pointer;
     position: relative;
     /* border: 1px solid #f4f4f4; */
@@ -1192,6 +1243,19 @@ border: 1px solid #fff;
     color: #2f2f2f;
     position: relative;
 }
+.catalog-list-block-price b{
+    top: 8px;
+    float: left;
+    font-size: 11px;
+    font-weight: 900;
+    margin: -8px 0px 0px 0;
+    color: #393939;
+    /* background: #eeeeee; */
+    border-radius: 7px;
+    padding: 5px 7px 0px 0;
+    position: relative;
+    text-align: center;
+}
 .pod-zak-form{
     position: absolute;
     top: 0px;
@@ -1235,11 +1299,8 @@ border: 1px solid #fff;
     /* background: #eeeeee; */
     border-radius: 7px;
     padding: 5px 7px 0px 0;
-    /* width: 30px; */
-    /* height: 30px; */
     position: relative;
     text-align: center;
-    /* border: 2px solid #b8b8b8;*/
 }
 .catalog-list-block-price>strong b i{
     font-weight: 900;
@@ -1321,7 +1382,7 @@ border: 1px solid #fff;
     float: left;
     width: 100%;
     margin: 0 0 10px;
-    color: #505256;
+    color: #0b0d10;
 }
 .cat-filter-all{
     padding: 10px 10px 0px;
@@ -1540,7 +1601,7 @@ font-weight: 500;
 .cost-product-price>strong{
     font-size: 10px;
     font-weight: 700;
-    padding: 6px 0 0 2px;
+    padding: 6px 0 0 0px;
     float: left;
 }
 .cost-product-input>strong{
@@ -1636,6 +1697,12 @@ font-weight: 500;
     margin: 20px 0 0 0;
     background-color: #f90!important;
     border-color: #f90!important;
+    width: 100%;
+    padding: 20px 10px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 7px;
+    box-shadow: 0px 11px 33px -11px #f90;
 }
 .el-form .butt-form:hover{
     background-color: #ffac30 !important;
@@ -1652,7 +1719,7 @@ font-weight: 500;
     margin: 0px 0 20px;
 }
 .cost-product-amount .units{
-    margin: 5px 0px 0 10px;
+    margin: 6px 0px 0 10px;
     font-size: 13px;
     float: right;
 }
@@ -1778,10 +1845,9 @@ font-weight: 500;
     /* box-shadow: 0px 6px 18px -13px #333; */
 }
 .catalog-list-input .cost-product-input{
-    margin: 0 0 10px;
+    margin: 0 0 20px;
 }
 .catalog-list-input .cost-product-amount{
-    margin: 0 0 10px;
 }
 .catalog-list-input .cost-product-char{
     margin: 0px 0 0;
@@ -1807,7 +1873,7 @@ font-weight: 500;
 .el-dialog__wrapper .cost-product-block>.el-button{
     padding: 14px 38px!important;
     font-size: 13px!important;
-    margin: 0 0 15px;
+    margin: 0 0 20px;
 }
 
 .catalog-list-input>div>.el-button.is-disabled{
@@ -1887,7 +1953,7 @@ width: 100%;
     margin: 0 0 3px;
 }
 .catalog-list-input .cost-product-char p>strong, .catalog-list-input .cost-product-char p>span{
-    font-size: 11px;
+    font-size: 12px;
 }
 .catalog-list-input .el-radio__label{
     font-size: 10px !important;
@@ -1909,7 +1975,7 @@ width: 100%;
 .cost-product-block .cost-product-price-catalog strong{
     font-size: 14px;
     font-weight: 800;
-    padding: 13px 0 0 4px;
+    padding: 13px 0 0 2px;
     float: left;
 }
 .el-input-number span{
@@ -3198,9 +3264,14 @@ font-size: 13px;
         top: -11px;
     }
     .h1-product {
-        margin: 15px 0 15px;
-        font-size: 16px;
+        margin: 15px 0 20px;
+        font-size: 17px;
     }    
+    .cost-product-block>.el-button {
+        padding: 14px 38px!important;
+        font-size: 13px!important;
+        box-shadow: 0px 11px 33px -13px #f90;
+    }
     .h2-product{
         margin: 0px 0 15px;
     }
@@ -3220,6 +3291,13 @@ font-size: 13px;
     }
 }
 @media (max-width: 991px){
+    .cost-product-block .cost-product-price-catalog span {
+        font-size: 26px;
+    }
+    .cost-product-block .cost-product-price-catalog strong {
+        font-size: 13px;
+        padding: 13px 0 0 4px;
+    }
     .navbar-user .el-icon--right{
         font-size: 10px;
         position: absolute;
@@ -3442,7 +3520,7 @@ font-size: 13px;
         padding-right: 40px;
     }
     .el-tabs__item{
-        font-size: 12px !important;
+        font-size: 13px !important;
         padding: 0 10px !important;
     }
     .logotip img {
@@ -3571,10 +3649,17 @@ font-size: 13px;
         margin-bottom: 12px;
     }
     .el-form .el-input__inner{
-        height: 35px;
-        font-size: 12px;
+        font-size: 13px;
         line-height: 35px;
-    }    
+    }  
+    .el-form .butt-form {
+        padding: 17px 10px;
+        font-size: 14px;
+    }  
+    .modal-logout>.el-dialog {
+        padding: 0%;
+        border-radius: 10px;
+    }
     .el-dropdown-menu__item{
         line-height: 32px;
         font-size: 13px;
