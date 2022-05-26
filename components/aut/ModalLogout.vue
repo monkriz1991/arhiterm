@@ -13,10 +13,11 @@
         <span class="button-nav-text">Кабинет</span>
         </el-button>
         <el-dialog 
+        class="modal-logout"
         title="Кабинет" 
         append-to-body
         :visible.sync="dialogFormVisible"  
-        width="32%">
+        width="40%">
 
         <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="Вход" name="first">

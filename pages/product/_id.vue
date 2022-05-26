@@ -9,9 +9,10 @@
         <Galery/>
         <div class="cost-product-section">
             <div class="cost-product-price">
-                <strong class="">Стоимость ( руб. ) за - 1 {{result.units}}.</strong>
+                <strong class="">Стоимость ( за - 1 {{result.units}} )</strong>
                 <b>:</b>
                 <span :class="{ butDiscount: discont}">{{price}}</span>
+                <strong>руб.</strong>
                 
                 <div v-if="discont" class="catalog-list-block-discount">
                     <strong>{{discont}}</strong>

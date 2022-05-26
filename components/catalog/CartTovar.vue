@@ -25,6 +25,8 @@
                         <el-image
                         :src="product.img"
                         fit="contain"
+                        :title="product.name"
+                        lazy
                         >
                         </el-image>
                         </nuxt-link>
@@ -54,10 +56,9 @@
                             <span v-if="product.name.length<65">{{product.name}}</span>
                             <span v-else>{{product.name.substring(0,65)+".." }}</span>
                         </nuxt-link>
-                        <div 
-                        class="catalog-list-block-price">
+                        <div class="catalog-list-block-price">
+                            <b>от</b>
                             <strong :class="{ butDiscount: discont[idx]}">
-                                <b>от</b>
                                 <!-- <i class="el-icon-price-tag"></i> -->
                                 {{price[idx]}}
                                 <!-- <div v-if="discont[idx]" 
