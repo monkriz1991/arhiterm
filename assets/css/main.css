@@ -566,6 +566,9 @@ header .contents {
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
     width: 100%;
 }
+.modal-logout .el-dialog__header {
+    padding: 0px 20px 0px;
+}
 .index-topcat,.index-brand{
     float: left;
     width: 100%;
@@ -1597,6 +1600,7 @@ font-weight: 500;
     font-size: 15px;
     font-weight: 700;
     color: #2f2f2f;
+    margin: 0 2px 0 0;
 }
 .cost-product-price>strong{
     font-size: 10px;
@@ -1789,7 +1793,7 @@ font-weight: 500;
     bottom: -2px;
 }
 .cost-product-char p>strong{
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     /* background: #fff; */
     padding: 3px 7px 3px 0;
@@ -1953,7 +1957,7 @@ width: 100%;
     margin: 0 0 3px;
 }
 .catalog-list-input .cost-product-char p>strong, .catalog-list-input .cost-product-char p>span{
-    font-size: 12px;
+    font-size: 13px;
 }
 .catalog-list-input .el-radio__label{
     font-size: 10px !important;
@@ -3489,12 +3493,15 @@ font-size: 13px;
     .index-brand-block{
         height: 130px;
     }
+    .el-dialog--center .el-dialog__body {
+        padding: 25px 15px 30px;
+    }
     .catalog-list-img {
-        width: 150px;
+        width: 140px;
         height: 160px;
     }
     .catalog-list-block-desc {
-        margin: 0px 0 0 165px;
+        margin: 0px 0 0 150px;
     }
     .catalog-list-block-desc>a, .catalog-list-block-desc>span {
         height: 90px;
@@ -3599,11 +3606,14 @@ font-size: 13px;
         font-size: 19px !important;
     }
     .popover-nav>ul li a .el-image {
-        height: 40px;
+        min-height: 20px;
         min-width: 40px;
-        width: 40px;
-        padding: 2px;
-        margin: 0 5px 0 0px;
+        width: 100%;
+        padding: 0px;
+        max-width: 90px;
+        margin: 0 0px 5px 0px;
+        /* float: left; */
+        border: 0px solid #eeeeee;
     }
     .header-basket,.top-phone {
         float: right;
@@ -3668,25 +3678,31 @@ font-size: 13px;
         list-style: none;
         float: left;
         width: 50%;
+        padding: 5px;
     }
     .popover-nav>ul li a i {
         margin: 0 5px 0px 0px;
     }
     .popover-nav>ul li a {
-        padding: 5px 10px 5px 0px;
-        font-size: 11px;
+        padding: 5px;
+        font-size: 13px;
         max-width: 100%;
-        height: 65px;
-        overflow-wrap: anywhere;
+        height: 100px;
+        word-wrap: anywhere;
+        background: #ededed;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
     }  
     .popover-nav .manufacturer-navbar-ul li {
         width: 50%;
         margin: 0 5px 5px 0px;
-        padding: 0 0px 0 0;
+        padding: 5px;
     } 
     .popover-nav .manufacturer-navbar-ul li a{
         padding: 6px 10px 6px 10px;
-        font-size: 11px;
+        font-size: 13px;
         height: auto;
     }
     .el-checkbox-group .el-button--text{
@@ -3705,6 +3721,7 @@ font-size: 13px;
     .el-breadcrumb{
         font-size: 11px !important;
         margin: 0px 0 15px;
+        display: none;
     }
     .header-basket .el-dialog__body {
         padding: 10px 10px 20px !important;
@@ -3887,6 +3904,7 @@ font-size: 13px;
         top: auto;
         justify-content: center;
         padding: 3px;
+        border: 0px solid #e0e6ec;
     }
     .header-nav-refresh i{
 
@@ -3898,7 +3916,7 @@ font-size: 13px;
         border-top: 0px solid #e2e2e2 !important;
         border-bottom: 0px solid #e2e2e2 !important;
         border-radius: 5px !important;
-        padding: 10px 10px 50px 10px !important;
+        padding: 5px 5px 50px 5px !important;
         border-right: 0px solid #e2e2e2 !important;
         border-left: 0px solid #e2e2e2 !important;
         top: 92px !important;
@@ -3937,6 +3955,11 @@ font-size: 13px;
         /* width: 100%; */
         margin: 4px 0px 20px 0;
         width: 29px !important;
+        display: none !important;
+    }
+    .h1-product {
+        margin: 0px 0 20px;
+        font-size: 17px;
     }
     .el-breadcrumb__separator[class*=icon] {
         margin: 0 0 0 5px !important;
