@@ -19,6 +19,7 @@ jobs:
           pass: ${{ secrets.SSH_PASS }}
           command: |
             cd /var/www/www-root/data/www/arhiterm.by/arhiterm
+            git add . && git commit -m "auto commit"
             ${{ secrets.SCRIPT }}
       - name: install packages
         uses: fifsky/ssh-action@master
