@@ -645,6 +645,21 @@ header{
     color: #333;
     top: 1px;
 }
+.bottom-bar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: #fff;
+    z-index: 999;
+    border-top: 1px solid #e2e2e2;
+}
+.bottom-bar-con{
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
 .logotip{
     float: left;
     display: flex;
@@ -742,7 +757,6 @@ header .contents {
 }
 .header-logout{
     float: right;
-    display: none;
 }
 .header-nav-refresh{
     position: absolute;
@@ -3859,16 +3873,19 @@ font-size: 13px;
         padding: 30px 20px;
     }
     .slider-content{
-        padding: 30px 100px 30px 30px;
+        padding: 20px 100px 20px 30px;
+    }
+    .index-slider .el-carousel__arrow{
+        top: 89%;
     }
     .slider-content h3{
-        font-size: 17px !important;
+        font-size: 15px !important;
         font-weight: 900;
         margin: 0 0 15px !important;
     }
     .slider-content p {
         line-height: 1.4;
-        font-size: 15px;
+        font-size: 13px;
     }
     .el-carousel__indicators--horizontal {
         bottom: 0;
@@ -3944,7 +3961,10 @@ font-size: 13px;
     }
     .logotip img {
         max-height: 100%;
-        width: 96px;
+        width: 110px;
+    }
+    .header-nav .header-logout{
+        display: none;
     }
     .header-nav{
         margin: 0 0 0 0px;
@@ -3969,8 +3989,12 @@ font-size: 13px;
         flex-flow: column;
     }
     .button-nav-meny i {
-        font-size: 24px !important;
+        font-size: 29px !important;
         margin: -2px 0 0px 0 !important;
+        color: #333;
+    }
+    .button-nav-text {
+        display: none;
     }
     .button-nav-meny span{
         font-size: 11px;
@@ -4009,9 +4033,13 @@ font-size: 13px;
         line-height: 1.5;
     }
     .contents-mobail .header-cat{
-        padding: 5px 0px;
+        padding: 0px 0px;
         background: transparent;
         fill: #fff;
+    }
+    .header-cat svg{
+        width: 37px;
+        height: 25px;
     }
     .contents-mobail .header-cat .button-nav-text{
         top: -5px;
