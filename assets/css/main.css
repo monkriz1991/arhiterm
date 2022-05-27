@@ -3567,12 +3567,13 @@ font-size: 13px;
 @media (max-width: 991px){
     .cost-product-block .cost-product-price-catalog span {
         font-size: 24px;
-        
+
     }
     .cost-product-block .cost-product-price-catalog strong {
         font-size: 12px;
         padding: 10px 0 0 4px;
     }
+    
     .navbar-user .el-icon--right{
         font-size: 10px;
         position: absolute;
