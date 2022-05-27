@@ -17,7 +17,7 @@
         title="Кабинет" 
         append-to-body
         :visible.sync="dialogFormVisible"  
-        width="40%">
+        width="36%">
 
         <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="Вход" name="first">
