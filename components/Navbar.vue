@@ -338,7 +338,6 @@
     </div>
     <div v-if="width>991" class="header-bg"></div>
     <!-- <div  :class="[visible==true?'header-bg-popover':'']" ></div> -->
-    <!-- <button type="button" class="btn btn-primary" @click="open()"> Open bottom sheet </button> -->
         <vue-bottom-sheet
         max-width="400px"
         max-height="90%"
@@ -350,11 +349,52 @@
         :is-full-screen="false"
         :background-clickable="true"
          ref="myBottomSheet">
-          <h1>Lorem Ipsum</h1>
-          <p>
-            <strong>123</strong>
-          </p>
+
+          <MenyuserMobail />
+
         </vue-bottom-sheet>
+        <div v-if="width<991" class="bottom-bar">
+          <div class="container">
+            <div class="bottom-bar-con">
+              <div v-if="$auth.loggedIn">
+                <Menyuser/>
+              </div>
+              <div v-else>
+              <no-ssr>
+                <ModalLogout />
+              </no-ssr>
+              </div>
+              <el-button 
+              circle
+              icon="el-icon-more-outline"
+              @click="open()">
+              </el-button>
+
+              <el-button 
+              circle
+              icon="el-icon-phone-outline"
+              @click="dialogVisible=true">
+              </el-button>
+              <el-dialog
+              title="Помощь в заказе"
+              append-to-body
+              :visible.sync="dialogVisible"
+              width="30%"
+              >
+              <div class="phone-modal-block">
+                <div class="phone-modal-block-el">
+                  <span>Помощь в заказе</span>
+                  <p v-for="(phone,k) in phones" :key="k">
+                    <a href="">{{phone.phone_number}}</a>
+                    <strong>{{phone.operator}}</strong>
+                  </p>
+                </div>
+              </div>
+            </el-dialog>
+
+            </div>
+          </div>
+        </div>
   </header>
 </template>
 
