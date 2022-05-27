@@ -8,7 +8,7 @@
                     </div>
                 </div>
                 <span class="demo-type-span"></span>
-                <i class="el-icon-arrow-down el-icon--right"></i>
+                <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
             </span>
             <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item class="navbar-user-item">

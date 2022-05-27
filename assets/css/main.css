@@ -291,6 +291,214 @@ margin: 0 0 20px;
     /* opacity: 0.8; */
     color: #fccfbe;
 }
+.nav-cabinet{
+    float: left;
+    width: 100%;
+    margin: 0 0 40px;
+    border-bottom: 1px solid #d8cfcf;
+    padding: 0 0 20px;
+}
+.nav-cabinet a{
+    text-decoration: none;
+    float: left;
+    border-bottom: 0px solid #e2e2e2;
+    font-weight: 500;
+    position: relative;
+    background-color: transparent;
+    color: #2f2f32;
+    padding: 6px 18px;
+    height: 40px;
+    min-height: 40px;
+    min-width: 40px;
+    -webkit-transition: background .3s;
+    transition: background .3s;
+    font-size: 13px;
+    margin: 0 8px 0 0;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 4px;
+}
+.nav-cabinet a i{
+    padding: 0 4px 0 0;
+}
+.nav-cabinet a:hover{
+    color: #000;
+    background-color: rgba(227,227,232,.5);
+}
+.nav-cabinet .activ-link-cab{
+    background-color: rgba(227,227,232,.5);
+}
+.activ-link-cab:before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    bottom: -2px;
+    left: calc(50% - 15px);
+    width: 30px;
+    height: 0px;
+    background: #ff7e40;
+}
+.profile-cab{
+    float: left;
+    width: 100%;
+    border-radius: 13px;
+    /* background-color: #f7f7f7; */
+    padding: 0px 0px;
+}
+.profile-cab .h1-user-cab,.h1-user-cab{
+    float: left;
+    width: 100%;
+    margin: 0 0 20px;
+    font-weight: 700;
+    font-size: 22px;
+}
+.el-form-item__error {
+    color: #F56C6C;
+    font-size: 12px;
+    line-height: 1;
+    padding-top: 4px;
+    position: absolute;
+    top: 69%;
+    left: auto;
+    right: 10px;
+}
+.profile-cab-left{
+    float: left;
+    width: 100%;
+}
+.profile-cab-right{
+    margin: 0 0 0 0px;
+    float: left;
+    width: 100%;
+    position: relative;
+    /* background-color: #f7f7f7; */
+    padding: 20px 0px 0;
+    max-width: 650px;
+
+}
+.profile-cab-left .el-button,.avatar-uploader{
+    margin: 0px 0 10px;
+}
+.profile-cab .but-icon-edit{
+    font-size: 26px;
+    margin: 0px 0 0 0;
+    border: 1px solid #d5d5d5;
+    padding: 12px 20px;
+    position: absolute;
+    right: -20px;
+    background: #fff;
+    color: #141414;
+    top: -20px;
+    padding: 15px !important;
+}
+.profile-cab-right:after{
+    content: '';
+    height: 1px;
+    /* border-bottom: 1px solid #e2e2e2; */
+    width: 147px;
+    position: absolute;
+    bottom: 12px;
+    left: 145px;
+}
+.profile-cab-left-pass{
+    float: left;
+    max-width: 650px;
+    width: 100%;
+    margin: 20px 0 0 0;
+    position: relative;
+}
+.form-user-cab{
+    position: relative;
+    float: left;
+    width: 100%;
+    margin: 0 0 10px;
+    border-radius: 14px;
+    /* background-color: #f7f7f7; */
+    }
+    .form-user-cab .el-form-item{
+        float: left;
+        margin: 0 0 2px;
+        width: 100%;
+        padding: 10px 20px;
+        border-bottom: 0px solid #e2e2e2;
+        background: #f7f7f7;
+        border-radius: 6px;
+    }
+    .form-user-cab .el-form-item__content {
+        line-height: initial;
+    }
+    .form-user-cab .el-form-item__label {
+        line-height: initial;
+        float: left;
+        font-size: 13px;
+        font-weight: 500;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        width: 140px;
+        text-align: left;
+    }
+    .form-user-cab .el-form-item__content{
+        float: none;
+        /* width: 100%; */
+        margin: 0 0 0 170px;
+        display: block;
+    }
+    .form-user-cab .el-input.is-disabled .el-input__inner {
+        background-color: transparent;
+        border-color: transparent;
+        color: #4b4b4b;
+        cursor: not-allowed;
+        border-bottom: 0px solid #ffffff;
+        padding: 6px 20px;
+        height: auto;
+        line-height: 1.8;
+        font-size: 14px;
+        font-weight: 500;
+        width: 250px;
+    }
+    .form-user-cab .el-input__inner{
+        height: 30px;
+        font-size: 14px;
+        padding: 0 35px 0 0px;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-radius: 0px;
+        width: 100%;
+        border-bottom: 0px solid #DCDFE6;
+        background-color: #f7f7f7;
+        padding: 6px 20px;
+        height: auto;
+        line-height: 1.8;
+        border-radius: 3px;
+    }
+    .form-user-cab .el-input__inner:hover{
+        transition: .2s;
+        background-color: #ebebeb;
+    }
+    .form-user-cab .but-icon-save{
+        color: #ff7e40;
+        font-size: 12px;
+        border: 1px solid #fff;
+        position: absolute;
+        left: 248px;
+        bottom: -57px;
+        z-index: 10;
+        padding: 12px 20px;
+    }
+    .form-user-cab .el-input__icon {
+        line-height: 26px;
+    }
+    .h1-user{
+        float: left;
+        width: 100%;
+        margin: 0 0 15px;
+        font-weight: 700;
+        font-size: 17px;
+    }
 header{
 
 }
@@ -542,6 +750,7 @@ header .contents {
     top: 65%;
     right: 7px;
     z-index: 12;
+    left: auto;
     background: #f2f2f0;
     padding: 0px;
     border-radius: 4px;
@@ -2371,6 +2580,7 @@ body .navbar-user .navbar-user-item{
     font-weight: 500;
     float: left;
     width: 100%;
+    font-size: 13px;
 }
 .navbar-user .el-icon--right {
     margin-top: 10px;
@@ -2814,6 +3024,24 @@ body .navbar-user .navbar-user-item{
     float: left;
     width: 100%;
 }
+.cab-user-colaps .el-collapse {
+    border-top: 0px solid #EBEEF5;
+    border-bottom: 0px solid #EBEEF5;
+}
+.cab-user-colaps .el-collapse-item__header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+    transition: border-bottom-color .3s;
+    outline: 0;
+    margin: 0 0 6px;
+    width: 100%;
+    padding: 30px 30px;
+    border-bottom: 0px solid #e2e2e2;
+    background: #f7f7f7;
+    border-radius: 6px;
+}
 .cab-block-basket{
     float: left;
     width: 100%;
@@ -2845,7 +3073,6 @@ body .navbar-user .navbar-user-item{
     font-weight: 600;
     font-size: 12px;
     padding: 10px 0 0;
-    border-top: 1px solid #e2e2e2;
 }
 .basket-left-item{
     float: left;
@@ -2875,6 +3102,7 @@ font-size: 13px;
     font-size: 13px;
     margin: 0px 0px 0 0px;
     float: left;
+    width: 150px;
 }
 .cab-block-basket-templ>span>strong{
     margin: 0 0 0 4px;
@@ -2892,14 +3120,15 @@ font-size: 13px;
     float: left;
     margin: 0 0px 0 0;
     padding: 3px 5px;
-    border-radius: 3px;
-    background: #ff8d2a;
+    border-radius: 6px;
+    background: transparent;
     font-size: 11px;
-    color: #fff;
+    color: #141414;
     width: 100%;
+    border: 1px solid #535353;
 }
 .cab-block-basket-data{
-    margin: 4px 0px 0 30px !important;
+    margin: 4px 0px 0 130px !important;
     font-size: 12px !important;
 }
 .cab-user-colaps .el-collapse-item__wrap{
@@ -3240,6 +3469,47 @@ font-size: 13px;
     color: #fccfbe;
     font-size: 14px;
 }
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
+  .navbar-user-item{
+    list-style: none;
+    line-height: 36px;
+    padding: 0 40px 0 10px;
+    margin: 0;
+    font-size: 14px;
+    color: #606266;
+    cursor: pointer;
+    outline: 0;
+  }
+  .el-dropdown-menu{
+    padding: 10px;
+  }
+  .el-dropdown-menu__item:focus, .el-dropdown-menu__item:not(.is-disabled):hover {
+    background-color: rgba(227,227,232,.7) !important;
+    color: #000 Im !important;
+    border-radius: 4px;
+}
 @media (max-width: 1100px){
     .back-wrapper{
         width: 29px;
@@ -3296,11 +3566,11 @@ font-size: 13px;
 }
 @media (max-width: 991px){
     .cost-product-block .cost-product-price-catalog span {
-        font-size: 26px;
+        font-size: 24px;
     }
     .cost-product-block .cost-product-price-catalog strong {
-        font-size: 13px;
-        padding: 13px 0 0 4px;
+        font-size: 12px;
+        padding: 10px 0 0 4px;
     }
     .navbar-user .el-icon--right{
         font-size: 10px;
@@ -3494,7 +3764,7 @@ font-size: 13px;
         height: 130px;
     }
     .el-dialog--center .el-dialog__body {
-        padding: 25px 15px 30px;
+        padding: 25px 10px 30px !important;
     }
     .catalog-list-img {
         width: 140px;
@@ -3654,9 +3924,14 @@ font-size: 13px;
     }    
     .el-form .el-form-item__content {
         line-height: 35px;
+        margin: 0px 0 0 100px;
+    }
+    .form-user-cab .el-form-item__label{
+        width: 100px;
+        padding: 0;
     }
     .el-form .el-form-item {
-        margin-bottom: 12px;
+        /* margin-bottom: 12px; */
     }
     .el-form .el-input__inner{
         font-size: 13px;
@@ -3817,18 +4092,33 @@ font-size: 13px;
         font-size: 12px;
     }     
     .nav-cabinet a {
-        padding: 8px 8px !important;
-        font-size: 12px !important;    
+        /* padding: 8px 8px !important;
+        font-size: 12px !important;     */
+    }
+    .cab-user-colaps .el-collapse-item__header{
+        padding: 30px 20px;
     }
     .profile-cab-right {
-        padding: 0 0 0 10px !important;
+        padding: 0 0 0 0px !important;
         margin: 0 0 0 0px !important;
         float: left;
         width: 100%;
     }
     .form-user-cab .el-input__inner{
-        width: 220px !important;
+        padding: 0px !important;
     }
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 128px !important;
+        height: 128px !important;
+        line-height: 128px !important;
+    }
+    .nav-cabinet {
+        float: left;
+        width: 100%;
+        margin: 0 0 20px;
+    }    
     .form-user-cab .el-input.is-disabled .el-input__inner{
         width: 220px !important;
     }
@@ -3985,20 +4275,29 @@ font-size: 13px;
         height: 130px;
     }
     .profile-cab-left-pass{
-        margin: 0 0 0 150px;
+        margin: 0 0 0 0px;
     }
     .profile-cab-left-pass button{
         font-size: 12px;
     }
     .h1-user{
         margin: 10px 0 10px;
-        font-size: 18px;
+        font-size: 16px;
     }
     .dialog-changePass .el-dialog__body{
         padding: 10px 10px 10px !important;
     }
-    .h1-user-cab{
-        font-size: 15px !important;
+    .profile-cab .h1-user-cab, .h1-user-cab{
+        font-size: 18px !important;
+        margin: 0 0 20px;
+    }
+    .profile-cab .but-icon-edit {
+        font-size: 19px;
+        border: 1px solid #d5d5d5;
+        padding: 12px 20px;
+        right: -5px;
+        top: -15px;
+        padding: 13px !important;
     }
     .basket-templ-status {
         float: left;
@@ -4006,6 +4305,7 @@ font-size: 13px;
     }
     .cab-block-basket-templ>span {
         font-size: 11px;
+        width: 100%;
     }
     .cab-block-basket {
         margin: 0px 0 5px;

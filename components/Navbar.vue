@@ -339,6 +339,23 @@
     </div>
     <div class="header-bg"></div>
     <div  :class="[visible==true?'header-bg-popover':'']" ></div>
+    <!-- <button type="button" class="btn btn-primary" @click="open()"> Open bottom sheet </button> -->
+        <vue-bottom-sheet
+        max-width="400px"
+        max-height="90%"
+        :overlay="true"
+        :click-to-close="true"
+        :swipe-able="true"
+        :rounded="true"
+        :background-scrollable="false"
+        :is-full-screen="false"
+        :background-clickable="true"
+         ref="myBottomSheet">
+          <h1>Lorem Ipsum</h1>
+          <p>
+            <strong>123</strong>
+          </p>
+        </vue-bottom-sheet>
   </header>
 </template>
 
@@ -385,6 +402,12 @@ import {mapGetters,mapActions} from 'vuex'
         getManufacturer:'category/getManufacturer',
         setLoading: 'main/newLoadingItem',
       }),
+      open() {
+        this.$refs.myBottomSheet.open();
+      },
+      close() {
+        this.$refs.myBottomSheet.close();
+      },
       handlerLoading(item){
         this.setLoading(true)
       },

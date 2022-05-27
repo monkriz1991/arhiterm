@@ -17,7 +17,7 @@
             >
                 <div class="catalog-list-block">
                     <div class="catalog-list-img" >
- 
+
                         <nuxt-link
                         :class="{disabledLink:!price[idx]}"
                         :to="`/product/${product.id}`"
@@ -57,19 +57,19 @@
                             <span v-else>{{product.name.substring(0,65)+".." }}</span>
                         </nuxt-link>
                         <div class="catalog-list-block-price">
-                            <b>от</b>
+                            <b v-if="product.product.length>1&&product.product.length!=0">от</b>
                             <strong :class="{ butDiscount: discont[idx]}">
                                 <!-- <i class="el-icon-price-tag"></i> -->
                                 {{price[idx]}}
-                                <!-- <div v-if="discont[idx]" 
+                                <!-- <div v-if="discont[idx]"
                                 class="catalog-list-block-discount">
                                     <strong>{{discont[idx]}}</strong>
                                     <span>руб/{{product.units}}</span>
                                 </div> -->
                             </strong>
-                            <span>руб/{{product.units}}</span>
+                            <span v-if="product.product.length!=0">руб/{{product.units}}</span>
                             <!-- <div class="catalog-list-block-cost">
-                                <b>от</b><strong>{{oneprice[idx]}}</strong> 
+                                <b>от</b><strong>{{oneprice[idx]}}</strong>
                                 <b>до</b><strong>{{lastprice[idx]}}</strong>
                                 <span>руб/{{product.units}}</span>
                             </div> -->
@@ -100,17 +100,17 @@
                         <CartTovarChar
                         :product_filter="product.product"
                         :new_char="funChar"
-                        />   
+                        />
                     </div>
                 </el-dialog>
             </el-col>
         </el-row>
         <no-ssr>
-        <BasketModal  
+        <BasketModal
         @clickModal = "toggleModal"
         @closeBasket = "closeBasket"
         :dialogFormVisibleModal="dialogFormVisibleModal"/>
-        </no-ssr> 
+        </no-ssr>
     </div>
 </template>
 
@@ -161,7 +161,7 @@ export default {
     },
     mounted(){
         this.parser(this.$route)
-        
+
     },
 
     /**
@@ -182,7 +182,7 @@ export default {
         productsList(){
             this.updatePriceAndCountInPage()
         },
-        activeButCatMenyItem(data) { 
+        activeButCatMenyItem(data) {
             this.fromSateButCatMeny(data)
         },
       $route (to, from){
@@ -229,15 +229,15 @@ export default {
             this.fromSateButCatMeny(this.activeButCatMeny)
             this.radio = idx;
             if (this.show.includes(idx)) {
-                
+
                 this.show = this.show.filter(entry => entry !== idx);
                 return;
             }else{
                 this.show =[]
             }
-            
+
             this.show.push(idx);
-            
+
         },
 
         /**
@@ -274,9 +274,11 @@ export default {
             return this.funChar = data
 
         },
+      /*
+        Быстре теги закрытие
+       */
         handleClose(tag) {
-            debugger;
-            this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+          let deleted = this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
           let a = this.categoryManuf.results.find(x=>x.name===tag)
           if(a!==undefined){
             let data2 = JSON.parse(decodeURI(this.$route.query.manuf))
@@ -291,7 +293,9 @@ export default {
           let b = this.cats.find(x=>x.value===tag)
           if(b!==undefined){
             let data = JSON.parse(decodeURI(this.$route.query.card_filter))
-            let res1 = data.splice(JSON.parse(decodeURI(this.$route.query.card_filter)).indexOf(b.id),1)
+            data = data.filter(x=>parseInt(x.split('||')[0])!==b.id)
+            console.log(data)
+           //let res1 = data.splice(JSON.parse(decodeURI(this.$route.query.card_filter)).indexOf(b.id),1)
               if(data.length){
                 this.addParam('card_filter',JSON.stringify(data));
               }else{
@@ -349,7 +353,7 @@ export default {
         showBasket(dialogVisible){
             this.dialogFormVisibleModal = dialogVisible
         },
-        toggleModal(val,noCloseNotify) { 
+        toggleModal(val,noCloseNotify) {
             this.dialogFormVisibleModal = val;
             this.show =[]
             this.fromSateButCatMeny(this.activeButCatMeny)
@@ -364,7 +368,7 @@ export default {
             this.activeButCatMeny = data
             this.ButCatMeny(data)
         },
-        closeBasket(val){ 
+        closeBasket(val){
             if(val==true){
                 this.openNotify()
             }
@@ -378,7 +382,7 @@ export default {
             message: 'На Вашу почту была выслана информация о заказе!',
             // offset: 100
             });
-        }, 
+        },
         handleCloseModal(done) {
             this.centerDialogVisible = false
             this.show =[]
