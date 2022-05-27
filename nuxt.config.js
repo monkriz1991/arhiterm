@@ -33,6 +33,7 @@ export default {
   plugins: [
     '@/plugins/element-ui',
     '~/plugins/url-change.js',
+    { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
     { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
   ],
 

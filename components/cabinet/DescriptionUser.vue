@@ -1,12 +1,12 @@
 <template>
     <div class="profile-cab-right">
-        <h1 class="h1-user">{{$auth.user!==null?$auth.user.first_name:''}}</h1>
+        <h2 class="h1-user">Персональная информация</h2>
         <el-form :model="form" :rules="rules" ref="form" class="form-user-cab">
             <el-form-item
             prop="username"
             label="Логин:"
             :rules="[
-            { required: true, message: 'Пожалуйста введите ваш email', trigger: 'blur' },
+            {  message: 'Пожалуйста введите ваш email', trigger: 'blur' },
             { type: 'email', message: 'Пожалуйста введите корректный email', trigger: ['blur', 'change'] }
             ]"
             >
@@ -16,7 +16,7 @@
             prop="first_name"
             label="Имя:"
             :rules="[
-            { required: true, message: 'Пожалуйста введите имя', trigger: 'blur' }
+            {  message: 'Пожалуйста введите имя', trigger: 'blur' }
             ]"
             >
                 <el-input :disabled="!disableForm"  placeholder="Введите Ваше имя" v-model="form.first_name" autocomplete="off"></el-input>
@@ -75,26 +75,22 @@
                 <el-input :disabled="!disableForm"  placeholder="Введите ваш юр. адрес" v-model="form.legal_address" autocomplete="off"></el-input>
             </el-form-item>
             <el-button
-            class="but-icon-save"
-            type="warning"
-            plain
             v-show="disableForm"
-            size="mini"
+            class="but-icon-edit"
+            icon="el-icon-finished" circle
+            size="medium"
             @click="saveForm"
-            >Сохранить</el-button>
+            ></el-button>
+            <el-button
+            class="but-icon-edit"
+            icon="el-icon-edit" circle
+            size="medium"
+            @click="editForm()"
+            v-show="!disableForm"
+            >
+            </el-button>
         </el-form>
-        <el-button
-        class="but-icon-edit"
-        type="primary"
-        plain
-        size="mini"
-        @click="editForm()"
-        >
-        <span v-if="!disableForm">
-            <i class="el-icon-edit"></i>
-            Редактировать</span>
-        <span v-else><i class="el-icon-close"></i>Закрыть</span>
-        </el-button>
+
     </div>
 </template>
 
@@ -147,11 +143,13 @@ export default {
             showClose: true,
             duration:1000,
             type: 'success'
+           
         });
         await this.$auth.fetchUser()
           }catch(error){
               this.parseError(error)
           }
+           this.disableForm=false
       },
       /**
        * обработка ошибок отправки запросов
@@ -169,75 +167,3 @@ export default {
 }
 </script>
 
-<style>
-.form-user-cab{
-    position: relative;
-    float: left;
-    width: 100%;
-    margin: 0 0 10px;
-}
-.form-user-cab .el-form-item{
-    float: left;
-    margin: 0 0 2px;
-    width: 100%;
-}
-.form-user-cab .el-form-item__content {
-    line-height: initial;
-}
-.form-user-cab .el-form-item__label {
-    line-height: initial;
-    float: left;
-    font-size: 12px;
-    font-weight: 500;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    width: 90px;
-    text-align: left;
-}
-.form-user-cab .el-form-item__content{
-    float: left;
-}
-.form-user-cab .el-input.is-disabled .el-input__inner {
-    background-color: #ffffff;
-    border-color: #ffffff;
-    color: #4b4b4b;
-    cursor: not-allowed;
-    height: 30px;
-    border-bottom: 1px solid #ffffff;
-    border-radius: 2px;
-    padding: 0 50px 0 0px;
-    font-size: 13px;
-    font-weight: 500;
-    width: 250px;
-}
-.form-user-cab .el-input__inner{
-    height: 30px;
-    font-size: 13px;
-    padding: 0 35px 0 0px;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    border-radius: 0px;
-    width: 250px;
-    border-bottom: 1px solid #DCDFE6;
-}
-.form-user-cab .but-icon-save{
-    color: #ff7e40;
-    font-size: 12px;
-    border: 1px solid #fff;
-    position: absolute;
-    left: 248px;
-    bottom: -57px;
-    z-index: 10;
-    padding: 12px 20px;
-}
-.form-user-cab .el-input__icon {
-    line-height: 26px;
-}
-.h1-user{
-    float: left;
-    width: 100%;
-    margin: 0 0 10px;
-}
-</style>

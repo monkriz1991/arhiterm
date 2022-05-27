@@ -71,7 +71,7 @@ export default ({
         this.setLoading(false)
         this.loading = false;
       }, 1500);
-    }
+    },
   }
 
 })
