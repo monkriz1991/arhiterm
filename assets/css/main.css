@@ -742,6 +742,7 @@ header .contents {
 }
 .header-logout{
     float: right;
+    display: none;
 }
 .header-nav-refresh{
     position: absolute;
