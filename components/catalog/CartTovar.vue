@@ -17,7 +17,6 @@
             >
                 <div class="catalog-list-block">
                     <div class="catalog-list-img" >
-
                         <nuxt-link
                         :class="{disabledLink:!price[idx]}"
                         :to="`/product/${product.id}`"
@@ -26,6 +25,14 @@
                         :src="product.img"
                         fit="contain"
                         :title="product.name"
+                        v-if="idx<3"
+                        >
+                        </el-image>
+                        <el-image
+                        :src="product.img"
+                        fit="contain"
+                        :title="product.name"
+                        v-else
                         lazy
                         >
                         </el-image>
