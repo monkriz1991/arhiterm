@@ -29,7 +29,7 @@
         v-if="!adaptivSidebar"
         @click="drawer = true"
         class="drawer-button"
-        icon="el-icon-finished"
+        icon="el-icon-s-operation"
         size="small"
         >
           Фильтры

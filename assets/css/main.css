@@ -666,7 +666,7 @@ header{
     right: 0;
     background: #fff;
     z-index: 999;
-    box-shadow: 0px 0px 42px -26px #333;
+    box-shadow: 0px 0px 42px -22px #333;
 }
 .bottom-bar-con{
     padding: 10px 0;
@@ -3791,6 +3791,9 @@ font-size: 13px;
         background: #fff;
         display: none;
     }
+    .footer-link{
+        display: none;
+    }
     .logotip {
         float: left;
         display: flex;
@@ -3829,10 +3832,10 @@ font-size: 13px;
     }
     .header-nav-refresh svg {
         text-align: center;
-        width: 100%;
+        width: 23px;
         height: 40px;
         display: block;
-        margin: 5px 0 -4px 0;
+        margin: 5px 10px -4px 0;
         opacity: 0.7;
     }
     .header-nav-refresh>div{
@@ -3952,11 +3955,18 @@ font-size: 13px;
     .index-desc-block{
         padding: 30px 20px;
     }
+    .index-slider {
+        margin: 0 0 40px;
+    }
     .slider-content{
         padding: 20px 100px 20px 20px;
     }
     .index-slider .el-carousel__arrow{
         top: 89%;
+    }
+    .el-carousel__arrow--left {
+        left: auto !important;
+        right: 60px;
     }
     .slider-content h3{
         font-size: 15px !important;
@@ -4000,7 +4010,7 @@ font-size: 13px;
         margin: 60px 0 0px;
     }
     .index-brand-block{
-        height: 130px;
+        height: 110px;
     }
     .el-dialog--center .el-dialog__body {
         padding: 25px 10px 30px !important;
@@ -4037,7 +4047,10 @@ font-size: 13px;
     }
     .el-tabs__item{
         font-size: 13px !important;
-        padding: 0 10px !important;
+        padding: 0 20px 0 0 !important;
+    }
+    .el-tabs__active-bar{
+        /* transform: translateX(0px); */
     }
     .logotip img {
         max-height: 100%;
@@ -4167,11 +4180,26 @@ font-size: 13px;
 
     }
     footer {
-        margin: 20px 0 0 0;
-        padding: 50px 0 20px;
+        padding: 20px 0 50px;
+        background: transparent;
+        border-top: 1px solid #c1c1c1;
     }
     .footer-img img {
-        margin: 0 10px 5px 0;
+        margin: 0 3px 3px 0;
+        max-height: 20px;
+        border-radius: 3px;
+    }
+    .footer-img {
+        margin: 15px 0 0 0;
+    }
+    .personal-data-link-footer {
+        float: left;
+        margin: 0px 0 0 0;
+        color: #333;
+        font-size: 12px;
+    }
+    .footer-yr{
+        color: #050505;
     }
     .el-backtop{
         right: 10px !important;
@@ -4206,7 +4234,6 @@ font-size: 13px;
         padding: 0;
     }
     .el-form .el-form-item {
-        padding: 8px 15px;
     }
     .el-form .el-input__inner{
         font-size: 13px;
@@ -4433,7 +4460,19 @@ font-size: 13px;
     } 
     .monter-galery h2{
         font-size: 14px;
-    }        
+    }   
+    .el-dropdown-menu {
+        padding: 10px 5px !important;
+    }
+    .el-popper .popper__arrow {
+        border-width: 6px;
+        filter: drop-shadow(0 2px 12px rgba(0, 0, 0, .03));
+        display: none;
+    }  
+    .el-dropdown-menu__item i {
+        margin-right: 5px;
+        display: none;
+    }   
     .el-pagination{
         padding: 2px 0 !important;
     }
@@ -4508,7 +4547,7 @@ font-size: 13px;
         display: none;
     }
     .index-brand-block img {
-        padding: 30px 30px 30px;
+        padding: 25px 25px 25px
     }   
     .slider-content a {
        height: 240px;
@@ -4526,7 +4565,7 @@ font-size: 13px;
         display: none !important;
     }
     .h1-product {
-        margin: 0px 0 20px;
+        margin: 15px 0 20px;
         font-size: 17px;
     }
     .el-breadcrumb__separator[class*=icon] {

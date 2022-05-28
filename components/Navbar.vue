@@ -268,21 +268,6 @@
                   <span class="button-nav-text">Контакты</span>
                 </nuxt-link>
             </div>
-            <!-- <el-dialog
-              title="Контакты"
-              :visible.sync="dialogVisible"
-              width="30%"
-              >
-              <div class="phone-modal-block">
-                <div class="phone-modal-block-el">
-                  <span>Менеджер</span>
-                  <p v-for="(phone,k) in phones" :key="k">
-                    <a href="">{{phone.phone_number}}</a>
-                    <strong>{{phone.operator}}</strong>
-                  </p>
-                </div>
-              </div>
-            </el-dialog> -->
             <div class="search-navbar">
               <el-button
               @click="showButton()"
