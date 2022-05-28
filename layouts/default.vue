@@ -9,7 +9,7 @@
       <Navbar/>
       <nuxt />
       <Footer />
-      <Upscroll/>
+      <!-- <Upscroll/> -->
     </div>
   </div>
 </template>

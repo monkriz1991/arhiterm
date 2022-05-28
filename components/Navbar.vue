@@ -376,7 +376,8 @@
               @click="dialogVisible=true">
               </el-button>
               <el-dialog
-              title="Помощь в заказе"
+              title=""
+              class="modal-contact"
               append-to-body
               :visible.sync="dialogVisible"
               width="30%"

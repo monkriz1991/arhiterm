@@ -644,20 +644,43 @@ header{
     color: #333;
     top: 1px;
 }
+.navbar-user-mobail{
+    padding: 0px 20px 20px;
+}
+.navbar-user-mobail .el-menu{
+    border:none ;
+}
+.navbar-user-mobail .el-menu-item:focus, .el-menu-item:hover {
+    outline: 0;
+    background-color: #e8e8e8 !important;
+    border-radius: 8px;
+}
+.navbar-user-mobail .el-menu-item{
+    margin: 0 0 5px;
+}
 .bottom-bar{
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 40px;
     background: #fff;
     z-index: 999;
-    border-top: 1px solid #e2e2e2;
+    box-shadow: 0px 0px 42px -26px #333;
 }
 .bottom-bar-con{
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
+}
+.bottom-bar-con button{
+    border: none !important;
+    padding: 0px !important;
+    margin: 0 !important;
+}
+.bottom-bar-con button i{
+    padding: 0px;
+    font-size: 29px;
+    font-weight: 500;
 }
 .logotip{
     float: left;
@@ -963,7 +986,7 @@ header .contents {
     transition: .2s;
     background: #eeeeee;
 }
-.index-topcat-block:hover.index-topcat-block>img{
+.index-topcat-block:hover.index-topcat-block img{
     transform: scale(1.06);
 }
 .index-topcat-block>strong{
@@ -1826,13 +1849,13 @@ font-weight: 500;
 }
 .h2-product{
     float: left;
-    width: 100%;  
+    width: 100%;
     margin: 0px 0 30px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     line-height: 1.3;
     max-width: 700px;
-    color: #ff6b00;
+    color: #818080;
 }
 .galery{
     float: left;
@@ -3645,6 +3668,29 @@ font-size: 13px;
     color: #000 Im !important;
     border-radius: 4px;
 }
+.modal-contact .el-dialog{
+    border-radius:12px ;
+}
+.category-in-cyrcle {
+    float: left;
+    width: 44%;
+    height: 75%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    z-index: 10;
+    /* position: relative; */
+    position: absolute;
+    right: -5px;
+    bottom: -36px;
+    transition: transform .3s ease-in-out;
+}
+.category-in-cyrcle img{
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    transition: transform .3s ease-in-out;
+}
 @media (max-width: 1100px){
     .back-wrapper{
         width: 29px;
@@ -3700,6 +3746,40 @@ font-size: 13px;
     }
 }
 @media (max-width: 991px){
+    .category-in-cyrcle {
+        position: absolute;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        bottom: -12px;
+        right: 0px;
+        z-index: 12;
+        overflow: hidden;
+    }
+    .category-in-cyrcle img{
+        transform: scale(1.12);
+    }
+    .index-topcat-block{
+        overflow:inherit;
+    }
+    .site h1 {
+        font-size: 2em;
+        order: 1;
+    }
+    .cost-product-amount .units {
+        margin: 6px 0px 0 5px;
+    }
+    .cost-product-amount .el-popover__reference-wrapper {
+        float: right;
+        margin: 1px 0px 0 2px;
+    }
+    .button-nav-meny {
+        float: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
     header .contents {
         height: 100%;
         align-items: center;
@@ -3725,7 +3805,7 @@ font-size: 13px;
     }
     .cost-product-block .cost-product-price-catalog strong {
         font-size: 12px;
-        padding: 10px 0 0 4px;
+        padding: 10px 0 0 2px;
     }
     .navbar-user .el-icon--right{
         font-size: 10px;
@@ -3842,7 +3922,7 @@ font-size: 13px;
     }
     .slider-image {
         height: 40%;
-        width: 35%;
+        width: 30%;
         top: 25%;
         right: 1%;
     }
@@ -3872,7 +3952,7 @@ font-size: 13px;
         padding: 30px 20px;
     }
     .slider-content{
-        padding: 20px 100px 20px 30px;
+        padding: 20px 100px 20px 20px;
     }
     .index-slider .el-carousel__arrow{
         top: 89%;
@@ -4037,8 +4117,9 @@ font-size: 13px;
         fill: #fff;
     }
     .header-cat svg{
-        width: 37px;
-        height: 25px;
+        width: 36px;
+        height: 23px;
+        margin: 1px 0 0 0;
     }
     .contents-mobail .header-cat .button-nav-text{
         top: -5px;

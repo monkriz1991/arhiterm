@@ -8,10 +8,10 @@
          :sm="12" :md="12"  :xl="6" :lg="5" :xs="12">
             <nuxt-link @click.native="handlerLoading" :to="`/catalog/${item.id}`" class="nuxt-link-cat">
                 <div class="index-topcat-block">
-                    <div class="category-in-cyrcle"></div>
-                    <img :src="item.img" :alt="item.name">
+                    <div class="category-in-cyrcle">
+                        <img :src="item.img" :alt="item.name">
+                    </div>
                     <strong>{{item.name}}
-                        <!-- <span>140 / наименований</span> -->
                     </strong>
                 </div>
             </nuxt-link>
