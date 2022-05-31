@@ -7,6 +7,7 @@
     :class="{ loading_lay: loading }"
     >
       <Navbar/>
+      <div class="main-nuxt"></div>
       <nuxt />
       <Footer />
       <!-- <Upscroll/> -->
