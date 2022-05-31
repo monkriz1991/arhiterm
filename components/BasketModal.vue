@@ -2,7 +2,7 @@
     <div class="header-basket"> 
       <vue-bottom-sheet
         max-width="1080px"
-        max-height="100%"
+        max-height="90%"
         :overlay="true"
         :click-to-close="true"
         :swipe-able="true"
@@ -22,22 +22,19 @@
             />
             <h4 v-else>Корзина пуста 😢</h4>
             <span v-show="dialogForm" class="dialog-footer">
-                <el-button @click="closeMeny()">Продолжить покупки</el-button>
+              <div class="footer-summ">
+              <strong>{{basketCost}}</strong>
+              <span>руб.</span>
+              </div>
                 <el-button
                 v-if="basket.length"
                 type="primary"
+                class="add-order"
                 @click="dialogForm = false">Оформить заказ</el-button>
+                <el-button class="closed-order" @click="closeMeny()">Закрыть</el-button>
+
             </span>
-                <!-- <span style="
-    border-radius: 5px;
-    float: left;
-    padding: 10px;
-    margin: 0 0px 20px;
-    font-weight: 600;
-    font-size: 15px;
-    width: 100%;
-">Уважаемые клиенты, в данный момент заказы не обрабатываются, технические работы<br> будут завершены в ближайшее время. 
-                Приносим извенения за доставленные неудобства.</span> -->
+
             <div v-show="!dialogForm" class="dialog-back-block">
               <el-button-group>
                 <el-button icon="el-icon-arrow-left" @click="dialogForm = true">В корзину</el-button>
@@ -57,7 +54,8 @@ import {mapGetters,mapActions} from 'vuex'
     watch:{
       dialogFormVisibleModal: function(newVal) { 
           this.$refs.dialogFormVisible.open()
-           this.$emit('update:dialogFormVisibleModal', false)
+          
+          this.$emit('update:dialogFormVisibleModal', false)
       },
       // dialogFormVisible: function(newVal,noCloseNotify) { 
       //   this.$emit('clickModal',newVal,noCloseNotify);
@@ -75,28 +73,30 @@ import {mapGetters,mapActions} from 'vuex'
       return {
         dialogFormVisible: false,
         dialogForm:true,
-        noCloseNotify:false
+        noCloseNotify:false,
+        basketCost: 0,
       }
     },
     computed:{
       ...mapGetters({
         basket:'main/basket',
+        basketItog:'main/basket_cost',
         activeButCatMenyItem:'main/activeButCatMenyItem',
       }),
     },
     mounted(){
-
+      this.basketCost = this.basketItog.for_amount_itog
     },
     methods:{
       closeMeny(){
         this.$refs.dialogFormVisible.close();
       },
       updateDialogForm(){
-        //this.$emit('closeBasket',true);
+        this.$refs.dialogFormVisible.close();
         this.noCloseNotify = true
-        this.dialogFormVisible = false;
         this.dialogForm = true;    
         this.$forceUpdate();
+        this.$emit('openBasketNotify',true);
        
       },
       ...mapActions({
@@ -113,6 +113,7 @@ import {mapGetters,mapActions} from 'vuex'
       },
       basketCostUpdate(data){
         this.BASKET_COST(data)
+        this.basketCost = data.for_amount_itog
       },
       fromSateButCatMeny(data){
         this.ButCatMeny(data)

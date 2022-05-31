@@ -14,7 +14,7 @@
                 ><span>Далее</span></div>
             </el-form-item>
         </el-collapse-item>
-        <el-collapse-item :disabled="Form.typ==''"  title="Доставка" name="2">
+        <el-collapse-item :disabled="Form.pay==''"  title="Доставка" name="2">
             <el-form-item prop="del">
                 <el-radio-group v-model="Form.del">
                 <el-radio label="Курьером"></el-radio>
@@ -44,7 +44,7 @@
                 ><span>Далее</span></div>
             </el-form-item>
         </el-collapse-item>
-        <el-collapse-item :disabled="Form.pay == ''" title="Данные покупателя" name="4" class="collapse-data">
+        <el-collapse-item :disabled="Form.pay == ''" title="Данные покупателя" name="4" class="collapse-data form-basket-input ">
         <el-form-item
         v-if="typeUser=='2'||Form.typ=='2'"
         prop="nameCompany"
@@ -130,7 +130,7 @@
             <span v-show="Form.pay != ''" class="dialog-footer">
                 <el-button 
                 v-if="Form.phone_number!=''" 
-                @click="addOrder" type="primary">Оформить заказ</el-button>
+                @click="addOrder" type="primary" class="basket-pay">Оформить заказ</el-button>
                 <span v-show="$auth.loggedIn" v-else >Заполните контактный Телефон в профиле личного кабинета</span>
             </span>
 
@@ -292,105 +292,5 @@ export default ({
 })
 </script>
 <style>
-.form-basket-aut{
-    float: left;
-    width: 100%;
-}
-.form-basket-aut-content{
-    float: left;
-    width: 100%;
-    margin: 20px 0;
-}
-.form-basket-aut span{
-    max-width: 500px;
-    float: left;
-    width: 100%;
-}
-.form-basket-aut b{
-    float: left;
-    margin: 9px 15px 8px 0;
-}
-.form-basket-aut .header-logout{
-    float: left;
-    margin: 0 15px 0 0;
-}
 
-.header-basket .el-form-item{
-    margin-bottom: 0px;
-}
-.but-next-form{
-    float: left;
-    width: 100%;
-    text-align: right;
-}
-.but-next-form>span{
-    padding: 8px 22px;
-    border-radius: 4px;
-    cursor: pointer;
-    background: #ff8d00;
-    color: #fff;
-    font-weight: 400;
-    float: right;
-}
-.but-next-form>span:hover{
-    background: #f28906;
-}
-.but-next-form{
-
-}
-.radio-pay{
-
-}
-.header-basket .radio-pay label{
-    float: left;
-    width: 100%;
-    margin: 0 0 10px;
-}
-.header-basket .el-dialog__body{
-    padding: 10px 30px 20px;
-}
-.el-collapse-item__header{
-    font-size: 15px;
-    color: #000000;
-}
-.form-basket .el-radio__input.is-checked .el-radio__inner {
-    border-color: #f28906 !important;
-    background: #f28906 !important;
-}
-.form-basket .el-radio__inner:hover{
-    border-color: #f28906 !important;
-}
-.form-basket .el-collapse-item__header{
-    height: 54px;
-}
-.el-radio-group .el-radio__label:hover{
-    color: #000;
-}
-.collapse-data{
-
-}
-.collapse-data .el-input__inner{
-    height: 36px;
-    line-height: 36px;
-}
-.collapse-data .el-form-item{
-    margin-bottom: 20px;
-    max-width: 420px;
-    width: 100%;
-}
-.collapse-data .el-form-item__label{
-    line-height: 1em;
-    font-size: 12px;
-    float: left;
-    margin: 0 0 5px;
-}
-.collapse-data .el-input{
-    float: left;
-}
-.collapse-data .dialog-footer{
-    float: left;
-    width: 100%;
-    text-align: right;
-    margin: 0 0 20px;
-}
 </style>

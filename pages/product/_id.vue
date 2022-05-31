@@ -36,7 +36,7 @@
             :multiplicity.sync="result.multiplicity"
             @addToCart = "addToCart"
             @NewChar = "funNewChar"
-            @showBasket = "showBasket"
+            @toggleModal = "toggleModal"
             />
         </div>
         <div class="tabs-product">
@@ -48,8 +48,7 @@
         <no-ssr>
         <BasketModal  
         @clickModal = "toggleModal"
-        @closeBasket = "closeBasket"
-        :dialogFormVisibleModal="dialogFormVisibleModal"
+        :dialogFormVisibleModal.sync="dialogFormVisibleModal"
         />
         </no-ssr> 
     </div>
@@ -116,11 +115,10 @@ export default ({
             return this.funChar = data
 
         },
-        showBasket(dialogVisible){
-            this.dialogFormVisibleModal = dialogVisible
-        },
+
         toggleModal(val,noCloseNotify) { 
-            this.dialogFormVisibleModal = val;
+            this.dialogFormVisibleModal = true;
+             this.$notify.closeAll()
             if(noCloseNotify==false){
                 this.$notify.closeAll()
             }

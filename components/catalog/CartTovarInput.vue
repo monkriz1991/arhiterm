@@ -240,7 +240,7 @@ import {mapGetters,mapActions} from 'vuex'
         });
       },
       dialogBasketModal(){
-        this.$emit('showBasket',true)
+        this.$emit('toggleModal',true)
       }
     }
   };

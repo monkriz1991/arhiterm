@@ -154,47 +154,5 @@ export default {
 }
 </script>
 <style>
-.basket-itog{
-    float: left;
-    width: 100%;
-    margin: 0 0 20px;
-}
-.basket-itog-summ{
-    float: right;
-    width: 100%;
-    text-align: right;
-    margin: 0 0 0px;
-}
-.basket-itog-summ>span{
-    margin: 0 10px 0 0;
-    font-size: 13px;
-}
-.basket-itog-summ>strong{
-    font-size: 18px;
-}
-.basket-itog-summ>strong>span{
-    font-size: 12px;
-    font-weight: 600;
-    margin: 0 0 0 2px;
-}
-.basket-itog-summ-none{
 
-}
-.basket-itog-summ-none>span{
-    margin: 0 10px 0 0;
-    font-size: 13px;
-}
-.basket-itog-summ-none>strong{
-    font-size: 18px;
-}
-.basket-itog-summ-none>strong>span{
-    font-size: 12px;
-    font-weight: 600;
-    margin: 0 0 0 2px;
-}
-.basket-tov-img>span{
-    position: absolute;
-    left: -10px;
-    bottom: -10px;
-}
 </style>
