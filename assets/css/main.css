@@ -535,7 +535,7 @@ margin: 0 0 20px;
     border-radius: 14px;
     /* background-color: #f7f7f7; */
     }
-    .form-user-cab .el-form-item{
+    .form-user-cab .el-form-item,.form-basket-input .el-form-item{
         float: left;
         margin: 0 0 2px;
         width: 100%;
@@ -544,10 +544,31 @@ margin: 0 0 20px;
         background: #f7f7f7;
         border-radius: 6px;
     }
+    .form-basket-input .el-form-item {
+        margin-bottom: 2px !important;
+        width: 100%;
+    }
+    .form-basket-input .el-collapse-item__content{
+        max-width: 560px;
+        width: 100%;
+    }
+    .form-basket-input .el-collapse-item__wrap{
+        border: none;
+    }
+    .form-basket-input .el-input.is-disabled .el-input__inner {
+        background-color: #eeeeee;
+        border-color: #f7f7f7;
+        color: #C0C4CC;
+        cursor: not-allowed;
+        width: 100%;
+    }
+    .form-basket-input .el-textarea__inner{
+        border: 1px solid #f7f7f7;
+    }
     .form-user-cab .el-form-item__content {
         line-height: initial;
     }
-    .form-user-cab .el-form-item__label {
+    .form-user-cab .el-form-item__label, .form-basket-input label {
         line-height: initial;
         float: left;
         font-size: 13px;
@@ -558,13 +579,13 @@ margin: 0 0 20px;
         width: 140px;
         text-align: left;
     }
-    .form-user-cab .el-form-item__content{
+    .form-user-cab .el-form-item__content,.form-basket-input .el-form-item__content{
         float: none;
         /* width: 100%; */
         margin: 0 0 0 170px;
         display: block;
     }
-    .form-user-cab .el-input.is-disabled .el-input__inner {
+    .form-user-cab .el-input.is-disabled .el-input__inner,.form-basket-input .el-form-item__content .el-input__inner {
         background-color: transparent;
         border-color: transparent;
         color: #4b4b4b;
@@ -771,7 +792,7 @@ header .contents {
     height: 100%;
 }
 .header-basket .bottom-sheet__content{
-    padding: 20px 80px;
+    padding: 20px 80px 260px 80px;
 }
 .header-basket{
     float: right;
@@ -2474,11 +2495,37 @@ body .el-dialog__body{
     right: 0;
     width: 100%;
 }
+::-webkit-scrollbar{
+    height: 4px;
+    width: 4px;
+    background: 959595;
+    border-radius: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+::-webkit-scrollbar-thumb:horizontal{
+    background: #959595;
+    border-radius: 15px;
+}
 .basket-tov{
     width: 100%;
     padding: 0px;
     display: inline-block;
-    margin: 0 0 20px;
+    margin: 0 0 30px;
 }
 .basket-tov-img{
     float: left;
@@ -2517,9 +2564,9 @@ body .el-dialog__body{
     float: left;
 }
 .basket-tov-cost>span{
-    margin: 4px 6px 0px 3px;
+    margin: 2px 6px 0px 2px;
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .basket-tov-cost>strong{
@@ -2585,9 +2632,10 @@ body .el-dialog__body{
 font-size: 16px;
 }
 .basket-tov-summ>span{
+    padding: 4px 0 0 2px;
+    margin: 2px 6px 0px 0px;
     font-size: 10px;
-    font-weight: 600;
-    padding: 5px 0 0 3px;
+    font-weight: 700;
 }
 .basket-tov-dell{
     float: left;
@@ -2595,7 +2643,7 @@ font-size: 16px;
     text-align: center;
     display: flex;
     align-items: center;
-    height: 70px;
+    height: 90px;
     justify-content: center;
     width: 5%;
 }
@@ -3102,14 +3150,14 @@ body .navbar-user .navbar-user-item{
 }
 .phone-modal-block{
     width: 100%;
-    padding: 15px 15px 10px 15px;
+    padding: 0px 15px 10px 15px;
 }
 .phone-modal-block-el{
     width: 100%;
 }
 .phone-modal-block-el>span{
     width: 100%;
-    margin: 0 0 10px;
+    margin: 0 0 20px;
     font-size: 14px;
     display: block;
 }
@@ -3707,6 +3755,222 @@ font-size: 13px;
     object-fit: contain;
     transition: transform .3s ease-in-out;
 }
+.dialog-footer{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    padding: 15px 80px;
+    z-index: 12;
+}
+.footer-summ{
+    float: left;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    height: 39px;
+    display: none;
+}
+.footer-summ strong{
+    font-size: 15px;
+}
+.footer-summ span{
+    margin: 2px 6px 0px 2px;
+    font-size: 10px;
+    font-weight: 700;
+}
+.form-basket-aut{
+    float: left;
+    width: 100%;
+}
+.form-basket-aut-content{
+    float: left;
+    width: 100%;
+    margin: 20px 0;
+}
+.form-basket-aut span{
+    max-width: 500px;
+    float: left;
+    width: 100%;
+}
+.form-basket-aut b{
+    float: left;
+    margin: 9px 15px 8px 0;
+}
+.form-basket-aut .header-logout{
+    float: left;
+    margin: 0 15px 0 0;
+}
+
+.header-basket .el-form-item{
+    margin-bottom: 0px;
+}
+.form-basket label{
+
+}
+.but-next-form{
+    float: left;
+    width: 100%;
+    text-align: right;
+}
+.but-next-form>span{
+    padding: 8px 22px;
+    border-radius: 7px;
+    cursor: pointer;
+    background: #ff8d00;
+    color: #fff;
+    font-weight: 500;
+    float: right;
+    font-size: 13px;
+}
+.but-next-form>span:hover{
+    background: #f28906;
+}
+.but-next-form{
+
+}
+.radio-pay{
+
+}
+.header-basket .radio-pay label{
+    float: left;
+    width: 100%;
+    margin: 0 0 10px;
+}
+.header-basket .el-dialog__body{
+    padding: 10px 30px 20px;
+}
+.el-collapse-item__header{
+    font-size: 15px;
+    color: #000000;
+}
+.form-basket .el-radio__input.is-checked .el-radio__inner {
+    border-color: #f28906 !important;
+    background: #f28906 !important;
+}
+.form-basket .el-radio__inner:hover{
+    border-color: #f28906 !important;
+}
+.form-basket .el-collapse-item__header{
+    height: 70px;
+    font-size: 15px;
+}
+.form-basket .header-basket .radio-pay label{
+    margin: 0 0 15px 0;
+}
+.form-basket .header-basket .el-radio__label{
+    font-size: 15px;
+}
+.el-radio-group .el-radio__label:hover{
+    color: #000;
+}
+.collapse-data{
+
+}
+.collapse-data .el-input__inner{
+    height: 36px;
+    line-height: 36px;
+}
+.collapse-data .el-form-item{
+    margin-bottom: 20px;
+    width: 100%;
+}
+.collapse-data .el-form-item__label{
+    line-height: 1em;
+    font-size: 12px;
+    float: left;
+    margin: 0 0 5px;
+}
+.collapse-data .el-input{
+    float: left;
+}
+.collapse-data .dialog-footer{
+    float: left;
+    width: 100%;
+    text-align: right;
+    margin: 0 0 0px;
+}
+.bottom-sheet__content{
+    height: 100vh !important;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+
+}
+.basket-itog{
+    float: left;
+    width: 100%;
+    padding: 0 80px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 69px;
+    background: #fff;
+    z-index: 15;
+}
+.basket-itog-summ{
+    float: right;
+    width: 100%;
+    text-align: right;
+    margin: 0 0 0px;
+    line-height: 1.3;
+    color: #333;
+}
+.basket-itog-summ>span{
+    margin: 0 10px 0 0;
+    font-size: 13px;
+}
+.basket-itog-summ>strong{
+    font-size: 18px;
+}
+.basket-itog-summ>strong>span{
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 0 0 2px;
+}
+.basket-itog-summ-none{
+
+}
+.basket-itog-summ-none>span{
+    margin: 0 10px 0 0;
+    font-size: 13px;
+}
+.basket-itog-summ-none>strong{
+    font-size: 18px;
+}
+.basket-itog-summ-none>strong>span{
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 0 0 2px;
+}
+.basket-tov-img>span{
+    position: absolute;
+    left: -10px;
+    bottom: -10px;
+}
+.dialog-footer button{
+    float: right;
+}
+.dialog-footer .basket-pay{
+    float: right;
+    color: #ffffff;
+    background-color: #f90!important;
+    border-color: #f90!important;
+    box-shadow: 0px 11px 25px -17px #f90;
+}
+.dialog-footer .add-order{
+    margin: 0 0px 0 20px;
+    color: #ffffff;
+    background-color: #f90!important;
+    border-color: #f90!important;
+    box-shadow: 0px 11px 25px -17px #f90;
+}
+.dialog-footer .closed-order{
+    
+}
 @media (max-width: 1100px){
     .back-wrapper{
         width: 29px;
@@ -3763,8 +4027,20 @@ font-size: 13px;
 }
 
 @media (max-width: 991px){
+    .footer-summ{
+        /* display: block; */
+    }
+    .dialog-footer{
+        padding: 15px 10px;
+    }
     .header-basket .bottom-sheet__content {
-        padding: 20px 10px;
+        padding: 20px 10px 195px 10px;
+    }
+    .basket-itog {
+        margin: 0 0 0px !important;
+        display: inline-block;
+        padding: 0 10px;
+        bottom: 60px;
     }
     .header-container-sticky {
         position: fixed;
@@ -4176,8 +4452,12 @@ font-size: 13px;
         width: 95% !important;
     }
     .dialog-footer .el-button,.el-button-group>.el-button:first-child:last-child {
-        font-size: 11px;
+        font-size: 12px;
         padding: 8px 10px;
+        margin: 0 0px 0 0px;
+    }
+    .dialog-footer .el-button.add-order{
+        margin: 0 0px 0 10px;
     }
     .el-button+.el-button {
         margin-left: 5px;
@@ -4285,12 +4565,17 @@ font-size: 13px;
         line-height: 35px;
         margin: 0px 0 0 0px;
     }
+
     .el-dialog__title {
         font-size: 15px !important;
     }    
     .el-form .el-form-item__content {
         line-height: 35px;
         margin: 0px 0 0 100px;
+    }
+    .form-basket .el-form-item__content{
+        line-height: 35px;
+    margin: 0px 0 0 0px;
     }
     .form-user-cab .el-form-item__label{
         width: 100px;
@@ -4382,10 +4667,16 @@ font-size: 13px;
         width: 90px;
     }   
     .basket-tov-desk {
-        margin-left: 100px;
+        margin-left: 105px;
+        border-bottom: 1px solid #e2e2e2;
+        display: table;
+        padding: 0 0 15px;
     }
     .basket-tov-desk-kod {
         margin: 5px 0 5px;
+    }
+    .basket-tov {
+        color: #333;
     }
     .basket-tov-desk-kod>span,.basket-tov-desk-type>span {
         font-size: 10px;
@@ -4399,8 +4690,8 @@ font-size: 13px;
         padding: 0 0px 0 0;
     }
     .basket-tov-cost {
-        padding: 15px 0px 0 0px;
-        width: 48%;
+        padding: 10px 0px 10px 0px;
+        width: 100%;
         height: auto;
     }
     .basket-tov-calc {
@@ -4422,14 +4713,14 @@ font-size: 13px;
     }
     .basket-tov-summ {
         height: auto;
-        padding: 8px 0px 0 0px;
-        width: 50%;
+        padding: 20px 0px 0px 0px;
+        width: 70%;
     }
     .basket-tov-dell {
-        padding: 10px 0;
+        padding: 21px 0 4px;
         font-size: 19px;
         height: auto;
-        width: 50%;
+        width: 30%;
     }
     .basket-itog-summ>strong {
         font-size: 16px;
@@ -4442,8 +4733,11 @@ font-size: 13px;
         font-size: 13px;
     }
     .form-basket .el-radio__label {
-        font-size: 12px;
+        font-size: 13px;
         padding-left: 10px;
+    }
+    .but-next-form {
+        margin: 10px 0 0;
     }
     .but-next-form>span {
         padding: 6px 18px;

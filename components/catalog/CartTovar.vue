@@ -102,7 +102,7 @@
                         @Sendprice = "updatePriceAndCountInPage"
                         @addToCart = "addToCart"
                         @NewChar = "funNewChar"
-                        @showBasket = "showBasket"
+                        @toggleModal = "toggleModal"
                         />
                         <CartTovarChar
                         :product_filter="product.product"
@@ -115,8 +115,7 @@
         <no-ssr>
         <BasketModal
         @clickModal = "toggleModal"
-        @closeBasket = "closeBasket"
-        :dialogFormVisibleModal="dialogFormVisibleModal"/>
+        :dialogFormVisibleModal.sync="dialogFormVisibleModal"/>
         </no-ssr>
     </div>
 </template>
@@ -357,16 +356,12 @@ export default {
       }
       this.dynamicTags = this.checkList.concat(this.checkListManuf)
       },
-        showBasket(dialogVisible){
-            this.dialogFormVisibleModal = dialogVisible
-        },
         toggleModal(val,noCloseNotify) {
-            this.dialogFormVisibleModal = val;
+            this.dialogFormVisibleModal = true;
             this.show =[]
             this.fromSateButCatMeny(this.activeButCatMeny)
-            if(noCloseNotify==false){
-                this.$notify.closeAll()
-            }
+            this.$notify.closeAll()
+            this.handleCloseModal()
         },
         fromSateButCatMeny(data){
             if(data==false){

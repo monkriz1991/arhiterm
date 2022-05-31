@@ -255,6 +255,7 @@
             <no-ssr> 
              <BasketModal
               @clickModal = "toggleModal"
+              @openBasketNotify = "closeBasket"
               :dialogFormVisibleModal.sync="dialogFormVisibleModal"/>
 
 
@@ -385,6 +386,11 @@
                     <b>|</b>
                     <strong>{{phone.operator}}</strong>
                   </p>
+                  <p>
+                    <a href="viber://chat?number=%2B375293431616">
+                    <i class="el-icon-edit"></i></a>
+                    <strong>Viber</strong>
+                  </p>
                 </div>
               </div>
             </el-dialog>
@@ -452,13 +458,13 @@ import {mapGetters,mapActions} from 'vuex'
         this.setLoading(true)
       },
       toggleModal(val,noCloseNotify) {
-            console.log(val)
           this.dialogFormVisibleModal = val;
           if(noCloseNotify==false){
               this.$notify.closeAll()
           }
       },
       closeBasket(val){
+        console.log(val)
         if(val==true){
             this.openNotify()
         }
@@ -468,8 +474,8 @@ import {mapGetters,mapActions} from 'vuex'
           type: 'success',
           title: 'Заказ успешно оформлен',
           dangerouslyUseHTMLString: true,
-          duration:4500,
-          message: 'На Вашу почту была выслана информация о заказе!',
+          duration:5500,
+          message: 'На Вашу почту была выслана информация о заказе! В ближайшее время с Вами свяжется менеджер для уточнения деталей заказа.',
           // offset: 100
           });
       },
