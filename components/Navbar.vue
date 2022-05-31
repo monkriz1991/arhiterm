@@ -1,5 +1,8 @@
 <template>
-  <header class="header-tempalte">
+  <header ref="header" 
+    class="header-tempalte"
+  :class="{ 'header-container--sticky': isHeaderSticky }"
+  >
     <div class="container">
       <div class="contents">
         <div v-if="width>991" class="header-cat-desc">
@@ -241,7 +244,7 @@
               >
               </el-button>
             </div>
-            <div hidden  v-if="$auth.loggedIn">
+            <div v-if="$auth.loggedIn">
               <Menyuser/>
             </div>
             <div v-else>
@@ -249,19 +252,22 @@
               <ModalLogout />
             </no-ssr>
             </div>
-            <no-ssr>
-              
-              <BasketModal
+            <no-ssr> 
+             <BasketModal
               @clickModal = "toggleModal"
-              @closeBasket = "closeBasket"
-              :dialogFormVisibleModal="dialogFormVisibleModal"/>
+              :dialogFormVisibleModal.sync="dialogFormVisibleModal"/>
+
+
               <div class="nav-button-basket button-nav-meny">
-                <el-button  type="text" @click="dialogFormVisibleModal=true">
+                <el-button  type="text" @click="toggleModal(true)">
                   <i class="el-icon-shopping-cart-full"></i>
                   <span v-if="width>991" class="button-nav-text">Корзина</span>
               </el-button>
               </div>
             </no-ssr>
+
+
+
             <div v-if="width>991" class="top-phone button-nav-meny">
                 <nuxt-link :to="`/info/contacts`" class="button-nav-meny">
                   <i class="el-icon-phone-outline"></i>
@@ -369,9 +375,14 @@
               >
               <div class="phone-modal-block">
                 <div class="phone-modal-block-el">
-                  <span>Помощь в заказе</span>
+                  <span>Помощь в оформлении</span>
                   <p v-for="(phone,k) in phones" :key="k">
-                    <a href="">{{phone.phone_number}}</a>
+                    <a :href="`tel:${phone.phone_number}`">
+                    {{phone.phone_number.substring(0,4)+" "}}
+                    ({{phone.phone_number.substring(4,6)}})
+                    {{phone.phone_number.substring(6,35)}}
+                    </a> 
+                    <b>|</b>
                     <strong>{{phone.operator}}</strong>
                   </p>
                 </div>
@@ -414,6 +425,9 @@ import {mapGetters,mapActions} from 'vuex'
         timeout:  null,
         show: true,
         dialogFormVisibleModal: false,
+        scrollY: null,
+        headerTop: 0,
+        isHeaderSticky: false,
       };
     },
     computed:{
@@ -438,6 +452,7 @@ import {mapGetters,mapActions} from 'vuex'
         this.setLoading(true)
       },
       toggleModal(val,noCloseNotify) {
+            console.log(val)
           this.dialogFormVisibleModal = val;
           if(noCloseNotify==false){
               this.$notify.closeAll()
@@ -512,11 +527,24 @@ import {mapGetters,mapActions} from 'vuex'
         window.addEventListener('resize', this.updateWidth);
         this.updateWidth()
       }
+      window.addEventListener('load', () => {
+        window.addEventListener('scroll', () => {
+          this.scrollY = Math.round(window.scrollY);
+        });
+        this.headerTop = this.$refs.header.getBoundingClientRect().top;
+      });
     },
-
+    watch: {
+      scrollY(newValue) {
+        if (newValue > this.headerTop) {
+          this.isHeaderSticky = true;
+        } else {
+          this.isHeaderSticky = false;
+        }
+      }
+    }
   }
 </script>
 
 <style>
-
 </style>

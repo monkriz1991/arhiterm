@@ -1,7 +1,17 @@
 <template>
-    <div class="header-basket">
+    <div class="header-basket"> 
+      <vue-bottom-sheet
+        max-width="1080px"
+        max-height="100%"
+        :overlay="true"
+        :click-to-close="true"
+        :swipe-able="true"
+        :rounded="true"
+        :background-scrollable="false"
+        :is-full-screen="false"
+        :background-clickable="true"
+         ref="dialogFormVisible">
 
-        <el-dialog title="Корзина" :visible.sync="dialogFormVisible"  width="60%">
             <Cart
             v-if="basket.length"
             v-show="dialogForm"
@@ -11,8 +21,8 @@
             @basketCostUpdate = "basketCostUpdate"
             />
             <h4 v-else>Корзина пуста 😢</h4>
-            <span v-show="dialogForm" slot="footer" class="dialog-footer">
-                <el-button @click="dialogFormVisible = false">Продолжить покупки</el-button>
+            <span v-show="dialogForm" class="dialog-footer">
+                <el-button @click="closeMeny()">Продолжить покупки</el-button>
                 <el-button
                 v-if="basket.length"
                 type="primary"
@@ -34,7 +44,7 @@
               </el-button-group>
             </div>
             <Form :dialogForm.sync="dialogFormVisible" @updateDialogForm="updateDialogForm" v-show="!dialogForm"/>
-        </el-dialog>
+      </vue-bottom-sheet>
     </div>
 </template>
 
@@ -46,12 +56,15 @@ import {mapGetters,mapActions} from 'vuex'
     props:['dialogFormVisibleModal'],
     watch:{
       dialogFormVisibleModal: function(newVal) { 
-        this.dialogFormVisible = newVal
+          this.$refs.dialogFormVisible.open()
+           this.$emit('update:dialogFormVisibleModal', false)
       },
-      dialogFormVisible: function(newVal,noCloseNotify) { 
-        this.$emit('clickModal',newVal,noCloseNotify);
-        this.fromSateButCatMeny(false)
-      }
+      // dialogFormVisible: function(newVal,noCloseNotify) { 
+      //   this.$emit('clickModal',newVal,noCloseNotify);
+      //   this.fromSateButCatMeny(false)
+      //   //this.$refs.dialogFormVisible.close();
+    
+      // },
       
     },
     components:{
@@ -69,15 +82,22 @@ import {mapGetters,mapActions} from 'vuex'
       ...mapGetters({
         basket:'main/basket',
         activeButCatMenyItem:'main/activeButCatMenyItem',
-      })
+      }),
+    },
+    mounted(){
+
     },
     methods:{
+      closeMeny(){
+        this.$refs.dialogFormVisible.close();
+      },
       updateDialogForm(){
-        this.$emit('closeBasket',true);
+        //this.$emit('closeBasket',true);
         this.noCloseNotify = true
         this.dialogFormVisible = false;
         this.dialogForm = true;    
         this.$forceUpdate();
+       
       },
       ...mapActions({
         DELL_CART_BASKET:'main/DELL_CART_BASKET',
@@ -97,7 +117,7 @@ import {mapGetters,mapActions} from 'vuex'
       fromSateButCatMeny(data){
         this.ButCatMeny(data)
       },
-
+      
     }
   };
 </script>
