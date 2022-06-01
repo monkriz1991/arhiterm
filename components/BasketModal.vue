@@ -5,7 +5,7 @@
         max-height="90%"
         :overlay="true"
         :click-to-close="true"
-        :swipe-able="true"
+        :swipe-able="false"
         :rounded="true"
         :background-scrollable="false"
         :is-full-screen="false"
