@@ -4069,7 +4069,7 @@ font-size: 13px;
         display: none; /* for Chrome, Safari, and Opera */
       }
       .bottom-sheet__card{
-        bottom: 0px !important;
+        /* bottom: 0px !important; */
       }
     .bottom-sheet__content {
         overflow: inherit !important;
