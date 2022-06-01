@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="basket-tov-block">
         <div
         class="basket-tov"
         v-for="(item,idx) in cart_data_tov" :key="idx"
