@@ -3892,14 +3892,13 @@ font-size: 13px;
     text-align: right;
     margin: 0 0 0px;
 }
-.bottom-sheet__content{
+.header-basket .bottom-sheet__content{
     height: 100vh !important;
     overflow: auto;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-content: center;
-
 }
 .basket-itog{
     float: left;
@@ -4071,9 +4070,12 @@ font-size: 13px;
       .bottom-sheet__card{
         /* bottom: 0px !important; */
       }
-    .bottom-sheet__content {
-        overflow: inherit!important;
-        touch-action: none !important;
+      .header-basket .bottom-sheet__pan{
+        display: none;
+    }
+    .header-basket .bottom-sheet__content {
+    overflow: inherit!important;
+    touch-action: none !important;
     }
     .basket-itog {
         margin: 0 0 0px !important;
