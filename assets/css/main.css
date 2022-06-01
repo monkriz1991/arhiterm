@@ -4036,7 +4036,7 @@ font-size: 13px;
     .none-block-form{
         float: left;
         width: 100%;
-        height: 140px;
+        height: 220px;
     }
     .form-basket{
         margin: 0 0 20px;
@@ -4734,7 +4734,7 @@ font-size: 13px;
     }
     .basket-tov-calc {
         padding: 10px 0;
-        width: 52%;
+        width: 130px;
         justify-content: left;
         height: auto;
         display: flex;
