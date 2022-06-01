@@ -4027,6 +4027,9 @@ font-size: 13px;
 }
 
 @media (max-width: 991px){
+    .form-basket{
+        margin: 0 0 120px;
+    }
     .footer-summ{
         /* display: block; */
     }
@@ -4034,7 +4037,12 @@ font-size: 13px;
         padding: 15px 10px;
     }
     .header-basket .bottom-sheet__content {
-        padding: 20px 10px 230px 10px;
+        padding: 20px 10px 30px 10px;
+    }
+    .basket-tov-block{
+        margin: 0 0 200px;
+        /* float: left;
+        width: 100%; */
     }
     .basket-itog {
         margin: 0 0 0px !important;
@@ -4539,7 +4547,7 @@ font-size: 13px;
         float: left;
         margin: 0px 0 0 0;
         color: #333;
-        font-size: 12px;
+        font-size: 13px;
     }
     .footer-yr{
         color: #050505;
