@@ -4072,7 +4072,8 @@ font-size: 13px;
         /* bottom: 0px !important; */
       }
     .bottom-sheet__content {
-        overflow: inherit !important;
+        overflow: inherit!important;
+        touch-action: none !important;
     }
     .basket-itog {
         margin: 0 0 0px !important;
