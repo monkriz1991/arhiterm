@@ -40,7 +40,11 @@
                 <el-button icon="el-icon-arrow-left" @click="dialogForm = true">В корзину</el-button>
               </el-button-group>
             </div>
-            <Form :dialogForm.sync="dialogFormVisible" @updateDialogForm="updateDialogForm" v-show="!dialogForm"/>
+            <Form 
+            :dialogFormUpdate.sync="dialogFormUpdate"
+            :dialogForm.sync="dialogFormVisible" 
+            @updateDialogForm="updateDialogForm" 
+            v-show="!dialogForm"/>
       </vue-bottom-sheet>
     </div>
 </template>
@@ -56,6 +60,7 @@ import {mapGetters,mapActions} from 'vuex'
           this.$refs.dialogFormVisible.open()
           
           this.$emit('update:dialogFormVisibleModal', false)
+          this.dialogFormUpdate = true
       },
       // dialogFormVisible: function(newVal,noCloseNotify) { 
       //   this.$emit('clickModal',newVal,noCloseNotify);
@@ -74,6 +79,7 @@ import {mapGetters,mapActions} from 'vuex'
         dialogFormVisible: false,
         dialogForm:true,
         noCloseNotify:false,
+        dialogFormUpdate:false,
         basketCost: 0,
       }
     },
@@ -91,13 +97,12 @@ import {mapGetters,mapActions} from 'vuex'
       closeMeny(){
         this.$refs.dialogFormVisible.close();
       },
-      updateDialogForm(){
+      updateDialogForm(forse){
         this.$refs.dialogFormVisible.close();
         this.noCloseNotify = true
         this.dialogForm = true;    
         this.$forceUpdate();
         this.$emit('openBasketNotify',true);
-       
       },
       ...mapActions({
         DELL_CART_BASKET:'main/DELL_CART_BASKET',

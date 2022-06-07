@@ -144,7 +144,7 @@
 import {mapActions, mapGetters} from "vuex";
 import ModalLogout from '~/components/aut/ModalLogout.vue'
 export default ({
-  props:['dialogForm'],
+  props:['dialogFormUpdate'],
     data(){
         var validatePass = (rule, value, callback) => {
             if (value === '') {
@@ -196,6 +196,10 @@ export default ({
         ModalLogout
     },
     watch:{
+        dialogFormUpdate: function(newVal) { 
+            this.$forceUpdate();
+            this.$emit('update:dialogFormUpdate', false)
+        },
         $auth(newv){
             this.$forceUpdate();
         },
