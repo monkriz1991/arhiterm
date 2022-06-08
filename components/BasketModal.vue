@@ -41,7 +41,6 @@
               </el-button-group>
             </div>
             <Form 
-            :dialogFormUpdate.sync="dialogFormUpdate"
             :dialogForm.sync="dialogFormVisible" 
             @updateDialogForm="updateDialogForm" 
             :key="componentKey"
@@ -61,7 +60,6 @@ import {mapGetters,mapActions} from 'vuex'
           this.$refs.dialogFormVisible.open()
           
           this.$emit('update:dialogFormVisibleModal', false)
-          this.dialogFormUpdate = true
           this.forceRerender();
       },
       // dialogFormVisible: function(newVal,noCloseNotify) { 
@@ -81,7 +79,6 @@ import {mapGetters,mapActions} from 'vuex'
         dialogFormVisible: false,
         dialogForm:true,
         noCloseNotify:false,
-        dialogFormUpdate:false,
         basketCost: 0,
         componentKey: 0,
       }
@@ -99,7 +96,6 @@ import {mapGetters,mapActions} from 'vuex'
     methods:{
       forceRerender() {
         this.componentKey += 1; 
-        console.log(this.componentKey) 
       },
       closeMeny(){
         this.$refs.dialogFormVisible.close();

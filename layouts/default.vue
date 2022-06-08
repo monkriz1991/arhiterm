@@ -24,9 +24,19 @@ import Breadcrumb from '~/components/Breadcrumb.vue'
 import {mapGetters,mapActions} from 'vuex'
 export default ({
   layout: 'error',
+    head() {
+      return {
+        link: [
+          {
+            rel: 'canonical',
+            href: 'https://arhiterm.by' + this.$route.path
+          }
+        ]
+      }
+    },
     created(){
 
-  },
+    },
     mounted() {
       this.loadingData()
     },
