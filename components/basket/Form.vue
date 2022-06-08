@@ -197,8 +197,7 @@ export default ({
     },
     watch:{
         dialogFormUpdate: function(newVal) { 
-            this.$forceUpdate();
-            this.$emit('update:dialogFormUpdate', false)
+            this.methodThatForcesUpdate();
         },
         $auth(newv){
             this.$forceUpdate();
@@ -242,6 +241,10 @@ export default ({
         remove_cost: 'main/DELL_CART_BASKET_COST',
         setLoading: 'main/newLoadingItem',
     }),
+    methodThatForcesUpdate() {
+      this.$forceUpdate();
+      this.$emit('update:dialogFormUpdate', false)
+    },
     disabledForm(item){
         this.activeName = String(item)
     },
