@@ -44,6 +44,7 @@
             :dialogFormUpdate.sync="dialogFormUpdate"
             :dialogForm.sync="dialogFormVisible" 
             @updateDialogForm="updateDialogForm" 
+            :key="componentKey"
             v-show="!dialogForm"/>
       </vue-bottom-sheet>
     </div>
@@ -61,6 +62,7 @@ import {mapGetters,mapActions} from 'vuex'
           
           this.$emit('update:dialogFormVisibleModal', false)
           this.dialogFormUpdate = true
+          this.forceRerender();
       },
       // dialogFormVisible: function(newVal,noCloseNotify) { 
       //   this.$emit('clickModal',newVal,noCloseNotify);
@@ -81,6 +83,7 @@ import {mapGetters,mapActions} from 'vuex'
         noCloseNotify:false,
         dialogFormUpdate:false,
         basketCost: 0,
+        componentKey: 0,
       }
     },
     computed:{
@@ -94,6 +97,10 @@ import {mapGetters,mapActions} from 'vuex'
       this.basketCost = this.basketItog.for_amount_itog
     },
     methods:{
+      forceRerender() {
+        this.componentKey += 1; 
+        console.log(this.componentKey) 
+      },
       closeMeny(){
         this.$refs.dialogFormVisible.close();
       },
