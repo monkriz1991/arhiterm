@@ -330,6 +330,7 @@
     </div>
     <div v-if="width>991" class="header-bg"></div>
     <!-- <div  :class="[visible==true?'header-bg-popover':'']" ></div> -->
+      <no-ssr>
         <vue-bottom-sheet
         max-width="400px"
         max-height="90%"
@@ -398,6 +399,7 @@
             </div>
           </div>
         </div>
+        </no-ssr>
   </header>
 </template>
 

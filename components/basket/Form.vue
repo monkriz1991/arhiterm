@@ -144,7 +144,6 @@
 import {mapActions, mapGetters} from "vuex";
 import ModalLogout from '~/components/aut/ModalLogout.vue'
 export default ({
-  props:['dialogFormUpdate'],
     data(){
         var validatePass = (rule, value, callback) => {
             if (value === '') {
@@ -196,9 +195,6 @@ export default ({
         ModalLogout
     },
     watch:{
-        dialogFormUpdate: function(newVal) { 
-            this.methodThatForcesUpdate();
-        },
         $auth(newv){
             this.$forceUpdate();
         },
@@ -241,10 +237,6 @@ export default ({
         remove_cost: 'main/DELL_CART_BASKET_COST',
         setLoading: 'main/newLoadingItem',
     }),
-    methodThatForcesUpdate() {
-      this.$forceUpdate();
-      this.$emit('update:dialogFormUpdate', false)
-    },
     disabledForm(item){
         this.activeName = String(item)
     },
