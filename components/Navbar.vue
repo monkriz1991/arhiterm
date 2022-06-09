@@ -351,60 +351,14 @@
                 <ModalLogout />
               </no-ssr>
               </div>
+              
+              
+              <el-button 
+              circle
+              icon="el-icon-phone-outline"
+              @click="dialogVisible=true">
+              </el-button>
 
-
-        
-          <el-button
-          @click="openSearch()"
-          class="button-search"
-          icon="el-icon-search"
-          circle>
-          </el-button>
-
-        <vue-bottom-sheet
-          max-width="1080px"
-          max-height="90%"
-          :overlay="true"
-          :click-to-close="true"
-          :swipe-able="false"
-          :rounded="true"
-          :background-scrollable="false"
-          :is-full-screen="false"
-          :background-clickable="true"
-          @closed="hideBottomSheet"
-          ref="dialogSearch">
-
-              <!-- <i class="el-icon-search icon-search-mobail"></i> -->
-              <el-autocomplete
-                ref="autocomplete"
-                v-model="state"
-                :fetch-suggestions="querySearchAsync"
-                :trigger-on-focus="false"
-                placeholder="Введите запрос..."
-                @select="handleSelect"
-                clearable
-                popper-class="block-search-input "
-              >
-                 <template slot-scope="{ item }">
-                  <nuxt-link @click.native="handlerLoadingMobail" :to="'/product/'+item.id">
-                    <div class="search-block">
-                    <div class="search-block-img">
-                      <img :src="item.img" alt="" />
-                    </div>
-                    <div class="search-block-desc">
-                      <span>
-                        <i class="el-icon-office-building"></i>
-                        {{ item.manufacturername }}
-                      </span>
-                      {{ item.name }}
-                    </div>
-                  </div>
-                  </nuxt-link>
-                </template>
-
-              </el-autocomplete>
-
-        </vue-bottom-sheet>
 
               <el-button 
               circle
@@ -450,11 +404,59 @@
                     </div>
                   </div>
                 </el-popover>
-              <el-button 
-              circle
-              icon="el-icon-phone-outline"
-              @click="dialogVisible=true">
+
+              <el-button
+              @click="openSearch()"
+              class="button-search"
+              icon="el-icon-search"
+              circle>
               </el-button>
+
+            <vue-bottom-sheet
+              max-width="1080px"
+              max-height="90%"
+              :overlay="true"
+              :click-to-close="true"
+              :swipe-able="false"
+              :rounded="true"
+              :background-scrollable="false"
+              :is-full-screen="false"
+              :background-clickable="true"
+              @closed="hideBottomSheet"
+              ref="dialogSearch">
+
+                  <!-- <i class="el-icon-search icon-search-mobail"></i> -->
+                  <el-autocomplete
+                    ref="autocomplete"
+                    v-model="state"
+                    :fetch-suggestions="querySearchAsync"
+                    :trigger-on-focus="false"
+                    placeholder="Введите запрос..."
+                    @select="handleSelect"
+                    clearable
+                    popper-class="block-search-input "
+                  >
+                    <template slot-scope="{ item }">
+                      <nuxt-link @click.native="handlerLoadingMobail" :to="'/product/'+item.id">
+                        <div class="search-block">
+                        <div class="search-block-img">
+                          <img :src="item.img" alt="" />
+                        </div>
+                        <div class="search-block-desc">
+                          <span>
+                            <i class="el-icon-office-building"></i>
+                            {{ item.manufacturername }}
+                          </span>
+                          {{ item.name }}
+                        </div>
+                      </div>
+                      </nuxt-link>
+                    </template>
+
+                  </el-autocomplete>
+
+            </vue-bottom-sheet>
+
             </div>
           </div>
         </div>
