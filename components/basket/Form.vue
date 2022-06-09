@@ -50,38 +50,38 @@
         prop="nameCompany"
         label="Название компании"
         :rules="[
-          { required: true, message: 'Пожалуйста введите название вашей компании', trigger: 'blur' }
+          { required: true, message: 'Введите название вашей компании', trigger: 'blur' }
         ]"
         >
-        <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите название вашей компании" v-model="Form.nameCompany" autocomplete="off"></el-input>
+        <el-input prefix-icon="el-icon-office-building" :disabled="$auth.loggedIn!=''" placeholder="Введите название вашей компании" v-model="Form.nameCompany" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
         prop="name"
         label="Имя"
         :rules="[
-          { required: true, message: 'Пожалуйста введите ваше имя', trigger: 'blur' }
+          { required: true, message: 'Введите имя', trigger: 'blur' }
         ]"
         >
-        <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваше имя" v-model="Form.name" autocomplete="off"></el-input>
+        <el-input prefix-icon="el-icon-user" :disabled="$auth.loggedIn!=''" placeholder="Введите Ваше имя" v-model="Form.name" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
         prop="username"
         label="Логин"
         :rules="[
-          { required: true, message: 'Пожалуйста введите ваш email', trigger: 'blur' },
-          { type: 'email', message: 'Пожалуйста введите корректный email', trigger: ['blur', 'change'] }
+          { required: true, message: 'Введите email', trigger: 'blur' },
+          { type: 'email', message: 'Введите корректный email', trigger: ['blur', 'change'] }
         ]"
         >
-        <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш email" v-model="Form.username" autocomplete="off"></el-input>
+        <el-input prefix-icon="el-icon-message" :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш email" v-model="Form.username" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
         prop="phone_number"
         label="Телефон"
         :rules="[
-          { required: true, message: 'Пожалуйста введите ваш Телефон', trigger: 'blur' },
+          { required: true, message: 'Введите Телефон', trigger: 'blur' },
         ]"
         >
-        <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш Телефон" v-model="Form.phone_number" autocomplete="off"></el-input>
+        <el-input prefix-icon="el-icon-phone-outline" :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш Телефон" v-model="Form.phone_number" autocomplete="off"></el-input>
         </el-form-item>
 
         <el-form-item v-if="typeUser=='2'||Form.typ=='2'" label="Юр. Адрес">
@@ -104,14 +104,14 @@
         prop="password"
         label="Пароль"
         >
-          <el-input placeholder="Ввидите пароль" v-model="Form.password" show-password autocomplete="off"></el-input>
+          <el-input prefix-icon="el-icon-key" placeholder="Ввидите пароль" v-model="Form.password" show-password autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
         v-if="!$auth.loggedIn"
         prop="checkPass"
         label="Повторите пароль"
         >
-            <el-input placeholder="Повторите пароль" v-model="Form.checkPass" show-password autocomplete="off"></el-input>
+            <el-input prefix-icon="el-icon-key" placeholder="Повторите пароль" v-model="Form.checkPass" show-password autocomplete="off"></el-input>
         </el-form-item>
 
             <div class="form-basket-aut">

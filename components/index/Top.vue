@@ -4,14 +4,15 @@
         <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide
-                    v-for="(item,idx) in tovar" :key="idx"
+                    v-for="(item,idx) in tovar" :key="idx" 
                 >
                     <nuxt-link :to="`/product/${item.id}`" class="nuxt-link-cat">
                         <div class="index-top-block">
-                            <img
+                            <el-image
                                 :src="item.img"
                                 :alt="item.name"
-                            >
+                                
+                            ></el-image>
                             
                             <div class="index-top-block-desc">
                                 <strong>

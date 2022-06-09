@@ -12,6 +12,7 @@ export const state = ()=>({
     activeButCatMenyItem:false,
     top:[],
     loadingItem:true,
+    worktime:[],
 })
 
 export const mutations = {
@@ -65,7 +66,11 @@ export const mutations = {
     },
     setLoadingItem(state,data){
         state.loadingItem = data;
-    }
+    },
+    setWorktime(state,data){
+        state.worktime = data;
+    },
+    
 }
 
 export const actions = {
@@ -73,6 +78,11 @@ export const actions = {
         let slide = await this.$axios.$get(`/administrate/get/slider/`);
         commit('setSlider',slide.results)
         return slide.results
+    },
+    async getWorktime({commit}){
+        let worktime = await this.$axios.$get(`/administrate/get/worktime/`);
+        commit('setWorktime',worktime.results)
+        return worktime.results
     },
     ADD_TO_CART({commit},product){
         commit('SET_CART',product)
@@ -143,7 +153,8 @@ export const getters = {
     countAllBaskets: state => state.countAllBaskets,
     activeButCatMenyItem: state => state.activeButCatMenyItem,
     loadingItem: state => state.loadingItem,
-    top: state => state.top
+    top: state => state.top,
+    worktime: state => state.worktime,
 }
 
 
