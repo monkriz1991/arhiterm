@@ -25,6 +25,7 @@
                         :src="product.img"
                         fit="contain"
                         :title="product.name"
+                        :alt="product.name + ` Купить`"
                         v-if="idx<3"
                         >
                         </el-image>

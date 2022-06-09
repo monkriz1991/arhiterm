@@ -474,12 +474,12 @@ margin: 0 0 20px;
 }
 .el-form-item__error {
     color: #F56C6C;
-    font-size: 12px;
+    font-size: 11px !important;
     line-height: 1;
-    padding-top: 4px;
+    padding-top: 4px !important;
     position: absolute;
-    top: 69%;
-    left: auto;
+    top: 65% !important;
+    left: auto !important;
     right: 10px;
 }
 .profile-cab-left{
@@ -569,14 +569,15 @@ margin: 0 0 20px;
         line-height: initial;
     }
     .form-user-cab .el-form-item__label, .form-basket-input label {
+        line-height: normal;
         line-height: initial;
         float: left;
         font-size: 13px;
         font-weight: 500;
-        height: 32px;
+        height: 45px;
         display: flex;
         align-items: center;
-        width: 140px;
+        width: 160px;
         text-align: left;
     }
     .form-user-cab .el-form-item__content,.form-basket-input .el-form-item__content{
@@ -591,7 +592,7 @@ margin: 0 0 20px;
         color: #4b4b4b;
         cursor: not-allowed;
         border-bottom: 0px solid #ffffff;
-        padding: 6px 20px;
+        padding: 6px 30px;
         height: auto;
         line-height: 1.8;
         font-size: 14px;
@@ -613,6 +614,9 @@ margin: 0 0 20px;
         height: auto;
         line-height: 1.8;
         border-radius: 3px;
+    }
+    .form-basket .el-input__prefix i{
+        line-height: 50px;
     }
     .form-user-cab .el-input__inner:hover{
         transition: .2s;
@@ -739,7 +743,7 @@ header{
     margin: 7px 0 0 10px;
 }
 .header-cat-desc .header-cat{
-    padding: 0px 20px;
+    padding: 0px 15px 0 0;
     background: transparent;
     border: 0px solid #f96300;
     float: left;
@@ -747,7 +751,8 @@ header{
     margin: 0px 15px 0 0px;
     font-size: 23px;
     border-radius: 7px;
-    width: 89px;
+    width: 69px;
+    text-align: left;
 }
 .header-logout>button{
     border: none;
@@ -764,7 +769,7 @@ header{
     fill: #fff;
     float: left;
     width: 100%;
-    text-align: center;
+    text-align: left;
     height: 24px ;
     margin: 0 0 10px 0;
 }
@@ -933,10 +938,10 @@ header .contents {
 }
 .modal-logout .el-form-item__error {
     color: #F56C6C;
-    font-size: 11px;
+    font-size: 11px !important;
     line-height: 1;
     position: absolute;
-    top: 65%;
+    top: 65% !important;
     right: 7px;
     z-index: 12;
     left: auto;
@@ -1225,6 +1230,10 @@ header .contents {
     padding: 0 15px 0 0;
     /* border: 1px solid #e2e2e2; */
 }
+.index-top-block .el-image{
+    width: 95px;
+    float: left;
+}
 .index-top .hooper-indicator{
     background-color: #e3e3e3;
 }
@@ -1282,7 +1291,7 @@ header .contents {
     height: 110px;
     -o-object-fit: contain;
     object-fit: contain;
-    width: 95px;
+    width: 100%;
     float: left;
     padding: 5px 10px 5px 0;
     /* background: #e4e4e4; */
@@ -1326,7 +1335,7 @@ header .contents {
   }
   
   .drawer-button-meny{
-    padding: 9px 15px !important;
+    padding: 9px 0px 9px 15px !important;
     margin: 0 0 0 10px !important;
     background: transparent !important;
     border: none !important;
@@ -1339,6 +1348,37 @@ header .contents {
   .el-notification__content{
     text-align: inherit !important;
   }
+.work-poper .el-popover__title{
+    font-size: 14px;
+    text-decoration: underline;
+}
+.work-div{
+float: left;
+width: 100%;
+margin: 0 0 10px;
+}
+.work-day{
+    float: left;
+    width: 100%;
+    margin: 0 0 0px;
+    /* opacity: 0.8; */
+    font-weight: 400;
+    font-size: 12px;
+    color: #000;
+}
+.work-time{
+    display: inline-block;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+}
+.work-comment{
+float: left;
+width: 100%;
+font-weight: 700;
+font-size: 14px;
+color: #333;
+}
 .top-phone{
 
 }
@@ -1388,8 +1428,8 @@ header .contents {
 .block-search .el-icon-search{
     position: absolute;
     z-index: 22;
-    right: 14px;
-    top: 12px;
+    right: 20px;
+    top: 14px;
     font-size: 16px;
     color: #fff;
 }
@@ -1406,6 +1446,7 @@ header .contents {
 .search-navbar{
     float: right;
     position: relative;
+    width: 62%;
 }
 .search-navbar>button{
     padding: 10px !important;
@@ -1416,19 +1457,29 @@ header .contents {
     font-size: 20px;
 }
 .search-navbar .block-search{
-    top: 5px;
+    top: 0px;
     right: 25px;
-    width: 440px;
+    width: 100%;
     left: auto;
 }
 .search-navbar .block-search .el-input__inner{
-    height: 38px;
-    line-height: 38px;
+    height: 44px;
+    line-height: 44px;
     font-size: 13px;
-    background: linear-gradient(to right,#fe7300 0,#fd7200 100%) no-repeat;
+    /* background: linear-gradient(to right,#fe7300 0,#fd7200 100%) no-repeat; */
+    background: rgb(255 255 255 / 8%);
     border: 0px solid #DCDFE6;
     color: #fff;
     border-radius: 30px;
+    padding: 0 20px;
+    -webkit-transition: background .3s ease 0s;
+    transition: background .3s ease 0s;
+}
+.search-navbar .block-search .el-input__inner:hover{
+    cursor: pointer;
+    background: rgba(255,255,255,.5);
+    -webkit-transition: background .3s ease 0s;
+    transition: background .3s ease 0s;
 }
 .header-cat:focus, .header-cat:hover {
     color: #ffffff !important;
@@ -1436,6 +1487,10 @@ header .contents {
     background-color: transparent !important;
     box-shadow: 0px 0px 0px 0px #ececec;
     transition: .2s;
+}
+.search-navbar .block-search .el-input__inner:focus, .search-navbar .block-search .el-input__inner:focus:hover {
+    color: #000;
+    background: #fff;
 }
 .header-cat:hover .button-nav-text{
     color: #ffffff !important;
@@ -2524,7 +2579,7 @@ body .el-dialog__body{
 }
 .basket-tov{
     width: 100%;
-    padding: 0px;
+    padding: 0px 10px 0 0;
     display: inline-block;
     margin: 0 0 30px;
 }
@@ -2565,7 +2620,7 @@ body .el-dialog__body{
     float: left;
 }
 .basket-tov-cost>span{
-    margin: 2px 6px 0px 2px;
+    margin: 3px 6px 0px 3px;
     font-size: 10px;
     font-weight: 700;
 }
@@ -2630,12 +2685,12 @@ body .el-dialog__body{
     justify-content: left;
 }
 .basket-tov-summ>strong{
-font-size: 16px;
+font-size: 21px;
 }
 .basket-tov-summ>span{
-    padding: 4px 0 0 2px;
+    padding: 3px 0 0 2px;
     margin: 2px 6px 0px 0px;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
 }
 .basket-tov-dell{
@@ -3172,6 +3227,14 @@ body .navbar-user .navbar-user-item{
     color: #373737;
     font-weight: 400;
 }
+.phone-modal-block-el>p>a>i{
+    font-size: 18px;
+    background: #7a52ae;
+    padding: 10px;
+    border-radius: 50%;
+    color: #fff;
+    margin: 10px 0 0 0;
+}
 .phone-modal-block-el>p b{
     font-size: 15px;
     font-weight: 400;
@@ -3191,7 +3254,35 @@ body .navbar-user .navbar-user-item{
 }
 .top-phone {
     float: right;
-    margin: 0px 0px;
+    margin: 0px 15px 0 30px;
+    /* width: 100%; */
+    display: grid;
+}
+.top-phone>button{
+    margin: 0 0 0 -25px;
+    float: left;
+    width: 100%;
+    position: relative;
+}
+.top-phone>button::before{
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 12px;
+    transform: rotate(316deg);
+    background: #fff;
+    bottom: 1px;
+    right: -9px;
+    opacity: 0.5;
+    border-radius: 8px;
+}
+.top-phone>button>i{
+    margin: 0 0 5px 0 !important;
+    font-size: 21px !important;
+}
+.top-phone .el-popover__reference-wrapper button>i{
+    margin: 0 0 0px 0 !important;
+    font-size: 20px !important;
 }
 .top-phone button{
     font-size: 20px;
@@ -3756,6 +3847,10 @@ font-size: 13px;
     object-fit: contain;
     transition: transform .3s ease-in-out;
 }
+.category-in-cyrcle .el-image{
+    height: 100%;
+    width: 100%;
+}
 .dialog-footer{
     position: absolute;
     left: 0;
@@ -3792,8 +3887,10 @@ font-size: 13px;
 }
 .form-basket-aut span{
     max-width: 500px;
-    float: left;
-    width: 100%;
+    /* float: left; */
+    /* width: 100%; */
+    /* margin: 0 0 0 90px; */
+    display: flex;
 }
 .form-basket-aut b{
     float: left;
@@ -3969,7 +4066,20 @@ font-size: 13px;
     box-shadow: 0px 11px 25px -17px #f90;
 }
 .dialog-footer .closed-order{
-    
+    float: left;
+    margin: 0 0 0 0 !important;
+}
+.form-basket-input .el-form-item__content .el-input__inner{
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid transparent;
+}
+.bottom-bar-con{
+
+}
+.bottom-bar-con .bottom-sheet__content{
+    height: 100vh !important;
+    padding: 0 10px 10px;
 }
 @media (max-width: 1100px){
     .back-wrapper{
@@ -4027,6 +4137,45 @@ font-size: 13px;
 }
 
 @media (max-width: 991px){
+    .form-user-cab .el-input.is-disabled .el-input__inner, .form-basket-input .el-form-item__content .el-input__inner{
+        width: 100%;
+    }
+    .stateSearh{
+        display: none;
+    }
+    .block-search-input{
+        position: fixed !important;
+        top: 130px !important;
+        bottom: 0 !important;
+        height: 100vh !important;
+        border: none !important;
+        box-shadow: none !important;
+        overflow: auto;
+    }
+    /* body .bottom-sheet.closed ~ body .block-search-input{
+        display: none;
+    } */
+    .block-search-input .el-autocomplete-suggestion__wrap{
+        max-height: 100% !important;
+    }
+    .block-search-input .el-autocomplete-suggestion li {
+        padding: 0 20px 0 0;
+    }
+    .block-search-input .el-scrollbar__view li {
+        font-size: 11px;
+        padding: 0 20px 0 0;
+        margin: 0 10px 0 0;
+    }
+    .bottom-sheet .el-autocomplete{
+        width: 100%;
+    }
+    .bottom-bar-con .bottom-sheet{
+        position: fixed !important;
+    }
+    .bottom-sheet .block-search-input{
+        width: 100%;
+        border-radius: 6px;
+    }
     .none-block{
         float: left;
         width: 100%;
@@ -4040,8 +4189,8 @@ font-size: 13px;
     .form-basket{
         margin: 0 0 20px;
         overflow: auto;
-        -ms-overflow-style: none; /* for Internet Explorer, Edge */
-        scrollbar-width: none; /* for Firefox */
+        /* -ms-overflow-style: none; 
+        scrollbar-width: none;  */
         overflow-y: scroll; 
     }
     .footer-summ{
@@ -4060,13 +4209,13 @@ font-size: 13px;
         left: 0;
         right: 0;
         overflow: auto;
-        -ms-overflow-style: none; /* for Internet Explorer, Edge */
-        scrollbar-width: none; /* for Firefox */
+        /* -ms-overflow-style: none; 
+        scrollbar-width: none;  */
         overflow-y: scroll; 
     }
-    .basket-tov-block::-webkit-scrollbar,.form-basket::-webkit-scrollbar {
-        display: none; /* for Chrome, Safari, and Opera */
-      }
+    /* .basket-tov-block::-webkit-scrollbar,.form-basket::-webkit-scrollbar {
+        display: none;
+      } */
       .bottom-sheet__card{
         /* bottom: 0px !important; */
       }
@@ -4405,6 +4554,9 @@ font-size: 13px;
         max-height: 100%;
         width: 110px;
     }
+    .form-basket-aut .header-logout{
+        display: block !important;
+    }
     .header-nav .header-logout{
         display: none;
     }
@@ -4425,7 +4577,11 @@ font-size: 13px;
         padding: 4px 0px 4px 5px;
         display: flex;
         flex-flow: column;
+        align-items: center;
     } 
+    .el-form-item__error{
+        top: 74% !important;
+    }
     .top-phone button {
         display: flex;
         flex-flow: column;
@@ -4742,12 +4898,16 @@ font-size: 13px;
         height: auto;
         display: flex;
         flex-flow: column;
+        position: relative;
     }
     .basket-tov-calc .units {
         margin: 0 0 0 0px;
         font-size: 13px;
         width: 100%;
-        text-align: center;
+        text-align: left;
+        left: 150px;
+        top: 6px;
+        position: relative;
     }
     .basket-tov-calc .el-input-number {
         width: 100% !important;
@@ -4758,9 +4918,9 @@ font-size: 13px;
         width: 70%;
     }
     .basket-tov-dell {
-        padding: 21px 0 4px;
+        padding: 23px 0 0px;
         font-size: 19px;
-        height: auto;
+        height: 51px;
         width: 30%;
     }
     .basket-itog-summ>strong {
@@ -4769,9 +4929,16 @@ font-size: 13px;
     .basket-itog-summ>span {
         font-size: 12px;
     }
+    .form-basket>.el-collapse{
+        margin: 0 10px 0 0 ;
+    }
+    .form-user-cab .el-form-item__label, .form-basket-input label {
+        height: 18px;
+        width: 100%;
+    }
     .form-basket .el-collapse-item__header {
-        height: 44px;
-        font-size: 13px;
+        height: 60px;
+        font-size: 14px;
     }
     .form-basket .el-radio__label {
         font-size: 13px;

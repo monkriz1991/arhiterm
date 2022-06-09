@@ -170,52 +170,7 @@
           class="link-navbar" :to="`/mounters`">
             Монтажники
           </nuxt-link>
-          <!-- <el-button
-          @click="showButton()"
-          v-if="show==true"
-          class="button-search"
-          icon="el-icon-close"
-          circle>
-          </el-button>
-          <el-button
-          @click="showButton()"
-          v-else
-          class="button-search"
-          icon="el-icon-search"
-          circle>
-          </el-button>
-          <transition name="el-fade-in-linear">
-            <div v-show="show" class="block-search">
-              <i class="el-icon-search icon-search-mobail"></i>
-              <el-autocomplete
-                v-model="state"
-                :fetch-suggestions="querySearchAsync"
-                :trigger-on-focus="false"
-                placeholder="Введите запрос..."
-                @select="handleSelect"
-                popper-class="block-search-input"
-              >
-                 <template slot-scope="{ item }">
-                  <nuxt-link @click.native="handlerLoading" :to="'/product/'+item.id">
-                    <div class="search-block">
-                    <div class="search-block-img">
-                      <img :src="item.img" alt="" />
-                    </div>
-                    <div class="search-block-desc">
-                      <span>
-                        <i class="el-icon-office-building"></i>
-                        {{ item.manufacturername }}
-                      </span>
-                      {{ item.name }}
-                    </div>
-                  </div>
-                  </nuxt-link>
-                </template>
 
-              </el-autocomplete>
-
-            </div>
-          </transition> -->
       </div>
         <div class="header-nav">
           <nuxt-link
@@ -270,10 +225,50 @@
 
 
             <div v-if="width>991" class="top-phone button-nav-meny">
-                <nuxt-link :to="`/info/contacts`" class="button-nav-meny">
-                  <i class="el-icon-phone-outline"></i>
-                  <span class="button-nav-text">Контакты</span>
-                </nuxt-link>
+              <el-button 
+              circle
+              icon="el-icon-phone-outline"
+              @click="dialogVisible=true">
+              </el-button>
+                <el-popover
+                  placement="bottom"
+                  title="График работы"
+                  width="200"
+                  popper-class="work-poper"
+                  trigger="click">
+                  <el-button 
+                  icon="el-icon-time"
+                  slot="reference">
+                  </el-button>
+                  <div>
+                    <div 
+                    class="work-div"
+                    v-for="(work,k) in worktime" :key="k"
+                    v-if="work.week_day==0&&work.week_day<=4"
+                    >
+                      <strong class="work-day">Понедельник - Четверг</strong>
+                      <span class="work-time">{{work.start_time.substring(0,5)}}</span>
+                      <b>-</b>
+                      <span class="work-time">{{work.end_time.substring(0,5)}}</span>
+                      <strong class="work-comment">{{work.comment}}</strong>
+                    </div> 
+                    <div 
+                    class="work-div"
+                    v-for="(work,k) in worktime" :key="k"
+                    v-if="work.week_day==4"
+                    >
+                      <strong class="work-day">Пятница</strong>
+                      <span class="work-time">{{work.start_time.substring(0,5)}}</span>
+                      <b>-</b>
+                      <span class="work-time">{{work.end_time.substring(0,5)}}</span>
+                      <strong class="work-comment">{{work.comment}}</strong>
+                    </div> 
+                    <div>
+                      <strong class="work-day">Суббота / Воскресенье</strong>
+                      <strong class="work-comment">Выходной</strong>
+                    </div>
+                  </div>
+                </el-popover>
             </div>
             <div class="search-navbar">
               <el-button
@@ -291,6 +286,7 @@
               icon="el-icon-search"
               circle>
               </el-button>
+
               <transition name="el-fade-in-linear">
                 <div v-show="show" class="block-search">
                   <i class="el-icon-search"></i>
@@ -329,7 +325,7 @@
       </div>
     </div>
     <div v-if="width>991" class="header-bg"></div>
-    <!-- <div  :class="[visible==true?'header-bg-popover':'']" ></div> -->
+    <div v-if="width>991"  :class="[visible==true?'header-bg-popover':'']" ></div>
       <no-ssr>
         <vue-bottom-sheet
         max-width="400px"
@@ -342,9 +338,7 @@
         :is-full-screen="false"
         :background-clickable="true"
          ref="myBottomSheet">
-
           <MenyuserMobail />
-
         </vue-bottom-sheet>
         <div v-if="width<991" class="bottom-bar">
           <div class="container">
@@ -357,49 +351,141 @@
                 <ModalLogout />
               </no-ssr>
               </div>
+
+
+        
+          <el-button
+          @click="openSearch()"
+          class="button-search"
+          icon="el-icon-search"
+          circle>
+          </el-button>
+
+        <vue-bottom-sheet
+          max-width="1080px"
+          max-height="90%"
+          :overlay="true"
+          :click-to-close="true"
+          :swipe-able="false"
+          :rounded="true"
+          :background-scrollable="false"
+          :is-full-screen="false"
+          :background-clickable="true"
+          @closed="hideBottomSheet"
+          ref="dialogSearch">
+
+              <!-- <i class="el-icon-search icon-search-mobail"></i> -->
+              <el-autocomplete
+                ref="autocomplete"
+                v-model="state"
+                :fetch-suggestions="querySearchAsync"
+                :trigger-on-focus="false"
+                placeholder="Введите запрос..."
+                @select="handleSelect"
+                clearable
+                popper-class="block-search-input "
+              >
+                 <template slot-scope="{ item }">
+                  <nuxt-link @click.native="handlerLoadingMobail" :to="'/product/'+item.id">
+                    <div class="search-block">
+                    <div class="search-block-img">
+                      <img :src="item.img" alt="" />
+                    </div>
+                    <div class="search-block-desc">
+                      <span>
+                        <i class="el-icon-office-building"></i>
+                        {{ item.manufacturername }}
+                      </span>
+                      {{ item.name }}
+                    </div>
+                  </div>
+                  </nuxt-link>
+                </template>
+
+              </el-autocomplete>
+
+        </vue-bottom-sheet>
+
               <el-button 
               circle
               icon="el-icon-more-outline"
               @click="open()">
               </el-button>
-
+                <el-popover
+                  placement="bottom"
+                  title="График работы"
+                  width="200"
+                  popper-class="work-poper"
+                  trigger="click">
+                  <el-button 
+                  icon="el-icon-time"
+                  slot="reference">
+                  </el-button>
+                  <div>
+                    <div 
+                    class="work-div"
+                    v-for="(work,k) in worktime" :key="k"
+                    v-if="work.week_day==0&&work.week_day<=4"
+                    >
+                      <strong class="work-day">Понедельник - Четверг</strong>
+                      <span class="work-time">{{work.start_time.substring(0,5)}}</span>
+                      <b>-</b>
+                      <span class="work-time">{{work.end_time.substring(0,5)}}</span>
+                      <strong class="work-comment">{{work.comment}}</strong>
+                    </div> 
+                    <div 
+                    class="work-div"
+                    v-for="(work,k) in worktime" :key="k"
+                    v-if="work.week_day==4"
+                    >
+                      <strong class="work-day">Пятница</strong>
+                      <span class="work-time">{{work.start_time.substring(0,5)}}</span>
+                      <b>-</b>
+                      <span class="work-time">{{work.end_time.substring(0,5)}}</span>
+                      <strong class="work-comment">{{work.comment}}</strong>
+                    </div> 
+                    <div>
+                      <strong class="work-day">Суббота / Воскресенье</strong>
+                      <strong class="work-comment">Выходной</strong>
+                    </div>
+                  </div>
+                </el-popover>
               <el-button 
               circle
               icon="el-icon-phone-outline"
               @click="dialogVisible=true">
               </el-button>
-              <el-dialog
-              title=""
-              class="modal-contact"
-              append-to-body
-              :visible.sync="dialogVisible"
-              width="30%"
-              >
-              <div class="phone-modal-block">
-                <div class="phone-modal-block-el">
-                  <span>Помощь в оформлении</span>
-                  <p v-for="(phone,k) in phones" :key="k">
-                    <a :href="`tel:${phone.phone_number}`">
-                    {{phone.phone_number.substring(0,4)+" "}}
-                    ({{phone.phone_number.substring(4,6)}})
-                    {{phone.phone_number.substring(6,35)}}
-                    </a> 
-                    <b>|</b>
-                    <strong>{{phone.operator}}</strong>
-                  </p>
-                  <p>
-                    <a href="viber://chat?number=%2B375293431616">
-                    <i class="el-icon-edit"></i></a>
-                    <strong>Viber</strong>
-                  </p>
-                </div>
-              </div>
-            </el-dialog>
-
             </div>
           </div>
         </div>
         </no-ssr>
+        <el-dialog
+          title=""
+          class="modal-contact"
+          append-to-body
+          :visible.sync="dialogVisible"
+          width="30%"
+          >
+          <div class="phone-modal-block">
+            <div class="phone-modal-block-el">
+              <span>Консультация / помощь в оформлении</span>
+              <p v-for="(phone,k) in phones" :key="k">
+                <a :href="`tel:${phone.phone_number}`">
+                {{phone.phone_number.substring(0,4)+" "}}
+                ({{phone.phone_number.substring(4,6)}})
+                {{phone.phone_number.substring(6,35)}}
+                </a> 
+                <b>|</b>
+                <strong>{{phone.operator}}</strong>
+              </p>
+              <p>
+                <a href="viber://chat?number=%2B375293431616">
+                <i class="el-icon-edit"></i></a>
+                <strong>Viber</strong>
+              </p>
+            </div>
+          </div>
+        </el-dialog>
   </header>
 </template>
 
@@ -434,14 +520,17 @@ import {mapGetters,mapActions} from 'vuex'
         show: true,
         dialogFormVisibleModal: false,
         scrollY: null,
+        stateSearh:false,
         headerTop: 0,
         isHeaderSticky: false,
+        clearable:true,
       };
     },
     computed:{
       ...mapGetters({
         categoryNavbar: 'category/categoryNavbar',
         manufacturer: 'category/manufacturer',
+        worktime: 'main/worktime',
       })
     },
     methods: {
@@ -449,15 +538,31 @@ import {mapGetters,mapActions} from 'vuex'
         getCategory:'category/getCategory',
         getManufacturer:'category/getManufacturer',
         setLoading: 'main/newLoadingItem',
+        getWorktime: 'main/getWorktime',
       }),
       open() {
         this.$refs.myBottomSheet.open();
       },
+      openSearch() {
+        this.$refs.dialogSearch.open();
+        this.stateSearh = false
+      },
+      closeSearch() {
+        this.$refs.dialogSearch.close();
+      },
       close() {
         this.$refs.myBottomSheet.close();
       },
+      hideBottomSheet(){
+        this.stateSearh = true
+      },
+
       handlerLoading(item){
         this.setLoading(true)
+      },
+      handlerLoadingMobail(){
+        this.setLoading(true)
+        this.closeSearch()
       },
       toggleModal(val,noCloseNotify) {
           this.dialogFormVisibleModal = val;
@@ -530,6 +635,7 @@ import {mapGetters,mapActions} from 'vuex'
       this.getPhones();
       this.getCategory()
       this.getManufacturer()
+      this.getWorktime()
       this.links = this.loadAll()
       if (process.browser){
         window.addEventListener('resize', this.updateWidth);
@@ -549,7 +655,8 @@ import {mapGetters,mapActions} from 'vuex'
         } else {
           this.isHeaderSticky = false;
         }
-      }
+      },
+
     }
   }
 </script>
