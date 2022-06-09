@@ -73,11 +73,13 @@ export default {
       '@nuxtjs/yandex-metrika',
       {
         id: '7416499',
+        defer: true,
         webvisor: true,
         clickmap:true,
         usetriggerEventCDN:true,
         trackLinks:true,
-        // accurateTrackBounce:true,
+        triggerEvent:true,
+        accurateTrackBounce:true,
       }
     ]
   ],
