@@ -32,7 +32,19 @@ export default {
   methods:{
 
   },
-
+  head() {
+    return {
+      title: 'Сертификаты производителей компании Архитерм',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content:  ' Поставляемая нами с заводов продукция имеет все необходимые сопроводительные документы, в том числе и технические свидетельства, выданные Министерством архитектуры и строительства Республики Беларусь.'
+        }
+      ]
+    }
+  }
 }
 </script>
 <style>

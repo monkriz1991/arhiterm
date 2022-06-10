@@ -126,6 +126,19 @@ export default {
   mounted(){
 
   },
+    head() {
+    return {
+      title: 'Контакты компании Архитерм',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content:  'Контактные данные нашей компании, телефоны, email, а так же график работы и адреса офиса и склада.'
+        }
+      ]
+    }
+  }
 }
 </script>
 <style>

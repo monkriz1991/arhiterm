@@ -272,3 +272,39 @@
         
     </div>
 </template>
+
+<script>
+
+export default {
+
+  data() {
+    return {
+    }
+  },
+  computed:{
+
+  },
+  components:{
+
+  },
+  methods:{
+
+  },
+  mounted(){
+
+  },
+head() {
+    return {
+      title: 'Обработка персональных данных клиентов компании Архитерм',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content:  'Политика в отношении обработки персональных данных.'
+        }
+      ]
+    }
+  }
+}
+</script>

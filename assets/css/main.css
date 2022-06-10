@@ -14,7 +14,7 @@ footer{
 .footer-img{
 float: left;
 width: 100%;
-margin: 30px 0 0 0;
+margin: 10px 0 0 0;
 }
 .footer-img img{
     float: left;
@@ -4084,6 +4084,17 @@ font-size: 13px;
 }
 .phone-footer{
     display: none;
+}
+.social-footer{
+    float: left;
+    width: 100%;
+    margin: 10px 0 0;
+}
+.social-footer a{
+    font-size: 24px;
+    color: #d234b3;
+    border-radius: 50%;
+    overflow: hidden;
 }
 @media (max-width: 1100px){
     .back-wrapper{
