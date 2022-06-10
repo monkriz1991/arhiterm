@@ -84,9 +84,9 @@ export default {
       }
     ],
   ],
-  image: {
-    domains: ['https://new.arhiterm.by', 'new.arhiterm.by']
-  },
+  // image: {
+  //   domains: ['https://new.arhiterm.by', 'new.arhiterm.by']
+  // },
 
   // elementUI: {
   //     font: 'Montserrat',
