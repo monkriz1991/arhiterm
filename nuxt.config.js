@@ -101,6 +101,10 @@ export default {
     transpile: [/^element-ui/,'vee-validate/dist/rules'],
   },
 
+  serverMiddleware:  [
+    '~/middleware/redirect-to-www.js'
+  ],
+
   auth: {
     strategies: {
       local: {

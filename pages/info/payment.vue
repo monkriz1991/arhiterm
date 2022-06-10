@@ -194,7 +194,7 @@
                         </tr>
                         <tr>
                             <td><b>e-mail</b></td>
-                            <td><a href="https://www.arhiterm.by/about/details/info@arhiterm.by">info@arhiterm.by</a></td>
+                            <td><a href="mailto:info@arhiterm.by">info@arhiterm.by</a></td>
                         </tr>
                         <tr>
                             <td><b>сайт</b></td>
