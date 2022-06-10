@@ -84,6 +84,11 @@ export default {
       }
     ],
   ],
+  reactStrictMode: true,
+  images: {
+      domains: ["new.arhiterm.by"],
+      formats: ["image/webp"],
+  },
   // image: {
   //   domains: ['https://new.arhiterm.by', 'new.arhiterm.by']
   // },
