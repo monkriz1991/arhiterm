@@ -44,6 +44,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     //'@nuxtjs/eslint-module'
+    '@nuxt/image',
     '@nuxtjs/pwa',
     '@nuxtjs/fontawesome',
   ],
@@ -64,7 +65,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxt/image',
     '@nuxtjs/auth-next',
     '@nuxtjs/sitemap',
     ['nuxt-vuex-localstorage', {
