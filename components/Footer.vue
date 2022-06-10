@@ -44,15 +44,15 @@
                 </a>
             </div>
             <div class="footer-img">
-                 <nuxt-img loading="lazy"  src="/3_small.png" alt="Кэшбэк" title="Система оплаты Кэшбэк" />
-                 <nuxt-img loading="lazy"  src="/BGPB_Cashalot_card_small.png" alt="Cashalot" title="Система оплаты Cashalot" />
-                 <nuxt-img loading="lazy"  src="/Cherepaha.jpg" alt="Черепаха" title="Система оплаты Черепаха" />
-                 <nuxt-img loading="lazy"  src="/erip.png" alt="ЕРИП" title="Система оплаты ЕРИП" />
-                 <nuxt-img loading="lazy"  src="/FUN_40.jpg" alt="FUN" title="Система оплаты FUN" />
-                 <nuxt-img loading="lazy"  src="/halva_small.png" alt="Халва" title="Система оплаты Халва" />
-                 <nuxt-img loading="lazy"  src="/mps-_-bepaid_belkart.png" alt="bepaid" title="Система оплаты bepaid" />
-                 <nuxt-img loading="lazy"  src="/KP_small.png" alt="Карта покупок" title="Система оплаты Карта покупок" />
-                 <nuxt-img loading="lazy"  src="/mtbank-_86_.png" alt="МТБанк" title="Система оплаты МТБанк" />
+                 <nuxt-picture loading="lazy"  src="/3_small.png" alt="Кэшбэк" title="Система оплаты Кэшбэк" />
+                 <nuxt-picture loading="lazy"  src="/BGPB_Cashalot_card_small.png" alt="Cashalot" title="Система оплаты Cashalot" />
+                 <nuxt-picture loading="lazy"  src="/Cherepaha.jpg" alt="Черепаха" title="Система оплаты Черепаха" />
+                 <nuxt-picture loading="lazy"  src="/erip.png" alt="ЕРИП" title="Система оплаты ЕРИП" />
+                 <nuxt-picture loading="lazy"  src="/FUN_40.jpg" alt="FUN" title="Система оплаты FUN" />
+                 <nuxt-picture loading="lazy"  src="/halva_small.png" alt="Халва" title="Система оплаты Халва" />
+                 <nuxt-picture loading="lazy"  src="/mps-_-bepaid_belkart.png" alt="bepaid" title="Система оплаты bepaid" />
+                 <nuxt-picture loading="lazy"  src="/KP_small.png" alt="Карта покупок" title="Система оплаты Карта покупок" />
+                 <nuxt-picture loading="lazy"  src="/mtbank-_86_.png" alt="МТБанк" title="Система оплаты МТБанк" />
             </div>
         </div>
         
