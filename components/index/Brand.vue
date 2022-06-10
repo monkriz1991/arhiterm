@@ -14,7 +14,7 @@
                                 </strong>
                                 <!-- <span>{{item.name}}</span> -->
                             </div>
-                            <nuxt-img loading="lazy"
+                            <nuxt-picture loading="lazy"
                                 :src="item.img"
                                 :alt="item.name"
                             />

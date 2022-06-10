@@ -21,7 +21,7 @@
                         :class="{disabledLink:!price[idx]}"
                         :to="`/product/${product.id}`"
                         >
-                        <nuxt-img loading="lazy"
+                        <nuxt-picture loading="lazy"
                         :src="product.img"
                         fit="contain"
                         :title="product.name  + ` Купить`"
