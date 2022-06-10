@@ -24,9 +24,6 @@ import Breadcrumb from '~/components/Breadcrumb.vue'
 import {mapGetters,mapActions} from 'vuex'
 export default ({
   layout: 'error',
-      serverMiddleware:  [
-      '~/redirect-to-www.js'
-    ],
     head() {
       return {
         link: [
