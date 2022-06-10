@@ -21,22 +21,14 @@
                         :class="{disabledLink:!price[idx]}"
                         :to="`/product/${product.id}`"
                         >
-                        <el-image
+                        <nuxt-img loading="lazy"
                         :src="product.img"
                         fit="contain"
-                        :title="product.name"
-                        :alt="product.name + ` Купить`"
-                        v-if="idx<3"
-                        >
-                        </el-image>
-                        <el-image
-                        :src="product.img"
-                        fit="contain"
-                        :title="product.name"
-                        v-else
-                        lazy
-                        >
-                        </el-image>
+                        :title="product.name  + ` Купить`"
+                        :alt="product.name"
+                        />
+
+                        
                         </nuxt-link>
                         <div
                         v-show="price[idx]"

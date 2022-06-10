@@ -34,7 +34,7 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="`/catalog/${category.id}`">
-                  <el-image :src="category.img"></el-image>
+                  <nuxt-img loading="lazy" :src="category.img"/>
                   {{ category.name }}
                 </nuxt-link>
               </li>
@@ -48,7 +48,7 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="`/catalog/factory/${item.id}`">
-                <el-image :src="item.img"></el-image>
+                <nuxt-img loading="lazy" :src="item.img"/>
                   {{ item.name }}
                 </nuxt-link>
               </li>
@@ -87,8 +87,8 @@
         </div>
         <div class="logotip">
           <nuxt-link to="/">
-            <img v-if="width>991" src="~/static/logotip.png" alt="logotip">
-            <img v-else src="~/static/logotip_orange.png" alt="logotip">
+            <nuxt-img loading="lazy" v-if="width>991" src="/logotip.png" alt="logotip" title="Logotip arhiterm"/>
+            <nuxt-img loading="lazy" v-else src="/logotip_orange.png" alt="logotip" title="Logotip arhiterm"/>
           </nuxt-link>
         </div>
               <div
@@ -116,7 +116,7 @@
                 size="mini" @click="dialogCatalogVisible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="`/catalog/${category.id}`">
-                  <el-image :src="category.img"></el-image>
+                  <nuxt-img loading="lazy" :src="category.img"/>
                   <span>{{ category.name }}</span>
                 </nuxt-link>
               </li>
@@ -130,7 +130,7 @@
                 size="mini" @click="dialogCatalogVisible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="`/catalog/factory/${item.id}`">
-                  <el-image :src="item.img"></el-image>
+                  <nuxt-img loading="lazy" :src="item.img"/>
                   <span>{{ item.name }}</span>
                 </nuxt-link>
               </li>
@@ -304,7 +304,7 @@
                   <nuxt-link @click.native="handlerLoading" :to="'/product/'+item.id">
                   <div class="search-block">
                     <div class="search-block-img">
-                      <img :src="item.img" alt="" />
+                      <nuxt-img loading="lazy" :src="item.img" alt="" />
                     </div>
                     <div class="search-block-desc">
                       <span>
@@ -440,7 +440,7 @@
                       <nuxt-link @click.native="handlerLoadingMobail" :to="'/product/'+item.id">
                         <div class="search-block">
                         <div class="search-block-img">
-                          <img :src="item.img" alt="" />
+                          <nuxt-img loading="lazy" :src="item.img" alt="" />
                         </div>
                         <div class="search-block-desc">
                           <span>

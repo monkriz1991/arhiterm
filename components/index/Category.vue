@@ -9,7 +9,7 @@
             <nuxt-link @click.native="handlerLoading" :to="`/catalog/${item.id}`" class="nuxt-link-cat">
                 <div class="index-topcat-block">
                     <div class="category-in-cyrcle">
-                        <el-image :src="item.img" :alt="item.name" lazy></el-image>
+                        <nuxt-img loading="lazy" :src="item.img" :alt="item.name"/>
                     </div>
                     <strong>{{item.name}}
                     </strong>
