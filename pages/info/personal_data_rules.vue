@@ -23,7 +23,7 @@
             <p>1.1.1. определяет деятельность Общества с&nbsp;ограниченной ответственностью<span style="margin-right:0.44em;"> </span>Архитерм, место нахождения: Республика Беларусь, г.&nbsp;Минская обл., Минский р-н, Боровлянский с/с, дер. Копище, ул. Лопатина, 7а/1, оф. 904<span style="margin-right:0.3em;"> </span><span style="margin-left:-0.3em;">(</span>далее&nbsp;— Продавец или Оператор) в&nbsp;отношении обработки персональных данных, направлена на&nbsp;обеспечение защиты персональных данных, прав и&nbsp;свобод физических лиц при обработке их&nbsp;персональных данных;</p>
             <p>1.1.2. применяется к&nbsp;отношениям, связанным с&nbsp;обработкой ООО<span style="margin-right:0.44em;"> </span><span style="margin-left:-0.44em;">«</span>Архитерм» персональных данных:</p>
             <p></p>
-            —&nbsp;пользователей сайта <a href="http://www.arhiterm.by">www.arhiterm.by</a><span style="margin-right: 0.3em;"> </span><span style="margin-left: -0.3em;">(</span>далее&nbsp;— сайт),
+            —&nbsp;пользователей сайта <a href="https://www.arhiterm.by">www.arhiterm.by</a><span style="margin-right: 0.3em;"> </span><span style="margin-left: -0.3em;">(</span>далее&nbsp;— сайт),
         </div>
         <div>—&nbsp;пользователей мобильного приложения arhiterm. by,</div>
         <div>—&nbsp;клиентов при обращении в&nbsp;контакт-центр ООО<span style="margin-right: 0.44em;"> </span><span style="margin-left: -0.44em;">«</span>Архитерм»,</div>

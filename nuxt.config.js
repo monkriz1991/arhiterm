@@ -81,7 +81,7 @@ export default {
         triggerEvent:true,
         accurateTrackBounce:true,
       }
-    ]
+    ],
   ],
 
 
