@@ -44,15 +44,15 @@
                 </a>
             </div>
             <div class="footer-img">
-                 <img src="~/assets/img/3_small.png" alt="Кэшбэк" />
-                 <img src="~/assets/img/BGPB_Cashalot_card_small.png" alt="Cashalot" />
-                 <img src="~/assets/img/Cherepaha.jpg" alt="Черепаха" />
-                 <img src="~/assets/img/erip.png" alt="ЕРИП" />
-                 <img src="~/assets/img/FUN_40.jpg" alt="FUN" />
-                 <img src="~/assets/img/halva_small.png" alt="Халва" />
-                 <img src="~/assets/img/mps-_-bepaid_belkart.png" alt="bepaid" />
-                 <img src="~/assets/img/KP_small.png" alt="Карта покупок" />
-                 <img src="~/assets/img/mtbank-_86_.png" alt="МТБанк" />
+                 <nuxt-img loading="lazy"  src="/3_small.png" alt="Кэшбэк" title="Система оплаты Кэшбэк" />
+                 <nuxt-img loading="lazy"  src="/BGPB_Cashalot_card_small.png" alt="Cashalot" title="Система оплаты Cashalot" />
+                 <nuxt-img loading="lazy"  src="/Cherepaha.jpg" alt="Черепаха" title="Система оплаты Черепаха" />
+                 <nuxt-img loading="lazy"  src="/erip.png" alt="ЕРИП" title="Система оплаты ЕРИП" />
+                 <nuxt-img loading="lazy"  src="/FUN_40.jpg" alt="FUN" title="Система оплаты FUN" />
+                 <nuxt-img loading="lazy"  src="/halva_small.png" alt="Халва" title="Система оплаты Халва" />
+                 <nuxt-img loading="lazy"  src="/mps-_-bepaid_belkart.png" alt="bepaid" title="Система оплаты bepaid" />
+                 <nuxt-img loading="lazy"  src="/KP_small.png" alt="Карта покупок" title="Система оплаты Карта покупок" />
+                 <nuxt-img loading="lazy"  src="/mtbank-_86_.png" alt="МТБанк" title="Система оплаты МТБанк" />
             </div>
         </div>
         

@@ -8,11 +8,11 @@
                 >
                     <nuxt-link :to="`/product/${item.id}`" class="nuxt-link-cat">
                         <div class="index-top-block">
-                            <el-image
+                            <nuxt-img loading="lazy"
                                 :src="item.img"
                                 :alt="item.name"
                                 
-                            ></el-image>
+                            />
                             
                             <div class="index-top-block-desc">
                                 <strong>

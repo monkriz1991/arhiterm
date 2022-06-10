@@ -24,7 +24,7 @@
             </nuxt-link>
             </div>
           </div>
-          <img class="slider-image" 
+          <nuxt-img loading="lazy" class="slider-image" 
             v-if="item.img!='https://new.arhiterm.by/media/img/noimg.png'"
             :src="item.img"
             :alt="item.title" 

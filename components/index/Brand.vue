@@ -14,10 +14,10 @@
                                 </strong>
                                 <!-- <span>{{item.name}}</span> -->
                             </div>
-                            <img
+                            <nuxt-img loading="lazy"
                                 :src="item.img"
                                 :alt="item.name"
-                            >
+                            />
                         </div>
                     </nuxt-link>
                 </slide>
