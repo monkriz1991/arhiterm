@@ -46,6 +46,19 @@ export default {
   mounted(){
 
   },
+    head() {
+      return {
+        title: 'О компании Архитерм',
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content:  'Компания Архитерм уже более 12 лет поставляет системы отопления, водоснабжения и канализации европейских производителей.'
+          }
+        ]
+      }
+    }
 }
 </script>
 <style>

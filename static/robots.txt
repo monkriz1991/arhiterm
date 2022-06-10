@@ -1,6 +1,10 @@
 User-Agent: *
+Disallow: /rassrochka
 Disallow: /cabinet
 Disallow: /cabinet?*
 Disallow: /cabinet/*
+Disallow: /userCabinet
+Disallow: /userCabinet?*
+Disallow: /userCabinet/*
 Sitemap: https://arhiterm.by/sitemap.xml
 Host: arhiterm.by

@@ -38,16 +38,21 @@
                 <!-- Копирование и последующее использование в коммерческих целях текстовой и графической информации, представленной на сайте arhiterm.by, запрещено. -->
              <nuxt-link class="personal-data-link-footer" :to="`/info/personal_data_rules`">Политика обработки персональных данных</nuxt-link>
             </div>
+            <div class="social-footer">
+                <a href="https://www.instagram.com/arhiterm.by/" target="_blank">
+                    <i class="el-icon-camera-solid"></i>
+                </a>
+            </div>
             <div class="footer-img">
-                 <img src="~/assets/img/3_small.png"/>
-                 <img src="~/assets/img/BGPB_Cashalot_card_small.png"/>
-                 <img src="~/assets/img/Cherepaha.jpg"/>
-                 <img src="~/assets/img/erip.png"/>
-                 <img src="~/assets/img/FUN_40.jpg"/>
-                 <img src="~/assets/img/halva_small.png"/>
-                 <img src="~/assets/img/mps-_-bepaid_belkart.png"/>
-                 <img src="~/assets/img/KP_small.png"/>
-                 <img src="~/assets/img/mtbank-_86_.png"/>
+                 <img src="~/assets/img/3_small.png" alt="Кэшбэк" />
+                 <img src="~/assets/img/BGPB_Cashalot_card_small.png" alt="Cashalot" />
+                 <img src="~/assets/img/Cherepaha.jpg" alt="Черепаха" />
+                 <img src="~/assets/img/erip.png" alt="ЕРИП" />
+                 <img src="~/assets/img/FUN_40.jpg" alt="FUN" />
+                 <img src="~/assets/img/halva_small.png" alt="Халва" />
+                 <img src="~/assets/img/mps-_-bepaid_belkart.png" alt="bepaid" />
+                 <img src="~/assets/img/KP_small.png" alt="Карта покупок" />
+                 <img src="~/assets/img/mtbank-_86_.png" alt="МТБанк" />
             </div>
         </div>
         

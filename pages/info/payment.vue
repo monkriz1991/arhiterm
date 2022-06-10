@@ -345,6 +345,19 @@ export default {
   mounted(){
 
   },
+head() {
+    return {
+      title: 'Оплата продукции для клиентов компании Архитерм',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content:  'Мы работаем как с физическими, так и с юридическими лицами. Предлагаемые товары можно приобрести за наличный и безналичный расчет.'
+        }
+      ]
+    }
+  }
 }
 </script>
 <style>
