@@ -26,11 +26,6 @@
             Условия оплаты / заказа / возврата
           </nuxt-link>
       </el-menu-item>
-      <el-menu-item hidden index="6"  @click="closeMeny">
-           <nuxt-link :to="`/info/rassrochka`">
-            Рассрочка
-          </nuxt-link>
-      </el-menu-item>
       <!-- <el-menu-item index="7"  @click="closeMeny">
            <nuxt-link :to="`/info/certificates`">
             Сертификаты
