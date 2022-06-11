@@ -15,7 +15,7 @@
                                 <!-- <span>{{item.name}}</span> -->
                             </div>
                             <nuxt-picture loading="lazy"
-                                :src="item.img"
+                                :src="item.img.substring(24)"
                                 :alt="item.name"
                             />
                         </div>

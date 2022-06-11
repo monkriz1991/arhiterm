@@ -34,7 +34,7 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="`/catalog/${category.id}`">
-                  <nuxt-picture loading="lazy" :src="category.img"/>
+                  <nuxt-picture loading="lazy" :src="category.img.substring(24)"/>
                   {{ category.name }}
                 </nuxt-link>
               </li>
@@ -48,7 +48,7 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="`/catalog/factory/${item.id}`">
-                <nuxt-picture loading="lazy" :src="item.img"/>
+                <nuxt-picture loading="lazy" :src="item.img.substring(24)"/>
                   {{ item.name }}
                 </nuxt-link>
               </li>
@@ -116,7 +116,7 @@
                 size="mini" @click="dialogCatalogVisible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="`/catalog/${category.id}`">
-                  <nuxt-picture loading="lazy" :src="category.img"/>
+                  <nuxt-picture loading="lazy" :src="category.img.substring(24)"/>
                   <span>{{ category.name }}</span>
                 </nuxt-link>
               </li>
@@ -130,7 +130,7 @@
                 size="mini" @click="dialogCatalogVisible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="`/catalog/factory/${item.id}`">
-                  <nuxt-picture loading="lazy" :src="item.img"/>
+                  <nuxt-picture loading="lazy" :src="item.img.substring(24)"/>
                   <span>{{ item.name }}</span>
                 </nuxt-link>
               </li>
@@ -304,7 +304,7 @@
                   <nuxt-link @click.native="handlerLoading" :to="'/product/'+item.id">
                   <div class="search-block">
                     <div class="search-block-img">
-                      <nuxt-picture loading="lazy" :src="item.img" alt="" />
+                      <nuxt-picture loading="lazy" :src="item.img.substring(24)" alt="" />
                     </div>
                     <div class="search-block-desc">
                       <span>
@@ -440,7 +440,7 @@
                       <nuxt-link @click.native="handlerLoadingMobail" :to="'/product/'+item.id">
                         <div class="search-block">
                         <div class="search-block-img">
-                          <nuxt-picture loading="lazy" :src="item.img" alt="" />
+                          <nuxt-picture loading="lazy" :src="item.img.substring(24)" alt="" />
                         </div>
                         <div class="search-block-desc">
                           <span>

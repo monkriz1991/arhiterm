@@ -9,7 +9,7 @@
                     <nuxt-link :to="`/product/${item.id}`" class="nuxt-link-cat">
                         <div class="index-top-block">
                             <nuxt-picture loading="lazy"
-                                :src="item.img"
+                                :src="item.img.substring(24)"
                                 :alt="item.name"
                                 
                             />

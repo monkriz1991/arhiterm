@@ -25,8 +25,8 @@
             </div>
           </div>
           <nuxt-picture loading="lazy" class="slider-image" 
-            v-if="item.img!='https://new.arhiterm.by/media/img/noimg.png'"
-            :src="item.img"
+            v-if="item.img.substring(24)!='https://new.arhiterm.by/media/img/noimg.png'"
+            :src="item.img.substring(24)"
             :alt="item.title" 
           />
         </div>
