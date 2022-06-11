@@ -41,6 +41,7 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  target: 'static',
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     //'@nuxtjs/eslint-module'
@@ -89,7 +90,6 @@ export default {
   // },
   image: {
     provider: 'twicpics',
-    domains: ['https://arhiterm.by', 'arhiterm.by'],
     twicpics: {
       baseURL: 'https://new.arhiterm.by'
     }
