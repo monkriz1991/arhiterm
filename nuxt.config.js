@@ -83,6 +83,10 @@ export default {
         accurateTrackBounce:true,
       }
     ],
+    ['@nuxtjs/component-cache', {
+      max: 10000,
+      maxAge: 1000 * 60 * 60
+    }]
   ],
   image: {
     provider: 'twicpics',
@@ -139,7 +143,7 @@ export default {
     redirect: {
       login: '/',
       home: '/cabinet',
-      callback: false,
+      callback: '/',
       logout: '/'
     }
   },
