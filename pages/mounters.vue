@@ -92,7 +92,27 @@ export default {
             hid: 'description',
             name: 'description',
             content:  'Исполнители сантех. работ рядом с вами.'
-            }
+            },
+                      {
+                hid: 'og:title',
+                name: 'og:title',
+                content: 'Монтажники Беларуси - Архитерм',
+            },
+            {
+                hid: 'og:image',
+                property: 'og:image',
+                content: `~/static/logotip.png`,
+            },
+            {
+                hid: 'og:description',
+                property: 'og:description',
+                content: 'Исполнители сантех. работ рядом с вами.',
+            },
+            {
+                hid: 'og:url',
+                property: 'og:url',
+                content: `https://arhiterm.by/mounters/`,
+            },
         ]
         }
     }

@@ -68,7 +68,27 @@ export default {
             hid: 'description',
             name: 'description',
             content:  this.mounter.description
-            }
+            },
+            {
+                hid: 'og:title',
+                name: 'og:title',
+                content: this.mounter.whoiam.first_name+' '+this.mounter.whoiam.last_name,
+            },
+            {
+                hid: 'og:image',
+                property: 'og:image',
+                content: `${this.mounter.whoiam.img}`,
+            },
+            {
+                hid: 'og:description',
+                property: 'og:description',
+                content: this.mounter.description,
+            },
+            {
+                hid: 'og:url',
+                property: 'og:url',
+                content: `https://arhiterm.by/mounter/${this.mounter.id}`,
+            },
         ]
         }
     }
