@@ -35,10 +35,13 @@ export const actions = {
         }
         let uri = "";
         for(let i in args){
-          uri+=`&${i}=${args[i]}`
+            if(i == 'card_filter'|| i == 'manuf'){
+                uri+=`&${i}=${args[i]}`
+            } 
         }
-        let offset = (args['page']-1)*state.productLimit;
 
+        let offset = (args['page']-1)*state.productLimit;
+        
         let product = await this.$axios.$get(`/catalog/product/?ordering=position&cat=${id}&limit=${state.productLimit}&offset=${offset}${uri}`);
         commit('setProductList', product.results)
         commit('setCountProduct', product.count) // получаем общее количество товаров в категории

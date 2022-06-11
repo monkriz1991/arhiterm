@@ -27,6 +27,7 @@ import ChangePassword from '~/components/cabinet/ChangePassword.vue'
 import DescriptionUser from '~/components/cabinet/DescriptionUser.vue'
 import { mapGetters,mapActions,mapState } from 'vuex'
 export default ({
+    middleware:['auth-cabinet'],
     created() {
     },
     data(){

@@ -83,5 +83,18 @@ export default {
             }
         },
     },
+    head() {
+        return {
+        title: 'Монтажники Беларуси - Архитерм',
+        meta: [
+            // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+            {
+            hid: 'description',
+            name: 'description',
+            content:  'Исполнители сантех. работ рядом с вами.'
+            }
+        ]
+        }
+    }
 }
 </script>

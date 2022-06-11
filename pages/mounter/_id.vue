@@ -7,7 +7,7 @@
         </h1>
         <div class="mounter-tags">
             <i class="el-icon-setting"></i>
-          <strong v-for="(tag,k) in mounter.tag_s" :key="k"><nuxt-link :to="`/mounters?page=1&tags=[${tag.id}]`">{{tag.name}}</nuxt-link></strong>
+          <strong v-for="(tag,k) in mounter.tag_s" :key="k">{{tag.name}}</strong>
         </div>
         <div class="mounter-img">
             <el-image
@@ -59,5 +59,18 @@ export default {
 
       }
     },
+    head() {
+        return {
+        title: this.mounter.whoiam.first_name+' '+this.mounter.whoiam.last_name,
+        meta: [
+            // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+            {
+            hid: 'description',
+            name: 'description',
+            content:  this.mounter.description
+            }
+        ]
+        }
+    }
 }
 </script>
