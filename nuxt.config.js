@@ -44,7 +44,10 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     //'@nuxtjs/eslint-module'
-    '@nuxt/image',
+    ['@nuxt/image', {
+      provider: 'static',
+      dir: "assets/images",
+    }],
     '@nuxtjs/pwa',
     '@nuxtjs/fontawesome',
   ],
@@ -84,14 +87,6 @@ export default {
       }
     ],
   ],
-  image: {
-    domains: [
-      'new.arhiterm.by'
-    ],
-    alias: {
-      unsplash: 'https://new.arhiterm.by'
-    }
-  },
   // image: {
   //   domains: ['https://new.arhiterm.by', 'new.arhiterm.by']
   // },
