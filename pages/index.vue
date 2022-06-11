@@ -6,7 +6,6 @@
       <Top />
       <Category />
       <Brand />
-      <ContentPrev :indexItem="indexItem" />
   </div>
 </template>
 
@@ -15,7 +14,6 @@ import Slider from '~/components/index/Slider.vue'
 import Category from '~/components/index/Category.vue'
 import Brand from '~/components/index/Brand.vue'
 import Top from '~/components/index/Top.vue'
-import ContentPrev from '~/components/index/ContentPrev.vue'
 import {mapActions,mapGetters} from 'vuex'
 export default {
   data() {
@@ -33,7 +31,6 @@ export default {
     Slider,
     Category,
     Brand,
-    ContentPrev,
     Top,
   },
   methods:{

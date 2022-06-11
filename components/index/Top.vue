@@ -11,7 +11,6 @@
                             <nuxt-picture loading="lazy"
                                 :src="item.img.substring(24)"
                                 :alt="item.name"
-                                format="webp"
                             />
                             
                             <div class="index-top-block-desc">
