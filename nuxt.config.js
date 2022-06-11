@@ -44,10 +44,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     //'@nuxtjs/eslint-module'
-    ['@nuxt/image', {
-      provider: 'static',
-      dir: "assets/images",
-    }],
+    '@nuxt/image',
     '@nuxtjs/pwa',
     '@nuxtjs/fontawesome',
   ],
@@ -90,7 +87,9 @@ export default {
   // image: {
   //   domains: ['https://new.arhiterm.by', 'new.arhiterm.by']
   // },
-
+  image: {
+    domains: ['arhiterm.by']
+  },
   // elementUI: {
   //     font: 'Montserrat',
   //     icons: 'fa',
