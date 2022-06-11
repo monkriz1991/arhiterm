@@ -13,7 +13,27 @@ export default {
       { charset: 'utf-8' },
       { name: 'google', content: 'notranslate' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1 shrink-to-fit=no' },
-      { hid: 'description', name: 'description', content: 'Первый поставщик профессиональных решений для систем отопления, водоснабжения и канализации ведущих европейских производителей. Оптовая и розничная продажа, наличие наскладе, низкие цены, скидки, гарантии.' }
+      { hid: 'description', name: 'description', content: 'Первый поставщик профессиональных решений для систем отопления, водоснабжения и канализации ведущих европейских производителей. Оптовая и розничная продажа, наличие наскладе, низкие цены, скидки, гарантии.' },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'Архитерм - системы отопления, водоснабжения и канализации',
+    },
+    {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://arhiterm.by/logotip.png',
+    },
+    {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'Первый поставщик профессиональных решений для систем отопления, водоснабжения и канализации ведущих европейских производителей. Оптовая и розничная продажа, наличие наскладе, низкие цены, скидки, гарантии.',
+    },
+    {
+        hid: 'og:url',
+        property: 'og:url',
+        content: `https://arhiterm.by`,
+    },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -62,11 +82,13 @@ export default {
     }
   },
   // Modules: https://go.nuxtjs.dev/config-modules
+
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     '@nuxtjs/sitemap',
+    'nuxt-ssr-cache',
     ['nuxt-vuex-localstorage', {
       localStorage: ['main'] //  If not entered, “localStorage” is the default value
     }],
@@ -86,8 +108,26 @@ export default {
     ['@nuxtjs/component-cache', {
       max: 10000,
       maxAge: 1000 * 60 * 60
-    }]
+    }],
   ],
+  cache: {
+    useHostPrefix: false,
+    pages: [
+      '/',
+      // to cache only root route, use a regular expression
+      /^\/$/
+    ],
+    
+    key(route, context) {
+    },
+    store: {
+      type: 'memory',
+      max: 100,
+      ttl: 60,
+    },
+  },
+
+
   image: {
     provider: 'twicpics',
     twicpics: {
@@ -102,7 +142,12 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     proxy: false,
-    baseURL: "https://new.arhiterm.by"
+    baseURL: "https://new.arhiterm.by",
+    timeout: 1000 * 5,
+    headers: {
+      "Content-Type": "application/json"
+    },
+    
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

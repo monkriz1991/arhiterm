@@ -149,7 +149,27 @@ export default ({
             hid: 'description',
             name: 'description',
             content:  this.productItem.description.replace(/(&lt;|<([^>]+)>)/ig,"")
-          }
+          },
+          {
+              hid: 'og:title',
+              name: 'og:title',
+              content: this.productItem.name,
+          },
+          {
+              hid: 'og:image',
+              property: 'og:image',
+              content: `${this.productItem.img}`,
+          },
+          {
+              hid: 'og:description',
+              property: 'og:description',
+              content: this.productItem.description.replace(/(&lt;|<([^>]+)>)/ig,""),
+          },
+          {
+              hid: 'og:url',
+              property: 'og:url',
+              content: `https://arhiterm.by/product/${this.productItem.id}`,
+          }, 
         ]
       }
     }

@@ -161,7 +161,27 @@ export default {
             hid: 'description',
             name: 'description',
             content:  this.categoriesNested.description.replace(/(&lt;|<([^>]+)>)/ig,"")
-          }
+          },
+          {
+              hid: 'og:title',
+              name: 'og:title',
+              content: this.categoriesNested.name,
+          },
+          {
+              hid: 'og:image',
+              property: 'og:image',
+              content: `${this.categoriesNested.img}`,
+          },
+          {
+              hid: 'og:description',
+              property: 'og:description',
+              content: this.categoriesNested.description.replace(/(&lt;|<([^>]+)>)/ig,""),
+          },
+          {
+              hid: 'og:url',
+              property: 'og:url',
+              content: `https://arhiterm.by/catalog/${this.categoriesNested.id}`,
+          },          
         ]
       }
     }
