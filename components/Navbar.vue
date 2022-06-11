@@ -87,8 +87,8 @@
         </div>
         <div class="logotip">
           <nuxt-link to="/">
-            <nuxt-img provider="static" loading="lazy" v-if="width>991" src="/logotip.png" alt="logotip" title="Logotip arhiterm"/>
-            <nuxt-img provider="static" loading="lazy" v-else src="/logotip_orange.png" alt="logotip" title="Logotip arhiterm"/>
+            <nuxt-img provider="static" v-if="width>991" src="/logotip.png" alt="logotip" title="Logotip arhiterm"/>
+            <nuxt-img provider="static" v-else src="/logotip_orange.png" alt="logotip" title="Logotip arhiterm"/>
           </nuxt-link>
         </div>
               <div

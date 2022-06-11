@@ -85,14 +85,10 @@ export default {
     ],
   ],
   image: {
-    provider: 'static',
-    static: {
-      baseURL: "https://arhiterm.by",
-    },
     provider: 'twicpics',
     twicpics: {
       baseURL: 'https://new.arhiterm.by'
-    }
+    },
   },
   // elementUI: {
   //     font: 'Montserrat',
