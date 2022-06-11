@@ -14,6 +14,7 @@ import Form from '~/components/cabinet/mounter/Form.vue'
 import AddGalery from '~/components/cabinet/mounter/AddGalery.vue'
 import Project from '~/components/cabinet/mounter/Project.vue'
 export default {
+     middleware: ['auth'],
     components:{
         NavbarCabinet,
         Form,

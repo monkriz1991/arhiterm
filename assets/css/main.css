@@ -2515,6 +2515,8 @@ body .el-dialog__body{
     opacity: 0.9 !important;
     font-size: 22px !important;
     max-width: 410px;
+    font-weight: 600;
+    text-shadow: 0px -2px 23px #33333338;
 }
 .slider-content p{
     color: #fff;

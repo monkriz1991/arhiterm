@@ -20,6 +20,7 @@ import NavbarCabinet from '~/components/cabinet/NavbarCabinet.vue'
 import Basket from '~/components/cabinet/Basket.vue'
 import Paginated from '~/components/cabinet/Paginated.vue'
 export default {
+   middleware: ['auth'],
     data() {
       return{
 
