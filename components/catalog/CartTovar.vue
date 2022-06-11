@@ -22,7 +22,7 @@
                         :to="`/product/${product.id}`"
                         >
                         <nuxt-picture loading="lazy"
-                        :src="product.img"
+                        :src="product.img.substring(24)"
                         fit="contain"
                         :title="product.name  + ` Купить`"
                         :alt="product.name"
