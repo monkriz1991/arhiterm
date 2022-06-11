@@ -3318,15 +3318,18 @@ body .navbar-user .navbar-user-item{
 }
 .title {
     display: block;
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
     float: left;
     margin: 20px 0 10px;
     width: 100%;
+    text-align: center;
 }
 .title h1{
-    font-weight: 900;
-    font-size: 23px;
-    color: #35495e;
+    font-weight: 700;
+    font-size: 11px;
+    /* color: #35495e; */
+    line-height: 1.9;
+    text-transform: uppercase;
 }
 .title-h2{
     max-width: 430px;

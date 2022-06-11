@@ -1,11 +1,13 @@
 <template>
   <div class="container">
       <Slider />
-    <!-- <div class="title" v-html="indexItem.h1"></div>
-    <div class="title-h2" v-html="indexItem.h5"></div> -->
+    <!-- <div class="title-h2" v-html="indexItem.h5"></div> -->
       <Top />
       <Category />
       <Brand />
+        <div class="title">
+          <h1>Архитерм<br> системы отопления, водоснабжения и канализации</h1>
+      </div>
   </div>
 </template>
 
