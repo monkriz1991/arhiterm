@@ -84,10 +84,13 @@ export default {
       }
     ],
   ],
-  reactStrictMode: true,
-  images: {
-      domains: ["new.arhiterm.by"],
-      formats: ["image/webp"],
+  image: {
+    domains: [
+      'new.arhiterm.by'
+    ],
+    alias: {
+      unsplash: 'https://new.arhiterm.by'
+    }
   },
   // image: {
   //   domains: ['https://new.arhiterm.by', 'new.arhiterm.by']
