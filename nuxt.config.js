@@ -85,6 +85,7 @@ export default {
     ],
   ],
   image: {
+    domains: ['arhiterm.by'],
     provider: 'twicpics',
     twicpics: {
       baseURL: 'https://new.arhiterm.by'

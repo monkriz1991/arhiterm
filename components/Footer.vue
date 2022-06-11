@@ -44,15 +44,15 @@
                 </a>
             </div>
             <div class="footer-img">
-                 <nuxt-picture loading="lazy" provider="static" src="/3_small.png" alt="Кэшбэк" title="Система оплаты Кэшбэк" />
-                 <nuxt-picture loading="lazy" provider="static" src="/BGPB_Cashalot_card_small.png" alt="Cashalot" title="Система оплаты Cashalot" />
-                 <nuxt-picture loading="lazy" provider="static" src="/Cherepaha.jpg" alt="Черепаха" title="Система оплаты Черепаха" />
-                 <nuxt-picture loading="lazy" provider="static" src="/erip.png" alt="ЕРИП" title="Система оплаты ЕРИП" />
-                 <nuxt-picture loading="lazy" provider="static" src="/FUN_40.jpg" alt="FUN" title="Система оплаты FUN" />
-                 <nuxt-picture loading="lazy" provider="static" src="/halva_small.png" alt="Халва" title="Система оплаты Халва" />
-                 <nuxt-picture loading="lazy" provider="static" src="/mps-_-bepaid_belkart.png" alt="bepaid" title="Система оплаты bepaid" />
-                 <nuxt-picture loading="lazy" provider="static" src="/KP_small.png" alt="Карта покупок" title="Система оплаты Карта покупок" />
-                 <nuxt-picture loading="lazy" provider="static" src="/mtbank-_86_.png" alt="МТБанк" title="Система оплаты МТБанк" />
+                 <nuxt-picture loading="lazy" provider="static"  src="https://arhiterm.by/3_small.png" alt="Кэшбэк" title="Система оплаты Кэшбэк" />
+                 <nuxt-picture loading="lazy" provider="static"  src="https://arhiterm.by/BGPB_Cashalot_card_small.png" alt="Cashalot" title="Система оплаты Cashalot" />
+                 <nuxt-picture loading="lazy" provider="static"  src="/Cherepaha.jpg" alt="Черепаха" title="Система оплаты Черепаха" />
+                 <nuxt-picture   src="~/static/erip.png" alt="ЕРИП" title="Система оплаты ЕРИП" />
+                 <nuxt-picture loading="lazy" provider="static"  src="~/static/FUN_40.jpg" alt="FUN" title="Система оплаты FUN" />
+                 <nuxt-picture loading="lazy" provider="static"  src="https://arhiterm.by/halva_small.png" alt="Халва" title="Система оплаты Халва" />
+                 <nuxt-picture loading="lazy"  src="~/static/mps-_-bepaid_belkart.png" alt="bepaid" title="Система оплаты bepaid" />
+                 <nuxt-picture loading="lazy" provider="static"  src="~/static/KP_small.png" alt="Карта покупок" title="Система оплаты Карта покупок" />
+                 <nuxt-picture loading="lazy"   src="https://arhiterm.by/mtbank-_86_.png" alt="МТБанк" title="Система оплаты МТБанк" />
             </div>
         </div>
         
