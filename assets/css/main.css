@@ -1160,6 +1160,13 @@ header .contents {
     color: #454545;
     text-transform: uppercase;
 }
+.index-topcat h2,.index-brand h2,.index-top h2{
+    margin: 20px 0 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #454545;
+    text-transform: uppercase;
+}
 .index-desc{
     float: left;
     width: 100%;
@@ -4473,7 +4480,7 @@ font-size: 13px;
         height: 280px !important;
     }
     .title h1{
-        font-size: 18px;
+        /* font-size: 18px; */
     }
     .title-h2{
         margin: 0px 0 20px !important;

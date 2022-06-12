@@ -27,6 +27,7 @@
     "nuxt-cache-module": "^2.0.0",
     "nuxt-ssr-cache": "^1.5.2",
     "nuxt-vuex-localstorage": "^1.3.0",
+    "nuxt-webfontloader": "^1.1.0",
     "vee-validate": "^3.4.8",
     "vue-quick-menu": "^1.0.7",
     "vue-the-mask": "^0.11.1",

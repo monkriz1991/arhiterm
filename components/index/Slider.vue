@@ -28,6 +28,7 @@
             v-if="item.img.substring(24)!='https://new.arhiterm.by/media/img/noimg.png'"
             :src="item.img.substring(24)"
             :alt="item.title" 
+            format="webp"
           />
         </div>
 

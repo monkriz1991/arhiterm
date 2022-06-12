@@ -1,6 +1,6 @@
 <template>
     <div class="index-topcat">
-    <h4>Каталог</h4>
+    <h2>Каталог</h2>
         <el-row :gutter="20">
         <el-col
         v-for="item in category.results" :key="item.id"

@@ -135,7 +135,27 @@ export default {
           hid: 'description',
           name: 'description',
           content:  'Контактные данные нашей компании, телефоны, email, а так же график работы и адреса офиса и склада.'
-        }
+        },
+        {
+            hid: 'og:title',
+            name: 'og:title',
+            content: 'Контакты компании Архитерм',
+        },
+        {
+            hid: 'og:image',
+            property: 'og:image',
+            content: 'https://arhiterm.by/logotip.png',
+        },
+        {
+            hid: 'og:description',
+            property: 'og:description',
+            content: 'Контактные данные нашей компании, телефоны, email, а так же график работы и адреса офиса и склада.',
+        },
+        {
+            hid: 'og:url',
+            property: 'og:url',
+            content: `https://arhiterm.by/contacts`,
+        },
       ]
     }
   }

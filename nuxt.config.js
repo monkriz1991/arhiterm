@@ -37,8 +37,18 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap' },
     ]
+  },
+
+  webfontloader: {
+    custom: {
+      families: [
+        'Montserrat',
+      ],
+      urls: [
+        'https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap',
+      ]
+    }
   },
 
   loading: {color:'blue'},
@@ -89,6 +99,7 @@ export default {
     '@nuxtjs/auth-next',
     '@nuxtjs/sitemap',
     'nuxt-ssr-cache',
+    'nuxt-webfontloader',
     ['nuxt-vuex-localstorage', {
       localStorage: ['main'] //  If not entered, “localStorage” is the default value
     }],
@@ -105,28 +116,8 @@ export default {
         accurateTrackBounce:true,
       }
     ],
-    ['@nuxtjs/component-cache', {
-      max: 10000,
-      maxAge: 1000 * 60 * 60
-    }],
+    ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
   ],
-  cache: {
-    useHostPrefix: false,
-    pages: [
-      '/',
-      '/media/',
-      // to cache only root route, use a regular expression
-      /^\/$/
-    ],
-    
-    key(route, context) {
-    },
-    store: {
-      type: 'memory',
-      max: 100,
-      ttl: 60,
-    },
-  },
 
 
   image: {
