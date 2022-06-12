@@ -154,7 +154,7 @@ export default {
         {
             hid: 'og:url',
             property: 'og:url',
-            content: `https://arhiterm.by/contacts`,
+            content: `https://arhiterm.by/info/contacts`,
         },
       ]
     }
