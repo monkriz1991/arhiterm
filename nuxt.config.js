@@ -114,6 +114,7 @@ export default {
     useHostPrefix: false,
     pages: [
       '/',
+      '/media/',
       // to cache only root route, use a regular expression
       /^\/$/
     ],

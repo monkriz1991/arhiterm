@@ -49,13 +49,13 @@
             prop="type"
             >
                 <el-select :disabled="!disableForm" v-model="form.type_of_user" placeholder="Укажите тип">
-                <el-option label="Физ. лицо" value="1"></el-option>
-                <el-option label="Юр. лицо" value="2"></el-option>
+                <el-option label="Физ. лицо" value="2"></el-option>
+                <el-option label="Юр. лицо" value="1"></el-option>
                 
                 </el-select>
             </el-form-item>
             <el-form-item
-            v-show="form.type_of_user=='2'||form.type_of_user=='Юр. лицо'"
+            v-show="form.type_of_user=='1'||form.type_of_user=='Юр. лицо'"
             prop="company_name"
             label="Название компании:"
             :rules="[
@@ -65,7 +65,17 @@
                 <el-input :disabled="!disableForm"  placeholder="Введите название компании" v-model="form.company_name" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item
-            v-show="form.type_of_user=='2'||form.type_of_user=='Юр. лицо'"
+            v-show="form.type_of_user=='1'||form.type_of_user=='Юр. лицо'"
+            prop="unp"
+            label="УНП:"
+            :rules="[
+            { message: 'Пожалуйста название УНП вашей компании', trigger: 'blur' }
+            ]"
+            >
+                <el-input :disabled="!disableForm"  placeholder="Введите УНП компании" v-model="form.unp" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item
+            v-show="form.type_of_user=='1'||form.type_of_user=='Юр. лицо'"
             prop="legal_address"
             label="Юр. адрес:"
             :rules="[
@@ -108,25 +118,35 @@ export default {
               last_name:this.checkUser('last_name'),
               username:this.checkUser('username'),
               email:this.checkUser('username'),
-              phone_number:this.checkUser('phone_number'),
+              phone_number:this.checkPhone('phone_number'),
               company_name:this.checkUser('company_name'),
               legal_address:this.checkUser('legal_address'),
+              unp:this.checkUser('unp'),
               type_of_user:this.checkUser('type_of_user'),
           },
           rules:{
 
-          }
+          },
+          
       }
     },
     methods:{
+      checkPhone(p){
+          if(this.$auth.user.phone_number==''){
+            this.notyfyData()
+          }
+          return this.$auth.user!==null&&this.$auth.user[p]!=this.$auth.user.type_of_user?this.$auth.user[p]:''
+      },
       checkUser(p){
-          if(this.$auth.user[p] == this.$auth.user.type_of_user && this.$auth.user.type_of_user==1){
+          if(this.$auth.user[p] == this.$auth.user.type_of_user && this.$auth.user.type_of_user==2){
             return 'Физ. лицо'
-          }else if(this.$auth.user[p] == this.$auth.user.type_of_user && this.$auth.user.type_of_user==2){
+          }else if(this.$auth.user[p] == this.$auth.user.type_of_user && this.$auth.user.type_of_user==1){
             return 'Юр. лицо'
           }
-         
+           
         return this.$auth.user!==null&&this.$auth.user[p]!=this.$auth.user.type_of_user?this.$auth.user[p]:''
+      
+      
       },
         editForm(){
             this.disableForm = !this.disableForm
@@ -137,17 +157,23 @@ export default {
        */
       async saveForm() {
           try{
-            let data = await this.$axios.patch(`/users/mydata/${this.$auth.user!==null?this.$auth.user.id:''}/`, this.form)
-          this.$message({
-            message: 'сохранено',
-            showClose: true,
-            duration:1000,
-            type: 'success'
-           
-        });
+            if(this.form.type_of_user == 'Физ. лицо'){
+              this.form.type_of_user = 2
+            }else if(this.form.type_of_user == 'Юр. лицо'){
+              this.form.type_of_user = 1
+            }
+          let data = await this.$axios.patch(`/users/mydata/${this.$auth.user!==null?this.$auth.user.id:''}/`, this.form)
+
+          if(this.form.type_of_user == 2){
+            this.form.type_of_user = 'Физ. лицо'
+          }else if(this.form.type_of_user == 1){
+            this.form.type_of_user = 'Юр. лицо'
+          }
+          this.openSuccess();
         await this.$auth.fetchUser()
           }catch(error){
-              this.parseError(error)
+            console.log(error)
+              this.openNotyEmail()
           }
            this.disableForm=false
       },
@@ -162,7 +188,27 @@ export default {
             duration:4000,
             type: 'error'
         });
-      }
+      },
+      openSuccess() {
+        this.$notify.success({
+          title: 'Успешно',
+          message: 'Информация обновлена!',
+          offset: 100
+        });
+      },
+      openNotyEmail(){
+         this.$notify.error({
+          title: 'Ошибка',
+          message: 'Похоже, что такое email уже зарегистрирован на сайте!'
+        });       
+      },
+      notyfyData() {
+        this.$notify({
+          title: 'Не указан контактный телефон.',
+          message: 'Для совершения покупок на сайте необходимо заполнить данный формы!',
+          type: 'warning'
+        });
+      },
     }
 }
 </script>

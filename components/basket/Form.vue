@@ -4,8 +4,8 @@
         <el-collapse-item :disabled="typeUser != ''"  title="Тип плательщика" name="1">
             <el-form-item prop="typ">
                 <el-radio-group v-model="Form.typ">
-                <el-radio :label="1">{{'Физ. лицо'}}</el-radio>
-                <el-radio :label="2">{{'Юр. лицо'}}</el-radio>
+                <el-radio :label="2">{{'Физ. лицо'}}</el-radio>
+                <el-radio :label="1">{{'Юр. лицо'}}</el-radio>
                 </el-radio-group>
                 <div
                 class="but-next-form"
@@ -30,12 +30,12 @@
         <el-collapse-item :disabled="Form.del == ''" title="Оплата" name="3">
             <el-form-item prop="pay" class="radio-pay">
                 <el-radio-group v-model="Form.pay">
-                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Безналичный расчёт"></el-radio>
-                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Наличный расчет"></el-radio>
-                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Банковской картой онлайн"></el-radio>
-                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Банковской картой через терминал"></el-radio>
-                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Через систему «Расчет» (ЕРИП)"></el-radio>
-                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Картами рассрочки без переплат сроком на 2 месяца"></el-radio>
+                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Безналичный расчёт"></el-radio>
+                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Наличный расчет"></el-radio>
+                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Банковской картой онлайн"></el-radio>
+                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Банковской картой через терминал"></el-radio>
+                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Через систему «Расчет» (ЕРИП)"></el-radio>
+                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Картами рассрочки без переплат сроком на 2 месяца"></el-radio>
                 </el-radio-group>
                 <div
                 class="but-next-form"
@@ -46,7 +46,7 @@
         </el-collapse-item>
         <el-collapse-item :disabled="Form.pay == ''" title="Данные покупателя" name="4" class="collapse-data form-basket-input ">
         <el-form-item
-        v-if="typeUser=='2'||Form.typ=='2'"
+        v-if="typeUser=='1'||Form.typ=='1'"
         prop="nameCompany"
         label="Название компании"
         :rules="[
@@ -84,7 +84,7 @@
         <el-input prefix-icon="el-icon-phone-outline" :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш Телефон" v-model="Form.phone_number" autocomplete="off"></el-input>
         </el-form-item>
 
-        <el-form-item v-if="typeUser=='2'||Form.typ=='2'" label="Юр. Адрес">
+        <el-form-item v-if="typeUser=='1'||Form.typ=='1'" label="Юр. Адрес">
             <el-input :disabled="$auth.loggedIn!=''"
             type="textarea" v-model="Form.yrAdres"></el-input>
         </el-form-item>

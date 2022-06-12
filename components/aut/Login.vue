@@ -69,13 +69,19 @@ import {mapGetters,mapActions} from 'vuex'
                   this.errors.push(`${s}`);
               }
           }
-          this.errorMessage(this.errors)
-          
+         // this.errorMessage(this.errors)
+          this.openNoty()
         }
       },
-      errorMessage(err) {
-        this.$message.error(err[0]);
+      openNoty() {
+        this.$notify.error({
+          title: 'Ошибка авторизации',
+          message: 'Проверьте указанны ли все данные верно!'
+        });
       },
+      // errorMessage(err) {
+      //   this.$message.error(err[0]);
+      // },
       handleClick(tab, event) {
         //console.log(tab, event);
       },

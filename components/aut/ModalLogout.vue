@@ -24,7 +24,7 @@
                 <Login/>
             </el-tab-pane>
             <el-tab-pane label="Регистрация" name="second">
-              <Registration/>
+              <Registration  :dialogFormVisible.sync="dialogFormVisible"  />
             </el-tab-pane>
             <el-tab-pane label="Восстановить пароль" name="secondFry">Восстановить пароль</el-tab-pane>
         </el-tabs>

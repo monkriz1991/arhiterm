@@ -19,8 +19,8 @@
         >
         <el-input prefix-icon="el-icon-message" placeholder="Введите Ваш email" v-model="form.username" autocomplete="off"></el-input>
         </el-form-item>
-          <el-form-item  label="Аккаунт" prop="type">
-            <el-select prefix-icon="el-icon-user" v-model="form.type" placeholder="Укажите тип аккаунта">
+          <el-form-item label="Аккаунт" prop="type">
+            <el-select class="select-reg" prefix-icon="el-icon-user" v-model="form.type" placeholder="Укажите тип аккаунта">
               <el-option label="Физ. лицо" value="2"></el-option>
               <el-option label="Юр. лицо" value="1"></el-option>
             </el-select>
@@ -49,7 +49,9 @@
 
 
 <script>
+import {mapActions, mapGetters} from "vuex";
   export default {
+    props:['dialogFormVisible'],
     data() {
       var validatePass = (rule, value, callback) => {
         if (value === '') {
@@ -96,29 +98,36 @@
       };
     },
     methods: {
+      ...mapActions({
+        setLoading: 'main/newLoadingItem',
+      }),
       userReg() {
         this.$refs.form.validate((valid) => {
           if (valid) {
             this.registerUser()
-            alert('submit!');
+            //alert('submit!');
           } else {
-            console.log('error submit!!');
+            this.openNoty()
+            //console.log('error submit!!');
             return false;
           }
         });
       },
       async registerUser(){
-
+        
          let registrationinfo = {
           username: this.form.username,
           password: this.form.password,
           password2:this.form.checkPass,
           type_of_user:parseInt(this.form.type),
          }
-            console.log(registrationinfo);
+
             await this.$axios.post('registration/backend/registration/',registrationinfo).then(response => {
-                console.log(response)
+
+
               if(response.status===201){
+              this.$emit('update:dialogFormVisible',false)
+              this.setLoading(true)
               this.$auth.loginWith('local', { data: {username:registrationinfo.username, password:registrationinfo.password} }).then(function(){
                 this.addUserList(this.$auth.user)
               })
@@ -134,8 +143,22 @@
                         this.errors.push(`${i}: ${s}`);
                     }
                 }
+                
+                this.openNotyEmail()
             });
 
+      },
+      openNoty() {
+        this.$notify.error({
+          title: 'Ошибка регистрации',
+          message: 'Проверьте указанны ли все данные верно!'
+        });
+      },
+      openNotyEmail(){
+         this.$notify.error({
+          title: 'Ошибка регистрации',
+          message: 'Похоже, что такое email уже зарегистрирован на сайте!'
+        });       
       }
 
     }
