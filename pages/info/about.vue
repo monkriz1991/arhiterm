@@ -74,7 +74,7 @@ export default {
           {
               hid: 'og:url',
               property: 'og:url',
-              content: `https://arhiterm.by/about`,
+              content: `https://arhiterm.by/info/about`,
           },
         ]
       }

@@ -373,7 +373,7 @@ head() {
         {
             hid: 'og:url',
             property: 'og:url',
-            content: `https://arhiterm.by/payment`,
+            content: `https://arhiterm.by/info/payment`,
         },
       ]
     }

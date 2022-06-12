@@ -321,7 +321,7 @@ head() {
         {
             hid: 'og:url',
             property: 'og:url',
-            content: `https://arhiterm.by/personal_data_rules`,
+            content: `https://arhiterm.by/info/personal_data_rules`,
         },
       ]
     }

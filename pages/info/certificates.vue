@@ -60,7 +60,7 @@ export default {
         {
             hid: 'og:url',
             property: 'og:url',
-            content: `https://arhiterm.by/certificates`,
+            content: `https://arhiterm.by/info/certificates`,
         },
       ]
     }
