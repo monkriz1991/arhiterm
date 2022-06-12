@@ -354,7 +354,27 @@ head() {
           hid: 'description',
           name: 'description',
           content:  'Мы работаем как с физическими, так и с юридическими лицами. Предлагаемые товары можно приобрести за наличный и безналичный расчет.'
-        }
+        },
+        {
+            hid: 'og:title',
+            name: 'og:title',
+            content: 'Оплата продукции для клиентов компании Архитерм',
+        },
+        {
+            hid: 'og:image',
+            property: 'og:image',
+            content: 'https://arhiterm.by/logotip.png',
+        },
+        {
+            hid: 'og:description',
+            property: 'og:description',
+            content: 'Мы работаем как с физическими, так и с юридическими лицами. Предлагаемые товары можно приобрести за наличный и безналичный расчет.',
+        },
+        {
+            hid: 'og:url',
+            property: 'og:url',
+            content: `https://arhiterm.by/payment`,
+        },
       ]
     }
   }

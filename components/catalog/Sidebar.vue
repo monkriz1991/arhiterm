@@ -141,7 +141,7 @@ export default {
         setTimeout(this.sendUpdate(),100); 
         setTimeout(() => {
           this.isDisabled = false
-        }, 1500);
+        }, 700);
 
       },
       sendUpdate(){
