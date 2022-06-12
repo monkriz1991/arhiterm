@@ -111,7 +111,7 @@ export default {
             {
                 hid: 'og:url',
                 property: 'og:url',
-                content: `https://arhiterm.by/mounters/`,
+                content: `https://arhiterm.by/mounters`,
             },
         ]
         }

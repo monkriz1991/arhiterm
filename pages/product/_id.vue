@@ -9,7 +9,7 @@
         <Galery/>
         <div class="cost-product-section">
             <div class="cost-product-price">
-                <strong class="">Стоимость ( за - 1 {{result.units}} )</strong>
+                <strong class="">Стоимость - 1 {{result.units}}</strong>
                 <b>:</b>
                 <span :class="{ butDiscount: discont}">{{price}}</span>
                 <strong>руб.</strong>

@@ -87,23 +87,26 @@ export default {
       async changePassword() {
           try{
             let data = await this.$axios.patch(`/change_password/backend/change_password/${this.$auth.user.id}/`, this.form)
-          this.$message({
-            message: 'сохранено',
-            showClose: true,
-            duration:1000,
-            type: 'success'
-        });
+          this.openSuccess();
         await this.$auth.fetchUser()
           }catch(error){
               console.log(error)
               this.parseError(error)
-            this.$message({
-            message: 'Страрый пароль не подходит',
-            showClose: true,
-            duration:1000,
-            type: 'warning'
-        });
+            this.openNotyEmail();
           }
+      },
+    openSuccess() {
+        this.$notify.success({
+          title: 'Успешно',
+          message: 'Информация обновлена!',
+          offset: 100
+        });
+      },
+      openNotyEmail(){
+         this.$notify.error({
+          title: 'Ошибка',
+          message: 'Страрый пароль не подходит!'
+        });       
       },
       /**
        * обработка ошибок отправки запросов
