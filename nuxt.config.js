@@ -100,6 +100,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/gtm',
     '@nuxtjs/auth-next',
     '@nuxtjs/sitemap',
     'nuxt-ssr-cache',
@@ -123,7 +124,10 @@ export default {
     ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
   ],
 
-
+  gtm: {
+    id: 'GTM-K5DFSM3'
+  },
+  
   image: {
     provider: 'twicpics',
     twicpics: {
