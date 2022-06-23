@@ -12,6 +12,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'google', content: 'notranslate' },
+      { name: 'google-site-verification', content: 'pffvbs0GyslCUgg16m88GzyCeE8tIXtFV8_yrWKWKhQ' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1 shrink-to-fit=no' },
       { hid: 'description', name: 'description', content: 'Первый поставщик профессиональных решений для систем отопления, водоснабжения и канализации ведущих европейских производителей. Оптовая и розничная продажа, наличие наскладе, низкие цены, скидки, гарантии.' },
       {
@@ -77,8 +78,11 @@ export default {
     '@nuxt/image',
     '@nuxtjs/pwa',
     '@nuxtjs/fontawesome',
+    '@nuxtjs/google-analytics',
   ],
-
+  googleAnalytics: {
+    id: 'UA-19108162-1', // Use as fallback if no runtime config is provided
+  },
   fontawesome:{
     //component:'fa',
     icons:{
@@ -101,7 +105,7 @@ export default {
     'nuxt-ssr-cache',
     'nuxt-webfontloader',
     ['nuxt-vuex-localstorage', {
-      localStorage: ['main'] //  If not entered, “localStorage” is the default value
+      localStorage: ['main','product','category','tovar'] //  If not entered, “localStorage” is the default value
     }],
     [
       '@nuxtjs/yandex-metrika',
