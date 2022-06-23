@@ -16,16 +16,9 @@
                 </div>
             </nuxt-link>
         </el-col>
-        <div class="index-topcat-all">
-            <nuxt-link to="/">
-                Все категории
-            </nuxt-link>
-        </div>
         </el-row>
     </div>
 </template>
-
-
 
 <script>
 import { mapGetters,mapActions } from 'vuex'
@@ -52,6 +45,5 @@ export default ({
             this.setLoading(true)
         },
     },
-
 })
 </script>

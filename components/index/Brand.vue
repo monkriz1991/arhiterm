@@ -24,15 +24,9 @@
                 <hooper-navigation slot="hooper-addons"></hooper-navigation>
                 <hooper-pagination slot="hooper-addons"></hooper-pagination>
             </hooper>
-            <div hidden class="index-brand-all">
-                <nuxt-link to="/">
-                    Все производители
-                </nuxt-link>
-            </div>
         </el-row>
     </div>
 </template>
-
 
 <script>
 import { mapGetters,mapActions } from 'vuex'
