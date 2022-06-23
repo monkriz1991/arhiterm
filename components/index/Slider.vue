@@ -10,11 +10,8 @@
     <no-ssr>
       <el-carousel-item  
         v-for="(item,idx) in slides" :key="idx"
-        
       >
-      
         <div class="slider-block" >
-          
           <div class="slider-content" :style="{background:item.color}">
             <div  v-loading="loading" :class="[item.video!=null?'preload-video':'']">
             <video class="video-slider" v-if="item.video!=null"  preload="auto" muted="" autoplay="" loop="" webkit-playsinline="" playsinline="" :src="item.video"></video>
@@ -31,7 +28,6 @@
             format="webp"
           />
         </div>
-
       </el-carousel-item>
       </no-ssr>
     </el-carousel>
