@@ -1,11 +1,9 @@
 <template>
     <div
     class="container">
-    <!-- <fa :icon="['fas', 'band-aid']"/> -->
         <Breadcrumb/>
         <div v-if="adaptivSidebar">
           <Sidebar
-         
           :categoriesNested.sync="categoriesNested"
           :categoryManuf.sync="categoryManuf"
           :adaptivSidebar.sync="adaptivSidebar"
@@ -18,7 +16,6 @@
         :direction="direction"
         :with-header="true">
           <Sidebar
-         
           :categoriesNested.sync="categoriesNested"
           :categoryManuf.sync="categoryManuf"
           :adaptivSidebar.sync="adaptivSidebar"

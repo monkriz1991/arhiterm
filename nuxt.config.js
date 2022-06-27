@@ -105,9 +105,9 @@ export default {
     '@nuxtjs/sitemap',
     'nuxt-ssr-cache',
     'nuxt-webfontloader',
-    ['nuxt-vuex-localstorage', {
-      localStorage: ['main','product','category','tovar'] //  If not entered, “localStorage” is the default value
-    }],
+    // ['nuxt-vuex-localstorage', {
+    //   localStorage: ['main','product','category','tovar'] 
+    // }],
     [
       '@nuxtjs/yandex-metrika',
       {
@@ -121,7 +121,7 @@ export default {
         accurateTrackBounce:true,
       }
     ],
-    ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
+    // ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
   ],
 
   gtm: {
