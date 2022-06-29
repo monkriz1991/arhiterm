@@ -2146,7 +2146,7 @@ font-weight: 500;
     font-weight: 500;
     border-radius: 7px;
     text-align: center;
-    width: 50px;
+    max-width: 78px;
 }
 .el-input-number span{
     position: absolute;
