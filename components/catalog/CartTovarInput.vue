@@ -118,7 +118,7 @@ import {mapGetters,mapActions} from 'vuex'
     },
     computed:{
       ...mapGetters({
-        basket:'main/basket'
+        basket:'crate/basket'
       })
     },
     watch:{

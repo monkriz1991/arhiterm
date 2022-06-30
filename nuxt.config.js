@@ -68,6 +68,7 @@ export default {
     '@/plugins/element-ui',
     '~/plugins/url-change.js',
     { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
+    // { src: '~/plugins/vuex-persist.js', mode: 'client' },
     { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
   ],
 
@@ -111,6 +112,9 @@ export default {
     // ['nuxt-vuex-localstorage', {
     //   localStorage: ['main','product','category','tovar'] 
     // }],
+    ['nuxt-vuex-localstorage', {
+      localStorage: ['crate'] 
+    }],
     [
       '@nuxtjs/yandex-metrika',
       {

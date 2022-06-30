@@ -8,7 +8,6 @@ export const state = ()=>({
     countAllBaskets:0,
     indexItem:[],
     userItem:[],
-    basket_cost:{},
     activeButCatMenyItem:false,
     top:[],
     loadingItem:true,
@@ -19,9 +18,6 @@ export const mutations = {
     setSlider(state,sliderItems){
         state.sliderItems = sliderItems
     },
-    SET_CART(state,product){
-        state.basket.push(product)
-    },
     setIndex(state,indexItem){
         state.indexItem = indexItem
     },
@@ -30,30 +26,6 @@ export const mutations = {
     },
     setTop(state,top){
         state.top = top
-    },
-    REMOVE_FROM_CART(state,idx){
-        state.basket.splice(idx,1)
-    },
-    REMOVE_FROM_CART_ALL(state,idx){
-        state.basket = []
-    },
-    REMOVE_FROM_COST_ALL(state,idx){
-        state.basket_cost = {}
-    },
-    UPDATE_FROM_CART(state,data){
-        state.basket.map(function(item){
-            if(item.id==data.id){
-                if(item.product[0].id==data.id_cart){
-                    item.product[0].cost = data.cost
-                    item.product[0].count_el = data.count_el
-                }
-            }
-        }) 
-    },
-    BASKET_COST(state,data){
-        state.basket_cost = data
-       // console.log(state.basket_cost)
-
     },
     setUser(state,userItem){
         state.userItem = userItem
@@ -114,21 +86,6 @@ export const actions = {
         commit('setCountBasket',results.count)
         return results
     },
-    DELL_CART_BASKET({commit},idx){
-        commit('REMOVE_FROM_CART',idx)
-    },
-    DELL_CART_BASKET_ALL({commit}){
-        commit('REMOVE_FROM_CART_ALL')
-    },
-    DELL_CART_BASKET_COST({commit}){
-        commit('REMOVE_FROM_COST_ALL')
-    },
-    UPDATE_CART_BASKET({commit},data){
-        commit('UPDATE_FROM_CART',data)
-    },
-    BASKET_FROM_COST({commit},data){
-        commit('BASKET_COST',data)
-    },
     addUserList({ commit},results) {
         commit('setUser', results)
         return results
@@ -145,8 +102,6 @@ export const actions = {
 
 export const getters = {
     sliderItems: state => state.sliderItems,
-    basket: state => state.basket,
-    basket_cost: state => state.basket_cost,
     indexItem: state => state.indexItem,
     userItem: state => state.userItem,
     allBaskets: state => state.allBaskets,

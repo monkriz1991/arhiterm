@@ -221,8 +221,8 @@ export default ({
     },
     computed:{
       ...mapGetters({
-        basket:'main/basket',
-        basket_cost:'main/basket_cost',
+        basket:'crate/basket',
+        basket_cost:'crate/basket_cost',
       }),
       typeUser:function (){
             this.$forceUpdate();
@@ -233,8 +233,8 @@ export default ({
     methods:{
       ...mapActions({
         addUserList: 'main/addUserList',
-        remove_basket:'main/DELL_CART_BASKET_ALL',
-        remove_cost: 'main/DELL_CART_BASKET_COST',
+        remove_basket:'crate/DELL_CART_BASKET_ALL',
+        remove_cost: 'crate/DELL_CART_BASKET_COST',
         setLoading: 'main/newLoadingItem',
     }),
     disabledForm(item){
