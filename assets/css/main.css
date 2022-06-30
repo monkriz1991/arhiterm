@@ -4170,6 +4170,9 @@ font-size: 13px;
     border: 1px solid #e2e2e2 !important;
     width: 100%;
 }
+.dilivery-cart .el-drawer__body{
+    overflow: auto;
+}
 @media (max-width: 1100px){
     .body-payment-cart .body-about h1, .body-payment h1{
         font-size: 15px;
