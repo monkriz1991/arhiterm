@@ -44,7 +44,8 @@
             :dialogForm.sync="dialogFormVisible" 
             @updateDialogForm="updateDialogForm" 
             :key="componentKey"
-            v-show="!dialogForm"/>
+            v-show="!dialogForm"
+            />
       </vue-bottom-sheet>
     </div>
 </template>
@@ -85,9 +86,8 @@ import {mapGetters,mapActions} from 'vuex'
     },
     computed:{
       ...mapGetters({
-        basket:'main/basket',
-        basketItog:'main/basket_cost',
-        activeButCatMenyItem:'main/activeButCatMenyItem',
+        basket:'crate/basket',
+        basketItog:'crate/basket_cost',
       }),
     },
     mounted(){
@@ -108,10 +108,10 @@ import {mapGetters,mapActions} from 'vuex'
         this.$emit('openBasketNotify',true);
       },
       ...mapActions({
-        DELL_CART_BASKET:'main/DELL_CART_BASKET',
-        UPDATE_CART_BASKET:'main/UPDATE_CART_BASKET',
-        BASKET_COST:'main/BASKET_FROM_COST',
-        ButCatMeny: 'main/newSateButCatMeny',
+        DELL_CART_BASKET:'crate/DELL_CART_BASKET',
+        UPDATE_CART_BASKET:'crate/UPDATE_CART_BASKET',
+        BASKET_COST:'crate/BASKET_FROM_COST',
+        ButCatMeny: 'crate/newSateButCatMeny',
       }),
       cartDell(data){
         this.DELL_CART_BASKET(data)

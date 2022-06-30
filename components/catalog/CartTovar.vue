@@ -219,7 +219,7 @@ export default {
             }, 500);
         },
         ...mapActions({
-           ADD_TO_CART: 'main/ADD_TO_CART',
+           ADD_TO_CART: 'crate/ADD_TO_CART',
            ButCatMeny: 'main/newSateButCatMeny',
         }),
         toggleActive(idx) {

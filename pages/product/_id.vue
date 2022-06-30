@@ -38,6 +38,46 @@
             @NewChar = "funNewChar"
             @toggleModal = "toggleModal"
             />
+            <div class="dilivery-cart-block">
+                <el-row :gutter="20">
+                    <el-col :sm="12" :md="12"  :xl="6" :lg="6" :xs="12">
+                        <div class="dilivery-cart">
+                            <el-drawer
+                            class="darwer-meny"
+                            :visible.sync="drawer"
+                            :with-header="true">
+                            <Dostavka
+                            :visible.sync ="drawer" />
+                            </el-drawer>
+                            <el-button
+                            @click="drawer = true"
+                            class="drawer-button-meny"
+                            icon="el-icon-more"
+                            size="small"
+                            >Доставка
+                            </el-button>
+                        </div>
+                    </el-col>
+                    <el-col :sm="12" :md="12"  :xl="6" :lg="6" :xs="12">
+                        <div class="dilivery-cart">
+                            <el-drawer
+                            class="darwer-meny"
+                            :visible.sync="drawerPay"
+                            :with-header="true">
+                            <Payment
+                            :visible.sync ="drawer" />
+                            </el-drawer>
+                            <el-button
+                            @click="drawerPay = true"
+                            class="drawer-button-meny"
+                            icon="el-icon-more"
+                            size="small"
+                            >Оплата
+                            </el-button>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
         </div>
         <div class="tabs-product">
             <Tabs
@@ -60,6 +100,8 @@ import Galery from '~/components/product/Galery.vue'
 import Tabs from '~/components/product/Tabs.vue'
 import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
 import BasketModal from '~/components/BasketModal.vue'
+import Dostavka from '~/components/product/Dostavka.vue'
+import Payment from '~/components/product/Payment.vue'
 import { mapGetters,mapActions } from 'vuex'
 export default ({
     created() {
@@ -82,6 +124,8 @@ export default ({
         return{
             funChar:[],
             dialogFormVisibleModal:false,
+            drawer: false,
+            drawerPay: false,
         }
     },
     components:{
@@ -89,7 +133,9 @@ export default ({
         Tabs,
         CartTovarInput,
         Breadcrumb,
-        BasketModal
+        BasketModal,
+        Dostavka,
+        Payment,
     },
     computed:{
         ...mapGetters({
@@ -99,7 +145,7 @@ export default ({
     },
     methods:{
         ...mapActions({
-           ADD_TO_CART: 'main/ADD_TO_CART'
+           ADD_TO_CART: 'crate/ADD_TO_CART'
         }),
         addToCart(data){
             let cart = JSON.parse(JSON.stringify(this.productItem));

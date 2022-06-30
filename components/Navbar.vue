@@ -203,11 +203,11 @@
               <Menyuser/>
             </div>
             <div v-else>
-            <no-ssr>
+            <client-only>
               <ModalLogout />
-            </no-ssr>
+            </client-only>
             </div>
-            <no-ssr> 
+            <client-only> 
              <BasketModal
               @clickModal = "toggleModal"
               @openBasketNotify = "closeBasket"
@@ -220,7 +220,7 @@
                   <span v-if="width>991" class="button-nav-text">Корзина</span>
               </el-button>
               </div>
-            </no-ssr>
+            </client-only>
 
 
 
@@ -326,7 +326,7 @@
     </div>
     <div v-if="width>991" class="header-bg"></div>
     <div v-if="width>991"  :class="[visible==true?'header-bg-popover':'']" ></div>
-      <no-ssr>
+      <client-only>
         <vue-bottom-sheet
         max-width="400px"
         max-height="90%"
@@ -347,9 +347,7 @@
                 <Menyuser/>
               </div>
               <div v-else>
-              <no-ssr>
                 <ModalLogout />
-              </no-ssr>
               </div>
               
               
@@ -460,7 +458,7 @@
             </div>
           </div>
         </div>
-        </no-ssr>
+        </client-only>
         <el-dialog
           title=""
           class="modal-contact"
