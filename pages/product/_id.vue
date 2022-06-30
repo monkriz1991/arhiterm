@@ -40,7 +40,7 @@
             />
             <div class="dilivery-cart-block">
                 <el-row :gutter="20">
-                    <el-col :sm="12" :md="12"  :xl="6" :lg="6" :xs="12">
+                    <el-col :sm="12" :md="12"  :xl="12" :lg="12" :xs="12">
                         <div class="dilivery-cart">
                             <el-drawer
                             class="darwer-meny"
@@ -52,13 +52,12 @@
                             <el-button
                             @click="drawer = true"
                             class="drawer-button-meny"
-                            icon="el-icon-more"
                             size="small"
                             >Доставка
                             </el-button>
                         </div>
                     </el-col>
-                    <el-col :sm="12" :md="12"  :xl="6" :lg="6" :xs="12">
+                    <el-col :sm="12" :md="12"  :xl="12" :lg="12" :xs="12">
                         <div class="dilivery-cart">
                             <el-drawer
                             class="darwer-meny"
@@ -70,7 +69,6 @@
                             <el-button
                             @click="drawerPay = true"
                             class="drawer-button-meny"
-                            icon="el-icon-more"
                             size="small"
                             >Оплата
                             </el-button>
