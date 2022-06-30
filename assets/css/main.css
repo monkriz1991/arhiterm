@@ -4147,7 +4147,34 @@ font-size: 13px;
     font-weight: 700;
     margin: 0 0 -10px;
 }
+.dilivery-cart-block{
+    float: left;
+    width: 100%;
+}
+.dilivery-cart{
+    float: left;
+    width: 100%;
+    position: relative;
+
+}
+.dilivery-cart>button{
+    font-size: 12px !important;
+    position: relative;
+    color: #000 !important;
+    margin: 20px 0 0 !important;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid #e2e2e2 !important;
+    width: 100%;
+}
 @media (max-width: 1100px){
+    .body-payment-cart .body-about h1, .body-payment h1{
+        font-size: 15px;
+        margin: 0 0 10px;
+    }
     .back-wrapper{
         width: 29px;
         margin: 0px 10px 10px 0 !important;
