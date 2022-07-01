@@ -4145,15 +4145,63 @@ font-size: 13px;
     width: 100%;
     font-size: 16px;
     font-weight: 700;
-    margin: 0 0 -10px;
+    margin: 0 0 0px;
 }
+.body-payment-cart .el-collapse {
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+    border-top: 0px solid #ff8d00;
+    border-bottom: 0px solid #ff8d00;
+}
+.body-payment-cart .payment-content {
+    line-height: 1.4;
+    float: left;
+    width: 100%;
+    margin: 10px 0 10px;
+    font-size: 14px;
+}
+.body-payment-cart .question-text .el-collapse-item__header {
+    height: auto;
+    padding: 15px 10px 15px 10px;
+    color: #151515;
+    font-weight: 500;
+    text-transform: none;
+    font-size: 14px;
+    border-bottom: 0px solid #ff8d00;
+    line-height: 1.2;
+    border-radius: 8px;
+    background: #efefef;
+    margin: 0 0 5px;
+}
+.body-payment-cart .el-collapse-item__content{
+    padding-top: 20px;
+}
+.body-payment-cart .contact-block-inf {
+    margin: 0 0px 0 0px;
+}
+.body-payment-cart .section-map {
+    float: left;
+    width: 100%;
+    margin: 10px 0 40px;
+}
+.body-payment-cart .contact-block-phone>a {
+    margin: 0 0 5px;
+    font-weight: 500;
+    color: #fe870c;
+    float: left;
+    width: 100%;
+    font-size: 15px;
+}
+
+
 .dilivery-cart-block{
     float: left;
     width: 100%;
 }
 .dilivery-cart{
     float: left;
-    width: 100%;
+    width: 33.3333333%;
     position: relative;
 
 }
@@ -4161,14 +4209,24 @@ font-size: 13px;
     font-size: 12px !important;
     position: relative;
     color: #000 !important;
-    margin: 20px 0 0 !important;
+    margin: 40px 0 0 !important;
     height: 38px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 6px;
-    border: 1px solid #e2e2e2 !important;
+    border-radius: 0px;
+    border-right: 1px solid #e2e2e2 !important;
     width: 100%;
+    font-weight: 500;
+    padding: 0 5px 0 0 !important;
+}
+.dilivery-cart>button.drawer-button-meny i {
+    transform: rotate(0deg);
+    font-size: 15px;
+    margin: 0 5px 0 0;
+}
+.dilivery-cart-block .dilivery-cart:last-child>button{
+    border-right: 0px solid #e2e2e2 !important;
 }
 .dilivery-cart .el-drawer__body{
     overflow: auto;
@@ -4177,6 +4235,36 @@ font-size: 13px;
     .body-payment-cart .body-about h1, .body-payment h1{
         font-size: 15px;
         margin: 0 0 10px;
+    }
+    .dilivery-cart .darwer-meny .el-drawer {
+        width: 85% !important;
+    }
+    .tabs-product {
+        float: left;
+        width: 100%;
+        margin: 30px 0 20px;
+    }
+    .body-payment-cart .el-drawer__header {
+        align-items: center;
+        color: #72767b;
+        display: flex;
+        margin-bottom: 32px;
+        padding: 10px 0px 0;
+        margin: 0 0 0 0 !important;
+    }
+    .body-payment-cart .payment-content {
+        margin: 0px 0 10px;
+    }
+    .body-payment-cart .el-collapse-item__content {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .body-payment-cart .contact-block-title {
+        font-size: 17px;
+        margin: 0 0 10px;
+    }
+    .body-payment-cart .el-drawer__header {
+        padding: 10px 5px 0;
     }
     .back-wrapper{
         width: 29px;
