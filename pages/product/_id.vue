@@ -39,8 +39,7 @@
             @toggleModal = "toggleModal"
             />
             <div class="dilivery-cart-block">
-                <el-row :gutter="20">
-                    <el-col :sm="12" :md="12"  :xl="12" :lg="12" :xs="12">
+                 <no-ssr>
                         <div class="dilivery-cart">
                             <el-drawer
                             class="darwer-meny"
@@ -53,11 +52,11 @@
                             @click="drawer = true"
                             class="drawer-button-meny"
                             size="small"
+                            icon="el-icon-takeaway-box"
                             >Доставка
                             </el-button>
                         </div>
-                    </el-col>
-                    <el-col :sm="12" :md="12"  :xl="12" :lg="12" :xs="12">
+
                         <div class="dilivery-cart">
                             <el-drawer
                             class="darwer-meny"
@@ -70,11 +69,27 @@
                             @click="drawerPay = true"
                             class="drawer-button-meny"
                             size="small"
+                            icon="el-icon-wallet"
                             >Оплата
                             </el-button>
                         </div>
-                    </el-col>
-                </el-row>
+                        <div class="dilivery-cart">
+                            <el-drawer
+                            class="darwer-meny"
+                            :visible.sync="drawerkont"
+                            :with-header="true">
+                            <Drawerkont
+                            :visible.sync ="drawer" />
+                            </el-drawer>
+                            <el-button
+                            @click="drawerkont = true"
+                            class="drawer-button-meny"
+                            size="small"
+                            icon="el-icon-phone-outline"
+                            >Контакты
+                            </el-button>
+                        </div>
+                     </no-ssr>
             </div>
         </div>
         <div class="tabs-product">
@@ -100,6 +115,7 @@ import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
 import BasketModal from '~/components/BasketModal.vue'
 import Dostavka from '~/components/product/Dostavka.vue'
 import Payment from '~/components/product/Payment.vue'
+import Drawerkont from '~/components/product/Drawerkont.vue'
 import { mapGetters,mapActions } from 'vuex'
 export default ({
     created() {
@@ -124,6 +140,7 @@ export default ({
             dialogFormVisibleModal:false,
             drawer: false,
             drawerPay: false,
+            drawerkont: false,
         }
     },
     components:{
@@ -134,6 +151,8 @@ export default ({
         BasketModal,
         Dostavka,
         Payment,
+        Drawerkont,
+        
     },
     computed:{
         ...mapGetters({
