@@ -1,21 +1,31 @@
 <template>
   <div class="index-slider" >
     <el-carousel 
-      :autoplay="false"
+      :autoplay="true"
       height="350px"
       trigger="click"
+      arrow="always"
+      :interval="43000"
     >
     <no-ssr>
       <el-carousel-item  
         v-for="(item,idx) in slides" :key="idx"
         
       >
+      
         <div class="slider-block" >
-          <div class="slider-content" >
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
+          
+          <div class="slider-content" :style="{background:item.color}">
+            <div  v-loading="loading" :class="[item.video!=null?'preload-video':'']">
+            <video class="video-slider" v-if="item.video!=null"  preload="auto" muted="" autoplay="" loop="" webkit-playsinline="" playsinline="" :src="item.video"></video>
+            <nuxt-link :to="item.link">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+            </nuxt-link>
+            </div>
           </div>
           <img class="slider-image" 
+            v-if="item.img!='https://new.arhiterm.by/media/img/noimg.png'"
             :src="item.img"
             :alt="item.title" 
           />
@@ -34,6 +44,7 @@ export default ({
   },
     data() {
         return {
+          loading: false
         }
     },
     computed:{

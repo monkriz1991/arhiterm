@@ -19,7 +19,7 @@
         >
         <el-input placeholder="Введите Ваш email" v-model="form.username" autocomplete="off"></el-input>
         </el-form-item>
-          <el-form-item label="Аккаунт" prop="type">
+          <el-form-item label="Аккаунт" prop="type" class="form-type-acc">
             <el-select v-model="form.type" placeholder="Укажите тип">
               <el-option label="Физ. лицо" value="2"></el-option>
               <el-option label="Юр. лицо" value="1"></el-option>
@@ -37,12 +37,13 @@
         >
           <el-input placeholder="Повторите пароль" v-model="form.checkPass" show-password autocomplete="off"></el-input>
         </el-form-item>
-          <el-form-item label="Пользовательское соглашение" prop="deal">
+          <el-form-item label="Выбрав пункт Принимаю, я соглашаюсь с" prop="deal">
+            <nuxt-link class="personal-data-link" :to="`/info/personal_data_rules`">Политикой обработки персональных данных</nuxt-link>
             <el-checkbox-group v-model="form.deal">
               <el-checkbox label="Принимаю" name="deal"></el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-        <el-button @click="userReg" type="primary">Регистрация</el-button>
+        <el-button @click="userReg" type="primary" class="butt-form">Регистрация</el-button>
     </el-form>
 </template>
 

@@ -18,6 +18,16 @@
                 type="primary"
                 @click="dialogForm = false">Оформить заказ</el-button>
             </span>
+                <!-- <span style="
+    border-radius: 5px;
+    float: left;
+    padding: 10px;
+    margin: 0 0px 20px;
+    font-weight: 600;
+    font-size: 15px;
+    width: 100%;
+">Уважаемые клиенты, в данный момент заказы не обрабатываются, технические работы<br> будут завершены в ближайшее время. 
+                Приносим извенения за доставленные неудобства.</span> -->
             <div v-show="!dialogForm" class="dialog-back-block">
               <el-button-group>
                 <el-button icon="el-icon-arrow-left" @click="dialogForm = true">В корзину</el-button>

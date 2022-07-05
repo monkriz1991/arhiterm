@@ -6,20 +6,9 @@
         >
             <div class="basket-tov-img">
                 <img :src="item.img">
-                    <el-popover
-                    v-if="item.product[0].count==0"
-                    placement="top"
-                    width="200"
-                    trigger="click"
-                    content="Позиция под заказ!">
-                    <el-button
-                    type="danger"
-                    slot="reference"
-                    icon="el-icon-warning-outline"
-                    size="mini"
-                    circle
-                    ></el-button>
-                    </el-popover>
+                <div class="pod-zak-form" v-if="item.product[0].count==0">
+                    Позиция под заказ!
+                </div>
             </div>
             <div class="basket-tov-desk">
                 <div class="basket-tov-desk-left">
@@ -41,6 +30,7 @@
                         </div>
                 </div>
                 <div class="basket-tov-calc">
+                  
                     <el-input-number
                     size="mini"
                     :min="item.product[0].multiplicity"
@@ -67,7 +57,7 @@
                 <strong>{{for_amount}}<span>руб.</span></strong>
             </div>
             <div v-if="for_amount_discount_persent>0" class="basket-itog-summ">
-                <span>Скидка:</span>
+                <span>Скидка на объём:</span>
                 <strong>{{for_amount_discount}}<span>руб.</span></strong>
                 <strong>{{for_amount_discount_persent}}<span>%</span></strong>
             </div>
@@ -128,7 +118,7 @@ export default {
             this.$emit('basketCostUpdate',{'for_amount':this.for_amount,'for_amount_discount':this.for_amount_discount,'for_amount_discount_persent':this.for_amount_discount_persent,'for_amount_none':this.for_amount_none,'for_amount_itog':this.for_amount_itog})
         },
         changeQuantyty(id,id_cart,val,price){
-            this.cost_product = Math.floor(price*val*100)/100
+            this.cost_product = Math.ceil(price*val*100)/100
             this.$emit('cartUpdate',{'id':id,'id_cart':id_cart,'count_el':val,'cost':this.cost_product})
             this.amount()
             this.$emit('basketCostUpdate',{'for_amount':this.for_amount,'for_amount_discount':this.for_amount_discount,'for_amount_discount_persent':this.for_amount_discount_persent,'for_amount_none':this.for_amount_none,'for_amount_itog':this.for_amount_itog})
@@ -145,17 +135,17 @@ export default {
                     this.for_amount_none += this.cart_data[i].product[0].cost
                 }
             }
-            this.for_amount = Math.floor(this.for_amount*100)/100
-            this.for_amount_none = Math.floor(this.for_amount_none*100)/100
+            this.for_amount = Math.ceil(this.for_amount*100)/100
+            this.for_amount_none = Math.ceil(this.for_amount_none*100)/100
           for(let i in this.discount_arr){
               if(this.for_amount>=Number([i])){
                 this.for_amount_discount_persent = this.discount_arr[i]
                 this.for_amount_discount = this.for_amount*this.for_amount_discount_persent/100
-                this.for_amount_discount = Math.floor(this.for_amount_discount*100)/100
+                this.for_amount_discount = Math.ceil(this.for_amount_discount*100)/100
                }
           }
           this.for_amount_itog = this.for_amount - this.for_amount_discount
-          this.for_amount_itog = Math.floor(this.for_amount_itog*100)/100
+          this.for_amount_itog = Math.ceil(this.for_amount_itog*100)/100
             this.$emit('basketCostUpdate',{'for_amount':this.for_amount,'for_amount_discount':this.for_amount_discount,'for_amount_discount_persent':this.for_amount_discount_persent,'for_amount_none':this.for_amount_none,'for_amount_itog':this.for_amount_itog})
          
         }

@@ -16,21 +16,22 @@
               class="header-cat"
               @click="drawerMeny = true"
             >
-            <i class="el-icon-s-data"></i>
+            <svg id="book-svg" xmlns="http://www.w3.org/2000/svg" width="25.013" height="20.255" viewBox="0 0 25.013 20.255">
+              <path id="Path_587" data-name="Path 587" d="M3.586,7.691,7.908,9.144a8.071,8.071,0,0,0,5.042.031c3.785-.939,11.98-2.565,12.063-2.583l-.305-1.54-.054.011-7.811-1.1a11.21,11.21,0,0,0-3.1.08L3.3,6.068a3.06,3.06,0,0,0-2.122,5.41,3.05,3.05,0,0,0-.015,4.813,3.066,3.066,0,0,0,.968,5.326l7.528,2.407a3.369,3.369,0,0,0,1.514.064L24.392,21.06s-.079-.342-.175-.765a.785.785,0,0,0-.941-.59L11.245,22.46A3.387,3.387,0,0,1,9.731,22.4L2.614,20.121a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972c0-.007,4.355,1.384,6.138,1.952a3.369,3.369,0,0,0,1.514.064l13.215-3.027s-.079-.343-.175-.765a.785.785,0,0,0-.941-.59L11.245,17.658a3.4,3.4,0,0,1-1.514-.064L2.614,15.318a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972s4.414,1.408,6.211,1.982a3.366,3.366,0,0,0,1.513.064l13.215-3.028s-.079-.342-.175-.765a.785.785,0,0,0-.941-.589L11.318,12.883A3.37,3.37,0,0,1,9.8,12.82L2.686,10.545a1.5,1.5,0,0,1,.9-2.854Z" transform="translate(0 -3.891)"/>
+            </svg>
+            <span class="button-nav-text">Каталог</span>
             </el-button>
             <ul
               v-if="visibleNav"
               class="transition-box">
               <li
-                v-for="category in categoryNavbar"
+                v-for="category in even(categoryNavbar)"
                 :key="category.id"
+                v-show="category.show_in_start==true"
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/${category.id}`">
                   <el-image :src="category.img"></el-image>
-                  <!-- <font-awesome-icon
-                  v-if="category.title!=''"
-                   :icon="['fas',category.title]" /> -->
                   {{ category.name }}
                 </nuxt-link>
               </li>
@@ -45,7 +46,6 @@
               >
                 <nuxt-link :to="`/catalog/factory/${item.id}`">
                 <el-image :src="item.img"></el-image>
-                  <!-- <i class="el-icon-picture-outline-round"></i>  -->
                   {{ item.name }}
                 </nuxt-link>
               </li>
@@ -53,13 +53,35 @@
             <div
             v-on:click="visibleNav=!visibleNav"
             class="header-nav-refresh">
-            <span v-if="visibleNav==true" >Бренды</span>
-            <span v-else>Каталог</span>
-              <!-- <font-awesome-icon v-if="visibleNav==true"  :icon="['fab','whmcs']" />
-              <font-awesome-icon v-else :icon="['fas','stream']" /> -->
+            <span v-if="visibleNav==true" >
+              <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 260.000000"
+                preserveAspectRatio="xMidYMid meet">
+
+                <g transform="translate(0.000000,412.000000) scale(0.100000,-0.100000)"
+                fill="#000000" stroke="none">
+                <path d="M1905 3843 c-28 -10 -71 -30 -96 -45 -57 -34 -155 -138 -204 -217 l-38 -61 -83 0 -84 0 0 -695 0 -695 235 0 235 0 0 695 0 695 -72 0 c-70 0 -71
+                0 -53 20 55 60 219 72 360 26 44 -14 197 -85 340 -156 192 -96 282 -136 342
+                -150 271 -66 562 -66 738 1 83 31 167 115 189 189 63 210 -78 387 -292 367
+                -82 -8 -153 -41 -262 -122 -226 -169 -332 -167 -693 13 -246 121 -307 143
+                -422 148 -70 4 -101 1 -140 -13z"/>
+                <path d="M2060 1990 l0 -730 870 0 870 0 0 730 0 730 -870 0 -870 0 0 -730z
+                m440 245 l0 -245 -75 0 -75 0 0 245 0 245 75 0 75 0 0 -245z m340 0 l0 -245
+                -75 0 -75 0 0 245 0 245 75 0 75 0 0 -245z m330 0 l0 -245 -75 0 -75 0 0 245
+                0 245 75 0 75 0 0 -245z m340 0 l0 -245 -75 0 -75 0 0 245 0 245 75 0 75 0 0
+                -245z"/>
+                <path d="M1320 1640 l0 -380 315 0 315 0 0 380 0 380 -315 0 -315 0 0 -380z"/>
+                </g>
+                </svg>
+              Бренды</span>
+            <span v-else>
+            <svg id="book-svg" xmlns="http://www.w3.org/2000/svg" width="25.013" height="20.255" viewBox="0 0 25.013 20.255">
+              <path id="Path_587" data-name="Path 587" d="M3.586,7.691,7.908,9.144a8.071,8.071,0,0,0,5.042.031c3.785-.939,11.98-2.565,12.063-2.583l-.305-1.54-.054.011-7.811-1.1a11.21,11.21,0,0,0-3.1.08L3.3,6.068a3.06,3.06,0,0,0-2.122,5.41,3.05,3.05,0,0,0-.015,4.813,3.066,3.066,0,0,0,.968,5.326l7.528,2.407a3.369,3.369,0,0,0,1.514.064L24.392,21.06s-.079-.342-.175-.765a.785.785,0,0,0-.941-.59L11.245,22.46A3.387,3.387,0,0,1,9.731,22.4L2.614,20.121a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972c0-.007,4.355,1.384,6.138,1.952a3.369,3.369,0,0,0,1.514.064l13.215-3.027s-.079-.343-.175-.765a.785.785,0,0,0-.941-.59L11.245,17.658a3.4,3.4,0,0,1-1.514-.064L2.614,15.318a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972s4.414,1.408,6.211,1.982a3.366,3.366,0,0,0,1.513.064l13.215-3.028s-.079-.342-.175-.765a.785.785,0,0,0-.941-.589L11.318,12.883A3.37,3.37,0,0,1,9.8,12.82L2.686,10.545a1.5,1.5,0,0,1,.9-2.854Z" transform="translate(0 -3.891)"/>
+            </svg>
+              Каталог</span>
             </div>
-          </el-popover>  
-        </div>  
+          </el-popover>
+        </div>
         <div class="logotip">
           <nuxt-link to="/">
             <img src="~/static/logotip.png" alt="logotip">
@@ -67,6 +89,7 @@
         </div>
         <div class="header-nav">
           <nuxt-link
+          hidden
           v-if="width>991"
           class="link-navbar" :to="`/mounters`">
             Монтажники
@@ -77,7 +100,7 @@
               :visible.sync="drawer"
               :direction="direction"
               :with-header="true">
-                <MenyuserMobail 
+                <MenyuserMobail
                 :width.sync = "width"
                 :visible.sync ="drawer" />
               </el-drawer>
@@ -98,7 +121,7 @@
             </no-ssr>
             </div>
             <no-ssr>
-              <BasketModal  
+              <BasketModal
               @clickModal = "toggleModal"
               @closeBasket = "closeBasket"
               :dialogFormVisibleModal="dialogFormVisibleModal"/>
@@ -110,13 +133,12 @@
               </div>
             </no-ssr>
             <div class="top-phone button-nav-meny">
-              <el-button
-              icon="el-icon-phone"
-              @click="dialogVisible = true">
-              <span class="button-nav-text">Контакты</span>
-              </el-button>
+                <nuxt-link :to="`/info/contacts`" class="button-nav-meny">
+                  <i class="el-icon-phone-outline"></i>
+                  <span class="button-nav-text">Контакты</span>
+                </nuxt-link>
             </div>
-            <el-dialog
+            <!-- <el-dialog
               title="Контакты"
               :visible.sync="dialogVisible"
               width="30%"
@@ -130,7 +152,7 @@
                   </p>
                 </div>
               </div>
-            </el-dialog>
+            </el-dialog> -->
             <div class="search-navbar">
               <el-button
               @click="showButton()"
@@ -149,6 +171,7 @@
               </el-button>
               <transition name="el-fade-in-linear">
                 <div v-show="show" class="block-search">
+                  <i class="el-icon-search"></i>
                   <el-autocomplete
                     v-show="width>991"
                     v-model="state"
@@ -158,8 +181,22 @@
                     @change="handleSelect"
                     popper-class="block-search-input"
                   >
+
                     <template slot-scope="{ item }">
-                  <nuxt-link :to="'/product/'+item.id"><div class="value">{{ item.name }}</div></nuxt-link>
+                  <nuxt-link :to="'/product/'+item.id">
+                  <div class="search-block">
+                    <div class="search-block-img">
+                      <img :src="item.img" alt="" />
+                    </div>
+                    <div class="search-block-desc">
+                      <span>
+                        <i class="el-icon-office-building"></i>
+                        {{ item.manufacturername }}
+                      </span>
+                      {{ item.name }}
+                    </div>
+                  </div>
+                  </nuxt-link>
                 </template>
                   </el-autocomplete>
                 </div>
@@ -181,19 +218,22 @@
             <el-button slot="reference"
               class="header-cat"
               @click="drawerMeny = true"
-            >Каталог
-            <i class="el-icon-menu"></i>
+            >
+            <svg id="book-svg" xmlns="http://www.w3.org/2000/svg" width="25.013" height="20.255" viewBox="0 0 25.013 20.255">
+              <path id="Path_587" data-name="Path 587" d="M3.586,7.691,7.908,9.144a8.071,8.071,0,0,0,5.042.031c3.785-.939,11.98-2.565,12.063-2.583l-.305-1.54-.054.011-7.811-1.1a11.21,11.21,0,0,0-3.1.08L3.3,6.068a3.06,3.06,0,0,0-2.122,5.41,3.05,3.05,0,0,0-.015,4.813,3.066,3.066,0,0,0,.968,5.326l7.528,2.407a3.369,3.369,0,0,0,1.514.064L24.392,21.06s-.079-.342-.175-.765a.785.785,0,0,0-.941-.59L11.245,22.46A3.387,3.387,0,0,1,9.731,22.4L2.614,20.121a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972c0-.007,4.355,1.384,6.138,1.952a3.369,3.369,0,0,0,1.514.064l13.215-3.027s-.079-.343-.175-.765a.785.785,0,0,0-.941-.59L11.245,17.658a3.4,3.4,0,0,1-1.514-.064L2.614,15.318a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972s4.414,1.408,6.211,1.982a3.366,3.366,0,0,0,1.513.064l13.215-3.028s-.079-.342-.175-.765a.785.785,0,0,0-.941-.589L11.318,12.883A3.37,3.37,0,0,1,9.8,12.82L2.686,10.545a1.5,1.5,0,0,1,.9-2.854Z" transform="translate(0 -3.891)"/>
+            </svg>
+            <span class="button-nav-text">Каталог</span>
             </el-button>
             <ul
               v-if="visibleNav"
               class="transition-box">
               <li
-                v-for="category in categoryNavbar"
+                v-for="category in even(categoryNavbar)"
                 :key="category.id"
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/${category.id}`">
-                  <i class="el-icon-picture-outline-round"></i>
+                  <el-image :src="category.img"></el-image>
                   {{ category.name }}
                 </nuxt-link>
               </li>
@@ -207,7 +247,7 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link :to="`/catalog/factory/${item.id}`">
-                  
+                  <el-image :src="item.img"></el-image>
                   {{ item.name }}
                 </nuxt-link>
               </li>
@@ -215,8 +255,34 @@
             <div
             v-on:click="visibleNav=!visibleNav"
             class="header-nav-refresh">
-              <font-awesome-icon v-if="visibleNav==true" :icon="['fab','whmcs']" />
-              <font-awesome-icon v-else :icon="['fas','stream']" />
+              <div v-if="visibleNav==true">
+              <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 260.000000"
+                preserveAspectRatio="xMidYMid meet">
+
+                <g transform="translate(0.000000,412.000000) scale(0.100000,-0.100000)"
+                fill="#000000" stroke="none">
+                <path d="M1905 3843 c-28 -10 -71 -30 -96 -45 -57 -34 -155 -138 -204 -217 l-38 -61 -83 0 -84 0 0 -695 0 -695 235 0 235 0 0 695 0 695 -72 0 c-70 0 -71
+                0 -53 20 55 60 219 72 360 26 44 -14 197 -85 340 -156 192 -96 282 -136 342
+                -150 271 -66 562 -66 738 1 83 31 167 115 189 189 63 210 -78 387 -292 367
+                -82 -8 -153 -41 -262 -122 -226 -169 -332 -167 -693 13 -246 121 -307 143
+                -422 148 -70 4 -101 1 -140 -13z"/>
+                <path d="M2060 1990 l0 -730 870 0 870 0 0 730 0 730 -870 0 -870 0 0 -730z
+                m440 245 l0 -245 -75 0 -75 0 0 245 0 245 75 0 75 0 0 -245z m340 0 l0 -245
+                -75 0 -75 0 0 245 0 245 75 0 75 0 0 -245z m330 0 l0 -245 -75 0 -75 0 0 245
+                0 245 75 0 75 0 0 -245z m340 0 l0 -245 -75 0 -75 0 0 245 0 245 75 0 75 0 0
+                -245z"/>
+                <path d="M1320 1640 l0 -380 315 0 315 0 0 380 0 380 -315 0 -315 0 0 -380z"/>
+                </g>
+                </svg>
+                Бренды
+              </div>
+              <div v-else>
+              <svg id="book-svg" xmlns="http://www.w3.org/2000/svg" width="25.013" height="20.255" viewBox="0 0 25.013 20.255">
+                <path id="Path_587" data-name="Path 587" d="M3.586,7.691,7.908,9.144a8.071,8.071,0,0,0,5.042.031c3.785-.939,11.98-2.565,12.063-2.583l-.305-1.54-.054.011-7.811-1.1a11.21,11.21,0,0,0-3.1.08L3.3,6.068a3.06,3.06,0,0,0-2.122,5.41,3.05,3.05,0,0,0-.015,4.813,3.066,3.066,0,0,0,.968,5.326l7.528,2.407a3.369,3.369,0,0,0,1.514.064L24.392,21.06s-.079-.342-.175-.765a.785.785,0,0,0-.941-.59L11.245,22.46A3.387,3.387,0,0,1,9.731,22.4L2.614,20.121a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972c0-.007,4.355,1.384,6.138,1.952a3.369,3.369,0,0,0,1.514.064l13.215-3.027s-.079-.343-.175-.765a.785.785,0,0,0-.941-.59L11.245,17.658a3.4,3.4,0,0,1-1.514-.064L2.614,15.318a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972s4.414,1.408,6.211,1.982a3.366,3.366,0,0,0,1.513.064l13.215-3.028s-.079-.342-.175-.765a.785.785,0,0,0-.941-.589L11.318,12.883A3.37,3.37,0,0,1,9.8,12.82L2.686,10.545a1.5,1.5,0,0,1,.9-2.854Z" transform="translate(0 -3.891)"/>
+              </svg>
+              Каталог
+              </div>
             </div>
           </el-popover>
           <nuxt-link
@@ -239,24 +305,40 @@
           </el-button>
           <transition name="el-fade-in-linear">
             <div v-show="show" class="block-search">
+              <i class="el-icon-search icon-search-mobail"></i>
               <el-autocomplete
                 v-model="state"
                 :fetch-suggestions="querySearchAsync"
                 :trigger-on-focus="false"
                 placeholder="Введите запрос..."
-                @change="handleSelect"
+                @select="handleSelect"
                 popper-class="block-search-input"
               >
                  <template slot-scope="{ item }">
-                  <nuxt-link :to="'/product/'+item.id"><div class="value">{{ item.name }}</div></nuxt-link>
+                  <nuxt-link :to="'/product/'+item.id">
+                    <div class="search-block">
+                    <div class="search-block-img">
+                      <img :src="item.img" alt="" />
+                    </div>
+                    <div class="search-block-desc">
+                      <span>
+                        <i class="el-icon-office-building"></i>
+                        {{ item.manufacturername }}
+                      </span>
+                      {{ item.name }}
+                    </div>
+                  </div>
+                  </nuxt-link>
                 </template>
 
               </el-autocomplete>
+
             </div>
           </transition>
       </div>
     </div>
     <div class="header-bg"></div>
+    <div  :class="[visible==true?'header-bg-popover':'']" ></div>
   </header>
 </template>
 
@@ -287,7 +369,7 @@ import {mapGetters,mapActions} from 'vuex'
         phones:[],
         state: '',
         timeout:  null,
-        show: false,
+        show: true,
         dialogFormVisibleModal: false,
       };
     },
@@ -302,13 +384,13 @@ import {mapGetters,mapActions} from 'vuex'
         getCategory:'category/getCategory',
         getManufacturer:'category/getManufacturer'
       }),
-      toggleModal(val,noCloseNotify) { 
+      toggleModal(val,noCloseNotify) {
           this.dialogFormVisibleModal = val;
           if(noCloseNotify==false){
               this.$notify.closeAll()
           }
       },
-      closeBasket(val){ 
+      closeBasket(val){
         if(val==true){
             this.openNotify()
         }
@@ -322,7 +404,7 @@ import {mapGetters,mapActions} from 'vuex'
           message: 'На Вашу почту была выслана информация о заказе!',
           // offset: 100
           });
-      }, 
+      },
       updateWidth() {
         this.width = window.innerWidth;
         if(window.innerWidth>991){
@@ -342,7 +424,7 @@ import {mapGetters,mapActions} from 'vuex'
         let results = [ { "value":'По данному запросу ничего не найдено'}];
         this.$axios.get(`/catalog/search/?search=${queryString}&limit=9999999`).then(function (result){
             cb(result.data.results);
-          console.log(result.data.results)
+          // console.log(result.data.results)
         }).catch(function (e){results = [ { "value":'По данному запросу ничего не найдено'}];})
       },
       createFilter(queryString) {
@@ -351,16 +433,21 @@ import {mapGetters,mapActions} from 'vuex'
         };
       },
       handleSelect(item) {
-        this.state=''
-        this.show = false
+        // this.state=''
+        // this.show = false
       },
       showButton(){
-        this.show =!this.show
-        this.state=''
+        // this.show =!this.show
+        // this.state=''
       },
       async getPhones(){
         let data = await this.$axios.get(`/users/phones/?limit=9999`);
         this.phones = data.data.results;
+      },
+      even: function(arrays) {
+        return arrays.slice().sort(function(a, b) {
+            return a.position - b.position;
+        });
       }
     },
     mounted(){

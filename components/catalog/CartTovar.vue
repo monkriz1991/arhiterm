@@ -17,12 +17,7 @@
             >
                 <div class="catalog-list-block">
                     <div class="catalog-list-img" >
-                        <div
-                        v-if="product.manufacturer_name"
-                        class="catalog-manuf">
-                            <i class="el-icon-office-building"></i>
-                            {{product.manufacturer_name}}
-                        </div>
+ 
                         <nuxt-link
                         :class="{disabledLink:!price[idx]}"
                         :to="`/product/${product.id}`"
@@ -46,29 +41,38 @@
                         </div>
                     </div>
                     <div class="catalog-list-block-desc">
+                        <div
+                        v-if="product.manufacturer_name"
+                        class="catalog-manuf">
+                            <i class="el-icon-office-building"></i>
+                            {{product.manufacturer_name}}
+                        </div>
                         <nuxt-link
                         :class="{disabledLink:!price[idx]}"
                         :to="`/product/${product.id}`"
                         >
-                            {{product.name}}
+                            <span v-if="product.name.length<65">{{product.name}}</span>
+                            <span v-else>{{product.name.substring(0,65)+".." }}</span>
                         </nuxt-link>
                         <div 
                         class="catalog-list-block-price">
                             <strong :class="{ butDiscount: discont[idx]}">
+                                <b>от</b>
                                 {{price[idx]}}
-                                <div v-if="discont[idx]" 
+                                <!-- <div v-if="discont[idx]" 
                                 class="catalog-list-block-discount">
                                     <strong>{{discont[idx]}}</strong>
                                     <span>руб/{{product.units}}</span>
-                                </div>
+                                </div> -->
                             </strong>
                             <span>руб/{{product.units}}</span>
-                            <div class="catalog-list-block-cost">
+                            <!-- <div class="catalog-list-block-cost">
                                 <b>от</b><strong>{{oneprice[idx]}}</strong> 
                                 <b>до</b><strong>{{lastprice[idx]}}</strong>
                                 <span>руб/{{product.units}}</span>
-                            </div>
+                            </div> -->
                         </div>
+
                     </div>
                 </div>
                 <el-dialog

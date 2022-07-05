@@ -75,7 +75,7 @@
           type="danger"
           :disabled="disableButton"
           @click="addToCart"
-          :class="{'disabled': disableButton === true}"
+          :class="{'hiden-class': disableButton === 'hiden'}"
         >
           <span v-if="disableButton === false">В корзину</span>
           <span v-else>В корзине</span>
@@ -103,7 +103,7 @@ import {mapGetters,mapActions} from 'vuex'
         input_cost:this.product_data[0]!=undefined?this.product_data[0].price:0,
         radio:0,
         priceCart:0,
-        count:1,
+        count:this.multiplicity,
        // multiplicity:this.multiplicity,
         discont_price:this.product_data[0].discont!=null?this.product_data[0].discont:0,
         disableButton: false,
@@ -143,15 +143,19 @@ import {mapGetters,mapActions} from 'vuex'
       changePrice(item){
         this.count = this.multiplicity   
         this.active_id = item
-        this.input_cost = item.discont==null?Math.round(item.price*this.multiplicity*100)/100 :Math.round(item.discont*this.multiplicity*100)/100 
+        this.input_cost = item.discont==null?Math.ceil(item.price*this.multiplicity*100)/100 :Math.ceil(item.discont*this.multiplicity*100)/100 
         this.$emit('update:price', item.price)
-        this.priceCart = item.discont==null?Math.round(item.price*this.multiplicity*100)/100 :Math.round(item.discont*this.multiplicity*100)/100 
+        this.priceCart = item.discont==null?Math.ceil(item.price*this.multiplicity*100)/100 :Math.ceil(item.discont*this.multiplicity*100)/100 
         this.name_radioGroup = item.filter_show_name!=null?item.filter_show_name:'Артикул'
         this.$emit('NewChar', item)
         this.$emit('update:discont',item.discont)
         this.disableButton = false
         this.num = 1
         this.editProduct(item.id)
+
+      if(item.price=='0.00'){
+        this.disableButton = 'hiden'
+      }
 
       },
       /** Добавление товара в корзину */
@@ -163,7 +167,7 @@ import {mapGetters,mapActions} from 'vuex'
         this.open()
       },
       roundToNearest(number, multiple) {
-          return Math.round(number / multiple) * multiple;
+          return Math.ceil(number / multiple) * multiple;
       },
       sleep(){
 
@@ -198,11 +202,11 @@ import {mapGetters,mapActions} from 'vuex'
       discontStart(item){
         
         if(item.discont!=null){
-          this.priceCart =  Math.round(item.discont*this.multiplicity*100)/100
-          this.input_cost = Math.round(item.discont*this.multiplicity*100)/100
+          this.priceCart =  Math.ceil(item.discont*this.multiplicity*100)/100
+          this.input_cost = Math.ceil(item.discont*this.multiplicity*100)/100
         }else{
-          this.priceCart = item!=undefined?Math.round(item.price*this.multiplicity*100)/100:0
-          this.input_cost = item!=undefined?Math.round(item.price*this.multiplicity*100)/100:0
+          this.priceCart = item!=undefined?Math.ceil(item.price*this.multiplicity*100)/100:0
+          this.input_cost = item!=undefined?Math.ceil(item.price*this.multiplicity*100)/100:0
         }
       },
       /** Изменение кол. товара */
@@ -219,7 +223,7 @@ import {mapGetters,mapActions} from 'vuex'
             value = value/this.multiplicity
           }
          
-          this.priceCart = Math.round(this.input_cost*value*100)/100
+          this.priceCart = Math.ceil(this.input_cost*value*100)/100
       },
       findMatch(id) {
           return this.arr_basket_id.includes(id);
@@ -259,13 +263,13 @@ body .el-popover--plain {
   background: #fa9600  !important;
 }
 .cost-product-input .el-icon-shopping-cart-2{
-  position: absolute;
-  bottom: -3px;
-  background: #fff;
-  font-size: 12px;
-  left: -5px;
-  color: #fa9600;
-  border-radius: 50%;
+    position: absolute;
+    bottom: -8px;
+    background: #fff;
+    font-size: 16px;
+    left: -5px;
+    color: #fa9600;
+    border-radius: 50%;
 }
 .cost-product-input .el-radio--mini.is-bordered {
     padding: 6px 10px 0 10px;

@@ -1,6 +1,8 @@
 <template>
     <div class="container">
-        <Breadcrumb/>
+        <Breadcrumb
+        :factori.sync="factori"
+        />
         <div v-if="adaptivSidebar">
         <Sidebar
         @updateData="updateData"
@@ -123,6 +125,19 @@ export default {
         }
       },
     },
+    head() {
+      return {
+        title: this.factori.name,
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content:  this.factori.description.replace(/(&lt;|<([^>]+)>)/ig,"")
+          }
+        ]
+      }
+    }
 }
 </script>
 <style>

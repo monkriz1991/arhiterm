@@ -1,6 +1,6 @@
 <template>
     <div class="index-brand">
-    <h4>Производители</h4>
+    <h4>Бренды</h4>
         <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide
@@ -54,14 +54,17 @@ export default ({
                 infiniteScroll: true,
                 wheelControl:false,
                 breakpoints: {
+                    300: {
+                        itemsToShow: 2
+                    },
+                    1100: {
+                        itemsToShow: 2
+                    },
                     1800: {
                         itemsToShow: 4
                     },
                     1500: {
                         itemsToShow: 4
-                    },
-                    1100: {
-                        itemsToShow: 2
                     },
                 }
             }

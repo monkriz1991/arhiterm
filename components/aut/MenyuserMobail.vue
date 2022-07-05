@@ -25,12 +25,12 @@
                 Мои покупки
                 </nuxt-link>
             </el-menu-item>
-            <el-menu-item index="1-3"  @click="closeMeny">
+            <!-- <el-menu-item index="1-3"  @click="closeMeny">
                 <nuxt-link to="/userCabinet/mounter">
                 <i class="el-icon-eleme"></i>
                 Страница монтажника
                 </nuxt-link>
-            </el-menu-item>
+            </el-menu-item> -->
             <el-menu-item index="1-4">
                 <div class="menu-item-exit" @click="logout">
                   <i class="el-icon-arrow-left"></i>
@@ -38,7 +38,7 @@
                 </div>
             </el-menu-item>
       </el-submenu>
-      <el-menu-item v-if="width<991" index="2"  @click="closeMeny">
+      <el-menu-item hidden v-if="width<991" index="2"  @click="closeMeny">
            <nuxt-link :to="`/mounters`">
             Монтажники
           </nuxt-link>
@@ -55,7 +55,7 @@
       </el-menu-item>
       <el-menu-item index="5"  @click="closeMeny">
            <nuxt-link :to="`/info/payment`">
-            Оплата
+            Условия оплаты / заказа / возврата
           </nuxt-link>
       </el-menu-item>
       <el-menu-item hidden index="6"  @click="closeMeny">
@@ -63,11 +63,11 @@
             Рассрочка
           </nuxt-link>
       </el-menu-item>
-      <el-menu-item index="7"  @click="closeMeny">
+      <!-- <el-menu-item index="7"  @click="closeMeny">
            <nuxt-link :to="`/info/certificates`">
             Сертификаты
           </nuxt-link>
-      </el-menu-item>
+      </el-menu-item> -->
       <el-menu-item index="8"  @click="closeMeny">
            <nuxt-link :to="`/info/contacts`">
             Контакты

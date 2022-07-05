@@ -39,7 +39,7 @@ export const actions = {
         }
         let offset = (args['page']-1)*state.productLimit;
 
-        let product = await this.$axios.$get(`/catalog/product/?cat=${id}&limit=${state.productLimit}&offset=${offset}${uri}`);
+        let product = await this.$axios.$get(`/catalog/product/?ordering=position,name&cat=${id}&limit=${state.productLimit}&offset=${offset}${uri}`);
         commit('setProductList', product.results)
         commit('setCountProduct', product.count) // получаем общее количество товаров в категории
         commit('setProductLoading',false)
@@ -57,8 +57,8 @@ export const actions = {
           uri+=`&${i}=${args[i]}`
         }
         let offset = (args['page']-1)*state.productLimit;
-        let product = await this.$axios.$get(`/catalog/product/?manuf=[${id}]&limit=${state.productLimit}&offset=${offset}${uri}`).catch(function (e){
-          console.log(e)});
+        let product = await this.$axios.$get(`/catalog/product/?ordering=position&manuf=[${id}]&limit=${state.productLimit}&offset=${offset}${uri}`).catch(function (e){
+          });
          commit('setProductList', product.results)
          commit('setCountProduct', product.count) // получаем общее количество товаров в категории
          commit('setProductLoading',false)
