@@ -1,5 +1,5 @@
 name: Build Android
-on: 
+on:
   workflow_dispatch:
     inputs:
       version:
@@ -32,7 +32,7 @@ jobs:
         run: npm run build
 
       - name: Capacitor update
-        run: npx cap update android
+        run: npx cap add android
 
       - name: Capacitor copy
         run: npx cap copy
