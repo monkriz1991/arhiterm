@@ -32,7 +32,7 @@ jobs:
         run: npm run build
 
       - name: Capacitor update
-        run: npx cap add android
+        run: npx cap update
 
       - name: Capacitor copy
         run: npx cap copy
