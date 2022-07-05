@@ -39,7 +39,8 @@ jobs:
 
       - name: Build app bundle
         run: cd android && gradle bundle
-
+      - name: Show catalog
+        run: ls android/app/build/outputs/bundle/release/
       - name: Upload release bundle
         uses: actions/upload-artifact@v2
         with:
