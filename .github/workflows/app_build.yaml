@@ -32,7 +32,7 @@ jobs:
         run: npm run build
 
       - name: Capacitor update
-        run: npx cap update
+        run: npx cap add android
 
       - name: Capacitor copy
         run: npx cap copy
@@ -44,5 +44,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-release
-          path: android/app-release-signed.aab
+          path: android/app/build/outputs/bundle/release/app-release-signed.aab
           retention-days: 60
