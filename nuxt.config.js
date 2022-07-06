@@ -156,6 +156,9 @@ export default {
     },
     
   },
+   sitemap: {
+    hostname: "https://arhiterm.by",
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
