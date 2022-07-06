@@ -120,7 +120,7 @@
                     <ModalLogout />
                     </no-ssr>
                     <b>|</b>
-                    <span>Если у вас уже есть аккаунт на сайте, 
+                    <span>Если у вас уже есть аккаунт на сайте,
                         вы можете пройти авторизацию,<br>
                         товарные позиции в корзине останутся доступны.
                     </span>
@@ -227,7 +227,7 @@ export default ({
       typeUser:function (){
             this.$forceUpdate();
             return this.$store.state.auth.user?this.$store.state.auth.user.type_of_user:''
-        
+
       }
     },
     methods:{

@@ -1,0 +1,49 @@
+name: Build Android
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Bump Version
+        default: v1.0.0
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Setup java
+        uses: actions/setup-java@v1
+        with:
+            distribution: 'zulu'
+            java-version: '11'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Install app dependencies
+        run: npm install
+
+      - name: Build Svelte app
+        run: npm run build
+
+      - name: Capacitor update
+        run: npx cap add android
+
+      - name: Capacitor copy
+        run: npx cap copy
+
+      - name: Build app bundle
+        run: cd android && gradle bundle
+      - name: Show catalog
+        run: ls android/app/build/outputs/bundle/release/
+      - name: Upload release bundle
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-release
+          path: android/app/build/outputs/bundle/release/app-release.aab
+          retention-days: 60

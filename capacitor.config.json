@@ -1,0 +1,6 @@
+{
+  "appId": "com.arhiterm.app",
+  "appName": "arhiterm",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
