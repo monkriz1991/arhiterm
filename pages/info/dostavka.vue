@@ -116,6 +116,39 @@ export default {
   mounted(){
 
   },
+    head() {
+    return {
+      title: 'Доставка продукции клиентам компании Архитерм',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content:  'Доставка осуществляется курьерами Архитерм или курьерской службой "Автолайтэкспресс" либо вы можете забрать товар со склада.'
+        },
+        {
+            hid: 'og:title',
+            name: 'og:title',
+            content: 'Доставка продукции клиентам компании Архитерм',
+        },
+        {
+            hid: 'og:image',
+            property: 'og:image',
+            content: 'https://arhiterm.by/logotip.png',
+        },
+        {
+            hid: 'og:description',
+            property: 'og:description',
+            content: 'Доставка осуществляется курьерами Архитерм или курьерской службой "Автолайтэкспресс" либо вы можете забрать товар со склада.',
+        },
+        {
+            hid: 'og:url',
+            property: 'og:url',
+            content: `https://arhiterm.by/info/dostavka`,
+        },
+      ]
+    }
+  }
 }
 </script>
 <style>

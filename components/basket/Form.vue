@@ -4,8 +4,8 @@
         <el-collapse-item :disabled="typeUser != ''"  title="Тип плательщика" name="1">
             <el-form-item prop="typ">
                 <el-radio-group v-model="Form.typ">
-                <el-radio :label="1">{{'Физ. лицо'}}</el-radio>
-                <el-radio :label="2">{{'Юр. лицо'}}</el-radio>
+                <el-radio :label="2">{{'Физ. лицо'}}</el-radio>
+                <el-radio :label="1">{{'Юр. лицо'}}</el-radio>
                 </el-radio-group>
                 <div
                 class="but-next-form"
@@ -14,7 +14,7 @@
                 ><span>Далее</span></div>
             </el-form-item>
         </el-collapse-item>
-        <el-collapse-item :disabled="Form.typ==''"  title="Доставка" name="2">
+        <el-collapse-item :disabled="Form.pay==''"  title="Доставка" name="2">
             <el-form-item prop="del">
                 <el-radio-group v-model="Form.del">
                 <el-radio label="Курьером"></el-radio>
@@ -30,12 +30,12 @@
         <el-collapse-item :disabled="Form.del == ''" title="Оплата" name="3">
             <el-form-item prop="pay" class="radio-pay">
                 <el-radio-group v-model="Form.pay">
-                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Безналичный расчёт"></el-radio>
-                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Наличный расчет"></el-radio>
-                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Банковской картой онлайн"></el-radio>
-                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Банковской картой через терминал"></el-radio>
-                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Через систему «Расчет» (ЕРИП)"></el-radio>
-                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Картами рассрочки без переплат сроком на 2 месяца"></el-radio>
+                <el-radio v-show="typeUser=='1'||Form.typ=='1'" label="Безналичный расчёт"></el-radio>
+                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Наличный расчет"></el-radio>
+                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Банковской картой онлайн"></el-radio>
+                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Банковской картой через терминал"></el-radio>
+                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Через систему «Расчет» (ЕРИП)"></el-radio>
+                <el-radio v-show="typeUser=='2'||Form.typ=='2'" label="Картами рассрочки без переплат сроком на 2 месяца"></el-radio>
                 </el-radio-group>
                 <div
                 class="but-next-form"
@@ -44,47 +44,47 @@
                 ><span>Далее</span></div>
             </el-form-item>
         </el-collapse-item>
-        <el-collapse-item :disabled="Form.pay == ''" title="Данные покупателя" name="4" class="collapse-data">
+        <el-collapse-item :disabled="Form.pay == ''" title="Данные покупателя" name="4" class="collapse-data form-basket-input ">
         <el-form-item
-        v-if="typeUser=='2'||Form.typ=='2'"
+        v-if="typeUser=='1'||Form.typ=='1'"
         prop="nameCompany"
         label="Название компании"
         :rules="[
-          { required: true, message: 'Пожалуйста введите название вашей компании', trigger: 'blur' }
+          { required: true, message: 'Введите название вашей компании', trigger: 'blur' }
         ]"
         >
-        <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите название вашей компании" v-model="Form.nameCompany" autocomplete="off"></el-input>
+        <el-input prefix-icon="el-icon-office-building" :disabled="$auth.loggedIn!=''" placeholder="Введите название вашей компании" v-model="Form.nameCompany" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
         prop="name"
         label="Имя"
         :rules="[
-          { required: true, message: 'Пожалуйста введите ваше имя', trigger: 'blur' }
+          { required: true, message: 'Введите имя', trigger: 'blur' }
         ]"
         >
-        <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваше имя" v-model="Form.name" autocomplete="off"></el-input>
+        <el-input prefix-icon="el-icon-user" :disabled="$auth.loggedIn!=''" placeholder="Введите Ваше имя" v-model="Form.name" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
         prop="username"
         label="Логин"
         :rules="[
-          { required: true, message: 'Пожалуйста введите ваш email', trigger: 'blur' },
-          { type: 'email', message: 'Пожалуйста введите корректный email', trigger: ['blur', 'change'] }
+          { required: true, message: 'Введите email', trigger: 'blur' },
+          { type: 'email', message: 'Введите корректный email', trigger: ['blur', 'change'] }
         ]"
         >
-        <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш email" v-model="Form.username" autocomplete="off"></el-input>
+        <el-input prefix-icon="el-icon-message" :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш email" v-model="Form.username" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
         prop="phone_number"
         label="Телефон"
         :rules="[
-          { required: true, message: 'Пожалуйста введите ваш Телефон', trigger: 'blur' },
+          { required: true, message: 'Введите Телефон', trigger: 'blur' },
         ]"
         >
-        <el-input :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш Телефон" v-model="Form.phone_number" autocomplete="off"></el-input>
+        <el-input prefix-icon="el-icon-phone-outline" :disabled="$auth.loggedIn!=''" placeholder="Введите Ваш Телефон" v-model="Form.phone_number" autocomplete="off"></el-input>
         </el-form-item>
 
-        <el-form-item v-if="typeUser=='2'||Form.typ=='2'" label="Юр. Адрес">
+        <el-form-item v-if="typeUser=='1'||Form.typ=='1'" label="Юр. Адрес">
             <el-input :disabled="$auth.loggedIn!=''"
             type="textarea" v-model="Form.yrAdres"></el-input>
         </el-form-item>
@@ -104,14 +104,14 @@
         prop="password"
         label="Пароль"
         >
-          <el-input placeholder="Ввидите пароль" v-model="Form.password" show-password autocomplete="off"></el-input>
+          <el-input prefix-icon="el-icon-key" placeholder="Ввидите пароль" v-model="Form.password" show-password autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
         v-if="!$auth.loggedIn"
         prop="checkPass"
         label="Повторите пароль"
         >
-            <el-input placeholder="Повторите пароль" v-model="Form.checkPass" show-password autocomplete="off"></el-input>
+            <el-input prefix-icon="el-icon-key" placeholder="Повторите пароль" v-model="Form.checkPass" show-password autocomplete="off"></el-input>
         </el-form-item>
 
             <div class="form-basket-aut">
@@ -130,13 +130,13 @@
             <span v-show="Form.pay != ''" class="dialog-footer">
                 <el-button 
                 v-if="Form.phone_number!=''" 
-                @click="addOrder" type="primary">Оформить заказ</el-button>
+                @click="addOrder" type="primary" class="basket-pay">Оформить заказ</el-button>
                 <span v-show="$auth.loggedIn" v-else >Заполните контактный Телефон в профиле личного кабинета</span>
             </span>
 
         </el-collapse-item>
         </el-collapse>
-
+    <div class="none-block-form"></div>
     </el-form>
 </template>
 
@@ -144,7 +144,6 @@
 import {mapActions, mapGetters} from "vuex";
 import ModalLogout from '~/components/aut/ModalLogout.vue'
 export default ({
-  props:['dialogForm'],
     data(){
         var validatePass = (rule, value, callback) => {
             if (value === '') {
@@ -222,8 +221,8 @@ export default ({
     },
     computed:{
       ...mapGetters({
-        basket:'main/basket',
-        basket_cost:'main/basket_cost',
+        basket:'crate/basket',
+        basket_cost:'crate/basket_cost',
       }),
       typeUser:function (){
             this.$forceUpdate();
@@ -234,8 +233,9 @@ export default ({
     methods:{
       ...mapActions({
         addUserList: 'main/addUserList',
-        remove_basket:'main/DELL_CART_BASKET_ALL',
-        remove_cost: 'main/DELL_CART_BASKET_COST'
+        remove_basket:'crate/DELL_CART_BASKET_ALL',
+        remove_cost: 'crate/DELL_CART_BASKET_COST',
+        setLoading: 'main/newLoadingItem',
     }),
     disabledForm(item){
         this.activeName = String(item)
@@ -261,6 +261,8 @@ export default ({
     },
     async unaftorized(){
         try {
+        this.setLoading(true)
+        this.$emit('updateDialogForm',false)
         let data = await this.$axios.post('add/to/cart',{form:this.Form,basket:this.basket,basket_cost:this.basket_cost});
         
         if(!this.$auth.loggedIn) {
@@ -271,10 +273,11 @@ export default ({
             }
 
 
-        this.$emit('updateDialogForm',false)
+        
         this.$
         this.remove_basket()
         this.remove_cost()
+        
 
         }catch (error) {
         this.$message({
@@ -288,105 +291,5 @@ export default ({
 })
 </script>
 <style>
-.form-basket-aut{
-    float: left;
-    width: 100%;
-}
-.form-basket-aut-content{
-    float: left;
-    width: 100%;
-    margin: 20px 0;
-}
-.form-basket-aut span{
-    max-width: 500px;
-    float: left;
-    width: 100%;
-}
-.form-basket-aut b{
-    float: left;
-    margin: 9px 15px 8px 0;
-}
-.form-basket-aut .header-logout{
-    float: left;
-    margin: 0 15px 0 0;
-}
 
-.header-basket .el-form-item{
-    margin-bottom: 0px;
-}
-.but-next-form{
-    float: left;
-    width: 100%;
-    text-align: right;
-}
-.but-next-form>span{
-    padding: 8px 22px;
-    border-radius: 4px;
-    cursor: pointer;
-    background: #ff8d00;
-    color: #fff;
-    font-weight: 400;
-    float: right;
-}
-.but-next-form>span:hover{
-    background: #f28906;
-}
-.but-next-form{
-
-}
-.radio-pay{
-
-}
-.header-basket .radio-pay label{
-    float: left;
-    width: 100%;
-    margin: 0 0 10px;
-}
-.header-basket .el-dialog__body{
-    padding: 10px 30px 20px;
-}
-.el-collapse-item__header{
-    font-size: 15px;
-    color: #000000;
-}
-.form-basket .el-radio__input.is-checked .el-radio__inner {
-    border-color: #f28906 !important;
-    background: #f28906 !important;
-}
-.form-basket .el-radio__inner:hover{
-    border-color: #f28906 !important;
-}
-.form-basket .el-collapse-item__header{
-    height: 54px;
-}
-.el-radio-group .el-radio__label:hover{
-    color: #000;
-}
-.collapse-data{
-
-}
-.collapse-data .el-input__inner{
-    height: 36px;
-    line-height: 36px;
-}
-.collapse-data .el-form-item{
-    margin-bottom: 20px;
-    max-width: 420px;
-    width: 100%;
-}
-.collapse-data .el-form-item__label{
-    line-height: 1em;
-    font-size: 12px;
-    float: left;
-    margin: 0 0 5px;
-}
-.collapse-data .el-input{
-    float: left;
-}
-.collapse-data .dialog-footer{
-    float: left;
-    width: 100%;
-    text-align: right;
-    margin: 0 0 20px;
-}
 </style>

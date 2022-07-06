@@ -1,0 +1,12 @@
+User-Agent: *
+Disallow: /info/rassrochka
+Disallow: /cabinet
+Disallow: /cabinet?*
+Disallow: /cabinet/*
+Disallow: /userCabinet
+Disallow: /userCabinet?*
+Disallow: /userCabinet/*
+Disallow: /userCabinet/store
+Disallow: /userCabinet/mounter
+Sitemap: https://arhiterm.by/sitemap.xml
+Host: arhiterm.by

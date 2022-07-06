@@ -1,11 +1,9 @@
 <template>
     <div
     class="container">
-    <!-- <fa :icon="['fas', 'band-aid']"/> -->
         <Breadcrumb/>
         <div v-if="adaptivSidebar">
           <Sidebar
-          @updateData="updateData"
           :categoriesNested.sync="categoriesNested"
           :categoryManuf.sync="categoryManuf"
           :adaptivSidebar.sync="adaptivSidebar"
@@ -18,7 +16,6 @@
         :direction="direction"
         :with-header="true">
           <Sidebar
-          @updateData="updateData"
           :categoriesNested.sync="categoriesNested"
           :categoryManuf.sync="categoryManuf"
           :adaptivSidebar.sync="adaptivSidebar"
@@ -29,7 +26,7 @@
         v-if="!adaptivSidebar"
         @click="drawer = true"
         class="drawer-button"
-        icon="el-icon-finished"
+        icon="el-icon-s-operation"
         size="small"
         >
           Фильтры
@@ -40,7 +37,7 @@
         :categoryManuf.sync="categoryManuf"
         />
         </transition>
-        <Paginated @func="$addQuery" @changePage="updateData"/>
+        <Paginated @func="$addQuery" />
 
     </div>
 </template>
@@ -125,20 +122,20 @@ export default {
     computed:{
     },
     methods:{
-       updateData(){
-        let parametrs = {};
-        if(this.$route.query['card_filter']!==undefined){
-          parametrs['card_filter'] = this.$route.query['card_filter'];
-        }
-        if(this.$route.query['manuf']!==undefined){
-          parametrs['manuf'] = this.$route.query['manuf'];
-        }
-        if(this.$route.query['page']!==undefined){
-          parametrs['page'] = this.$route.query['page'];
-        }
-        parametrs['cat'] = this.$route.params.catalog;
-        this.sendQuery(parametrs);
-      },
+      //  updateData(){
+      //   let parametrs = {};
+      //   if(this.$route.query['card_filter']!==undefined){
+      //     parametrs['card_filter'] = this.$route.query['card_filter'];
+      //   }
+      //   if(this.$route.query['manuf']!==undefined){
+      //     parametrs['manuf'] = this.$route.query['manuf'];
+      //   }
+      //   if(this.$route.query['page']!==undefined){
+      //     parametrs['page'] = this.$route.query['page'];
+      //   }
+      //   parametrs['cat'] = this.$route.params.catalog;
+      //   this.sendQuery(parametrs);
+      // },
       async sendQuery(parametrs){
         this.productsList = await this.$store.dispatch('product/getProductList',parametrs);
       },
@@ -161,7 +158,27 @@ export default {
             hid: 'description',
             name: 'description',
             content:  this.categoriesNested.description.replace(/(&lt;|<([^>]+)>)/ig,"")
-          }
+          },
+          {
+              hid: 'og:title',
+              name: 'og:title',
+              content: this.categoriesNested.name,
+          },
+          {
+              hid: 'og:image',
+              property: 'og:image',
+              content: `${this.categoriesNested.img}`,
+          },
+          {
+              hid: 'og:description',
+              property: 'og:description',
+              content: this.categoriesNested.description.replace(/(&lt;|<([^>]+)>)/ig,""),
+          },
+          {
+              hid: 'og:url',
+              property: 'og:url',
+              content: `https://arhiterm.by/catalog/${this.categoriesNested.id}`,
+          },          
         ]
       }
     }

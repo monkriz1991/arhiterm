@@ -1,14 +1,10 @@
 <template>
     <div class="cost-product-block">
         <div class="cost-product-amount">
-            <el-input-number
-            v-model="num"
-            :step="multiplicity"
-            :disabled="disableButton"
-            size="mini"
-            @change="handleChange" :min="multiplicity"
-            ></el-input-number>
-            <span class="units"><b>|</b>{{units}}</span>
+            <div class="cost-product-price-catalog">
+                <span>{{priceCart}}</span>
+                <strong>руб</strong>
+            </div>
                 <el-popover
                 v-if="multiplicity>1"
                 placement="top"
@@ -27,48 +23,52 @@
                   circle
                   ></el-button>
                 </el-popover>
-
-          <div
-          class="cost-product-price-catalog">
-              <span>{{priceCart}}</span>
-              <strong>руб</strong>
-          </div>
+                <span class="units"><b>|</b>{{units}}</span>
+                <el-input-number
+                v-model="num"
+                :step="multiplicity"
+                :disabled="disableButton"
+                size="mini"
+                @change="handleChange" :min="multiplicity"
+                ></el-input-number>
         </div>
         <div class="cost-product-input">
             <strong>{{name_radioGroup}}</strong>
             <div class="cost-row">
-              <el-radio
-              v-for="(item,idx) in product_data" :key="idx"
-              @change="changePrice(item,idx)"
-              :label="idx"
-              v-model="radio"
-              :disabled="disableRadio"
-              size="mini"
-              :class="{ 'check-backet': findMatch(item.id) }"
-              border>
-              <i
-              v-show="findMatch(item.id)"
-              class="el-icon-shopping-cart-2"></i>
-                <strong
-                v-if="item.filter_show_value"
-                >{{item.filter_show_value}}</strong>
-                <strong v-else>
-                  {{item.name}}
-                </strong>
-                <el-popover
-                v-if="item.count==0"
-                placement="top"
-                width="200"
-                trigger="click"
-                content="Позиция под заказ!">
-                  <el-button
-                  slot="reference"
-                  icon="el-icon-warning-outline"
-                  size="mini"
-                  circle
-                  ></el-button>
-                </el-popover>
-              </el-radio>
+              <div class="cost-div"
+              v-for="(item,idx) in product_data" :key="idx">
+                <el-radio
+                @change="changePrice(item,idx)"
+                :label="idx"
+                v-model="radio"
+                :disabled="disableRadio"
+                size="mini"
+                :class="{ 'check-backet': findMatch(item.id) }"
+                border>
+                <i
+                v-show="findMatch(item.id)"
+                class="el-icon-shopping-cart-2"></i>
+                  <strong
+                  v-if="item.filter_show_value"
+                  >{{item.filter_show_value}}</strong>
+                  <strong v-else>
+                    {{item.name}}
+                  </strong>
+                  <el-popover
+                  v-if="item.count==0"
+                  placement="top"
+                  width="200"
+                  trigger="click"
+                  content="Позиция под заказ!">
+                    <el-button
+                    slot="reference"
+                    icon="el-icon-warning-outline"
+                    size="mini"
+                    circle
+                    ></el-button>
+                  </el-popover>
+                </el-radio>
+              </div>
             </div>
         </div>
         <el-button
@@ -118,7 +118,7 @@ import {mapGetters,mapActions} from 'vuex'
     },
     computed:{
       ...mapGetters({
-        basket:'main/basket'
+        basket:'crate/basket'
       })
     },
     watch:{
@@ -149,6 +149,7 @@ import {mapGetters,mapActions} from 'vuex'
         this.name_radioGroup = item.filter_show_name!=null?item.filter_show_name:'Артикул'
         this.$emit('NewChar', item)
         this.$emit('update:discont',item.discont)
+        this.$emit('update:kodProduct',item.name)
         this.disableButton = false
         this.num = 1
         this.editProduct(item.id)
@@ -239,7 +240,7 @@ import {mapGetters,mapActions} from 'vuex'
         });
       },
       dialogBasketModal(){
-        this.$emit('showBasket',true)
+        this.$emit('toggleModal',true)
       }
     }
   };
@@ -263,10 +264,10 @@ body .el-popover--plain {
   background: #fa9600  !important;
 }
 .cost-product-input .el-icon-shopping-cart-2{
-    position: absolute;
+position: absolute;
     bottom: -8px;
     background: #fff;
-    font-size: 16px;
+    font-size: 21px;
     left: -5px;
     color: #fa9600;
     border-radius: 50%;

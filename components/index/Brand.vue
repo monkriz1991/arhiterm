@@ -1,6 +1,6 @@
 <template>
     <div class="index-brand">
-    <h4>Бренды</h4>
+    <h2>Бренды</h2>
         <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide
@@ -14,25 +14,19 @@
                                 </strong>
                                 <!-- <span>{{item.name}}</span> -->
                             </div>
-                            <img
-                                :src="item.img"
+                            <nuxt-picture loading="lazy"
+                                :src="item.img.substring(24)"
                                 :alt="item.name"
-                            >
+                            />
                         </div>
                     </nuxt-link>
                 </slide>
                 <hooper-navigation slot="hooper-addons"></hooper-navigation>
                 <hooper-pagination slot="hooper-addons"></hooper-pagination>
             </hooper>
-            <div hidden class="index-brand-all">
-                <nuxt-link to="/">
-                    Все производители
-                </nuxt-link>
-            </div>
         </el-row>
     </div>
 </template>
-
 
 <script>
 import { mapGetters,mapActions } from 'vuex'

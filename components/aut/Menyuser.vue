@@ -8,11 +8,11 @@
                     </div>
                 </div>
                 <span class="demo-type-span"></span>
-                <i class="el-icon-arrow-down el-icon--right"></i>
+                <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
             </span>
             <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item class="navbar-user-item">
-                    <nuxt-link :to="`/cabinet`">
+                    <nuxt-link v-if="$auth.user" :to="`/cabinet`">
                     <i class="el-icon-user"></i>
                     Профиль</nuxt-link>
                 </el-dropdown-item>

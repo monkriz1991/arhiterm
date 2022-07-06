@@ -1,17 +1,19 @@
 <template>
     <div class="index-top">
-    <h4>Популярные товары</h4>
+    <h2>Популярные товары</h2>
         <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide
-                    v-for="(item,idx) in tovar" :key="idx"
+                    v-for="(item,idx) in tovar" :key="idx" 
                 >
                     <nuxt-link :to="`/product/${item.id}`" class="nuxt-link-cat">
                         <div class="index-top-block">
-                            <img
-                                :src="item.img"
+                            <nuxt-picture 
+                                loading="lazy"
+                                :src="item.img.substring(24)"
                                 :alt="item.name"
-                            >
+                                format="webp"
+                            />
                             
                             <div class="index-top-block-desc">
                                 <strong>

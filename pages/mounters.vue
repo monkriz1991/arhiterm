@@ -83,5 +83,38 @@ export default {
             }
         },
     },
+    head() {
+        return {
+        title: 'Монтажники Беларуси - Архитерм',
+        meta: [
+            // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+            {
+            hid: 'description',
+            name: 'description',
+            content:  'Исполнители сантех. работ рядом с вами.'
+            },
+                      {
+                hid: 'og:title',
+                name: 'og:title',
+                content: 'Монтажники Беларуси - Архитерм',
+            },
+            {
+                hid: 'og:image',
+                property: 'og:image',
+                content: `~/static/logotip.png`,
+            },
+            {
+                hid: 'og:description',
+                property: 'og:description',
+                content: 'Исполнители сантех. работ рядом с вами.',
+            },
+            {
+                hid: 'og:url',
+                property: 'og:url',
+                content: `https://arhiterm.by/mounters`,
+            },
+        ]
+        }
+    }
 }
 </script>

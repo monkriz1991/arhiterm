@@ -7,7 +7,7 @@
         </h1>
         <div class="mounter-tags">
             <i class="el-icon-setting"></i>
-          <strong v-for="(tag,k) in mounter.tag_s" :key="k"><nuxt-link :to="`/mounters?page=1&tags=[${tag.id}]`">{{tag.name}}</nuxt-link></strong>
+          <strong v-for="(tag,k) in mounter.tag_s" :key="k">{{tag.name}}</strong>
         </div>
         <div class="mounter-img">
             <el-image
@@ -59,5 +59,38 @@ export default {
 
       }
     },
+    head() {
+        return {
+        title: this.mounter.whoiam.first_name+' '+this.mounter.whoiam.last_name,
+        meta: [
+            // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+            {
+            hid: 'description',
+            name: 'description',
+            content:  this.mounter.description
+            },
+            {
+                hid: 'og:title',
+                name: 'og:title',
+                content: this.mounter.whoiam.first_name+' '+this.mounter.whoiam.last_name,
+            },
+            {
+                hid: 'og:image',
+                property: 'og:image',
+                content: `${this.mounter.whoiam.img}`,
+            },
+            {
+                hid: 'og:description',
+                property: 'og:description',
+                content: this.mounter.description,
+            },
+            {
+                hid: 'og:url',
+                property: 'og:url',
+                content: `https://arhiterm.by/mounter/${this.mounter.id}`,
+            },
+        ]
+        }
+    }
 }
 </script>

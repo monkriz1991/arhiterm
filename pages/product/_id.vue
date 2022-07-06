@@ -9,23 +9,88 @@
         <Galery/>
         <div class="cost-product-section">
             <div class="cost-product-price">
+                <strong class="">Стоимость - 1 {{result.units}}</strong>
+                <b>:</b>
                 <span :class="{ butDiscount: discont}">{{price}}</span>
-                <strong>руб./{{result.units}}</strong>
+                <strong>руб.</strong>
+                
                 <div v-if="discont" class="catalog-list-block-discount">
                     <strong>{{discont}}</strong>
                     <span>руб/{{result.units}}</span>
                 </div>
             </div>
+            <div class="kod-product">
+                <!-- <span>Код</span> -->
+                <el-tooltip class="item" effect="dark" content="Код товара" placement="top-start">
+                <i class="el-icon-info"></i>
+                </el-tooltip>
+                <b>:</b>
+                <strong>{{kodProduct}}</strong>
+            </div>
             <CartTovarInput
             :price.sync="price"
             :discont.sync="discont"
+            :kodProduct.sync="kodProduct"
             :product_data="productItem.product"
             :units="result.units"
             :multiplicity.sync="result.multiplicity"
             @addToCart = "addToCart"
             @NewChar = "funNewChar"
-            @showBasket = "showBasket"
+            @toggleModal = "toggleModal"
             />
+            <div class="dilivery-cart-block">
+                 <no-ssr>
+                        <div class="dilivery-cart">
+                            <el-drawer
+                            class="darwer-meny"
+                            :visible.sync="drawer"
+                            :with-header="true">
+                            <Dostavka
+                            :visible.sync ="drawer" />
+                            </el-drawer>
+                            <el-button
+                            @click="drawer = true"
+                            class="drawer-button-meny"
+                            size="small"
+                            icon="el-icon-takeaway-box"
+                            >Доставка
+                            </el-button>
+                        </div>
+
+                        <div class="dilivery-cart">
+                            <el-drawer
+                            class="darwer-meny"
+                            :visible.sync="drawerPay"
+                            :with-header="true">
+                            <Payment
+                            :visible.sync ="drawer" />
+                            </el-drawer>
+                            <el-button
+                            @click="drawerPay = true"
+                            class="drawer-button-meny"
+                            size="small"
+                            icon="el-icon-wallet"
+                            >Оплата
+                            </el-button>
+                        </div>
+                        <div class="dilivery-cart">
+                            <el-drawer
+                            class="darwer-meny"
+                            :visible.sync="drawerkont"
+                            :with-header="true">
+                            <Drawerkont
+                            :visible.sync ="drawer" />
+                            </el-drawer>
+                            <el-button
+                            @click="drawerkont = true"
+                            class="drawer-button-meny"
+                            size="small"
+                            icon="el-icon-phone-outline"
+                            >Контакты
+                            </el-button>
+                        </div>
+                     </no-ssr>
+            </div>
         </div>
         <div class="tabs-product">
             <Tabs
@@ -36,8 +101,7 @@
         <no-ssr>
         <BasketModal  
         @clickModal = "toggleModal"
-        @closeBasket = "closeBasket"
-        :dialogFormVisibleModal="dialogFormVisibleModal"
+        :dialogFormVisibleModal.sync="dialogFormVisibleModal"
         />
         </no-ssr> 
     </div>
@@ -49,6 +113,9 @@ import Galery from '~/components/product/Galery.vue'
 import Tabs from '~/components/product/Tabs.vue'
 import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
 import BasketModal from '~/components/BasketModal.vue'
+import Dostavka from '~/components/product/Dostavka.vue'
+import Payment from '~/components/product/Payment.vue'
+import Drawerkont from '~/components/product/Drawerkont.vue'
 import { mapGetters,mapActions } from 'vuex'
 export default ({
     created() {
@@ -58,7 +125,8 @@ export default ({
             let result = await app.store.dispatch('tovar/getProductItem',params.id)
             let price = result.product[0].price
             let discont = result.product[0].discont
-            return{price,discont,result}
+            let kodProduct = result.product[0].name
+            return{price,discont,result,kodProduct}
         } catch (err) {
         return error({
             statusCode: 404,
@@ -70,6 +138,9 @@ export default ({
         return{
             funChar:[],
             dialogFormVisibleModal:false,
+            drawer: false,
+            drawerPay: false,
+            drawerkont: false,
         }
     },
     components:{
@@ -77,7 +148,11 @@ export default ({
         Tabs,
         CartTovarInput,
         Breadcrumb,
-        BasketModal
+        BasketModal,
+        Dostavka,
+        Payment,
+        Drawerkont,
+        
     },
     computed:{
         ...mapGetters({
@@ -87,7 +162,7 @@ export default ({
     },
     methods:{
         ...mapActions({
-           ADD_TO_CART: 'main/ADD_TO_CART'
+           ADD_TO_CART: 'crate/ADD_TO_CART'
         }),
         addToCart(data){
             let cart = JSON.parse(JSON.stringify(this.productItem));
@@ -103,11 +178,10 @@ export default ({
             return this.funChar = data
 
         },
-        showBasket(dialogVisible){
-            this.dialogFormVisibleModal = dialogVisible
-        },
+
         toggleModal(val,noCloseNotify) { 
-            this.dialogFormVisibleModal = val;
+            this.dialogFormVisibleModal = true;
+             this.$notify.closeAll()
             if(noCloseNotify==false){
                 this.$notify.closeAll()
             }
@@ -138,7 +212,27 @@ export default ({
             hid: 'description',
             name: 'description',
             content:  this.productItem.description.replace(/(&lt;|<([^>]+)>)/ig,"")
-          }
+          },
+          {
+              hid: 'og:title',
+              name: 'og:title',
+              content: this.productItem.name,
+          },
+          {
+              hid: 'og:image',
+              property: 'og:image',
+              content: `${this.productItem.img}`,
+          },
+          {
+              hid: 'og:description',
+              property: 'og:description',
+              content: this.productItem.description.replace(/(&lt;|<([^>]+)>)/ig,""),
+          },
+          {
+              hid: 'og:url',
+              property: 'og:url',
+              content: `https://arhiterm.by/product/${this.productItem.id}`,
+          }, 
         ]
       }
     }

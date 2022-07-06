@@ -11,14 +11,48 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
+      { name: 'yandex-verification', content: '1053ce585032d00b' },
+      { name: 'yandex-verification', content: '14bc6c473eba7381' },
       { name: 'google', content: 'notranslate' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Первый поставщик профессиональных решений для систем отопления, водоснабжения и канализации ведущих европейских производителей. Оптовая и розничная продажа, наличие наскладе, низкие цены, скидки, гарантии.' }
+      { name: 'google-site-verification', content: 'XXP2MkYaAs0LKj5RuVVah-wMhFxrUmfV5rOUu9qihSY' },
+      { name: 'google-site-verification', content: 'pffvbs0GyslCUgg16m88GzyCeE8tIXtFV8_yrWKWKhQ' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1 shrink-to-fit=no' },
+      { hid: 'description', name: 'description', content: 'Первый поставщик профессиональных решений для систем отопления, водоснабжения и канализации ведущих европейских производителей. Оптовая и розничная продажа, наличие наскладе, низкие цены, скидки, гарантии.' },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'Архитерм - системы отопления, водоснабжения и канализации',
+    },
+    {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://arhiterm.by/logotip.png',
+    },
+    {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'Первый поставщик профессиональных решений для систем отопления, водоснабжения и канализации ведущих европейских производителей. Оптовая и розничная продажа, наличие наскладе, низкие цены, скидки, гарантии.',
+    },
+    {
+        hid: 'og:url',
+        property: 'og:url',
+        content: `https://arhiterm.by`,
+    },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800' },
     ]
+  },
+
+  webfontloader: {
+    custom: {
+      families: [
+        'Montserrat',
+      ],
+      urls: [
+        'https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap',
+      ]
+    }
   },
 
   loading: {color:'blue'},
@@ -33,6 +67,8 @@ export default {
   plugins: [
     '@/plugins/element-ui',
     '~/plugins/url-change.js',
+    { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
+    // { src: '~/plugins/vuex-persist.js', mode: 'client' },
     { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
   ],
 
@@ -43,10 +79,14 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     //'@nuxtjs/eslint-module'
+    '@nuxt/image',
     '@nuxtjs/pwa',
     '@nuxtjs/fontawesome',
+    '@nuxtjs/google-analytics',
   ],
-
+  googleAnalytics: {
+    id: 'UA-19108162-1', // Use as fallback if no runtime config is provided
+  },
   fontawesome:{
     //component:'fa',
     icons:{
@@ -60,27 +100,47 @@ export default {
     }
   },
   // Modules: https://go.nuxtjs.dev/config-modules
+
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/gtm',
     '@nuxtjs/auth-next',
+    '@nuxtjs/sitemap',
+    'nuxt-ssr-cache',
+    'nuxt-webfontloader',
+    // ['nuxt-vuex-localstorage', {
+    //   localStorage: ['main','product','category','tovar'] 
+    // }],
     ['nuxt-vuex-localstorage', {
-      localStorage: ['main'] //  If not entered, “localStorage” is the default value
+      localStorage: ['crate'] 
     }],
     [
       '@nuxtjs/yandex-metrika',
       {
         id: '7416499',
+        defer: true,
         webvisor: true,
         clickmap:true,
         usetriggerEventCDN:true,
         trackLinks:true,
-        // accurateTrackBounce:true,
+        triggerEvent:true,
+        accurateTrackBounce:true,
       }
-    ]
+    ],
+    // ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
   ],
 
-
+  gtm: {
+    id: 'GTM-K5DFSM3'
+  },
+  
+  image: {
+    provider: 'twicpics',
+    twicpics: {
+      baseURL: 'https://new.arhiterm.by'
+    },
+  },
   // elementUI: {
   //     font: 'Montserrat',
   //     icons: 'fa',
@@ -89,13 +149,22 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     proxy: false,
-    baseURL: "https://new.arhiterm.by"
+    baseURL: "https://new.arhiterm.by",
+    timeout: 1000 * 5,
+    headers: {
+      "Content-Type": "application/json"
+    },
+    
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/,'vee-validate/dist/rules'],
   },
+
+  serverMiddleware:  [
+    '~/middleware/redirect-to-www.js'
+  ],
 
   auth: {
     strategies: {
@@ -124,9 +193,9 @@ export default {
       },
     },
     redirect: {
-      login: '/',
+      login: '/cabinet',
       home: '/cabinet',
-      callback: false,
+      callback: '/',
       logout: '/'
     }
   },

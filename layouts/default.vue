@@ -3,14 +3,14 @@
     <div
      v-loading="loading">
     </div>
-
     <div
     :class="{ loading_lay: loading }"
     >
-      <Navbar />
+      <Navbar/>
+      <div class="main-nuxt"></div>
       <nuxt />
       <Footer />
-      <Upscroll/>
+      <!-- <Upscroll/> -->
     </div>
   </div>
 </template>
@@ -21,21 +21,36 @@ import Navbar from '~/components/Navbar.vue'
 import Footer from '~/components/Footer.vue'
 import Upscroll from '~/components/Upscroll.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
+import {mapGetters,mapActions} from 'vuex'
 export default ({
   layout: 'error',
+    head() {
+      return {
+        link: [
+          {
+            rel: 'canonical',
+            href: 'https://arhiterm.by' + this.$route.path
+          }
+        ]
+      }
+    },
     created(){
 
-  },
+    },
     mounted() {
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
+      this.loadingData()
     },
   data() {
       return {
         loading:true,
         history:[],
+        countLoad:0,
       };
+  },
+  computed: {
+    ...mapGetters({
+      loadingItem:'main/loadingItem',
+    }),
   },
   components:{
     Navbar,
@@ -50,10 +65,24 @@ export default ({
           this.history.splice(0,1)
         }
         this.$nuxt.history = this.history;
-      }
+        
+      },
+      loadingItem(data){
+        this.loading = data
+        this.loadingData()
+      },
+      
   },
   methods:{
-
+    ...mapActions({
+      setLoading: 'main/newLoadingItem',
+    }),
+    loadingData(){
+      setTimeout(() => {
+        this.setLoading(false)
+        this.loading = false;
+      }, 1500);
+    },
   }
 
 })

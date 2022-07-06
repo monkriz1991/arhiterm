@@ -1,7 +1,17 @@
 <template>
-    <div class="header-basket">
+    <div class="header-basket"> 
+      <vue-bottom-sheet
+        max-width="1080px"
+        max-height="90%"
+        :overlay="true"
+        :click-to-close="true"
+        :swipe-able="false"
+        :rounded="true"
+        :background-scrollable="false"
+        :is-full-screen="false"
+        :background-clickable="true"
+         ref="dialogFormVisible">
 
-        <el-dialog title="Корзина" :visible.sync="dialogFormVisible"  width="60%">
             <Cart
             v-if="basket.length"
             v-show="dialogForm"
@@ -11,30 +21,32 @@
             @basketCostUpdate = "basketCostUpdate"
             />
             <h4 v-else>Корзина пуста 😢</h4>
-            <span v-show="dialogForm" slot="footer" class="dialog-footer">
-                <el-button @click="dialogFormVisible = false">Продолжить покупки</el-button>
+            <span v-show="dialogForm" class="dialog-footer">
+              <div class="footer-summ">
+              <strong>{{basketCost}}</strong>
+              <span>руб.</span>
+              </div>
                 <el-button
                 v-if="basket.length"
                 type="primary"
+                class="add-order"
                 @click="dialogForm = false">Оформить заказ</el-button>
+                <el-button class="closed-order" @click="closeMeny()">Закрыть</el-button>
+
             </span>
-                <!-- <span style="
-    border-radius: 5px;
-    float: left;
-    padding: 10px;
-    margin: 0 0px 20px;
-    font-weight: 600;
-    font-size: 15px;
-    width: 100%;
-">Уважаемые клиенты, в данный момент заказы не обрабатываются, технические работы<br> будут завершены в ближайшее время. 
-                Приносим извенения за доставленные неудобства.</span> -->
+
             <div v-show="!dialogForm" class="dialog-back-block">
               <el-button-group>
                 <el-button icon="el-icon-arrow-left" @click="dialogForm = true">В корзину</el-button>
               </el-button-group>
             </div>
-            <Form :dialogForm.sync="dialogFormVisible" @updateDialogForm="updateDialogForm" v-show="!dialogForm"/>
-        </el-dialog>
+            <Form 
+            :dialogForm.sync="dialogFormVisible" 
+            @updateDialogForm="updateDialogForm" 
+            :key="componentKey"
+            v-show="!dialogForm"
+            />
+      </vue-bottom-sheet>
     </div>
 </template>
 
@@ -46,12 +58,17 @@ import {mapGetters,mapActions} from 'vuex'
     props:['dialogFormVisibleModal'],
     watch:{
       dialogFormVisibleModal: function(newVal) { 
-        this.dialogFormVisible = newVal
+          this.$refs.dialogFormVisible.open()
+          
+          this.$emit('update:dialogFormVisibleModal', false)
+          this.forceRerender();
       },
-      dialogFormVisible: function(newVal,noCloseNotify) { 
-        this.$emit('clickModal',newVal,noCloseNotify);
-        this.fromSateButCatMeny(false)
-      }
+      // dialogFormVisible: function(newVal,noCloseNotify) { 
+      //   this.$emit('clickModal',newVal,noCloseNotify);
+      //   this.fromSateButCatMeny(false)
+      //   //this.$refs.dialogFormVisible.close();
+    
+      // },
       
     },
     components:{
@@ -62,28 +79,39 @@ import {mapGetters,mapActions} from 'vuex'
       return {
         dialogFormVisible: false,
         dialogForm:true,
-        noCloseNotify:false
+        noCloseNotify:false,
+        basketCost: 0,
+        componentKey: 0,
       }
     },
     computed:{
       ...mapGetters({
-        basket:'main/basket',
-        activeButCatMenyItem:'main/activeButCatMenyItem',
-      })
+        basket:'crate/basket',
+        basketItog:'crate/basket_cost',
+      }),
+    },
+    mounted(){
+      this.basketCost = this.basketItog.for_amount_itog
     },
     methods:{
-      updateDialogForm(){
-        this.$emit('closeBasket',true);
+      forceRerender() {
+        this.componentKey += 1; 
+      },
+      closeMeny(){
+        this.$refs.dialogFormVisible.close();
+      },
+      updateDialogForm(forse){
+        this.$refs.dialogFormVisible.close();
         this.noCloseNotify = true
-        this.dialogFormVisible = false;
         this.dialogForm = true;    
         this.$forceUpdate();
+        this.$emit('openBasketNotify',true);
       },
       ...mapActions({
-        DELL_CART_BASKET:'main/DELL_CART_BASKET',
-        UPDATE_CART_BASKET:'main/UPDATE_CART_BASKET',
-        BASKET_COST:'main/BASKET_FROM_COST',
-        ButCatMeny: 'main/newSateButCatMeny',
+        DELL_CART_BASKET:'crate/DELL_CART_BASKET',
+        UPDATE_CART_BASKET:'crate/UPDATE_CART_BASKET',
+        BASKET_COST:'crate/BASKET_FROM_COST',
+        ButCatMeny: 'crate/newSateButCatMeny',
       }),
       cartDell(data){
         this.DELL_CART_BASKET(data)
@@ -93,11 +121,12 @@ import {mapGetters,mapActions} from 'vuex'
       },
       basketCostUpdate(data){
         this.BASKET_COST(data)
+        this.basketCost = data.for_amount_itog
       },
       fromSateButCatMeny(data){
         this.ButCatMeny(data)
       },
-
+      
     }
   };
 </script>

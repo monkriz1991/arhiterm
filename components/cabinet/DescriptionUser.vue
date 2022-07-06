@@ -1,12 +1,12 @@
 <template>
     <div class="profile-cab-right">
-        <h1 class="h1-user">{{$auth.user!==null?$auth.user.first_name:''}}</h1>
+        <h2 class="h1-user">Персональная информация</h2>
         <el-form :model="form" :rules="rules" ref="form" class="form-user-cab">
             <el-form-item
             prop="username"
             label="Логин:"
             :rules="[
-            { required: true, message: 'Пожалуйста введите ваш email', trigger: 'blur' },
+            {  message: 'Пожалуйста введите ваш email', trigger: 'blur' },
             { type: 'email', message: 'Пожалуйста введите корректный email', trigger: ['blur', 'change'] }
             ]"
             >
@@ -16,7 +16,7 @@
             prop="first_name"
             label="Имя:"
             :rules="[
-            { required: true, message: 'Пожалуйста введите имя', trigger: 'blur' }
+            {  message: 'Пожалуйста введите имя', trigger: 'blur' }
             ]"
             >
                 <el-input :disabled="!disableForm"  placeholder="Введите Ваше имя" v-model="form.first_name" autocomplete="off"></el-input>
@@ -49,13 +49,13 @@
             prop="type"
             >
                 <el-select :disabled="!disableForm" v-model="form.type_of_user" placeholder="Укажите тип">
-                <el-option label="Физ. лицо" value="1"></el-option>
-                <el-option label="Юр. лицо" value="2"></el-option>
+                <el-option label="Физ. лицо" value="2"></el-option>
+                <el-option label="Юр. лицо" value="1"></el-option>
                 
                 </el-select>
             </el-form-item>
             <el-form-item
-            v-show="form.type_of_user=='2'||form.type_of_user=='Юр. лицо'"
+            v-show="form.type_of_user=='1'||form.type_of_user=='Юр. лицо'"
             prop="company_name"
             label="Название компании:"
             :rules="[
@@ -65,7 +65,17 @@
                 <el-input :disabled="!disableForm"  placeholder="Введите название компании" v-model="form.company_name" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item
-            v-show="form.type_of_user=='2'||form.type_of_user=='Юр. лицо'"
+            v-show="form.type_of_user=='1'||form.type_of_user=='Юр. лицо'"
+            prop="unp"
+            label="УНП:"
+            :rules="[
+            { message: 'Пожалуйста название УНП вашей компании', trigger: 'blur' }
+            ]"
+            >
+                <el-input :disabled="!disableForm"  placeholder="Введите УНП компании" v-model="form.unp" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item
+            v-show="form.type_of_user=='1'||form.type_of_user=='Юр. лицо'"
             prop="legal_address"
             label="Юр. адрес:"
             :rules="[
@@ -75,26 +85,22 @@
                 <el-input :disabled="!disableForm"  placeholder="Введите ваш юр. адрес" v-model="form.legal_address" autocomplete="off"></el-input>
             </el-form-item>
             <el-button
-            class="but-icon-save"
-            type="warning"
-            plain
             v-show="disableForm"
-            size="mini"
+            class="but-icon-edit"
+            icon="el-icon-finished" circle
+            size="medium"
             @click="saveForm"
-            >Сохранить</el-button>
+            ></el-button>
+            <el-button
+            class="but-icon-edit"
+            icon="el-icon-edit" circle
+            size="medium"
+            @click="editForm()"
+            v-show="!disableForm"
+            >
+            </el-button>
         </el-form>
-        <el-button
-        class="but-icon-edit"
-        type="primary"
-        plain
-        size="mini"
-        @click="editForm()"
-        >
-        <span v-if="!disableForm">
-            <i class="el-icon-edit"></i>
-            Редактировать</span>
-        <span v-else><i class="el-icon-close"></i>Закрыть</span>
-        </el-button>
+
     </div>
 </template>
 
@@ -112,25 +118,35 @@ export default {
               last_name:this.checkUser('last_name'),
               username:this.checkUser('username'),
               email:this.checkUser('username'),
-              phone_number:this.checkUser('phone_number'),
+              phone_number:this.checkPhone('phone_number'),
               company_name:this.checkUser('company_name'),
               legal_address:this.checkUser('legal_address'),
+              unp:this.checkUser('unp'),
               type_of_user:this.checkUser('type_of_user'),
           },
           rules:{
 
-          }
+          },
+          
       }
     },
     methods:{
+      checkPhone(p){
+          if(this.$auth.user.phone_number==''){
+            this.notyfyData()
+          }
+          return this.$auth.user!==null&&this.$auth.user[p]!=this.$auth.user.type_of_user?this.$auth.user[p]:''
+      },
       checkUser(p){
-          if(this.$auth.user[p] == this.$auth.user.type_of_user && this.$auth.user.type_of_user==1){
+          if(this.$auth.user[p] == this.$auth.user.type_of_user && this.$auth.user.type_of_user==2){
             return 'Физ. лицо'
-          }else if(this.$auth.user[p] == this.$auth.user.type_of_user && this.$auth.user.type_of_user==2){
+          }else if(this.$auth.user[p] == this.$auth.user.type_of_user && this.$auth.user.type_of_user==1){
             return 'Юр. лицо'
           }
-         
+           
         return this.$auth.user!==null&&this.$auth.user[p]!=this.$auth.user.type_of_user?this.$auth.user[p]:''
+      
+      
       },
         editForm(){
             this.disableForm = !this.disableForm
@@ -141,17 +157,25 @@ export default {
        */
       async saveForm() {
           try{
-            let data = await this.$axios.patch(`/users/mydata/${this.$auth.user!==null?this.$auth.user.id:''}/`, this.form)
-          this.$message({
-            message: 'сохранено',
-            showClose: true,
-            duration:1000,
-            type: 'success'
-        });
+            if(this.form.type_of_user == 'Физ. лицо'){
+              this.form.type_of_user = 2
+            }else if(this.form.type_of_user == 'Юр. лицо'){
+              this.form.type_of_user = 1
+            }
+          let data = await this.$axios.patch(`/users/mydata/${this.$auth.user!==null?this.$auth.user.id:''}/`, this.form)
+
+          if(this.form.type_of_user == 2){
+            this.form.type_of_user = 'Физ. лицо'
+          }else if(this.form.type_of_user == 1){
+            this.form.type_of_user = 'Юр. лицо'
+          }
+          this.openSuccess();
         await this.$auth.fetchUser()
           }catch(error){
-              this.parseError(error)
+            console.log(error)
+              this.openNotyEmail()
           }
+           this.disableForm=false
       },
       /**
        * обработка ошибок отправки запросов
@@ -164,80 +188,28 @@ export default {
             duration:4000,
             type: 'error'
         });
-      }
+      },
+      openSuccess() {
+        this.$notify.success({
+          title: 'Успешно',
+          message: 'Информация обновлена!',
+          offset: 100
+        });
+      },
+      openNotyEmail(){
+         this.$notify.error({
+          title: 'Ошибка',
+          message: 'Похоже, что такое email уже зарегистрирован на сайте!'
+        });       
+      },
+      notyfyData() {
+        this.$notify({
+          title: 'Не указан контактный телефон.',
+          message: 'Для совершения покупок на сайте необходимо заполнить данный формы!',
+          type: 'warning'
+        });
+      },
     }
 }
 </script>
 
-<style>
-.form-user-cab{
-    position: relative;
-    float: left;
-    width: 100%;
-    margin: 0 0 10px;
-}
-.form-user-cab .el-form-item{
-    float: left;
-    margin: 0 0 2px;
-    width: 100%;
-}
-.form-user-cab .el-form-item__content {
-    line-height: initial;
-}
-.form-user-cab .el-form-item__label {
-    line-height: initial;
-    float: left;
-    font-size: 12px;
-    font-weight: 500;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    width: 90px;
-    text-align: left;
-}
-.form-user-cab .el-form-item__content{
-    float: left;
-}
-.form-user-cab .el-input.is-disabled .el-input__inner {
-    background-color: #ffffff;
-    border-color: #ffffff;
-    color: #4b4b4b;
-    cursor: not-allowed;
-    height: 30px;
-    border-bottom: 1px solid #ffffff;
-    border-radius: 2px;
-    padding: 0 50px 0 0px;
-    font-size: 13px;
-    font-weight: 500;
-    width: 250px;
-}
-.form-user-cab .el-input__inner{
-    height: 30px;
-    font-size: 13px;
-    padding: 0 35px 0 0px;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    border-radius: 0px;
-    width: 250px;
-    border-bottom: 1px solid #DCDFE6;
-}
-.form-user-cab .but-icon-save{
-    color: #ff7e40;
-    font-size: 12px;
-    border: 1px solid #fff;
-    position: absolute;
-    left: 248px;
-    bottom: -57px;
-    z-index: 10;
-    padding: 12px 20px;
-}
-.form-user-cab .el-input__icon {
-    line-height: 26px;
-}
-.h1-user{
-    float: left;
-    width: 100%;
-    margin: 0 0 10px;
-}
-</style>

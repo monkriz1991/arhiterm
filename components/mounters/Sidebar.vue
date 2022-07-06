@@ -1,9 +1,9 @@
 <template>
     <div class="mount-filter-section cat-filter">
             <ul>
-                <li class="cat-filter-title">
+                <h1 class="cat-filter-title">
                     Монтажники
-                </li>
+                </h1>
                 <el-checkbox-group v-model="checkList"
                 >
                    <label class="cat-filter-check">

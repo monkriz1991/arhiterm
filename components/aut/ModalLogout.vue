@@ -13,17 +13,18 @@
         <span class="button-nav-text">Кабинет</span>
         </el-button>
         <el-dialog 
+        class="modal-logout"
         title="Кабинет" 
         append-to-body
         :visible.sync="dialogFormVisible"  
-        width="32%">
+        width="36%">
 
         <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="Вход" name="first">
                 <Login/>
             </el-tab-pane>
             <el-tab-pane label="Регистрация" name="second">
-              <Registration/>
+              <Registration  :dialogFormVisible.sync="dialogFormVisible"  />
             </el-tab-pane>
             <el-tab-pane label="Восстановить пароль" name="secondFry">Восстановить пароль</el-tab-pane>
         </el-tabs>

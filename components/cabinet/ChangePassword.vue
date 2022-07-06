@@ -1,16 +1,7 @@
 <template>
     <div>
-        <el-button 
-        @click="dialogVisible = true"
-        icon="el-icon-edit" size="small">сменить пароль</el-button>
-        <el-dialog
-        title="Смена пароля"
-        :visible.sync="dialogVisible"
-        width="30%"
-        class="dialog-changePass"
-        >
-
-        <el-form :model="form" ref="form" status-icon :rules="rules">
+        <h2 class="h1-user">Смена пароля</h2>
+        <el-form :model="form" ref="form" status-icon :rules="rules" class="form-user-cab">
             <el-form-item 
             prop="old_password"
             label="Текущий пароль"
@@ -29,15 +20,15 @@
             >
             <el-input placeholder="Повторите пароль" v-model="form.password2" show-password autocomplete="off"></el-input>
             </el-form-item>   
-           
-            <span  class="dialog-footer">
-                <el-button type="primary" 
-                :disabled="disabled"
-                @click="changePassword"
-                >Сохранить</el-button>
-            </span>
+            <el-button
+            circle
+            :disabled="disabled"
+            class="but-icon-edit"
+            icon="el-icon-finished"
+            @click="changePassword"
+            ></el-button>
         </el-form> 
-        </el-dialog>
+
 
     </div>
 </template>
@@ -96,23 +87,26 @@ export default {
       async changePassword() {
           try{
             let data = await this.$axios.patch(`/change_password/backend/change_password/${this.$auth.user.id}/`, this.form)
-          this.$message({
-            message: 'сохранено',
-            showClose: true,
-            duration:1000,
-            type: 'success'
-        });
+          this.openSuccess();
         await this.$auth.fetchUser()
           }catch(error){
               console.log(error)
               this.parseError(error)
-            this.$message({
-            message: 'Страрый пароль не подходит',
-            showClose: true,
-            duration:1000,
-            type: 'warning'
-        });
+            this.openNotyEmail();
           }
+      },
+    openSuccess() {
+        this.$notify.success({
+          title: 'Успешно',
+          message: 'Информация обновлена!',
+          offset: 100
+        });
+      },
+      openNotyEmail(){
+         this.$notify.error({
+          title: 'Ошибка',
+          message: 'Страрый пароль не подходит!'
+        });       
       },
       /**
        * обработка ошибок отправки запросов

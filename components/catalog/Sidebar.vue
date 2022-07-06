@@ -18,6 +18,7 @@
                     :label="`${checkbox.id}||${filters.id}`"
                     v-show="idx<=7&&adaptivSidebar==true  || adaptivSidebar==false"
                     @change="checkFil()"
+                    :disabled="isDisabled"
                     >{{checkbox.value}}
                     </el-checkbox>
 
@@ -34,6 +35,7 @@
                             :label="`${checkbox.id}||${filters.id}`"
                             v-show="idx>7"
                             @change="checkFil()"
+                            :disabled="isDisabled"
                             >{{checkbox.value}}
                             </el-checkbox>
                           </div>
@@ -56,6 +58,7 @@
                     :label="checkbox.id"
                     v-show="idx<=5&&adaptivSidebar==true  || adaptivSidebar==false"
                     @change="filterByManufacturer"
+                    :disabled="isDisabled"
                     >{{checkbox.name}}
                     </el-checkbox>
 
@@ -72,13 +75,13 @@
                             :label="checkbox.id"
                             v-show="idx>5&&adaptivSidebar==true"
                             @change="filterByManufacturer"
+                            :disabled="isDisabled"
                             >{{checkbox.name}}
                             </el-checkbox>
                           </div>
                         <el-button icon="el-icon-arrow-right" slot="reference" >
                         Показать больше</el-button>
                       </el-popover>
-
 
                 </el-checkbox-group>
             </ul>
@@ -102,6 +105,7 @@ export default {
             checkFilId:[],
             checkListManuf:[],
             visibleCheck:[],
+            isDisabled:false
         };
     },
     computed:{
@@ -134,14 +138,20 @@ export default {
   },
     methods:{
       updateData(){
-            setTimeout(this.sendUpdate(),100);
+        setTimeout(this.sendUpdate(),100); 
+        setTimeout(() => {
+          this.isDisabled = false
+        }, 700);
+
       },
       sendUpdate(){
         this.$emit('updateData')
       },
         checkFil(){
+          this.isDisabled = true
           if(this.$route.query.page!=1){
           try{
+            
             this.$addQuery('page',1,this.$route,this.$route.params.catalog);
           }catch (e){
 
@@ -155,6 +165,7 @@ export default {
           setTimeout(this.updateData,100)
         },
         filterByManufacturer(){
+          this.isDisabled = true
         if(this.$route.query.page!=1){
           try{
             this.$addQuery('page',1,this.$route,this.$route.params.catalog);

@@ -1,43 +1,40 @@
-name: CI to Docker Hub
+name: ci
 on:
   push:
     branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
+      - realease/1.0
 
 jobs:
-
-  build:
+  deploy-admin:
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Check Out Repo 
-        uses: actions/checkout@v2
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
+      - name: git pull
+        uses: fifsky/ssh-action@master
         with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          pass: ${{ secrets.SSH_PASS }}
+          command: |
+            cd /var/www/www-root/data/www/arhiterm.by/arhiterm
+            git add . && git commit -m "auto commit"
+            ${{ secrets.SCRIPT }}
+      - name: install packages
+        uses: fifsky/ssh-action@master
         with:
-          context: ./
-          file: ./Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/arhiterm_front:latest
-
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
-
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          pass: ${{ secrets.SSH_PASS }}
+          command: |
+            cd /var/www/www-root/data/www/arhiterm.by/arhiterm
+            npm install
+      - name: build
+        uses: fifsky/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          pass: ${{ secrets.SSH_PASS }}
+          command: |
+            cd /var/www/www-root/data/www/arhiterm.by/arhiterm
+            npm run build && npm run generate
+            pm2 restart Arhiterm.by

@@ -10,11 +10,8 @@
     <no-ssr>
       <el-carousel-item  
         v-for="(item,idx) in slides" :key="idx"
-        
       >
-      
         <div class="slider-block" >
-          
           <div class="slider-content" :style="{background:item.color}">
             <div  v-loading="loading" :class="[item.video!=null?'preload-video':'']">
             <video class="video-slider" v-if="item.video!=null"  preload="auto" muted="" autoplay="" loop="" webkit-playsinline="" playsinline="" :src="item.video"></video>
@@ -24,13 +21,13 @@
             </nuxt-link>
             </div>
           </div>
-          <img class="slider-image" 
-            v-if="item.img!='https://new.arhiterm.by/media/img/noimg.png'"
-            :src="item.img"
+          <nuxt-picture loading="lazy" class="slider-image" 
+            v-if="item.img.substring(24)!='https://new.arhiterm.by/media/img/noimg.png'"
+            :src="item.img.substring(24)"
             :alt="item.title" 
+            format="webp"
           />
         </div>
-
       </el-carousel-item>
       </no-ssr>
     </el-carousel>
