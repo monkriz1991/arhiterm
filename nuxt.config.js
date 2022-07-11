@@ -110,10 +110,10 @@ export default {
     'nuxt-ssr-cache',
     'nuxt-webfontloader',
     // ['nuxt-vuex-localstorage', {
-    //   localStorage: ['main','product','category','tovar'] 
+    //   localStorage: ['main','product','category','tovar']
     // }],
     ['nuxt-vuex-localstorage', {
-      localStorage: ['crate'] 
+      localStorage: ['crate']
     }],
     [
       '@nuxtjs/yandex-metrika',
@@ -134,7 +134,7 @@ export default {
   gtm: {
     id: 'GTM-K5DFSM3'
   },
-  
+
   image: {
     provider: 'twicpics',
     twicpics: {
@@ -154,7 +154,7 @@ export default {
     headers: {
       "Content-Type": "application/json"
     },
-    
+
   },
    sitemap: {
     hostname: "https://arhiterm.by",
@@ -196,9 +196,9 @@ export default {
       },
     },
     redirect: {
-      login: '/cabinet',
+      login: '/',
       home: '/cabinet',
-      callback: '/',
+      callback: false,
       logout: '/'
     }
   },
