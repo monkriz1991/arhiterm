@@ -196,7 +196,7 @@ export default {
       },
     },
     redirect: {
-      login: '/',
+      login: '/cabinet',
       home: '/cabinet',
       callback: false,
       logout: '/'
