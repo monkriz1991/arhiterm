@@ -27,7 +27,7 @@ jobs:
 
       - name: Build Svelte app
         run: npm run build
-      
+
       - name: Generate boundle static app
         run: npm run generate
 
@@ -37,11 +37,15 @@ jobs:
       - name: Capacitor copy
         run: npx cap copy
 
+      - name: Set Version android app
+        run:  capacitor-set-version set:android -v 0.0.2 -b 5 ./android
+
       - name: Build app bundle
         run: cd android && gradle bundle
+
       - name: Show catalog
         run: ls android/app/build/outputs/bundle/release/
-        
+
       - name: Extract Android signing key from env
         run: |
           echo "${{ secrets.RELEASE_KEYSTORE }}" > android/release.jks.base64
