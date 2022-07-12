@@ -38,7 +38,7 @@ jobs:
         run: npx cap copy
 
       - name: Set Version android app
-        run:  npx capacitor-set-version set:android -v 0.0.2 -b 5 android
+        run:  npx capacitor-set-version set:android -v 0.0.2 -b 5 ./
 
       - name: Build app bundle
         run: cd android && gradle bundle
