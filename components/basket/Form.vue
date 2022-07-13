@@ -93,7 +93,7 @@
         { required: true, message: 'Пожалуйста введите Адрес доставки', trigger: 'blur' },
         ]"
         >
-            <el-input type="textarea" 
+            <el-input type="textarea"
             v-model="Form.adres"></el-input>
         </el-form-item>
         <el-form-item label="Комментарий к заказу">
@@ -116,9 +116,9 @@
 
             <div class="form-basket-aut">
                 <div class="form-basket-aut-content" v-if="!$auth.loggedIn">
-                    <no-ssr>
+                    <client-only>
                     <ModalLogout />
-                    </no-ssr>
+                    </client-only>
                     <b>|</b>
                     <span>Если у вас уже есть аккаунт на сайте,
                         вы можете пройти авторизацию,<br>
@@ -128,8 +128,8 @@
             </div>
 
             <span v-show="Form.pay != ''" class="dialog-footer">
-                <el-button 
-                v-if="Form.phone_number!=''" 
+                <el-button
+                v-if="Form.phone_number!=''"
                 @click="addOrder" type="primary" class="basket-pay">Оформить заказ</el-button>
                 <span v-show="$auth.loggedIn" v-else >Заполните контактный Телефон в профиле личного кабинета</span>
             </span>
@@ -251,7 +251,7 @@ export default ({
             if (valid) {
                 //this.registerUser()
                 this.unaftorized()
-                
+
             } else {
                 console.log('error submit!!');
                 return false;
@@ -264,20 +264,20 @@ export default ({
         this.setLoading(true)
         this.$emit('updateDialogForm',false)
         let data = await this.$axios.post('add/to/cart',{form:this.Form,basket:this.basket,basket_cost:this.basket_cost});
-        
+
         if(!this.$auth.loggedIn) {
-            
+
             await this.$auth.loginWith('local', {data:{username: this.Form.username,phone_number:this.Form.phone_number,password: this.Form.password}})
 
             this.addUserList(this.$auth.user)
             }
 
 
-        
+
         this.$
         this.remove_basket()
         this.remove_cost()
-        
+
 
         }catch (error) {
         this.$message({
