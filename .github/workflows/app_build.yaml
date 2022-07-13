@@ -1,6 +1,11 @@
 name: Build Android
 on:
   workflow_dispatch:
+    inputs:
+      name:
+        type: string
+        required: true
+        description: Введите номер релиза (X.X.X)
 
 
 jobs:
