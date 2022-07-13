@@ -2,7 +2,7 @@ name: Build Android
 on:
   workflow_dispatch:
     inputs:
-      name:
+      relese:
         type: string
         required: true
         description: Введите номер релиза (X.X.X)
@@ -43,7 +43,7 @@ jobs:
         run: npx cap copy
 
       - name: Set Version android app
-        run:  npx capacitor-set-version set:android -v 0.0.3 -b 2 ./
+        run:  npx capacitor-set-version set:android -v ${{ inputs.relese }}  -b 1 ./
 
       - name: Build app bundle
         run: cd android && gradle bundle
