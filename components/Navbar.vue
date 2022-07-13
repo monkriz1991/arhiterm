@@ -1,5 +1,5 @@
 <template>
-  <header ref="header" 
+  <header ref="header"
     class="header-tempalte"
   :class="{ 'header-container--sticky': isHeaderSticky }"
   >
@@ -7,7 +7,7 @@
       <div class="contents">
         <div v-if="width>991" class="header-cat-desc">
           <el-popover
-            
+
             popper-class="popover-nav"
             v-model="visible"
             placement="bottom"
@@ -102,10 +102,10 @@
             <path id="Path_587" data-name="Path 587" d="M3.586,7.691,7.908,9.144a8.071,8.071,0,0,0,5.042.031c3.785-.939,11.98-2.565,12.063-2.583l-.305-1.54-.054.011-7.811-1.1a11.21,11.21,0,0,0-3.1.08L3.3,6.068a3.06,3.06,0,0,0-2.122,5.41,3.05,3.05,0,0,0-.015,4.813,3.066,3.066,0,0,0,.968,5.326l7.528,2.407a3.369,3.369,0,0,0,1.514.064L24.392,21.06s-.079-.342-.175-.765a.785.785,0,0,0-.941-.59L11.245,22.46A3.387,3.387,0,0,1,9.731,22.4L2.614,20.121a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972c0-.007,4.355,1.384,6.138,1.952a3.369,3.369,0,0,0,1.514.064l13.215-3.027s-.079-.343-.175-.765a.785.785,0,0,0-.941-.59L11.245,17.658a3.4,3.4,0,0,1-1.514-.064L2.614,15.318a1.5,1.5,0,0,1-.97-1.881,1.5,1.5,0,0,1,1.882-.972s4.414,1.408,6.211,1.982a3.366,3.366,0,0,0,1.513.064l13.215-3.028s-.079-.342-.175-.765a.785.785,0,0,0-.941-.589L11.318,12.883A3.37,3.37,0,0,1,9.8,12.82L2.686,10.545a1.5,1.5,0,0,1,.9-2.854Z" transform="translate(0 -3.891)"/>
           </svg>
         </el-button>
-        <el-dialog 
+        <el-dialog
         class="header-cat-nav"
         append-to-body
-        :visible.sync="dialogCatalogVisible"  
+        :visible.sync="dialogCatalogVisible"
         width="36%">
             <ul
               v-if="visibleNav"
@@ -157,7 +157,7 @@
                   -245z"/>
                   <path d="M1320 1640 l0 -380 315 0 315 0 0 380 0 380 -315 0 -315 0 0 -380z"/>
                   </g>
-                  </svg> 
+                  </svg>
               </div>
               <div v-else>
                 <svg id="book-svg" xmlns="http://www.w3.org/2000/svg" width="25.013" height="20.255" viewBox="0 0 25.013 20.255">
@@ -199,15 +199,17 @@
               >
               </el-button>
             </div>
+            <client-only>
             <div v-if="$auth.loggedIn">
               <Menyuser/>
             </div>
+            </client-only>
             <div v-else>
             <client-only>
               <ModalLogout />
             </client-only>
             </div>
-            <client-only> 
+            <client-only>
              <BasketModal
               @clickModal = "toggleModal"
               @openBasketNotify = "closeBasket"
@@ -225,7 +227,7 @@
 
 
             <div v-if="width>991" class="top-phone button-nav-meny">
-              <el-button 
+              <el-button
               circle
               icon="el-icon-phone-outline"
               @click="dialogVisible=true">
@@ -236,12 +238,12 @@
                   width="200"
                   popper-class="work-poper"
                   trigger="click">
-                  <el-button 
+                  <el-button
                   icon="el-icon-time"
                   slot="reference">
                   </el-button>
                   <div>
-                    <div 
+                    <div
                     class="work-div"
                     v-for="(work,k) in worktime" :key="k"
                     v-if="work.week_day==0&&work.week_day<=4"
@@ -251,8 +253,8 @@
                       <b>-</b>
                       <span class="work-time">{{work.end_time.substring(0,5)}}</span>
                       <strong class="work-comment">{{work.comment}}</strong>
-                    </div> 
-                    <div 
+                    </div>
+                    <div
                     class="work-div"
                     v-for="(work,k) in worktime" :key="k"
                     v-if="work.week_day==4"
@@ -262,7 +264,7 @@
                       <b>-</b>
                       <span class="work-time">{{work.end_time.substring(0,5)}}</span>
                       <strong class="work-comment">{{work.comment}}</strong>
-                    </div> 
+                    </div>
                     <div>
                       <strong class="work-day">Суббота / Воскресенье</strong>
                       <strong class="work-comment">Выходной</strong>
@@ -321,7 +323,7 @@
               </transition>
             </div>
         </div>
-      
+
       </div>
     </div>
     <div v-if="width>991" class="header-bg"></div>
@@ -343,22 +345,23 @@
         <div v-if="width<991" class="bottom-bar">
           <div class="container">
             <div class="bottom-bar-con">
+              <client-only>
               <div v-if="$auth.loggedIn">
                 <Menyuser/>
               </div>
               <div v-else>
                 <ModalLogout />
               </div>
-              
-              
-              <el-button 
+               </client-only>
+
+              <el-button
               circle
               icon="el-icon-phone-outline"
               @click="dialogVisible=true">
               </el-button>
 
 
-              <el-button 
+              <el-button
               circle
               icon="el-icon-more-outline"
               @click="open()">
@@ -369,12 +372,12 @@
                   width="200"
                   popper-class="work-poper"
                   trigger="click">
-                  <el-button 
+                  <el-button
                   icon="el-icon-time"
                   slot="reference">
                   </el-button>
                   <div>
-                    <div 
+                    <div
                     class="work-div"
                     v-for="(work,k) in worktime" :key="k"
                     v-if="work.week_day==0&&work.week_day<=4"
@@ -384,8 +387,8 @@
                       <b>-</b>
                       <span class="work-time">{{work.end_time.substring(0,5)}}</span>
                       <strong class="work-comment">{{work.comment}}</strong>
-                    </div> 
-                    <div 
+                    </div>
+                    <div
                     class="work-div"
                     v-for="(work,k) in worktime" :key="k"
                     v-if="work.week_day==4"
@@ -395,7 +398,7 @@
                       <b>-</b>
                       <span class="work-time">{{work.end_time.substring(0,5)}}</span>
                       <strong class="work-comment">{{work.comment}}</strong>
-                    </div> 
+                    </div>
                     <div>
                       <strong class="work-day">Суббота / Воскресенье</strong>
                       <strong class="work-comment">Выходной</strong>
@@ -474,7 +477,7 @@
                 {{phone.phone_number.substring(0,4)+" "}}
                 ({{phone.phone_number.substring(4,6)}})
                 {{phone.phone_number.substring(6,35)}}
-                </a> 
+                </a>
                 <b>|</b>
                 <strong>{{phone.operator}}</strong>
               </p>
