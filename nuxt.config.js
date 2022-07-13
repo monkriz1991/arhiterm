@@ -196,9 +196,9 @@ export default {
       },
     },
     redirect: {
-      login: false,
+      login: '/cabinet',
       home: '/cabinet',
-      callback: false,
+      callback: '/',
       logout: '/'
     }
   },

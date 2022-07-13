@@ -56,10 +56,50 @@
                 <span>Товаров на:</span>
                 <strong>{{for_amount}}<span>руб.</span></strong>
             </div>
+            <div v-if="for_amount_discount_persent==0" class="basket-itog-summ">
+                <span>Скидка:</span>
+                <strong>0<span>руб.</span></strong>
+                <strong>0<span>%</span></strong>
+            </div>
             <div v-if="for_amount_discount_persent>0" class="basket-itog-summ">
-                <span>Скидка на объём:</span>
+                <span>Скидка:</span>
                 <strong>{{for_amount_discount}}<span>руб.</span></strong>
                 <strong>{{for_amount_discount_persent}}<span>%</span></strong>
+            </div>
+            <div class="basket-diskont">
+            <el-collapse accordion>
+                <el-collapse-item name="1">
+                    <template slot="title">
+                    <span class="basket-diskont-inf">
+                    Как получить скидку <i class="header-icon el-icon-info"></i>
+                    </span>
+                    </template>
+                    <div class="basket-diskont-inf-block dis-block">
+						<h5>В Архитерм действует система скидок за объем суммы заказа.</h5>
+						<span>Чем на большую сумму вы совершаете заказ – тем большую скидку на него вы получаете! </span>
+						<p>
+							<span>от<strong>100</strong>руб.</span>
+							<strong>-2<span>%</span></strong>
+						</p>
+						<p>
+							<span>от<strong>300</strong>руб.</span>
+							<strong>-3<span>%</span></strong>
+						</p>
+						<p>
+							<span>от<strong>500</strong>руб.</span>
+							<strong>-5<span>%</span></strong>
+						</p>
+						<p>
+							<span>от<strong>1000</strong>руб.</span>
+							<strong>-7<span>%</span></strong>
+						</p>
+						<p>
+							<span>от<strong>2000</strong>руб.</span>
+							<strong>-10<span>%</span></strong>
+						</p>
+					</div>
+                </el-collapse-item>
+            </el-collapse>
             </div>
             <div class="basket-itog-summ">
                 <div v-if="for_amount_none>0" class="basket-itog-summ-none">
