@@ -808,7 +808,7 @@ header .contents {
     height: 100%;
 }
 .header-basket .bottom-sheet__content{
-    padding: 20px 80px 260px 80px;
+    padding: 20px 80px 300px 80px;
 }
 .header-basket{
     float: right;
@@ -1691,6 +1691,7 @@ border: 1px solid #fff;
     top: -4px;
     right: -4px;
     left: auto;
+    display: none;
 }
 .cost-product-input .el-radio__label>span:last-child .el-button{
     padding: 3px;
@@ -2563,6 +2564,64 @@ body .el-dialog__body{
 }
 .el-carousel__item{
     border-radius:0px !important ;
+}
+.basket-diskont{
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+    text-align: right;
+}
+.basket-diskont .el-collapse-item__header{
+    height: 40px;
+    line-height: 40px;
+}
+.basket-diskont-inf-block{
+    padding: 0px 0 10px;
+    float: left;
+    width: 100%;
+}
+.basket-diskont-inf-block h5{
+    float: right;
+    width: 100%;
+    margin: 5px 0 10px;
+    font-weight: 600;
+    font-size: 13px;    
+}
+.basket-diskont-inf{
+    width: 100%;
+    color: #ac1e1e;
+}
+.basket-diskont-inf-block>span{
+    float: right;
+    width: 100%;
+    margin: 0 0 10px;
+    font-size: 13px;
+}
+
+.basket-diskont-inf-block p{
+    float: right;
+    width: 100%;
+    margin: 0 0 0px;
+    font-size: 13px;
+}
+.basket-diskont-inf-block p>span{
+    font-size: 12px;
+    font-weight: 500;
+}
+.basket-diskont-inf-block p>span>strong{
+    float: none;
+    font-size: 15px;
+    padding: 0 2px 0 10px;
+}
+.basket-diskont-inf-block p>strong{
+    float: none;
+    font-size: 15px;
+    padding: 0 0px 0 10px;
+    color: #ac1e1e;
+}
+.basket-diskont-inf-block p>strong>span{
+    font-size: 12px;
+    padding: 0 0px 0 2px;
 }
 .preload-video{
 /* 
@@ -4321,6 +4380,9 @@ font-size: 13px;
 }
 
 @media (max-width: 991px){
+    .cost-product-amount .el-input__inner, .basket-tov-calc .el-input__inner{
+        width: 52px;
+    }
     .phone-footer{
         display: block;
         float: left;
@@ -5113,9 +5175,9 @@ font-size: 13px;
         position: relative;
     }
     .basket-tov-calc .units {
-        margin: 0 0 0 0px;
+        margin: 0 30px 0 0px;
         font-size: 13px;
-        width: 100%;
+        width: auto;
         text-align: left;
         left: 150px;
         top: 6px;
