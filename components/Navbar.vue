@@ -203,12 +203,11 @@
             <div v-if="$auth.loggedIn">
               <Menyuser/>
             </div>
-            </client-only>
+
             <div v-else>
-            <client-only>
               <ModalLogout />
-            </client-only>
             </div>
+              </client-only>
             <client-only>
              <BasketModal
               @clickModal = "toggleModal"
