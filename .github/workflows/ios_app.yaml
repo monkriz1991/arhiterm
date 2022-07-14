@@ -39,7 +39,7 @@ jobs:
         run:  npx capacitor-set-version set:ios -v ${{ inputs.relese }}  -b 1 ./
 
       - name: Install pod
-        run: cd ios && pod install
+        run: cd ios && pod init && pod install
 
       - name: Build app bundle
         run: xcodebuild build -workspace ios/App/Arhiterm.xcworkspace -scheme ArhitermApp CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
