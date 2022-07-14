@@ -39,7 +39,10 @@ jobs:
         run:  npx capacitor-set-version set:ios -v ${{ inputs.relese }}  -b 1 ./
 
       - name: Go IOS repo
-        run: cd ios 
+        run: cd ios/App 
+        
+      - name: Show what in repo
+        run: ls
 
       - name: Build app bundle
         run: xcodebuild build -workspace ios/App/Arhiterm.xcworkspace -scheme ArhitermApp CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
