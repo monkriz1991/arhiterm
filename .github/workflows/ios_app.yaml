@@ -38,7 +38,7 @@ jobs:
       - name: Set Version IOS app
         run:  npx capacitor-set-version set:ios -v ${{ inputs.relese }}  -b 1 ./
 
-      - name: Install pod:
+      - name: Install pod
         run: cd ios && pod install
 
       - name: Build app bundle
