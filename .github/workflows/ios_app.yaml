@@ -21,7 +21,7 @@ jobs:
           node-version: 16.x
 
       - name: Install app dependencies
-        run: npm install
+        run: npm install && npm install @capacitor/ios
 
       - name: Build Svelte app
         run: npm run build
