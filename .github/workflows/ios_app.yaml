@@ -56,11 +56,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-ios-release(${{ inputs.relese }})
-          path: $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+          path: $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos/App.app
           retention-days: 15
-      - name: Upload release bundle
-        uses: actions/upload-artifact@v2
-        with:
-          name: dSYM-ios-release(${{ inputs.relese }})
-          path: $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-          retention-days: 15
+
