@@ -48,6 +48,8 @@ jobs:
         run: ls $HOME/Library/Developer/Xcode/DerivedData/**/Build/
       - name: Show catalog Build
         run: ls $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products
+      - name: Show catalog Debug-iphoneos
+        run: ls $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos
 
 
       - name: Upload release bundle
