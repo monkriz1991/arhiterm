@@ -45,12 +45,18 @@ jobs:
         run: xcodebuild build -workspace ios/App/App.xcworkspace -scheme App CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
       - name: Show catalog
-        run: ls ios/app/build/outputs/bundle/release/
+        run: ls $HOME/Library/Developer/Xcode/DerivedData/**/Build/
 
 
       - name: Upload release bundle
         uses: actions/upload-artifact@v2
         with:
           name: app-ios-release(${{ inputs.relese }})
-          path: ios/app/build/outputs/bundle/release/*.*
+          path: $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+          retention-days: 15
+      - name: Upload release bundle
+        uses: actions/upload-artifact@v2
+        with:
+          name: dSYM-ios-release(${{ inputs.relese }})
+          path: $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
           retention-days: 15
