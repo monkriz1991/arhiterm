@@ -39,10 +39,10 @@ jobs:
         run:  npx capacitor-set-version set:ios -v ${{ inputs.relese }}  -b 1 ./
         
       - name: Show what in repo
-        run: cd ios/App  && ls
+        run: cd ios/App  && ls && pod install
 
       - name: Build app bundle
-        run: xcodebuild build -workspace ios/App/Arhiterm.xcworkspace -scheme ArhitermApp CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+        run: xcodebuild build -workspace ios/App/App.xcworkspace -scheme App CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
       - name: Show catalog
         run: ls ios/app/build/outputs/bundle/release/
