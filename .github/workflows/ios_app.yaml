@@ -55,21 +55,21 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: app-ios-release(${{ inputs.relese }})
-          path: $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos/*
+          path: $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos
           retention-days: 15
       
       - name: Upload release bundle
         uses: actions/upload-artifact@v3
         with:
           name: app-ios-release_dir(${{ inputs.relese }})
-          path: $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos/
+          path: $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos/*.app
           retention-days: 15
       
       - name: Upload  bundle
         uses: actions/upload-artifact@v3
         with:
           name: app-ios-release_DerivedData(${{ inputs.relese }})
-          path: $HOME/Library/Developer/Xcode/DerivedData/*
+          path: $HOME/Library/Developer/Xcode/DerivedData
           retention-days: 10
           
 
