@@ -50,8 +50,6 @@ jobs:
         run: ls $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products
       - name: Show catalog Debug-iphoneos
         run: ls $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos
-      - name: show path
-        run: whereis -b App.app
 
       - name: Upload release bundle
         uses: actions/upload-artifact@v2
