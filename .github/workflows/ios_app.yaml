@@ -1,0 +1,76 @@
+name: Build IOS
+on:
+  workflow_dispatch:
+    inputs:
+      relese:
+        type: string
+        required: true
+        description: Введите номер релиза (X.X.X)
+
+jobs:
+  build:
+    name: Build IOS APP
+    runs-on: macos-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Install app dependencies
+        run: npm install && npm install @capacitor/ios
+
+      - name: Build Svelte app
+        run: npm run build
+
+      - name: Generate boundle static app
+        run: npm run generate
+
+      - name: Capacitor update
+        run: npx cap add ios
+
+      - name: Capacitor copy
+        run: npx cap copy
+
+      - name: Set Version IOS app
+        run:  npx capacitor-set-version set:ios -v ${{ inputs.relese }}  -b 1 ./
+        
+      - name: Show what in repo
+        run: cd ios/App  && ls && pod install
+
+      - name: Build app bundle
+        run: xcodebuild build -workspace ios/App/App.xcworkspace -scheme App CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+
+      - name: Show catalog
+        run: ls $HOME/Library/Developer/Xcode/DerivedData/**/Build/
+      - name: Show catalog Build
+        run: ls $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products
+      - name: Show catalog Debug-iphoneos
+        run: ls $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos
+
+      - name: Upload release bundle
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-ios-release(${{ inputs.relese }})
+          path: $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos
+          retention-days: 15
+      
+      - name: Upload release bundle
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-ios-release_dir(${{ inputs.relese }})
+          path: $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos/*.app
+          retention-days: 15
+      
+      - name: Upload  bundle
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-ios-release_DerivedData(${{ inputs.relese }})
+          path: $HOME/Library/Developer/Xcode/DerivedData
+          retention-days: 10
+          
+
+
