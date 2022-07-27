@@ -8,5 +8,15 @@ Disallow: /userCabinet?*
 Disallow: /userCabinet/*
 Disallow: /userCabinet/store
 Disallow: /userCabinet/mounter
+Disallow: *manuf=
+Disallow: *card_filter=
+Allow: /catalog/33?page=1&card_filter=%5B%2242%7C%7C111%22%5D
+Allow: /catalog/34?page=1&card_filter=%5B%2220%7C%7C112%22%5D
+Allow: /catalog/36?page=1&card_filter=%5B%2238%7C%7C114%22%5D
+Allow: /catalog/38?page=1&card_filter=%5B%22106%7C%7C116%22%5D
+Allow: /catalog/38?page=1&card_filter=%5B%2292%7C%7C116%22%5D
+Allow: /catalog/38?page=1&card_filter=%5B%2295%7C%7C116%22%5D
+Allow: /catalog/5?page=1&card_filter=%5B%22136%7C%7C29%22%5D
+Allow: /catalog/31?page=1&card_filter=%5B%2263%7C%7C109%22%5D
+Allow: /catalog/32?page=1&card_filter=%5B%2240%7C%7C110%22%5D
 Sitemap: https://arhiterm.by/sitemap.xml
-Host: arhiterm.by
