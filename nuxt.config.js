@@ -95,8 +95,22 @@ export default {
     }
   },
   pwa: {
-    icon: {
-      /* icon options */
+      manifest: {
+        name: 'Arhiterm',
+        lang: 'ru',
+        orientation: 'portrait',
+        background_color: '#FFFFFF',
+        theme_color: '#F8F8F8',
+        theme_color: '#F8F8F8',
+        start_url:'/',
+        icons: [
+            {
+                src: '/icon.png',
+                sizes: '512x512',
+                type: 'image/png',
+                purpose: 'any maskable'
+            }
+        ]
     }
   },
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -163,6 +177,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/,'vee-validate/dist/rules'],
+    postcss: null,
   },
 
   serverMiddleware:  [
