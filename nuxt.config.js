@@ -66,6 +66,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/element-ui',
+    '@/plugins/backbutton.js',
     '~/plugins/url-change.js',
     { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
     // { src: '~/plugins/vuex-persist.js', mode: 'client' },
