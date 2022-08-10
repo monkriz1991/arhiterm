@@ -526,10 +526,18 @@ margin: 0 0 20px;
 }
 .profile-cab-left-pass{
     float: left;
-    max-width: 650px;
     width: 100%;
     margin: 20px 0 0 0;
     position: relative;
+}
+.profile-cab-discount{
+    margin: 30px 0 0 215px;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgb(202, 0, 0);
+}
+.cabinet-avatar{
+    float: left;
 }
 .form-user-cab{
     position: relative;
@@ -538,6 +546,7 @@ margin: 0 0 20px;
     margin: 0 0 10px;
     border-radius: 14px;
     /* background-color: #f7f7f7; */
+    max-width: 650px;
     }
     .form-user-cab .el-form-item,.form-basket-input .el-form-item{
         float: left;
@@ -3432,6 +3441,7 @@ body .navbar-user .navbar-user-item{
 .cab-user-colaps{
     float: left;
     width: 100%;
+    position: relative;
 }
 .cab-user-colaps .el-collapse {
     border-top: 0px solid #EBEEF5;
@@ -3470,7 +3480,7 @@ body .navbar-user .navbar-user-item{
     max-width: 100%;
 }
 .cab-block-basket-left{
-    margin: 0 0 0 100px;
+    margin: 0 0 0 120px;
 }
 .cab-block-basket-left>strong{
     float: left;
@@ -3524,6 +3534,31 @@ font-size: 13px;
 .basket-templ-status{
     float: left;
     margin: 0 30px 0 0;
+    position: absolute;
+    right: 50px;
+    z-index: 999;
+    top: 10px;
+}
+.cab-user-colaps .basket-templ-status>span{
+    position: absolute;
+    width: auto;
+    border: none;
+    padding: 0;
+    left: 5px;
+    top: 4px;
+}
+.cab-user-colaps .basket-templ-status>span button{
+    padding: 0;
+}
+.basket-templ-status-button{
+    font-size: 12px !important;
+    border-radius: 10px !important;
+}
+.is-disabled.basket-templ-status-button{
+    font-size: 12px !important;
+    border-radius: 10px !important;
+    background: transparent !important;
+    color: #8d8d8d !important;
 }
 .basket-templ-status>span{
     float: left;
@@ -4289,6 +4324,120 @@ font-size: 13px;
 }
 .dilivery-cart .el-drawer__body{
     overflow: auto;
+}
+.succes-block{
+    float: left;
+    width: 100%;
+}
+.succes-block-desc{
+
+}
+.succes-block h2{
+    margin: 10px 0 0px;
+    color: #03a678;
+    font-weight: 500;
+    font-size: 18px;
+}
+.succes-block h3{
+    float: left;
+    width: 100%;
+    margin: 0 0 0px 0px;
+    font-weight: 500;
+    font-size: 12px;
+    color: #747474;
+}
+.succes-block h2 i{
+    font-weight: 800;
+}
+.succes-block h4{
+    float: left;
+    width: 100%;
+    margin: 0 0 10px 0px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+.succes-block .cab-block-basket{
+    margin: 0 0 10px;
+}
+.succes-block>p{
+    float: left;
+    width: 100%;
+    margin: 20px 0 20px;
+    font-size: 14px;
+    color: #747474;
+    line-height: 2.4;
+}
+.succes-block>p span{
+    display: block;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.succes-block>p strong{
+    display: block;
+    line-height: 1.3;
+    font-size: 13px;
+}
+.succes-block-inf{
+    background: #ededed;
+    border-radius: 3px;
+    text-align: left;
+    padding: 20px ;
+    margin: 0 0 25px;
+    float: left;
+    width: 100%;
+}
+.succes-block-desc{
+    border-radius: 3px;
+    text-align: left;
+    padding: 0px;
+    margin: 0 0 25px;
+    float: left;
+    width: 100%;
+}
+.succes-block-desc>p{
+    margin: 0 0 10px;
+}
+.succes-block-desc p>span{
+    color: #747474;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.succes-block-desc p>strong{
+    font-size: 17px;
+    font-weight: 600;
+    float: right;
+    margin: 0 0px 0 10px;
+}
+.succes-block-desc p>strong span{
+    font-size: 12px;
+    margin: 0 0px 0 3px;
+}
+.cab-block-basket .cab-block-basket-img{
+    width: 100px;
+    height: 78px;
+}
+.succes-block .cab-block-basket .cab-block-basket-left{
+    margin: 0 0 0 120px;
+}
+.succes-block-inf>div{
+    float: left;
+    width: 100%;
+    margin: 0 0 10px;
+}
+.succes-block-inf>div strong{
+    float: left;
+    width: 100%;
+    margin: 0 0 5px;
+    color: #747474;
+    font-weight: 600;
+    font-size: 13px;
+}
+.succes-block-inf>div span{
+    font-size: 16px;
+    font-weight: 500;
 }
 @media (max-width: 1100px){
     .body-payment-cart .body-about h1, .body-payment h1{

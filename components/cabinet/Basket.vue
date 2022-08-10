@@ -1,13 +1,28 @@
 <template>
     <div class="cab-user-colaps">
+        <div class="basket-templ-status">
+            <el-button 
+            class="basket-templ-status-button"
+            @click="RepeatOrder(basket_for.id)"
+            :disabled="Buttondisabled">
+            Повторить заказ
+            </el-button>
+            <el-popconfirm
+            confirm-button-text='Закрыть'
+            cancel-button-text='.'
+            icon="el-icon-info"
+            icon-color="red"
+            title="Удалите товары из корзины для повтора заказа!"
+            >
+                <el-button v-show="Buttondisabled==true" slot="reference" type="danger" circle icon="el-icon-info"></el-button>
+            </el-popconfirm>
 
+            <!-- <span>{{status}}</span> -->
+        </div>
         <el-collapse accordion>
             <el-collapse-item name="idx">
                 <template slot="title">
                 <div class="cab-block-basket-templ">
-                    <div class="basket-templ-status">
-                        <span>{{status}}</span>
-                    </div>
                     <span hidden>Позиций:<strong>{{basket_for!==undefined?basket_for.length:0}}</strong></span>
                 </div>
                 <div class="cab-block-basket-templ">
@@ -51,40 +66,65 @@
                 </div>
             </el-collapse-item>
         </el-collapse>
+        <BasketModal
+            @clickModal = "toggleModal"
+            :dialogFormVisibleModal.sync="dialogFormVisibleModal"/>
     </div>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
-
+import BasketModal from '~/components/BasketModal.vue'
+import {mapGetters, mapActions} from "vuex";
 export default {
     props:['basket_for'],
     data() {
         return{
-          status:'заказ',
-            allCost:0
+            status:'заказ',
+            allCost:0,
+            Buttondisabled :false,
+            dialogFormVisibleModal:false,
         }
     },
     beforeMount(){
         this.amount()
     },
     components:{
+        BasketModal
     },
     computed:{
         ...mapGetters({
-            basket:'main/basket',
+            basket:'crate/basket',
             allBaskets:'main/allBaskets',
         })
     },
-  watch:{
-    allBaskets(){
-      this.amount()
-    }
-  },
+    watch:{
+        allBaskets(){
+            this.amount()
+        },
+        '$store.state.crate.basket': function() {
+            if(this.basket.length!=0){
+                this.Buttondisabled = true
+            }else{
+                this.Buttondisabled = false
+            }
+        }
+    },
     methods:{
+        ...mapActions({
+            REPEAT_BASKET: 'crate/REPEAT_BASKET',
+        }),
+        toggleModal() {
+          this.dialogFormVisibleModal = true;
+        },
+        RepeatOrder(id){
+            this.REPEAT_BASKET(id)
+            this.toggleModal()
+        },
         amount(){
           this.allCost = 0;
-          console.log(this.basket_for)
+            if(this.basket.length!=0){
+                this.Buttondisabled = true
+            }
           if(!this.basket_for.closed){
             this.status = "заказ"
           }else{

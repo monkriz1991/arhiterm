@@ -123,6 +123,7 @@ export default {
     props:['cart_data'],
     data() {
         return{
+            user_discount:this.$auth.user.discount!=''?this.$auth.user.discount:0,
             for_amount:0,
             for_amount_discount:0,
             for_amount_discount_persent:0,
@@ -179,10 +180,22 @@ export default {
             this.for_amount = Math.ceil(this.for_amount*100)/100
             this.for_amount_none = Math.ceil(this.for_amount_none*100)/100
           for(let i in this.discount_arr){
+
               if(this.for_amount>=Number([i])){
-                this.for_amount_discount_persent = this.discount_arr[i]
+                if(this.user_discount!=0&&this.user_discount>this.discount_arr[i]){
+                    this.for_amount_discount_persent = this.user_discount
+                }else{
+                    this.for_amount_discount_persent = this.discount_arr[i]
+                }
+                
                 this.for_amount_discount = this.for_amount*this.for_amount_discount_persent/100
                 this.for_amount_discount = Math.ceil(this.for_amount_discount*100)/100
+               }else if(this.for_amount>=Number([i]&&this.user_discount!=0)){
+                    if(this.user_discount!=0&&this.user_discount>this.discount_arr[i]){
+                        this.for_amount_discount_persent = this.user_discount
+                    }
+                    this.for_amount_discount = this.for_amount*this.for_amount_discount_persent/100
+                    this.for_amount_discount = Math.ceil(this.for_amount_discount*100)/100
                }
           }
           this.for_amount_itog = this.for_amount - this.for_amount_discount
