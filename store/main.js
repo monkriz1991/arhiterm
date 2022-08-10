@@ -13,9 +13,13 @@ export const state = ()=>({
     top:[],
     loadingItem:true,
     worktime:[],
+    SuccessBaskets:[],
 })
 
 export const mutations = {
+    setSuccessBaskets(state,SuccessBaskets){
+        state.SuccessBaskets = SuccessBaskets
+    },
     setSlider(state,sliderItems){
         state.sliderItems = sliderItems
     },
@@ -59,6 +63,9 @@ export const actions = {
     },
     ADD_TO_CART({commit},product){
         commit('SET_CART',product)
+    },
+    ADD_TO_SUC_BASKET({commit},basket){
+        commit('setSuccessBaskets',basket.data.message)
     },
     async getTop({commit}){
         let results = await this.$axios.$get(`/catalog/product/?is_sale=true&limit=25&ordering=position`);
@@ -111,6 +118,7 @@ export const getters = {
     loadingItem: state => state.loadingItem,
     top: state => state.top,
     worktime: state => state.worktime,
+    SuccessBaskets: state => state.SuccessBaskets,
 }
 
 

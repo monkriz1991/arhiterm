@@ -69,7 +69,7 @@ export default ({
       },
       loadingItem(data){
         this.loading = data
-        this.loadingData()
+        this.loadingData(true)
       },
       
   },
@@ -81,7 +81,7 @@ export default ({
       setTimeout(() => {
         this.setLoading(false)
         this.loading = false;
-      }, 1500);
+      }, 2000);
     },
   }
 

@@ -10,9 +10,12 @@
                 @click="logout"
                 icon="el-icon-arrow-left" size="small"
                 >Выход</el-button> -->
-            
-                <DescriptionUser/>
+                <div hidden class="profile-cab-discount">
+                    {{this.$auth.user.discount}}
+                    <span>%</span>
+                </div> 
                 <div class="profile-cab-left-pass">
+                    <DescriptionUser/>
                     <ChangePassword/>
                 </div>
             </div>

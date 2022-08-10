@@ -236,6 +236,7 @@ export default ({
         remove_basket:'crate/DELL_CART_BASKET_ALL',
         remove_cost: 'crate/DELL_CART_BASKET_COST',
         setLoading: 'main/newLoadingItem',
+        ADD_TO_SUC_BASKET: 'main/ADD_TO_SUC_BASKET',
     }),
     disabledForm(item){
         this.activeName = String(item)
@@ -270,14 +271,14 @@ export default ({
             await this.$auth.loginWith('local', {data:{username: this.Form.username,phone_number:this.Form.phone_number,password: this.Form.password}})
 
             this.addUserList(this.$auth.user)
-            }
+        }
 
 
-
+        this.ADD_TO_SUC_BASKET(data)
         this.$
         this.remove_basket()
         this.remove_cost()
-
+        this.$router.push('/userCabinet/success/')
 
         }catch (error) {
         this.$message({

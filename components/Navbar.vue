@@ -541,6 +541,7 @@ import {mapGetters,mapActions} from 'vuex'
         getManufacturer:'category/getManufacturer',
         setLoading: 'main/newLoadingItem',
         getWorktime: 'main/getWorktime',
+        DELL_CART_BASKET_ALL: 'crate/DELL_CART_BASKET_ALL',
       }),
       open() {
         this.$refs.myBottomSheet.open();
@@ -573,7 +574,6 @@ import {mapGetters,mapActions} from 'vuex'
           }
       },
       closeBasket(val){
-        console.log(val)
         if(val==true){
             this.openNotify()
         }
@@ -634,6 +634,7 @@ import {mapGetters,mapActions} from 'vuex'
       },
     },
     mounted(){
+      //this.DELL_CART_BASKET_ALL()
       this.getPhones();
       this.getCategory()
       this.getManufacturer()

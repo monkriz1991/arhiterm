@@ -28,7 +28,6 @@ export const mutations = {
                 }
             }
         }) 
-        console.log(state.basket)
     },
     BASKET_COST(state,data){
         state.basket_cost = data
@@ -37,6 +36,27 @@ export const mutations = {
 }
 
 export const actions = {
+    async REPEAT_BASKET({commit},id_basket){
+        let results = await this.$axios.$get(`/cart/cartUser/?id=${id_basket}&?offset=1&limit=1`);
+        let cart = results.results[0].cart_prodicts
+        let count = 0;
+        let prod_dop = ''
+        for(let i in cart){
+            let product = await this.$axios.$get(`catalog/product/${cart[i].card_data.id}/`);
+            
+            if( product.product[0].id == cart[i].product){
+                prod_dop = product.product[0]  
+                product.product = []
+                product.product.push(prod_dop);
+
+            }
+
+            product.product[0]['cost'] = prod_dop.price;
+            product.product[0]['count_el'] = product.multiplicity;
+            product.product[0]['multiplicity'] = product.multiplicity;
+            commit('SET_CART',product)
+        }
+    },
     ADD_TO_CART({commit},product){
         commit('SET_CART',product)
     },
