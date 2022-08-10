@@ -10,7 +10,6 @@
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "resources": "cordova-res ios && cordova-res android && node scripts/resources.js"
-    
   },
   "dependencies": {
     "@algoz098/vue-player": "^0.4.3",
@@ -32,7 +31,7 @@
     "core-js": "^3.9.1",
     "element-ui": "^2.15.1",
     "hooper": "^0.3.4",
-    "nuxt": "^2.15.3",
+    "nuxt": "^2.15.8",
     "nuxt-cache-module": "^2.0.0",
     "nuxt-ssr-cache": "^1.5.2",
     "nuxt-vuex-localstorage": "^1.3.0",
