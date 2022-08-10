@@ -14,7 +14,7 @@
   "dependencies": {
     "@algoz098/vue-player": "^0.4.3",
     "@capacitor/android": "^3.6.0",
-    "@capacitor/app": "^4.0.1",
+   
     "@capacitor/cli": "^3.6.0",
     "@capacitor/core": "^3.6.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
