@@ -1,3 +1,5 @@
+import faviconDescription from 'faviconDescription.json'
+
 export default {
   server:{
     host:'0.0.0.0',
@@ -154,9 +156,9 @@ export default {
     static: true,
     staticPath: '/_favicons/',
     masterPicture: 'static/icon.png',
-    rfg: 'faviconDescription.json',
+    rfg: faviconDescription,
  },
- 
+
   gtm: {
     id: 'GTM-K5DFSM3'
   },
