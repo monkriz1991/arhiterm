@@ -1,5 +1,5 @@
 {
-	"iconsPath": "/",
+	"iconsPath": "static/icon.png",
 	"design": {
 		"ios": {
 			"pictureAspect": "noChange",
