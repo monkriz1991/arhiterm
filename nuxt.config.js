@@ -1,4 +1,4 @@
-import faviconDescription from 'faviconDescription.json'
+import faviconDescription from './faviconDescription.json'
 
 export default {
   server:{
