@@ -114,7 +114,7 @@
             </div>
         </div>
         <div class="none-block">
-            <span>test-push</span>
+            <span>test</span>
         </div>
     </div>
 </template>
