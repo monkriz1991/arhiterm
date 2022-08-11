@@ -1,5 +1,3 @@
-import faviconDescription from './faviconDescription.json'
-
 export default {
   server:{
     host:'0.0.0.0',
@@ -146,18 +144,7 @@ export default {
       }
     ],
     // ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
-    ['nuxt-rfg-icon', { masterPicture: '' }],
-
-    // or use global options
-
   ],
-
-  'rfg-icon': {
-    static: true,
-    staticPath: '/_favicons/',
-    masterPicture: 'static/icon.png',
-    rfg: faviconDescription,
- },
 
   gtm: {
     id: 'GTM-K5DFSM3'

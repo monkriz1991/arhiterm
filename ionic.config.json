@@ -1,0 +1,7 @@
+{
+  "name": "arhiterm",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "custom"
+}
