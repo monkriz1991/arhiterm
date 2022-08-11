@@ -144,15 +144,19 @@ export default {
       }
     ],
     // ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
-    '@nuxtjs/manifest', 
-    ['nuxt-rfg-icon', {
-      static: true,
-      staticPath: '/_favicons/',
-      masterPicture: 'static/icon.png',
-      rfg: 'faviconDescription',
-    }]
+    ['nuxt-rfg-icon', { masterPicture: '' }],
+
+    // or use global options
+
   ],
 
+  'rfg-icon': {
+    static: true,
+    staticPath: '/_favicons/',
+    masterPicture: 'static/icon.png',
+    rfg: 'faviconDescription.json',
+ },
+ 
   gtm: {
     id: 'GTM-K5DFSM3'
   },
