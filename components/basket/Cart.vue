@@ -123,7 +123,7 @@ export default {
     props:['cart_data'],
     data() {
         return{
-            user_discount:this.$auth.user.discount!=''?this.$auth.user.discount:0,
+            user_discount:this.$store.state.auth.user?this.$auth.user.discount:0,
             for_amount:0,
             for_amount_discount:0,
             for_amount_discount_persent:0,
