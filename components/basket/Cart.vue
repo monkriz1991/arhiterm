@@ -113,9 +113,7 @@
                 <strong>{{for_amount_itog}}<span>руб.</span></strong>
             </div>
         </div>
-        <div class="none-block">
-            <span>test</span>
-        </div>
+        <div class="none-block"></div>
     </div>
 </template>
 
