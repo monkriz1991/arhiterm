@@ -144,9 +144,7 @@ export default {
       }
     ],
     // ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
-    'nuxt-rfg-icon',
     '@nuxtjs/manifest', 
-    
     ['nuxt-rfg-icon', {
       static: true,
       staticPath: '/_favicons/',
