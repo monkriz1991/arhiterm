@@ -151,7 +151,7 @@ export default {
       static: true,
       staticPath: '/_favicons/',
       masterPicture: 'static/icon.png',
-      rfg: 'faviconDescription.json',
+      rfg: 'favicon.json',
     }]
   ],
 
