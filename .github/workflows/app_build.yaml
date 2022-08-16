@@ -30,6 +30,9 @@ jobs:
       - name: Install app dependencies
         run: npm install
 
+      - name: gen icon
+        run: ionic cordova resources
+
       - name: Build Svelte app
         run: npm run build
 
