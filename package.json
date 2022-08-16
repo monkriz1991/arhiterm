@@ -16,6 +16,7 @@
     "@capacitor/android": "^4.0.1",
     "@capacitor/app": "^4.0.1",
     "@capacitor/core": "4.0.1",
+    "@capacitor/ios": "^4.0.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@nuxtjs/auth-next": "5.0.0-1622309801.87126e3",
     "@nuxtjs/axios": "^5.13.1",
