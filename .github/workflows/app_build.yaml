@@ -42,6 +42,12 @@ jobs:
       - name: Capacitor copy
         run: npx cap copy
 
+      - name: add icon
+        run: npx cordova-res android --skip-config --copy
+
+      - name: sync
+        run: npx cap sync
+
       - name: Set Version android app
         run:  npx capacitor-set-version set:android -v ${{ inputs.relese }}  -b 6 ./
 
