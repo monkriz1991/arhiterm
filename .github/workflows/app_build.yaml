@@ -26,6 +26,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
+      - name: install capacitor-resources
+        run: npm install capacitor-resources -g
 
       - name: Install app dependencies
         run: npm install
@@ -44,6 +46,9 @@ jobs:
 
       - name: add icon
         run: npx cordova-res android --skip-config --copy
+
+      - name: build icon
+        run: npm run resources
 
       - name: Set Version android app
         run:  npx capacitor-set-version set:android -v ${{ inputs.relese }}  -b 6 ./
