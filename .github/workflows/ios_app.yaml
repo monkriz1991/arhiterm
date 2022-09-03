@@ -53,7 +53,7 @@ jobs:
         run: ls $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos
 
       - name: Upload  bundle
-          uses: actions/upload-artifact@v3
+          - uses: actions/upload-artifact@v3
           with:
             name: app-ios-release_DerivedData(${{ inputs.relese }})
             path: |
