@@ -30,7 +30,7 @@ jobs:
       - name: Install app dependencies
         run: npm install
 
-      - name: Build Svelte app
+      - name: Build app
         run: npm run build
 
       - name: Generate boundle static app
