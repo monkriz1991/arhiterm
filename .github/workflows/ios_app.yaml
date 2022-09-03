@@ -56,9 +56,11 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: app-ios-release_DerivedData(${{ inputs.relese }})
+          if-no-files-found: error
           path: |
+            $HOME/Library/Developer/Xcode/DerivedData/**/*.app
+            ~/Library/Developer/Xcode/DerivedData/**/*.app
             $HOME/Library/Developer/Xcode/DerivedData/**
-            $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos/*.app
             $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos/App.app
           retention-days: 10
 
