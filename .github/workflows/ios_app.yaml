@@ -52,6 +52,11 @@ jobs:
       - name: Show catalog Debug-iphoneos
         run: ls $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos
 
+      - uses: actions/upload-artifact@v2
+          name: "Upload Simulator App"
+          with:
+            name: ios-simulator
+            path: ~/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphonesimulator/*.app
       - name: Upload  bundle
         uses: actions/upload-artifact@v3
         with:
