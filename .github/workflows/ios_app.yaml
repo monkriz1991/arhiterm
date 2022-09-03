@@ -57,7 +57,7 @@ jobs:
         with:
           name: app-ios-release_DerivedData(${{ inputs.relese }})
           path: |
-            $HOME/Library/Developer/Xcode/DerivedData
+            $HOME/Library/Developer/Xcode/DerivedData/**
             $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos/*.app
             $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos/App.app
           retention-days: 10
