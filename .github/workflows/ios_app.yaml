@@ -61,6 +61,7 @@ jobs:
             $HOME/Library/Developer/Xcode/DerivedData/**/*.app
             ~/Library/Developer/Xcode/DerivedData/**/*.app
             $HOME/Library/Developer/Xcode/DerivedData/**
+            $HOME/Library/Developer/Xcode/DerivedData/**/*
             $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/Debug-iphoneos/App.app
           retention-days: 10
 
