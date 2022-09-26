@@ -1,3 +1,4 @@
+const axios = require('axios')
 export default {
   server:{
     host:'0.0.0.0',
@@ -124,6 +125,8 @@ export default {
     '@nuxtjs/sitemap',
     'nuxt-ssr-cache',
     'nuxt-webfontloader',
+    '@nuxtjs/redirect-module',
+    // 'nuxt-trailingslash-module',
     // ['nuxt-vuex-localstorage', {
     //   localStorage: ['main','product','category','tovar']
     // }],
@@ -145,7 +148,16 @@ export default {
     ],
     // ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
   ],
-
+  redirect: [
+    {
+      from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
+      to: (from, req) => {
+        const base = req._parsedUrl.pathname.replace(/\/$/, '');
+        const search = req._parsedUrl.search;
+        return base + (search != null ? search : '')
+      }
+    }
+  ],
   gtm: {
     id: 'GTM-K5DFSM3'
   },
@@ -153,7 +165,7 @@ export default {
   image: {
     provider: 'twicpics',
     twicpics: {
-      baseURL: 'https://new.arhiterm.by'
+      baseURL: 'https://new.arhiterm.by/'
     },
   },
   // elementUI: {
@@ -172,7 +184,40 @@ export default {
 
   },
    sitemap: {
+    path: '/sitemap.xml',
+    cacheTime: 1000 * 60 * 15,
     hostname: "https://arhiterm.by",
+    gzip: true,
+    generate: false,
+    exclude: [],
+    sitemaps: [
+      {
+        exclude: [
+          '/cabinet',
+          '/cabinet/**',
+          '/userCabinet',
+          '/userCabinet/**',
+        ],
+        path: '/sitemap/sitemap.xml',
+      },
+      {
+        path: '/catalog/sitemap.xml',
+        exclude: ['/**'],
+        routes: async () => {
+          const { data } = await axios.get('https://new.arhiterm.by/catalog/categories/?limit=999')
+          return data.results.map((category) => `/catalog/${category.kirilica}`)
+        }
+      },
+      {
+      path: '/product/sitemap.xml',
+      exclude: ['/**'],
+      routes: 
+        async () => {
+          const { data } = await axios.get('https://new.arhiterm.by/catalog/search/?limit=9999999')
+          return data.results.map((product) => `/product/${product.kirilica_name}`)
+        }
+      }
+    ]
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -19,7 +19,7 @@
                     <div class="catalog-list-img" >
                         <nuxt-link
                         :class="{disabledLink:!price[idx]}"
-                        :to="`/product/${product.id}`"
+                         :to="{ name: 'product-product', params: {product:`${product.kirilica_name}`,id:`${product.kirilica_name}`} }" 
                         >
                         <nuxt-picture loading="lazy"
                         :src="product.img.substring(24)"
@@ -51,7 +51,7 @@
                         </div>
                         <nuxt-link
                         :class="{disabledLink:!price[idx]}"
-                        :to="`/product/${product.id}`"
+                        :to="{ name: 'product-product', params: {product:`${product.kirilica_name}`,id:`${product.kirilica_name}`} }" 
                         >
                             <span v-if="product.name.length<65">{{product.name}}</span>
                             <span v-else>{{product.name.substring(0,65)+".." }}</span>
@@ -121,16 +121,7 @@ import {mapGetters,mapActions} from 'vuex'
 export default {
     props:['productsList','categoriesNested','categoryManuf'],
     beforeCreate(){
-
-        //this.hidePreload()
-
-        // setTimeout(() => {
-        //     this.loading=!this.loading;
-        // }, 500);
     },
-    // async mounted(){
-    //     this.ButCatMeny()
-    // },
     data() {
         return {
             dynamicTags: [],

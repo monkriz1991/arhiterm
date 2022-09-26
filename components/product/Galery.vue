@@ -2,7 +2,7 @@
     <div class="galery">
         <div class="galery-index">
              <el-image 
-                :src="productItems.img" 
+                :src="'https://new.arhiterm.by'+productItems.img" 
                 :preview-src-list="srcList">
             </el-image>
         </div>
@@ -20,7 +20,6 @@
             </div>
             </div>
         </div>
-        
     </div>
 </template>
 
@@ -42,8 +41,8 @@ export default {
 
     methods:{
         imgGalery(){
-            this.srcList = this.productItems.images.map((key)=>key.img);
-            this.srcList.unshift(this.productItems.img);
+            this.srcList = this.productItems.images.map((key)=>'https://new.arhiterm.by'+key.img);
+            this.srcList.unshift('https://new.arhiterm.by'+this.productItems.img);
         },
     },
     mounted(){

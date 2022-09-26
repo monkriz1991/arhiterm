@@ -6,7 +6,7 @@
                 <slide
                     v-for="(item,idx) in tovar" :key="idx" 
                 >
-                    <nuxt-link :to="`/product/${item.id}`" class="nuxt-link-cat">
+                    <nuxt-link :to="{ name: 'product-product', params: {product:`${item.kirilica_name}`,id:`${item.kirilica_name}`} }" class="nuxt-link-cat">
                         <div class="index-top-block">
                             <nuxt-picture 
                                 loading="lazy"
