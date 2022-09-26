@@ -37,8 +37,7 @@
         :categoryManuf.sync="categoryManuf"
         />
         </transition>
-        <Paginated @func="$addQuery" />
-
+        <Paginated/>
     </div>
 </template>
 
@@ -52,7 +51,6 @@ import Breadcrumb from '~/components/Breadcrumb.vue'
 import Paginated from '~/components/catalog/Paginated.vue'
 export default {
     created(){
-      //this.loading=true
     },
     mounted() {
       if (process.browser){
@@ -67,23 +65,63 @@ export default {
         Paginated,
     },
     async asyncData ({ app, params, route, error }) {
+      let arr_filter = []
+       if(params.id == undefined){
+        let category = await app.store.dispatch('category/getCategory');
+        let name_fill,name_arr_fill = ''
+        for(let i in category){
+          if(category[i].kirilica == params.catalog){
+            params.id = category[i].id
+            if(route.query['card_filter']!==undefined){
+              name_arr_fill = route.query['card_filter'].slice(1,-1);
+              name_arr_fill = name_arr_fill.split(',')
+            }
+            for(let item in category[i].list_filter){         
+              for(let itemin in category[i].list_filter[item].chice){       
+                for(let fill in name_arr_fill){
+                  if(name_arr_fill[fill]==category[i].list_filter[item].chice[itemin].kirilica){
+                     name_fill = '"'+ category[i].list_filter[item].chice[itemin].id +'||'+ category[i].list_filter[item].id+'"'
+                     arr_filter.push(name_fill)
+                  }
+                }
+              } 
+            } 
+          }  
+        }
+        
+      }
       let parametrs = {};
       app.$UpdsaveArr(route)
+           
         if(route.query['card_filter']!==undefined){
-          parametrs['card_filter'] = route.query['card_filter'];
+          parametrs['card_filter'] = '['+arr_filter +']';
         }
         if(route.query['page']!==undefined){
           parametrs['page'] = route.query['page'];
         }
         if(route.query['manuf']!==undefined){
-          parametrs['manuf'] = route.query['manuf'];
+        let arr_filter_manuf = []
+        let name_fill_fill,name_arr_fill_manuf= ''
+        let routeManuf = await app.store.dispatch('category/getCategoryManuf',params.id)
+        name_arr_fill_manuf = route.query['manuf'].slice(1,-1);
+        name_arr_fill_manuf = name_arr_fill_manuf.split(',')
+        for(let item in routeManuf.results){   
+          for(let fill in name_arr_fill_manuf){           
+            if(name_arr_fill_manuf[fill]==routeManuf.results[item].kirilica){
+                name_fill_fill = '"'+routeManuf.results[item].id +'"'
+                arr_filter_manuf.push(name_fill_fill)
+            }
+          }
+        } 
+
+          parametrs['manuf'] = '['+arr_filter_manuf +']';
         }
     try {
 
-      parametrs['cat'] = params.catalog;
-      let categoriesNested =  await app.store.dispatch('category/getCategoryNested',params.catalog)
+      parametrs['cat'] = params.id;
+      let categoriesNested =  await app.store.dispatch('category/getCategoryNested',params.id)
       let productsList =  await app.store.dispatch('product/getProductList',parametrs)
-      let categoryManuf = await app.store.dispatch('category/getCategoryManuf',params.catalog)
+      let categoryManuf = await app.store.dispatch('category/getCategoryManuf',params.id)
       return{categoriesNested,productsList,categoryManuf}
     } catch (err) {
         console.log(err)
@@ -99,43 +137,61 @@ export default {
           drawer: false,
           direction: 'ltr',
           width:0,
-
         }
     },
     watch:{
       $route (to, from){
         this.$UpdsaveArr(to);
-        let parametrs = {};
+        let parametrs = {}
+        let arr_filter = []
+        let name_fill,name_arr_fill= ''
         if(to.query['card_filter']!==undefined){
-          parametrs['card_filter'] = to.query['card_filter'];
+        name_arr_fill = to.query['card_filter'].slice(1,-1);
+        name_arr_fill = name_arr_fill.split(',')
+        for(let item in this.categoriesNested.list_filter){         
+          for(let itemin in this.categoriesNested.list_filter[item].chice){       
+            for(let fill in name_arr_fill){
+              if(name_arr_fill[fill]==this.categoriesNested.list_filter[item].chice[itemin].kirilica){
+                  name_fill = '"'+this.categoriesNested.list_filter[item].chice[itemin].id +'||'+ this.categoriesNested.list_filter[item].id+'"'
+                  arr_filter.push(name_fill)
+              }
+            }
+          } 
+        } 
+        
+          parametrs['card_filter'] = '['+arr_filter +']';
         }
-        if(to.query['page']!==undefined){
+        if(to.query['page']!==undefined ){
           parametrs['page'] = to.query['page'];
         }
+        let arr_filter_manuf = []
+        let name_fill_fill,name_arr_fill_manuf= ''
         if(to.query['manuf']!==undefined){
-          parametrs['manuf'] = to.query['manuf'];
+        name_arr_fill_manuf = to.query['manuf'].slice(1,-1);
+        name_arr_fill_manuf = name_arr_fill_manuf.split(',')
+
+        for(let item in this.categoryManuf.results){   
+          for(let fill in name_arr_fill_manuf){           
+            if(name_arr_fill_manuf[fill]==this.categoryManuf.results[item].kirilica){
+                name_fill_fill = '"'+this.categoryManuf.results[item].id +'"'
+                arr_filter_manuf.push(name_fill_fill)
+            }
+          }
+        } 
+
+          parametrs['manuf'] = '['+arr_filter_manuf +']';
         }
-         parametrs['cat'] = to.params.catalog;
+         parametrs['cat'] = this.categoriesNested.id;
+
        this.sendQuery(parametrs)
       }
   },
     computed:{
     },
     methods:{
-      //  updateData(){
-      //   let parametrs = {};
-      //   if(this.$route.query['card_filter']!==undefined){
-      //     parametrs['card_filter'] = this.$route.query['card_filter'];
-      //   }
-      //   if(this.$route.query['manuf']!==undefined){
-      //     parametrs['manuf'] = this.$route.query['manuf'];
-      //   }
-      //   if(this.$route.query['page']!==undefined){
-      //     parametrs['page'] = this.$route.query['page'];
-      //   }
-      //   parametrs['cat'] = this.$route.params.catalog;
-      //   this.sendQuery(parametrs);
-      // },
+      filterCatalog(){
+        
+      },
       async sendQuery(parametrs){
         this.productsList = await this.$store.dispatch('product/getProductList',parametrs);
       },

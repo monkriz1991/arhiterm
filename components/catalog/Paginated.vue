@@ -32,6 +32,8 @@ export default {
       '$route.query'(to){
         if(to.page!==undefined){
           this.page = to.page-0;
+        }else{
+          this.page = 1
         }
       }
   },
@@ -40,7 +42,12 @@ export default {
         ButCatMeny: 'main/newSateButCatMeny',
       }),
       paginate(){
-        this.$addQuery('page',this.page,this.$route,this.$route.params.catalog);
+        if(this.page==1){
+         this.$addQuery('page',undefined,this.$route,this.$route.params.catalog);
+        }else{
+          this.$addQuery('page',this.page,this.$route,this.$route.params.catalog);
+        }
+        
         setTimeout(this.updateData,100);
         this.fromSateButCatMeny(false)
         if (process.browser){
@@ -52,7 +59,7 @@ export default {
         ;
       },
       updateData(){
-          this.$emit('changePage',this.page);
+          //this.$emit('changePage',this.page);
       },
       fromSateButCatMeny(data){
         this.ButCatMeny(data)

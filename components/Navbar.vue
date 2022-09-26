@@ -28,12 +28,11 @@
               v-if="visibleNav"
               class="transition-box">
               <li
-                v-for="category in even(categoryNavbar)"
-                :key="category.id"
+                v-for="(category,idx) in categoryNavbar" :key="idx"
                 v-show="category.show_in_start==true"
                 size="mini" @click="visible = false"
               >
-                <nuxt-link @click.native="handlerLoading" :to="`/catalog/${category.id}`">
+                <nuxt-link @click.native="handlerLoading" :to="{ name: 'catalog-catalog', params: {catalog:`${category.kirilica}`,id:`${category.id}`} }" >
                   <nuxt-picture loading="lazy" :src="category.img.substring(24)"/>
                   {{ category.name }}
                 </nuxt-link>
@@ -112,10 +111,10 @@
               class="transition-box">
               <li
                 v-for="category in even(categoryNavbar)"
-                :key="category.id"
+                :key="category.kirilica"
                 size="mini" @click="dialogCatalogVisible = false"
               >
-                <nuxt-link @click.native="handlerLoading" :to="`/catalog/${category.id}`">
+                <nuxt-link @click.native="handlerLoading" :to="{ name: 'catalog-catalog', params: {catalog:`${category.kirilica}`,id:`${category.id}`} }">
                   <nuxt-picture loading="lazy" :src="category.img.substring(24)"/>
                   <span>{{ category.name }}</span>
                 </nuxt-link>
@@ -302,7 +301,7 @@
                   >
 
                     <template slot-scope="{ item }">
-                  <nuxt-link @click.native="handlerLoading" :to="'/product/'+item.id">
+                  <nuxt-link @click.native="handlerLoading" :to="{ name: 'product-product', params: {product:`${item.kirilica_name}`,id:`${item.kirilica_name}`} }">
                   <div class="search-block">
                     <div class="search-block-img">
                       <nuxt-picture loading="lazy" :src="item.img.substring(24)" alt="" />
@@ -437,7 +436,7 @@
                     popper-class="block-search-input "
                   >
                     <template slot-scope="{ item }">
-                      <nuxt-link @click.native="handlerLoadingMobail" :to="'/product/'+item.id">
+                      <nuxt-link @click.native="handlerLoadingMobail" :to="{ name: 'product-product', params: {product:`${item.kirilica_name}`,id:`${item.kirilica_name}`} }">
                         <div class="search-block">
                         <div class="search-block-img">
                           <nuxt-picture loading="lazy" :src="item.img.substring(24)" alt="" />
@@ -533,7 +532,7 @@ import {mapGetters,mapActions} from 'vuex'
         categoryNavbar: 'category/categoryNavbar',
         manufacturer: 'category/manufacturer',
         worktime: 'main/worktime',
-      })
+      }),
     },
     methods: {
       ...mapActions({
@@ -543,6 +542,10 @@ import {mapGetters,mapActions} from 'vuex'
         getWorktime: 'main/getWorktime',
         DELL_CART_BASKET_ALL: 'crate/DELL_CART_BASKET_ALL',
       }),
+      categoryKirilica (item) {
+        console.log(item)
+        // return this.items[this.active].gallery
+      },
       open() {
         this.$refs.myBottomSheet.open();
       },

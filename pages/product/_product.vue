@@ -1,6 +1,6 @@
 <template>
     <div class="container"> 
-        <Breadcrumb/>
+        <!-- <Breadcrumb/> -->
         <h1 class="h1-product">{{productItem.name}}</h1>
         <h2 class="h2-product">
             <i class="el-icon-office-building"></i>
@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import Breadcrumb from '~/components/Breadcrumb.vue'
+// import Breadcrumb from '~/components/Breadcrumb.vue'
 import Galery from '~/components/product/Galery.vue'
 import Tabs from '~/components/product/Tabs.vue'
 import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
@@ -121,8 +121,9 @@ export default ({
     created() {
     },
     async asyncData ({ app, params, route, error }) {
+        
         try {
-            let result = await app.store.dispatch('tovar/getProductItem',params.id)
+            let result = await app.store.dispatch('tovar/getProductItem',params.product)
             let price = result.product[0].price
             let discont = result.product[0].discont
             let kodProduct = result.product[0].name
@@ -147,7 +148,7 @@ export default ({
         Galery,
         Tabs,
         CartTovarInput,
-        Breadcrumb,
+        // Breadcrumb,
         BasketModal,
         Dostavka,
         Payment,
@@ -171,6 +172,7 @@ export default ({
             cart.product[0]['cost']= data.cost;
             cart.product[0]['count_el'] = data.count_el;
             cart.product[0]['multiplicity'] = data.multiplicity;
+            cart['img'] = 'https://new.arhiterm.by'+cart['img'];
             console.log(cart)
             this.ADD_TO_CART(cart)
         },

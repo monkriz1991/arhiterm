@@ -16,7 +16,8 @@ export const actions = {
      */
     async getProductItem ({ commit},id) {
         // await sleep(50)
-        let product = await this.$axios.$get(`catalog/product/${id}/`);  
+       // let product = await this.$axios.$get(`api/get/product?kirilica=${id}`); 
+        let product = await this.$axios.$get(`api/get/product?kirilica=${id}`); 
         commit('setProductItem', product)
         return product
     }

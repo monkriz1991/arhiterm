@@ -3,7 +3,7 @@
         <div 
         class="">
             <el-button
-            v-if="this.$route.name=='product-id'"
+            v-if="this.$route.name=='product'"
             text
             :ripple="false"
             icon="el-icon-back"
@@ -19,7 +19,7 @@
         >
         <el-breadcrumb-item :to="{ path: '/' }">Главная</el-breadcrumb-item>
             <el-breadcrumb-item
-            v-if="this.$route.name=='catalog-catalog'"
+            v-if="this.$route.name=='catalog'"
             >
                 <nuxt-link :to="`/catalog/${nameCat.id}`">
                     {{nameCat.name}}
@@ -33,14 +33,14 @@
                 </nuxt-link>
             </el-breadcrumb-item>
             <el-breadcrumb-item
-            v-else-if="this.$route.name=='product-id'"
+            v-else-if="this.$route.name=='product'"
             >
                 <nuxt-link :to="`/catalog/${factory_name}${results_id}`">
                     {{results_prod}}
                 </nuxt-link>
             </el-breadcrumb-item>
             <el-breadcrumb-item
-                v-if="this.$route.name=='product-id'"
+                v-if="this.$route.name=='product'"
                 :to="nameProduct.id"
             >
                 {{nameProduct.name}}
@@ -58,8 +58,8 @@ export default {
         return{
           names:{
             "index":"Главная",
-            "catalog-catalog":"Каталог",
-            "product-id":"Продукт",
+            "catalog":"Каталог",
+            "product":"Продукт",
             "mounters":"Монтажники"
           },
           results_prod:null,
