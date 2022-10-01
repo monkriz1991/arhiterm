@@ -6,7 +6,7 @@
                 <slide
                     v-for="item in category.results" :key="item.id"
                 >
-                    <nuxt-link :to="`/catalog/factory/${item.id}`" class="nuxt-link-cat">
+                    <nuxt-link :to="{ name: 'factory-factory', params: {factory:`${item.kirilica}`,id:`${item.id}`} }"  class="nuxt-link-cat">
                         <div class="index-brand-block">
                             <div class="index-brand-block-desc">
                                 <strong v-if="item.description !== 'undefined'">

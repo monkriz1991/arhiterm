@@ -16,8 +16,8 @@
                     <el-checkbox
                     v-model="checkList"
                     v-for="(checkbox,idx) in category.chice"
-                    :key="idx"
-                    :label="`${checkbox.id}||${category.id}`"
+                    :key="checkbox.id"
+                    :label="`${checkbox.kirilica}`"
                     v-show="idx<=6&&adaptivSidebar==true  || adaptivSidebar==false"
                     @change="checkFil()"
                     :disabled="isDisabled"
@@ -33,8 +33,8 @@
                             <el-checkbox
                             v-model="checkList"
                             v-for="(checkbox,idx) in category.chice"
-                            :key="idx"
-                            :label="`${checkbox.id}||${category.id}`"
+                            :key="checkbox.id"
+                            :label="`${checkbox.kirilica}`"
                             v-show="idx>6"
                             @change="checkFil()"
                             :disabled="isDisabled"
@@ -63,34 +63,20 @@ export default {
       checkList:[],
       checkFilId:[],
       checkListManuf:[],
-      isDisabled:false
+      isDisabled:false,
+      checkListString:[],
     }
   },
   computed:{
-        // ...mapGetters({
-        //   categoriesNested: 'category/categoryNestedFactory',
-        // })
     },
   beforeRouteUpdate(to,from,next){
-
   },
    watch:{
-      $route (to, from){
-      //console.log(this.checkList,'mount')
-      if(to.query.card_filter!==undefined) {
-        this.checkList = JSON.parse(decodeURI(to.query.card_filter))
-      }else{
-        this.checkList = []
-      }
-      this.updateData()
-      }
   },
    async mounted(){
-     console.log(this.categoriesNested)
       if(this.$route.query.card_filter!==undefined) {
         this.checkList = JSON.parse(decodeURI(this.$route.query.card_filter))
-      }else{
-        this.checkList = []
+        this.checkList = this.checkList.split(',')
       }
     },
   methods:{
@@ -98,39 +84,27 @@ export default {
             setTimeout(this.sendUpdate(),100);
             setTimeout(() => {
               this.isDisabled = false
-            }, 1500);
+            }, 700);
       },
       sendUpdate(){
         this.$emit('updateData')
       },
         checkFil(){
           this.isDisabled = true
-          if(this.$route.query.page!=1){
-          try{
-            this.$addQueryFactory('page',1,this.$route,this.$route.params.id);
-          }catch (e){
-
+         
+          if(this.$route.query.page!=1 && this.$route.query.page!=undefined){
+            this.$addQueryFactory('page',undefined,this.$route,this.$route.params.factory);
           }
-        }
-          if(this.checkList.length){
-              this.addParam('card_filter',JSON.stringify(this.checkList));
+             this.checkListString = this.checkList
+          if(this.checkListString.length){
+              this.checkListString = this.checkListString.join(',')
+              this.checkListString = JSON.stringify(this.checkListString)
+            this.$addQueryFactory('card_filter',this.checkListString,this.$route,this.$route.params.factory);
           }else{
-               this.delParam('card_filter');
+              this.$delQueryFactory('card_filter',this.$route.params.factory);
           }
+          setTimeout(this.updateData,100)
         },
-    addParam(key,val){
-        let params = JSON.parse(JSON.stringify(this.$route.query));
-        params[key] = val;
-        this.setUrl(params)
-    },
-    delParam(key){
-        let params = JSON.parse(JSON.stringify(this.$route.query));
-        delete params[key];
-        this.setUrl(params)
-    },
-    setUrl(params){
-        this.$router.replace({path:'/catalog/factory/'+this.$route.params.id,'query':params});
-    }
   },
 }
 </script>

@@ -3,7 +3,7 @@
         <div 
         class="">
             <el-button
-            v-if="this.$route.name=='product'"
+            v-if="this.$route.name=='product-product'"
             text
             :ripple="false"
             icon="el-icon-back"
@@ -19,28 +19,30 @@
         >
         <el-breadcrumb-item :to="{ path: '/' }">Главная</el-breadcrumb-item>
             <el-breadcrumb-item
-            v-if="this.$route.name=='catalog'"
+            v-if="this.$route.name=='catalog-catalog'"
             >
-                <nuxt-link :to="`/catalog/${nameCat.id}`">
+            
+                <nuxt-link :to="{ name: 'catalog-catalog', params: {catalog:`${nameCat.kirilica}`,id:`${nameCat.kirilica}`} }">
                     {{nameCat.name}}
                 </nuxt-link>
             </el-breadcrumb-item>
             <el-breadcrumb-item
-            v-else-if="this.$route.name=='catalog-factory-id'"
+            v-else-if="this.$route.name=='factory-factory'"
             >
-                <nuxt-link :to="`/catalog/${factory.id}`">
+                <nuxt-link :to="{ name: 'factory-factory', params: {factory:`${factory.kirilica}`,id:`${factory.kirilica}`} }">
                     {{factory.name}}
                 </nuxt-link>
             </el-breadcrumb-item>
+            
             <el-breadcrumb-item
-            v-else-if="this.$route.name=='product'"
+            v-else-if="this.$route.name=='product-product'"
             >
-                <nuxt-link :to="`/catalog/${factory_name}${results_id}`">
+                <nuxt-link :to="{ name: 'catalog-catalog', params: {catalog:`${results_name}`,id:`${results_id}`} }">
                     {{results_prod}}
                 </nuxt-link>
             </el-breadcrumb-item>
             <el-breadcrumb-item
-                v-if="this.$route.name=='product'"
+                v-if="this.$route.name=='product-product'"
                 :to="nameProduct.id"
             >
                 {{nameProduct.name}}
@@ -64,6 +66,7 @@ export default {
           },
           results_prod:null,
           results_id:null,
+          results_name:null,
           queryString:null,
           factory:this.factori?this.factori!=''?this.factori:'':'',
           factory_name:'',
@@ -95,7 +98,7 @@ export default {
         }
     },
     beforeMount(){
-        this.queryString = this.$route.params.id
+        this.queryString = this.$route.params.product
        
     },
     created(){
@@ -104,28 +107,23 @@ export default {
     mounted(){
       if(this.queryString!=undefined){
           if(this.$nuxt.context.from!=undefined){
-          if(this.$nuxt.context.from.name!='catalog-factory-id'){
-            this.$axios.get(`/catalog/search/${this.queryString}`).then(result =>(
+
+            this.$axios.get(`/api/get/product?kirilica=${this.queryString}`).then(result =>(
                 this.results_prod = result.data.cat[0],
                       this.$axios.get(`/catalog/categories/${this.results_prod}`).then(result =>(
                           this.results_prod = result.data.name,
+                          this.results_name = result.data.kirilica,
                           this.results_id = result.data.id
                       ))  
                 
             ))
-            }else if(this.$nuxt.context.from.name=='catalog-factory-id'){
-                this.$axios.get(`/catalog/search/${this.queryString}`).then(result =>(
-                    this.results_prod = result.data.manufacturername,
-                    this.results_id = result.data.manufacturer
-                    
-                ))    
-                this.factory_name = 'factory/'  
-            }
+
         }else{
-            this.$axios.get(`/catalog/search/${this.queryString}`).then(result =>(
+            this.$axios.get(`/api/get/product?kirilica=${this.queryString}`).then(result =>(
                 this.results_prod = result.data.cat[0],
                       this.$axios.get(`/catalog/categories/${this.results_prod}`).then(result =>(
                           this.results_prod = result.data.name,
+                          this.results_name = result.data.kirilica,
                           this.results_id = result.data.id
                       ))  
                 

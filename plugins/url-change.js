@@ -15,6 +15,14 @@ export default ({app,route,params}, inject)=>{
       }
       app.router.replace({path:'/catalog/'+cat,'query':saved});
   }
+  function delQueryFactory(key,cat){
+    for(let i in saved){
+        if(key===i){
+          delete saved[key]
+        }
+      }
+      app.router.replace({path:'/factory/'+cat,'query':saved});
+  }
  function UpdsaveArr(route){
     saved=JSON.parse(JSON.stringify(route.query));
   }
@@ -33,7 +41,7 @@ export default ({app,route,params}, inject)=>{
       savedCat = cat;
       saved[key]=val;
       try{
-        await app.router.replace({path:'/catalog/factory/'+cat,'query':saved});
+        await app.router.replace({path:'/factory/'+cat,'query':saved});
       }catch (e){
 
       }
@@ -69,6 +77,7 @@ export default ({app,route,params}, inject)=>{
   inject('addQueryMounters', function(key,val,route,c){addQueryMounters(key,val,route,c)})
   inject('parseUrl', function(params){return parseUrl(params)})
   inject('delQuery', function(k,c){ delQuery(k,c)})
+  inject('delQueryFactory', function(k,c){ delQueryFactory(k,c)})
   inject('clearSaved', function(c){ clearSaved(c)})
   inject('UpdsaveArr', function(c){ UpdsaveArr(c)})
 }
