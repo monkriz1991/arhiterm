@@ -28,7 +28,7 @@ jobs:
           pass: ${{ secrets.SSH_PASS }}
           command: |
             cd /var/www/www-root/data/www/arhiterm.by/arhiterm
-            npm install
+            npm install --force
       - name: build
         uses: fifsky/ssh-action@master
         with:
