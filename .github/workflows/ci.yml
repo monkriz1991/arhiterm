@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: git pull
+      - name: git pull --no-edit
         uses: fifsky/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
