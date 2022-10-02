@@ -4,8 +4,7 @@
         :factori.sync="factori"
         />
         <div v-if="adaptivSidebar">
-        <Sidebar
-        @updateData="updateData"
+        <sidebarFactory
         :categoriesNested.sync="factori"
         :adaptivSidebar.sync="adaptivSidebar"
         />
@@ -16,8 +15,7 @@
         :visible.sync="drawer"
         :direction="direction"
         :with-header="true">
-          <Sidebar
-          @updateData="updateData"
+          <sidebarFactory
           :categoriesNested.sync="factori"
           :adaptivSidebar.sync="adaptivSidebar"
            />
@@ -32,7 +30,7 @@
           Фильтры
         </el-button>
         <CartTovar ref="CartTovar" :productsList.sync="productsList" />
-        <Paginated @changePage="updateData"/>
+        <Paginated/>
 
     </div>
 </template>
@@ -41,13 +39,13 @@
 function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
       }
-import Sidebar from '~/components/catalog/sidebarFactory.vue'
+import sidebarFactory from '~/components/catalog/sidebarFactory.vue'
 import CartTovar from '~/components/catalog/CartTovar.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Paginated from '~/components/catalog/PaginatedFactory.vue'
 export default {
     components:{
-        Sidebar,
+        sidebarFactory,
         CartTovar,
         Breadcrumb,
         Paginated
@@ -59,17 +57,57 @@ export default {
       }
     },
     async asyncData ({ app, params, route, error, $axios}) {
+      
       let parametrs = {};
+      let object_tabs = {}
       app.$UpdsaveArr(route)
-        if(route.query['card_filter']!==undefined){
-          parametrs['card_filter'] = route.query['card_filter'];
-        }
+
+        let arr_filter = []
+
         if(route.query['page']!==undefined){
           parametrs['page'] = route.query['page'];
         }
-      parametrs['manuf'] = params.id;
+        if(params.id == undefined){
+        let name_fill_fill='';
+        let routeManuf = await app.store.dispatch('category/getManufacturer')
+
+        for(let item in routeManuf.results){           
+           if(params.factory==routeManuf.results[item].kirilica){
+                name_fill_fill = routeManuf.results[item].id
+            }
+        } 
+
+          params.id = name_fill_fill;
+          parametrs['manuf'] = params.id
+        }else{
+          parametrs['manuf'] = params.id;
+        }
+
+        let factori = await $axios.$get(`/manufacturer/get/${params.id}/`)
+
+        if(route.query['card_filter']!==undefined){
+          let name_fill,name_arr_fill = ''
+          name_arr_fill = route.query['card_filter'].slice(1,-1);
+          name_arr_fill = name_arr_fill.split(',')
+      
+          for(let item in factori.filters){      
+                      
+            for(let itemin in factori.filters[item].chice){  
+            
+              for(let fill in name_arr_fill){
+                
+                if(name_arr_fill[fill]==factori.filters[item].chice[itemin].kirilica){
+                    name_fill = '"'+factori.filters[item].chice[itemin].id +'||'+ factori.filters[item].id+'"'
+                    arr_filter.push(name_fill)
+                  
+                }
+              }
+            } 
+          } 
+        } 
+        await app.store.dispatch('product/ADD_TO_TABS',object_tabs)
+        parametrs['card_filter'] = '['+arr_filter +']';
        let categoriesNested = await app.store.dispatch('category/getCategory1NestedFactory',params.id)
-      let factori = await $axios.$get(`/manufacturer/get/${params.id}/`)
        let productsList = await app.store.dispatch('product/getProductListManufacturer',parametrs)
      return{categoriesNested,productsList,factori}
     },
@@ -85,31 +123,41 @@ export default {
       $route (to, from){
         this.$UpdsaveArr(to);
         let parametrs = {};
+        let arr_filter = []
+        let name_fill,name_arr_fill= ''
         if(to.query['card_filter']!==undefined){
-          parametrs['card_filter'] = to.query['card_filter'];
+        name_arr_fill = to.query['card_filter'].slice(1,-1);
+        name_arr_fill = name_arr_fill.split(',')
+    
+        for(let item in this.factori.filters){      
+                    
+          for(let itemin in this.factori.filters[item].chice){  
+          
+            for(let fill in name_arr_fill){
+               
+              if(name_arr_fill[fill]==this.factori.filters[item].chice[itemin].kirilica){
+                  name_fill = '"'+this.factori.filters[item].chice[itemin].id +'||'+ this.factori.filters[item].id+'"'
+                  arr_filter.push(name_fill)
+                 
+              }
+            }
+          } 
+        } 
+          
+          parametrs['card_filter'] = '['+arr_filter +']';
         }
+      
         if(to.query['page']!==undefined){
           parametrs['page'] = to.query['page'];
         }
-         parametrs['cat'] = to.params.catalog;
+
+        parametrs['manuf'] = this.factori.id
        this.sendQuery(parametrs)
       }
   },
     computed:{
     },
     methods:{
-
-       updateData(){
-        let parametrs = {};
-        if(this.$route.query['card_filter']!==undefined){
-          parametrs['card_filter'] = this.$route.query['card_filter'];
-        }
-        if(this.$route.query['page']!==undefined){
-          parametrs['page'] = this.$route.query['page'];
-        }
-        parametrs['manuf'] = this.$route.params.id;
-        this.sendQuery(parametrs);
-      },
       async sendQuery(parametrs){
          if (parametrs['manuf']!==undefined){
           this.productsList = await this.$store.dispatch('product/getProductListManufacturer',parametrs);

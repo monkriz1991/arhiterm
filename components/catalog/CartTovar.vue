@@ -3,10 +3,18 @@
         <div class="catalog-list-tags">
             <el-tag
             :key="tag"
-            v-for="tag in dynamicTags"
+            v-for="tag in tabsArr.card_filter_rus"
             closable
             :disable-transitions="false"
             @close="handleClose(tag)">
+            {{tag}}
+            </el-tag>
+            <el-tag
+            :key="tag"
+            v-for="tag in tabsArr.manuf_filter_rus"
+            closable
+            :disable-transitions="false"
+            @close="handleCloseManuf(tag)">
             {{tag}}
             </el-tag>
         </div>
@@ -27,8 +35,6 @@
                         :title="product.name  + ` Купить`"
                         :alt="product.name"
                         />
-
-                        
                         </nuxt-link>
                         <div
                         v-show="price[idx]"
@@ -39,7 +45,6 @@
                             >
                                 <i :class="['el-icon-shopping-cart-1']"></i>
                             </el-button>
-
                         </div>
                     </div>
                     <div class="catalog-list-block-desc">
@@ -74,7 +79,6 @@
                                 <span>руб/{{product.units}}</span>
                             </div> -->
                         </div>
-
                     </div>
                 </div>
                 <el-dialog
@@ -84,7 +88,6 @@
                 center>
                     <div
                     class="catalog-list-input">
-
                         <CartTovarInput
                         ref="cartTovarInput"
                         :price.sync="price[idx]"
@@ -124,7 +127,6 @@ export default {
     },
     data() {
         return {
-            dynamicTags: [],
             loading: false,
             show:[],
             num: 1,
@@ -138,10 +140,13 @@ export default {
             checkListManuf:[],
             checkList:[],
             cats:[],
+            tabsItem:[],
             visible:false,
             activeButCatMeny:false,
             dialogFormVisibleModal:false,
             centerDialogVisible: false,
+            FilterItem:[],
+            ManufItem:[],
         };
     },
     components:{
@@ -150,22 +155,14 @@ export default {
         BasketModal,
     },
     mounted(){
-        this.parser(this.$route)
-
     },
-
-    /**
-     * хук перед маннтированием страница, но после создания
-     */
     beforeMount(){
        this.updatePriceAndCountInPage();
-    },
-    beforeUpdate(){
-
     },
     computed:{
         ...mapGetters({
             activeButCatMenyItem:'main/activeButCatMenyItem',
+            tabsArr:'product/tabs'
         }),
     },
     watch:{
@@ -175,35 +172,66 @@ export default {
         activeButCatMenyItem(data) {
             this.fromSateButCatMeny(data)
         },
-      $route (to, from){
-        this.parser(to)
-      }
+        $route (to, from){
+        },
     },
     methods : {
-      parseCheckboxes(to,cats, key){
-        let res = [];
-         let checkList = JSON.parse(decodeURI(to.query[key]))
-        let newkey = 'name'
-        if (key ==='card_filter'){
-            newkey = 'value'
-          let nrerr = []
-          for(let i of checkList){
-            nrerr.push(i.split("||")[0])
-          }
-          checkList = nrerr;
-          this.cats = cats
-         res = cats.map(function(x){if(checkList.includes(""+x.id)){return x[newkey]}}).filter(function( element ) {return element !== undefined;})
-
-        }
-        if (key ==='manuf'){
-          res = cats.map(function(x){
-            if(checkList.includes(x.id)){
-               return x.name
-            }
-          }).filter(function( element ) {return element !== undefined;})
-        }
-         return  res
-      },
+        handleClose(item){
+            let filter = ''
+            this.UPDATE_TABS(item)
+            if(this.tabsArr.card_filter_rus!=''){
+            for(let item in this.categoriesNested.list_filter){         
+                for(let itemin in this.categoriesNested.list_filter[item].chice){       
+                    for(let fill in this.tabsArr.card_filter_rus){
+                        if(this.tabsArr.card_filter_rus[fill]==this.categoriesNested.list_filter[item].chice[itemin].value){
+                            filter +=this.categoriesNested.list_filter[item].chice[itemin].kirilica +','
+                        }
+                    }
+                } 
+            } 
+                if(this.tabsArr.manuf!=undefined){
+                    this.ManufItem = this.tabsArr.manuf.join(',')
+                }
+                filter = filter.slice(0,-1);
+                this.FilterItem = filter
+                this.checkFilRoute(this.FilterItem,this.ManufItem)
+            }else{
+                if(this.tabsArr.manuf!=undefined){
+                    this.ManufItem = this.tabsArr.manuf.join(',')
+                }
+                this.FilterItem = undefined
+                this.checkFilRoute(this.FilterItem,this.ManufItem)
+            } 
+        },
+        handleCloseManuf(item){
+            let filter = ''
+            this.UPDATE_TABS_MANUF(item)         
+            if(this.tabsArr.manuf_filter_rus!=''){
+                for(let item in this.categoryManuf.results){   
+                    for(let items in this.tabsArr.manuf_filter_rus){       
+                        if(this.tabsArr.manuf_filter_rus[items]==this.categoryManuf.results[item].name){
+                            filter +=this.categoryManuf.results[item].kirilica +','
+                        }
+                    }
+                }
+                if(this.tabsArr.card_filter!=undefined){
+                    this.FilterItem = this.tabsArr.card_filter.join(',')
+                }
+                filter = filter.slice(0,-1);
+                this.ManufItem = filter
+                this.checkFilRoute(this.FilterItem,this.ManufItem)
+            }else{
+                if(this.tabsArr.card_filter!=undefined){
+                    this.FilterItem = this.tabsArr.card_filter.join(',')
+                }
+                this.ManufItem = undefined
+                this.checkFilRoute(this.FilterItem,this.ManufItem)
+            } 
+            
+        },  
+        checkFilRoute(FilterItem,ManufItem){
+            this.$router.replace({ name: "catalog-catalog", params: {catalog:this.$route.params.catalog}, query: {card_filter:FilterItem,manuf:ManufItem} })
+        },
         hidePreload(item){
             setTimeout(() => {
             this.loading=!this.loading;
@@ -211,6 +239,10 @@ export default {
         },
         ...mapActions({
            ADD_TO_CART: 'crate/ADD_TO_CART',
+           ADD_TO_TABS: 'product/ADD_TO_TABS',
+           UPDATE_TABS: 'product/UPDATE_TABS',
+           UPDATE_TABS_MANUF: 'product/UPDATE_TABS_MANUF',
+           DELL_TABS_FILL: 'product/DELL_TABS_FILL',
            ButCatMeny: 'main/newSateButCatMeny',
         }),
         toggleActive(idx) {
@@ -219,17 +251,13 @@ export default {
             this.fromSateButCatMeny(this.activeButCatMeny)
             this.radio = idx;
             if (this.show.includes(idx)) {
-
                 this.show = this.show.filter(entry => entry !== idx);
                 return;
             }else{
                 this.show =[]
             }
-
             this.show.push(idx);
-
         },
-
         /**
        * Функция обновляет количество товара и цены продукта на странице
        */
@@ -248,9 +276,6 @@ export default {
                 }
             }
         },
-        /**
-         *
-         */
         addToCart(data){
             let cart = JSON.parse(JSON.stringify(this.productsList.find(i=>i.id==data.data.parent)));
             let ret =  cart.product.filter((item)=> item.id == data.data.id);
@@ -262,84 +287,7 @@ export default {
         },
         funNewChar(data){
             return this.funChar = data
-
         },
-      /*
-        Быстре теги закрытие
-       */
-        handleClose(tag) {
-          let deleted = this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
-          let a = this.categoryManuf.results.find(x=>x.name===tag)
-          if(a!==undefined){
-            let data2 = JSON.parse(decodeURI(this.$route.query.manuf))
-            let res = data2.splice(JSON.parse(decodeURI(this.$route.query.manuf)).indexOf(a.id),1)
-              if(data2.length){
-                this.addParam('manuf',JSON.stringify(data2));
-              }else{
-                this.delParam('manuf');
-              }
-          }
-
-          let b = this.cats.find(x=>x.value===tag)
-          if(b!==undefined){
-            let data = JSON.parse(decodeURI(this.$route.query.card_filter))
-            data = data.filter(x=>parseInt(x.split('||')[0])!==b.id)
-            console.log(data)
-           //let res1 = data.splice(JSON.parse(decodeURI(this.$route.query.card_filter)).indexOf(b.id),1)
-              if(data.length){
-                this.addParam('card_filter',JSON.stringify(data));
-              }else{
-                this.delParam('card_filter');
-              }
-          }
-        },
-        addParam(key,val){
-        let params = JSON.parse(JSON.stringify(this.$route.query));
-        params[key] = val;
-        this.setUrl(params)
-    },
-    delParam(key){
-        let params = JSON.parse(JSON.stringify(this.$route.query));
-        delete params[key];
-        this.setUrl(params)
-    },
-    setUrl(params){
-          if(this.$route.params.catalog!==undefined){
-              this.$router.replace({path:'/catalog/'+this.$route.params.catalog,'query':params});
-          }
-          if(this.$route.params.id!==undefined){
-              this.$router.replace({path:'/catalog/factory/'+this.$route.params.id,'query':params});
-          }
-    },
-      parser(to){
-          if(to.query.manuf!==undefined) {
-        let checkListManuf = JSON.parse(decodeURI(to.query.manuf))
-
-          this.checkListManuf =  this.parseCheckboxes(to,this.categoryManuf.results,'manuf')
-      }else{
-        this.checkListManuf = []
-        }
-
-      if(this.categoriesNested!=undefined&&to.query.card_filter!==undefined && Array.isArray(this.categoriesNested.list_filter)) {
-        let cats = []
-        for(let a of this.categoriesNested.list_filter){
-          if(a.chice){
-            for(let i of a.chice){
-              // if(i.chice) {
-              //   for (let j of i.chice) {
-                  cats.push(i)
-              //   }
-              // }
-          }
-          }
-
-        }
-       this.checkList = this.parseCheckboxes(to,cats,'card_filter')
-      }else{
-        this.checkList = []
-      }
-      this.dynamicTags = this.checkList.concat(this.checkListManuf)
-      },
         toggleModal(val,noCloseNotify) {
             this.dialogFormVisibleModal = true;
             this.show =[]
@@ -374,7 +322,6 @@ export default {
             this.show =[]
       }
     }
-
 }
 </script>
 <style>

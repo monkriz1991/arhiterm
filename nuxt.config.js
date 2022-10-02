@@ -216,7 +216,16 @@ export default {
           const { data } = await axios.get('https://new.arhiterm.by/catalog/search/?limit=9999999')
           return data.results.map((product) => `/product/${product.kirilica_name}`)
         }
-      }
+      },
+      {
+        path: '/factory/sitemap.xml',
+        exclude: ['/**'],
+        routes: 
+          async () => {
+            const { data } = await axios.get('https://new.arhiterm.by/manufacturer/get/?is_active=true&limit=99999')
+            return data.results.map((factory) => `/factory/${factory.kirilica}`)
+          }
+        }
     ]
   },
 

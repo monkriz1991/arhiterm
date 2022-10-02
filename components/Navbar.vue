@@ -46,7 +46,7 @@
                 :key="item.id"
                 size="mini" @click="visible = false"
               >
-                <nuxt-link @click.native="handlerLoading" :to="`/catalog/factory/${item.id}`">
+                <nuxt-link @click.native="handlerLoading" :to="{ name: 'factory-factory', params: {factory:`${item.kirilica}`,id:`${item.id}`} }" >
                 <nuxt-picture loading="lazy" :src="item.img.substring(24)"/>
                   {{ item.name }}
                 </nuxt-link>
@@ -128,7 +128,7 @@
                 :key="item.id"
                 size="mini" @click="dialogCatalogVisible = false"
               >
-                <nuxt-link @click.native="handlerLoading" :to="`/catalog/factory/${item.id}`">
+                <nuxt-link @click.native="handlerLoading" :to="{ name: 'factory-factory', params: {factory:`${item.kirilica}`,id:`${item.id}`} }" >
                   <nuxt-picture loading="lazy" :src="item.img.substring(24)"/>
                   <span>{{ item.name }}</span>
                 </nuxt-link>

@@ -1,12 +1,5 @@
 <template>
     <div class="cost-product-block-char">
-        <!-- <div
-        class="cost-product-char-all"
-        @click="showChar"
-        :class="{'cost-all-top': show_char === true}"
-        >
-            <i class="el-icon-d-arrow-right"></i>
-        </div> -->
         <div class="cost-product-char">
             <p v-show="show_char">
                 <strong>Код товара</strong>
