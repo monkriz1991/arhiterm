@@ -313,7 +313,7 @@ export default {
         ignoreOrder: true
       }
     }),
-    
+
     // transpile: ['vue-lazy-hydration', 'intersection-observer'],
     // postcss: {
     //   plugins: {
@@ -339,6 +339,7 @@ export default {
 
     //   order: 'cssnanoLast'
     // },
+    
     extend (config, ctx) {
       const ORIGINAL_TEST = '/\\.(png|jpe?g|gif|svg|webp)$/i'
       const vueSvgLoader = [
