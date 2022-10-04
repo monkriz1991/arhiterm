@@ -67,19 +67,19 @@ export default {
     '@/assets/css/main.css',
     'element-ui/lib/theme-chalk/index.css'
   ],
-  render: {
-    // http2: {
-    //     push: true,
-    //     pushAssets: (req, res, publicPath, preloadFiles) => preloadFiles
-    //     .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
-    //   },
-    // compressor: false,
-    resourceHints: false
-    // etag: false,
-    // static: {
-    //  etag: false
-    // }
-    },
+  // render: {
+  //   // http2: {
+  //   //     push: true,
+  //   //     pushAssets: (req, res, publicPath, preloadFiles) => preloadFiles
+  //   //     .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
+  //   //   },
+  //   // compressor: false,
+  //   resourceHints: false
+  //   // etag: false,
+  //   // static: {
+  //   //  etag: false
+  //   // }
+  //   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/element-ui',
@@ -339,7 +339,7 @@ export default {
 
     //   order: 'cssnanoLast'
     // },
-    
+
     extend (config, ctx) {
       const ORIGINAL_TEST = '/\\.(png|jpe?g|gif|svg|webp)$/i'
       const vueSvgLoader = [
