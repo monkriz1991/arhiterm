@@ -121,7 +121,7 @@ export default ({
     created() {
     },
     async asyncData ({ app, params, route, error }) {
-        
+
         try {
             let result = await app.store.dispatch('tovar/getProductItem',params.product)
             let price = result.product[0].price
