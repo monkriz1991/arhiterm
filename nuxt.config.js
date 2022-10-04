@@ -275,6 +275,7 @@ export default {
   },
 
   build: {
+    postcss: null,
     optimizeCss: false,
     filenames: {
       app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
@@ -312,31 +313,32 @@ export default {
         ignoreOrder: true
       }
     }),
+    
     // transpile: ['vue-lazy-hydration', 'intersection-observer'],
-    postcss: {
-      plugins: {
-        ...(!isDev && {
-          cssnano: {
-            preset: ['advanced', {
-              autoprefixer: false,
-              cssDeclarationSorter: false,
-              zindex: false,
-              discardComments: {
-                removeAll: true
-              }
-            }]
-          }
-        })
-      },
-      ...(!isDev && {
-        preset: {
-          browsers: 'cover 99.5%',
-          autoprefixer: true
-        }
-      }),
+    // postcss: {
+    //   plugins: {
+    //     ...(!isDev && {
+    //       cssnano: {
+    //         preset: ['advanced', {
+    //           autoprefixer: false,
+    //           cssDeclarationSorter: false,
+    //           zindex: false,
+    //           discardComments: {
+    //             removeAll: true
+    //           }
+    //         }]
+    //       }
+    //     })
+    //   },
+    //   ...(!isDev && {
+    //     preset: {
+    //       browsers: 'cover 99.5%',
+    //       autoprefixer: true
+    //     }
+    //   }),
 
-      order: 'cssnanoLast'
-    },
+    //   order: 'cssnanoLast'
+    // },
     extend (config, ctx) {
       const ORIGINAL_TEST = '/\\.(png|jpe?g|gif|svg|webp)$/i'
       const vueSvgLoader = [
