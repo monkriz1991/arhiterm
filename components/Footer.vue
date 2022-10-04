@@ -44,7 +44,7 @@
                 </a>
             </div>
             <div class="footer-img">
-                 <nuxt-img src="/static/3_small.png" alt="Кэшбэк" title="Система оплаты Кэшбэк" />
+                 <img src="/3_small.png" alt="Кэшбэк" title="Система оплаты Кэшбэк" >
                  <img src="~/assets/img/BGPB_Cashalot_card_small.png" alt="Cashalot" title="Система оплаты Cashalot" >
                  <img src="~/assets/img/Cherepaha.jpg" alt="Черепаха" title="Система оплаты Черепаха" >
                  <img src="~/assets/img/erip.png" alt="ЕРИП" title="Система оплаты ЕРИП" >
