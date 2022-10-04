@@ -29,7 +29,7 @@ export default ({
         link: [
           {
             rel: 'canonical',
-            href: 'https://arhiterm.by' + this.$route.path
+            href: 'https://arhiterm.by' + this.canontical
           }
         ]
       }
@@ -45,6 +45,7 @@ export default ({
         loading:true,
         history:[],
         countLoad:0,
+        canontical:this.$route.path=='/'?'':this.$route.path,
       };
   },
   computed: {
