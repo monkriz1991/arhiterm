@@ -14,9 +14,13 @@
                                 </strong>
                                 <!-- <span>{{item.name}}</span> -->
                             </div>
-                            <nuxt-picture loading="lazy"
-                                :src="item.img.substring(24)"
-                                :alt="item.name"
+                            <nuxt-img 
+                            provider="twicpics"
+                            sizes="sm:100px md:100px lg:100px"
+                            loading="lazy" 
+                            :src="item.img.substring(24)" 
+                            :alt="item.name"
+                            presets="product"
                             />
                         </div>
                     </nuxt-link>
