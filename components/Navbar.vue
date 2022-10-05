@@ -104,7 +104,14 @@
         </div>
         <div class="logotip">
           <nuxt-link to="/">
-            <img v-if="width>991" src="~/static/logotip.png" alt="logotip" title="Logotip arhiterm"/>
+            <nuxt-img 
+                v-if="width>991"
+                 sizes="sm:130px md:130px lg:130px"
+                 provide="imgix"
+                 loading="lazy" 
+                 src="/logotip.png" 
+                 alt="logotip" 
+                 title="Logotip arhiterm" />
             <img v-else src="~/static/logotip_orange.png" alt="logotip" title="Logotip arhiterm"/>
           </nuxt-link>
         </div>

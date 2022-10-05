@@ -86,7 +86,6 @@ plugins: [
   '@/plugins/backbutton.js',
   '~/plugins/url-change.js',
   { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
-  // { src: '~/plugins/vuex-persist.js', mode: 'client' },
   { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
 ],
 
@@ -280,8 +279,10 @@ modules: [
     }
   },
 
+  // postcss: null,
+
   build: {
-    postcss: null,
+    
     optimizeCss: false,
     filenames: {
       app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
@@ -321,30 +322,30 @@ modules: [
     }),
 
     // transpile: ['vue-lazy-hydration', 'intersection-observer'],
-    // postcss: {
-    //   plugins: {
-    //     ...(!isDev && {
-    //       cssnano: {
-    //         preset: ['advanced', {
-    //           autoprefixer: false,
-    //           cssDeclarationSorter: false,
-    //           zindex: false,
-    //           discardComments: {
-    //             removeAll: true
-    //           }
-    //         }]
-    //       }
-    //     })
-    //   },
-    //   ...(!isDev && {
-    //     preset: {
-    //       browsers: 'cover 99.5%',
-    //       autoprefixer: true
-    //     }
-    //   }),
+    postcss: {
+      plugins: {
+        ...(!isDev && {
+          cssnano: {
+            preset: ['advanced', {
+              autoprefixer: false,
+              cssDeclarationSorter: false,
+              zindex: false,
+              discardComments: {
+                removeAll: true
+              }
+            }]
+          }
+        })
+      },
+      ...(!isDev && {
+        preset: {
+          browsers: 'cover 99.5%',
+          autoprefixer: true
+        }
+      }),
 
-    //   order: 'cssnanoLast'
-    // },
+      order: 'cssnanoLast'
+    },
 
     extend (config, ctx) {
       const ORIGINAL_TEST = '/\\.(png|jpe?g|gif|svg|webp)$/i'
