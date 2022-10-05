@@ -29,11 +29,15 @@
                         :class="{disabledLink:!price[idx]}"
                          :to="{ name: 'product-product', params: {product:`${product.kirilica_name}`,id:`${product.kirilica_name}`} }" 
                         >
-                        <nuxt-picture loading="lazy"
-                        :src="product.img.substring(24)"
-                        fit="contain"
-                        :title="product.name  + ` Купить`"
+                        <nuxt-img 
+                        provider="twicpics"
+                        sizes="sm:200px md:400px lg:800px"
+                        loading="lazy" 
+                        :src="product.img.substring(24)" 
                         :alt="product.name"
+                        width="1024"
+                        height="800"
+                        quality="75"
                         />
                         </nuxt-link>
                         <div

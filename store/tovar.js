@@ -18,7 +18,6 @@ export const actions = {
         // await sleep(50)
        // let product = await this.$axios.$get(`api/get/product?kirilica=${id}`); 
         let product = await this.$axios.$get(`api/get/product?kirilica=${id}`); 
-        console.log(product)
         commit('setProductItem', product)
         return product
     }

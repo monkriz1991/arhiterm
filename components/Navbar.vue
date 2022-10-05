@@ -33,7 +33,16 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="{ name: 'catalog-catalog', params: {catalog:`${category.kirilica}`,id:`${category.id}`} }" >
-                  <nuxt-picture loading="lazy" :src="category.img.substring(24)"/>
+                  <nuxt-img 
+                  provider="twicpics"
+                  sizes="sm:200px md:400px lg:800px"
+                  loading="lazy" 
+                  :src="category.img.substring(24)" 
+                  :alt="category.name"
+                  width="1024"
+                  height="800"
+                  quality="75"
+                  />
                   {{ category.name }}
                 </nuxt-link>
               </li>
@@ -47,7 +56,16 @@
                 size="mini" @click="visible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="{ name: 'factory-factory', params: {factory:`${item.kirilica}`,id:`${item.id}`} }" >
-                <nuxt-picture loading="lazy" :src="item.img.substring(24)"/>
+                  <nuxt-img 
+                  provider="twicpics"
+                  sizes="sm:200px md:400px lg:800px"
+                  loading="lazy" 
+                  :src="item.img.substring(24)" 
+                  :alt="item.name"
+                  width="1024"
+                  height="800"
+                  quality="75"
+                  />
                   {{ item.name }}
                 </nuxt-link>
               </li>
@@ -115,7 +133,16 @@
                 size="mini" @click="dialogCatalogVisible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="{ name: 'catalog-catalog', params: {catalog:`${category.kirilica}`,id:`${category.id}`} }">
-                  <nuxt-picture loading="lazy" :src="category.img.substring(24)"/>
+                  <nuxt-img 
+                  provider="twicpics"
+                  sizes="sm:200px md:400px lg:800px"
+                  loading="lazy" 
+                  :src="category.img.substring(24)" 
+                  :alt="category.name"
+                  width="1024"
+                  height="800"
+                  quality="75"
+                  />
                   <span>{{ category.name }}</span>
                 </nuxt-link>
               </li>
@@ -129,7 +156,16 @@
                 size="mini" @click="dialogCatalogVisible = false"
               >
                 <nuxt-link @click.native="handlerLoading" :to="{ name: 'factory-factory', params: {factory:`${item.kirilica}`,id:`${item.id}`} }" >
-                  <nuxt-picture loading="lazy" :src="item.img.substring(24)"/>
+                    <nuxt-img 
+                    provider="twicpics"
+                    sizes="sm:200px md:400px lg:800px"
+                    loading="lazy" 
+                    :src="item.img.substring(24)" 
+                    :alt="item.name"
+                    width="1024"
+                    height="800"
+                    quality="75"
+                    />
                   <span>{{ item.name }}</span>
                 </nuxt-link>
               </li>
@@ -304,7 +340,16 @@
                   <nuxt-link @click.native="handlerLoading" :to="{ name: 'product-product', params: {product:`${item.kirilica_name}`,id:`${item.kirilica_name}`} }">
                   <div class="search-block">
                     <div class="search-block-img">
-                      <nuxt-picture loading="lazy" :src="item.img.substring(24)" alt="" />
+                        <nuxt-img 
+                        provider="twicpics"
+                        sizes="sm:200px md:400px lg:800px"
+                        loading="lazy" 
+                        :src="item.img.substring(24)" 
+                        :alt="item.name"
+                        width="1024"
+                        height="800"
+                        quality="75"
+                        />
                     </div>
                     <div class="search-block-desc">
                       <span>
@@ -439,7 +484,16 @@
                       <nuxt-link @click.native="handlerLoadingMobail" :to="{ name: 'product-product', params: {product:`${item.kirilica_name}`,id:`${item.kirilica_name}`} }">
                         <div class="search-block">
                         <div class="search-block-img">
-                          <nuxt-picture loading="lazy" :src="item.img.substring(24)" alt="" />
+                          <nuxt-img 
+                          provider="twicpics"
+                          sizes="sm:200px md:400px lg:800px"
+                          loading="lazy" 
+                          :src="item.img.substring(24)" 
+                          :alt="item.name"
+                          width="1024"
+                          height="800"
+                          quality="75"
+                          />
                         </div>
                         <div class="search-block-desc">
                           <span>

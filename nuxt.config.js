@@ -24,7 +24,7 @@ export default {
       { name: 'google', content: 'notranslate' },
       { name: 'google-site-verification', content: 'XXP2MkYaAs0LKj5RuVVah-wMhFxrUmfV5rOUu9qihSY' },
       { name: 'google-site-verification', content: 'pffvbs0GyslCUgg16m88GzyCeE8tIXtFV8_yrWKWKhQ' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1 shrink-to-fit=no' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=5 shrink-to-fit=no' },
       { hid: 'description', name: 'description', content: 'Первый поставщик профессиональных решений для систем отопления, водоснабжения и канализации ведущих европейских производителей. Оптовая и розничная продажа, наличие наскладе, низкие цены, скидки, гарантии.' },
       {
         hid: 'og:title',
@@ -52,112 +52,104 @@ export default {
     ]
   },
 
-  webfontloader: {
-    events: false,
-    google: {
-      families: ['Montserrat:400,500,600,700,800:cyrillic&display=swap']
-    },
-    timeout: 5000
-    },
+webfontloader: {
+  events: false,
+  google: {
+    families: ['Montserrat:400,500,600,700,800:cyrillic&display=swap']
+  },
+  timeout: 5000
+},
 
-  loading: {color:'blue'},
+loading: {color:'blue'},
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '@/assets/css/main.css',
-    'element-ui/lib/theme-chalk/index.css'
-  ],
-  // render: {
-  //   // http2: {
-  //   //     push: true,
-  //   //     pushAssets: (req, res, publicPath, preloadFiles) => preloadFiles
-  //   //     .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
-  //   //   },
-  //   // compressor: false,
-  //   resourceHints: false
-  //   // etag: false,
-  //   // static: {
-  //   //  etag: false
-  //   // }
+css: [
+  '@/assets/css/main.css',
+  'element-ui/lib/theme-chalk/index.css'
+],
+render: {
+  // http2: {
+  //     push: true,
+  //     pushAssets: (req, res, publicPath, preloadFiles) => preloadFiles
+  //     .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
   //   },
+  // compressor: false,
+  resourceHints: false
+  // etag: false,
+  // static: {
+  //  etag: false
+  // }
+},
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '@/plugins/element-ui',
-    '@/plugins/backbutton.js',
-    '~/plugins/url-change.js',
-    { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
-    // { src: '~/plugins/vuex-persist.js', mode: 'client' },
-    { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
-  ],
+plugins: [
+  '@/plugins/element-ui',
+  '@/plugins/backbutton.js',
+  '~/plugins/url-change.js',
+  { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
+  // { src: '~/plugins/vuex-persist.js', mode: 'client' },
+  { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
+],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxt/image',
-    '@nuxtjs/pwa',
-    '@nuxtjs/fontawesome',
-    '@nuxtjs/google-analytics',
-  ],
-  googleAnalytics: {
-    id: 'UA-19108162-1', // Use as fallback if no runtime config is provided
-  },
-  fontawesome:{
-    //component:'fa',
-    icons:{
-      solid:true,
-      brands:true,
-    }
-  },
-  pwa: {
-      manifest: {
-        name: 'Arhiterm',
-        lang: 'ru',
-        orientation: 'portrait',
-        background_color: '#FFFFFF',
-        theme_color: '#F8F8F8',
-        theme_color: '#F8F8F8',
-        start_url:'/',
-        icons: [
-            {
-                src: '/icon.png',
-                sizes: '512x512',
-                type: 'image/png',
-                purpose: 'any maskable'
-            }
-        ]
-    }
-  },
+buildModules: [
+  '@nuxt/image',
+  '@nuxtjs/pwa',
+  // '@nuxtjs/fontawesome',
+  '@nuxtjs/google-analytics',
+],
+googleAnalytics: {
+  id: 'UA-19108162-1', // Use as fallback if no runtime config is provided
+},
+pwa: {
+    manifest: {
+      name: 'Arhiterm',
+      lang: 'ru',
+      orientation: 'portrait',
+      background_color: '#FFFFFF',
+      theme_color: '#F8F8F8',
+      theme_color: '#F8F8F8',
+      start_url:'/',
+      icons: [
+          {
+              src: '/icon.png',
+              sizes: '512x512',
+              type: 'image/png',
+              purpose: 'any maskable'
+          }
+      ]
+  }
+},
   // Modules: https://go.nuxtjs.dev/config-modules
 
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    '@nuxtjs/gtm',
-    '@nuxtjs/auth-next',
-    '@nuxtjs/sitemap',
-    'nuxt-ssr-cache',
-    'nuxt-webfontloader',
-    '@nuxtjs/redirect-module',
-    ['nuxt-vuex-localstorage', {
-      localStorage: ['crate']
-    }],
-    [
-      '@nuxtjs/yandex-metrika',
-      {
-        id: '7416499',
-        defer: true,
-        webvisor: true,
-        clickmap:true,
-        usetriggerEventCDN:true,
-        trackLinks:true,
-        triggerEvent:true,
-        accurateTrackBounce:true,
-      }
-    ],
-    // ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
+modules: [
+  // https://go.nuxtjs.dev/axios
+  '@nuxtjs/axios',
+  '@nuxtjs/gtm',
+  '@nuxtjs/auth-next',
+  '@nuxtjs/sitemap',
+  // 'nuxt-ssr-cache',
+  'nuxt-webfontloader',
+  '@nuxtjs/redirect-module',
+  ['nuxt-vuex-localstorage', {
+    localStorage: ['crate']
+  }],
+  [
+    '@nuxtjs/yandex-metrika',
+    {
+      id: '7416499',
+      defer: true,
+      webvisor: false,
+      clickmap:true,
+      usetriggerEventCDN:true,
+      trackLinks:true,
+      triggerEvent:true,
+      accurateTrackBounce:true,
+    }
   ],
+],
   redirect: [
     {
       from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
@@ -172,11 +164,25 @@ export default {
     id: 'GTM-K5DFSM3'
   },
 
+  target: 'static',
   image: {
-    provider: 'twicpics',
+    //provider: 'twicpics',
     twicpics: {
       baseURL: 'https://new.arhiterm.by/'
     },
+    presets: {
+      product: {
+        modifiers: {
+          format: 'webp',
+          fit: 'contain',
+          quality: '60'
+        }
+      }
+    },
+    imgix: {
+      baseURL: 'https://arhiterm.by/'
+    },
+    dir: 'static'
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

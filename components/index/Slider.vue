@@ -21,11 +21,16 @@
             </nuxt-link>
             </div>
           </div>
-          <nuxt-picture loading="lazy" class="slider-image" 
-            v-if="item.img.substring(24)!='https://new.arhiterm.by/media/img/noimg.png'"
-            :src="item.img.substring(24)"
-            :alt="item.title" 
-            format="webp"
+          <nuxt-img 
+          class="slider-image" 
+          provider="twicpics"
+          loading="lazy" 
+          v-if="item.img.substring(24)!='https://new.arhiterm.by/media/img/noimg.png'"
+          :src="item.img.substring(24)" 
+          :alt="item.title"
+          width="200"
+          height="200"
+          presets="product"
           />
         </div>
       </el-carousel-item>
