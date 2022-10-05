@@ -115,7 +115,7 @@
             <img v-else src="~/static/logotip_orange.png" alt="logotip" title="Logotip arhiterm"/>
           </nuxt-link>
         </div>
-              <div
+      <div
       v-if="width<991"
       class="contents-mobail">
         <el-button slot="reference"
