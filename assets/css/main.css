@@ -21,7 +21,9 @@ margin: 10px 0 0 0;
 }
 .footer-img img{
     float: left;
-    height: 25px;
+    max-height: 25px;
+    display: inline-block;
+    height: auto;
     margin: 0 10px 0 0;
 }
 .footer-bg{
@@ -1155,10 +1157,12 @@ header .contents {
     margin: 5px 0 5px;
 }
 .index-brand-block img{
-    padding: 30px 60px 30px;
+    padding: 30px 60px;
     max-height: 150px;
     max-width: 100%;
-    height: 100%;
+    min-height: 100%;
+    height: auto;
+    display: inline-block;
     -o-object-fit: contain;
     object-fit: contain;
 }
