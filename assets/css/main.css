@@ -1261,9 +1261,16 @@ header .contents {
     padding: 0 15px 0 0;
     /* border: 1px solid #e2e2e2; */
 }
-.index-top-block .el-image{
+.index-top-block-img{
+    height: 115px;
     width: 95px;
     float: left;
+}
+.index-top-block-img img{
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
 }
 .index-top .hooper-indicator{
     background-color: #e3e3e3;
@@ -1318,18 +1325,7 @@ header .contents {
     margin: 0px 0 0px;
     color: #ff6b00;
 }
-.index-top-block img{
-    height: 110px;
-    -o-object-fit: contain;
-    object-fit: contain;
-    /* width: 100%; */
-    width: 95px;
-    float: left;
-    padding: 5px 10px 5px 0;
-    /* background: #e4e4e4; */
-    border-radius: 6px;
-    /* border: 1px solid #ff6b00;*/
-}
+
 .index-top-cost{
     margin: 0 0 0 110px;
     color: #2f2f2f;
