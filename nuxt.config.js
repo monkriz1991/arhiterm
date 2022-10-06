@@ -67,23 +67,15 @@ css: [
   'element-ui/lib/theme-chalk/index.css'
 ],
 render: {
-  // http2: {
-  //     push: true,
-  //     pushAssets: (req, res, publicPath, preloadFiles) => preloadFiles
-  //     .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
-  //   },
-  // compressor: false,
   resourceHints: false
-  // etag: false,
-  // static: {
-  //  etag: false
-  // }
 },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 plugins: [
   '@/plugins/element-ui',
   '@/plugins/backbutton.js',
   '~/plugins/url-change.js',
+  { src: '~plugins/ga.js', mode: 'client' },
+  '~/plugins/gtm',
   { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
   { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
 ],
@@ -95,12 +87,7 @@ components: true,
 buildModules: [
   '@nuxt/image',
   '@nuxtjs/pwa',
-  // '@nuxtjs/fontawesome',
-  '@nuxtjs/google-analytics',
 ],
-googleAnalytics: {
-  id: 'UA-19108162-1', // Use as fallback if no runtime config is provided
-},
 pwa: {
     manifest: {
       name: 'Arhiterm',
@@ -158,9 +145,6 @@ modules: [
       }
     }
   ],
-  gtm: {
-    id: 'GTM-K5DFSM3'
-  },
 
   target: 'static',
   image: {
@@ -178,7 +162,10 @@ modules: [
       }
     },
     imgix: {
-      baseURL: 'https://arhiterm.by/'
+      baseURL: 'https://arhiterm.by/',
+      format: 'webp',
+      fit: 'contain',
+      quality: '60'
     },
     dir: 'static'
   },
@@ -281,7 +268,6 @@ modules: [
   // postcss: null,
 
   build: {
-    
     optimizeCss: false,
     filenames: {
       app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',

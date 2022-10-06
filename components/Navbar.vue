@@ -1,13 +1,12 @@
 <template>
   <header ref="header"
-    class="header-tempalte"
+  class="header-tempalte"
   :class="{ 'header-container--sticky': isHeaderSticky }"
   >
     <div class="container">
       <div class="contents">
         <div v-if="width>991" class="header-cat-desc">
           <el-popover
-
             popper-class="popover-nav"
             v-model="visible"
             placement="bottom"
@@ -255,8 +254,6 @@
               @clickModal = "toggleModal"
               @openBasketNotify = "closeBasket"
               :dialogFormVisibleModal.sync="dialogFormVisibleModal"/>
-
-
               <div class="nav-button-basket button-nav-meny">
                 <el-button  type="text" @click="toggleModal(true)">
                   <i class="el-icon-shopping-cart-full"></i>
@@ -264,9 +261,6 @@
               </el-button>
               </div>
             </client-only>
-
-
-
             <div v-if="width>991" class="top-phone button-nav-meny">
               <el-button
               circle
@@ -329,7 +323,6 @@
               icon="el-icon-search"
               circle>
               </el-button>
-
               <transition name="el-fade-in-linear">
                 <div v-show="show" class="block-search">
                   <i class="el-icon-search"></i>
@@ -342,7 +335,6 @@
                     @change="handleSelect"
                     popper-class="block-search-input"
                   >
-
                     <template slot-scope="{ item }">
                   <nuxt-link @click.native="handlerLoading" :to="{ name: 'product-product', params: {product:`${item.kirilica_name}`,id:`${item.kirilica_name}`} }">
                   <div class="search-block">
@@ -403,14 +395,11 @@
                 <ModalLogout />
               </div>
                </client-only>
-
               <el-button
               circle
               icon="el-icon-phone-outline"
               @click="dialogVisible=true">
               </el-button>
-
-
               <el-button
               circle
               icon="el-icon-more-outline"
@@ -604,8 +593,6 @@ import {mapGetters,mapActions} from 'vuex'
         DELL_CART_BASKET_ALL: 'crate/DELL_CART_BASKET_ALL',
       }),
       categoryKirilica (item) {
-        console.log(item)
-        // return this.items[this.active].gallery
       },
       open() {
         this.$refs.myBottomSheet.open();
@@ -680,12 +667,8 @@ import {mapGetters,mapActions} from 'vuex'
         };
       },
       handleSelect(item) {
-        // this.state=''
-        // this.show = false
       },
       showButton(){
-        // this.show =!this.show
-        // this.state=''
       },
       async getPhones(){
         let data = await this.$axios.get(`/users/phones/?limit=9999`);
@@ -723,7 +706,6 @@ import {mapGetters,mapActions} from 'vuex'
           this.isHeaderSticky = false;
         }
       },
-
     }
   }
 </script>

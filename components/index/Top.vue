@@ -8,17 +8,18 @@
                 >
                     <nuxt-link :to="{ name: 'product-product', params: {product:`${item.kirilica_name}`,id:`${item.kirilica_name}`} }" class="nuxt-link-cat">
                         <div class="index-top-block">
-                            <nuxt-picture
-                            provider="twicpics"
-                            sizes="sm:100px md:100px lg:100px"
-                            loading="lazy" 
-                            :src="item.img.substring(24)" 
-                            :alt="item.name"
-                            width="90"
-                            height="100"
-                            presets="product"
-                            />
-
+                            <div class="index-top-block-img">
+                                <nuxt-picture
+                                provider="twicpics"
+                                sizes="sm:100px md:100px lg:100px"
+                                loading="lazy" 
+                                :src="item.img.substring(24)" 
+                                :alt="item.name"
+                                width="90"
+                                height="100"
+                                presets="product"
+                                />
+                            </div> 
                             <div class="index-top-block-desc">
                                 <strong>
                                     {{item.manufacturer_name}}
@@ -48,8 +49,7 @@
 import { mapGetters,mapActions } from 'vuex'
 import { Hooper, Slide,
 Pagination as HooperPagination,
-Navigation  as HooperNavigation
-} from 'hooper';
+Navigation  as HooperNavigation} from 'hooper';
 import 'hooper/dist/hooper.css';
 export default ({
     components: {
