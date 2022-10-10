@@ -1,6 +1,6 @@
 *{
-    font-family: 'Montserrat','Source Sans Pro',-apple-system,BlinkMacSystemFont,'Segoe UI',
-    Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-family: 'Montserrat','Source Sans Pro','Helvetica Neue',Arial,sans-serif;
+    font-display: swap;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 footer{
@@ -19,12 +19,16 @@ margin: 10px 0 0 0;
 .img-pay-footer{
 
 }
-.footer-img img{
+.footer-img-img{
     float: left;
-    max-height: 25px;
+    height: 25px;
     display: inline-block;
-    height: auto;
     margin: 0 10px 0 0;
+}
+.footer-img-img img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 .footer-bg{
     background: #fff;
@@ -739,9 +743,13 @@ header{
 .logotip a{
     float: left;
 }
-.logotip img{
-    max-height: 100%;
+.logotip-img{
+    height: 100%;
     width: 130px;
+}
+.logotip-img img{
+    height: 100%;
+    width: 100%;    
 }
 .page-component {
     height: 100%;
@@ -1156,14 +1164,18 @@ header .contents {
     font-size: 12px;
     margin: 5px 0 5px;
 }
-.index-brand-block img{
-    padding: 30px 60px;
-    max-height: 150px;
-    max-width: 100%;
-    min-height: 100%;
-    height: auto;
+.index-brand-block-img{
+    padding: 20px 60px;
+    max-height: 140px;
+    width: 100%;
+    height: 100%;
     display: inline-block;
     -o-object-fit: contain;
+    object-fit: contain;
+}
+.index-brand-block-img img{
+    height: 100%;
+    width: 100%;
     object-fit: contain;
 }
 .index-topcat h4,.index-brand h4,.index-top h4{
@@ -4971,9 +4983,13 @@ font-size: 13px;
     .el-tabs__active-bar{
         /* transform: translateX(0px); */
     }
-    .logotip img {
-        max-height: 100%;
+    .logotip-img {
+        height: 100%;
         width: 110px;
+    }
+    .logotip-img img{
+        height: 100%;
+        width: 100%;    
     }
     .form-basket-aut .header-logout{
         display: block !important;
@@ -5145,13 +5161,10 @@ font-size: 13px;
         background: transparent;
         border-top: 1px solid #c1c1c1;
     }
-    .footer-img img {
+    .footer-img-img {
         margin: 0 3px 3px 0;
         max-height: 20px;
         border-radius: 3px;
-    }
-    .footer-img {
-        margin: 15px 0 0 0;
     }
     .personal-data-link-footer {
         float: left;
@@ -5534,7 +5547,7 @@ font-size: 13px;
     .index-brand .hooper-pagination{
         display: none;
     }
-    .index-brand-block img {
+    .index-brand-block-img{
         padding: 25px 25px 25px
     }   
     .slider-content a {

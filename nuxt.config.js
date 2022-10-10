@@ -1,10 +1,6 @@
 const axios = require('axios')
 const isDev = process.env.NODE_ENV !== 'production'
 export default {
-  mode: 'universal',
-  ...(!isDev && {
-    modern: 'client'
-  }),
   server:{
     host:'0.0.0.0',
     port:3003,
@@ -67,7 +63,17 @@ css: [
   'element-ui/lib/theme-chalk/index.css'
 ],
 render: {
-  resourceHints: false
+  // http2: {
+  //     push: true,
+  //     pushAssets: (req, res, publicPath, preloadFiles) => preloadFiles
+  //     .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
+  //   },
+  // compressor: false,
+  resourceHints: false,
+  etag: false,
+  static: {
+    etag: false
+  }
 },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 plugins: [
@@ -85,7 +91,12 @@ components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 buildModules: [
-  '@nuxt/image',
+  [
+    '@nuxt/image',
+    {
+      provider: 'static',
+    },
+  ],
   '@nuxtjs/pwa',
 ],
 pwa: {
@@ -146,9 +157,15 @@ modules: [
     }
   ],
 
-  target: 'static',
+  // target: 'static',
+  // ssr: true,
+
+  // generate: {
+  //   fallback: '404.html',    
+  // },
+
   image: {
-    //provider: 'twicpics',
+    //provider: 'twicpics'
     twicpics: {
       baseURL: 'https://new.arhiterm.by/'
     },
@@ -180,6 +197,9 @@ modules: [
     },
 
   },
+  // generate: {
+  //   subFolders: false
+  // },
    sitemap: {
     path: '/sitemap.xml',
     cacheTime: 1000 * 60 * 15,
@@ -265,7 +285,7 @@ modules: [
     }
   },
 
-  // postcss: null,
+   //postcss: null,
 
   build: {
     optimizeCss: false,
@@ -306,7 +326,7 @@ modules: [
       }
     }),
 
-    // transpile: ['vue-lazy-hydration', 'intersection-observer'],
+    transpile: ['vue-lazy-hydration', 'intersection-observer'],
     postcss: {
       plugins: {
         ...(!isDev && {

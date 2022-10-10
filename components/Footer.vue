@@ -44,79 +44,97 @@
                 </a>
             </div>
             <div class="footer-img">
-                 <nuxt-img 
-                 sizes="sm:50px md:50px lg:50px"
-                 provide="imgix"
-                 loading="lazy" 
-                 presets="product"
-                 src="/BGPB_Cashalot_card_small.png" 
-                 alt="Cashalot" 
-                 title="Система оплаты Cashalot" />
-                <nuxt-img
-                sizes="sm:50px md:50px lg:50px"
-                provide="imgix"
-                loading="lazy" 
-                presets="product"
-                src="/3_small.png" 
-                alt="Кэшбэк" 
-                title="Система оплаты Кэшбэк" />
-                 <nuxt-img 
-                 sizes="sm:50px md:50px lg:50px"
-                 provide="imgix"
-                 loading="lazy" 
-                 presets="product"
-                 src="/Cherepaha.jpg" 
-                 alt="Черепаха" 
-                 title="Система оплаты Черепаха" />
-                 <nuxt-img 
-                 sizes="sm:50px md:50px lg:50px"
-                 provide="imgix"
-                 loading="lazy"  
-                 presets="product"
-                 src="/erip.png" 
-                 alt="ЕРИП" 
-                 title="Система оплаты ЕРИП" />
-                <nuxt-img 
-                 sizes="sm:50px md:50px lg:50px"
-                 provide="imgix"
-                 loading="lazy" 
-                 presets="product"
-                 src="/FUN_40.jpg" 
-                 alt="FUN" 
-                 title="Система оплаты FUN" />
-                <nuxt-img 
-                 sizes="sm:50px md:50px lg:50px"
-                 provide="imgix"
-                 loading="lazy"
-                 presets="product"
-                 src="/halva_small.png" 
-                 alt="Халва" 
-                 title="Система оплаты Халва" />
-                <nuxt-img 
-                 provide="imgix"
-                 loading="lazy" 
-                 presets="product"
-                 src="/mps-_-bepaid_belkart.png" 
-                 alt="bepaid" 
-                 width="280"
-                 height="25"
-                 title="Система оплаты bepaid" />
-                <nuxt-img 
-                 sizes="sm:50px md:50px lg:50px"
-                 provide="imgix"
-                 loading="lazy" 
-                 presets="product"
-                 src="/KP_small.png" 
-                 alt="Карта покупок" 
-                 title="Система оплаты Карта покупок" />
-                <nuxt-img 
-                 sizes="sm:50px md:50px lg:50px"
-                 provide="imgix"
-                 loading="lazy" 
-                 presets="product"
-                 src="/mtbank-_86_.png" 
-                 alt="МТБанк" 
-                 title="Система оплаты МТБанк" />
+                <div class="footer-img-img">
+                    <nuxt-img 
+                    sizes="sm:50px md:50px lg:50px"
+                    provide="imgix"
+                    loading="lazy" 
+                    presets="product"
+                    src="/BGPB_Cashalot_card_small.png" 
+                    alt="Cashalot" 
+                    title="Система оплаты Cashalot" />
+                </div>
+                <div class="footer-img-img">
+                    <nuxt-img
+                    sizes="sm:50px md:50px lg:50px"
+                    provide="imgix"
+                    loading="lazy" 
+                    presets="product"
+                    src="/3_small.png" 
+                    alt="Кэшбэк" 
+                    title="Система оплаты Кэшбэк" />
+                </div>
+                <div class="footer-img-img">
+                    <nuxt-img 
+                    sizes="sm:50px md:50px lg:50px"
+                    provide="imgix"
+                    loading="lazy" 
+                    presets="product"
+                    src="/Cherepaha.jpg" 
+                    alt="Черепаха" 
+                    title="Система оплаты Черепаха" />
+                </div>
+                <div class="footer-img-img">
+                    <nuxt-img 
+                    sizes="sm:50px md:50px lg:50px"
+                    provide="imgix"
+                    loading="lazy"  
+                    presets="product"
+                    src="/erip.png" 
+                    alt="ЕРИП" 
+                    title="Система оплаты ЕРИП" />
+                </div>
+                <div class="footer-img-img">
+                    <nuxt-img 
+                    sizes="sm:50px md:50px lg:50px"
+                    provide="imgix"
+                    loading="lazy" 
+                    presets="product"
+                    src="/FUN_40.jpg" 
+                    alt="FUN" 
+                    title="Система оплаты FUN" />
+                </div>    
+                <div class="footer-img-img">
+                    <nuxt-img 
+                    sizes="sm:50px md:50px lg:50px"
+                    provide="imgix"
+                    loading="lazy"
+                    presets="product"
+                    src="/halva_small.png" 
+                    alt="Халва" 
+                    title="Система оплаты Халва" />
+                </div>
+                <div class="footer-img-img">
+                    <nuxt-img 
+                    provide="imgix"
+                    loading="lazy" 
+                    presets="product"
+                    src="/mps-_-bepaid_belkart.png" 
+                    alt="bepaid" 
+                    width="280"
+                    height="25"
+                    title="Система оплаты bepaid" />
+                </div>
+                <div class="footer-img-img">
+                    <nuxt-img 
+                    sizes="sm:50px md:50px lg:50px"
+                    provide="imgix"
+                    loading="lazy" 
+                    presets="product"
+                    src="/KP_small.png" 
+                    alt="Карта покупок" 
+                    title="Система оплаты Карта покупок" />
+                </div>
+                <div class="footer-img-img">
+                    <nuxt-img 
+                    sizes="sm:50px md:50px lg:50px"
+                    provide="imgix"
+                    loading="lazy" 
+                    presets="product"
+                    src="/mtbank-_86_.png" 
+                    alt="МТБанк" 
+                    title="Система оплаты МТБанк" />
+                </div>
             </div>
         </div>
     </footer>

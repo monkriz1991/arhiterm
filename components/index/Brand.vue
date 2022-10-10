@@ -14,14 +14,16 @@
                                 </strong>
                                 <!-- <span>{{item.name}}</span> -->
                             </div>
-                            <nuxt-img 
-                            provider="twicpics"
-                            sizes="sm:100px md:100px lg:100px"
-                            loading="lazy" 
-                            :src="item.img.substring(24)" 
-                            :alt="item.name"
-                            presets="product"
-                            />
+                            <div class="index-brand-block-img">
+                                <nuxt-img 
+                                provider="twicpics"
+                                sizes="sm:100px md:100px lg:100px"
+                                loading="lazy" 
+                                :src="item.img.substring(24)" 
+                                :alt="item.name"
+                                presets="product"
+                                />
+                            </div>
                         </div>
                     </nuxt-link>
                 </slide>
