@@ -45,7 +45,7 @@
             </div>
             <div class="footer-img">
                 <div class="footer-img-img">
-                    <nuxt-img 
+                    <img 
                     sizes="sm:50px md:50px lg:50px"
                     provide="imgix"
                     loading="lazy" 
@@ -55,7 +55,7 @@
                     title="Система оплаты Cashalot" />
                 </div>
                 <div class="footer-img-img">
-                    <nuxt-img
+                    <img
                     sizes="sm:50px md:50px lg:50px"
                     provide="imgix"
                     loading="lazy" 
@@ -65,7 +65,7 @@
                     title="Система оплаты Кэшбэк" />
                 </div>
                 <div class="footer-img-img">
-                    <nuxt-img 
+                    <img 
                     sizes="sm:50px md:50px lg:50px"
                     provide="imgix"
                     loading="lazy" 
@@ -75,7 +75,7 @@
                     title="Система оплаты Черепаха" />
                 </div>
                 <div class="footer-img-img">
-                    <nuxt-img 
+                    <img 
                     sizes="sm:50px md:50px lg:50px"
                     provide="imgix"
                     loading="lazy"  
@@ -85,7 +85,7 @@
                     title="Система оплаты ЕРИП" />
                 </div>
                 <div class="footer-img-img">
-                    <nuxt-img 
+                    <img 
                     sizes="sm:50px md:50px lg:50px"
                     provide="imgix"
                     loading="lazy" 
@@ -95,7 +95,7 @@
                     title="Система оплаты FUN" />
                 </div>    
                 <div class="footer-img-img">
-                    <nuxt-img 
+                    <img 
                     sizes="sm:50px md:50px lg:50px"
                     provide="imgix"
                     loading="lazy"
@@ -105,7 +105,7 @@
                     title="Система оплаты Халва" />
                 </div>
                 <div class="footer-img-img">
-                    <nuxt-img 
+                    <img 
                     provide="imgix"
                     loading="lazy" 
                     presets="product"
@@ -116,7 +116,7 @@
                     title="Система оплаты bepaid" />
                 </div>
                 <div class="footer-img-img">
-                    <nuxt-img 
+                    <img 
                     sizes="sm:50px md:50px lg:50px"
                     provide="imgix"
                     loading="lazy" 
@@ -126,7 +126,7 @@
                     title="Система оплаты Карта покупок" />
                 </div>
                 <div class="footer-img-img">
-                    <nuxt-img 
+                    <img 
                     sizes="sm:50px md:50px lg:50px"
                     provide="imgix"
                     loading="lazy" 

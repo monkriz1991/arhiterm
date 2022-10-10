@@ -104,7 +104,7 @@
         <div class="logotip">
           <nuxt-link to="/">
             <div class="logotip-img">
-              <nuxt-img 
+              <img 
                 v-if="width>991"
                 sizes="sm:130px md:130px lg:130px"
                 provide="imgix"
