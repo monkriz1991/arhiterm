@@ -159,7 +159,7 @@ modules: [
   ],
 
   // target: 'static',
-  // ssr: true,
+   ssr: true,
 
   // generate: {
   //   fallback: '404.html',    
