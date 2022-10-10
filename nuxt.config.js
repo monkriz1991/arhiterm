@@ -99,6 +99,7 @@ buildModules: [
   ],
   '@nuxtjs/pwa',
 ],
+
 pwa: {
     manifest: {
       name: 'Arhiterm',
