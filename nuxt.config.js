@@ -288,70 +288,70 @@ modules: [
 
    //postcss: null,
 
-  build: {
-    optimizeCss: false,
-    filenames: {
-      app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
-      chunk: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
-      css: ({ isDev }) => isDev ? '[name].css' : 'css/[contenthash].css',
-      img: ({ isDev }) => isDev ? '[path][name].[ext]' : 'img/[contenthash:7].[ext]',
-      font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[contenthash:7].[ext]',
-      video: ({ isDev }) => isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
-    },
-    ...(!isDev && {
-      html: {
-        minify: {
-          collapseBooleanAttributes: true,
-          decodeEntities: true,
-          minifyCSS: true,
-          minifyJS: true,
-          processConditionalComments: true,
-          removeEmptyAttributes: true,
-          removeRedundantAttributes: true,
-          trimCustomFragments: true,
-          useShortDoctype: true
-        }
-      }
-    }),
-    splitChunks: {
-      layouts: true,
-      pages: true,
-      commons: true
-    },
-    optimization: {
-      minimize: !isDev
-    },
-    ...(!isDev && {
-      extractCSS: {
-        ignoreOrder: true
-      }
-    }),
+  // build: {
+  //   optimizeCss: false,
+  //   filenames: {
+  //     app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
+  //     chunk: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
+  //     css: ({ isDev }) => isDev ? '[name].css' : 'css/[contenthash].css',
+  //     img: ({ isDev }) => isDev ? '[path][name].[ext]' : 'img/[contenthash:7].[ext]',
+  //     font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[contenthash:7].[ext]',
+  //     video: ({ isDev }) => isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
+  //   },
+  //   ...(!isDev && {
+  //     html: {
+  //       minify: {
+  //         collapseBooleanAttributes: true,
+  //         decodeEntities: true,
+  //         minifyCSS: true,
+  //         minifyJS: true,
+  //         processConditionalComments: true,
+  //         removeEmptyAttributes: true,
+  //         removeRedundantAttributes: true,
+  //         trimCustomFragments: true,
+  //         useShortDoctype: true
+  //       }
+  //     }
+  //   }),
+  //   splitChunks: {
+  //     layouts: true,
+  //     pages: true,
+  //     commons: true
+  //   },
+  //   optimization: {
+  //     minimize: !isDev
+  //   },
+  //   ...(!isDev && {
+  //     extractCSS: {
+  //       ignoreOrder: true
+  //     }
+  //   }),
 
-    transpile: ['vue-lazy-hydration', 'intersection-observer'],
-    postcss: {
-      plugins: {
-        ...(!isDev && {
-          cssnano: {
-            preset: ['advanced', {
-              autoprefixer: false,
-              cssDeclarationSorter: false,
-              zindex: false,
-              discardComments: {
-                removeAll: true
-              }
-            }]
-          }
-        })
-      },
-      ...(!isDev && {
-        preset: {
-          browsers: 'cover 99.5%',
-          autoprefixer: true
-        }
-      }),
+  //   transpile: ['vue-lazy-hydration', 'intersection-observer'],
+  //   postcss: {
+  //     plugins: {
+  //       ...(!isDev && {
+  //         cssnano: {
+  //           preset: ['advanced', {
+  //             autoprefixer: false,
+  //             cssDeclarationSorter: false,
+  //             zindex: false,
+  //             discardComments: {
+  //               removeAll: true
+  //             }
+  //           }]
+  //         }
+  //       })
+  //     },
+  //     ...(!isDev && {
+  //       preset: {
+  //         browsers: 'cover 99.5%',
+  //         autoprefixer: true
+  //       }
+  //     }),
 
-      order: 'cssnanoLast'
-    },
-  }
+  //     order: 'cssnanoLast'
+  //   },
+  // }
 
 }
