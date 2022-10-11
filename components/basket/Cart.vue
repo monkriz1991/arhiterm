@@ -62,6 +62,18 @@
                 <strong>0<span>%</span></strong>
             </div>
             <div v-if="for_amount_discount_persent>0" class="basket-itog-summ">
+                <div class="sale-icon-div">
+                    <el-popconfirm
+                    confirm-button-text='Закрыть'
+                    cancel-button-text='.'
+                    icon="el-icon-info"
+                    icon-color="red"
+                    title="Ваша персональная скидка!"
+                    popper-class="sale-icon"
+                    >
+                        <el-button  v-show="user_discount>0&&user_discount>=for_amount_discount_persent" slot="reference" type="danger" circle icon="el-icon-discount"></el-button>
+                    </el-popconfirm>
+                </div>
                 <span>Скидка:</span>
                 <strong>{{for_amount_discount}}<span>руб.</span></strong>
                 <strong>{{for_amount_discount_persent}}<span>%</span></strong>

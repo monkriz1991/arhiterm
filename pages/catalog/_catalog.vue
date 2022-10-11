@@ -1,6 +1,10 @@
 <template>
     <div
     class="container">
+    <div 
+    v-if="!adaptivSidebar"
+    class="name-category"
+    >{{categoriesNested.name}}</div>
         <Breadcrumb/>
         <div v-if="adaptivSidebar">
           <Sidebar
