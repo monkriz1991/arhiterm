@@ -30,7 +30,7 @@ jobs:
         run: npm install capacitor-resources -g
 
       - name: Install app dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build app
         run: npm run build
@@ -51,7 +51,7 @@ jobs:
         run: npm run resources
 
       - name: Set Version android app
-        run:  npx capacitor-set-version set:android -v ${{ inputs.relese }}  -b 6 ./
+        run:  npx capacitor-set-version set:android -v ${{ inputs.relese }}  -b 7 ./
 
       - name: Build app bundle
         run: cd android && gradle bundle

@@ -137,11 +137,7 @@ export default {
           }, 400);
         },
         checkFil(){
-          this.isDisabled = true
-          if(this.$route.query.page!=1 && this.$route.query.page!=undefined){
-            this.$addQuery('page',undefined,this.$route,this.$route.params.catalog);
-          }
-          
+          this.isDisabled = true          
           if(this.checkList.length){
             this.checkList = this.checkList.join(',')
             this.FilterItem = this.checkList
@@ -154,10 +150,6 @@ export default {
         },
         filterByManufacturer(){
           this.isDisabled = true
-          if(this.$route.query.page!=1 && this.$route.query.page!=undefined){
-            this.$addQuery('page',undefined,this.$route,this.$route.params.catalog);
-          }
-
           if(this.checkListManuf.length){
             this.checkListManuf = this.checkListManuf.join(',')
             this.ManufItem = this.checkListManuf
@@ -170,15 +162,6 @@ export default {
       },
       checkFilRoute(FilterItem,ManufItem){
         this.$router.replace({ name: "catalog-catalog", params: {catalog:this.$route.params.catalog}, query: {card_filter:FilterItem,manuf:ManufItem} })
-      },
-      toggleActive(idx) {
-          if (this.show.includes(idx)) {
-              this.show = this.show.filter(entry => entry !== idx);
-              return;
-          }else{
-              //this.show =[]
-          }
-          this.show.push(idx);
       },
       even: function(arrays) {
         return arrays.slice().sort(function(a, b) {

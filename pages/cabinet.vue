@@ -10,9 +10,11 @@
                 @click="logout"
                 icon="el-icon-arrow-left" size="small"
                 >Выход</el-button> -->
-                <div hidden class="profile-cab-discount">
-                    {{this.$auth.user.discount}}
-                    <span>%</span>
+                <div 
+                v-if="this.$auth.user.discount!=0||this.$auth.user.discount!=''"
+                class="profile-cab-discount">
+                    {{this.$auth.user.discount}}<span>%</span>
+                    <strong>Ваша персональная скидка.</strong>
                 </div> 
                 <div class="profile-cab-left-pass">
                     <DescriptionUser/>

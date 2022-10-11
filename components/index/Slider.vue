@@ -17,7 +17,7 @@
             <video class="video-slider" v-if="item.video!=null"  preload="auto" muted="" autoplay="" loop="" webkit-playsinline="" playsinline="" :src="item.video"></video>
             <nuxt-link :to="item.link">
               <h3>{{ item.title }}</h3>
-              <p>{{ item.description }}</p>
+              <div v-html="item.description"></div>
             </nuxt-link>
             </div>
           </div>

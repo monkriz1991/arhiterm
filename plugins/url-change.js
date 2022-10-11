@@ -5,7 +5,8 @@
  * @param inject
  */
 export default ({app,route,params}, inject)=>{
-  var saved=JSON.parse(JSON.stringify(route.query));
+  var saved= ''
+  saved=JSON.parse(JSON.stringify(route.query));
   var savedCat = null;
   function delQuery(key,cat){
     for(let i in saved){

@@ -14,7 +14,7 @@
             icon-color="red"
             title="Удалите товары из корзины для повтора заказа!"
             >
-                <el-button v-show="Buttondisabled==true" slot="reference" type="danger" circle icon="el-icon-info"></el-button>
+                <el-button  v-show="Buttondisabled==true" slot="reference" type="danger" circle icon="el-icon-info"></el-button>
             </el-popconfirm>
 
             <!-- <span>{{status}}</span> -->

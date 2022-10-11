@@ -391,7 +391,7 @@ display: none;
 .footer-link{
 float: left;
 width: 100%;
-margin: 0 0 20px;
+margin: 0 0 10px;
 }
 .footer-link a{
     text-decoration: none;
@@ -538,9 +538,18 @@ margin: 0 0 20px;
 }
 .profile-cab-discount{
     margin: 30px 0 0 215px;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: 600;
     color: rgb(202, 0, 0);
+}
+.profile-cab-discount span{
+    font-size: 18px;
+}
+.profile-cab-discount strong{
+    float: left;
+    width: 100%;
+    margin: 2px 0 0px;
+    font-size: 12px;
 }
 .cabinet-avatar{
     float: left;
@@ -2474,17 +2483,18 @@ width: 100%;
 .cost-product-block .cost-product-price-catalog strong{
     font-size: 14px;
     font-weight: 800;
-    padding: 13px 0 0 2px;
+    padding: 12px 0 0 2px;
     float: left;
 }
 .el-input-number span{
     background: #fff;
 }
 .el-radio.is-bordered.is-checked {
-    border-color: #818181 !important;
+    border-color: #ffd390 !important;
+    box-shadow: 0 0 6px -3px #f90;
 }
 .el-radio__input.is-checked+.el-radio__label {
-    color: #4f4f4f !important;
+    color: #f90 !important;
 }
 .el-radio__input.is-checked .el-radio__inner {
     border-color: #7f7f7f !important;
@@ -3365,6 +3375,19 @@ body .navbar-user .navbar-user-item{
     position: relative;
     top: -1px;
 }
+.phone-footer>strong{
+    font-size: 11px;
+    color: #000000;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 1px solid;
+    padding: 2px 4px;
+    position: relative;
+    top: -1px;
+}
+.phone-modal-block-el>b{
+
+}
 .top-phone {
     float: right;
     margin: 0px 15px 0 30px;
@@ -3919,7 +3942,7 @@ font-size: 13px;
 }
 .personal-data-link-footer{
     float: left;
-    margin: 20px 0 0 0;
+    margin: 10px 0 10px 0;
     width: 100%;
     line-height: 1.5;
     text-decoration: none;
@@ -4018,6 +4041,13 @@ font-size: 13px;
     margin: 2px 6px 0px 2px;
     font-size: 10px;
     font-weight: 700;
+}
+.name-category{
+    float: left;
+    width: 100%;
+    margin: 0px 0 15px;
+    font-weight: 500;
+    font-size: 14px;
 }
 .form-basket-aut{
     float: left;
@@ -4231,13 +4261,12 @@ font-size: 13px;
 .social-footer{
     float: left;
     width: 100%;
-    margin: 10px 0 0;
+    margin: 0px 0 10px;
 }
 .social-footer a{
-    font-size: 24px;
     color: #d234b3;
     border-radius: 50%;
-    overflow: hidden;
+    float: left;
 }
 .select-reg{
     width: 100%;
@@ -4451,6 +4480,20 @@ font-size: 13px;
     font-size: 16px;
     font-weight: 500;
 }
+.sale-icon-div{
+    display: inline-block;
+}
+.sale-icon-div .el-button.is-circle {
+    border-radius: 50%;
+    padding: 1px;
+    font-size: 12px;
+}
+.sale-icon{
+    z-index: 99999 !important;
+}
+.sale-icon .el-popconfirm__action{
+    display: none;
+}
 @media (max-width: 1100px){
     .body-payment-cart .body-about h1, .body-payment h1{
         font-size: 15px;
@@ -4541,6 +4584,17 @@ font-size: 13px;
 }
 
 @media (max-width: 991px){
+    .profile-cab-discount {
+        margin: 15px 0 0 150px;
+        font-size: 25px;
+    }
+    .is-disabled.basket-templ-status-button {
+        font-size: 9px !important;
+        border-radius: 10px !important;
+        background: transparent !important;
+        color: #1c1c1c !important;
+        padding: 12px 12px;
+    }
     .cost-product-amount .el-input__inner, .basket-tov-calc .el-input__inner{
         width: 52px;
     }
@@ -4555,6 +4609,7 @@ font-size: 13px;
         margin: 0 0 10px;
         font-size: 12px;
         display: block;
+        color: #333;
     }
     .phone-footer a{
         font-size: 17px;
@@ -5617,9 +5672,14 @@ font-size: 13px;
         top: -15px;
         padding: 13px !important;
     }
+    .basket-templ-status-button{
+        font-size: 9px !important;
+        padding: 12px 12px;
+    }
     .basket-templ-status {
         float: left;
         margin: 0 10px 0 0;
+        z-index: 9;
     }
     .cab-block-basket-templ>span {
         font-size: 11px;
@@ -5629,7 +5689,7 @@ font-size: 13px;
         margin: 0px 0 5px;
     }        
     .basket-templ-status>span {
-        margin: 0 23px 0 0;
+        margin: -5px 19px 0 -7px;
         text-align: center;
         font-size: 10px;
     }  

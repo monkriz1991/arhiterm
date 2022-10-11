@@ -159,7 +159,7 @@ modules: [
   ],
 
   // target: 'static',
-   ssr: true,
+  // ssr: true,
 
   // generate: {
   //   fallback: '404.html',    
@@ -289,6 +289,7 @@ modules: [
    //postcss: null,
 
   build: {
+    transpile: [/^element-ui/,'vee-validate/dist/rules'],
     optimizeCss: false,
     filenames: {
       app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
