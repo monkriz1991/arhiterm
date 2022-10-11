@@ -62,19 +62,19 @@ css: [
   '@/assets/css/main.css',
   'element-ui/lib/theme-chalk/index.css'
 ],
-render: {
-  // http2: {
-  //     push: true,
-  //     pushAssets: (req, res, publicPath, preloadFiles) => preloadFiles
-  //     .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
-  //   },
-  // compressor: false,
-  resourceHints: false,
-  etag: false,
-  static: {
-    etag: false
-  }
-},
+// render: {
+//   // http2: {
+//   //     push: true,
+//   //     pushAssets: (req, res, publicPath, preloadFiles) => preloadFiles
+//   //     .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
+//   //   },
+//   // compressor: false,
+//   resourceHints: false,
+//   etag: false,
+//   static: {
+//     etag: false
+//   }
+// },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 plugins: [
   '@/plugins/element-ui',
@@ -147,19 +147,19 @@ modules: [
     }
   ],
 ],
-  redirect: [
-    {
-      from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
-      to: (from, req) => {
-        const base = req._parsedUrl.pathname.replace(/\/$/, '');
-        const search = req._parsedUrl.search;
-        return base + (search != null ? search : '')
-      }
-    }
-  ],
+  // redirect: [
+  //   {
+  //     from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
+  //     to: (from, req) => {
+  //       const base = req._parsedUrl.pathname.replace(/\/$/, '');
+  //       const search = req._parsedUrl.search;
+  //       return base + (search != null ? search : '')
+  //     }
+  //   }
+  // ],
 
   // target: 'static',
-   ssr: true,
+  //  ssr: true,
 
   // generate: {
   //   fallback: '404.html',    
