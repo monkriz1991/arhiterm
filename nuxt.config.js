@@ -126,7 +126,7 @@ modules: [
   '@nuxtjs/axios',
   '@nuxtjs/gtm',
   '@nuxtjs/auth-next',
-  '@nuxtjs/sitemap',
+  // '@nuxtjs/sitemap',
   // 'nuxt-ssr-cache',
   'nuxt-webfontloader',
   '@nuxtjs/redirect-module',
@@ -288,7 +288,8 @@ modules: [
 
    //postcss: null,
 
-  // build: {
+   build: {
+    transpile: [/^element-ui/,'vee-validate/dist/rules'],
   //   optimizeCss: false,
   //   filenames: {
   //     app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
@@ -352,6 +353,6 @@ modules: [
 
   //     order: 'cssnanoLast'
   //   },
-  // }
+  }
 
 }
