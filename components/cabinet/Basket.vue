@@ -1,7 +1,7 @@
 <template>
     <div class="cab-user-colaps">
         <div class="basket-templ-status">
-            <!-- <el-button 
+            <el-button 
             class="basket-templ-status-button"
             @click="RepeatOrder(basket_for.id)"
             :disabled="Buttondisabled">
@@ -15,7 +15,7 @@
             title="Удалите товары из корзины для повтора заказа!"
             >
                 <el-button  v-show="Buttondisabled==true" slot="reference" type="danger" circle icon="el-icon-info"></el-button>
-            </el-popconfirm> -->
+            </el-popconfirm>
 
             <!-- <span>{{status}}</span> -->
         </div>
