@@ -201,51 +201,51 @@ modules: [
   // generate: {
   //   subFolders: false
   // },
-   sitemap: {
-    path: '/sitemap.xml',
-    cacheTime: 1000 * 60 * 15,
-    hostname: "https://arhiterm.by",
-    gzip: true,
-    generate: false,
-    exclude: [],
-    // sitemaps: [
-    //   {
-    //     exclude: [
-    //       '/cabinet',
-    //       '/cabinet/**',
-    //       '/userCabinet',
-    //       '/userCabinet/**',
-    //     ],
-    //     path: '/sitemap/sitemap.xml',
-    //   },
-    //   {
-    //     path: '/catalog/sitemap.xml',
-    //     exclude: ['/**'],
-    //     routes: async () => {
-    //       const { data } = await axios.get('https://new.arhiterm.by/catalog/categories/?limit=999')
-    //       return data.results.map((category) => `/catalog/${category.kirilica}`)
-    //     }
-    //   },
-    //   {
-    //   path: '/product/sitemap.xml',
-    //   exclude: ['/**'],
-    //   routes: 
-    //     async () => {
-    //       const { data } = await axios.get('https://new.arhiterm.by/catalog/search/?limit=9999999')
-    //       return data.results.map((product) => `/product/${product.kirilica_name}`)
-    //     }
-    //   },
-    //   {
-    //     path: '/factory/sitemap.xml',
-    //     exclude: ['/**'],
-    //     routes: 
-    //       async () => {
-    //         const { data } = await axios.get('https://new.arhiterm.by/manufacturer/get/?is_active=true&limit=99999')
-    //         return data.results.map((factory) => `/factory/${factory.kirilica}`)
-    //       }
-    //     }
-    // ]
-  },
+  //  sitemap: {
+  //   path: '/sitemap.xml',
+  //   cacheTime: 1000 * 60 * 15,
+  //   hostname: "https://arhiterm.by",
+  //   gzip: true,
+  //   generate: false,
+  //   exclude: [],
+  //   sitemaps: [
+  //     {
+  //       exclude: [
+  //         '/cabinet',
+  //         '/cabinet/**',
+  //         '/userCabinet',
+  //         '/userCabinet/**',
+  //       ],
+  //       path: '/sitemap/sitemap.xml',
+  //     },
+  //     {
+  //       path: '/catalog/sitemap.xml',
+  //       exclude: ['/**'],
+  //       routes: async () => {
+  //         const { data } = await axios.get('https://new.arhiterm.by/catalog/categories/?limit=999')
+  //         return data.results.map((category) => `/catalog/${category.kirilica}`)
+  //       }
+  //     },
+  //     {
+  //     path: '/product/sitemap.xml',
+  //     exclude: ['/**'],
+  //     routes: 
+  //       async () => {
+  //         const { data } = await axios.get('https://new.arhiterm.by/catalog/search/?limit=9999999')
+  //         return data.results.map((product) => `/product/${product.kirilica_name}`)
+  //       }
+  //     },
+  //     {
+  //       path: '/factory/sitemap.xml',
+  //       exclude: ['/**'],
+  //       routes: 
+  //         async () => {
+  //           const { data } = await axios.get('https://new.arhiterm.by/manufacturer/get/?is_active=true&limit=99999')
+  //           return data.results.map((factory) => `/factory/${factory.kirilica}`)
+  //         }
+  //       }
+  //   ]
+  // },
 
 
   serverMiddleware:  [
