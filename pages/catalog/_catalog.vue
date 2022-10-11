@@ -167,7 +167,7 @@ export default {
           parametrs['card_filter'] = '['+arr_filter +']';
           this.ADD_TO_TABS(object_tabs)
         }else{
-          this.ADD_TO_TABS(object_tabs)
+          this.DELL_TABS()
         }
         if(to.query['page']!==undefined ){
           parametrs['page'] = to.query['page'];
