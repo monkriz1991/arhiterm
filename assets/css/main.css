@@ -5672,9 +5672,14 @@ font-size: 13px;
         top: -15px;
         padding: 13px !important;
     }
+    .basket-templ-status-button{
+        font-size: 9px !important;
+        padding: 12px 12px;
+    }
     .basket-templ-status {
         float: left;
         margin: 0 10px 0 0;
+        z-index: 9;
     }
     .cab-block-basket-templ>span {
         font-size: 11px;
