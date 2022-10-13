@@ -2065,10 +2065,13 @@ font-weight: 500;
     padding: 0 15px;
     line-height: 1.4;
 }
+.el-breadcrumb-product{
+    margin: 26px 0 20px !important;
+}
 .el-breadcrumb{
     float: left;
     width: 88%;
-    margin: 26px 0 20px;
+    margin: -15px 0 0px;
     font-size: 12px !important;
     opacity: 0.6;
 }
@@ -4494,7 +4497,65 @@ font-size: 13px;
 .sale-icon .el-popconfirm__action{
     display: none;
 }
+.catalog-nav{
+
+}
+.catalog-nav .hooper{
+    margin: 0 0 0 0;
+    touch-action: pan-y;
+    -ms-touch-action: pan-y;
+}
+.catalog-nav li{
+    padding: 0 5px;
+}
+.catalog-nav li .index-topcat-block {
+    position: relative;
+    height: 100px;
+}
+.catalog-nav li .index-topcat-block>strong {
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 600;
+    padding: 5px 23px 0 15px;
+    margin: -35px 0 0 0;
+}
+.catalog-nav li .category-in-cyrcle {
+    width: 34%;
+    height: 50%;
+    right: -5px;
+    bottom: -5px;
+}
+.catalog-nav {
+    float: left;
+    width: 100%;
+    margin: 15px 0 -5px;
+}
+.catalog-nav .hooper-next, .catalog-nav .hooper-prev {
+    background-color: #fff;
+    border: none;
+    padding: 11px 10px;
+    position: absolute;
+    top: 88%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border-radius: 50%;
+    height: 44px;
+    width: 44px;
+    box-shadow: 0px 0px 9px -7px #333;
+}
+.catalog-nav .hooper-prev {
+    left: -20px;
+}
+.catalog-nav .hooper-next{
+    right: -20px;
+}
 @media (max-width: 1100px){
+    .catalog-nav .hooper-prev {
+        left: 0px;
+    }
+    .catalog-nav .hooper-next{
+        right: 0px;
+    }
     .body-payment-cart .body-about h1, .body-payment h1{
         font-size: 15px;
         margin: 0 0 10px;
@@ -5449,6 +5510,28 @@ font-size: 13px;
         line-height: 34px;
         font-size: 12px;
     }     
+    .catalog-nav li .index-topcat-block {
+        position: relative;
+        height: 80px;
+    }
+    .catalog-nav li .category-in-cyrcle {
+        width: 45%;
+        height: 55%;
+        right: 10px;
+        bottom: -5px;
+    }
+    .catalog-nav {
+        float: left;
+        width: 100%;
+        margin: 0px 0 0px;
+    }
+    .catalog-nav li .index-topcat-block>strong {
+        font-size: 12px;
+        line-height: 1.4;
+        font-weight: 600;
+        padding: 5px 23px 0 15px;
+        margin: -4px 0 0 0;
+    }
     .nav-cabinet a {
         margin: 0px 2px 0 0;
         /* padding: 8px 8px !important;
