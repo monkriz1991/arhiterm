@@ -1,11 +1,13 @@
 <template>
     <div
     class="container">
-    <div 
-    v-if="!adaptivSidebar"
-    class="name-category"
-    >{{categoriesNested.name}}</div>
+
         <Breadcrumb/>
+        <SliderCat/>
+        <div 
+        v-if="!adaptivSidebar"
+        class="name-category"
+        >{{categoriesNested.name}}</div>
         <div v-if="adaptivSidebar">
           <Sidebar
           :categoriesNested.sync="categoriesNested"
@@ -53,6 +55,7 @@ import Sidebar from '~/components/catalog/Sidebar.vue'
 import CartTovar from '~/components/catalog/CartTovar.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Paginated from '~/components/catalog/Paginated.vue'
+import SliderCat from '~/components/catalog/SliderCat.vue'
 import {mapGetters,mapActions} from 'vuex'
 export default {
     created(){
@@ -68,6 +71,7 @@ export default {
         CartTovar,
         Breadcrumb,
         Paginated,
+        SliderCat,
     },
     async asyncData ({ app, params, route, error }) {
       let parametrs = {};

@@ -16,6 +16,7 @@
         <el-breadcrumb
         v-if="this.$route.name!='index'"
         separator-class="el-icon-arrow-right"
+        :class="{'el-breadcrumb-product':this.$route.name=='product-product'}"
         >
         <el-breadcrumb-item :to="{ path: '/' }">Главная</el-breadcrumb-item>
             <el-breadcrumb-item
