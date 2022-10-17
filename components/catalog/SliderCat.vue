@@ -48,12 +48,14 @@ export default ({
             hooperSettings: {
                 infiniteScroll: false,
                 wheelControl:false,
+                mouseDrag:false,
+                loop:true,
                 breakpoints: {
                     1800: {
-                        itemsToShow: 5
+                        itemsToShow: 6,
                     },
                     1500: {
-                        itemsToShow: 5
+                        itemsToShow: 6
                     },
                     900: {
                         itemsToShow: 3

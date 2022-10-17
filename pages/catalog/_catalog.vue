@@ -44,6 +44,7 @@
         />
         </transition>
         <Paginated/>
+        <div v-html="categoriesNested.description" class="cat-desc"></div>
     </div>
 </template>
 
