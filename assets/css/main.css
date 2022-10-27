@@ -5030,13 +5030,13 @@ font-size: 13px;
         right: 60px;
     }
     .slider-content h3{
-        font-size: 15px !important;
+        font-size: 17px!important;
         font-weight: 900;
-        margin: 0 0 15px !important;
+        margin: 0 0 15px!important;
     }
     .slider-content p {
-        line-height: 1.4;
-        font-size: 13px;
+        line-height: 1.6;
+        font-size: 14px;
     }
     .el-carousel__indicators--horizontal {
         bottom: 0;

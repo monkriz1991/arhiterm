@@ -99,7 +99,6 @@ buildModules: [
   ],
   '@nuxtjs/pwa',
 ],
-
 pwa: {
     manifest: {
       name: 'Arhiterm',
@@ -130,23 +129,28 @@ modules: [
   // 'nuxt-ssr-cache',
   'nuxt-webfontloader',
   '@nuxtjs/redirect-module',
+  'nuxt-purgecss',
   ['nuxt-vuex-localstorage', {
     localStorage: ['crate']
   }],
-  [
-    '@nuxtjs/yandex-metrika',
-    {
-      id: '7416499',
-      defer: true,
-      webvisor: false,
-      clickmap:true,
-      usetriggerEventCDN:true,
-      trackLinks:true,
-      triggerEvent:true,
-      accurateTrackBounce:true,
-    }
-  ],
+  // [
+  //   '@nuxtjs/yandex-metrika',
+  //   {
+  //     id: '7416499',
+  //     defer: true,
+  //     webvisor: false,
+  //     clickmap:true,
+  //     usetriggerEventCDN:true,
+  //     trackLinks:true,
+  //     triggerEvent:true,
+  //     accurateTrackBounce:true,
+  //   }
+  // ],
 ],
+purgecss: {
+  enabled: true, // Always enable purgecss
+  safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
+},
   redirect: [
     {
       from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',

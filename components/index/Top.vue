@@ -9,15 +9,14 @@
                     <nuxt-link :to="{ name: 'product-product', params: {product:`${item.kirilica_name}`,id:`${item.kirilica_name}`} }" class="nuxt-link-cat">
                         <div class="index-top-block">
                             <div class="index-top-block-img">
-                                <nuxt-picture
+                                <nuxt-img
                                 provider="twicpics"
-                                sizes="sm:100px md:100px lg:100px"
-                                loading="lazy" 
                                 :src="item.img.substring(24)" 
                                 :alt="item.name"
-                                width="90"
-                                height="100"
-                                presets="product"
+                                format="webp"
+                                quality="50"
+                                sizes="sm:50vw md:50vw lg:50px" 
+                                loading="lazy" 
                                 />
                             </div> 
                             <div class="index-top-block-desc">

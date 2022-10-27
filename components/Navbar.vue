@@ -109,10 +109,10 @@
                 sizes="sm:130px md:130px lg:130px"
                 provide="imgix"
                 loading="lazy" 
-                src="/logotip.png" 
+                src="/logotip.webp" 
                 alt="logotip" 
                 title="Logotip arhiterm" />
-              <img v-else src="~/static/logotip_orange.png" alt="logotip" title="Logotip arhiterm"/>
+              <img v-else src="/logotip_orange.webp" alt="logotip" title="Logotip arhiterm"/>
             </div>
           </nuxt-link>
         </div>
