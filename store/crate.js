@@ -38,7 +38,6 @@ export const mutations = {
 export const actions = {
     async REPEAT_BASKET({commit},id_basket){
         let results = await this.$axios.$get(`/cart/cartUser/${id_basket}`);
-        console.log(results)
         let cart = results.cart_prodicts
         let count = 0;
         let prod_dop = ''
