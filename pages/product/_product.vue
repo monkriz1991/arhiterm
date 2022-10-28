@@ -211,7 +211,7 @@ export default ({
           {
             hid: 'description',
             name: 'description',
-            content:  this.productItem.description.replace(/(&lt;|<([^>]+)>)/ig,"")
+            content:  this.productItem.description_seo
           },
           {
               hid: 'og:title',
@@ -226,7 +226,7 @@ export default ({
           {
               hid: 'og:description',
               property: 'og:description',
-              content: this.productItem.description.replace(/(&lt;|<([^>]+)>)/ig,""),
+              content: this.productItem.description_seo,
           },
           {
               hid: 'og:url',
