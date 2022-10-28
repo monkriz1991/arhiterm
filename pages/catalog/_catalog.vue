@@ -232,7 +232,7 @@ export default {
           {
             hid: 'description',
             name: 'description',
-            content:  this.categoriesNested.description.replace(/(&lt;|<([^>]+)>)/ig,"")
+            content:  this.categoriesNested.description_seo
           },
           {
               hid: 'og:title',
@@ -247,7 +247,7 @@ export default {
           {
               hid: 'og:description',
               property: 'og:description',
-              content: this.categoriesNested.description.replace(/(&lt;|<([^>]+)>)/ig,""),
+              content: this.categoriesNested.description_seo,
           },
           {
               hid: 'og:url',

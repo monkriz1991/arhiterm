@@ -181,7 +181,7 @@ export default {
           {
             hid: 'description',
             name: 'description',
-            content:  this.factori.description.replace(/(&lt;|<([^>]+)>)/ig,"")
+            content:  this.factori.description_seo
           },
           {
               hid: 'og:title',
@@ -196,7 +196,7 @@ export default {
           {
               hid: 'og:description',
               property: 'og:description',
-              content: this.factori.description.replace(/(&lt;|<([^>]+)>)/ig,""),
+              content: this.factori.description_seo,
           },
           {
               hid: 'og:url',
