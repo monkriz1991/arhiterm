@@ -3,7 +3,7 @@
     <h2>Каталог</h2>
         <el-row :gutter="20">
         <el-col
-        v-for="item in category.results" :key="item.id"
+        v-for="item in category" :key="item.id"
         v-show="item.show_in_start==true"
          :sm="12" :md="12"  :xl="6" :lg="5" :xs="12">
             <nuxt-link @click.native="handlerLoading" :to="{ name: 'catalog-catalog', params: {catalog:`${item.kirilica}`,id:`${item.id}`} }" class="nuxt-link-cat">
@@ -30,22 +30,20 @@
 <script>
 import { mapGetters,mapActions } from 'vuex'
 export default ({
+    props:['category'],
     data() {
         return {
         }
     },
     computed:{
         ...mapGetters({
-            category: 'category/categoryIndex',
             loadingItem:'main/loadingItem',
         }),
     },
     mounted(){
-      this.getCategoryIndex()
     },
     methods:{
         ...mapActions({
-            getCategoryIndex:'category/getCategoryIndex',
             setLoading:'main/newLoadingItem',
         }),
         handlerLoading(item){

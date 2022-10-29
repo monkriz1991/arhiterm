@@ -42,6 +42,7 @@
 <script>
 import { mapGetters,mapActions } from 'vuex'
 export default ({
+  props:['slides'],
   components:{
   },
     data() {
@@ -50,15 +51,10 @@ export default ({
         }
     },
     computed:{
-      ...mapGetters({
-        slides: 'main/sliderItems'
-      })
     },
     mounted(){
-      this.getSlider()
     },
     methods:{
-      ...mapActions('main',['getSlider']),
       
     }
 })

@@ -548,7 +548,14 @@ import BasketModal from '~/components/BasketModal.vue'
 import Menyuser from '~/components/aut/Menyuser.vue'
 import MenyuserMobail from '~/components/aut/MenyuserMobail.vue'
 import {mapGetters,mapActions} from 'vuex'
+
   export default {
+    async fetch() {
+        await this.$store.dispatch('category/getManufacturer')
+        await this.$store.dispatch('category/getCategory')
+        await this.$store.dispatch('main/getWorktime')
+        await this.$store.dispatch('main/getPhones')
+    },
     components:{
       ModalLogout,
       BasketModal,
@@ -567,7 +574,6 @@ import {mapGetters,mapActions} from 'vuex'
         width:0,
         dialogVisible: false,
         links: [],
-        phones:[],
         state: '',
         timeout:  null,
         show: true,
@@ -584,14 +590,12 @@ import {mapGetters,mapActions} from 'vuex'
         categoryNavbar: 'category/categoryNavbar',
         manufacturer: 'category/manufacturer',
         worktime: 'main/worktime',
+        phones: 'main/phones',
       }),
     },
     methods: {
       ...mapActions({
-        getCategory:'category/getCategory',
-        getManufacturer:'category/getManufacturer',
         setLoading: 'main/newLoadingItem',
-        getWorktime: 'main/getWorktime',
         DELL_CART_BASKET_ALL: 'crate/DELL_CART_BASKET_ALL',
       }),
       categoryKirilica (item) {
@@ -672,10 +676,6 @@ import {mapGetters,mapActions} from 'vuex'
       },
       showButton(){
       },
-      async getPhones(){
-        let data = await this.$axios.get(`/users/phones/?limit=9999`);
-        this.phones = data.data.results;
-      },
       even: function(arrays) {
         return arrays.slice().sort(function(a, b) {
             return a.position - b.position;
@@ -684,10 +684,6 @@ import {mapGetters,mapActions} from 'vuex'
     },
     mounted(){
       //this.DELL_CART_BASKET_ALL()
-      this.getPhones();
-      this.getCategory()
-      this.getManufacturer()
-      this.getWorktime()
       this.links = this.loadAll()
       if (process.browser){
         window.addEventListener('resize', this.updateWidth);
