@@ -129,7 +129,7 @@ modules: [
   // 'nuxt-ssr-cache',
   'nuxt-webfontloader',
   '@nuxtjs/redirect-module',
-  'nuxt-purgecss',
+  // 'nuxt-purgecss',
   ['nuxt-vuex-localstorage', {
     localStorage: ['crate']
   }],
@@ -147,10 +147,10 @@ modules: [
   //   }
   // ],
 ],
-purgecss: {
-  enabled: true, // Always enable purgecss
-  safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
-},
+// purgecss: {
+//   enabled: true, // Always enable purgecss
+//   safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
+// },
   redirect: [
     {
       from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
