@@ -642,7 +642,6 @@ import {mapGetters,mapActions} from 'vuex'
           dangerouslyUseHTMLString: true,
           duration:5500,
           message: 'На Вашу почту была выслана информация о заказе! В ближайшее время с Вами свяжется менеджер для уточнения деталей заказа.',
-          // offset: 100
           });
       },
       updateWidth() {
