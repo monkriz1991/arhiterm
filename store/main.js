@@ -14,9 +14,13 @@ export const state = ()=>({
     loadingItem:true,
     worktime:[],
     SuccessBaskets:[],
+    phones:[],
 })
 
 export const mutations = {
+    setPhones(state,phones){
+        state.phones = phones
+    },
     setSuccessBaskets(state,SuccessBaskets){
         state.SuccessBaskets = SuccessBaskets
     },
@@ -51,6 +55,11 @@ export const mutations = {
 }
 
 export const actions = {
+    async getPhones({commit}){
+        let phones = await this.$axios.$get(`/users/phones/?limit=9999`);
+        commit('setPhones',phones.results)
+        return phones.results
+    },
     async getSlider({commit}){
         let slide = await this.$axios.$get(`/administrate/get/slider/`);
         commit('setSlider',slide.results)
@@ -109,6 +118,7 @@ export const actions = {
 }
 
 export const getters = {
+    phones: state => state.phones,
     sliderItems: state => state.sliderItems,
     indexItem: state => state.indexItem,
     userItem: state => state.userItem,

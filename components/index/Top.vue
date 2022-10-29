@@ -51,6 +51,7 @@ Pagination as HooperPagination,
 Navigation  as HooperNavigation} from 'hooper';
 import 'hooper/dist/hooper.css';
 export default ({
+    props:['tovar'],
     components: {
         Hooper,
         Slide,
@@ -77,15 +78,11 @@ export default ({
         }
     },
     computed:{
-      ...mapGetters({
-        tovar: 'main/top'
-      })
+
     },
     mounted(){
-      this.getTop()
     },
     methods:{
-      ...mapActions('main',['getTop'])
     }
 })
 </script>

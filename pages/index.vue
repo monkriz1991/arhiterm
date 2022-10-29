@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-      <Slider />
-      <Top />
-      <Category />
-      <Brand />
+      <Slider :slides="slides"/>
+      <Top :tovar="tovar"/>
+      <Category :category="category"/>
+      <Brand :manufacturer="manufacturer"/>
         <div class="title">
           <h1>Архитерм - системы отопления, водоснабжения и канализации</h1>
       </div>
@@ -25,8 +25,25 @@ export default {
   },
   computed:{
     ...mapGetters({
-      indexItem:'main/indexItem'
+      category: 'category/categoryNavbar',
+      slides: 'main/sliderItems',
+      tovar: 'main/top',
+      manufacturer: 'category/manufacturer',
     })
+  },
+  async asyncData ({ app, route, params, error, store }) {
+    try {
+      await store.dispatch('category/getManufacturer')
+      await store.dispatch('category/getCategory')
+      await store.dispatch('main/getSlider')
+      await store.dispatch('main/getTop')
+    } catch (err) {
+      console.log(err)
+      return error({
+        statusCode: 404,
+        message: 'Категории не найдены или сервер не доступен'
+      })
+    }
   },
   components:{
     Slider,
@@ -35,12 +52,8 @@ export default {
     Top,
   },
   methods:{
-    ...mapActions({
-        getIndex: 'main/getIndex'
-    }),
   },
   mounted(){
-    this.getIndex()
   },
   head() {
     return {

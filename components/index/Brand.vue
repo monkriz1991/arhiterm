@@ -4,14 +4,14 @@
         <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide
-                    v-for="item in category.results" :key="item.id"
+                    v-for="item in manufacturer.results" :key="item.id"
                 >
                     <nuxt-link :to="{ name: 'factory-factory', params: {factory:`${item.kirilica}`,id:`${item.id}`} }"  class="nuxt-link-cat">
                         <div class="index-brand-block">
                             <div class="index-brand-block-desc">
-                                <strong v-if="item.description !== 'undefined'">
+                                <!-- <strong v-if="item.description !== 'undefined'">
                                     {{item.description}}
-                                </strong>
+                                </strong> -->
                                 <!-- <span>{{item.name}}</span> -->
                             </div>
                             <div class="index-brand-block-img">
@@ -42,6 +42,7 @@ Navigation  as HooperNavigation
 } from 'hooper';
 import 'hooper/dist/hooper.css';
 export default ({
+    props:['manufacturer'],
     components: {
         Hooper,
         Slide,
@@ -72,14 +73,11 @@ export default ({
     },
     computed:{
       ...mapGetters({
-        category: 'category/manufacturerIndex'
       })
     },
     mounted(){
-      this.getManufacturerIndex()
     },
     methods:{
-      ...mapActions('category',['getManufacturerIndex'])
     }
 })
 </script>
