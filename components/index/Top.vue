@@ -5,7 +5,7 @@
             <hooper :settings="hooperSettings">
                 <slide
                     v-for="(item,idx) in tovar" :key="idx" 
-                >
+                >   
                     <nuxt-link :to="{ name: 'product-product', params: {product:`${item.kirilica_name}`,id:`${item.kirilica_name}`} }" class="nuxt-link-cat">
                         <div class="index-top-block">
                             <div class="index-top-block-img">
@@ -51,7 +51,12 @@ Pagination as HooperPagination,
 Navigation  as HooperNavigation} from 'hooper';
 import 'hooper/dist/hooper.css';
 export default ({
-    props:['tovar'],
+    props: {
+        tovar: {
+            type: Array,
+            default: () => []
+            }
+    },
     components: {
         Hooper,
         Slide,

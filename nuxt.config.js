@@ -202,6 +202,9 @@ modules: [
     },
 
   },
+  generate: {
+    exclude: ['/', '/catalog/', '/product/','/factory/']
+  },
   // generate: {
   //   subFolders: false
   // },

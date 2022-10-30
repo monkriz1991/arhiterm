@@ -29,7 +29,7 @@ export const mutations = {
     setManufacturer(state,manufacturer) {
         state.manufacturer = manufacturer
     },
-    setManufacturerIndex(state,manufacturerIndex) {
+    setManuf(state,manufacturerIndex) {
         state.manufacturerIndex = manufacturerIndex
     }
 }
@@ -77,10 +77,10 @@ export const actions = {
         commit('setManufacturer', result)
         return result
     },
-    async getManufacturerIndex({ commit}) {
+    async getManuf({ commit}) {
         // await sleep(50)
         let result = await this.$axios.$get(`/manufacturer/random/get/?show_in_start=true`);
-        commit('setManufacturerIndex', result)
+        commit('setManuf', result)
         return result
     }
 }
