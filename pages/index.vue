@@ -11,12 +11,11 @@
 </template>
 
 <script>
-import Slider from '~/components/index/Slider.vue'
-import Category from '~/components/index/Category.vue'
-import Brand from '~/components/index/Brand.vue'
-import Top from '~/components/index/Top.vue'
 import {mapActions,mapGetters} from 'vuex'
 export default {
+  beforeMount(){
+    
+  },
   async asyncData ({ app, params, route, error,store  }) {
     try {
       await store.dispatch('category/getCategory');
@@ -31,6 +30,12 @@ export default {
       })
     }
   },
+  components:{
+    'Slider': () => import('~/components/index/Slider.vue'),
+    'Category': () => import('~/components/index/Category.vue'),
+    'Top': () => import('~/components/index/Top.vue'),
+    'Brand': () => import('~/components/index/Brand.vue'),
+  },
   data() {
     return {
       title: 'Архитерм - системы отопления, водоснабжения и канализации'
@@ -44,12 +49,6 @@ export default {
       slides: 'main/sliderItems',
       tovar: 'main/top',
     })
-  },
-  components:{
-    Slider,
-    Category,
-    Brand,
-    Top,
   },
   methods:{
   },

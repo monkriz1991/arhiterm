@@ -45,13 +45,13 @@ export const actions = {
      */
     async getCategory ({ commit }) {
         // await sleep(50)
-        let category = await this.$axios.$get(`/catalog/categories/?limit=99999`);
+        let category = await this.$axios.$get(`/catalog/categories/?limit=40`);
         commit('setCategory', category.results)
         return category.results
     },
   async getCategory1NestedFactory ({ commit},id) {
         // await sleep(50)
-        let category = await this.$axios.$get(`/catalog/categories/?manuf=${id}&limit=99999`);
+        let category = await this.$axios.$get(`/catalog/categories/?manuf=${id}&limit=40`);
         commit('setCategoryNestedFactory', category.results)
         return category.results
     },
@@ -65,20 +65,20 @@ export const actions = {
 
     async getCategoryManuf({ commit},id) {
         // await sleep(50)
-        let manufacturer = await this.$axios.$get(`/manufacturer/get/?cats=${id}&limit=99999`);
+        let manufacturer = await this.$axios.$get(`/manufacturer/get/?cats=${id}&limit=45`);
         commit('setCategoryManuf', manufacturer)
         
         return manufacturer
     },
     async getCategoryIndex ({ commit}) {
         // await sleep(50)
-        let category = await this.$axios.$get(`/catalog/categories/?limit=84`);
+        let category = await this.$axios.$get(`/catalog/categories/?limit=45`);
         commit('setCategoryIndex', category)
         return category
     },
     async getManufacturer({ commit}) {
         // await sleep(50)
-        let result = await this.$axios.$get(`/manufacturer/get/?is_active=true&limit=99999`);
+        let result = await this.$axios.$get(`/manufacturer/get/?is_active=true&limit=45`);
         commit('setManufacturer', result)
         return result
     },
