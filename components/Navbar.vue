@@ -550,12 +550,12 @@ import MenyuserMobail from '~/components/aut/MenyuserMobail.vue'
 import {mapGetters,mapActions} from 'vuex'
 
   export default {
-    async fetch() {
-        await this.$store.dispatch('category/getManufacturer')
-        await this.$store.dispatch('category/getCategory')
-        await this.$store.dispatch('main/getWorktime')
-        await this.$store.dispatch('main/getPhones')
-    },
+    // async fetch() {
+    //     await this.$store.dispatch('category/getManufacturer')
+    //     await this.$store.dispatch('category/getCategory')
+    //     await this.$store.dispatch('main/getWorktime')
+    //     await this.$store.dispatch('main/getPhones')
+    // },
     components:{
       ModalLogout,
       BasketModal,
@@ -597,6 +597,11 @@ import {mapGetters,mapActions} from 'vuex'
       ...mapActions({
         setLoading: 'main/newLoadingItem',
         DELL_CART_BASKET_ALL: 'crate/DELL_CART_BASKET_ALL',
+        Actions_categoryManuf:'category/getManufacturer',
+        Actions_categoryNavbar:'category/getCategory',
+        Actions_worktime:'main/getWorktime',
+        Actions_phones:'main/getPhones'
+
       }),
       categoryKirilica (item) {
       },
@@ -682,6 +687,10 @@ import {mapGetters,mapActions} from 'vuex'
       },
     },
     mounted(){
+        this.Actions_categoryManuf()
+        this.Actions_categoryNavbar()
+        this.Actions_worktime()
+        this.Actions_phones()
       //this.DELL_CART_BASKET_ALL()
       this.links = this.loadAll()
       if (process.browser){
