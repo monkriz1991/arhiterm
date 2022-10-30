@@ -4,7 +4,7 @@
         <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide
-                    v-for="item in manufacturer.results" :key="item.id"
+                    v-for="item in facturer.results" :key="item.id"
                 >
                     <nuxt-link :to="{ name: 'factory-factory', params: {factory:`${item.kirilica}`,id:`${item.id}`} }"  class="nuxt-link-cat">
                         <div class="index-brand-block">
@@ -42,7 +42,7 @@ Navigation  as HooperNavigation
 } from 'hooper';
 import 'hooper/dist/hooper.css';
 export default ({
-    props:['manufacturer'],
+    props:['facturer'],
     components: {
         Hooper,
         Slide,

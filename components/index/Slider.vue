@@ -42,7 +42,12 @@
 <script>
 import { mapGetters,mapActions } from 'vuex'
 export default ({
-  props:['slides'],
+  props: {
+    slides: {
+            type: Array,
+            default: () => []
+            }
+    },
   components:{
   },
     data() {
