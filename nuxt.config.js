@@ -80,8 +80,8 @@ plugins: [
   '@/plugins/element-ui',
   '@/plugins/backbutton.js',
   '~/plugins/url-change.js',
-  { src: '~plugins/ga.js', mode: 'client' },
-  '~/plugins/gtm',
+  // { src: '~plugins/ga.js', mode: 'client' },
+  // '~/plugins/gtm',
   { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
   { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
 ],
@@ -123,7 +123,7 @@ pwa: {
 modules: [
   // https://go.nuxtjs.dev/axios
   '@nuxtjs/axios',
-  '@nuxtjs/gtm',
+  // '@nuxtjs/gtm',
   '@nuxtjs/auth-next',
   '@nuxtjs/sitemap',
   // 'nuxt-ssr-cache',

@@ -3,8 +3,7 @@
         <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide
-                v-for="item in category.results" :key="item.id"
-                v-show="item.show_in_start==true"
+                v-for="item in category" :key="item.id"
                 >
                         <nuxt-link  :to="{ name: 'catalog-catalog', params: {catalog:`${item.kirilica}`,id:`${item.id}`} }" class="nuxt-link-cat">
                         <div class="index-topcat-block">
@@ -37,6 +36,9 @@ Pagination as HooperPagination,
 Navigation  as HooperNavigation} from 'hooper';
 import 'hooper/dist/hooper.css';
 export default ({
+    async fetch() {
+        await this.$store.dispatch('category/getCategoryIndex')
+    },
     components: {
         Hooper,
         Slide,
@@ -73,11 +75,10 @@ export default ({
       })
     },
     mounted(){
-      this.getCategoryIndex()
+
     },
     methods:{
         ...mapActions({
-            getCategoryIndex:'category/getCategoryIndex',
         }),
     }
 })

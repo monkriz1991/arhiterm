@@ -4514,6 +4514,7 @@ font-size: 13px;
 }
 .catalog-nav li{
     padding: 0 5px;
+    width: 100%;
 }
 .catalog-nav li .index-topcat-block {
     position: relative;
