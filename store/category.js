@@ -24,7 +24,12 @@ export const mutations = {
         state.categoryManuf = categoryManuf
     },
     setCategoryIndex (state,categoryIndex) {
-        state.categoryIndex = categoryIndex
+        
+        categoryIndex.results.map(function(item){
+            if(item.show_in_start==true){
+                state.categoryIndex.push(item)  
+            }
+        }) 
     },
     setManufacturer(state,manufacturer) {
         state.manufacturer = manufacturer
