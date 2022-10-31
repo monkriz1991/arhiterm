@@ -34,8 +34,6 @@
 </template>
 
 <script>
-import GaleryMounters from '~/components/mounters/GaleryMounters.vue'
-import Breadcrumb from '~/components/Breadcrumb.vue'
 export default {
     async asyncData ({ app, params, route, error }) {
         try {
@@ -50,13 +48,11 @@ export default {
         }
     },
     components:{
-        GaleryMounters,
-        Breadcrumb
+        'GaleryMounters': () => import('~/components/mounters/GaleryMounters.vue'),
+        'Breadcrumb': () => import('~/components/Breadcrumb.vue'),
     },
     data() {
-
       return{
-
       }
     },
     head() {

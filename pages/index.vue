@@ -1,36 +1,28 @@
 <template>
   <div class="container">
+    <LazyHydrate when-idle>
       <Slider :slides="slides"/>
+    </LazyHydrate>
+    <LazyHydrate when-idle>
       <Top :tovar="tovar"/>
+    </LazyHydrate>
+    <LazyHydrate when-visible>
       <Category :category="category"/>
+    </LazyHydrate>
+    <LazyHydrate when-visible>
       <Brand :facturer="facturer"/> 
-      <div class="title">
-        <h1>Архитерм - системы отопления, водоснабжения и канализации</h1>
-      </div>
+    </LazyHydrate>
+    <div class="title">
+      <h1>Архитерм - системы отопления, водоснабжения и канализации</h1>
+    </div>
   </div>
 </template>
-
 <script>
+import LazyHydrate from 'vue-lazy-hydration';
 import {mapActions,mapGetters} from 'vuex'
 export default {
-  beforeMount(){
-    
-  },
-  async asyncData ({ app, params, route, error,store  }) {
-    try {
-      await store.dispatch('category/getCategory');
-      await store.dispatch('main/getSlider');
-      await store.dispatch('main/getTop');
-      await store.dispatch('category/getManuf')
-    } catch (err) {
-      console.log(err)
-      return error({
-        statusCode: 404,
-        message: 'Категории не найдены или сервер не доступен'
-      })
-    }
-  },
   components:{
+    LazyHydrate,
     'Slider': () => import('~/components/index/Slider.vue'),
     'Category': () => import('~/components/index/Category.vue'),
     'Top': () => import('~/components/index/Top.vue'),
@@ -39,7 +31,6 @@ export default {
   data() {
     return {
       title: 'Архитерм - системы отопления, водоснабжения и канализации'
-      // categories: [],
     }
   },
   computed:{
@@ -51,8 +42,18 @@ export default {
     })
   },
   methods:{
+    ...mapActions({
+        Actions_categoryManuf:'category/getManufacturer',
+        Actions_categoryNavbar:'category/getCategory',
+        Actions_slides:'main/getSlider',
+        Actions_tovar:'main/getTop'
+      }),
   },
   mounted(){
+    this.Actions_categoryManuf()
+    this.Actions_categoryNavbar()
+    this.Actions_slides()
+    this.Actions_tovar()
   },
   head() {
     return {
@@ -68,6 +69,3 @@ export default {
   },
 }
 </script>
-<style>
-
-</style>

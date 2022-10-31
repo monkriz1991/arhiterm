@@ -54,7 +54,6 @@ webfontloader: {
   },
   timeout: 5000
 },
-
 loading: {color:'blue'},
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -296,6 +295,18 @@ modules: [
    //postcss: null,
 
   build: {
+    babel: {
+      "presets": ["@babel/preset-env"],
+      "plugins": [
+        [
+          "component",
+          {
+            "libraryName": "element-ui",
+            "styleLibraryName": "theme-chalk"
+          }
+        ]
+      ]
+    },
     transpile: [/^element-ui/,'vee-validate/dist/rules'],
     optimizeCss: false,
     filenames: {

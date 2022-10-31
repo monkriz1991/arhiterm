@@ -6,10 +6,14 @@
     <div
     :class="{ loading_lay: loading }"
     >
-      <Navbar/>
+      <LazyHydrate when-idle>
+        <Navbar/>
+      </LazyHydrate>
       <div class="main-nuxt"></div>
       <nuxt />
-      <Footer />
+      <LazyHydrate when-visible>
+        <Footer />
+      </LazyHydrate>
       <!-- <Upscroll/> -->
     </div>
   </div>
@@ -17,10 +21,7 @@
 
 
 <script>
-import Navbar from '~/components/Navbar.vue'
-import Footer from '~/components/Footer.vue'
-import Upscroll from '~/components/Upscroll.vue'
-import Breadcrumb from '~/components/Breadcrumb.vue'
+import LazyHydrate from 'vue-lazy-hydration';
 import {mapGetters,mapActions} from 'vuex'
 export default ({
   layout: 'error',
@@ -54,10 +55,11 @@ export default ({
     }),
   },
   components:{
-    Navbar,
-    Footer,
-    Upscroll,
-    Breadcrumb,
+    LazyHydrate,
+    'Navbar': () => import('~/components/Navbar.vue'),
+    'Footer': () => import('~/components/Footer.vue'),
+    'Upscroll': () => import('~/components/Upscroll.vue'),
+    'Breadcrumb': () => import('~/components/Breadcrumb.vue'),
   },
   watch:{
       $route (to, from){

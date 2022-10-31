@@ -14,23 +14,19 @@
 </template>
 
 <script>
-import Galery from '~/components/certificates/Galery.vue'
 export default {
   mounted(){
-
   },
   data() {
     return {
     }
   },
   computed:{
-
   },
   components:{
-    Galery
+    'Galery': () => import('~/components/certificates/Galery.vue'),
   },
   methods:{
-
   },
   head() {
     return {
@@ -67,6 +63,3 @@ export default {
   }
 }
 </script>
-<style>
-
-</style>

@@ -391,10 +391,14 @@
             <div class="bottom-bar-con">
               <client-only>
               <div v-if="$auth.loggedIn">
-                <Menyuser/>
+                <LazyHydrate when-idle>
+                  <Menyuser/>
+                </LazyHydrate>
               </div>
               <div v-else>
-                <ModalLogout />
+                <LazyHydrate when-idle>
+                  <ModalLogout />
+                </LazyHydrate>
               </div>
                </client-only>
               <el-button
@@ -543,24 +547,15 @@
 </template>
 
 <script>
-import ModalLogout from '~/components/aut/ModalLogout.vue'
-import BasketModal from '~/components/BasketModal.vue'
-import Menyuser from '~/components/aut/Menyuser.vue'
-import MenyuserMobail from '~/components/aut/MenyuserMobail.vue'
+import LazyHydrate from 'vue-lazy-hydration';
 import {mapGetters,mapActions} from 'vuex'
-
   export default {
-    // async fetch() {
-    //     await this.$store.dispatch('category/getManufacturer')
-    //     await this.$store.dispatch('category/getCategory')
-    //     await this.$store.dispatch('main/getWorktime')
-    //     await this.$store.dispatch('main/getPhones')
-    // },
     components:{
-      ModalLogout,
-      BasketModal,
-      Menyuser,
-      MenyuserMobail,
+      LazyHydrate,
+      'ModalLogout': () => import('~/components/aut/ModalLogout.vue'),
+      'BasketModal': () => import('~/components/BasketModal.vue'),
+      'Menyuser': () => import('~/components/aut/Menyuser.vue'),
+      'MenyuserMobail': () => import('~/components/aut/MenyuserMobail.vue'),
     },
     data() {
       return {
@@ -641,13 +636,13 @@ import {mapGetters,mapActions} from 'vuex'
         }
       },
       openNotify() {
-          this.$notify({
-          type: 'success',
-          title: 'Заказ успешно оформлен',
-          dangerouslyUseHTMLString: true,
-          duration:5500,
-          message: 'На Вашу почту была выслана информация о заказе! В ближайшее время с Вами свяжется менеджер для уточнения деталей заказа.',
-          });
+        this.$notify({
+        type: 'success',
+        title: 'Заказ успешно оформлен',
+        dangerouslyUseHTMLString: true,
+        duration:5500,
+        message: 'На Вашу почту была выслана информация о заказе! В ближайшее время с Вами свяжется менеджер для уточнения деталей заказа.',
+        });
       },
       updateWidth() {
         this.width = window.innerWidth;
@@ -655,7 +650,6 @@ import {mapGetters,mapActions} from 'vuex'
             this.adaptivSidebar = true
         }else{
           this.adaptivSidebar = false
-
         }
       },
       loadAll() {
@@ -668,7 +662,6 @@ import {mapGetters,mapActions} from 'vuex'
         let results = [ { "value":'По данному запросу ничего не найдено'}];
         this.$axios.get(`/catalog/search/?search=${queryString}&limit=9999999`).then(function (result){
             cb(result.data.results);
-          // console.log(result.data.results)
         }).catch(function (e){results = [ { "value":'По данному запросу ничего не найдено'}];})
       },
       createFilter(queryString) {
@@ -687,11 +680,10 @@ import {mapGetters,mapActions} from 'vuex'
       },
     },
     mounted(){
-        this.Actions_categoryManuf()
-        this.Actions_categoryNavbar()
-        this.Actions_worktime()
-        this.Actions_phones()
-      //this.DELL_CART_BASKET_ALL()
+      this.Actions_categoryManuf()
+      this.Actions_categoryNavbar()
+      this.Actions_worktime()
+      this.Actions_phones()
       this.links = this.loadAll()
       if (process.browser){
         window.addEventListener('resize', this.updateWidth);
@@ -715,6 +707,3 @@ import {mapGetters,mapActions} from 'vuex'
     }
   }
 </script>
-
-<style>
-</style>
