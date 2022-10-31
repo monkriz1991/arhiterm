@@ -274,25 +274,19 @@
 </template>
 
 <script>
-
 export default {
-
-  data() {
-    return {
-    }
-  },
-  computed:{
-
-  },
-  components:{
-
-  },
-  methods:{
-
-  },
-  mounted(){
-
-  },
+data() {
+return {
+}
+},
+computed:{
+},
+components:{
+},
+methods:{
+},
+mounted(){
+},
 head() {
     return {
       title: 'Обработка персональных данных клиентов компании Архитерм',

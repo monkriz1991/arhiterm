@@ -145,10 +145,3 @@
    
 </template>
 
-
-<style>
-div{
-    font-size: 12px;
-    line-height: 1.5;
-}
-</style>

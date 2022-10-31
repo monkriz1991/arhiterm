@@ -36,19 +36,12 @@
 </template>
 
 <script>
-function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      }
-import sidebarFactory from '~/components/catalog/sidebarFactory.vue'
-import CartTovar from '~/components/catalog/CartTovar.vue'
-import Breadcrumb from '~/components/Breadcrumb.vue'
-import Paginated from '~/components/catalog/PaginatedFactory.vue'
 export default {
     components:{
-        sidebarFactory,
-        CartTovar,
-        Breadcrumb,
-        Paginated
+      'sidebarFactory': () => import('~/components/catalog/sidebarFactory.vue'),
+      'CartTovar': () => import('~/components/catalog/CartTovar.vue'),
+      'Breadcrumb': () => import('~/components/Breadcrumb.vue'),
+      'Paginated': () => import('~/components/catalog/Paginated.vue'),
     },
     mounted() {
       if (process.browser){
@@ -150,13 +143,10 @@ export default {
         if(to.query['page']!==undefined){
           parametrs['page'] = to.query['page'];
         }
-
         parametrs['manuf'] = this.factori.id
        this.sendQuery(parametrs)
       }
   },
-    computed:{
-    },
     methods:{
       async sendQuery(parametrs){
          if (parametrs['manuf']!==undefined){
@@ -169,7 +159,6 @@ export default {
             this.adaptivSidebar = true
         }else{
           this.adaptivSidebar = false
-
         }
       },
     },

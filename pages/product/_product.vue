@@ -1,25 +1,27 @@
 <template>
     <div class="container"> 
-        <Breadcrumb/>
+        <LazyHydrate when-idle>
+            <Breadcrumb/>
+        </LazyHydrate>
         <h1 class="h1-product">{{productItem.name}}</h1>
         <h2 class="h2-product">
             <i class="el-icon-office-building"></i>
             {{productItem.manufacturer_name}}
         </h2>
-        <Galery/>
+        <LazyHydrate when-idle>
+            <Galery/>
+        </LazyHydrate>
         <div class="cost-product-section">
             <div class="cost-product-price">
                 <strong class="">1 {{result.units}}</strong>
                 <b>:</b>
                 <span :class="{ butDiscount: discont}">{{price}}</span>
                 <strong>руб.</strong>
-                
                 <div v-if="discont" class="catalog-list-block-discount">
                     <strong>{{discont}}<span>руб/{{result.units}}</span></strong>
                 </div>
             </div>
             <div class="kod-product">
-                <!-- <span>Код</span> -->
                 <el-tooltip class="item" effect="dark" content="Код товара" placement="top-start">
                 <i class="el-icon-info"></i>
                 </el-tooltip>
@@ -38,64 +40,65 @@
             @toggleModal = "toggleModal"
             />
             <div class="dilivery-cart-block">
-                 <no-ssr>
-                        <div class="dilivery-cart">
-                            <el-drawer
-                            class="darwer-meny"
-                            :visible.sync="drawer"
-                            :with-header="true">
-                            <Dostavka
-                            :visible.sync ="drawer" />
-                            </el-drawer>
-                            <el-button
-                            @click="drawer = true"
-                            class="drawer-button-meny"
-                            size="small"
-                            icon="el-icon-takeaway-box"
-                            >Доставка
-                            </el-button>
-                        </div>
-
-                        <div class="dilivery-cart">
-                            <el-drawer
-                            class="darwer-meny"
-                            :visible.sync="drawerPay"
-                            :with-header="true">
-                            <Payment
-                            :visible.sync ="drawer" />
-                            </el-drawer>
-                            <el-button
-                            @click="drawerPay = true"
-                            class="drawer-button-meny"
-                            size="small"
-                            icon="el-icon-wallet"
-                            >Оплата
-                            </el-button>
-                        </div>
-                        <div class="dilivery-cart">
-                            <el-drawer
-                            class="darwer-meny"
-                            :visible.sync="drawerkont"
-                            :with-header="true">
-                            <Drawerkont
-                            :visible.sync ="drawer" />
-                            </el-drawer>
-                            <el-button
-                            @click="drawerkont = true"
-                            class="drawer-button-meny"
-                            size="small"
-                            icon="el-icon-phone-outline"
-                            >Контакты
-                            </el-button>
-                        </div>
-                     </no-ssr>
+                <no-ssr>
+                    <div class="dilivery-cart">
+                        <el-drawer
+                        class="darwer-meny"
+                        :visible.sync="drawer"
+                        :with-header="true">
+                        <Dostavka
+                        :visible.sync ="drawer" />
+                        </el-drawer>
+                        <el-button
+                        @click="drawer = true"
+                        class="drawer-button-meny"
+                        size="small"
+                        icon="el-icon-takeaway-box"
+                        >Доставка
+                        </el-button>
+                    </div>
+                    <div class="dilivery-cart">
+                        <el-drawer
+                        class="darwer-meny"
+                        :visible.sync="drawerPay"
+                        :with-header="true">
+                        <Payment
+                        :visible.sync ="drawer" />
+                        </el-drawer>
+                        <el-button
+                        @click="drawerPay = true"
+                        class="drawer-button-meny"
+                        size="small"
+                        icon="el-icon-wallet"
+                        >Оплата
+                        </el-button>
+                    </div>
+                    <div class="dilivery-cart">
+                        <el-drawer
+                        class="darwer-meny"
+                        :visible.sync="drawerkont"
+                        :with-header="true">
+                        <Drawerkont
+                        :visible.sync ="drawer" />
+                        </el-drawer>
+                        <el-button
+                        @click="drawerkont = true"
+                        class="drawer-button-meny"
+                        size="small"
+                        icon="el-icon-phone-outline"
+                        >Контакты
+                        </el-button>
+                    </div>
+                </no-ssr>
             </div>
         </div>
         <div class="tabs-product">
-            <Tabs
-            :product_data="productItem.product"
-            :new_char="funChar"
-             />
+            <LazyHydrate when-visible>
+                <Tabs
+                :product_data="productItem.product"
+                :new_char="funChar"
+                />
+            </LazyHydrate>
         </div>
         <no-ssr>
         <BasketModal  
@@ -107,18 +110,9 @@
 </template>
 
 <script>
-import Breadcrumb from '~/components/Breadcrumb.vue'
-import Galery from '~/components/product/Galery.vue'
-import Tabs from '~/components/product/Tabs.vue'
-import CartTovarInput from '~/components/catalog/CartTovarInput.vue'
-import BasketModal from '~/components/BasketModal.vue'
-import Dostavka from '~/components/product/Dostavka.vue'
-import Payment from '~/components/product/Payment.vue'
-import Drawerkont from '~/components/product/Drawerkont.vue'
+import LazyHydrate from 'vue-lazy-hydration';
 import { mapGetters,mapActions } from 'vuex'
 export default ({
-    created() {
-    },
     async asyncData ({ app, params, route, error }) {
         try {
             let result = await app.store.dispatch('tovar/getProductItem',params.product)
@@ -143,21 +137,20 @@ export default ({
         }
     },
     components:{
-        Galery,
-        Tabs,
-        CartTovarInput,
-        Breadcrumb,
-        BasketModal,
-        Dostavka,
-        Payment,
-        Drawerkont,
-        
+        LazyHydrate,
+        'Breadcrumb': () => import('~/components/Breadcrumb.vue'),
+        'Galery': () => import('~/components/product/Galery.vue'),
+        'Tabs': () => import('~/components/product/Tabs.vue'),
+        'CartTovarInput': () => import('~/components/catalog/CartTovarInput.vue'),
+        'BasketModal': () => import('~/components/BasketModal.vue'),
+        'Dostavka': () => import('~/components/product/Dostavka.vue'),
+        'Payment': () => import('~/components/product/Payment.vue'),
+        'Drawerkont': () => import('~/components/product/Drawerkont.vue'),        
     },
     computed:{
         ...mapGetters({
             productItem: 'tovar/productItem'
         })
-        //this.price = this.productItem.product[0].price,
     },
     methods:{
         ...mapActions({
@@ -176,9 +169,7 @@ export default ({
         },
         funNewChar(data){
             return this.funChar = data
-
         },
-
         toggleModal(val,noCloseNotify) { 
             this.dialogFormVisibleModal = true;
              this.$notify.closeAll()
@@ -186,7 +177,6 @@ export default ({
                 this.$notify.closeAll()
             }
         },
-
         closeBasket(val){ 
             if(val==true){
                 this.openNotify()

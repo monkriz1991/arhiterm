@@ -316,34 +316,28 @@
 </template>
 
 <script>
-
 export default {
-
   data() {
     return {
-        chek:require('~/assets/img/chek.png'),
-        nk:require('~/assets/img/nk.png'),
+        chek:require('~/assets/img/chek.webp'),
+        nk:require('~/assets/img/nk.webp'),
         Listchek:[
-            require('~/assets/img/chek.png')
+            require('~/assets/img/chek.webp')
         ],
         Listnk:[
-            require('~/assets/img/nk.png')
+            require('~/assets/img/nk.webp')
         ],
         activeName:'',
         activeNamePay:'',
     }
   },
   computed:{
-
   },
   components:{
-
   },
   methods:{
-
   },
   mounted(){
-
   },
 head() {
     return {
@@ -380,6 +374,3 @@ head() {
   }
 }
 </script>
-<style>
-
-</style>

@@ -8,7 +8,7 @@
 				<span>Наш офис</span>
 			</div>
 			<div class="contact-block-img">
-				<img src="~/assets/img/kontakty_arhiofis_small_.png" alt="офис компании Архитерм">
+				<img src="~/assets/img/kontakty_arhiofis_small_.webp" alt="офис компании Архитерм">
 			</div>
 			<div class="contact-block-inf">
 				<div class="contact-block-desc">
@@ -45,7 +45,7 @@
 				<span>Наш склад</span>
 			</div>
 			<div class="contact-block-img">
-				<img src="~/assets/img/kontakty_arhisklad_small_.png" alt="склад компании Архитерм">
+				<img src="~/assets/img/kontakty_arhisklad_small_.webp" alt="склад компании Архитерм">
 			</div>
 			<div class="contact-block-inf">
 				<div class="contact-block-desc">
@@ -104,7 +104,6 @@
 <script>
 import { yandexMap, ymapMarker } from 'vue-yandex-maps'
 export default {
-
   data() {
     return {
         activeName: '',
@@ -112,7 +111,6 @@ export default {
         }
   },
   computed:{
-
   },
   components:{
     yandexMap, 
@@ -124,7 +122,6 @@ export default {
     }
   },
   mounted(){
-
   },
     head() {
     return {
@@ -161,6 +158,3 @@ export default {
   }
 }
 </script>
-<style>
-
-</style>

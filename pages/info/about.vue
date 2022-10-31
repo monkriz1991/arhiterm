@@ -26,25 +26,18 @@
 </template>
 
 <script>
-
 export default {
-
   data() {
     return {
-      // categories: [],
     }
   },
   computed:{
-
   },
   components:{
-
   },
   methods:{
-
   },
   mounted(){
-
   },
     head() {
       return {
@@ -81,6 +74,3 @@ export default {
     }
 }
 </script>
-<style>
-
-</style>
