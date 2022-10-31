@@ -129,9 +129,9 @@ modules: [
   'nuxt-webfontloader',
   '@nuxtjs/redirect-module',
   // 'nuxt-purgecss',
-  ['nuxt-vuex-localstorage', {
-    localStorage: ['crate']
-  }],
+  // ['nuxt-vuex-localstorage', {
+  //   localStorage: ['crate']
+  // }],
   // [
   //   '@nuxtjs/yandex-metrika',
   //   {

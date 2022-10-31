@@ -24,12 +24,11 @@
           <nuxt-img 
           class="slider-image" 
           provider="twicpics"
-          loading="lazy" 
           v-if="item.img.substring(24)!='https://new.arhiterm.by/media/img/noimg.png'"
           :src="item.img.substring(24)" 
           :alt="item.title"
-          width="200"
-          height="200"
+          width="100"
+          height="100"
           presets="product"
           />
         </div>
