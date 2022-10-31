@@ -3740,6 +3740,7 @@ font-size: 13px;
 .contact-block-desc{
     float: left;
     width: 100%;
+    font-size: 14px;
 }
 .contact-block-desc>span{
     float: left;

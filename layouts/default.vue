@@ -6,9 +6,8 @@
     <div
     :class="{ loading_lay: loading }"
     >
-      <LazyHydrate when-idle>
+
         <Navbar/>
-      </LazyHydrate>
       <div class="main-nuxt"></div>
       <nuxt />
       <LazyHydrate when-visible>
@@ -84,7 +83,7 @@ export default ({
       setTimeout(() => {
         this.setLoading(false)
         this.loading = false;
-      }, 2000);
+      }, 1000);
     },
   }
 
