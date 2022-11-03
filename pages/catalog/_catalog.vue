@@ -181,7 +181,8 @@ export default {
     let categoriesNested =  await app.store.dispatch('category/getCategoryNested',params.id)
     let productsList =  await app.store.dispatch('product/getProductList',parametrs)
     let categoryManuf = await app.store.dispatch('category/getCategoryManuf',params.id)
-    return{categoriesNested,productsList,categoryManuf}
+    let timeAsynk = 2500
+    return{categoriesNested,productsList,categoryManuf,timeAsynk}
   } catch (err) {
       console.log(err)
       return error({
@@ -198,6 +199,7 @@ export default {
         width:0,
         showFirst:false,
         loadingFirst: true,
+        timeStart:1300,
       }
   },
   watch:{
@@ -260,10 +262,11 @@ export default {
         DELL_TABS:'product/DELL_TABS',
     }),
     setLoading() {
+      console.log(this.timeAsynk)
         setTimeout(() => (
           this.loadingFirst = false,
           this.showFirst = true
-          ), 1200)
+          ), this.timeStart)
       },
     async sendQuery(parametrs){
       this.productsList = await this.$store.dispatch('product/getProductList',parametrs);
@@ -561,17 +564,39 @@ padding: 50px 0 0;
   }
 }
 @media (max-width: 991px){
-  .catalog-list-img{
-        width: 170px;
+  .catalog-list{
+    width: 100% !important;
+    padding: 10px 0 0;
+}
+  .catalog-list-img {
+        width: 140px;
+        height: 160px;
     }
     .catalog-list-block-desc {
-        margin: 0px 0 0 185px;
+        margin: 0px 0 0 150px;
+    }
+    .catalog-list-block-desc>a, .catalog-list-block-desc>span {
+        height: 90px;
+    }
+    .catalog-list-input{
+        margin: 0px 0 0 0;
+        padding: 10px 0px 0px;
+    }
+    .catalog-list-block {
+        padding: 0px 10px 0 0;
+        margin: 0 0 20px;
     }
     .catalog-list-block-desc>a, .catalog-list-block-desc>span{
         font-size: 12px;
     }
     .catalog-list-block-price>strong{
         font-size: 20px;
+    }
+    .catalog-list-block-cost>span {
+        margin: 2px 0 0 4px;
+    }  
+    .catalog-list-block img {
+        padding: 20px;
     }
     .catalog-list-block-price>span{
         margin: 6px 0 0 5px;

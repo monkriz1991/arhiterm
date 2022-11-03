@@ -4876,9 +4876,7 @@ font-size: 13px;
     .navbar-user .el-dropdown{
         float: left;
     }
-    .catalog-list-block img {
-        padding: 20px;
-    }
+
     .header-nav-refresh svg {
         text-align: center;
         width: 23px;
@@ -5064,24 +5062,7 @@ font-size: 13px;
     .el-dialog--center .el-dialog__body {
         padding: 25px 10px 30px !important;
     }
-    .catalog-list-img {
-        width: 140px;
-        height: 160px;
-    }
-    .catalog-list-block-desc {
-        margin: 0px 0 0 150px;
-    }
-    .catalog-list-block-desc>a, .catalog-list-block-desc>span {
-        height: 90px;
-    }
-    .catalog-list-input{
-        margin: 0px 0 0 0;
-        padding: 10px 0px 0px;
-    }
-    .catalog-list-block {
-        padding: 0px 10px 0 0;
-        margin: 0 0 20px;
-    }
+   
     .icon-search-mobail{
         top: 7px !important;
         right: 10px !important;
@@ -5390,10 +5371,7 @@ font-size: 13px;
     header {
         padding: 10px 0;
         margin-bottom: 5px;
-    }
-    .catalog-list-block-cost>span {
-        margin: 2px 0 0 4px;
-    }    
+    }  
     .el-breadcrumb{
         font-size: 11px !important;
         margin: 0px 0 15px;
