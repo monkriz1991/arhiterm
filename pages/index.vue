@@ -1,28 +1,113 @@
 <template>
   <div class="container">
-    <LazyHydrate when-idle>
-      <Slider :slides="slides"/>
-    </LazyHydrate>
-    <LazyHydrate when-idle>
-      <Top :tovar="tovar"/>
-    </LazyHydrate>
-    <LazyHydrate when-visible>
-      <Category :category="category"/>
-    </LazyHydrate>
-    <LazyHydrate when-visible>
-      <Brand :facturer="facturer"/> 
-    </LazyHydrate>
+    <el-skeleton :loading="loadingFirst">
+      <template slot="template">
+      <el-skeleton-item
+          variant="caption"
+          style="width: 100%; height: 350px;border-radius: 10px;margin: 0 0 100px;"
+        />
+      </template>
+    </el-skeleton>
+      <transition name="el-fade-in-linear">
+        <Slider v-show="showFirst" :slides="slides"/>
+      </transition>
+
+      <el-skeleton :loading="loadingFirst"
+      style="height: 135px;overflow: hidden;">
+      <template slot="template" >
+        <el-row :gutter="20">
+            <el-col
+            :xs="24" :sm="8" :md="8" :xl="8"
+            v-for="(tovar, index) in 3" :key="index"
+            >
+              <el-skeleton-item
+                  variant="rect"
+                  style="width: 95px;float: left; height: 135px;border-radius: 10px;"
+                />
+                <div style="padding: 0px;margin: 0 0 0 110px;">
+                  <el-skeleton-item variant="p" style="width: 50%" />
+                  <div
+                    style="display: flex;align-items: flex-start;flex-direction: column;"
+                  >
+                    <el-skeleton-item variant="text" style="height: 65px;margin: 0 0 5px 0;" />
+                    <el-skeleton-item variant="text" style="width: 50%;height: 25px;" />
+                  </div>
+                </div>
+            </el-col>
+        </el-row>
+      </template>
+    </el-skeleton>
+    <transition name="el-fade-in-linear">
+      <Top v-if="showFirst"  :tovar="tovar"/>
+    </transition>
+    <el-skeleton 
+      v-observe-visibility="{
+        once: true,
+        callback: visibilityChanged,
+      }"
+      :loading="loadingTwo"
+      style="margin: 160px 0 140px;">
+      <template slot="template" >
+        <el-row :gutter="20">
+            <el-col
+            :sm="12" :md="12"  :xl="6" :lg="5" :xs="12"
+            v-for="(tovar, index) in 22" :key="index"
+            >
+              <el-skeleton-item
+                  variant="rect"
+                  style="width: 100%;float: left;margin: 0 0 20px;height: 170px;border-radius: 10px;"
+                />
+            </el-col>
+        </el-row>
+      </template>
+    </el-skeleton>
+    <transition name="el-fade-in-linear">
+      <Category v-show="showTwo" :category="category"/>
+    </transition>
+
+      <el-skeleton       
+        :loading="loadingTwo"
+        style="height: 135px;overflow: hidden;">
+        <template slot="template" >
+          <el-row :gutter="20">
+              <el-col
+              :xs="24" :sm="8" :md="6" :xl="8"
+              v-for="(tovar, index) in 4" :key="index"
+              >
+                <el-skeleton-item
+                    variant="rect"
+                    style="width: 100%;float: left; height: 135px;border-radius: 10px;"
+                  />
+              </el-col>
+          </el-row>
+        </template>
+      </el-skeleton>
+    <transition name="el-fade-in-linear">
+      <Brand v-if="showTwo" :facturer="facturer"/> 
+    </transition>
     <div class="title">
       <h1>Архитерм - системы отопления, водоснабжения и канализации</h1>
     </div>
   </div>
 </template>
 <script>
-import LazyHydrate from 'vue-lazy-hydration';
 import {mapActions,mapGetters} from 'vuex'
 export default {
+  async asyncData ({ app, params, route, error,store  }) {
+    try {
+      await store.dispatch('category/getCategory');
+      await store.dispatch('main/getSlider');
+      await store.dispatch('main/getTop');
+      await store.dispatch('category/getManufacturer')
+    } catch (err) {
+      console.log(err)
+      return error({
+        statusCode: 404,
+        message: 'Категории не найдены или сервер не доступен'
+      })
+    }
+  },
   components:{
-    LazyHydrate,
     'Slider': () => import('~/components/index/Slider.vue'),
     'Category': () => import('~/components/index/Category.vue'),
     'Top': () => import('~/components/index/Top.vue'),
@@ -30,6 +115,10 @@ export default {
   },
   data() {
     return {
+      showFirst:false,
+      loadingFirst: true,
+      showTwo:false,
+      loadingTwo: true,
       title: 'Архитерм - системы отопления, водоснабжения и канализации'
     }
   },
@@ -42,18 +131,28 @@ export default {
     })
   },
   methods:{
+    visibilityChanged: function (isVisible, entry) {
+      if(isVisible==true){
+          this.setLoadingScroll()
+        }
+    },
+    setLoading() {
+        setTimeout(() => (
+          this.loadingFirst = false,
+          this.showFirst = true
+          ), 1000)
+      },
+      setLoadingScroll() {
+        setTimeout(() => (
+          this.loadingTwo = false,
+          this.showTwo = true
+          ), 1000)
+      },
     ...mapActions({
-        Actions_categoryManuf:'category/getManufacturer',
-        Actions_categoryNavbar:'category/getCategory',
-        Actions_slides:'main/getSlider',
-        Actions_tovar:'main/getTop'
       }),
   },
   mounted(){
-    this.Actions_categoryManuf()
-    this.Actions_categoryNavbar()
-    this.Actions_slides()
-    this.Actions_tovar()
+    this.setLoading()
   },
   head() {
     return {

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div
+    <!-- <div
      v-loading="loading">
     </div>
     <div
     :class="{ loading_lay: loading }"
-    >
+    > -->
 
         <Navbar/>
       <div class="main-nuxt"></div>
@@ -14,7 +14,7 @@
         <Footer />
       </LazyHydrate>
       <!-- <Upscroll/> -->
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -38,7 +38,7 @@ export default ({
 
     },
     mounted() {
-      this.loadingData()
+      // this.loadingData()
     },
   data() {
       return {
@@ -69,22 +69,22 @@ export default ({
         this.$nuxt.history = this.history;
         
       },
-      loadingItem(data){
-        this.loading = data
-        this.loadingData(true)
-      },
+      // loadingItem(data){
+      //   this.loading = data
+      //   this.loadingData(true)
+      // },
       
   },
   methods:{
     ...mapActions({
-      setLoading: 'main/newLoadingItem',
+      // setLoading: 'main/newLoadingItem',
     }),
-    loadingData(){
-      setTimeout(() => {
-        this.setLoading(false)
-        this.loading = false;
-      }, 1000);
-    },
+    // loadingData(){
+    //   setTimeout(() => {
+    //     this.setLoading(false)
+    //     this.loading = false;
+    //   }, 1000);
+    // },
   }
 
 })

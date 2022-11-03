@@ -82,6 +82,7 @@ plugins: [
   // { src: '~plugins/ga.js', mode: 'client' },
   // '~/plugins/gtm',
   { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
+  { src: '~/plugins/vue-observe-visibility.js', mode: 'client' },
   { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
 ],
 
@@ -128,7 +129,7 @@ modules: [
   // 'nuxt-ssr-cache',
   'nuxt-webfontloader',
   '@nuxtjs/redirect-module',
-  // 'nuxt-purgecss',
+  'nuxt-purgecss',
   // ['nuxt-vuex-localstorage', {
   //   localStorage: ['crate']
   // }],
@@ -146,10 +147,10 @@ modules: [
   //   }
   // ],
 ],
-// purgecss: {
-//   enabled: true, // Always enable purgecss
-//   safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
-// },
+purgecss: {
+  enabled: true, // Always enable purgecss
+  safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
+},
   redirect: [
     {
       from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',

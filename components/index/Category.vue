@@ -6,7 +6,7 @@
         v-for="item in category" :key="item.id"
         v-show="item.show_in_start==true"
          :sm="12" :md="12"  :xl="6" :lg="5" :xs="12">
-            <nuxt-link @click.native="handlerLoading" :to="{ name: 'catalog-catalog', params: {catalog:`${item.kirilica}`,id:`${item.id}`} }" class="nuxt-link-cat">
+            <nuxt-link :to="{ name: 'catalog-catalog', params: {catalog:`${item.kirilica}`,id:`${item.id}`} }" class="nuxt-link-cat">
                 <div class="index-topcat-block">
                     <div class="category-in-cyrcle">
                         <nuxt-img 
@@ -37,18 +37,13 @@ export default ({
     },
     computed:{
         ...mapGetters({
-            loadingItem:'main/loadingItem',
         }),
     },
     mounted(){
     },
     methods:{
         ...mapActions({
-            setLoading:'main/newLoadingItem',
         }),
-        handlerLoading(item){
-            this.setLoading(true)
-        },
     },
 })
 </script>
