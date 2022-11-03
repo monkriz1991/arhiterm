@@ -47,6 +47,8 @@ import {
   Message,
   Drawer,
   Popconfirm,
+  Skeleton,
+  SkeletonItem,
   Notification
 } from 'element-ui';
 
@@ -94,6 +96,8 @@ Vue.use(Divider);
 Vue.use(Popconfirm);
 Vue.use(Option);
 Vue.use(OptionGroup);
+Vue.use(Skeleton);
+Vue.use(SkeletonItem);
 
 Vue.use(Loading.directive);
 
