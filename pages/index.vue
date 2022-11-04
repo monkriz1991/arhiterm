@@ -4,7 +4,7 @@
       <template slot="template">
       <el-skeleton-item
           variant="caption"
-          style="width: 100%; height: 350px;border-radius: 10px;margin: 0 0 100px;"
+          class="skeleton-slider-index"
         />
       </template>
     </el-skeleton>
@@ -46,7 +46,7 @@
         callback: visibilityChanged,
       }"
       :loading="loadingTwo"
-      style="margin: 160px 0 140px;">
+      class="skeleton-index-category">
       <template slot="template" >
         <el-row :gutter="20">
             <el-col
