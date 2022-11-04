@@ -38,7 +38,9 @@
       </template>
     </el-skeleton>
     <transition name="el-fade-in-linear">
-      <Top v-if="showFirst"  :tovar="tovar"/>
+      <div :class="[showFirst==false?'show-on-class':'']">
+        <Top :tovar="tovar"/>
+      </div>
     </transition>
     <el-skeleton 
       v-observe-visibility="{
@@ -83,7 +85,9 @@
         </template>
       </el-skeleton>
     <transition name="el-fade-in-linear">
-      <Brand v-if="showTwo" :facturer="facturer"/> 
+      <div :class="[showTwo==false?'show-on-class':'']">
+        <Brand :facturer="facturer"/> 
+      </div>
     </transition>
     <div class="title">
       <h1>Архитерм - системы отопления, водоснабжения и канализации</h1>
