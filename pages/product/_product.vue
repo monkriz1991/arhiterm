@@ -1,16 +1,12 @@
 <template>
     <div class="container"> 
-        <LazyHydrate when-idle>
             <Breadcrumb/>
-        </LazyHydrate>
         <h1 class="h1-product">{{productItem.name}}</h1>
         <h2 class="h2-product">
             <i class="el-icon-office-building"></i>
             {{productItem.manufacturer_name}}
         </h2>
-        <LazyHydrate when-idle>
-            <Galery/>
-        </LazyHydrate>
+            <Galery :productItems="productItem"/>
         <div class="cost-product-section">
             <div class="cost-product-price">
                 <strong class="">1 {{result.units}}</strong>
@@ -93,12 +89,11 @@
             </div>
         </div>
         <div class="tabs-product">
-            <LazyHydrate when-visible>
                 <Tabs
                 :product_data="productItem.product"
+                :productItemDesc="productItem.description"
                 :new_char="funChar"
                 />
-            </LazyHydrate>
         </div>
         <no-ssr>
         <BasketModal  
@@ -110,7 +105,6 @@
 </template>
 
 <script>
-import LazyHydrate from 'vue-lazy-hydration';
 import { mapGetters,mapActions } from 'vuex'
 export default ({
     async asyncData ({ app, params, route, error }) {
@@ -137,7 +131,6 @@ export default ({
         }
     },
     components:{
-        LazyHydrate,
         'Breadcrumb': () => import('~/components/Breadcrumb.vue'),
         'Galery': () => import('~/components/product/Galery.vue'),
         'Tabs': () => import('~/components/product/Tabs.vue'),
@@ -197,7 +190,6 @@ export default ({
       return {
         title: this.productItem.name,
         meta: [
-          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
           {
             hid: 'description',
             name: 'description',
@@ -211,7 +203,7 @@ export default ({
           {
               hid: 'og:image',
               property: 'og:image',
-              content: `${this.productItem.img}`,
+              content: `https://new.arhiterm.by${this.productItem.img}`,
           },
           {
               hid: 'og:description',
@@ -221,7 +213,12 @@ export default ({
           {
               hid: 'og:url',
               property: 'og:url',
-              content: `https://arhiterm.by/product/${this.productItem.id}`,
+              content: `https://arhiterm.by/product/${this.productItem.kirilica_name}`,
+          },  
+          {
+              hid: 'og:type',
+              property: 'og:type',
+              content: 'product',
           }, 
         ]
       }

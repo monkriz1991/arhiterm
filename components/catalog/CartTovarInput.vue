@@ -88,12 +88,7 @@
 <script>
 import {mapGetters,mapActions} from 'vuex'
   export default {
-    // created() {
-    // },
     props:["product_data","price","discont",'units','multiplicity'],
-    components:{
-      
-    },
     data() {
       return {
         num: 1,
@@ -104,7 +99,6 @@ import {mapGetters,mapActions} from 'vuex'
         radio:0,
         priceCart:0,
         count:this.multiplicity,
-       // multiplicity:this.multiplicity,
         discont_price:this.product_data[0].discont!=null?this.product_data[0].discont:0,
         disableButton: false,
         disableRadio: false,
@@ -173,9 +167,7 @@ import {mapGetters,mapActions} from 'vuex'
       sleep(){
 
       },
-      /** Обновление кол. товара и блокировка кнопок добавить в корзину и inputnumber */
       editProduct(item){
-
         if(item=='arrNull'){
           this.handleChange(this.multiplicity)
         }

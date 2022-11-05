@@ -3,6 +3,7 @@
         <div class="galery-index">
              <el-image 
                 :src="'https://new.arhiterm.by'+productItems.img" 
+                :alt="productItems.name"
                 :preview-src-list="srcList">
             </el-image>
         </div>
@@ -12,6 +13,7 @@
             class="galery-extra-block">
             <el-image 
                 :src="img" 
+                :alt="productItems.name"
                 :preview-src-list="srcList">
             </el-image>
             <div class="galery-extra-plus" v-if="index == 1 && srcList.length > 3">
@@ -24,33 +26,23 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 export default {
-    async fetch(){
-    },
+    props:['productItems'],
     data() {
         return {
             srcList:[]
         };
     },
     computed:{
-        ...mapGetters('tovar',{
-            productItems : 'productItem'
-        })
     },
-
     methods:{
         imgGalery(){
             this.srcList = this.productItems.images.map((key)=>'https://new.arhiterm.by'+key.img);
             this.srcList.unshift('https://new.arhiterm.by'+this.productItems.img);
         },
     },
-    mounted(){
-        this.imgGalery()
-    },
     created() {
-
-    },
-    
+        this.imgGalery()
+    }, 
 }
 </script>

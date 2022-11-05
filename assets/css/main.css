@@ -4383,7 +4383,10 @@ font-size: 13px;
     border-radius: 10px;
     margin: 0 0 100px;
 }
-
+.social-footer a img{
+width: 100%;
+height: 100%;
+}
 .page404{
         font-size: 21px;
         /* text-decoration: none; */

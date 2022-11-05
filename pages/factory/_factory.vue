@@ -190,7 +190,7 @@ export default {
           {
               hid: 'og:url',
               property: 'og:url',
-              content: `https://arhiterm.by/catalog/factory/${this.factori.id}`,
+              content: `https://arhiterm.by/factory/${this.factori.kirilica}`,
           },
         ]
       }
