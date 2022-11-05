@@ -38,8 +38,18 @@ export default {
     {
         hid: 'og:url',
         property: 'og:url',
-        content: `https://arhiterm.by`,
+        content: `https://arhiterm.by/`,
     },
+    {
+      hid: 'og:locale',
+      property: 'og:locale',
+      content: 'ru_RU',
+    },
+    {
+      hid: 'og:type',
+      property: 'og:type',
+      content: 'website',
+    }, 
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -347,7 +357,7 @@ purgecss: {
       }
     }),
 
-    transpile: ['vue-lazy-hydration', 'intersection-observer'],
+    transpile: ['intersection-observer'],
     postcss: {
       plugins: {
         ...(!isDev && {

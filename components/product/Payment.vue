@@ -123,19 +123,6 @@ export default {
     }
   },
   computed:{
-
   },
-  components:{
-
-  },
-  methods:{
-
-  },
-  mounted(){
-
-  }
 }
 </script>
-<style>
-
-</style>

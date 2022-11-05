@@ -94,7 +94,6 @@
 <script>
 import { yandexMap, ymapMarker } from 'vue-yandex-maps'
 export default {
-
   data() {
     return {
         activeName: '',
@@ -102,7 +101,6 @@ export default {
         }
   },
   computed:{
-
   },
   components:{
     yandexMap, 
@@ -113,11 +111,5 @@ export default {
       this.coords = e.get('coords');
     }
   },
-  mounted(){
-
-  },
 }
 </script>
-<style>
-
-</style>

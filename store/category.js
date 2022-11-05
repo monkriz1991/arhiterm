@@ -45,7 +45,7 @@ export const actions = {
      */
     async getCategory ({ commit }) {
         // await sleep(50)
-        let category = await this.$axios.$get(`/catalog/categories/?limit=40`);
+        let category = await this.$axios.$get(`/catalog/categories-simple/?limit=40`);
         commit('setCategory', category.results)
         return category.results
     },
@@ -72,13 +72,13 @@ export const actions = {
     },
     async getCategoryIndex ({ commit}) {
         // await sleep(50)
-        let category = await this.$axios.$get(`/catalog/categories/?limit=45`);
+        let category = await this.$axios.$get(`/catalog/categories-simple/?limit=40`);
         commit('setCategoryIndex', category)
         return category
     },
     async getManufacturer({ commit}) {
         // await sleep(50)
-        let result = await this.$axios.$get(`/manufacturer/get/?is_active=true&limit=45`);
+        let result = await this.$axios.$get(`/manufacturer/random-simple/get/?show_in_start=true&limit=45`);
         commit('setManufacturer', result)
         return result
     },

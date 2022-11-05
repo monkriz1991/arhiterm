@@ -15,11 +15,10 @@
         </div>
     </el-tab-pane>
     <el-tab-pane
-     v-if="$store.state.tovar.productItem.description!=''"
      label="Описание">
         <div 
         class="tabs-description"
-        v-html="$store.state.tovar.productItem.description"></div>
+        v-html="productItemDesc"></div>
     </el-tab-pane>
     <!-- <el-tab-pane label="Сертификаты">Role</el-tab-pane> -->
   </el-tabs>
@@ -28,18 +27,19 @@
 
 <script>
   export default {
+    props:['product_data','new_char','productItemDesc'],
     mounted() {
       if (process.browser){
         window.addEventListener('resize', this.updateWidth);
         this.updateWidth();
       }
     },
-    props:['product_data','new_char'],
     data() {
       return {
         char_start:this.product_data[0],
         tabPosition: 'left',
         width: 0,
+        tabShow:true?this.productItemDesc!='':false,
       };
     },
     watch: {
