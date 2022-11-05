@@ -2,8 +2,8 @@
     <div class="container"> 
             <Breadcrumb/>
         <h1 class="h1-product">{{productItem.name}}</h1>
+        <!-- <i class="el-icon-office-building"></i> -->
         <h2 class="h2-product">
-            <i class="el-icon-office-building"></i>
             {{productItem.manufacturer_name}}
         </h2>
             <Galery :productItems="productItem"/>
