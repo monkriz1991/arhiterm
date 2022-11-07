@@ -22,7 +22,6 @@
             <el-breadcrumb-item
             v-if="this.$route.name=='catalog-catalog'"
             >
-            
                 <nuxt-link :to="{ name: 'catalog-catalog', params: {catalog:`${nameCat.kirilica}`,id:`${nameCat.kirilica}`} }">
                     {{nameCat.name}}
                 </nuxt-link>
@@ -34,7 +33,6 @@
                     {{factory.name}}
                 </nuxt-link>
             </el-breadcrumb-item>
-            
             <el-breadcrumb-item
             v-else-if="this.$route.name=='product-product'"
             >
@@ -51,7 +49,6 @@
         </el-breadcrumb>
     </div>
 </template>
-
 
 <script>
 import {mapGetters} from 'vuex'
@@ -74,7 +71,6 @@ export default {
           items:[]
         }
     },
-
     watch:{
         $route(){
             this.getRoute()
@@ -85,7 +81,6 @@ export default {
             nameCat:'category/categoryNested',
             nameProduct:'tovar/productItem'
         }),
-
     },
     methods:{
         getRoute(){
@@ -94,43 +89,26 @@ export default {
         to() {
             this.$router.go(-1);
         },
-        getPath(queryString){
-
+            getPath(queryString){
         }
     },
     beforeMount(){
         this.queryString = this.$route.params.product
-       
     },
     created(){
         this.getRoute()
     },
     mounted(){
-      if(this.queryString!=undefined){
-          if(this.$nuxt.context.from!=undefined){
-
+        if(this.queryString!=undefined){
             this.$axios.get(`/api/get/product?kirilica=${this.queryString}`).then(result =>(
                 this.results_prod = result.data.cat[0],
-                      this.$axios.get(`/catalog/categories/${this.results_prod}`).then(result =>(
-                          this.results_prod = result.data.name,
-                          this.results_name = result.data.kirilica,
-                          this.results_id = result.data.id
-                      ))  
-                
-            ))
-
-        }else{
-            this.$axios.get(`/api/get/product?kirilica=${this.queryString}`).then(result =>(
-                this.results_prod = result.data.cat[0],
-                      this.$axios.get(`/catalog/categories/${this.results_prod}`).then(result =>(
-                          this.results_prod = result.data.name,
-                          this.results_name = result.data.kirilica,
-                          this.results_id = result.data.id
-                      ))  
-                
+                    this.$axios.get(`/catalog/categories/${this.results_prod}`).then(result =>(
+                        this.results_prod = result.data.name,
+                        this.results_name = result.data.kirilica,
+                        this.results_id = result.data.id
+                ))  
             ))
         }
-      }
     },
 };
 </script>
