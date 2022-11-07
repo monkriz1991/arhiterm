@@ -14,10 +14,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'yandex-verification', content: '1053ce585032d00b' },
-      { name: 'yandex-verification', content: '14bc6c473eba7381' },
       { name: 'google', content: 'notranslate' },
       { name: 'google-site-verification', content: 'XXP2MkYaAs0LKj5RuVVah-wMhFxrUmfV5rOUu9qihSY' },
-      { name: 'google-site-verification', content: 'pffvbs0GyslCUgg16m88GzyCeE8tIXtFV8_yrWKWKhQ' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=5 shrink-to-fit=no' },
       { hid: 'description', name: 'description', content: 'Первый поставщик профессиональных решений для систем отопления, водоснабжения и канализации ведущих европейских производителей. Оптовая и розничная продажа, наличие наскладе, низкие цены, скидки, гарантии.' },
       {
@@ -136,13 +134,13 @@ modules: [
   // '@nuxtjs/gtm',
   '@nuxtjs/auth-next',
   '@nuxtjs/sitemap',
-  // 'nuxt-ssr-cache',
+  'nuxt-ssr-cache',
   'nuxt-webfontloader',
   '@nuxtjs/redirect-module',
   'nuxt-purgecss',
-  // ['nuxt-vuex-localstorage', {
-  //   localStorage: ['crate']
-  // }],
+  ['nuxt-vuex-localstorage', {
+    localStorage: ['crate']
+  }],
   // [
   //   '@nuxtjs/yandex-metrika',
   //   {

@@ -2,20 +2,26 @@
     <div class="container"> 
             <Breadcrumb/>
         <h1 class="h1-product">{{productItem.name}}</h1>
-        <!-- <i class="el-icon-office-building"></i> -->
-        <h2 class="h2-product">
-            {{productItem.manufacturer_name}}
-        </h2>
-            <Galery :productItems="productItem"/>
+        <div class="product-top">
+            <i class="el-icon-office-building manuf-name"></i> 
+            <h2 class="h2-product">
+                {{productItem.manufacturer_name}}
+            </h2>
+            <h3 class="h3-product">
+                -
+                {{productItem.mfr_name}}
+            </h3>
+        </div>
+        <Galery :productItems="productItem"/>
         <div class="cost-product-section">
             <div class="cost-product-price">
-                <strong class="">1 {{result.units}}</strong>
-                <b>:</b>
                 <span :class="{ butDiscount: discont}">{{price}}</span>
                 <strong>руб.</strong>
                 <div v-if="discont" class="catalog-list-block-discount">
                     <strong>{{discont}}<span>руб/{{result.units}}</span></strong>
                 </div>
+                <strong class="cost-product-price-unit">1 {{result.units}}</strong>
+                <b>/</b>
             </div>
             <div class="kod-product">
                 <el-tooltip class="item" effect="dark" content="Код товара" placement="top-start">
