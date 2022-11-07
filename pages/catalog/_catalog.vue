@@ -25,10 +25,6 @@
             <SliderCat  />
           </div>
         </transition>
-          <div 
-          v-if="!adaptivSidebar"
-          class="name-category"
-          >{{categoriesNested.name}}</div>
           <div v-if="adaptivSidebar">
           <el-skeleton
           :loading="loadingFirst"
@@ -58,12 +54,25 @@
           />
         </el-drawer>
 
+        <el-skeleton
+          :loading="loadingFirst"
+          v-if="!adaptivSidebar"
+          :rows="2" 
+          class="skeleton-sidebar-filter"
+          >
+        </el-skeleton>
+        <div 
+        v-if="!adaptivSidebar"
+        class="name-category"
+        v-show="showFirst"
+        >{{categoriesNested.name}}</div>
         <el-button
         v-if="!adaptivSidebar"
         @click="drawer = true"
         class="drawer-button"
         icon="el-icon-s-operation"
         size="small"
+        v-show="showFirst"
         >
           Фильтры
         </el-button>
@@ -203,7 +212,7 @@ export default {
         width:0,
         showFirst:false,
         loadingFirst: true,
-        timeStart:1000,
+        timeStart:800,
       }
   },
   watch:{

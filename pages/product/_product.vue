@@ -7,7 +7,7 @@
             <h2 class="h2-product">
                 {{productItem.manufacturer_name}}
             </h2>
-            <h3 class="h3-product">
+            <h3 v-if="productItem.mfr_name" class="h3-product">
                 -
                 {{productItem.mfr_name}}
             </h3>
