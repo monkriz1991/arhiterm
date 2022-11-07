@@ -203,7 +203,7 @@ export default {
         width:0,
         showFirst:false,
         loadingFirst: true,
-        timeStart:1300,
+        timeStart:1000,
       }
   },
   watch:{

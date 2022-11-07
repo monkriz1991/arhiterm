@@ -1,13 +1,13 @@
 <template>
     <div class="galery">
-        <div class="galery-index">
+        <div class="galery-index" :class="{ 'galery-index-one': srcList.length==1 }">
              <el-image 
                 :src="'https://new.arhiterm.by'+productItems.img" 
                 :alt="productItems.name"
                 :preview-src-list="srcList">
             </el-image>
         </div>
-        <div class="galery-extra">
+        <div class="galery-extra" :class="{ 'galery-index-one-none': srcList.length==1 }">
             <div 
             v-for="(img,index) in srcList.slice(1, 3)" :key="img.id"
             class="galery-extra-block">

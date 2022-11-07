@@ -5,6 +5,14 @@
                 <span>{{priceCart}}</span>
                 <strong>руб</strong>
             </div>
+            <el-input-number
+                v-model="num"
+                :step="multiplicity"
+                :disabled="disableButton"
+                size="mini"
+                @change="handleChange" :min="multiplicity"
+                ></el-input-number>
+                <span class="units"><b>|</b>{{units}}</span>
                 <el-popover
                 v-if="multiplicity>1"
                 placement="top"
@@ -23,14 +31,8 @@
                   circle
                   ></el-button>
                 </el-popover>
-                <span class="units"><b>|</b>{{units}}</span>
-                <el-input-number
-                v-model="num"
-                :step="multiplicity"
-                :disabled="disableButton"
-                size="mini"
-                @change="handleChange" :min="multiplicity"
-                ></el-input-number>
+             
+
         </div>
         <div class="cost-product-input">
             <strong>{{name_radioGroup}}</strong>

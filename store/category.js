@@ -78,13 +78,13 @@ export const actions = {
     },
     async getManufacturer({ commit}) {
         // await sleep(50)
-        let result = await this.$axios.$get(`/manufacturer/get/?is_active=true&limit=99999`);
+        let result = await this.$axios.$get(`/manufacturer/random-simple/get/?limit=99`);
         commit('setManufacturer', result)
         return result
     },
     async getManuf({ commit}) {
         // await sleep(50)
-        let result = await this.$axios.$get(`/manufacturer/get/?is_active=true&limit=99999`);
+        let result = await this.$axios.$get(`/manufacturer/random-simple/get/?limit=99`);
         commit('setManuf', result)
         return result
     }
