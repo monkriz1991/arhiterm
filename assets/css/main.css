@@ -2241,7 +2241,7 @@ font-weight: 500;
 .el-dialog__wrapper .cost-product-block>.el-button{
     padding: 14px 38px!important;
     font-size: 13px!important;
-    margin: 0 0 20px;
+    margin: 0 0 0px;
 }
 
 .catalog-list-input>div>.el-button.is-disabled{
@@ -4115,6 +4115,8 @@ font-size: 13px;
     width: 100%;
     border-bottom: 1px solid transparent;
     cursor: pointer;
+    background: #fff;
+    border-radius: 6px;
 }
 .bottom-bar-con{
 
@@ -5008,7 +5010,7 @@ height: 100%;
         position: fixed;
         bottom: 45px;
         left: 10px;
-        z-index: 22;
+        z-index: 12;
     }
     .product-top {
         margin: 0px 0 5px;
@@ -5029,7 +5031,7 @@ height: 100%;
 
     }
     .h2-product{
-        margin: 0px 0 10px;
+        margin: 2px 0 10px;
         font-size: 12px;
     }
 
