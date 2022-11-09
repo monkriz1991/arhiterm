@@ -111,7 +111,7 @@
         v-show="showFirst"
         />
         </transition>
-        <Paginated v-if="showFirst"/>
+        <Paginated v-show="showFirst"/>
         <div v-show="showFirst" v-html="categoriesNested.description" class="cat-desc"></div>
     </div>
 </template>
@@ -217,7 +217,6 @@ export default {
   },
   watch:{
     $route (to, from){
-      this.$UpdsaveArr(to);
       let parametrs = {}
       let arr_filter = []
       let object_tabs = {}

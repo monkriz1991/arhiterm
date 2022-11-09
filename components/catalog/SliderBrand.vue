@@ -3,9 +3,9 @@
         <el-row style="margin-left:-10px;margin-right:-10px;">
             <hooper :settings="hooperSettings">
                 <slide
-                v-for="item in category" :key="item.id"
+                v-for="item in facturer.results" :key="item.id"
                 >
-                        <nuxt-link  :to="{ name: 'catalog-catalog', params: {catalog:`${item.kirilica}`,id:`${item.id}`} }" class="nuxt-link-cat">
+                        <nuxt-link  :to="{ name: 'factory-factory', params: {factory:`${item.kirilica}`,id:`${item.id}`} }" class="nuxt-link-cat">
                         <div class="index-topcat-block">
                             <div class="category-in-cyrcle">
                                 <nuxt-img 
@@ -28,7 +28,6 @@
     </div>
 </template>
 
-
 <script>
 import { mapGetters,mapActions } from 'vuex'
 import { Hooper, Slide,
@@ -37,7 +36,7 @@ Navigation  as HooperNavigation} from 'hooper';
 import 'hooper/dist/hooper.css';
 export default ({
     async fetch() {
-        await this.$store.dispatch('category/getCategoryIndex')
+        await this.$store.dispatch('category/getManufacturer')
     },
     components: {
         Hooper,
@@ -71,15 +70,10 @@ export default ({
     },
     computed:{
       ...mapGetters({
-        category: 'category/categoryIndex',
+        facturer: 'category/manufacturer',
       })
     },
-    mounted(){
-
-    },
     methods:{
-        ...mapActions({
-        }),
     }
 })
 </script>
