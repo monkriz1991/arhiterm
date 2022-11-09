@@ -47,7 +47,7 @@
                             v-on:click="toggleActive(idx)"
                             type="danger" plain  size="mini" circle
                             >
-                                <i :class="['el-icon-shopping-cart-1']"></i>
+                                <i :class="['el-icon-zoom-in']"></i>
                             </el-button>
                         </div>
                     </div>

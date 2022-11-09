@@ -275,7 +275,6 @@ export default {
         DELL_TABS:'product/DELL_TABS',
     }),
     setLoading() {
-      console.log(this.timeAsynk)
         setTimeout(() => (
           this.loadingFirst = false,
           this.showFirst = true

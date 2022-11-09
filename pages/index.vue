@@ -144,13 +144,13 @@ export default {
         setTimeout(() => (
           this.loadingFirst = false,
           this.showFirst = true
-          ), 1000)
+          ), 800)
       },
       setLoadingScroll() {
         setTimeout(() => (
           this.loadingTwo = false,
           this.showTwo = true
-          ), 1000)
+          ), 800)
       },
     ...mapActions({
       }),

@@ -40,6 +40,7 @@
             @addToCart = "addToCart"
             @NewChar = "funNewChar"
             @toggleModal = "toggleModal"
+            @addToChosen = "addToChosen"
             />
             <div class="dilivery-cart-block">
                 <no-ssr>
@@ -163,8 +164,14 @@ export default ({
             cart.product[0]['count_el'] = data.count_el;
             cart.product[0]['multiplicity'] = data.multiplicity;
             cart['img'] = 'https://new.arhiterm.by'+cart['img'];
-            console.log(cart)
             this.ADD_TO_CART(cart)
+        },
+        addToChosen(data){
+            let cart = JSON.parse(JSON.stringify(this.productItem));
+            let ret =  cart.product.filter((item)=> item.id == data.data.id);
+            cart.product = ret;
+            cart['img'] = 'https://new.arhiterm.by'+cart['img'];
+            // console.log(cart)
         },
         funNewChar(data){
             return this.funChar = data
