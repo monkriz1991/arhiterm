@@ -52,7 +52,7 @@ export default ({
     data() {
         return {
             hooperSettings: {
-                infiniteScroll: true,
+                infiniteScroll: false,
                 wheelControl:false,
                 breakpoints: {
                     300: {

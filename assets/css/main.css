@@ -4941,6 +4941,9 @@ height: 100%;
 
 
 @media (max-width: 1100px){
+    .cost-product-char p>strong {
+        font-size: 12px;
+    }
     .catalog-list .el-dialog {
         margin: 0 auto 120px;
     }
@@ -5004,9 +5007,9 @@ height: 100%;
         font-size: 17px;
     }    
     .cost-product-block>.el-button {
-        padding: 14px 38px!important;
-        font-size: 13px!important;
-        box-shadow: 0px 11px 33px -13px #f90;
+        padding: 13px 35px!important;
+        font-size: 12px!important;
+        box-shadow: 0 11px 33px -13px #f90;
         position: fixed;
         bottom: 45px;
         left: 10px;
@@ -5501,7 +5504,7 @@ height: 100%;
         padding-right: 40px;
     }
     .el-tabs__item{
-        font-size: 13px !important;
+        font-size: 12px !important;
         padding: 0 20px 0 0 !important;
     }
     .el-tabs__active-bar{

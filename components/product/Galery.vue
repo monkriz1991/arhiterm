@@ -4,6 +4,7 @@
              <el-image 
                 :src="'https://new.arhiterm.by'+productItems.img" 
                 :alt="productItems.name"
+                lazy
                 :preview-src-list="srcList">
             </el-image>
         </div>
@@ -13,6 +14,7 @@
             class="galery-extra-block">
             <el-image 
                 :src="img" 
+                lazy
                 :alt="productItems.name"
                 :preview-src-list="srcList">
             </el-image>

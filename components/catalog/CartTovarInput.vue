@@ -82,7 +82,12 @@
           <span v-if="disableButton === false">В корзину</span>
           <span v-else>В корзине</span>
         </el-button>
-     
+        <!-- <el-button
+          type="danger"
+          @click="addToChosen"
+          icon="el-icon-document-add"
+        > -->
+        </el-button>
     </div>
 </template>
 
@@ -154,6 +159,9 @@ import {mapGetters,mapActions} from 'vuex'
         this.disableButton = 'hiden'
       }
 
+      },
+      addToChosen(){
+        this.$emit('addToChosen',{data:this.active_id==null?this.product_data[0]:this.active_id})
       },
       /** Добавление товара в корзину */
       addToCart(){
