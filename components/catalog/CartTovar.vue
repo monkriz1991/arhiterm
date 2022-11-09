@@ -31,12 +31,9 @@
                         >
                         <nuxt-img 
                         provider="twicpics"
-                        sizes="sm:200px md:400px lg:800px"
                         loading="lazy" 
                         :src="product.img.substring(24)" 
                         :alt="product.name"
-                        width="1024"
-                        height="800"
                         quality="75"
                         />
                         </nuxt-link>
@@ -183,16 +180,18 @@ export default {
         handleClose(item){
             let filter = ''
             this.UPDATE_TABS(item)
+           
             if(this.tabsArr.card_filter_rus!=''){
-            for(let item in this.categoriesNested.list_filter){         
-                for(let itemin in this.categoriesNested.list_filter[item].chice){       
-                    for(let fill in this.tabsArr.card_filter_rus){
-                        if(this.tabsArr.card_filter_rus[fill]==this.categoriesNested.list_filter[item].chice[itemin].value){
-                            filter +=this.categoriesNested.list_filter[item].chice[itemin].kirilica +','
+                console.log(this.categoriesNested)
+                for(let item in this.categoriesNested.list_filter){         
+                    for(let itemin in this.categoriesNested.list_filter[item].chice){       
+                        for(let fill in this.tabsArr.card_filter_rus){
+                            if(this.tabsArr.card_filter_rus[fill]==this.categoriesNested.list_filter[item].chice[itemin].value){
+                                filter +=this.categoriesNested.list_filter[item].chice[itemin].kirilica +','
+                            }
                         }
-                    }
+                    } 
                 } 
-            } 
                 if(this.tabsArr.manuf!=undefined){
                     this.ManufItem = this.tabsArr.manuf.join(',')
                 }
@@ -234,7 +233,11 @@ export default {
             
         },  
         checkFilRoute(FilterItem,ManufItem){
-            this.$router.replace({ name: "catalog-catalog", params: {catalog:this.$route.params.catalog}, query: {card_filter:FilterItem,manuf:ManufItem} })
+            if(this.$route.name=='catalog-catalog'){
+                this.$router.replace({ name: "catalog-catalog", params: {catalog:this.$route.params.catalog}, query: {card_filter:FilterItem,manuf:ManufItem} })
+            }else if(this.$route.name=='factory-factory'){
+                this.$router.replace({ name: "factory-factory", params: {factory:this.$route.params.factory}, query: {card_filter:FilterItem} })
+            }
         },
         hidePreload(item){
             setTimeout(() => {

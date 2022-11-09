@@ -86,8 +86,8 @@
           type="danger"
           @click="addToChosen"
           icon="el-icon-document-add"
-        > -->
-        </el-button>
+        >
+        </el-button> -->
     </div>
 </template>
 

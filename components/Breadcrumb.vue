@@ -36,7 +36,7 @@
             <el-breadcrumb-item
             v-else-if="this.$route.name=='product-product'"
             >
-                <nuxt-link :to="{ name: 'catalog-catalog', params: {catalog:`${results_name}`,id:`${results_id}`} }">
+                <nuxt-link v-if="results_prod" :to="{ name: 'catalog-catalog', params: {catalog:`${results_name}`,id:`${results_id}`} }">
                     {{results_prod}}
                 </nuxt-link>
             </el-breadcrumb-item>

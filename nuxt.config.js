@@ -86,7 +86,7 @@ render: {
 plugins: [
   '@/plugins/element-ui',
   '@/plugins/backbutton.js',
-  '~/plugins/url-change.js',
+  // '~/plugins/url-change.js',
   // { src: '~plugins/ga.js', mode: 'client' },
   // '~/plugins/gtm',
   { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
