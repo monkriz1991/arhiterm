@@ -2,7 +2,7 @@
     <div class="cat-filter-section">
       <div class="cat-filter">
         <div class=" cat-filter-img">
-          <el-image :src="categoriesNested.img"></el-image>
+          <el-image :alt="'Логотип производителя ' + categoriesNested.name" :src="categoriesNested.img"></el-image>
           <h1  class="cat-filter-title">{{categoriesNested.name}}</h1>
         </div>
         <ul
