@@ -283,8 +283,3 @@ export default {
     }
 }
 </script>
-<style>
-.drawer-button{
-margin:0 0 15px;
-}
-</style>

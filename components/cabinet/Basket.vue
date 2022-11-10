@@ -1,9 +1,12 @@
 <template>
-    <div class="cab-user-colaps">
+<div>
+    <div 
+    v-for="(items,k) in allBaskets" :key="k" 
+    class="cab-user-colaps">
         <div class="basket-templ-status">
             <el-button 
             class="basket-templ-status-button"
-            @click="RepeatOrder(basket_for.id)"
+            @click="RepeatOrder(items.id)"
             :disabled="Buttondisabled">
             Повторить заказ
             </el-button>
@@ -19,21 +22,22 @@
 
             <!-- <span>{{status}}</span> -->
         </div>
-        <el-collapse accordion>
+        <el-collapse
+        accordion>
             <el-collapse-item name="idx">
                 <template slot="title">
                 <div class="cab-block-basket-templ">
-                    <span hidden>Позиций:<strong>{{basket_for!==undefined?basket_for.length:0}}</strong></span>
+                    <span hidden>Позиций:<strong>{{items!==undefined?items.length:0}}</strong></span>
                 </div>
                 <div class="cab-block-basket-templ">
                     <span>Итого:
-                        <strong>{{allCost}}<span>руб.</span></strong>
+                        <strong>{{items.sum_cart}}<span>руб.</span></strong>
                     </span>
-                  <span class="cab-block-basket-data"> {{ '   ' + new Date(basket_for.date_upd).toLocaleString('ru')}}</span>
+                  <span class="cab-block-basket-data"> {{ '   ' + new Date(items.date_upd).toLocaleString('ru')}}</span>
                 </div>
                 </template>
                 <div
-                v-for="(item,idx) in basket_for.cart_prodicts" :key="idx"
+                v-for="(item,idx) in items.cart_prodicts" :key="idx"
                 >
                 <div class="cab-block-basket">
                     <div class="cab-block-basket-img">
@@ -70,17 +74,17 @@
             @clickModal = "toggleModal"
             :dialogFormVisibleModal.sync="dialogFormVisibleModal"/>
     </div>
+</div> 
 </template>
 
 <script>
 import BasketModal from '~/components/BasketModal.vue'
 import {mapGetters, mapActions} from "vuex";
 export default {
-    props:['basket_for'],
+    props:['allBaskets'],
     data() {
         return{
             status:'заказ',
-            allCost:0,
             Buttondisabled :false,
             dialogFormVisibleModal:false,
         }
@@ -94,13 +98,9 @@ export default {
     computed:{
         ...mapGetters({
             basket:'crate/basket',
-            allBaskets:'main/allBaskets',
         })
     },
     watch:{
-        allBaskets(){
-            this.amount()
-        },
         '$store.state.crate.basket': function() {
             if(this.basket.length!=0){
                 this.Buttondisabled = true
@@ -125,15 +125,11 @@ export default {
             if(this.basket.length!=0){
                 this.Buttondisabled = true
             }
-          if(!this.basket_for.closed){
+          if(!this.allBaskets.closed){
             this.status = "заказ"
           }else{
             this.status = "заказ"
           }
-            for(let i of this.basket_for.cart_prodicts){
-                this.allCost += i.sum_price-0
-            }
-            this.allCost = Math.floor(this.allCost*100)/100
         },
         baseUrl(){
           return this.$axios.defaults.baseURL

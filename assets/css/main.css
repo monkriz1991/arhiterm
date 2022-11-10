@@ -3,6 +3,34 @@
     font-display: swap;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+html {
+    font-family:'Monserrat',
+      'Source Sans Pro',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+    font-size: 16px;
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+  }
+.drawer-button{
+    margin:0 0 15px;
+}
 footer{
     margin: 40px 0 0 0;
     padding: 100px 0 60px;
@@ -5092,6 +5120,12 @@ height: 100%;
     margin: 160px 0 140px;
 }
 @media (max-width: 991px){
+    .cab-block-basket-templ {
+        height: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
     .skeleton-slider-index{
         width: 100%; 
         height: 280px !important;
@@ -5535,7 +5569,13 @@ height: 100%;
         display: block !important;
     }
     .cost-product-char{
-        padding: 10px 0 0px;
+        padding: 0px 0 0px;
+    }
+    .cost-product-input {
+        margin: 0px 0 5px 0;
+    }
+    .dilivery-cart-block .el-drawer__header{
+        margin-bottom: 0px !important;
     }
     .cost-product-amount .el-input-number--mini .el-input__inner {
         padding-left: 40px;
@@ -5987,7 +6027,9 @@ height: 100%;
         font-size: 12px !important;     */
     }
     .cab-user-colaps .el-collapse-item__header{
-        padding: 30px 20px;
+        padding: 10px 20px;
+        height: auto;
+        line-height: 1.2;
     }
     .profile-cab-right {
         padding: 0 0 0 0px !important;
@@ -6172,12 +6214,19 @@ height: 100%;
         float: left;
         display: contents;
     }
+    .el-tab-pane-on{
+        display: block !important;
+        margin: 50px 0 0;
+    }
+    .el-tabs__header{
+        display: none;
+    }
     .cabinet-avatar{
         float: left;
     }
     .cabinet-avatar .avatar{
-        width: 130px;
-        height: 130px;
+        width: 100px;
+        height: 100px;
     }
     .profile-cab-left-pass{
         margin: 0 0 0 0px;
@@ -6214,7 +6263,8 @@ height: 100%;
         z-index: 9;
     }
     .cab-block-basket-templ>span {
-        font-size: 11px;
+        font-size: 10px;
+        margin: 0 0 5px 0;
         width: 100%;
     }
     .cab-block-basket {
