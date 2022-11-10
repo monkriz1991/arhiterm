@@ -111,7 +111,16 @@
           />
         </transition>
         <Paginated/>
-
+        <div v-show="showFirst" class="cat-desc">
+          <el-collapse  accordion>
+            <el-collapse-item name="1">
+              <template slot="title">
+                Описание раздела <i class="header-icon el-icon-info"></i>
+              </template>
+              <div v-show="showFirst" v-html="factori.description"></div>
+            </el-collapse-item>
+          </el-collapse>
+        </div>
     </div>
 </template>
 

@@ -13,7 +13,7 @@
                                 sizes="sm:100px md:100px lg:100px"
                                 loading="lazy" 
                                 :src="item.img.substring(24)" 
-                                :alt="item.name"
+                                :alt="'Логотип производителя ' + item.name"
                                 presets="product"
                                 />
                             </div>

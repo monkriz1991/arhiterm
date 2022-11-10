@@ -112,7 +112,16 @@
         />
         </transition>
         <Paginated v-show="showFirst"/>
-        <div v-show="showFirst" v-html="categoriesNested.description" class="cat-desc"></div>
+        <div v-show="showFirst" class="cat-desc">
+          <el-collapse  accordion>
+            <el-collapse-item name="1">
+              <template slot="title">
+                Описание раздела <i class="header-icon el-icon-info"></i>
+              </template>
+              <div v-show="showFirst" v-html="categoriesNested.description"></div>
+            </el-collapse-item>
+          </el-collapse>
+        </div>
     </div>
 </template>
 <script>

@@ -1928,7 +1928,7 @@ font-weight: 500;
 .tabs-product{
     float: left;
     width: 100%;
-    margin: 50px 0 20px;
+    margin: 20px 0 20px;
 }
 .tabs-product .el-tabs__content{
     padding: 0 15px;
@@ -2163,7 +2163,7 @@ font-weight: 500;
     width: 100%; */
     margin: 0px 0 0;
     position: relative;
-    padding: 10px 0 0px;
+    padding: 20px 0 0px;
 }
 .padding-char{
     padding: 5px 0;
@@ -5119,6 +5119,9 @@ height: 100%;
 .skeleton-index-category{
     margin: 160px 0 140px;
 }
+.tabs-product .el-tabs--left .el-tabs__header.is-left {
+    padding: 20px 0 0;
+}
 @media (max-width: 991px){
     .cab-block-basket-templ {
         height: 35px;
@@ -5572,7 +5575,7 @@ height: 100%;
         padding: 0px 0 0px;
     }
     .cost-product-input {
-        margin: 0px 0 5px 0;
+        margin: 0px 0 10px 0;
     }
     .dilivery-cart-block .el-drawer__header{
         margin-bottom: 0px !important;
