@@ -15,6 +15,7 @@
         </div>
     </el-tab-pane>
     <el-tab-pane
+    class="el-tab-pane-on"
      label="Описание">
         <div 
         class="tabs-description"

@@ -51,11 +51,11 @@
             class="header-nav-refresh">
                 <div v-if="visibleNav==true" >
                     <div class="button-svg-meny-cat"></div>
-                    <span>каталог</span>
+                    <span>Бренды</span>
                 </div>
                 <div class="button-svg-meny" v-else>
                     <div class="button-svg-meny-brand"></div>
-                    <span>Бренды</span>
+                    <span>каталог</span>
                 </div>
             </div>
         </div>

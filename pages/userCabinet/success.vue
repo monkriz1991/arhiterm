@@ -1,7 +1,6 @@
 <template>
     <no-ssr>
         <div class="container">
-            <!-- <NavbarCabinet/>  -->
             <div class="succes-block">
                 <h2><i class="el-icon-check"></i> 
                 Ваш заказ принят. Благодарим вас.</h2>
@@ -80,7 +79,6 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
-import NavbarCabinet from '~/components/cabinet/NavbarCabinet.vue'
 export default {
     middleware: ['auth'],
     data() {
@@ -88,7 +86,6 @@ export default {
       }  
     },
       components:{
-        NavbarCabinet,
     },
     computed:{
         ...mapGetters({

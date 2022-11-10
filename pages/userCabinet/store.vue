@@ -3,12 +3,9 @@
     <div class="container">
         <NavbarCabinet/>
         <h1 class="h1-user-cab">Мои заказы</h1>
-        <Basket
-        v-if="allBaskets!==undefined"
-        v-for="(b,k) in allBaskets" :key="k"
-        :basket_for.sync="b"
-        />
-        <h4 v-else>У вас нет открытых корзин</h4>
+          <Basket
+            :allBaskets="allBaskets"
+          />
         <Paginated/>
     </div>
     </no-ssr>
@@ -16,31 +13,22 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
-import NavbarCabinet from '~/components/cabinet/NavbarCabinet.vue'
-import Basket from '~/components/cabinet/Basket.vue'
-import Paginated from '~/components/cabinet/Paginated.vue'
 export default {
-   middleware: ['auth'],
-    data() {
-      return{
-
-      }
-    },
-  mounted() {
+  middleware: ['auth'],
+  data() {
+    return{
+    }
   },
   components:{
-        NavbarCabinet,
-        Basket,
-        Paginated
-    },
-    computed:{
-        ...mapGetters({
-            basket:'main/basket',
-            allBaskets:'main/allBaskets',
-        })
-    },
-  methods:{
-
-  }
+  'NavbarCabinet': () => import('~/components/cabinet/NavbarCabinet.vue'),
+  'Basket': () => import('~/components/cabinet/Basket.vue'),
+  'Paginated': () => import('~/components/cabinet/Paginated.vue'),
+  },
+  computed:{
+    ...mapGetters({
+        basket:'main/basket',
+        allBaskets:'main/allBaskets',
+    })
+  },
 }
 </script>
