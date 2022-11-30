@@ -49,9 +49,13 @@ import {
   Popconfirm,
   Skeleton,
   SkeletonItem,
-  Notification
+  Notification,
+  Table,
+  TableColumn
 } from 'element-ui';
 
+Vue.use(Table);
+Vue.use(TableColumn);
 Vue.use(Pagination);
 Vue.use(Dialog);
 Vue.use(Autocomplete);
