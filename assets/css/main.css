@@ -2431,12 +2431,12 @@ body .el-dialog__body{
     text-decoration: none;
     display: flex;
     flex-wrap: wrap;
-    align-content: center;
+    align-content: baseline;
     justify-content: center;
-    align-items: flex-start;
+    align-items: baseline;
     flex-direction: column;
     text-align: left;
-    max-width: 400px;
+    max-width: 480px;
 }
 
 /* .el-carousel__item:nth-child(2n) .slider-content{
@@ -2450,14 +2450,16 @@ body .el-dialog__body{
     transform: scale(1.06);
 }
 .slider-content h3{
-    line-height: 1.3em !important;
-    margin: 0 0 20px !important;
+    margin: 0 0 0 0px !important;
     color: #fff !important;
-    opacity: 0.9 !important;
-    font-size: 22px !important;
-    max-width: 410px;
-    font-weight: 600;
-    text-shadow: 0px -2px 23px #33333338;
+    font-size: 35px !important;
+    /* text-shadow: 0px -2px 23px #33333399; */
+    font-weight: 800;
+    text-transform: uppercase;
+    max-width: 480px;
+    line-height: 1.2 !important;
+    text-align: left;
+    opacity: 1 !important;
 }
 .slider-content p{
     color: #fff;
@@ -2470,7 +2472,7 @@ body .el-dialog__body{
     -o-object-fit: cover;
     object-fit: contain;
     height: 70%;
-    width: 45%;
+    width: 41%;
     position: absolute;
     top: 15%;
     right: 5%;
@@ -5509,7 +5511,7 @@ height: 100%;
         margin: 0 0 40px;
     }
     .slider-content{
-        padding: 20px 100px 20px 20px;
+        padding: 20px 130px 20px 20px;
     }
     .index-slider .el-carousel__arrow{
         top: 89%;
@@ -5519,9 +5521,10 @@ height: 100%;
         right: 60px;
     }
     .slider-content h3{
-        font-size: 17px!important;
+        font-size: 20px!important;
         font-weight: 900;
         margin: 0 0 15px!important;
+        word-break: break-word;
     }
     .slider-content p {
         line-height: 1.6;

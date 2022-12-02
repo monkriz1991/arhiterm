@@ -18,10 +18,11 @@
                 <p>Цены до 50% ниже на аналогичный полипропилен от Wavin EKoplastik ( серого цвета ).</p>
             </div>
             <div  class="product-sales-fail">
-                <a :href="'/therm/BKO12545XX-photo.jpg'" 
+                <a href="https://new.arhiterm.by/media/manuf/WAVIN_EKOPLASTIK_THERM_PLUS.pdf" 
                 download
+                target="_blank"
                 class="btn btn-light btn-sm mr-1 mt-2">
-                Скачать всю номенклатуру остатков Wavin EKoplastik Therm PLUS
+                Открыть всю номенклатуру остатков Wavin EKoplastik Therm PLUS
                 <i class="el-icon-download"></i>
             </a>
             </div>
@@ -54,7 +55,7 @@
                 <div class="product-sales-des">
                     <strong>Труба – PN 20 / S 2,5 / SDR 6  - белая</strong>
                     <div class="product-sales-des-cost">
-                        <strong>1,73</strong>
+                        <strong>2,08</strong>
                         <span>руб / м</span>
                         <b>-</b>
                         <strong class="des-cost-el">440</strong>
@@ -113,7 +114,7 @@
                 <div class="product-sales-des">
                     <strong>Муфта соединительная 25 мм  - белая</strong>
                     <div class="product-sales-des-cost">
-                        <strong>0,27</strong>
+                        <strong>0,32</strong>
                         <span>руб / 1 шт.</span>
                         <b>-</b>
                         <strong class="des-cost-el">46</strong>
@@ -167,7 +168,7 @@
                 <div class="product-sales-des">
                     <strong>Крестовина D 25 мм - белая</strong>
                     <div class="product-sales-des-cost">
-                        <strong>1,8</strong>
+                        <strong>2,16</strong>
                         <span>руб / 1 шт.</span>
                         <b>-</b>
                         <strong class="des-cost-el">30</strong>
@@ -221,7 +222,7 @@
                 <div class="product-sales-des">
                     <strong>Заглушка D 25 мм - белая</strong>
                     <div class="product-sales-des-cost">
-                        <strong>0,64</strong>
+                        <strong>0,77</strong>
                         <span>руб / 1 шт.</span>
                         <b>-</b>
                         <strong class="des-cost-el">228</strong>
@@ -275,7 +276,7 @@
                 <div class="product-sales-des">
                     <strong>Угольник 45° внутренний / наружный D 25 мм - белая</strong>
                     <div class="product-sales-des-cost">
-                        <strong>0,50</strong>
+                        <strong>0,60</strong>
                         <span>руб / 1 шт.</span>
                         <b>-</b>
                         <strong class="des-cost-el">123</strong>
