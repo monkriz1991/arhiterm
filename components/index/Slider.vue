@@ -17,21 +17,23 @@
             <video class="video-slider" v-if="item.video!=null"  preload="auto" muted="" autoplay="" loop="" webkit-playsinline="" playsinline="" :src="item.video"></video>
             <nuxt-link :to="item.link">
               <h3>{{ item.title }}</h3>
-              <div v-html="item.description"></div>
+              <!-- <div v-html="item.description"></div> -->
             </nuxt-link>
             </div>
           </div>
-          <nuxt-img 
-          class="slider-image" 
-          provider="twicpics"
-          loading="lazy" 
-          v-if="item.img.substring(24)!='https://new.arhiterm.by/media/img/noimg.png'"
-          :src="item.img.substring(24)" 
-          :alt="item.title"
-          width="200"
-          height="200"
-          presets="product"
-          />
+          <nuxt-link :to="item.link">
+            <nuxt-img 
+            class="slider-image" 
+            provider="twicpics"
+            loading="lazy" 
+            v-if="item.img.substring(24)!='https://new.arhiterm.by/media/img/noimg.png'"
+            :src="item.img.substring(24)" 
+            :alt="item.title"
+            width="200"
+            height="200"
+            presets="product"
+            />
+          </nuxt-link>
         </div>
       </el-carousel-item>
       </no-ssr>
