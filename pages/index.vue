@@ -146,7 +146,7 @@ export default {
         setTimeout(() => (
           this.loadingFirst = false,
           this.showFirst = true
-          ), 800)
+          ), 1200)
       },
       setLoadingScroll() {
         setTimeout(() => (
