@@ -2408,24 +2408,28 @@ body .el-dialog__body{
     padding: 30px 20px 20px;
 }
 .slider-block{
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
     bottom: 0;
     top: 0;
     padding: 50px;
     cursor: pointer;
+    float: left;
+    width: 100%;
+    height: 100%;
 }
 .slider-content{
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
+    border-radius: 16px;
     left: 0;
     background-color: rgb(255, 255, 255);
     z-index: 10;
     padding: 130px 80px 30px;
-    /* background-image: -webkit-linear-gradient(left, rgb(12 12 12 / 42%) 22%, rgb(12 12 12 / 1%), rgba(31,31,31,0));*/
+    border: 2px solid #fff;
 }
 .slider-content a {
     text-decoration: none;

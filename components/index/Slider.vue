@@ -1,22 +1,16 @@
 <template>
   <div class="index-slider" >
-    <el-carousel 
-      :autoplay="true"
-      height="350px"
-      trigger="click"
-      arrow="always"
-      :interval="43000"
-    >
-    <no-ssr>
-      <el-carousel-item  
-        v-for="(item,idx) in slides" :key="idx"
+
+    <hooper :settings="hooperSettings">
+      <slide
+      v-for="(item,idx) in slides" :key="idx"
       >
         <div class="slider-block" >
           <div class="slider-content" :style="{background:item.color}">
             <div  v-loading="loading" :class="[item.video!=null?'preload-video':'']">
             <video class="video-slider" v-if="item.video!=null"  preload="auto" muted="" autoplay="" loop="" webkit-playsinline="" playsinline="" :src="item.video"></video>
             <nuxt-link :to="item.link">
-              <h3>{{ item.title }}</h3>
+              <h3 :class="[item.color=='#FFFFFFFF'?'color-slider':'']">{{ item.title }}</h3>
               <!-- <div v-html="item.description"></div> -->
             </nuxt-link>
             </div>
@@ -35,14 +29,18 @@
             />
           </nuxt-link>
         </div>
-      </el-carousel-item>
-      </no-ssr>
-    </el-carousel>
+      </slide>
+      <hooper-navigation slot="hooper-addons"></hooper-navigation>
+      <hooper-pagination slot="hooper-addons"></hooper-pagination>
+  </hooper>
   </div>
 </template>
 
 <script>
 import { mapGetters,mapActions } from 'vuex'
+import { Hooper, Slide,
+Pagination as HooperPagination,
+Navigation  as HooperNavigation} from 'hooper';
 export default ({
   props: {
     slides: {
@@ -51,10 +49,22 @@ export default ({
             }
     },
   components:{
+    Hooper,
+    Slide,
+    HooperPagination,
+    HooperNavigation
   },
     data() {
         return {
-          loading: false
+          loading: false,
+          hooperSettings: {
+            autoPlay:true,
+            playSpeed:4000,
+            infiniteScroll: false,
+            wheelControl:false,
+            itemsToShow: 1,
+            centerMode: true
+            }
         }
     },
     computed:{
@@ -68,6 +78,10 @@ export default ({
 </script>
 
 <style>
+.index-slider .hooper{
+  height: 400px !important;
+  margin: 0px 0 0px !important;
+}
 .el-carousel__container{
   border-radius:10px ;  
 }
@@ -93,4 +107,16 @@ export default ({
   .el-carousel__item:nth-child(2n+1) {
     background-color: #d3dce6;
   }
+  .slider-content .color-slider{
+  color: #e11923 !important;
+}
+.index-slider .hooper-next, .hooper-prev {
+    top: 85%;
+  }
+@media (max-width: 991px){
+  .index-slider .hooper {
+      height: 280px !important;
+      margin: 0px 0 0px !important;
+  }
+}
 </style>
