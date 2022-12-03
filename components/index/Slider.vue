@@ -111,7 +111,7 @@ export default ({
   color: #e11923 !important;
 }
 .index-slider .hooper-next, .hooper-prev {
-    top: 85%;
+    top: 85% !important;
   }
 @media (max-width: 991px){
   .index-slider .hooper {
