@@ -9,7 +9,9 @@
       </template>
     </el-skeleton>
       <transition name="el-fade-in-linear">
-        <Slider v-show="showFirst" :slides="slides"/>
+        <div :class="[showTwo==false?'show-on-class':'']">
+          <Slider :slides="slides"/>
+        </div>
       </transition>
 
       <el-skeleton :loading="loadingFirst"
