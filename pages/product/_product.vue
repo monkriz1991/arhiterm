@@ -102,6 +102,11 @@
                 :new_char="funChar"
                 />
         </div>
+        <div v-show="stufProduct.length" class="stus-product">
+            <StufProduct
+            :stufProduct="stufProduct"
+            />
+        </div>
         <no-ssr>
         <BasketModal  
         @clickModal = "toggleModal"
@@ -145,11 +150,13 @@ export default ({
         'BasketModal': () => import('~/components/BasketModal.vue'),
         'Dostavka': () => import('~/components/product/Dostavka.vue'),
         'Payment': () => import('~/components/product/Payment.vue'),
-        'Drawerkont': () => import('~/components/product/Drawerkont.vue'),        
+        'Drawerkont': () => import('~/components/product/Drawerkont.vue'),  
+        'StufProduct': () => import('~/components/product/StufProduct.vue'),       
     },
     computed:{
         ...mapGetters({
-            productItem: 'tovar/productItem'
+            productItem: 'tovar/productItem',
+            stufProduct: 'tovar/stufProduct'
         })
     },
     methods:{

@@ -110,7 +110,7 @@ export default ({
   .slider-content .color-slider{
   color: #e11923 !important;
 }
-.index-slider .hooper-next, .hooper-prev {
+.index-slider .hooper-next, .index-slider .hooper-prev {
     top: 85% !important;
   }
 @media (max-width: 991px){
