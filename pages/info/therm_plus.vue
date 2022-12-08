@@ -17,7 +17,7 @@
                 серии - Therm PLUS / Белого цвета.</p>
                 <p>Цены до 50% ниже на аналогичный полипропилен от Wavin EKoplastik ( серого цвета ).</p>
             </div>
-            <div  class="product-sales-fail">
+            <div class="product-sales-fail">
                 <a href="https://new.arhiterm.by/media/manuf/WAVIN_EKOPLASTIK_THERM_PLUS.pdf" 
                 download
                 target="_blank"
@@ -42,7 +42,8 @@
                 >Наши контакты / график работы / адреса
                 </el-button>
             </div>
-            <div class="block-product-sales">
+
+            <!-- <div class="block-product-sales">
                 <div class="product-sales-img">
                     <img 
                     sizes="sm:20px md:20px lg:20px"
@@ -312,7 +313,7 @@
                     </el-collapse-item>
                     </el-collapse>
                 </div>
-            </div>
+            </div> -->
       </div>
     </div>
   </template>
@@ -520,16 +521,18 @@
 .product-sales-fail{
     float: left;
     width: 100%;
-    margin: 0px 0 20px;
-    background-color: #f0f9eb;
+    margin: 0 0 20px;
+    /* background-color: #fc6d00; */
     padding: 20px;
     border-radius: 8px;
+    border: 1px solid #ff5e5e;
 }
 .product-sales-fail a{
-    color: #67c23a;
-    font-size: 14px;
+    color: #ff5e5e;
+    font-size: 19px;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 .product-sales-des-inf .header-icon{
     margin: 0 0 0 10px;
@@ -614,6 +617,11 @@
     }
     .product-sales-contact >button {
     font-size: 12px !important;
+    opacity: 1;
+    }
+    .product-sales-fail a {
+    color: #ff5e5e;
+    font-size: 15px;
     }
 }
 

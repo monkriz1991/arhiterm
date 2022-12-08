@@ -12,7 +12,7 @@
                                 <!-- <strong v-if="item.description !== 'undefined'">
                                     {{item.description}}
                                 </strong> -->
-                                <!-- <span>{{item.name}}</span> -->
+                                <span>{{item.name}}</span>
                             </div>
                             <div class="index-brand-block-img">
                                 <nuxt-img 
@@ -28,7 +28,7 @@
                     </nuxt-link>
                 </slide>
                 <hooper-navigation slot="hooper-addons"></hooper-navigation>
-                <hooper-pagination slot="hooper-addons"></hooper-pagination>
+                <!-- <hooper-pagination slot="hooper-addons"></hooper-pagination> -->
             </hooper>
         </el-row>
     </div>

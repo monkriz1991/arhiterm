@@ -1190,8 +1190,8 @@ header .contents {
 .index-brand-block-desc> span{
     width: 100%;
     font-weight: 600;
-    font-size: 13px;
-    margin: 5px 0 5px;
+    font-size: 11px;
+    margin: 5px 0 0px;
     color: #494949;
 }
 .index-brand-block-desc> strong{
@@ -1853,6 +1853,7 @@ font-weight: 500;
 .galery{
     float: left;
     width: 50%;
+    overflow: hidden;
 }
 .galery-index .el-image{
     height: 100%;
