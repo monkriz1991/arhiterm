@@ -5,7 +5,8 @@
                 :src="'https://new.arhiterm.by'+productItems.img" 
                 :alt="productItems.name"
                 lazy
-                :preview-src-list="srcList">
+                :preview-src-list="srcList"
+                itemprop="image">
             </el-image>
         </div>
         <div class="galery-extra" :class="{ 'galery-index-one-none': srcList.length==1 }">

@@ -19,6 +19,7 @@
      label="Описание">
         <div 
         class="tabs-description"
+        itemprop="description"
         v-html="productItemDesc"></div>
     </el-tab-pane>
     <!-- <el-tab-pane label="Сертификаты">Role</el-tab-pane> -->

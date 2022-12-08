@@ -1,7 +1,8 @@
 <template>
-    <div class="container"> 
+    <div class="container" > 
             <Breadcrumb/>
-        <h1 class="h1-product">{{productItem.name}}</h1>
+        <div itemscope itemtype="http://schema.org/Product">
+        <h1 class="h1-product" itemprop="name">{{productItem.name}}</h1>
         <div class="product-top">
             <i class="el-icon-office-building manuf-name"></i> 
             <h2 class="h2-product">
@@ -14,14 +15,17 @@
         </div>
         <Galery :productItems="productItem"/>
         <div class="cost-product-section">
-            <div class="cost-product-price">
-                <span :class="{ butDiscount: discont}">{{price}}</span>
+            <div class="cost-product-price" 
+            itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="BYN">
+                <span :class="{ butDiscount: discont}" itemprop="price">{{price}}</span>
                 <strong>руб.</strong>
                 <div v-if="discont" class="catalog-list-block-discount">
                     <strong>{{discont}}<span>руб/{{result.units}}</span></strong>
                 </div>
                 <strong class="cost-product-price-unit">1 {{result.units}}</strong>
                 <b>/</b>
+                <!-- <link itemprop="availability" href="http://schema.org/InStock"> -->
             </div>
             <div class="kod-product">
                 <el-tooltip class="item" effect="dark" content="Код товара" placement="top-start">
@@ -106,6 +110,7 @@
             <StufProduct
             :stufProduct="stufProduct"
             />
+        </div>
         </div>
         <no-ssr>
         <BasketModal  
