@@ -3641,12 +3641,12 @@ font-size: 13px;
     width: 100%;
     font-size: 14px;
 }
-.contact-block-desc>span{
+.contact-block-desc span{
     float: left;
     width: 100%;
     margin: 0 0 10px;
 }
-.contact-block-desc>strong{
+.contact-block-desc strong{
     float: left;
     width: 100%;
     margin: 0 0 5px;

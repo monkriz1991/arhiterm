@@ -3,9 +3,9 @@
     <div class="body-payment">
 		<h1>Контакты / График работы</h1>
 
-		<div class="contact-block">
+		<div class="contact-block" itemscope itemtype="http://schema.org/Organization">
 			<div class="contact-block-title">
-				<span>Наш офис</span>
+				<strong itemprop="name">Архитерм</strong> - <span>Наш офис</span>
 			</div>
 			<div class="contact-block-img">
 				<img src="~/assets/img/kontakty_arhiofis_small_.webp" alt="офис компании Архитерм">
@@ -17,14 +17,17 @@
 					<span>Пятница</span>
 					<span>Офис с 8:30 до 17:00</span>
 					<span>Суббота, Воскресенье - Выходной</span><br>
-					<span>220125, Беларусь, Минск</span>
-					<span>ул. Лопатина, 7а/1, офис 904, Бизнес-центр «Премьер»</span>
-					<strong>1,6 км от МКАД!</strong>
-					<strong>1 км от Стройрынка «Уручье»!</strong>
+          <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="postalCode">220125</span>
+					  <span itemprop="addressLocality">Минск</span>
+					  <span itemprop="streetAddress">ул. Лопатина, 7а/1, офис 904, Бизнес-центр «Премьер»</span>
+					  <strong>1,6 км от МКАД!</strong>
+					  <strong>1 км от Стройрынка «Уручье»!</strong>
+          </div>
 				</div>
 				<div class="contact-block-phone">
-					<a href="tel:+375293431616">+375 (29) 343-16-16 <span>(МТС)</span></a>
-					<a href="tel:+375333431616">+375 (33) 343-16-16 <span>(А1)</span></a>
+					<a href="tel:+375293431616" itemprop="telephone">+375 (29) 343-16-16 <span>(МТС)</span></a>
+					<a href="tel:+375333431616" itemprop="telephone">+375 (33) 343-16-16 <span>(А1)</span></a>
 				</div>
 				<div class="contact-block-phone-all">
 					<p>
@@ -34,7 +37,7 @@
 						<strong>Skype:</strong><span>arhiterm.by</span>
 					</p>
 					<p>
-						<strong>E-mail:</strong><span>info@arhiterm.by</span>
+						<strong>E-mail:</strong><span itemprop="email">info@arhiterm.by</span>
 					</p>
 				</div>
 			</div>
