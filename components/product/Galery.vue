@@ -1,7 +1,7 @@
 <template>
     <div class="galery">
         <Photoswipe>
-        <div class="galery-index" :class="{ 'galery-index-one': srcList.length==1 }">
+        <div class="galery-index" :class="{ 'galery-index-one': srcList.length=='' }">
             <img 
                 itemprop="image"
                 :src="'https://new.arhiterm.by'+productItems.img"
@@ -11,7 +11,7 @@
         </div>
         <div class="galery-extra" :class="{ 'galery-index-one-none': srcList.length==1 }">
             <div 
-            v-for="(img,index) in srcList" :key="img.id"
+            v-for="(img,index) in srcList.slice(1)" :key="img.id"
             class="galery-extra-block">
                 <img 
                     itemprop="image"
@@ -46,6 +46,9 @@ export default {
         imgGalery(){
             this.srcList = this.productItems.images.map((key)=>'https://new.arhiterm.by'+key.img);
             this.srcList.unshift('https://new.arhiterm.by'+this.productItems.img);
+            if(this.srcList.length==1){
+                this.srcList = []
+            }
         },
     },
     created() {
