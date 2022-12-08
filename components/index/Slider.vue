@@ -31,7 +31,7 @@
         </div>
       </slide>
       <hooper-navigation slot="hooper-addons"></hooper-navigation>
-      <hooper-pagination slot="hooper-addons"></hooper-pagination>
+      <!-- <hooper-pagination slot="hooper-addons"></hooper-pagination> -->
   </hooper>
   </div>
 </template>
@@ -59,7 +59,7 @@ export default ({
           loading: false,
           hooperSettings: {
             autoPlay:true,
-            playSpeed:4000,
+            playSpeed:7000,
             infiniteScroll: false,
             wheelControl:false,
             itemsToShow: 1,

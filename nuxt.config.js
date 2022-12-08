@@ -85,9 +85,9 @@ render: {
 },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 plugins: [
-  '@/plugins/element-ui',
+  { src: '~/plugins/element-ui', ssr: true},
   '@/plugins/backbutton.js',
-  // '~/plugins/url-change.js',
+  { src: '~/plugins/vue-pswipe.js', mode: 'client' },
   // { src: '~plugins/ga.js', mode: 'client' },
   // '~/plugins/gtm',
   { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
@@ -303,8 +303,9 @@ purgecss: {
   },
 
    //postcss: null,
-
+   vendor: ['element-ui'],
   build: {
+
     babel: {
       "presets": ["@babel/preset-env"],
       "plugins": [
@@ -355,8 +356,6 @@ purgecss: {
         ignoreOrder: true
       }
     }),
-
-    transpile: ['intersection-observer'],
     postcss: {
       plugins: {
         ...(!isDev && {

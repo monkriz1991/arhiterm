@@ -27,9 +27,10 @@
                                 <span v-else>{{item.name.substring(0,50)+".." }}</span>
                             </div>
                             <div class="index-top-cost">
-                                <b>от</b><strong
+                                <b>от</b>
+                                <strong
                                 v-for="(item_product,idx) in item.product" :key="idx"
-                                v-show="idx==0"
+                                v-if="idx==0"
                                 >{{item_product.price}}</strong> 
                                 <span>руб/{{item.units}}</span>
                             </div>

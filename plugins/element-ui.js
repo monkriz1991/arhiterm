@@ -35,8 +35,6 @@ import {
   Row,
   Col,
   Upload,
-  Carousel,
-  CarouselItem,
   Collapse,
   CollapseItem,
   Container,
@@ -88,8 +86,6 @@ Vue.use(Icon);
 Vue.use(Row);
 Vue.use(Col);
 Vue.use(Upload);
-Vue.use(Carousel);
-Vue.use(CarouselItem);
 Vue.use(Collapse);
 Vue.use(CollapseItem);
 Vue.use(Container);
