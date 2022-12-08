@@ -9,7 +9,7 @@
                 :alt="productItems.name"
             />
         </div>
-        <div class="galery-extra" :class="{ 'galery-index-one-none': srcList.length==1 }">
+        <div class="galery-extra" :class="{ 'galery-index-one-none': srcList.length=='' }">
             <div 
             v-for="(img,index) in srcList.slice(1)" :key="img.id"
             class="galery-extra-block">
