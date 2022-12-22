@@ -1,31 +1,31 @@
 <template>
   <el-tabs :tab-position="tabPosition">
     <el-tab-pane label="Характеристики">
-        <div class="cost-product-char">
-            <p>
-                <strong>Код товара</strong>
-                <span>{{char_start.name}}</span>
-            </p>
-            <p
-              v-for="(item,idx) in char_start.filter_dict" :key="idx"
-            >
-                <strong>{{item.name}}</strong>
-                <span>{{item.value}}</span>
-            </p>
-        </div>
+      <div class="cost-product-char">
+        <p>
+          <strong>Код товара</strong>
+          <span>{{char_start.name}}</span>
+        </p>
+        <p
+          v-for="(item,idx) in char_start.filter_dict" :key="idx"
+        >
+          <strong>{{item.name}}</strong>
+          <span>{{item.value}}</span>
+        </p>
+      </div>
     </el-tab-pane>
     <el-tab-pane
     class="el-tab-pane-on"
-     label="Описание">
-        <div 
-        class="tabs-description"
-        itemprop="description"
-        v-html="productItemDesc"></div>
+    label="Описание">
+      <div 
+      class="tabs-description"
+      itemprop="description"
+      v-html="productItemDesc">
+      </div>
     </el-tab-pane>
     <!-- <el-tab-pane label="Сертификаты">Role</el-tab-pane> -->
   </el-tabs>
 </template>
-
 
 <script>
   export default {

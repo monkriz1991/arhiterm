@@ -7,6 +7,7 @@
                 :src="'https://new.arhiterm.by'+productItems.img"
                 :data-pswp-src="'https://new.arhiterm.by'+productItems.img"
                 :alt="productItems.name"
+                :title="productItems.name"
             />
         </div>
         <div class="galery-extra" :class="{ 'galery-index-one-none': srcList.length=='' }">
@@ -14,10 +15,10 @@
             v-for="(img,index) in srcList.slice(1)" :key="img.id"
             class="galery-extra-block">
                 <img 
-                    itemprop="image"
                     :src="img"
                     :data-pswp-src="img"
-                    :alt="productItems.name"
+                    :alt="productItems.name+' - вид '+index"
+                    :title="productItems.name+' - вид '+index"
                 />
             <div class="galery-extra-plus" v-if="index == 1 && srcList.length > 2">
                 <strong>{{ srcList.length }}</strong>
