@@ -34,6 +34,18 @@ export default ({
   computed: {
   },
   methods:{
+    open2() {
+      this.$notify({
+        dangerouslyUseHTMLString: true,
+        title: 'Уважаемые клиенты!',
+        message: 'график работы <strong>23.12.22</strong>:<br> склад до <strong>14-30</strong>, офис - до <strong>15-00</strong>',
+        type: 'warning',
+        duration:15000,
+      });
+    },
+  },
+  mounted(){
+    this.open2()
   }
 })
 </script>
