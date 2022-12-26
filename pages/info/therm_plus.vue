@@ -18,7 +18,7 @@
                 <p>Цены до 50% ниже на аналогичный полипропилен от Wavin EKoplastik ( серого цвета ).</p>
             </div>
             <div class="product-sales-fail">
-                <a href="https://new.arhiterm.by/media/manuf/WAVIN_EKOPLASTIK_THERM_PLUS.pdf" 
+                <a href="https://new.arhiterm.by/media/manuf/WAVIN_EKOPLASTIK_THERM_PLUS_SALES.pdf" 
                 download
                 target="_blank"
                 class="btn btn-light btn-sm mr-1 mt-2">
