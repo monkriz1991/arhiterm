@@ -73,6 +73,13 @@ margin: 10px 0 0 0;
     height: 40px;
     bottom: -10px;
     border-radius: 25px 25px 0px 0px;
+    text-align: center;
+}
+.img-ng-nav{
+    width: 110px;
+    object-fit: contain;
+    position: absolute;
+    top: -83px;
 }
 .hooper{
     height: auto !important;
@@ -775,9 +782,19 @@ header{
     display: flex;
     align-items: center;
     height: 100%;
+    position: relative;
+}
+.img-ng{
+    position: absolute;
+    width: 47px;
+    object-fit: contain;
+    /* z-index: 1; */
+    margin: -31px 0 0 -20px;
+    transform: rotate(345deg);
 }
 .logotip a{
     float: left;
+    position: relative;
 }
 .logotip-img{
     height: 100%;
@@ -1854,6 +1871,7 @@ font-weight: 500;
     float: left;
     width: 50%;
     overflow: hidden;
+    position: relative;
 }
 .galery-index .el-image{
     height: 100%;
@@ -2042,6 +2060,8 @@ font-weight: 500;
 }
 .cost-product-section .cost-product-input .el-radio{
     min-width: 32.3%;
+    position: relative;
+    background: #fff;
 }
 .cost-product-amount .el-popover__reference-wrapper{
     float: left;
@@ -3566,6 +3586,9 @@ font-size: 13px;
     border-top: 1px solid #ff8d00;
     border-bottom: 1px solid #ff8d00;
 }
+.el-icon-close{
+    font-size: 32px !important;
+}
 .question-text{
 
 }
@@ -4939,6 +4962,13 @@ height: 100%;
       }
     }
     @media (max-width: 991px){
+        .img-ng {
+            position: absolute;
+            width: 39px;
+        }
+        .header-container--sticky .img-ng {
+            transform: scale(0.60) translateY(4px) !important;
+        }
         .index-top-cost span {
             font-size: 12px;
             margin: 7px 0 0;

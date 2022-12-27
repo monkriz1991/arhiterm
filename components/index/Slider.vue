@@ -1,6 +1,5 @@
 <template>
   <div class="index-slider" >
-
     <hooper :settings="hooperSettings">
       <slide
       v-for="(item,idx) in slides" :key="idx"
