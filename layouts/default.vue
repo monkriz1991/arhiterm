@@ -47,7 +47,7 @@ export default ({
         title: 'Уважаемые клиенты!',
         message: '<strong>30.12.22</strong> склад / офис: <strong><br>Выходной</strong>',
         type: 'warning',
-        duration:5000,
+        duration:50000,
       });
     },
   },
