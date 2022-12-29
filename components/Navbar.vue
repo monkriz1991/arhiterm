@@ -41,7 +41,7 @@
         </div>
         <div class="logotip">
             <img class="img-ng" alt="новогодние украшения arhiterm" 
-            src="https://webanetlabs.net/ng2013/ng10.png" width="200" height="200">
+            src="/ng10.webp" width="200" height="200">
           <nuxt-link to="/">
             <div class="logotip-img">
               <img 
@@ -158,7 +158,7 @@
     </div>
     <div class="header-bg">
         <img class="img-ng-nav" alt="новогодние украшения arhiterm"
-        src="https://webanetlabs.net/ng2013/eli12.png" width="260" height="183">
+        src="/eli12.webp" width="260" height="183">
     </div>
     <div v-if="width>991"  :class="[visible==true?'header-bg-popover':'']" ></div>
       <client-only>
