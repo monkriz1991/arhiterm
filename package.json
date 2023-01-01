@@ -30,11 +30,12 @@
     "nuxt-ssr-cache": "^1.5.2",
     "nuxt-vuex-localstorage": "^1.3.0",
     "nuxt-webfontloader": "^1.1.0",
-    "vue-niege": "^0.1.1",
+    "uninstall": "0.0.0",
     "vue-observe-visibility": "^1.0.0",
     "vue-pswipe": "^0.15.3",
     "vue-the-mask": "^0.11.1",
     "vue-yandex-maps": "^0.10.12",
+    "vuejs-pagination-semantic-ui": "^1.0.0",
     "vuex": "^3.6.2",
     "vuex-persist": "^3.1.3"
   },
@@ -47,6 +48,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "babel-eslint": "^10.1.0",
     "babel-plugin-component": "^1.1.1",
-    "cordova-res": "^0.15.4"
+    "cordova-res": "^0.15.4",
+    "vue-awesome-paginate": "^1.1.45"
   }
 }

@@ -15,7 +15,6 @@
         v-for="(work,k) in worktime" :key="k"
         v-if="work.week_day==0&&work.week_day<=4"
         >
-        <span class="work-time">30.12.22 склад / офис: Выходной</span>
             <strong class="work-day">Понедельник - Четверг</strong>
             <span class="work-time">{{work.start_time.substring(0,5)}}</span>
             <b>-</b>

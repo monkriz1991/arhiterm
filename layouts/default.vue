@@ -2,18 +2,12 @@
   <div>
       <Navbar/>
       <div class="main-nuxt"></div>
-      <no-ssr>
-        <Snow 
-        :active='true'
-        color="#a2caff"/>
-      </no-ssr>
       <nuxt />
       <Footer />
   </div>
 </template>
 
 <script>
-import Snow from 'vue-niege';
 export default ({
   layout: 'error',
   head() {
@@ -27,7 +21,6 @@ export default ({
     }
   },
   components:{
-    Snow,
     'Navbar': () => import('~/components/Navbar.vue'),
     'Footer': () => import('~/components/Footer.vue'),
     'Upscroll': () => import('~/components/Upscroll.vue'),
@@ -41,18 +34,18 @@ export default ({
   computed: {
   },
   methods:{
-    open2() {
-      this.$notify({
-        dangerouslyUseHTMLString: true,
-        title: 'Уважаемые клиенты!',
-        message: '<strong>30.12.22</strong> склад / офис: <strong><br>Выходной</strong>',
-        type: 'warning',
-        duration:50000,
-      });
-    },
+    // open2() {
+    //   this.$notify({
+    //     dangerouslyUseHTMLString: true,
+    //     title: 'Уважаемые клиенты!',
+    //     message: '<strong>30.12.22</strong> склад / офис: <strong><br>Выходной</strong>',
+    //     type: 'warning',
+    //     duration:50000,
+    //   });
+    // },
   },
   mounted(){
-    this.open2()
+    // this.open2()
   }
 })
 </script>
