@@ -133,7 +133,7 @@ pwa: {
 modules: [
   // https://go.nuxtjs.dev/axios
   '@nuxtjs/axios',
-  // '@nuxtjs/gtm',
+  '@nuxtjs/gtm',
   '@nuxtjs/auth-next',
   '@nuxtjs/sitemap',
   'nuxt-ssr-cache',
@@ -157,6 +157,9 @@ modules: [
   //   }
   // ],
 ],
+gtm: {
+  id: 'G-ZEZSNWGXM4'
+},
 purgecss: {
   enabled: true, // Always enable purgecss
   safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
