@@ -45,7 +45,7 @@ export const actions = {
      */
     async getCategory ({ commit }) {
         // await sleep(50)
-        let category = await this.$axios.$get(`/catalog/categories/?limit=40`);
+        let category = await this.$axios.$get(`/catalog/categories/?limit=44`);
         commit('setCategory', category.results)
         return category.results
     },
@@ -72,7 +72,7 @@ export const actions = {
     },
     async getCategoryIndex ({ commit}) {
         // await sleep(50)
-        let category = await this.$axios.$get(`/catalog/categories-simple/?limit=40`);
+        let category = await this.$axios.$get(`/catalog/categories-simple/?limit=45`);
         commit('setCategoryIndex', category)
         return category
     },

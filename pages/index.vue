@@ -101,10 +101,10 @@ import {mapActions,mapGetters} from 'vuex'
 export default {
   async asyncData ({ app, params, route, error,store  }) {
     try {
-      await store.dispatch('category/getCategory');
+      // await store.dispatch('category/getCategoryIndex');
       await store.dispatch('main/getSlider');
       await store.dispatch('main/getTop');
-      await store.dispatch('category/getManufacturer')
+      // await store.dispatch('category/getManufacturer')
     } catch (err) {
       console.log(err)
       return error({
@@ -130,8 +130,8 @@ export default {
   },
   computed:{
     ...mapGetters({
-      facturer: 'category/manufacturer',
-      category: 'category/categoryNavbar',
+      facturer: 'category/manufacturerIndex',
+      category: 'category/categoryIndex',
       slides: 'main/sliderItems',
       tovar: 'main/top',
     })

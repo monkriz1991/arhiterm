@@ -235,6 +235,10 @@
 <script>
 import {mapGetters,mapActions} from 'vuex'
   export default {
+    async fetch() {
+      await this.$store.dispatch('category/getCategoryIndex')
+      await this.$store.dispatch('category/getManuf')
+    },
     components:{
       'ModalLogout': () => import('~/components/aut/ModalLogout.vue'),
       'BasketModal': () => import('~/components/BasketModal.vue'),
@@ -271,8 +275,8 @@ import {mapGetters,mapActions} from 'vuex'
     },
     computed:{
       ...mapGetters({
-        categoryNavbar: 'category/categoryNavbar',
-        manufacturer: 'category/manufacturer',
+        categoryNavbar: 'category/categoryIndex',
+        manufacturer: 'category/manufacturerIndex',
         worktime: 'main/worktime',
         phones: 'main/phones',
       }),
@@ -281,8 +285,6 @@ import {mapGetters,mapActions} from 'vuex'
       ...mapActions({
         setLoading: 'main/newLoadingItem',
         DELL_CART_BASKET_ALL: 'crate/DELL_CART_BASKET_ALL',
-        Actions_categoryManuf:'category/getManufacturer',
-        Actions_categoryNavbar:'category/getCategory',
         Actions_worktime:'main/getWorktime',
         Actions_phones:'main/getPhones'
 
@@ -301,13 +303,9 @@ import {mapGetters,mapActions} from 'vuex'
         this.Actions_phones()
       },
       dialogCatalog(){
-        this.Actions_categoryManuf()
-        this.Actions_categoryNavbar()
         this.dialogCatalogVisible = true
       },
       menyCat(){
-        this.Actions_categoryManuf()
-        this.Actions_categoryNavbar()
         this.drawerMeny = true
       },
       categoryKirilica (item) {

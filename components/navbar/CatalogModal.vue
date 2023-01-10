@@ -8,7 +8,7 @@
                 v-show="category.show_in_start==true"
                 size="mini" @click="visible = false"
                 >
-                    <nuxt-link @click.native="handlerLoading" :to="{ name: 'catalog-catalog', params: {catalog:`${category.kirilica}`,id:`${category.id}`} }" >
+                    <nuxt-link @click.native="handlerLoading" :to="{ name: 'catalog-catalog', params: {catalog:`${category.kirilica_name}`,id:`${category.id}`} }" >
                     <nuxt-img 
                     provider="twicpics"
                     sizes="sm:200px md:400px lg:800px"
@@ -31,7 +31,7 @@
                 :key="item.id"
                 size="mini" @click="visible = false"
                 >
-                <nuxt-link @click.native="handlerLoading" :to="{ name: 'factory-factory', params: {factory:`${item.kirilica}`,id:`${item.id}`} }" >
+                <nuxt-link @click.native="handlerLoading" :to="{ name: 'factory-factory', params: {factory:`${item.kirilica_name}`,id:`${item.id}`} }" >
                     <nuxt-img 
                     provider="twicpics"
                     sizes="sm:200px md:400px lg:800px"

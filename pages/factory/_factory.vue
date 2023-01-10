@@ -154,7 +154,7 @@ export default {
         let name_fill_fill='';
         let routeManuf = await app.store.dispatch('category/getManufacturer')
         for(let item in routeManuf.results){           
-           if(params.factory==routeManuf.results[item].kirilica){
+           if(params.factory==routeManuf.results[item].kirilica_name){
                 name_fill_fill = routeManuf.results[item].id
             }
         } 
@@ -171,7 +171,7 @@ export default {
           for(let item in factori.filters){          
             for(let itemin in factori.filters[item].chice){  
               for(let fill in object_tabs['card_filter']){  
-                if(object_tabs['card_filter'][fill]==factori.filters[item].chice[itemin].kirilica){
+                if(object_tabs['card_filter'][fill]==factori.filters[item].chice[itemin].kirilica_name){
                   card_filter_rus.push(factori.filters[item].chice[itemin].value)
                     name_fill = '"'+factori.filters[item].chice[itemin].id +'||'+ factori.filters[item].id+'"'
                     arr_filter.push(name_fill)
@@ -212,7 +212,7 @@ export default {
           for(let item in this.factori.filters){                   
             for(let itemin in this.factori.filters[item].chice){       
               for(let fill in object_tabs['card_filter']){
-                if(object_tabs['card_filter'][fill]==this.factori.filters[item].chice[itemin].kirilica){
+                if(object_tabs['card_filter'][fill]==this.factori.filters[item].chice[itemin].kirilica_name){
                   card_filter_rus.push(this.factori.filters[item].chice[itemin].value)
                   name_fill = '"'+this.factori.filters[item].chice[itemin].id +'||'+ this.factori.filters[item].id+'"'
                   arr_filter.push(name_fill)
