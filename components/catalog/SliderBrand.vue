@@ -5,7 +5,7 @@
                 <slide
                 v-for="item in facturer.results" :key="item.id"
                 >
-                        <nuxt-link  :to="{ name: 'factory-factory', params: {factory:`${item.kirilica}`,id:`${item.id}`} }" class="nuxt-link-cat">
+                        <nuxt-link  :to="{ name: 'factory-factory', params: {factory:`${item.kirilica_name}`,id:`${item.id}`} }" class="nuxt-link-cat">
                         <div class="index-topcat-block">
                             <div class="category-in-cyrcle">
                                 <nuxt-img 
