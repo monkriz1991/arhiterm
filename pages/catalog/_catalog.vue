@@ -187,7 +187,7 @@ export default {
       object_tabs['manuf'] = route.query['manuf'].split(',')
       for(let item in routeManuf.results){   
         for(let fill in object_tabs['manuf']){           
-          if(object_tabs['manuf'][fill]==routeManuf.results[item].kirilica_name){
+          if(object_tabs['manuf'][fill]==routeManuf.results[item].kirilica){
             manuf_filter_rus.push(routeManuf.results[item].name)
               name_fill_fill = '"'+routeManuf.results[item].id +'"'
               arr_filter_manuf.push(name_fill_fill)
@@ -236,7 +236,7 @@ export default {
         for(let item in this.categoriesNested.list_filter){         
           for(let itemin in this.categoriesNested.list_filter[item].chice){       
             for(let fill in object_tabs['card_filter']){
-              if(object_tabs['card_filter'][fill]==this.categoriesNested.list_filter[item].chice[itemin].kirilica_name){
+              if(object_tabs['card_filter'][fill]==this.categoriesNested.list_filter[item].chice[itemin].kirilica){
                   card_filter_rus.push(this.categoriesNested.list_filter[item].chice[itemin].value)
                   name_fill = '"'+this.categoriesNested.list_filter[item].chice[itemin].id +'||'+ this.categoriesNested.list_filter[item].id+'"'
                   arr_filter.push(name_fill)
@@ -260,7 +260,7 @@ export default {
         object_tabs['manuf'] = to.query.manuf.split(',')
         for(let item in this.categoryManuf.results){   
           for(let fill in object_tabs['manuf']){          
-            if(object_tabs['manuf'][fill]==this.categoryManuf.results[item].kirilica_name){
+            if(object_tabs['manuf'][fill]==this.categoryManuf.results[item].kirilica){
                 manuf_filter_rus.push(this.categoryManuf.results[item].name)
                 name_fill_fill = '"'+this.categoryManuf.results[item].id +'"'
                 arr_filter_manuf.push(name_fill_fill)
