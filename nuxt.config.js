@@ -88,7 +88,7 @@ plugins: [
   { src: '~/plugins/element-ui', ssr: true},
   '@/plugins/backbutton.js',
   { src: '~/plugins/vue-pswipe.js', mode: 'client' },
-  // { src: '~/plugins/vue-sliding-pagination.js', ssr: false },
+  { src: '~/plugins/vs-pagination.js', ssr: true },
   // { src: '~plugins/ga.js', mode: 'client' },
   // '~/plugins/gtm',
   { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },

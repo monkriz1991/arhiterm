@@ -1,19 +1,19 @@
 <template >
     <div  class="catalog-paginated">
-        <el-pagination
-            layout="prev, pager, next"
-            :page-size="this.productLimit"
-            :total="this.countProduct"
-            @current-change="paginate"
-            :current-page.sync="page"
-        >
-        </el-pagination>
+        <vs-pagination 
+        :total-pages="Math.ceil(this.countProduct/10)"
+        :current-page="page"
+        @change="changePage">
+        </vs-pagination>
     </div>
 </template>
 
 <script>
 import {mapGetters,mapActions} from "vuex";
 export default {
+  components:{
+    
+  },
   data() {
       return {
         page:this.$route.query.page!==undefined?parseInt(this.$route.query.page):1,
@@ -24,7 +24,6 @@ export default {
   computed:{
     ...mapGetters({
       countProduct: 'product/countProduct',
-      productLimit: 'product/productLimit',
       tabsArr:'product/tabs',
     }),
   },
@@ -38,7 +37,8 @@ export default {
       }
   },
   methods:{
-    paginate(){
+    changePage(pagenum){
+      this.page = pagenum
       if(this.tabsArr.card_filter!=undefined){
         this.FilterItem = this.tabsArr.card_filter.join(',')
       }else{
@@ -49,10 +49,10 @@ export default {
       }else{
         this.ManufItem = undefined
       }
-      if(this.page==1){
+      if(pagenum==1){
         this.$router.replace({ name: "catalog-catalog", params: {catalog:this.$route.params.catalog}, query: {card_filter:this.FilterItem,manuf:this.ManufItem,page:undefined} })
       }else{
-        this.$router.replace({ name: "catalog-catalog", params: {catalog:this.$route.params.catalog}, query: {card_filter:this.FilterItem,manuf:this.ManufItem,page:this.page} })
+        this.$router.replace({ name: "catalog-catalog", params: {catalog:this.$route.params.catalog}, query: {card_filter:this.FilterItem,manuf:this.ManufItem,page:pagenum} })
       }
       if (process.browser){
           window.scrollTo({
