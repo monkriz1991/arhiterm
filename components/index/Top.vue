@@ -15,7 +15,7 @@
                                 :alt="item.name"
                                 format="webp"
                                 quality="50"
-                                sizes="sm:50vw md:50vw lg:50px" 
+                                width="100" height="100"
                                 loading="lazy" 
                                 />
                             </div> 

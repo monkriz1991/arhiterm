@@ -13,36 +13,13 @@
                   <span>{{filters.name}}</span>
                 </label>
                 <el-checkbox
-                v-for="(checkbox,idx) in even(filters.chice)"
+                v-for="checkbox in even(filters.chice)"
                 :key="checkbox.id"
                 :label="`${checkbox.kirilica}`"
-                v-show="idx<=7&&adaptivSidebar==true  || adaptivSidebar==false"
                 @change="checkFil()"
                 :disabled="isDisabled"
                 >{{checkbox.value}}
                 </el-checkbox>
-                <el-popover
-                  placement="right"
-                  popper-class="popover-filter"
-                  trigger="click"
-                  v-if="filters.chice.length>8&&adaptivSidebar==true"
-                  v-model="visibleCheck[filters.id]">
-                    <div class="cat-filter cat-filter-all">
-                      <el-checkbox
-                      v-for="(checkbox,idx) in even(filters.chice)"
-                      :key="checkbox.id"
-                      :label="`${checkbox.kirilica}`"
-                      v-show="idx>7"
-                      @change="checkFil()"
-                      :disabled="isDisabled"
-                      >{{checkbox.value}}
-                      </el-checkbox>
-                    </div>
-                  <el-button slot="reference" 
-                  icon="el-icon-arrow-right"
-                  @click="visibleCheck[filters.id]=!visibleCheck[filters.id]">
-                  Показать больше</el-button>
-                </el-popover>
                 </el-checkbox-group>
                 <el-checkbox-group v-model="checkListManuf">
                     <label class="cat-filter-check">
@@ -50,34 +27,13 @@
                         <span v-if="categoriesNested.id=='1'|| categoriesNested.id=='2'||categoriesNested.id=='3'">/ Серия</span></span>
                     </label>
                     <el-checkbox
-                    v-for="(checkbox,idx) in categoryManuf.results"
+                    v-for="checkbox in categoryManuf.results"
                     :key="checkbox.id"
                     :label="checkbox.kirilica"
-                    v-show="idx<=5&&adaptivSidebar==true  || adaptivSidebar==false"
                     @change="filterByManufacturer()"
                     :disabled="isDisabled"
                     >{{checkbox.name}}
                     </el-checkbox>
-                      <el-popover
-                        placement="right"
-                        trigger="click"
-                        popper-class="popover-filter"
-                        v-if="categoryManuf.results.length>6&&adaptivSidebar==true"
-                        >
-                          <div class="cat-filter cat-filter-all">
-                            <el-checkbox
-                            v-for="(checkbox,idx) in categoryManuf.results"
-                            :key="checkbox.id"
-                            :label="checkbox.kirilica"
-                            v-show="idx>5&&adaptivSidebar==true"
-                            @change="filterByManufacturer()"
-                            :disabled="isDisabled"
-                            >{{checkbox.name}}
-                            </el-checkbox>
-                          </div>
-                        <el-button icon="el-icon-arrow-right" slot="reference" >
-                        Показать больше</el-button>
-                      </el-popover>
                 </el-checkbox-group>
             </ul>
         </div>

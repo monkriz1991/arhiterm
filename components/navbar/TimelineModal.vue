@@ -1,13 +1,14 @@
 <template>
     <el-popover
         placement="bottom"
-        title="График работы"
         width="200"
         popper-class="work-poper"
         trigger="click">
         <el-button
         icon="el-icon-time"
+        class="button-work"
         slot="reference">
+        График
         </el-button>
         <div>
         <div

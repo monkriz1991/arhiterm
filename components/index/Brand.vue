@@ -17,7 +17,7 @@
                             <div class="index-brand-block-img">
                                 <nuxt-img 
                                 provider="twicpics"
-                                sizes="sm:100px md:100px lg:100px"
+                                width="100" height="100"
                                 loading="lazy" 
                                 :src="item.img.substring(24)" 
                                 :alt="item.name"

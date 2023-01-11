@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <div class="footer-bg"></div>
+        <!-- <div class="footer-bg"></div> -->
         <div class="container">
             <div class="footer-link">
                 <nuxt-link :to="`/info/about`">
@@ -31,7 +31,7 @@
             <div class="social-footer">
                 <a href="https://www.instagram.com/arhiterm.by/" target="_blank" title="instagram arhiterm">
                     <img 
-                    sizes="sm:20px md:20px lg:20px"
+                    width="20" height="20"
                     provide="imgix"
                     loading="lazy" 
                     presets="product"
@@ -40,7 +40,7 @@
                 </a>
                 <a href="viber://chat?number=%2B375293431616/" target="_blank" title="viber arhiterm">
                     <img 
-                    sizes="sm:20px md:20px lg:20px"
+                    width="20" height="20"
                     provide="imgix"
                     loading="lazy" 
                     presets="product"
@@ -62,7 +62,7 @@
             <div class="footer-img">
                 <div class="footer-img-img">
                     <img 
-                    sizes="sm:50px md:50px lg:50px"
+                    width="50" height="50"
                     provide="imgix"
                     loading="lazy" 
                     presets="product"
@@ -72,7 +72,7 @@
                 </div>
                 <div class="footer-img-img">
                     <img
-                    sizes="sm:50px md:50px lg:50px"
+                    width="50" height="50"
                     provide="imgix"
                     loading="lazy" 
                     presets="product"
@@ -82,7 +82,7 @@
                 </div>
                 <div class="footer-img-img">
                     <img 
-                    sizes="sm:50px md:50px lg:50px"
+                    width="50" height="50"
                     provide="imgix"
                     loading="lazy" 
                     presets="product"
@@ -92,7 +92,7 @@
                 </div>
                 <div class="footer-img-img">
                     <img 
-                    sizes="sm:50px md:50px lg:50px"
+                    width="50" height="50"
                     provide="imgix"
                     loading="lazy"  
                     presets="product"
@@ -102,7 +102,7 @@
                 </div>
                 <div class="footer-img-img">
                     <img 
-                    sizes="sm:50px md:50px lg:50px"
+                    width="50" height="50"
                     provide="imgix"
                     loading="lazy" 
                     presets="product"
@@ -112,7 +112,7 @@
                 </div>    
                 <div class="footer-img-img">
                     <img 
-                    sizes="sm:50px md:50px lg:50px"
+                    width="50" height="50"
                     provide="imgix"
                     loading="lazy"
                     presets="product"
@@ -127,13 +127,12 @@
                     presets="product"
                     src="/mps-_-bepaid_belkart.webp" 
                     alt="bepaid" 
-                    width="280"
-                    height="25"
+                    width="280" height="50"
                     title="Система оплаты bepaid" />
                 </div>
                 <div class="footer-img-img">
                     <img 
-                    sizes="sm:50px md:50px lg:50px"
+                    width="50" height="50"
                     provide="imgix"
                     loading="lazy" 
                     presets="product"
@@ -143,7 +142,7 @@
                 </div>
                 <div class="footer-img-img">
                     <img 
-                    sizes="sm:50px md:50px lg:50px"
+                    width="50" height="50"
                     provide="imgix"
                     loading="lazy" 
                     presets="product"
@@ -154,6 +153,5 @@
             </div>
         </div>
     </footer>
-   
 </template>
 

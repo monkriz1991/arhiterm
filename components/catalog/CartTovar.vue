@@ -32,6 +32,7 @@
                         <nuxt-img 
                         provider="twicpics"
                         loading="lazy" 
+                        width="180" height="180"
                         :src="product.img.substring(24)" 
                         :alt="product.name"
                         quality="75"
