@@ -99,13 +99,11 @@
                 </no-ssr>
             </div>
         </div>
-        <div class="tabs-product">
-                <Tabs
-                :product_data="productItem.product"
-                :productItemDesc="productItem.description"
-                :new_char="funChar"
-                />
-        </div>
+        <Tabs
+        :product_data="productItem.product"
+        :productItemDesc="productItem.description"
+        :new_char="funChar"
+        />
         <div v-show="stufProduct.length" class="stus-product">
             <StufProduct
             :stufProduct="stufProduct"
@@ -213,7 +211,7 @@ export default ({
     },
     head() {
       return {
-        title: this.productItem.name,
+        title: this.productItem.name+' купить в Arhiterm.by',
         meta: [
           {
             hid: 'description',

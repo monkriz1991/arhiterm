@@ -14,37 +14,13 @@
           </li>
           <el-checkbox
           v-model="checkList"
-          v-for="(checkbox,idx) in category.chice"
+          v-for="checkbox in category.chice"
           :key="checkbox.id"
           :label="`${checkbox.kirilica}`"
-          v-show="idx<=6&&adaptivSidebar==true  || adaptivSidebar==false"
           @change="checkFil()"
           :disabled="isDisabled"
           >{{checkbox.value}}
           </el-checkbox>
-          <el-popover
-            placement="right"
-            popper-class="popover-filter"
-            trigger="click"
-            v-if="category.chice.length>7&&adaptivSidebar==true"
-            >
-              <div class="cat-filter cat-filter-all">
-                <el-checkbox
-                v-model="checkList"
-                v-for="(checkbox,idx) in category.chice"
-                :key="checkbox.id"
-                :label="`${checkbox.kirilica}`"
-                v-show="idx>6"
-                @change="checkFil()"
-                :disabled="isDisabled"
-                >{{checkbox.value}}
-                </el-checkbox>
-              </div>
-            <el-button slot="reference" 
-            icon="el-icon-arrow-right"
-            >
-            Показать больше</el-button>
-          </el-popover>
         </ul>
       </div>
     </div>

@@ -16,45 +16,65 @@
         </template>
         </el-skeleton>
         <div style="display: contents;" v-show="showFirst" >
+        <div class="navbar-top">
+          <div v-if="width>991" class="top-phone button-nav-meny">
+            <el-button
+            circle
+            icon="el-icon-phone-outline"
+            @click=dialogVisiblePhone()>
+            </el-button>
+            <a href="tel:+37529343-16-16">+375 (29) 343-16-16<span>(МТС)</span></a>
+          </div>
+          <nuxt-link :to="`/info/contacts`">
+            Контакты
+          </nuxt-link>
+          <nuxt-link :to="`/info/about`">
+            О нас
+          </nuxt-link>
+          <nuxt-link :to="`/info/dostavka`">
+            Доставка
+          </nuxt-link>
+          <nuxt-link :to="`/info/payment`">
+            Условия оплаты / заказа / возврата
+          </nuxt-link>
+        </div> 
+        <div class="header-nav">
         <div v-if="width>991" class="header-cat-desc">
-          <el-popover
-          popper-class="popover-nav"
-          v-model="visible"
-          placement="bottom"
-          width="auto"
-          right="0"
-          trigger="click"
-          >
-          <el-button slot="reference"
-              class="header-cat"
-              @click="menyCat(true)"
-          >
-          <span class="button-svg-index-cat"></span>
-          <span class="button-nav-text">Каталог</span>
-          </el-button>
-            <CatalogModal
-            :categoryNavbar.sync="categoryNavbar"
-            :manufacturer.sync="manufacturer"
-            :visible.sync="visible"
-            />
-          </el-popover>
-        </div>
-        <div class="logotip">
-            <!-- <img class="img-ng" alt="новогодние украшения arhiterm" 
-            src="/ng10.webp" width="200" height="200"> -->
+          <div class="logotip">
           <nuxt-link to="/">
             <div class="logotip-img">
-              <img 
-                v-if="width>991"
-                sizes="sm:130px md:130px lg:130px"
-                provide="imgix"
-                loading="lazy" 
-                src="/logotip.webp" 
-                alt="logotip" 
-                title="Logotip arhiterm" />
-              <img v-else src="/logotip_orange.webp" alt="logotip" title="Logotip arhiterm"/>
+                  <img 
+                    width="130" height="20"
+                    provide="imgix"
+                    loading="lazy" 
+                    src="/logotip.webp" 
+                    alt="logotip" 
+                    title="Logotip arhiterm" />
+                </div>
+              </nuxt-link>
             </div>
-          </nuxt-link>
+            
+            <el-popover
+            popper-class="popover-nav"
+            v-model="visible"
+            placement="bottom"
+            width="auto"
+            right="0"
+            trigger="click"
+            >
+            <el-button slot="reference"
+                class="header-cat"
+                @click="menyCat(true)"
+            >
+            <span class="button-svg-index-cat"></span>
+            <span class="button-nav-text">Каталог</span>
+            </el-button>
+              <CatalogModal
+              :categoryNavbar.sync="categoryNavbar"
+              :manufacturer.sync="manufacturer"
+              :visible.sync="visible"
+              />
+            </el-popover>
         </div>
         <div
         v-if="width<991"
@@ -65,6 +85,19 @@
           >
             <span class="button-svg-meny-brand"></span>
           </el-button>
+          <div class="logotip">
+            <nuxt-link to="/">
+              <div class="logotip-img">
+                <img 
+                  width="130" height="20"
+                  provide="imgix"
+                  loading="lazy" 
+                  src="/logotip_orange.webp" 
+                  alt="logotip" 
+                  title="Logotip arhiterm" />
+              </div>
+            </nuxt-link>
+          </div>
           <el-dialog
           class="header-cat-nav"
           append-to-body
@@ -78,27 +111,6 @@
             />
           </el-dialog>
         </div>
-        <div class="header-nav">
-            <div>
-              <el-drawer
-              v-if="width>991"
-              class="darwer-meny"
-              :visible.sync="drawer"
-              :direction="direction"
-              :with-header="true">
-                <MenyuserMobail
-                :width.sync = "width"
-                :visible.sync ="drawer" />
-              </el-drawer>
-              <el-button
-              v-if="width>991"
-              @click="drawer = true"
-              class="drawer-button-meny"
-              icon="el-icon-more"
-              size="small"
-              >
-              </el-button>
-            </div>
             <client-only>
               <div v-if="$auth.loggedIn">
                 <Menyuser/>
@@ -119,15 +131,10 @@
               </el-button>
               </div>
             </client-only>
-            <div v-if="width>991" class="top-phone button-nav-meny">
-              <el-button
-              circle
-              icon="el-icon-phone-outline"
-              @click=dialogVisiblePhone()>
-              </el-button>
-                <TimelineModal
-                :worktime.sync="worktime"
-                />
+            <div v-if="width>991" class="button-nav-meny">
+            <TimelineModal
+            :worktime.sync="worktime"
+            />
             </div>
             <div class="search-navbar">
               <el-button
@@ -156,10 +163,8 @@
       </div>
       </div>
     </div>
-    <div class="header-bg">
-        <!-- <img class="img-ng-nav" alt="новогодние украшения arhiterm"
-        src="/eli12.webp" width="260" height="183"> -->
-    </div>
+    <!-- <div class="header-bg">
+    </div> -->
     <div v-if="width>991"  :class="[visible==true?'header-bg-popover':'']" ></div>
       <client-only>
         <vue-bottom-sheet

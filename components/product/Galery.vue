@@ -2,26 +2,32 @@
     <div class="galery">
         <Photoswipe>
         <div class="galery-index" :class="{ 'galery-index-one': srcList.length=='' }">
-            <img 
+            <nuxt-img 
+                provider="twicpics"
+                loading="lazy"
+                width="400" height="400"
                 itemprop="image"
-                :src="'https://new.arhiterm.by'+productItems.img"
+                :src="productItems.img"
                 :data-pswp-src="'https://new.arhiterm.by'+productItems.img"
-                :alt="productItems.name"
-                :title="productItems.name"
+                :alt="productItems.name+' - изображение товара '"
+                :title="productItems.name+' - изображение товара '"
             />
         </div>
         <div class="galery-extra" :class="{ 'galery-index-one-none': srcList.length=='' }">
             <div 
             v-for="(img,index) in srcList.slice(1)" :key="img.id"
             class="galery-extra-block">
-                <img 
-                    :src="img"
-                    :data-pswp-src="img"
-                    :alt="productItems.name+' - вид '+index"
-                    :title="productItems.name+' - вид '+index"
+                <nuxt-img 
+                provider="twicpics"
+                loading="lazy" 
+                width="160" height="160"
+                :src="img"
+                :data-pswp-src="'https://new.arhiterm.by'+img"
+                :alt="productItems.name+' - изображение товара '+index"
+                :title="productItems.name+' - изображение товара '+index"
                 />
             <div class="galery-extra-plus" v-if="index == 1 && srcList.length > 2">
-                <strong>{{ srcList.length }}</strong>
+                <strong>{{ srcList.length-2 }}</strong>
                 <span>+</span>
             </div>
             </div>
@@ -45,8 +51,8 @@ export default {
     },
     methods:{
         imgGalery(){
-            this.srcList = this.productItems.images.map((key)=>'https://new.arhiterm.by'+key.img);
-            this.srcList.unshift('https://new.arhiterm.by'+this.productItems.img);
+            this.srcList = this.productItems.images.map((key)=>key.img);
+            this.srcList.unshift(this.productItems.img);
             if(this.srcList.length==1){
                 this.srcList = []
             }

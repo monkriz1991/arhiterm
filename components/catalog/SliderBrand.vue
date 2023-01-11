@@ -10,7 +10,7 @@
                             <div class="category-in-cyrcle">
                                 <nuxt-img 
                                 provider="twicpics"
-                                sizes="sm:100px md:100px lg:100px"
+                                width="40" height="40"
                                 loading="lazy" 
                                 :src="item.img.substring(24)" 
                                 :alt="'Логотип производителя ' + item.name"
