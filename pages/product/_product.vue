@@ -1,7 +1,7 @@
 <template>
     <div class="container" > 
             <Breadcrumb/>
-        <div itemscope itemtype="http://schema.org/Product">
+        <div itemscope itemtype="https://schema.org/Product">
         <h1 class="h1-product" itemprop="name">{{productItem.name}}</h1>
         <div class="product-top">
             <i class="el-icon-office-building manuf-name"></i> 
@@ -16,7 +16,7 @@
         <Galery :productItems="productItem"/>
         <div class="cost-product-section">
             <div class="cost-product-price" 
-            itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            itemprop="offers" itemscope itemtype="https://schema.org/Offer">
             <meta itemprop="priceCurrency" content="BYN">
                 <span :class="{ butDiscount: discont}" itemprop="price">{{price}}</span>
                 <strong>руб.</strong>
@@ -219,14 +219,14 @@ export default ({
             content:  this.productItem.description_seo
           },
           {
-              hid: 'og:title',
-              name: 'og:title',
-              content: this.productItem.name,
-          },
-          {
               hid: 'og:image',
               property: 'og:image',
               content: `https://new.arhiterm.by${this.productItem.img}`,
+          },
+          {
+              hid: 'og:title',
+              name: 'og:title',
+              content: this.productItem.name,
           },
           {
               hid: 'og:description',

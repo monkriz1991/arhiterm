@@ -116,7 +116,7 @@
           <el-collapse  accordion>
             <el-collapse-item name="1">
               <template slot="title">
-                Описание раздела <i class="header-icon el-icon-info"></i>
+                <h2>Описание раздела</h2> <i class="header-icon el-icon-info"></i>
               </template>
               <div v-show="showFirst" v-html="categoriesNested.description"></div>
             </el-collapse-item>
@@ -302,7 +302,7 @@ export default {
   },
   head() {
     return {
-      title: this.categoriesNested.name,
+      title: this.categoriesNested.name+' купить в Arhiterm.by',
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
