@@ -207,7 +207,6 @@ display: none;
     display: flex;
     align-items: center;
     height: 66px;
-    width: 237px;
 }
 .popover-nav>div>ul li a:hover{
     background: #f9f9f9;
@@ -831,6 +830,10 @@ header{
     float: left;
     width: 100%;
     margin: 0 0 30px;
+}
+.cat-desc h2{
+    font-size: 14px;
+    font-weight: 400;
 }
 .header-nav{
     float: left;
@@ -4989,6 +4992,9 @@ height: 100%;
       }
     }
     @media (max-width: 991px){
+        .button-work span{
+            display: none;
+        }
         .img-ng {
             position: absolute;
             width: 39px;

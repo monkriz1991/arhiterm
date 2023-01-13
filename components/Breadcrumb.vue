@@ -22,14 +22,14 @@
             <el-breadcrumb-item
             v-if="this.$route.name=='catalog-catalog'"
             >
-                <nuxt-link :to="{ name: 'catalog-catalog', params: {catalog:`${nameCat.kirilica}`,id:`${nameCat.kirilica}`} }">
+                <nuxt-link :to="{ name: 'catalog-catalog', params: {catalog:`${nameCat.kirilica_name}`,id:`${nameCat.kirilica_name}`} }">
                     {{nameCat.name}}
                 </nuxt-link>
             </el-breadcrumb-item>
             <el-breadcrumb-item
             v-else-if="this.$route.name=='factory-factory'"
             >
-                <nuxt-link :to="{ name: 'factory-factory', params: {factory:`${factory.kirilica}`,id:`${factory.kirilica}`} }">
+                <nuxt-link :to="{ name: 'factory-factory', params: {factory:`${factory.kirilica_name}`,id:`${factory.kirilica_name}`} }">
                     {{factory.name}}
                 </nuxt-link>
             </el-breadcrumb-item>
@@ -104,7 +104,7 @@ export default {
                 this.results_prod = result.data.cat[0],
                     this.$axios.get(`/catalog/categories/${this.results_prod}`).then(result =>(
                         this.results_prod = result.data.name,
-                        this.results_name = result.data.kirilica,
+                        this.results_name = result.data.kirilica_name,
                         this.results_id = result.data.id
                 ))  
             ))

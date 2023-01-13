@@ -48,8 +48,9 @@
                     provide="imgix"
                     loading="lazy" 
                     src="/logotip.webp" 
-                    alt="logotip" 
+                    alt="logotip arhiterm" 
                     title="Logotip arhiterm" />
+                    <span hidden>Перейти на главную</span>
                 </div>
               </nuxt-link>
             </div>
@@ -93,8 +94,9 @@
                   provide="imgix"
                   loading="lazy" 
                   src="/logotip_orange.webp" 
-                  alt="logotip" 
+                  alt="logotip arhiterm" 
                   title="Logotip arhiterm" />
+                  <span hidden>Перейти на главную</span>
               </div>
             </nuxt-link>
           </div>
