@@ -8,7 +8,7 @@
                 </nuxt-link>
                 <el-divider direction="vertical"></el-divider>
                 <nuxt-link :to="`/info/dostavka`">
-                    Доставка
+                    Доставка товаров
                 </nuxt-link>
                 <el-divider direction="vertical"></el-divider>
                 <nuxt-link :to="`/info/payment`">
@@ -16,7 +16,7 @@
                 </nuxt-link>
                 <el-divider direction="vertical"></el-divider>
                 <nuxt-link :to="`/info/contacts`">
-                    Контакты
+                    Контакты компании
                 </nuxt-link>
             </div>
             <div class="phone-footer">
@@ -25,7 +25,7 @@
                     <strong>MTC</strong><b>|</b><strong>A1</strong>
                 </div>
             <div class="social-footer">
-                <a href="https://www.instagram.com/arhiterm.by/" target="_blank" title="instagram arhiterm">
+                <a href="https://www.instagram.com/arhiterm.by/" rel="nofollow" target="_blank" title="instagram arhiterm">
                     <img 
                     width="20" height="20"
                     provide="imgix"
@@ -36,7 +36,7 @@
                     alt="instagram arhiterm" />
                     <span hidden>Instagram arhiterm</span>
                 </a>
-                <a href="viber://chat?number=%2B375293431616/" target="_blank" title="viber arhiterm">
+                <a href="viber://chat?number=%2B375293431616/" rel="nofollow" target="_blank" title="viber arhiterm">
                     <img 
                     width="20" height="20"
                     provide="imgix"

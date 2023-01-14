@@ -85,11 +85,11 @@ render: {
 },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 plugins: [
-  { src: '~/plugins/element-ui', ssr: true},
+  { src: '~/plugins/element-ui'},
   '@/plugins/backbutton.js',
   { src: '~/plugins/vue-pswipe.js', mode: 'client' },
   { src: '~/plugins/vs-pagination.js', ssr: true },
-  // { src: '~/plugins/vue-js-modal.js', ssr: true },
+  // { src: '~plugins/vue-js-modal.js'},
   // { src: '~plugins/ga.js', mode: 'client' },
   // '~/plugins/gtm',
   { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
@@ -141,6 +141,7 @@ modules: [
   'nuxt-webfontloader',
   '@nuxtjs/redirect-module',
   'nuxt-purgecss',
+  // ['bootstrap-vue/nuxt'],
   ['nuxt-vuex-localstorage', {
     localStorage: ['crate']
   }],
@@ -158,6 +159,9 @@ modules: [
   //   }
   // ],
 ],
+// bootstrapVue: {
+//   components: [ 'b-modal'],
+// },
 gtm: {
   id: 'G-ZEZSNWGXM4'
 },

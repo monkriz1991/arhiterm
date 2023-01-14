@@ -16,8 +16,8 @@
         </template>
         </el-skeleton>
         <div style="display: contents;" v-show="showFirst" >
-        <div class="navbar-top">
-          <div v-if="width>991" class="top-phone button-nav-meny">
+        <div v-if="width>991" class="navbar-top">
+          <div  class="top-phone button-nav-meny">
             <el-button
             circle
             icon="el-icon-phone-outline"
@@ -26,13 +26,13 @@
             <a href="tel:+37529343-16-16">+375 (29) 343-16-16<span>(МТС)</span></a>
           </div>
           <nuxt-link :to="`/info/contacts`">
-            Контакты
+            Контакты компании
           </nuxt-link>
           <nuxt-link :to="`/info/about`">
             О нас
           </nuxt-link>
           <nuxt-link :to="`/info/dostavka`">
-            Доставка
+            Доставка товаров
           </nuxt-link>
           <nuxt-link :to="`/info/payment`">
             Условия оплаты / заказа / возврата
@@ -120,8 +120,6 @@
               <div v-else>
                 <ModalLogout />
               </div>
-            </client-only>
-            <client-only>
              <BasketModal
               @clickModal = "toggleModal"
               @openBasketNotify = "closeBasket"
@@ -168,20 +166,21 @@
     <!-- <div class="header-bg">
     </div> -->
     <div v-if="width>991"  :class="[visible==true?'header-bg-popover':'']" ></div>
-      <client-only>
-        <vue-bottom-sheet
-        max-width="400px"
-        max-height="90%"
-        :overlay="true"
-        :click-to-close="true"
-        :swipe-able="true"
-        :rounded="true"
-        :background-scrollable="false"
-        :is-full-screen="false"
-        :background-clickable="true"
-         ref="myBottomSheet">
-          <MenyuserMobail />
-        </vue-bottom-sheet>
+        <client-only>
+          <vue-bottom-sheet
+          max-width="400px"
+          max-height="90%"
+          :overlay="true"
+          :click-to-close="true"
+          :swipe-able="true"
+          :rounded="true"
+          :background-scrollable="false"
+          :is-full-screen="false"
+          :background-clickable="true"
+          ref="myBottomSheet">
+            <MenyuserMobail />
+          </vue-bottom-sheet>
+        
         <div v-if="width<991" class="bottom-bar">
           <div class="container">
             <div class="bottom-bar-con">

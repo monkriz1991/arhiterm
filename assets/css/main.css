@@ -4827,9 +4827,13 @@ height: 100%;
         align-items: center;
         margin: 0 0 15px;
     }
-    .catalog-list-block-desc>a:hover,.catalog-list-block-desc>span{
+    .catalog-list-block-desc>a:hover{
         color:#000;
     }
+    /* .catalog-list-block-desc:hover+.catalog-list-img{
+        border: 2px solid #f8d7a5 !important;
+        transition: .2s;
+    } */
     .activeImgBlock .catalog-list-img{
         border: 1px solid #ffffff;
     }

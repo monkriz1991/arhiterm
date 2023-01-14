@@ -41,12 +41,7 @@ import { Hooper, Slide,
 Pagination as HooperPagination,
 Navigation  as HooperNavigation} from 'hooper';
 export default ({
-  props: {
-    slides: {
-            type: Array,
-            default: () => []
-            }
-    },
+  props:['slides'],
   components:{
     Hooper,
     Slide,

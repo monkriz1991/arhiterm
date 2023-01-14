@@ -9,7 +9,7 @@
       </template>
     </el-skeleton>
       <transition name="el-fade-in-linear">
-        <div :class="[showTwo==false?'show-on-class':'']">
+        <div :class="[showFirst==false?'show-on-class':'']">
           <Slider :slides="slides"/>
         </div>
       </transition>
@@ -146,7 +146,7 @@ export default {
         setTimeout(() => (
           this.loadingFirst = false,
           this.showFirst = true
-          ), 1200)
+          ), 600)
       },
       setLoadingScroll() {
         setTimeout(() => (
