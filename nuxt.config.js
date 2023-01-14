@@ -248,7 +248,7 @@ purgecss: {
         exclude: ['/**'],
         routes: async () => {
           const { data } = await axios.get('https://new.arhiterm.by/catalog/categories/?limit=999')
-          return data.results.map((category) => `/catalog/${category.kirilica}`)
+          return data.results.map((category) => `/catalog/${category.kirilica_name}`)
         }
       },
       {
@@ -266,7 +266,7 @@ purgecss: {
         routes: 
           async () => {
             const { data } = await axios.get('https://new.arhiterm.by/manufacturer/get/?is_active=true&limit=99999')
-            return data.results.map((factory) => `/factory/${factory.kirilica}`)
+            return data.results.map((factory) => `/factory/${factory.kirilica_name}`)
           }
         }
     ]
