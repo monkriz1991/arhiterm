@@ -318,7 +318,7 @@ export default {
         {
             hid: 'og:url',
             property: 'og:url',
-            content: `https://arhiterm.by/catalog/${this.categoriesNested.kirilica}`,
+            content: `https://arhiterm.by/catalog/${this.categoriesNested.kirilica_name}`,
         }, 
         {
             hid: 'og:image',

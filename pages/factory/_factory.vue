@@ -285,7 +285,7 @@ export default {
           {
               hid: 'og:url',
               property: 'og:url',
-              content: `https://arhiterm.by/factory/${this.factori.kirilica}`,
+              content: `https://arhiterm.by/factory/${this.factori.kirilica_name}`,
           },
         ]
       }
