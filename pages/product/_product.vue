@@ -211,7 +211,7 @@ export default ({
     },
     head() {
       return {
-        title: this.productItem.name+'- купить в Arhiterm.by',
+        title: this.productItem.name+' - купить в Arhiterm.by',
         meta: [
         {
             hid: 'description',
@@ -219,9 +219,14 @@ export default ({
             content:  this.productItem.description_seo
         },
         {
+            hid: 'og:type',
+            property: 'og:type',
+            content: 'product',
+        }, 
+        {
             hid: 'og:title',
             name: 'og:title',
-            content: this.productItem.name,
+            content: this.productItem.name +' - arhiterm.by',
         },
         {
             hid: 'og:url',
@@ -237,11 +242,6 @@ export default ({
             hid: 'og:image',
             property: 'og:image',
             content: `https://new.arhiterm.by${this.productItem.img}`,
-        }, 
-        {
-            hid: 'og:type',
-            property: 'og:type',
-            content: 'product',
         }, 
         {
             hid: 'og:site_name',
