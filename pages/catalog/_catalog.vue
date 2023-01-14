@@ -316,6 +316,11 @@ export default {
             content: this.categoriesNested.name,
         },
         {
+            hid: 'og:url',
+            property: 'og:url',
+            content: `https://arhiterm.by/catalog/${this.categoriesNested.kirilica}`,
+        }, 
+        {
             hid: 'og:image',
             property: 'og:image',
             content: `${this.categoriesNested.img}`,
@@ -324,12 +329,7 @@ export default {
             hid: 'og:description',
             property: 'og:description',
             content: this.categoriesNested.description_seo,
-        },
-        {
-            hid: 'og:url',
-            property: 'og:url',
-            content: `https://arhiterm.by/catalog/${this.categoriesNested.kirilica}`,
-        },          
+        },         
       ]
     }
   }

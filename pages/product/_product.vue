@@ -211,38 +211,48 @@ export default ({
     },
     head() {
       return {
-        title: this.productItem.name+' купить в Arhiterm.by',
+        title: this.productItem.name+'- купить в Arhiterm.by',
         meta: [
-          {
+        {
             hid: 'description',
             name: 'description',
             content:  this.productItem.description_seo
-          },
-          {
-              hid: 'og:image',
-              property: 'og:image',
-              content: `https://new.arhiterm.by${this.productItem.img}`,
-          },
-          {
-              hid: 'og:title',
-              name: 'og:title',
-              content: this.productItem.name,
-          },
-          {
-              hid: 'og:description',
-              property: 'og:description',
-              content: this.productItem.description_seo,
-          },
-          {
-              hid: 'og:url',
-              property: 'og:url',
-              content: `https://arhiterm.by/product/${this.productItem.kirilica_name}`,
-          },  
-          {
-              hid: 'og:type',
-              property: 'og:type',
-              content: 'product',
-          }, 
+        },
+        {
+            hid: 'og:title',
+            name: 'og:title',
+            content: this.productItem.name,
+        },
+        {
+            hid: 'og:url',
+            property: 'og:url',
+            content: `https://arhiterm.by/product/${this.productItem.kirilica_name}`,
+        }, 
+        {
+            hid: 'og:description',
+            property: 'og:description',
+            content: this.productItem.description_seo,
+        },
+        {
+            hid: 'og:image',
+            property: 'og:image',
+            content: `https://new.arhiterm.by${this.productItem.img}`,
+        }, 
+        {
+            hid: 'og:type',
+            property: 'og:type',
+            content: 'product',
+        }, 
+        {
+            hid: 'og:site_name',
+            property: 'og:site_name',
+            content: 'Arhiterm',
+        }, 
+        {
+            hid: 'og:locale',
+            property: 'og:locale',
+            content: 'ru_RU',
+        },
         ]
       }
     }
