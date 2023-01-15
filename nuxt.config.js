@@ -88,7 +88,7 @@ plugins: [
   { src: '~/plugins/element-ui'},
   '@/plugins/backbutton.js',
   { src: '~/plugins/vue-pswipe.js', mode: 'client' },
-  { src: '~/plugins/vs-pagination.js', ssr: true },
+  { src: '~/plugins/vs-pagination.js', mode: 'client' },
   // { src: '~plugins/vue-js-modal.js'},
   // { src: '~plugins/ga.js', mode: 'client' },
   // '~/plugins/gtm',
@@ -145,19 +145,19 @@ modules: [
   ['nuxt-vuex-localstorage', {
     localStorage: ['crate']
   }],
-  // [
-  //   '@nuxtjs/yandex-metrika',
-  //   {
-  //     id: '7416499',
-  //     defer: true,
-  //     webvisor: false,
-  //     clickmap:true,
-  //     usetriggerEventCDN:true,
-  //     trackLinks:true,
-  //     triggerEvent:true,
-  //     accurateTrackBounce:true,
-  //   }
-  // ],
+  [
+    '@nuxtjs/yandex-metrika',
+    {
+      id: '7416499',
+      defer: true,
+      webvisor: false,
+      clickmap:true,
+      usetriggerEventCDN:true,
+      trackLinks:true,
+      triggerEvent:true,
+      accurateTrackBounce:true,
+    }
+  ],
 ],
 // bootstrapVue: {
 //   components: [ 'b-modal'],

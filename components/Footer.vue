@@ -25,7 +25,7 @@
                     <strong>MTC</strong><b>|</b><strong>A1</strong>
                 </div>
             <div class="social-footer">
-                <a href="https://instagram.com/arhiterm.by?igshid=YmMyMTA2M2Y=" rel="nofollow" target="_blank" title="instagram arhiterm">
+                <a href="https://instagram.com/arhiterm.by"  rel="external nofollow" target="_blank" title="instagram arhiterm">
                     <img 
                     width="20" height="20"
                     provide="imgix"
