@@ -253,6 +253,26 @@ export default ({
             property: 'og:locale',
             content: 'ru_RU',
         },
+                {
+            hid: 'twitter:title',
+            name: 'twitter:title',
+            content: this.productItem.name +' - arhiterm.by',
+        },
+        {
+            hid: 'twitter:url',
+            property: 'twitter:url',
+            content: `https://arhiterm.by/product/${this.productItem.kirilica_name}`,
+        }, 
+        {
+            hid: 'twitter:description',
+            property: 'twitter:description',
+            content: this.productItem.description_seo,
+        },
+        {
+            hid: 'twitter:image',
+            property: 'twitter:image',
+            content: `https://new.arhiterm.by${this.productItem.img}`,
+        }, 
         ]
       }
     }
