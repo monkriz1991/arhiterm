@@ -150,7 +150,7 @@ modules: [
     {
       id: '7416499',
       defer: true,
-      webvisor: false,
+      webvisor: true,
       clickmap:true,
       usetriggerEventCDN:true,
       trackLinks:true,

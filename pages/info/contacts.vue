@@ -69,7 +69,30 @@
 
 			</div>
 		</div>
-
+      <div class="social-footer">
+          <a href="https://instagram.com/arhiterm.by"  rel="external nofollow" target="_blank" title="instagram arhiterm">
+              <img 
+              width="20" height="20"
+              provide="imgix"
+              loading="lazy" 
+              presets="product"
+              src="/icons8-instagram.webp" 
+              title="Логотип instagram arhiterm" 
+              alt="instagram arhiterm" />
+              <span hidden>Instagram arhiterm</span>
+          </a>
+          <a href="viber://chat?number=%2B375293431616/" rel="nofollow" target="_blank" title="viber arhiterm">
+              <img 
+              width="20" height="20"
+              provide="imgix"
+              loading="lazy" 
+              presets="product"
+              src="/icons8-viber.webp" 
+              title="Логотип viber arhiterm" 
+              alt="viber arhiterm" />
+              <span hidden>viber arhiterm</span>
+          </a>
+      </div>
         <div class="section-map"> 
             <div class="map-block" id="map" style="">
                 <no-ssr>
