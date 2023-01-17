@@ -4786,10 +4786,11 @@ height: 100%;
         border: 2px solid #e9e9e9;
         position: relative;
     }
-    .catalog-list-img:hover{
+    .catalog-list-block:hover .catalog-list-img{
         border: 2px solid #f8d7a5;
         transition: .2s;
     }
+    
     .catalog-list-block .el-image{
         float: left;
         width: 100%;

@@ -24,11 +24,11 @@
             v-for="(product,idx) in productsList" :key="idx"
             >
                 <div class="catalog-list-block">
+                    <nuxt-link
+                    :class="{disabledLink:!price[idx]}"
+                        :to="{ name: 'product-product', params: {product:`${product.kirilica_name}`,id:`${product.kirilica_name}`} }" 
+                    >
                     <div class="catalog-list-img" >
-                        <nuxt-link
-                        :class="{disabledLink:!price[idx]}"
-                         :to="{ name: 'product-product', params: {product:`${product.kirilica_name}`,id:`${product.kirilica_name}`} }" 
-                        >
                         <nuxt-img 
                         provider="twicpics"
                         loading="lazy" 
@@ -37,8 +37,8 @@
                         :alt="product.name"
                         quality="75"
                         />
-                        </nuxt-link>
                         <div
+                        v-on:click.prevent
                         v-show="price[idx]"
                         class="catalog-list-block-button">
                             <el-button
@@ -51,37 +51,23 @@
                     </div>
                     <div class="catalog-list-block-desc">
                         <div
+                        v-on:click.prevent
                         v-if="product.manufacturer_name"
                         class="catalog-manuf">
                             <i class="el-icon-office-building"></i>
                             {{product.manufacturer_name}}
                         </div>
-                        <nuxt-link
-                        :class="{disabledLink:!price[idx]}"
-                        :to="{ name: 'product-product', params: {product:`${product.kirilica_name}`,id:`${product.kirilica_name}`} }" 
-                        >
                             <span v-if="product.name.length<65">{{product.name}}</span>
                             <span v-else>{{product.name.substring(0,65)+".." }}</span>
-                        </nuxt-link>
                         <div class="catalog-list-block-price">
                             <b v-if="product.product.length>1&&product.product.length!=0">от</b>
                             <strong :class="{ butDiscount: discont[idx]}">
-                                <!-- <i class="el-icon-price-tag"></i> -->
                                 {{price[idx]}}
-                                <!-- <div v-if="discont[idx]"
-                                class="catalog-list-block-discount">
-                                    <strong>{{discont[idx]}}</strong>
-                                    <span>руб/{{product.units}}</span>
-                                </div> -->
                             </strong>
                             <span v-if="product.product.length!=0">руб/{{product.units}}</span>
-                            <!-- <div class="catalog-list-block-cost">
-                                <b>от</b><strong>{{oneprice[idx]}}</strong>
-                                <b>до</b><strong>{{lastprice[idx]}}</strong>
-                                <span>руб/{{product.units}}</span>
-                            </div> -->
                         </div>
                     </div>
+                    </nuxt-link>
                 </div>
                 <el-dialog
                 :visible="show.includes(idx)&&centerDialogVisible"

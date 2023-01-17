@@ -2,12 +2,12 @@
     <div  class="catalog-paginated">
       <nav role="navigation" aria-label="Pagination Navigation">
         <ul class="vs-pagination">
-          <li>
-            <nuxt-link     
+          <!-- <li>
+            <nuxt-link  
               :class="{disableitempage:itempagePrev==undefined}" 
               :to="{ path: `${$route.params.catalog}`, query: {page:itempagePrev,card_filter:paregetfilter,manuf:paregetmanuf} }"
               ><i class="el-icon-arrow-left"></i></nuxt-link>
-          </li>
+          </li> -->
           <li
           v-for="itempage in Math.ceil(this.countProduct/10)" :key="itempage"
           :class="{'vs-pagination--active':!$route.query.page&&itempage==1
@@ -15,19 +15,20 @@
           }" 
           :hidden="hidenPage(itempage)" 
           > 
-            <nuxt-link      
+            <nuxt-link     
+              :alt="'Страница '+itempage+' раздела '+ $route.params.catalog" 
               :to="{ path: `${$route.params.catalog}`, query: {page:itempage,card_filter:paregetfilter,manuf:paregetmanuf} }"
               >{{itempage}}</nuxt-link>
           </li> 
           <!-- <li :hidden="Math.ceil(this.countProduct/10)<=5"  class="paginated-nore">
             <i class="el-icon-more"></i>
           </li> -->
-          <li>
+          <!-- <li>
             <nuxt-link    
               :class="{disableitempage:itempageNext==Math.ceil(this.countProduct/10)+1}"   
               :to="{ path: `${$route.params.catalog}`, query: {page:itempageNext,card_filter:paregetfilter,manuf:paregetmanuf} }"
               ><i class="el-icon-arrow-right"></i></nuxt-link>
-          </li>
+          </li> -->
         </ul> 
       </nav>
     </div>
@@ -37,6 +38,7 @@ import {mapGetters,mapActions} from "vuex";
 export default {
   mounted(){
     this.hidenPage()
+    this.filterPage()
   },
   data() {
     return {
@@ -46,7 +48,7 @@ export default {
       pagePrev:undefined,
       pageNext:2,
       itempageHiden:false,
-      eventpage:this.$route.query.page!==undefined?parseInt(this.$route.query.page):1
+      eventpage:this.$route.query.page!==undefined?parseInt(this.$route.query.page):1,
     }
   },
   computed:{
@@ -55,9 +57,15 @@ export default {
       tabsArr:'product/tabs',
     }),
     paregetfilter(){
+      if(this.tabsArr.card_filter!=undefined){
+        this.FilterItem = this.tabsArr.card_filter.join(',')
+      }
       return this.FilterItem
     },
     paregetmanuf(){
+      if(this.tabsArr.manuf!=undefined){
+        this.ManufItem = this.tabsArr.manuf.join(',')
+      }
       return this.ManufItem
     },
     itempagePrev(){
@@ -101,6 +109,10 @@ export default {
     }
   },
   methods:{
+    filterPage(){
+      // this.paregetfilter
+      // this.paregetmanuf
+    },
     hidenPage(itempage){
       if(Math.ceil(this.countProduct/10)<=5){
         return false
