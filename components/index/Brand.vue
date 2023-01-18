@@ -62,10 +62,10 @@ export default ({
                         itemsToShow: 2
                     },
                     1800: {
-                        itemsToShow: 4
+                        itemsToShow: 6
                     },
                     1500: {
-                        itemsToShow: 4
+                        itemsToShow: 6
                     },
                 }
             }
