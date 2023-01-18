@@ -71,11 +71,11 @@
                   />
                   <div
                   class="skeleton-product-desc">
-                    <el-skeleton-item variant="p" style="width: 100%" />
+                    <el-skeleton-item variant="p" style="width: 50%" />
                     <div
                       style="display: flex;align-items: flex-start;flex-direction: column;"
                     >
-                      <el-skeleton-item variant="text" style="height: 75px;margin: 15px 0 25px 0;" />
+                      <el-skeleton-item variant="text" style="height: 85px;margin: 15px 0 35px 0;" />
                       <el-skeleton-item variant="text" style="width: 50%;height: 25px;" />
                     </div>
                   </div>
