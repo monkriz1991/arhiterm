@@ -39,53 +39,6 @@
           </nuxt-link>
         </div> 
         <div class="header-nav">
-        <div v-if="width>991" class="header-cat-desc">
-          <div class="logotip">
-          <nuxt-link to="/">
-            <div class="logotip-img">
-                  <img 
-                    width="130" height="20"
-                    provide="imgix"
-                    loading="lazy" 
-                    src="/logotip.webp" 
-                    alt="logotip arhiterm" 
-                    title="Logotip arhiterm" />
-                    <span hidden>Перейти на главную</span>
-                </div>
-              </nuxt-link>
-            </div>
-            
-            <el-popover
-            popper-class="popover-nav"
-            v-model="visible"
-            placement="bottom"
-            width="auto"
-            right="0"
-            trigger="click"
-            >
-            <el-button slot="reference"
-                class="header-cat"
-                @click="menyCat(true)"
-            >
-            <span class="button-svg-index-cat"></span>
-            <span class="button-nav-text">Каталог</span>
-            </el-button>
-              <CatalogModal
-              :categoryNavbar.sync="categoryNavbar"
-              :manufacturer.sync="manufacturer"
-              :visible.sync="visible"
-              />
-            </el-popover>
-        </div>
-        <div
-        v-if="width<991"
-        class="contents-mobail">
-          <el-button slot="reference"
-          class="header-cat"
-          @click=dialogCatalog()
-          >
-            <span class="button-svg-meny-brand"></span>
-          </el-button>
           <div class="logotip">
             <nuxt-link to="/">
               <div class="logotip-img">
@@ -100,146 +53,159 @@
               </div>
             </nuxt-link>
           </div>
-          <el-dialog
-          class="header-cat-nav"
-          append-to-body
-          :visible.sync="dialogCatalogVisible"
-          width="36%">
-            <CatalogModal
-            :categoryNavbar.sync="categoryNavbar"
-            :manufacturer.sync="manufacturer"
-            :dialogCatalogVisible.sync="dialogCatalogVisible"
-            :visible.sync="visible"
-            />
-          </el-dialog>
-        </div>
-            <client-only>
-              <div v-if="$auth.loggedIn">
-                <Menyuser/>
-              </div>
-              <div v-else>
-                <ModalLogout />
-              </div>
-             <BasketModal
-              @clickModal = "toggleModal"
-              @openBasketNotify = "closeBasket"
-              :dialogFormVisibleModal.sync="dialogFormVisibleModal"/>
-              <div class="nav-button-basket button-nav-meny">
-                <el-button  type="text" @click="toggleModal(true)">
-                  <i class="el-icon-shopping-cart-full"></i>
-                  <span v-if="width>991" class="button-nav-text">Корзина</span>
-              </el-button>
-              </div>
-            </client-only>
-            <div v-if="width>991" class="button-nav-meny">
+          <div class="nav-header-cat" v-click-out="closeDropdown">
+            <el-button slot="reference"
+                class="header-cat"
+                @click="menyCat()"
+            >
+            <span class="button-svg-index-cat"></span>
+            <span class="button-nav-text">Каталог</span>
+            </el-button>
+              <CatalogModal
+              :categoryNavbar.sync="categoryNavbar"
+              :manufacturer.sync="manufacturer"
+              :visible.sync="visible"
+              />
+          </div>
+          <client-only>
+            <Menyuser v-if="$auth.loggedIn"/>
+            <ModalLogout v-if="!$auth.loggedIn" />
+            <BasketModal
+            @clickModal = "toggleModal"
+            @openBasketNotify = "closeBasket"
+            :dialogFormVisibleModal.sync="dialogFormVisibleModal"/>
+            <div class="nav-button-basket button-nav-meny">
+              <el-button  type="text" @click="toggleModal(true)">
+                <i class="el-icon-shopping-cart-full"></i>
+                <span v-if="width>991" class="button-nav-text">Корзина</span>
+            </el-button>
+            </div>
+          </client-only>
+          <div v-if="width>991" class="button-nav-meny">
             <TimelineModal
             :worktime.sync="worktime"
             />
-            </div>
-            <div class="search-navbar">
-              <el-button
-              @click="showButton()"
-              v-if="show==true&&width>991"
-              class="button-search"
-              icon="el-icon-close"
-              circle>
-              </el-button>
-              <el-button
-              @click="showButton()"
-              v-else
-              v-show="width>991"
-              class="button-search"
-              icon="el-icon-search"
-              circle>
-              </el-button>
-              <transition name="el-fade-in-linear">
-                <div v-show="show" class="block-search">
-                  <i class="el-icon-search"></i>
-                  <Search/>
-                </div>
-              </transition>
-            </div>
-        </div>
-      </div>
-      </div>
-    </div>
-    <!-- <div class="header-bg">
-    </div> -->
-    <div v-if="width>991"  :class="[visible==true?'header-bg-popover':'']" ></div>
-        <client-only>
-          <vue-bottom-sheet
-          max-width="400px"
-          max-height="90%"
-          :overlay="true"
-          :click-to-close="true"
-          :swipe-able="true"
-          :rounded="true"
-          :background-scrollable="false"
-          :is-full-screen="false"
-          :background-clickable="true"
-          ref="myBottomSheet">
-            <MenyuserMobail />
-          </vue-bottom-sheet>
-        
-        <div v-if="width<991" class="bottom-bar">
-          <div class="container">
-            <div class="bottom-bar-con">
-              <client-only>
-              <div v-if="$auth.loggedIn">
-                  <Menyuser/>
+          </div>
+          <div class="search-navbar">
+            <el-button
+            @click="showButton()"
+            v-if="show==true&&width>991"
+            class="button-search"
+            icon="el-icon-close"
+            circle>
+            </el-button>
+            <el-button
+            @click="showButton()"
+            v-else
+            v-show="width>991"
+            class="button-search"
+            icon="el-icon-search"
+            circle>
+            </el-button>
+            <transition name="el-fade-in-linear">
+              <div v-show="show" class="block-search">
+                <i class="el-icon-search"></i>
+                <Search/>
               </div>
-              <div v-else>
-                  <ModalLogout />
-              </div>
-               </client-only>
-              <el-button
-              circle
-              icon="el-icon-phone-outline"
-              @click=dialogVisiblePhone()>
-              </el-button>
-              <el-button
-              circle
-              icon="el-icon-more-outline"
-              @click="open()">
-              </el-button>
-                <TimelineModal
-                :worktime.sync="worktime"
-                />
-
-              <el-button
-              @click="openSearch()"
-              class="button-search"
-              icon="el-icon-search"
-              circle>
-              </el-button>
-
-              <vue-bottom-sheet
-                max-width="1080px"
-                max-height="90%"
-                :overlay="true"
-                :click-to-close="true"
-                :swipe-able="false"
-                :rounded="true"
-                :background-scrollable="false"
-                :is-full-screen="false"
-                :background-clickable="true"
-                @closed="hideBottomSheet"
-                ref="dialogSearch">
-                  <Search @toggleModal="closeSearch"/>
-              </vue-bottom-sheet>
-            </div>
+            </transition>
           </div>
         </div>
-        </client-only>
-        <PhoneModal
-        :dialogVisible.sync="dialogVisible"
-        :phones.sync="phones"
-        />
+      </div>
+    </div>
+  </div>
+    <!-- <div class="header-bg">
+    </div> -->
+    <div v-if="width>991"  :class="[visible==true?'header-bg-popover-none':'']" ></div>
+      <client-only>
+      <vue-bottom-sheet
+      max-width="400px"
+      max-height="90%"
+      :overlay="true"
+      :click-to-close="true"
+      :swipe-able="true"
+      :rounded="true"
+      :background-scrollable="false"
+      :is-full-screen="false"
+      :background-clickable="true"
+      ref="myBottomSheet">
+        <MenyuserMobail />
+      </vue-bottom-sheet>
+        
+      <div v-if="width<991" class="bottom-bar">
+        <div class="container">
+          <div class="bottom-bar-con">
+            <client-only>
+            <div v-if="$auth.loggedIn">
+                <Menyuser/>
+            </div>
+            <div v-else>
+                <ModalLogout />
+            </div>
+              </client-only>
+            <el-button
+            circle
+            icon="el-icon-phone-outline"
+            @click=dialogVisiblePhone()>
+            </el-button>
+            <el-button
+            circle
+            icon="el-icon-more-outline"
+            @click="open()">
+            </el-button>
+              <TimelineModal
+              :worktime.sync="worktime"
+              />
+
+            <el-button
+            @click="openSearch()"
+            class="button-search"
+            icon="el-icon-search"
+            circle>
+            </el-button>
+
+            <vue-bottom-sheet
+              max-width="1080px"
+              max-height="90%"
+              :overlay="true"
+              :click-to-close="true"
+              :swipe-able="false"
+              :rounded="true"
+              :background-scrollable="false"
+              :is-full-screen="false"
+              :background-clickable="true"
+              @closed="hideBottomSheet"
+              ref="dialogSearch">
+                <Search @toggleModal="closeSearch"/>
+            </vue-bottom-sheet>
+          </div>
+        </div>
+      </div>
+      </client-only>
+      <PhoneModal
+      :dialogVisible.sync="dialogVisible"
+      :phones.sync="phones"
+      />
   </header>
 </template>
 
 <script>
 import {mapGetters,mapActions} from 'vuex'
+import Vue from 'vue';
+Vue.directive('click-out', {
+  bind: function (el, binding, vnode) {
+    el.clickOutsideEvent = function (event) {
+      // here I check that click was outside the el and his childrens
+      if (!(el == event.target || el.contains(event.target))) {
+      // and if it did, call method provided in attribute value
+        vnode.context[binding.expression](event);
+      }
+    };
+    document.body.addEventListener('click', el.clickOutsideEvent)
+  },
+  unbind: function (el) {
+    document.body.removeEventListener('click', el.clickOutsideEvent)
+  },
+});
   export default {
     async fetch() {
       await this.$store.dispatch('category/getCategoryIndex')
@@ -299,7 +265,7 @@ import {mapGetters,mapActions} from 'vuex'
         setTimeout(() => (
           this.loadingFirst = false,
           this.showFirst = true
-          ), 1000)
+          ), 400)
       },
       dialogVisibleWork(){
         //this.Actions_worktime()
@@ -311,8 +277,11 @@ import {mapGetters,mapActions} from 'vuex'
       dialogCatalog(){
         this.dialogCatalogVisible = true
       },
-      menyCat(){
-        this.drawerMeny = true
+      menyCat(item){
+        this.visible = !this.visible
+      },
+      closeDropdown(item){
+        this.visible = false
       },
       categoryKirilica (item) {
       },

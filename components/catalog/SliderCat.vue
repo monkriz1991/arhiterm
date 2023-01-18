@@ -5,22 +5,24 @@
                 <slide
                 v-for="item in category" :key="item.id"
                 >
+                    <div>
                         <nuxt-link  :to="{ name: 'catalog-catalog', params: {catalog:`${item.kirilica_name}`,id:`${item.id}`} }" class="nuxt-link-cat">
-                        <div class="index-topcat-block">
-                            <div class="category-in-cyrcle">
-                                <nuxt-img 
-                                provider="twicpics"
-                                width="40" height="40"
-                                loading="lazy" 
-                                :src="item.img.substring(24)" 
-                                :alt="'Изображение категории ' + item.name"
-                                presets="product"
-                                />
+                            <div class="index-topcat-block">
+                                <div class="category-in-cyrcle">
+                                    <nuxt-img 
+                                    provider="twicpics"
+                                    width="40" height="40"
+                                    loading="lazy" 
+                                    :src="item.img.substring(24)" 
+                                    :alt="'Изображение категории ' + item.name"
+                                    presets="product"
+                                    />
+                                </div>
+                                <strong>{{item.name}}
+                                </strong>
                             </div>
-                            <strong>{{item.name}}
-                            </strong>
-                        </div>
-                    </nuxt-link>
+                        </nuxt-link>
+                    </div>
                 </slide>
                 <hooper-navigation slot="hooper-addons"></hooper-navigation>
             </hooper>
@@ -50,17 +52,17 @@ export default ({
             hooperSettings: {
                 infiniteScroll: false,
                 wheelControl:false,
-                mouseDrag:false,
+                mouseDrag:true,
                 loop:false,
                 breakpoints: {
                     1800: {
-                        itemsToShow: 6,
+                        itemsToShow: 8,
                     },
                     1500: {
-                        itemsToShow: 6
+                        itemsToShow: 8
                     },
                     900: {
-                        itemsToShow: 3
+                        itemsToShow: 4
                     },
                     360: {
                         itemsToShow: 2

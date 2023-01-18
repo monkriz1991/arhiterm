@@ -3,29 +3,6 @@
         <Breadcrumb
         :factori.sync="factori"
         />
-        <el-skeleton
-        :loading="loadingFirst"
-        class="skeleton-cat-category"
-        >
-          <template slot="template" >
-            <el-row :gutter="6">
-                <el-col
-                :xs="12" :sm="12" :md="4" :xl="4"
-                v-for="(tovar, index) in 6" :key="index"
-                >
-                  <el-skeleton-item
-                    variant="rect"
-                    class="skeleton-slider-category"
-                  />
-                </el-col>
-            </el-row>
-          </template>
-        </el-skeleton>
-        <transition name="el-fade-in-linear">
-          <div :class="[showFirst==false?'show-on-class':'']">
-            <SliderBrand  />
-          </div>
-        </transition>
         <div v-if="adaptivSidebar">
           <el-skeleton
           :loading="loadingFirst"
@@ -132,7 +109,6 @@ export default {
       'CartTovar': () => import('~/components/catalog/CartTovar.vue'),
       'Breadcrumb': () => import('~/components/Breadcrumb.vue'),
       'Paginated': () => import('~/components/catalog/PaginatedFactory.vue'),
-      'SliderBrand': () => import('~/components/catalog/SliderBrand.vue'),
     },
     mounted() {
       if (process.browser){
@@ -197,7 +173,7 @@ export default {
         width:0,
         showFirst:false,
         loadingFirst: true,
-        timeStart:800,
+        timeStart:0,
       }
     },
     watch:{
