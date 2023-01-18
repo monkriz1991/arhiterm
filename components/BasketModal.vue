@@ -1,7 +1,7 @@
 <template>
     <div class="header-basket"> 
       <vue-bottom-sheet
-        max-width="1080px"
+        max-width="1150px"
         max-height="90%"
         :overlay="true"
         :click-to-close="true"
