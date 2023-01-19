@@ -113,8 +113,19 @@ export default {
       window.addEventListener('resize', this.updateWidth);
       this.updateWidth()
     }
-    
     this.setLoading()
+        let escapeRegExp = function(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    }
+    if (this.$route.fullPath.indexOf(this.$router.options.base) == -1 &&
+        this.$route.fullPath.toLocaleLowerCase().indexOf(this.$router.options.base.toLowerCase()) == 0) {
+      let base = this.$router.options.base
+      let regex = new RegExp("(//[^/]+)"+escapeRegExp(base),"i")
+      let newLoc = document.location.href.replace(regex,"$1"+base)
+      if (newLoc != document.location.href) {
+        document.location.replace(newLoc)
+      }
+    }
    
   },
   components:{
@@ -179,7 +190,6 @@ export default {
         parametrs['manuf'] = '['+arr_filter_manuf +']';
       }
   try {
-
     parametrs['cat'] = params.id;
     let categoriesNested =  await app.store.dispatch('category/getCategoryNested',params.id)
     let productsList =  await app.store.dispatch('product/getProductList',parametrs)
@@ -293,7 +303,7 @@ export default {
         },
         {
             hid: 'og:title',
-            name: 'og:title',
+            property: 'og:title',
             content: this.categoriesNested.name,
         },
         {

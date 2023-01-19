@@ -95,7 +95,7 @@ export default {
             },
                       {
                 hid: 'og:title',
-                name: 'og:title',
+                property: 'og:title',
                 content: 'Монтажники Беларуси - Архитерм',
             },
             {

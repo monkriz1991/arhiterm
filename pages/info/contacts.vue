@@ -161,7 +161,7 @@ export default {
         },
         {
             hid: 'og:title',
-            name: 'og:title',
+            property: 'og:title',
             content: 'Контакты компании Архитерм',
         },
         {

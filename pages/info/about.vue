@@ -51,7 +51,7 @@ export default {
           },
           {
               hid: 'og:title',
-              name: 'og:title',
+              property: 'og:title',
               content: 'О компании Архитерм',
           },
           {
