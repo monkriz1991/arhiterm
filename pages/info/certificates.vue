@@ -40,7 +40,7 @@ export default {
         },
         {
             hid: 'og:title',
-            name: 'og:title',
+            property: 'og:title',
             content: 'Сертификаты производителей компании Архитерм',
         },
         {

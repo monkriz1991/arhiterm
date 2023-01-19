@@ -351,7 +351,7 @@ head() {
         },
         {
             hid: 'og:title',
-            name: 'og:title',
+            property: 'og:title',
             content: 'Оплата продукции для клиентов компании Архитерм',
         },
         {

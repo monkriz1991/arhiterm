@@ -21,7 +21,7 @@ export default {
       { hid: 'description', name: 'description', content: 'Первый поставщик профессиональных решений для систем отопления, водоснабжения и канализации ведущих европейских производителей. Оптовая и розничная продажа, наличие наскладе, низкие цены, скидки, гарантии.' },
       {
         hid: 'og:title',
-        name: 'og:title',
+        property: 'og:title',
         content: 'Архитерм - системы отопления, водоснабжения и канализации',
     },
     {
@@ -130,7 +130,6 @@ pwa: {
   }
 },
   // Modules: https://go.nuxtjs.dev/config-modules
-
 modules: [
   // https://go.nuxtjs.dev/axios
   '@nuxtjs/axios',
@@ -148,14 +147,14 @@ modules: [
   [
     '@nuxtjs/yandex-metrika',
     {
-      id: '7416499',
-      defer: true,
       webvisor: true,
-      clickmap:true,
-      usetriggerEventCDN:true,
-      trackLinks:true,
-      triggerEvent:true,
-      accurateTrackBounce:true,
+      id: '7416499',
+      // defer: true,
+      // clickmap:true,
+      // usetriggerEventCDN:true,
+      // trackLinks:true,
+      // triggerEvent:true,
+      // accurateTrackBounce:true,
     }
   ],
 ],
@@ -240,10 +239,6 @@ purgecss: {
           '/cabinet/**',
           '/userCabinet',
           '/userCabinet/**',
-          '/certificates',
-          '/certificates/',
-          '/mounters',
-          '/mounters/',
         ],
         path: '/sitemap/sitemap.xml',
       },

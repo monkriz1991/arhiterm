@@ -136,6 +136,17 @@ export default ({
         })
         }
     },
+    mounted(){
+        if (this.$route.fullPath.indexOf(this.$router.options.base) == -1 &&
+            this.$route.fullPath.toLocaleLowerCase().indexOf(this.$router.options.base.toLowerCase()) == 0) {
+        let base = this.$router.options.base
+        let regex = new RegExp("(//[^/]+)"+escapeRegExp(base),"i")
+        let newLoc = document.location.href.replace(regex,"$1"+base)
+        if (newLoc != document.location.href) {
+            document.location.replace(newLoc)
+        }
+        }
+    },
     data(){
         return{
             funChar:[],
@@ -225,7 +236,7 @@ export default ({
         }, 
         {
             hid: 'og:title',
-            name: 'og:title',
+            property: 'og:title',
             content: this.productItem.name +' - arhiterm.by',
         },
         {
@@ -253,7 +264,13 @@ export default ({
             property: 'og:locale',
             content: 'ru_RU',
         },
-        ]
+        ],
+        // link: [
+        //     {
+        //         rel: 'canonical',
+        //         href: 'https://arhiterm.by/' + this.productItem.kirilica_name.replace(/^./,"")
+        //     }
+        // ]
       }
     }
 })

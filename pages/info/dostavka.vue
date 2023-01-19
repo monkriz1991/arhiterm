@@ -125,7 +125,7 @@ export default {
         },
         {
             hid: 'og:title',
-            name: 'og:title',
+            property: 'og:title',
             content: 'Доставка продукции клиентам компании Архитерм',
         },
         {
