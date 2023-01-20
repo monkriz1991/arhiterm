@@ -4353,6 +4353,9 @@ font-size: 13px;
     padding: 20px 15px 0px !important;
     margin: 0 0 0 0 !important;
 }
+.dilivery-cart-block .body-payment-cart{
+    padding: 80px 15px 0px !important;
+}
 .body-payment-cart .body-about h1, .body-payment h1 {
     float: left;
     width: 100%;

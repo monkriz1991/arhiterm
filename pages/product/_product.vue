@@ -32,7 +32,7 @@
                     <el-drawer
                     class="darwer-meny"
                     :visible.sync="drawer"
-                    :with-header="true">
+                    :with-header="false">
                     <Dostavka
                     :visible.sync ="drawer" />
                     </el-drawer>
@@ -48,7 +48,7 @@
                     <el-drawer
                     class="darwer-meny"
                     :visible.sync="drawerPay"
-                    :with-header="true">
+                    :with-header="false">
                     <Payment
                     :visible.sync ="drawer" />
                     </el-drawer>
@@ -64,7 +64,7 @@
                     <el-drawer
                     class="darwer-meny"
                     :visible.sync="drawerkont"
-                    :with-header="true">
+                    :with-header="false">
                     <Drawerkont
                     :visible.sync ="drawer" />
                     </el-drawer>
