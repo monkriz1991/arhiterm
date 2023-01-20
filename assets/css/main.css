@@ -2125,11 +2125,12 @@ font-weight: 500;
 }
 .cost-product-price{
     float: left;
-    margin: 0px 0px 10px;
+    margin: 0px 0px 20px;
     position: relative;
     color: #454545;
     border-radius: 12px;
     font-weight: 500;
+    width: 100%;
 }
 .cost-product-price-unit{
     margin: 0px 0px 0 5px;
@@ -2141,7 +2142,7 @@ font-weight: 500;
 .cost-product-input{
     float: left;
     width: 100%;
-    margin: 0px 0 20px 0;  
+    margin: 0px 0 0px 0;  
 }
 .cost-product-price>span{
     float: left;
@@ -2158,13 +2159,22 @@ font-weight: 500;
 .cost-product-input>strong{
     margin: 0 0 10px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     float: left;
     width: 100%;
     /* text-decoration: underline; */
 }
 .cost-product-price-catalog .el-input-number{
     float: right;
+}
+.cost-product-amount .el-input-number--mini {
+    width: 142px;
+    line-height: 26px;
+    margin: 0 0 0 20px;
+    position: relative;
+    background: #efefef;
+    padding: 7px 7px;
+    border-radius: 18px;
 }
 .cost-row{
     margin-left: -5px;
@@ -2173,8 +2183,6 @@ font-weight: 500;
 .cost-div{
     padding: 0 2.5px 5px;
     float: left;
-    width: 25%;
-    height: 55px;
 }
 .cost-div .el-radio__input{
     display: none;
@@ -2188,33 +2196,49 @@ font-weight: 500;
 .cost-product-input .el-radio{
     margin: 0!important;
     position: relative;
-    width: 100%;
+    width: auto;
     height: 100%!important;
-    padding: 6px!important;
-    border-radius: 15px!important;
+    padding: 8px 25px!important;
+    border-radius: 16px!important;
     white-space: normal;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    border: 2px solid #bfbfbf !important;
 }
 .cost-product-input .el-radio strong{
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
+    text-transform: uppercase;
 }
 .cost-product-section .cost-product-input .el-radio{
-    min-width: 32.3%;
     position: relative;
     background: #fff;
 }
 .cost-product-amount .el-popover__reference-wrapper{
     float: left;
-    margin: 20px 0px 0 10px;
+    margin: 10px 0px 0 10px;
 }
 .cost-product-amount .el-input-number{
     float: left;
-    margin: 20px 0 35px;
+    margin: 6px 0 0px;
     width: 140px;
+    line-height: 26px;
+    margin: 5px 0 0 0px;
+    position: relative;
+    background: #efefef;
+    padding: 4px 7px;
+    border-radius: 18px;
+}
+.cost-product-amount .el-input-number span{
+    background: transparent !important;
+    border: none !important;
+    padding: 10px 0 0!important;
+}
+.cost-product-amount .el-input-number span i{
+    font-weight: 900 !important;
+    font-size: 20px;
 }
 .cost-product-amount .el-input__inner,.basket-tov-calc .el-input__inner{
     height: 32px !important;
@@ -2229,6 +2253,19 @@ font-weight: 500;
     border-radius: 7px;
     text-align: center;
     max-width: 78px;
+}
+.cost-product-amount .el-input__inner{
+    height: 32px !important;
+    line-height: 31px !important;
+    border: 0px solid #b6b6b6 !important;
+    position: relative;
+    right: 40px !important;
+    left: 24px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    background: transparent !important;
+    font-size: 14px;
+    font-weight: 600;
 }
 .cost-product-amount-on{
 
@@ -2273,8 +2310,8 @@ font-weight: 500;
 }
 .cost-product-amount{
     float: left;
-    width: 100%;
-    margin: 0px 0 20px;
+    /* width: 100%; */
+    margin: 0px 0 0px 20px;
 }
 .cost-product-amount .units{
     margin: 26px 0 0 13px;
@@ -2433,6 +2470,7 @@ font-weight: 500;
     border-radius: 12px;
     font-weight: 600;
     box-shadow: 0 11px 33px -11px #f90;
+    float: left;
 }
 .el-dialog__wrapper .cost-product-block>.el-button{
     padding: 14px 38px!important;
@@ -2458,6 +2496,7 @@ margin: 10px 0;
 /* .catalog-list-input>button{
 
 } */
+
 .catalog-list-input-cost{
 float: left;
 width: 100%;
@@ -2476,28 +2515,18 @@ width: 100%;
 }
 .kod-product{
     float: left;
-    margin: 2px 15px 15px 10px;
+    margin: 5px 0px 15px 0px;
     padding: 0px 0 0 0px;
     border-radius: 19px;
     font-size: 11px;
-    color: #f90;
-    /* width: 100%; */
+    width: 100%;
     display: inline;
-    color: #2f2f2f;
+    color: #707070;
 }
 .kod-product span{
-    width: 35px;
-    /* height: 24px; */
-    border-radius: 9px;
-    border: 2px solid;
-    float: left;
-    font-weight: 700;
-    font-size: 9px;
+    font-weight: 500;
+    font-size: 13px;
     text-align: center;
-    padding: 2px 0 0 0;
-    margin: -2px 5px 0 0px;
-    background: #f90;
-    color: #fff;
 }
 .kod-product strong{
     font-size: 13px;
@@ -2536,21 +2565,21 @@ width: 100%;
     line-height: 1.2;
 }
 .cost-product-block .cost-product-price-catalog span{
-    font-size: 28px;
+    font-size: 38px;
     float: left;
     font-weight: 900;
 }
 .cost-product-block .cost-product-price-catalog strong{
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 800;
-    padding: 12px 0 0 2px;
+    padding: 21px 0 0 2px;
     float: left;
 }
 .el-input-number span{
     background: #fff;
 }
 .el-radio.is-bordered.is-checked {
-    border-color: #a5a5a5!important;
+    border-color: #6a6a6a!important;
     box-shadow: 0 0 15px -10px #161616;
 }
 .el-radio__input.is-checked+.el-radio__label {
@@ -5137,6 +5166,16 @@ height: 100%;
       }
     }
     @media (max-width: 991px){
+        .cost-product-amount {
+            float: left;
+            /* width: 100%; */
+            margin: 0px 0 15px 0px;
+        }
+        .dilivery-cart-block {
+            float: left;
+            width: 100%;
+            display: none;
+        }
         .button-work span{
             display: none;
         }
@@ -5837,7 +5876,7 @@ height: 100%;
         padding: 0px 0 0px;
     }
     .cost-product-input {
-        margin: 0px 0 10px 0;
+        margin: 0px 0 0px 0;
     }
     .dilivery-cart-block .el-drawer__header{
         margin-bottom: 0px !important;

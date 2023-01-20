@@ -15,25 +15,6 @@
         </div>
         <Galery :productItems="productItem"/>
         <div class="cost-product-section">
-            <div class="cost-product-price" 
-            itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-            <meta itemprop="priceCurrency" content="BYN">
-                <span :class="{ butDiscount: discont}" itemprop="price">{{price}}</span>
-                <strong>руб.</strong>
-                <div v-if="discont" class="catalog-list-block-discount">
-                    <strong>{{discont}}<span>руб/{{result.units}}</span></strong>
-                </div>
-                <strong class="cost-product-price-unit">1 {{result.units}}</strong>
-                <b>/</b>
-                <!-- <link itemprop="availability" href="http://schema.org/InStock"> -->
-            </div>
-            <div class="kod-product">
-                <el-tooltip class="item" effect="dark" content="Код товара" placement="top-start">
-                <i class="el-icon-info"></i>
-                </el-tooltip>
-                <b>:</b>
-                <strong>{{kodProduct}}</strong>
-            </div>
             <CartTovarInput
             :price.sync="price"
             :discont.sync="discont"
@@ -47,56 +28,54 @@
             @addToChosen = "addToChosen"
             />
             <div class="dilivery-cart-block">
-                <no-ssr>
-                    <div class="dilivery-cart">
-                        <el-drawer
-                        class="darwer-meny"
-                        :visible.sync="drawer"
-                        :with-header="true">
-                        <Dostavka
-                        :visible.sync ="drawer" />
-                        </el-drawer>
-                        <el-button
-                        @click="drawer = true"
-                        class="drawer-button-meny"
-                        size="small"
-                        icon="el-icon-takeaway-box"
-                        >Доставка
-                        </el-button>
-                    </div>
-                    <div class="dilivery-cart">
-                        <el-drawer
-                        class="darwer-meny"
-                        :visible.sync="drawerPay"
-                        :with-header="true">
-                        <Payment
-                        :visible.sync ="drawer" />
-                        </el-drawer>
-                        <el-button
-                        @click="drawerPay = true"
-                        class="drawer-button-meny"
-                        size="small"
-                        icon="el-icon-wallet"
-                        >Оплата
-                        </el-button>
-                    </div>
-                    <div class="dilivery-cart">
-                        <el-drawer
-                        class="darwer-meny"
-                        :visible.sync="drawerkont"
-                        :with-header="true">
-                        <Drawerkont
-                        :visible.sync ="drawer" />
-                        </el-drawer>
-                        <el-button
-                        @click="drawerkont = true"
-                        class="drawer-button-meny"
-                        size="small"
-                        icon="el-icon-phone-outline"
-                        >Контакты
-                        </el-button>
-                    </div>
-                </no-ssr>
+                <div class="dilivery-cart">
+                    <el-drawer
+                    class="darwer-meny"
+                    :visible.sync="drawer"
+                    :with-header="true">
+                    <Dostavka
+                    :visible.sync ="drawer" />
+                    </el-drawer>
+                    <el-button
+                    @click="drawer = true"
+                    class="drawer-button-meny"
+                    size="small"
+                    icon="el-icon-takeaway-box"
+                    >Доставка
+                    </el-button>
+                </div>
+                <div class="dilivery-cart">
+                    <el-drawer
+                    class="darwer-meny"
+                    :visible.sync="drawerPay"
+                    :with-header="true">
+                    <Payment
+                    :visible.sync ="drawer" />
+                    </el-drawer>
+                    <el-button
+                    @click="drawerPay = true"
+                    class="drawer-button-meny"
+                    size="small"
+                    icon="el-icon-wallet"
+                    >Оплата
+                    </el-button>
+                </div>
+                <div class="dilivery-cart">
+                    <el-drawer
+                    class="darwer-meny"
+                    :visible.sync="drawerkont"
+                    :with-header="true">
+                    <Drawerkont
+                    :visible.sync ="drawer" />
+                    </el-drawer>
+                    <el-button
+                    @click="drawerkont = true"
+                    class="drawer-button-meny"
+                    size="small"
+                    icon="el-icon-phone-outline"
+                    >Контакты
+                    </el-button>
+                </div>
             </div>
         </div>
         <Tabs

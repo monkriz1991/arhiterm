@@ -41,7 +41,7 @@ export default {
   },
     head() {
       return {
-        title: 'О компании Архитерм',
+        title: 'О компании',
         meta: [
           // hid is used as unique identifier. Do not use `vmid` for it as it will not work
           {
