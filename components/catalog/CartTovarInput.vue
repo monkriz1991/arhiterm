@@ -1,29 +1,33 @@
 <template>
     <div class="cost-product-block">
-        <div class="cost-product-amount">
-            <div class="cost-product-price-catalog">
-                <span>{{priceCart}}</span>
-                <strong>руб</strong>
-            </div>
-            <el-input-number
-                v-model="num"
-                :step="multiplicity"
-                :disabled="disableButton"
-                size="mini"
-                @change="handleChange" :min="multiplicity"
-                ></el-input-number>
-                <span class="units"><b>|</b>{{units}}</span>
+        <div class="cost-product-input">
+          <strong>{{name_radioGroup}}</strong>
+          <div class="cost-row">
+            <div class="cost-div"
+            v-for="(item,idx) in product_data" :key="idx">
+              <el-radio
+              @change="changePrice(item,idx)"
+              :label="idx"
+              v-model="radio"
+              :disabled="disableRadio"
+              size="mini"
+              :class="{ 'check-backet': findMatch(item.id) }"
+              border>
+              <i
+              v-show="findMatch(item.id)"
+              class="el-icon-shopping-cart-2"></i>
+                <strong
+                v-if="item.filter_show_value"
+                >{{item.filter_show_value}}</strong>
+                <strong v-else>
+                  {{item.name}}
+                </strong>
                 <el-popover
-                v-if="multiplicity>1"
+                v-if="item.count==0"
                 placement="top"
-                width="220"
-                trigger="click">
-                  <div>
-                    Стоимость указана за 1 {{units}},<br>  
-                    заказ кратно
-                    <span v-if="units=='шт'">{{multiplicity}} {{units}}</span>
-                    <span v-else>{{multiplicity}} {{units}}</span>
-                  </div>
+                width="200"
+                trigger="click"
+                content="Позиция под заказ!">
                   <el-button
                   slot="reference"
                   icon="el-icon-warning-outline"
@@ -31,48 +35,33 @@
                   circle
                   ></el-button>
                 </el-popover>
-             
-
-        </div>
-        <div class="cost-product-input">
-            <strong>{{name_radioGroup}}</strong>
-            <div class="cost-row">
-              <div class="cost-div"
-              v-for="(item,idx) in product_data" :key="idx">
-                <el-radio
-                @change="changePrice(item,idx)"
-                :label="idx"
-                v-model="radio"
-                :disabled="disableRadio"
-                size="mini"
-                :class="{ 'check-backet': findMatch(item.id) }"
-                border>
-                <i
-                v-show="findMatch(item.id)"
-                class="el-icon-shopping-cart-2"></i>
-                  <strong
-                  v-if="item.filter_show_value"
-                  >{{item.filter_show_value}}</strong>
-                  <strong v-else>
-                    {{item.name}}
-                  </strong>
-                  <el-popover
-                  v-if="item.count==0"
-                  placement="top"
-                  width="200"
-                  trigger="click"
-                  content="Позиция под заказ!">
-                    <el-button
-                    slot="reference"
-                    icon="el-icon-warning-outline"
-                    size="mini"
-                    circle
-                    ></el-button>
-                  </el-popover>
-                </el-radio>
-              </div>
+              </el-radio>
             </div>
+          </div>
         </div>
+        <div class="kod-product">
+            <!-- <el-tooltip class="item" effect="dark" content="Код товара" placement="top-start">
+            <i class="el-icon-info"></i>
+            </el-tooltip> -->
+            <span>Код товара</span>
+            <b>:</b>
+            <strong>{{kodProduct}}</strong>
+        </div>
+        <div class="cost-product-price-catalog">
+            <span>{{priceCart}}</span>
+            <strong>руб</strong>
+        </div>
+        <div class="cost-product-price" 
+          itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="BYN">
+              <span itemprop="price">{{price}}</span>
+              <strong>руб.</strong>
+              <!-- <div v-if="discont" class="catalog-list-block-discount">
+                  <strong>{{discont}}<span>руб/{{result.units}}</span></strong>
+              </div> -->
+              <strong class="cost-product-price-unit"> - 1 {{units}}</strong>
+              <!-- <link itemprop="availability" href="http://schema.org/InStock"> -->
+          </div>
         <el-button
           type="danger"
           :disabled="disableButton"
@@ -82,6 +71,34 @@
           <span v-if="disableButton === false">В корзину</span>
           <span v-else>В корзине</span>
         </el-button>
+        <div class="cost-product-amount">
+          <el-input-number
+          v-model="num"
+          :step="multiplicity"
+          :disabled="disableButton"
+          size="mini"
+          @change="handleChange" :min="multiplicity"
+          >
+          </el-input-number>
+          <el-popover
+          v-if="multiplicity>1"
+          placement="top"
+          width="220"
+          trigger="click">
+            <div>
+              Стоимость указана за 1 {{units}},<br>  
+              заказ кратно
+              <span v-if="units=='шт'">{{multiplicity}} {{units}}</span>
+              <span v-else>{{multiplicity}} {{units}}</span>
+            </div>
+            <el-button
+            slot="reference"
+            icon="el-icon-warning-outline"
+            size="mini"
+            circle
+            ></el-button>
+          </el-popover>
+        </div>
         <!-- <el-button
           type="danger"
           @click="addToChosen"
@@ -95,7 +112,7 @@
 <script>
 import {mapGetters,mapActions} from 'vuex'
   export default {
-    props:["product_data","price","discont",'units','multiplicity'],
+    props:["product_data","price","discont",'units','multiplicity','kodProduct'],
     data() {
       return {
         num: 1,
@@ -273,6 +290,7 @@ position: absolute;
     left: -5px;
     color: #fa9600;
     border-radius: 50%;
+    font-weight: 800;
 }
 .cost-product-input .el-radio--mini.is-bordered {
     padding: 6px 10px 0 10px;
