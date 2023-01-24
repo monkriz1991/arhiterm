@@ -58,7 +58,13 @@ export default {
             property: 'og:url',
             content: `https://arhiterm.by/info/certificates`,
         },
-      ]
+      ],
+        link: [
+            {
+                rel: 'canonical',
+                href: 'https://arhiterm.by/info/certificates'
+            }
+        ]
     }
   }
 }

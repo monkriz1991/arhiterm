@@ -179,7 +179,13 @@ export default {
             property: 'og:url',
             content: `https://arhiterm.by/info/contacts`,
         },
-      ]
+      ],
+        link: [
+            {
+                rel: 'canonical',
+                href: 'https://arhiterm.by/info/contacts'
+            }
+        ]
     }
   }
 }

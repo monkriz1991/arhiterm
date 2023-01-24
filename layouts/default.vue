@@ -12,12 +12,12 @@ export default ({
   layout: 'error',
   head() {
     return {
-      link: [
-        {
-          rel: 'canonical',
-          href: 'https://arhiterm.by/' + this.canontical.replace(/^./,"")
-        }
-      ]
+      // link: [
+      //   {
+      //     rel: 'canonical',
+      //     href: 'https://arhiterm.by/' + this.canontical.replace(/^./,"")
+      //   }
+      // ]
     }
   },
   components:{

@@ -135,7 +135,13 @@
                 property: 'og:url',
                 content: `https://arhiterm.by/info/about`,
             },
-          ]
+          ],
+        link: [
+            {
+                rel: 'canonical',
+                href: 'https://arhiterm.by/info/about'
+            }
+        ]
         }
       }
   }

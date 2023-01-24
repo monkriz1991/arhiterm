@@ -321,6 +321,12 @@ export default {
             property: 'og:description',
             content: this.categoriesNested.description_seo,
         },         
+      ],
+      link: [
+          {
+              rel: 'canonical',
+              href: 'https://arhiterm.by/catalog/' + this.categoriesNested.kirilica_name
+          }
       ]
     }
   }
