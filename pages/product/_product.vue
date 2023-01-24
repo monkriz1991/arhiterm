@@ -244,12 +244,12 @@ export default ({
             content: 'ru_RU',
         },
         ],
-        // link: [
-        //     {
-        //         rel: 'canonical',
-        //         href: 'https://arhiterm.by/' + this.productItem.kirilica_name.replace(/^./,"")
-        //     }
-        // ]
+        link: [
+            {
+                rel: 'canonical',
+                href: 'https://arhiterm.by/product/' + this.productItem.kirilica_name
+            }
+        ]
       }
     }
 })

@@ -317,7 +317,13 @@ head() {
             property: 'og:url',
             content: `https://arhiterm.by/info/personal_data_rules`,
         },
-      ]
+      ],
+        link: [
+            {
+                rel: 'canonical',
+                href: 'https://arhiterm.by/info/personal_data_rules'
+            }
+        ]
     }
   }
 }

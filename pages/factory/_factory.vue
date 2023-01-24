@@ -263,6 +263,12 @@ export default {
               property: 'og:url',
               content: `https://arhiterm.by/factory/${this.factori.kirilica_name}`,
           },
+        ],
+        link: [
+            {
+                rel: 'canonical',
+                href: 'https://arhiterm.by/factory/' + this.factori.kirilica_name
+            }
         ]
       }
     }

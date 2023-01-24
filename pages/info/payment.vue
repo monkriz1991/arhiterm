@@ -369,7 +369,13 @@ head() {
             property: 'og:url',
             content: `https://arhiterm.by/info/payment`,
         },
-      ]
+      ],
+        link: [
+            {
+                rel: 'canonical',
+                href: 'https://arhiterm.by/info/payment'
+            }
+        ]
     }
   }
 }

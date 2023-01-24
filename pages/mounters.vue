@@ -113,6 +113,12 @@ export default {
                 property: 'og:url',
                 content: `https://arhiterm.by/mounters`,
             },
+        ],        
+        link: [
+            {
+                rel: 'canonical',
+                href: 'https://arhiterm.by/mounters'
+            }
         ]
         }
     }
