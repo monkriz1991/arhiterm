@@ -133,13 +133,13 @@
             {
                 hid: 'og:url',
                 property: 'og:url',
-                content: `https://arhiterm.by/info/about`,
+                content: `https://arhiterm.by/info/therm_plus`,
             },
           ],
         link: [
             {
                 rel: 'canonical',
-                href: 'https://arhiterm.by/info/about'
+                href: 'https://arhiterm.by/info/therm_plus'
             }
         ]
         }

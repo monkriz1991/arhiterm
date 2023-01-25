@@ -4665,7 +4665,7 @@ height: 100%;
     --page-color: #68737d;
     --page-active-color: #2f3941;
     --page-disabled-color: #d8d8d8;
-    padding: 10px 10px;
+    padding: 0px 10px 10px 10px;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -4688,24 +4688,28 @@ height: 100%;
     justify-content: center;
     cursor: pointer;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 9px;
     color: var(--page-color);
     font-size: 14px;
     margin-left: 2px;
     margin-right: 2px;
     user-select: none;
+    color: #252525;
+    background-color: #ffffff;
+
   }
   .vs-pagination > li > a:hover {
-    background-color: #3c3c3c;
-    color: #ffffff;
+    color: #252525;
+    background-color: #ffffff;
+    border: 1px solid #b0b0b0;
   }
   .vs-pagination > li > a:focus-visible {
     box-shadow: 0 0 0 2px rgba(31, 115, 183, 0.35);
     outline: none;
   }
   .vs-pagination > li.vs-pagination--active a {
-    color: #ffffff;
-    background-color: #3c3c3c;
+    color: #303030;
+    border: 1px solid #b0b0b0;
     font-weight: 600;
     position: relative;
     z-index: 1;
@@ -4989,7 +4993,10 @@ height: 100%;
         border: 2px solid #f8d7a5;
         transition: .2s;
     }
-    
+    .catalog-list-block:hover .catalog-list-block-desc>span{
+        color: #000;
+        transition: .2s;
+    }
     .catalog-list-block .el-image{
         float: left;
         width: 100%;
