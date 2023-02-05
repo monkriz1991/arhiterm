@@ -80,6 +80,7 @@ export const actions = {
           uri+=`&${i}=${args[i]}`
         }
         let offset = (args['page']-1)*state.productLimit;
+        console.log(`/catalog/product/?ordering=position&manuf=[${id}]&limit=${state.productLimit}&offset=${offset}${uri}`)
         let product = await this.$axios.$get(`/catalog/product/?ordering=position&manuf=[${id}]&limit=${state.productLimit}&offset=${offset}${uri}`).catch(function (e){
           });
  

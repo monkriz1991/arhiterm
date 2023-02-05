@@ -14,8 +14,8 @@
                     alt="Цены пополам на полипропилен Wavin EKoplastik Therm PLUS" />
                 </div>
                 <p>Ликвидация складскид остатков продукции - Wavin EKoplastik 
-                серии - Therm PLUS / Белого цвета.</p>
-                <p>Цены до 50% ниже на аналогичный полипропилен от Wavin EKoplastik ( серого цвета ).</p>
+                серии - Therm PLUS - "Белого цвета".</p>
+                <p>Цены до 50% ниже на аналогичные позиции полипропилена - Wavin EKoplastik - "Серого цвета".</p>
             </div>
             <div class="product-sales-fail">
                 <a href="https://new.arhiterm.by/media/manuf/WAVIN_EKOPLASTIK_THERM_PLUS_SALES.pdf" 

@@ -18,6 +18,7 @@
                                 width="100" height="100"
                                 loading="lazy" 
                                 />
+                                <div class="catalog-list-img-bg"></div>
                             </div> 
                             <div class="index-top-block-desc">
                                 <strong>
