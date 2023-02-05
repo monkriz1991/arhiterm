@@ -37,6 +37,7 @@
                         :alt="product.name"
                         quality="75"
                         />
+                        <div class="catalog-list-img-bg"></div>
                         <div
                         v-on:click.prevent
                         v-show="price[idx]"
