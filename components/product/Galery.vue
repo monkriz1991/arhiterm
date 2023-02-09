@@ -12,7 +12,6 @@
                 :alt="productItems.name+' - изображение товара '"
                 :title="productItems.name+' - изображение товара '"
             />
-            <div class="catalog-list-img-bg"></div>
         </div>
         <div class="galery-extra" :class="{ 'galery-index-one-none': srcList.length=='' }">
             <div 
@@ -27,11 +26,10 @@
                 :alt="productItems.name+' - изображение товара '+index"
                 :title="productItems.name+' - изображение товара '+index"
                 />
-                <div class="catalog-list-img-bg"></div>
-            <!-- <div class="galery-extra-plus" v-if="index == 1 && srcList.length > 2">
+            <div class="galery-extra-plus" v-if="index == 1 && srcList.length > 2">
                 <strong>{{ srcList.length-2 }}</strong>
                 <span>+</span>
-            </div> -->
+            </div>
             </div>
         </div>
         </Photoswipe>
