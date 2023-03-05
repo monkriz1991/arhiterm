@@ -107,6 +107,7 @@ margin: 10px 0 0 0;
     height: auto !important;
     margin: 0px 0 50px;
 }
+
 body .el-button{
     font-size: 13px;
 }
@@ -4346,10 +4347,37 @@ font-size: 13px;
     width: 100%;
     margin: 0px 0 10px;
 }
+
+.social-footer b{
+    color: #f65700;
+    float: left;
+    font-weight: 300;
+    opacity: 0.3;
+    margin: -1px 0 0 10px;
+    font-size: 25px;
+}
 .social-footer a{
     color: #d234b3;
     border-radius: 50%;
     float: left;
+}
+.email-footer{
+    color: #f65700;
+    font-weight: 500;
+    font-size: 13px;
+    margin: 15px 0 0 10px;
+    float: left;
+}
+.phone-desk-footer{
+    color: #f65700 !important;
+    font-weight: 500;
+    font-size: 13px;
+    margin: 15px 0 0 10px;
+    text-decoration: none;
+}
+.phone-desk-footer span{
+    font-size: 11px;
+    margin: 0px 0 0 4px;
 }
 .select-reg{
     width: 100%;
@@ -5193,6 +5221,14 @@ height: 100%;
       }
     }
     @media (max-width: 991px){
+        .phone-desk-footer,.email-footer,.social-footer b{
+            display: none;
+        }
+        .email-footer-mobail{
+            margin: 10px 0 0 0 !important;
+            font-size: 13px !important;
+            font-weight: 500;
+        }
         .cost-product-amount {
             float: left;
             /* width: 100%; */
@@ -5553,7 +5589,7 @@ height: 100%;
     .none-block{
         float: left;
         width: 100%;
-        height: 200px;
+        height: 240px;
     }
     .none-block-form{
         float: left;

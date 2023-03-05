@@ -23,6 +23,7 @@
                     <span>Консультация / помощь в оформлении</span>
                     <a href="tel:+37529343-16-16">+375 (29) 343-16-16</a>
                     <strong>MTC</strong><b>|</b><strong>A1</strong>
+                    <span itemprop="email" class="email-footer-mobail">info@arhiterm.by</span>
                 </div>
             <div class="social-footer">
                 <a href="viber://chat?number=%2B375293431616/" rel="nofollow" target="_blank" title="viber arhiterm">
@@ -36,6 +37,12 @@
                     alt="viber arhiterm" />
                     <span hidden>viber arhiterm</span>
                 </a>
+                <b>.</b>
+                <a class="phone-desk-footer" href="tel:+37529343-16-16">+375 (29) 343-16-16<span>(МТС)</span></a>
+                <b>.</b>
+                <a class="phone-desk-footer" href="tel:+37533343-16-16">+375 (33)343-16-16<span>(A1)</span></a>
+                <b>.</b>
+                <span class="email-footer" itemprop="email">info@arhiterm.by</span>
             </div>
             <div class="footer-yr">
                 © ООО «Архитерм», 2008-2022 г.<br> 
