@@ -21,6 +21,10 @@
                         <strong>{{item.product[0].filter_show_name?item.product[0].filter_show_name:''}}</strong>
                         <span>{{item.product[0].filter_show_value?item.product[0].filter_show_value:''}}<span></span></span>
                     </div>
+                    <div class="basket-tov-desk-type">
+                        <strong>Ед. измерения</strong>
+                        <span>{{item.units}}</span> 
+                    </div>
                 </div>
                 <div class="basket-tov-cost">
                     <strong>{{item.product[0].price}}</strong>
@@ -38,7 +42,7 @@
                     v-model="item.product[0].count_el"
                     @change="changeQuantyty(item.id,item.product[0].id,item.product[0].count_el,item.product[0].discont!=null?item.product[0].discont:item.product[0].price)"
                     ></el-input-number>                   
-                    <span class="units"><b>|</b>{{item.units}}</span> 
+                    <!-- <span class="units"><b>|</b>{{item.units}}</span>  -->
                 </div>
                 <div class="basket-tov-summ">
                     <strong>{{item.product[0].cost}}</strong>

@@ -61,6 +61,7 @@
         closeMeny(){
             this.$refs.menu.close('1');
             this.$emit('update:visible', false)
+            this.$emit('toggleModal')  
         },
     },
     

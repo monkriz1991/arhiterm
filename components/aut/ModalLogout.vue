@@ -17,7 +17,7 @@
         title="Кабинет" 
         append-to-body
         :visible.sync="dialogFormVisible"  
-        width="36%">
+        width="31%">
 
         <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="Вход" name="first">
@@ -26,7 +26,7 @@
             <el-tab-pane label="Регистрация" name="second">
               <Registration  :dialogFormVisible.sync="dialogFormVisible"  />
             </el-tab-pane>
-            <el-tab-pane label="Восстановить пароль" name="secondFry">Восстановить пароль</el-tab-pane>
+            <!-- <el-tab-pane label="Восстановить пароль" name="secondFry">Восстановить пароль</el-tab-pane> -->
         </el-tabs>
         </el-dialog>
     </div>

@@ -39,6 +39,20 @@
         </el-row>
       </template>
     </el-skeleton>
+
+    <div class="title">
+      <h1>
+        Архитерм
+        <vue-typer text=' - системы отопления, водоснабжения и канализации!'
+        erase-style='backspace'
+        :pre-type-delay='70'
+        :type-delay='70'
+        :pre-erase-delay='1000'
+        :erase-delay='100'
+        ></vue-typer>
+      </h1>
+    </div>
+
     <transition name="el-fade-in-linear">
       <div :class="[showFirst==false?'show-on-class':'']">
         <Top :tovar="tovar"/>
@@ -91,9 +105,6 @@
         <Brand :facturer="facturer"/> 
       </div>
     </transition>
-    <div class="title">
-      <h1>Архитерм - системы отопления, водоснабжения и канализации по низким ценам!</h1>
-    </div>
   </div>
 </template>
 <script>
