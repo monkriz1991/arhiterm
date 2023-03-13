@@ -43,7 +43,7 @@
     <div class="title">
       <h1>
         Архитерм
-        <vue-typer text=' - системы отопления, водоснабжения и канализации!'
+        <vue-typer text='- отопление, водоснабжение, канализация!'
         erase-style='backspace'
         :pre-type-delay='70'
         :type-delay='70'
