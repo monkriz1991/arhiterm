@@ -1,7 +1,7 @@
 <template>
     <div class="index-topcat">
     <h2>Каталог</h2>
-        <el-row :gutter="20">
+        <el-row :gutter="10">
             <el-col
             v-for="item in category" :key="item.id"
             v-show="item.show_in_start==true"

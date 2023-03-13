@@ -89,6 +89,7 @@ export default {
     },
     buttonClose(){
        this.$emit('update:visible', false) 
+       this.$emit('update:iconCat', true)
     },
   },
 };

@@ -10,7 +10,7 @@
                 <span class="demo-type-span"></span>
                 <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
             </span>
-            <el-dropdown-menu slot="dropdown">
+            <el-dropdown-menu slot="dropdown" class="navbar-user-drop">
                 <el-dropdown-item class="navbar-user-item">
                     <nuxt-link v-if="$auth.user" :to="`/cabinet`">
                     <i class="el-icon-user"></i>
