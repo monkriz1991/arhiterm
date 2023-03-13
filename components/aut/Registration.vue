@@ -19,8 +19,9 @@
         >
         <el-input prefix-icon="el-icon-message" placeholder="Введите Ваш email" v-model="form.username" autocomplete="off"></el-input>
         </el-form-item>
-          <el-form-item label="Аккаунт" prop="type">
-            <el-select class="select-reg" prefix-icon="el-icon-user" v-model="form.type" placeholder="Укажите тип аккаунта">
+          <el-form-item  label="Аккаунт" prop="type">
+            <i class="el-icon-set-up icon-label-reg"></i>
+            <el-select class="select-reg" v-model="form.type" placeholder="Укажите тип аккаунта">
               <el-option label="Физ. лицо" value="2"></el-option>
               <el-option label="Юр. лицо" value="1"></el-option>
             </el-select>
@@ -38,10 +39,14 @@
           <el-input prefix-icon="el-icon-key" placeholder="Повторите пароль" v-model="form.checkPass" show-password autocomplete="off"></el-input>
         </el-form-item>
           <el-form-item label="Выбрав пункт Принимаю, я соглашаюсь с" prop="deal">
-            <nuxt-link class="personal-data-link" :to="`/info/personal_data_rules`">Политикой обработки персональных данных</nuxt-link>
             <el-checkbox-group v-model="form.deal">
               <el-checkbox label="Принимаю" name="deal"></el-checkbox>
             </el-checkbox-group>
+            <nuxt-link 
+            class="personal-data-link" 
+            :to="`/info/personal_data_rules`" :custom="true">
+            <a @click="closeModal">Политика обработки персональных данных</a>
+            </nuxt-link>
           </el-form-item>
         <el-button @click="userReg" type="primary" class="butt-form">Регистрация</el-button>
     </el-form>
@@ -101,6 +106,10 @@ import {mapActions, mapGetters} from "vuex";
       ...mapActions({
         setLoading: 'main/newLoadingItem',
       }),
+      closeModal(){
+        console.log('oko')
+        this.$emit('update:dialogFormVisible',false)
+      },
       userReg() {
         this.$refs.form.validate((valid) => {
           if (valid) {

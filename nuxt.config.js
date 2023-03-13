@@ -88,6 +88,7 @@ plugins: [
   { src: '~/plugins/element-ui'},
   '@/plugins/backbutton.js',
   { src: '~/plugins/vue-pswipe.js', mode: 'client' },
+  { src: '~/plugins/vue-typer.js', mode: 'client'},
   // { src: '~/plugins/vs-pagination.js', mode: 'client' },
   // { src: '~plugins/vue-js-modal.js'},
   // { src: '~plugins/ga.js', mode: 'client' },

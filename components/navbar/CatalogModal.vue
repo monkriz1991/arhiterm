@@ -26,16 +26,19 @@
                     size="mini"
                     >
                         <nuxt-link @click.native="handlerLoading" :to="{ name: 'catalog-catalog', params: {catalog:`${category.kirilica_name}`,id:`${category.id}`} }" >
-                            <nuxt-img 
-                            provider="twicpics"
-                            sizes="sm:200px md:400px lg:800px"
-                            loading="lazy" 
-                            :src="category.img.substring(24)" 
-                            :alt="'Изображение категории - '+ category.name"
-                            width="1024"
-                            height="800"
-                            quality="75"
-                            />
+                            <div class="catalog-meny-top-img">
+                                <nuxt-img 
+                                provider="twicpics"
+                                sizes="sm:200px md:400px lg:800px"
+                                loading="lazy" 
+                                :src="category.img.substring(24)" 
+                                :alt="'Изображение категории - '+ category.name"
+                                width="1024"
+                                height="800"
+                                quality="75"
+                                />
+                                <div class="catalog-list-img-bg"></div>
+                            </div>
                             {{ category.name }}
                         </nuxt-link>
                     </li>
@@ -49,16 +52,19 @@
                     size="mini"
                     >
                         <nuxt-link @click.native="handlerLoading" :to="{ name: 'factory-factory', params: {factory:`${item.kirilica_name}`,id:`${item.id}`} }" >
-                            <nuxt-img 
-                            provider="twicpics"
-                            sizes="sm:200px md:400px lg:800px"
-                            loading="lazy" 
-                            :src="item.img.substring(24)" 
-                            :alt="'Изображение бренда - '+ item.name"
-                            width="1024"
-                            height="800"
-                            quality="75"
-                            />
+                            <div class="catalog-meny-top-img">
+                                <nuxt-img 
+                                provider="twicpics"
+                                sizes="sm:200px md:400px lg:800px"
+                                loading="lazy" 
+                                :src="item.img.substring(24)" 
+                                :alt="'Изображение бренда - '+ item.name"
+                                width="1024"
+                                height="800"
+                                quality="75"
+                                />
+                                <div class="catalog-list-img-bg"></div>
+                            </div>
                             {{ item.name }}
                         </nuxt-link>
                     </li>
@@ -69,7 +75,7 @@
 </template>
 <script>
 export default {
-  props:['categoryNavbar','manufacturer','visible'],
+  props:['categoryNavbar','manufacturer','visible','iconCat'],
   data() {
     return {
         visibleNav:true,
@@ -79,6 +85,7 @@ export default {
     handlerLoading(item){
         this.$emit('update:setLoading', true)
         this.$emit('update:visible', false)
+        this.$emit('update:iconCat', true)
     },
     buttonClose(){
        this.$emit('update:visible', false) 

@@ -37,7 +37,8 @@
 
             <div v-show="!dialogForm" class="dialog-back-block">
               <el-button-group>
-                <el-button icon="el-icon-arrow-left" @click="dialogForm = true">В корзину</el-button>
+                <el-button icon="el-icon-arrow-left" 
+                @click="dialogForm = true">В корзину</el-button>
               </el-button-group>
             </div>
             <Form 

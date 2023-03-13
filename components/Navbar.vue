@@ -26,7 +26,7 @@
             <a href="tel:+37529343-16-16">+375 (29) 343-16-16<span>(МТС)</span></a>
           </div>
           <nuxt-link :to="`/info/contacts`">
-            Контакты компании
+            Контакты
           </nuxt-link>
           <nuxt-link :to="`/info/about`">
             О нас
@@ -58,13 +58,17 @@
                 class="header-cat"
                 @click="menyCat()"
             >
-            <span class="button-svg-index-cat"></span>
+            <span v-show="iconCat==true" class="button-svg-index-cat"></span>
+            <span v-show="iconCat==false" class="button-svg-index-cat-icon">
+              <i class="el-icon-close"></i>
+            </span>  
             <span class="button-nav-text">Каталог</span>
             </el-button>
               <CatalogModal
               :categoryNavbar.sync="categoryNavbar"
               :manufacturer.sync="manufacturer"
               :visible.sync="visible"
+              :iconCat.sync="iconCat"
               />
           </div>
           <client-only>
@@ -128,7 +132,7 @@
       :is-full-screen="false"
       :background-clickable="true"
       ref="myBottomSheet">
-        <MenyuserMobail />
+        <MenyuserMobail @toggleModal="close"/>
       </vue-bottom-sheet>
         
       <div v-if="width<991" class="bottom-bar">
@@ -243,6 +247,7 @@ Vue.directive('click-out', {
         clearable:true,
         loadingFirst:true,
         showFirst:false,
+        iconCat:true
       };
     },
     computed:{
@@ -279,9 +284,13 @@ Vue.directive('click-out', {
       },
       menyCat(item){
         this.visible = !this.visible
+        this.iconCat = !this.iconCat
       },
       closeDropdown(item){
         this.visible = false
+        if(this.iconCat==false){
+          this.iconCat = true
+        }
       },
       categoryKirilica (item) {
       },

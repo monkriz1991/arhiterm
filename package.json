@@ -36,6 +36,7 @@
     "vue-observe-visibility": "^1.0.0",
     "vue-pswipe": "^0.15.3",
     "vue-the-mask": "^0.11.1",
+    "vue-typer": "^1.2.0",
     "vue-yandex-maps": "^0.10.12",
     "vuex": "^3.6.2",
     "vuex-persist": "^3.1.3"

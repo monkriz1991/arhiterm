@@ -224,9 +224,12 @@ display: none;
     height: 70px;
 }
 .popover-nav>div ul li a:hover{
-    background: #f9f9f9;
+    /* background: #f9f9f9; */
     transition: .2s;
-    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+    /* box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%); */
+    color: #000000;
+    text-decoration: underline;
+    text-decoration-color: #cccccc;
 }
 .popover-nav>div ul li a:hover img{
     border: none !important;
@@ -246,19 +249,24 @@ display: none;
 }
 .popover-nav>div ul li a img{
     text-align: center;
-    margin: 0 10px 0 0px;
+    margin: 0 0px 0 0px;
     display: flex;
     height: 70px;
     width: 70px;
     align-items: center;
     justify-content: center;
-    padding: 4px;
+    padding: 10px;
     border-radius: 10px;
     object-fit: contain;
-    border: 1px solid #eeeeee;
+    border: 0px solid #eeeeee;
+}
+.catalog-meny-top-img{
+    float: left;
+    position: relative;
+    margin: 0 10px 0 0;
 }
 .popover-nav>div ul li a:hover .popover-nav>div ul li a img{
-    border: 1px solid #fff;
+    border: 0px solid #fff;
 }
 .popover-nav>div ul li a .el-image img{
     width: 100%;
@@ -885,7 +893,7 @@ header{
     padding: 10px 20px;
 }
 .header-cat>span span{
-    margin: 0;
+    margin: 2px 0 0;
     float: left;
     position: relative;
     font-size: 13px;
@@ -905,10 +913,12 @@ header{
 
 } */
 .header-nav .header-cat i{
-    float: right;
+    float: left;
     position: relative;
-    top: 1px;
-    margin: 0 0 0 6px;
+    top: -2px;
+    font-size: 25px;
+    font-weight: 800;
+    margin: 0px 7px 2px 8px;
 }
 .header-cat i{
     float: right;
@@ -926,11 +936,13 @@ header .contents {
     flex-wrap: wrap;
 }
 .header-basket .bottom-sheet__content{
-    padding: 20px 40px 300px 40px;
+    padding: 20px 40px 350px 40px;
 }
 .header-basket{
     float: right;
     margin: 0 30px 0 30px;
+    z-index: 2000;
+    position: relative;
 }
 .header-basket>button{
     font-size: 23px;
@@ -1072,6 +1084,8 @@ header .contents {
 }
 .button-nav-text{
     /* color: #f6b9a3; */
+    margin: 0 !important;
+
 }
 .button-nav-meny i{
     float: left;
@@ -1121,8 +1135,19 @@ header .contents {
 .modal-logout{
 
 }
+.pswp__ui--idle .pswp__button--arrow--left, .pswp__ui--idle .pswp__button--arrow--right, .pswp__ui--idle .pswp__top-bar{
+    opacity: 1 !important;
+}
+
+.icon-label-reg{
+    position: absolute;
+    z-index: 12;
+    left: 11px;
+    top: 18px;
+    color: #C0C4CC;
+}
 .modal-logout>.el-dialog{
-    padding: 5% 4%;
+    padding: 3% 2%;
     border-radius: 10px;
 }
 .modal-logout .el-form-item__label{
@@ -1133,6 +1158,7 @@ header .contents {
 }
 .modal-logout .el-tabs__header {
     margin: 0 0 25px;
+    display: block;
 }
 .modal-logout .el-input__icon {
     padding: 3px 0 0 0;
@@ -1142,7 +1168,7 @@ header .contents {
     font-size: 11px !important;
     line-height: 1;
     position: absolute;
-    top: 65% !important;
+    top: 56% !important;
     right: 7px;
     z-index: 12;
     left: auto;
@@ -1345,11 +1371,19 @@ header .contents {
     /* background: linear-gradient( 4deg , rgb(0 0 0 / 25%), rgb(0 0 0 / 0%));*/
 }
 .index-brand-block-desc> span{
-    width: 100%;
-    font-weight: 600;
-    font-size: 11px;
+    font-weight: 300;
+    font-size: 12px;
     margin: 5px 0 0px;
-    color: #494949;
+    color: #484848;
+    float: left;
+    /* background: #00000012; */
+    border-radius: 3px;
+    position: absolute;
+    padding: 2px 4px;
+    hyphens: auto;
+    opacity: 0.5;
+    bottom: 10px;
+    left: 10px;
 }
 .index-brand-block-desc> strong{
     width: 100%;
@@ -1467,8 +1501,8 @@ header .contents {
     /* border: 1px solid #e2e2e2; */
 }
 .index-top-block-img{
-    height: 115px;
-    width: 110px;
+    height: 110px;
+    width: 120px;
     float: left;
     position: relative;
 }
@@ -1477,7 +1511,7 @@ header .contents {
     height: 100%;
     -o-object-fit: contain;
     object-fit: contain;
-    padding: 10px;
+    padding: 15px;
 }
 .index-top .hooper-indicator{
     background-color: #e3e3e3;
@@ -1510,8 +1544,8 @@ header .contents {
     display: flex;
     align-items: center;
     text-align: left;
-    margin: 0 0 0 125px;
-    height: 75px;
+    margin: 0 0 0 135px;
+    height: 70px;
     flex-wrap: wrap;
 }
 .index-top-block-desc> span{
@@ -1534,7 +1568,7 @@ header .contents {
 }
 
 .index-top-cost{
-    margin: 0 0 0 125px;
+    margin: 5px 0 0 135px;
     color: #2f2f2f;
 }
 .index-top-cost b{
@@ -1556,7 +1590,7 @@ header .contents {
 .index-top-cost span{
     font-size: 10px;
     font-weight: 800;
-    margin: 11px 0 0;
+    margin: 8px 0 0;
     float: left;
 }
 .index-top-cost strong{
@@ -1866,13 +1900,16 @@ border: 1px solid #fff;
     position: absolute;
     top: 0px;
     bottom: 0;
-    font-size: 12px;
+    font-size: 13px;
     /* max-width: 74px; */
     left: 0px;
     background: #00000073;
-    padding: 28px 23px 5px 10px;
-    border-radius: 5px;
+    padding: 5px 23px 5px 10px;
+    border-radius: 17px;
     color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .el-popover .cost-product-char p>strong{
     font-size: 11px;
@@ -2164,8 +2201,8 @@ font-weight: 500;
 }
 .cost-product-input>strong{
     margin: 0 0 10px;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 700;
     float: left;
     width: 100%;
     /* text-decoration: underline; */
@@ -2247,9 +2284,9 @@ font-weight: 500;
     font-size: 20px;
 }
 .cost-product-amount .el-input__inner,.basket-tov-calc .el-input__inner{
-    height: 32px !important;
+    height: 35px !important;
     line-height: 31px !important;
-    border: 1px solid #b6b6b6 !important;
+    border: 0px solid #b6b6b6 !important;
     position: absolute;
     right: 40px !important;
     left: 40px !important;
@@ -2259,6 +2296,7 @@ font-weight: 500;
     border-radius: 7px;
     text-align: center;
     max-width: 78px;
+    font-size: 14px;
 }
 .cost-product-amount .el-input__inner{
     height: 32px !important;
@@ -2280,19 +2318,23 @@ font-weight: 500;
     position: absolute;
     z-index: 1;
     top: 0;
-    width: 36px!important;
-    height: 32px!important;
+    width: 35px!important;
+    height: 36px!important;
     height: auto;
     text-align: center;
-    background: #e4e6e8!important;
+    background: #ffffff!important;
     color: #606266;
     cursor: pointer;
-    border-radius: 10px!important;
-    padding: 5px 0 0!important;
+    border-radius: 50px!important;
+    padding: 0px 0 0!important;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .el-input-number span i{
     font-weight: 900 !important;
-    font-size: 13px;
+    font-size: 21px;
 }
 .el-form .butt-form{
     margin: 20px 0 0 0;
@@ -2803,14 +2845,14 @@ body .el-dialog__body{
 }
 .basket-tov{
     width: 100%;
-    padding: 0px 10px 0 0;
+    padding: 0px 0px 0 0;
     display: inline-block;
-    margin: 0 0 30px;
+    margin: 0 0 20px;
 }
 .basket-tov-img{
     float: left;
-    width: 100px;
-    height: 90px;
+    width: 140px;
+    height: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2822,26 +2864,29 @@ body .el-dialog__body{
 .basket-tov-img img{
     max-width: 100%;
     max-height: 100%;
+    padding: 10px;
 }
 .basket-tov-desk{
-    margin-left: 115px;
+    margin-left: 160px;
 
 }
 .basket-tov-desk .basket-tov-desk-left{
-    font-size: 12px;
+    font-size: 13px;
     width: 40%;
     line-height: 1.2;
     font-weight: 600;
     /* display: flex; */
     align-items: center;
-    height: 90px;
+    height: 130px;
     float: left;
     padding: 0 15px 0 0;
 }
 .basket-tov-desk-left>strong{
-    height: 40px;
+    height: 60px;
     overflow: hidden;
     float: left;
+    display: flex;
+    align-items: center;
 }
 .basket-tov-cost>span{
     margin: 3px 6px 0px 3px;
@@ -2867,11 +2912,12 @@ body .el-dialog__body{
     float: left;
     padding: 0 0px 0 10px;
     width: 17%;
-    justify-content: left;
-    height: 90px;
+    justify-content: center;
+    height: 100px;
     display: flex;
     align-items: center;
     position: relative;
+    text-align: center;
 }
 .basket-block-discount{
     position: absolute;
@@ -2889,10 +2935,10 @@ body .el-dialog__body{
 }
 .basket-tov-calc{
     float: left;
-    padding: 20px 0px 0 0px;
+    padding: 0px 0px 0 0px;
     width: 20%;
     justify-content: space-around;
-    height: 90px;
+    height: 100px;
     display: flex;
     align-items: center;
     position: relative;
@@ -2904,10 +2950,10 @@ body .el-dialog__body{
     text-align: center;
     display: flex;
     align-items: center;
-    height: 90px;
+    height: 100px;
     padding: 0 0px 0 10px;
     width: 18%;
-    justify-content: left;
+    justify-content: center;
 }
 .basket-tov-summ>strong{
 font-size: 21px;
@@ -2924,9 +2970,9 @@ font-size: 21px;
     text-align: center;
     display: flex;
     align-items: center;
-    height: 90px;
+    height: 100px;
     justify-content: center;
-    width: 5%;
+    width: 7%;
 }
 .basket-tov-dell i{
 cursor: pointer;
@@ -2939,11 +2985,12 @@ color: #000;
 }
 
 .basket-tov-desk-kod{
-    margin: 0px 0 5px;
+    margin: 0px 0px;
     float: left;
     width: 100%;
 }
 .basket-tov-desk-kod>strong{
+    width: 90px;
     margin: 5px 0 0;
     font-weight: 500;
     padding: 0 0 5px;
@@ -2975,7 +3022,7 @@ text-align: right;
     width: 100%;
 }
 .basket-tov-desk-type>strong{
-/*    width: 100%;*/
+    width: 90px;
     margin: 5px 0 0;
     font-weight: 500;
     padding: 0 0 5px;
@@ -3541,16 +3588,15 @@ body .navbar-user .navbar-user-item{
     display: block;
     /* letter-spacing: 1px; */
     float: left;
-    margin: 20px 0 10px;
+    margin: 15px 0 0px;
     width: 100%;
     text-align: center;
 }
 .title h1{
-    font-weight: 700;
-    font-size: 11px;
+    font-weight: 500;
+    font-size: 13px;
     /* color: #35495e; */
     line-height: 1.9;
-    text-transform: uppercase;
 }
 .title-h2{
     max-width: 430px;
@@ -3906,7 +3952,11 @@ font-size: 13px;
 
 }
 .basket-tov-calc .el-input-number{
-    width: 100% ;
+    width: 140px;
+    border: 2px solid #b6b6b6 !important;
+    border-radius: 17px;
+    float: left;
+    height: 40px;
 }
 .basket-tov-calc .units b {
     margin: 0 3px 0px 0px;
@@ -3917,6 +3967,7 @@ font-size: 13px;
 .basket-tov-calc .units{
     margin: 15px 0 0 5px;
     font-size: 13px;
+    display: none;
 }
 .butDiscount{
     text-decoration: line-through;
@@ -4035,10 +4086,13 @@ font-size: 13px;
 .personal-data-link{
     float: left;
     margin: 0;
-    width: 100%;
+    /* width: 100%; */
     line-height: 1.5;
     font-size: 12px;
     text-decoration: none;
+    padding: 10px 20px 0 0;
+    color: #777777;
+    border-bottom: 1px dotted #c7c7c7;
 }
 .personal-data-link-footer{
     float: left;
@@ -4100,7 +4154,7 @@ font-size: 13px;
     right: 0;
     bottom: 0;
     background: #fff;
-    padding: 15px 40px;
+    padding: 25px 40px;
     z-index: 12;
 }
 .footer-summ{
@@ -4257,7 +4311,7 @@ font-size: 13px;
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 67px;
+    bottom: 90px;
     background: #fff;
     z-index: 15;
 }
@@ -4319,6 +4373,8 @@ font-size: 13px;
     background-color: #f90!important;
     border-color: #f90!important;
     box-shadow: 0px 11px 25px -17px #f90;
+    border-radius: 9px;
+    padding: 16px 30px;
 }
 .dialog-footer .closed-order{
     float: left;
@@ -4724,8 +4780,8 @@ height: 100%;
     border-radius: 9px;
     color: var(--page-color);
     font-size: 14px;
-    margin-left: 2px;
-    margin-right: 2px;
+    margin-left: 1px;
+    margin-right: 1px;
     user-select: none;
     color: #252525;
     background-color: #ffffff;
@@ -5014,7 +5070,7 @@ height: 100%;
         margin: 0 0 15px;
     }
     .catalog-list-img{
-        height: 180px;
+        height: 170px;
         margin: 0 0 0px;
         width: 180px;
         float: left;
@@ -5055,7 +5111,7 @@ height: 100%;
     .catalog-list-block img{
         max-width: 100%;
         max-height: 100%;
-        padding: 20px;
+        padding: 30px;
         object-fit: contain;
         height: 100%;
         width: 100%;
@@ -5068,10 +5124,10 @@ height: 100%;
     .catalog-list-block-desc>a,.catalog-list-block-desc>span{
         float: left;
         width: 100%;
-        height: 110px;
-        font-size: 13px;
+        height: 100px;
+        font-size: 14px;
         overflow: hidden;
-        line-height: 1.5;
+        line-height: 1.3;
         text-decoration: none;
         color: #373737;
         font-weight: 900;
@@ -5221,6 +5277,18 @@ height: 100%;
       }
     }
     @media (max-width: 991px){
+        .title {
+            display: block;
+            /* letter-spacing: 1px; */
+            float: left;
+            margin: 0px 0 0px;
+            width: 100%;
+            text-align: left;
+            height: 20px;
+        }
+        .title h1 {
+            font-size: 10px;
+        }
         .phone-desk-footer,.email-footer,.social-footer b{
             display: none;
         }
@@ -5265,14 +5333,15 @@ height: 100%;
         padding: 10px 0 0;
     }
       .catalog-list-img {
-            width: 140px;
-            height: 160px;
+        width: 155px;
+        height: 145px;
         }
         .catalog-list-block-desc {
-            margin: 0px 0 0 150px;
+            margin: 0px 0 0 170px;
         }
         .catalog-list-block-desc>a, .catalog-list-block-desc>span {
-            height: 90px;
+            height: 75px;
+            font-size: 13px;
         }
         .catalog-list-input{
             margin: 0px 0 0 0;
@@ -5282,9 +5351,6 @@ height: 100%;
             padding: 0px 10px 0 0;
             margin: 0 0 20px;
         }
-        .catalog-list-block-desc>a, .catalog-list-block-desc>span{
-            font-size: 12px;
-        }
         .catalog-list-block-price>strong{
             font-size: 20px;
         }
@@ -5292,7 +5358,7 @@ height: 100%;
             margin: 2px 0 0 4px;
         }  
         .catalog-list-block img {
-            padding: 20px;
+            padding: 25px;
         }
         .catalog-list-block-price>span{
             margin: 6px 0 0 5px;
@@ -5406,8 +5472,8 @@ height: 100%;
         font-size: 12px!important;
         box-shadow: 0 11px 33px -13px #f90;
         position: fixed;
-        bottom: 45px;
-        left: 10px;
+        bottom: 50px;
+        left: 15px;
         z-index: 12;
     }
     .product-top {
@@ -5462,7 +5528,7 @@ height: 100%;
     .header-nav-meny-close{
         display: block;
         float: left;
-        border: 2px solid #d1d1d1;
+        border: 1px solid #e3e3e3;
         border-radius: 14px;
         width: 20%;
         padding: 7px;
@@ -5518,7 +5584,7 @@ height: 100%;
         width: 60px;
     }
     .basket-tov-calc .el-input-number__increase{
-        right: -10px !important;
+        right: 0px !important;
     }
     .phone-footer{
         display: block;
@@ -5589,7 +5655,7 @@ height: 100%;
     .none-block{
         float: left;
         width: 100%;
-        height: 240px;
+        height: 260px;
     }
     .none-block-form{
         float: left;
@@ -5760,10 +5826,10 @@ height: 100%;
         margin: 0px 0 5px 2%;
         padding: 0px 5px;
         border-radius: 14px;
-        border: 2px solid #d1d1d1;
+        border: 1px solid #e3e3e3;
     }
     .button-item-activ{
-        border: 2px solid #f7d0af !important;
+        border: 1px solid #f7d0af !important;
     }
     .block-search-input{
         left: 10px !important;
@@ -5827,9 +5893,6 @@ height: 100%;
     }
     .el-carousel__container{
         height: 280px !important;
-    }
-    .title h1{
-        /* font-size: 18px; */
     }
     .title-h2{
         margin: 0px 0 20px !important;
@@ -6101,8 +6164,7 @@ height: 100%;
     }
     .dialog-footer .el-button,.el-button-group>.el-button:first-child:last-child {
         font-size: 12px;
-        padding: 8px 10px;
-        margin: 0 0px 0 0px;
+        padding: 12px 20px;
     }
     .dialog-footer .el-button.add-order{
         margin: 0 0px 0 10px;
@@ -6157,12 +6219,13 @@ height: 100%;
         overflow: hidden;
         border: 0px solid #0e0e0e;
         border-radius: 50%;
+        padding: 0px;
         width: 55px;
         height: 55px;
     }
     .popover-nav-button-item:hover ,.header-nav-meny-close:hover{
         transition: .2s;
-        border: 2px solid #f7d0af !important;
+        border: 1px solid #f7d0af !important;
         color: #ff7400;
     }
     .header-basket,.top-phone {
@@ -6255,18 +6318,30 @@ height: 100%;
         list-style: none;
         float: left;
         width: 50%;
-        padding: 2px;
+        padding: 4px;
         margin: 0 0 0px;
 
     }
+    .popover-nav>div ul {
+        /* max-width: 1100px; */
+        padding: 0;
+        margin: 0 auto;
+        float: left;
+        width: auto;
+        margin-left: -4px;
+        margin-right: -4px;
+    }
     .popover-nav>div ul li a i {
         margin: 0 5px 0px 0px;
+    }
+    .catalog-meny-top-img .catalog-list-img-bg{
+        display: none;
     }
     .popover-nav>div ul li a {
         padding: 10px;
         font-size: 13px;
         max-width: 100%;
-        height: 110px;
+        height: 120px;
         word-wrap: anywhere;
         background: #f5f5f5;
         flex-direction: column;
@@ -6278,10 +6353,10 @@ height: 100%;
     .popover-nav .manufacturer-navbar-ul li {
         width: 50%;
         margin: 0 0px 0px 0px;
-        padding: 2px;
+        padding: 4px;
     } 
     .popover-nav .manufacturer-navbar-ul li a{
-        padding: 6px 10px 6px 10px;
+        padding: 10px;
         font-size: 13px;
         height: auto;
     }
@@ -6316,10 +6391,11 @@ height: 100%;
     }  
     .basket-tov-img {
         float: left;
-        width: 90px;
+        width: 110px;
+        height: 110px;
     }   
     .basket-tov-desk {
-        margin-left: 105px;
+        margin-left: 125px;
         border-bottom: 1px solid #e2e2e2;
         display: table;
         padding: 0 0 15px;
@@ -6338,17 +6414,23 @@ height: 100%;
     .basket-tov-desk .basket-tov-desk-left{
         height: auto;
         width: 100%;
-        font-size: 11px;
         padding: 0 0px 0 0;
+    }
+    .basket-tov-desk-left>strong{
+        height: auto;
+        font-size: 13px;
+        margin: 0px 0px 10px 0px;
+        line-height: 1.4;
     }
     .basket-tov-cost {
         padding: 10px 0px 10px 0px;
         width: 100%;
         height: auto;
+        justify-content: left;
     }
     .basket-tov-calc {
         padding: 10px 0;
-        width: 130px;
+        width: 140px;
         justify-content: left;
         height: auto;
         display: flex;
@@ -6360,7 +6442,7 @@ height: 100%;
         font-size: 13px;
         width: auto;
         text-align: left;
-        left: 150px;
+        left: 110px;
         top: 6px;
         position: relative;
     }
@@ -6369,14 +6451,17 @@ height: 100%;
     }
     .basket-tov-summ {
         height: auto;
-        padding: 20px 0px 0px 0px;
+        padding: 15px 0px 0px 0px;
         width: 70%;
+        justify-content: left;
     }
     .basket-tov-dell {
-        padding: 23px 0 0px;
+        padding: 8px 0 0px;
         font-size: 19px;
         height: 51px;
         width: 30%;
+        top: -60px;
+        position: relative;
     }
     .basket-itog-summ>strong {
         font-size: 16px;
@@ -6533,9 +6618,13 @@ height: 100%;
     }
     .catalog-list-tags .el-tag {
         height: 26px;
-        line-height: 26px;
-        font-size: 9px;
+        line-height: 23px;
+        font-size: 11px;
     } 
+    .catalog-list-tags .el-tag__close{
+        font-size: 17px !important;
+        right: -3px !important;
+    }
     .hooper{
         touch-action: pan-y;
         -ms-touch-action: pan-y;
@@ -6549,7 +6638,7 @@ height: 100%;
     }
     .header-nav-refresh {
         max-width: 100%;
-        padding: 0px 3px 0 0px;
+        padding: 0px 0px 0 0px;
     }
     .header-nav-refresh i{
 
