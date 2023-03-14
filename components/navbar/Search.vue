@@ -3,10 +3,10 @@
     ref="autocomplete"
     v-model="state"
     :fetch-suggestions="querySearchAsync"
-    :trigger-on-focus="false"
+    :trigger-on-focus="true"
+    :autofocus="true"
     placeholder="Введите запрос..."
     @select="handleSelect"
-    clearable
     popper-class="block-search-input "
     >
     <template slot-scope="{ item }">
@@ -20,7 +20,7 @@
             :src="item.img.substring(24)" 
             :alt="item.name"
             width="1024"
-            height="800"
+            height="880"
             quality="75"
             />
         </div>
@@ -47,6 +47,7 @@ export default {
   },
   methods:{
     querySearchAsync(queryString, cb) {
+    
         var links = this.links;
         let results = [ { "value":'По данному запросу ничего не найдено'}];
         this.$axios.get(`/catalog/search/?search=${queryString}&limit=9999999`).then(function (result){

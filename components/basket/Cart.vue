@@ -7,7 +7,7 @@
             <div class="basket-tov-img">
                 <img :src="item.img">
                 <div class="pod-zak-form" v-if="item.product[0].count==0">
-                    Позиция под заказ!
+                    Под заказ!
                 </div>
             </div>
             <div class="basket-tov-desk">
@@ -91,7 +91,7 @@
                     </span>
                     </template>
                     <div class="basket-diskont-inf-block dis-block">
-						<h5>В Архитерм действует система скидок за объем суммы заказа.</h5>
+						<h5>В Архитерм действует система скидок за объем от суммы заказа.</h5>
 						<span>Чем на большую сумму вы совершаете заказ – тем большую скидку на него вы получаете! </span>
 						<p>
 							<span>от<strong>100</strong>руб.</span>
