@@ -12,30 +12,31 @@
           </nuxt-link>
       </el-menu-item>
       <el-menu-item index="3"  @click="closeMeny">
-           <nuxt-link :to="`/info/about`">
-            О нас
-          </nuxt-link>
-      </el-menu-item>
-      <el-menu-item index="4"  @click="closeMeny">
-           <nuxt-link :to="`/info/dostavka`">
-            Доставка
-          </nuxt-link>
-      </el-menu-item>
-      <el-menu-item index="5"  @click="closeMeny">
-           <nuxt-link :to="`/info/payment`">
-            Условия оплаты / заказа / возврата
-          </nuxt-link>
-      </el-menu-item>
-      <!-- <el-menu-item index="7"  @click="closeMeny">
-           <nuxt-link :to="`/info/certificates`">
-            Сертификаты
-          </nuxt-link>
-      </el-menu-item> -->
-      <el-menu-item index="8"  @click="closeMeny">
            <nuxt-link :to="`/info/contacts`">
             Контакты
           </nuxt-link>
       </el-menu-item>
+      <el-menu-item index="4"  @click="closeMeny">
+           <nuxt-link :to="`/info/about`">
+            О нас
+          </nuxt-link>
+      </el-menu-item>
+      <el-menu-item index="5"  @click="closeMeny">
+           <nuxt-link :to="`/info/dostavka`">
+            Доставка
+          </nuxt-link>
+      </el-menu-item>
+      <el-menu-item index="6"  @click="closeMeny">
+           <nuxt-link :to="`/info/payment`">
+            Условия оплаты / заказа / возврата
+          </nuxt-link>
+      </el-menu-item>
+      <el-menu-item index="7"  @click="closeMeny">
+           <nuxt-link :to="`/info/discount_order`">
+            Скидки в Архитерм
+          </nuxt-link>
+      </el-menu-item>
+
     </el-menu>
 
     </div>

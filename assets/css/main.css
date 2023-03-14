@@ -1073,14 +1073,14 @@ header .contents {
     border: none;
 }
 .button-nav-meny span{
-    margin: 0 !important;
+    margin: 0 5px 0!important;
     float: left;
-    width: 100%;
+    width: min-content;
     position: relative;
     font-size: 11px;
     text-align: center;
     line-height: 1;
-    font-weight: 700;
+    font-weight: 800;
 }
 .button-nav-text{
     /* color: #f6b9a3; */
@@ -1091,11 +1091,11 @@ header .contents {
     float: left;
     width: 100%;
     background: transparent;
-    padding: 0 0 0 0;
+    padding: 0;
     text-align: center;
-    font-size: 24px !important;
-    margin: 0 0 7px 0 !important;
-    font-weight: 700 !important;
+    font-size: 26px!important;
+    margin: 0 0 5px!important;
+    font-weight: 700!important;
 }
 .button-nav-meny button:hover,.button-nav-meny button:focus{
     background: transparent;
@@ -1363,7 +1363,7 @@ header .contents {
     /* background: rgba(0,0,0,0.03922); */
     border: 1px solid #e6e6e6;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
     color: #fff;
     text-align: left;
     display: flex;
@@ -1909,8 +1909,9 @@ border: 1px solid #fff;
     font-size: 13px;
     /* max-width: 74px; */
     left: 0px;
+    right: 0px;
     background: #00000073;
-    padding: 5px 23px 5px 10px;
+    padding: 5px 10px 5px 10px;
     border-radius: 17px;
     color: #fff;
     display: flex;
@@ -2257,7 +2258,7 @@ font-weight: 500;
     border: 2px solid #bfbfbf !important;
 }
 .cost-product-input .el-radio strong{
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -2283,7 +2284,7 @@ font-weight: 500;
 .cost-product-amount .el-input-number span{
     background: transparent !important;
     border: none !important;
-    padding: 10px 0 0!important;
+    padding: 6px 0 0!important;
 }
 .cost-product-amount .el-input-number span i{
     font-weight: 900 !important;
@@ -2870,7 +2871,7 @@ body .el-dialog__body{
 .basket-tov-img img{
     max-width: 100%;
     max-height: 100%;
-    padding: 10px;
+    padding: 15px;
 }
 .basket-tov-desk{
     margin-left: 160px;
@@ -2919,7 +2920,7 @@ body .el-dialog__body{
     padding: 0 0px 0 10px;
     width: 17%;
     justify-content: center;
-    height: 100px;
+    height: 130px;
     display: flex;
     align-items: center;
     position: relative;
@@ -2944,7 +2945,7 @@ body .el-dialog__body{
     padding: 0px 0px 0 0px;
     width: 20%;
     justify-content: space-around;
-    height: 100px;
+    height: 130px;
     display: flex;
     align-items: center;
     position: relative;
@@ -2956,7 +2957,7 @@ body .el-dialog__body{
     text-align: center;
     display: flex;
     align-items: center;
-    height: 100px;
+    height: 130px;
     padding: 0 0px 0 10px;
     width: 18%;
     justify-content: center;
@@ -2976,7 +2977,7 @@ font-size: 21px;
     text-align: center;
     display: flex;
     align-items: center;
-    height: 100px;
+    height: 130px;
     justify-content: center;
     width: 7%;
 }
@@ -2996,20 +2997,20 @@ color: #000;
     width: 100%;
 }
 .basket-tov-desk-kod>strong{
-    width: 90px;
+    /* width: 90px; */
     margin: 5px 0 0;
     font-weight: 500;
     padding: 0 0 5px;
     font-size: 10px;
     float: left;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .basket-tov-desk-kod>span{
     float: left;
     font-size: 11px;
     padding: 3px 5px;
-    border-radius: 3px;
-    background: #e8ebf1;
+    border-radius: 5px;
+    background: #f5f6f9;
     font-weight: 500;
     margin: 0 4px 0 10px;
     color: #343434;
@@ -3028,26 +3029,31 @@ text-align: right;
     width: 100%;
 }
 .basket-tov-desk-type>strong{
-    width: 90px;
+    /* width: 90px; */
     margin: 5px 0 0;
     font-weight: 500;
     padding: 0 0 5px;
     font-size: 10px;
     float: left;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .basket-tov-desk-type>span{
     float: left;
     font-size: 11px;
     padding: 3px 5px;
-    border-radius: 3px;
-    background: #e8ebf1;
+    border-radius: 5px;
+    background: #f5f6f9;
     font-weight: 500;
     margin: 0 4px 0 10px;
     color: #343434;
 }
 .basket-tov-desk-type>span>span{
     font-size: 11px;
+}
+.form-basket .el-radio__inner {
+    border-radius: 100%;
+    width: 16px;
+    height: 16px;
 }
 .header-logout .el-dialog{
     padding: 20px;
@@ -3543,6 +3549,11 @@ body .navbar-user .navbar-user-item{
 .phone-modal-block-el>b{
 
 }
+.b-namv{
+    margin: 0 0 0 15px;
+    font-weight: 500;
+    opacity: 0.6;
+}
 .top-phone {
     float: none;
     display: inline-block;
@@ -3565,8 +3576,9 @@ body .navbar-user .navbar-user-item{
     margin: 0 0 0 5px !important;
 }
 .top-phone>button>i{
-    margin: 0 0 -6px 0 !important;
+    margin: 0 0 -6px 6px !important;
     font-size: 21px !important;
+    font-weight: 500!important;
 }
 .top-phone .el-popover__reference-wrapper button>i{
     margin: 0 0 0px 0 !important;
@@ -3767,9 +3779,18 @@ font-size: 13px;
 }
 .el-autocomplete-suggestion li{
     white-space: unset !important;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 0px solid #eeeeee;
+    margin: 0 0 10px !important;
 }
-
+.el-autocomplete-suggestion__wrap {
+    max-height: 320px !important;
+}
+.el-autocomplete-suggestion li.highlighted, .el-autocomplete-suggestion li:hover{
+    background-color: transparent !important;
+}
+.el-autocomplete-suggestion li:hover .search-block-desc{
+    color: #000;
+}
 .el-autocomplete-suggestion li a{
     text-decoration: none;
     color: #606266;
@@ -3813,7 +3834,7 @@ font-size: 13px;
 .body-payment .el-collapse{
     float: left;
     width: 100%;
-    margin: 30px 0 ;
+    margin: 20px 0 ;
     border-top: 1px solid #ff8d00;
     border-bottom: 1px solid #ff8d00;
 }
@@ -3978,6 +3999,10 @@ font-size: 13px;
 .butDiscount{
     text-decoration: line-through;
 }
+.el-autocomplete-suggestion{
+    border-radius: 12px !important;
+    border: 2px solid #c6c6c6 !important;
+  }
 .sertif-block{
     float: left;
     width: 140px;
@@ -4028,6 +4053,8 @@ font-size: 13px;
     display: block;
     margin: 0px 0 0 120px;
     line-height: 1.4;
+    font-size: 12px;
+    font-weight: 500;
 }
 .search-block-desc>span{
     float: left;
@@ -4384,7 +4411,27 @@ font-size: 13px;
 }
 .dialog-footer .closed-order{
     float: left;
-    margin: 0 0 0 0 !important;
+    margin: 5px 0 0 0 !important;
+    border-radius: 9px;
+    position: relative;
+}
+.navbar-top-discount i{
+    font-weight: 800;
+    font-size: 16px;
+    position: absolute;
+    top: 8px;
+    margin: 0 0 0 3px;
+}
+.navbar-top-discount{
+    float: left;
+    margin: 3px 0 0 0 !important;
+    padding: 0 0 0 0;
+    text-align: left;
+    font-weight: 600 !important;
+    color: #c51a00 !important;
+}
+.el-button-group button{
+    border-radius: 9px !important;
 }
 .form-basket-input .el-form-item__content .el-input__inner{
     height: 50px;
@@ -4454,9 +4501,8 @@ font-size: 13px;
 .body-payment-cart .body-about h1, .body-payment h1 {
     float: left;
     width: 100%;
-    font-size: 16px;
     font-weight: 700;
-    margin: 0 0 0px;
+
 }
 .body-payment-cart .el-collapse {
     float: left;
@@ -4827,6 +4873,7 @@ height: 100%;
   .vs-pagination > li.vs-pagination--gap a:hover {
     background: transparent;
   }
+
 .page404{
         font-size: 21px;
         /* text-decoration: none; */
@@ -5348,6 +5395,7 @@ height: 100%;
         .catalog-list-block-desc>a, .catalog-list-block-desc>span {
             height: 65px;
             font-size: 12px;
+            font-weight: 700;
         }
         .catalog-manuf{
             margin: 5px 0 5px 0px;

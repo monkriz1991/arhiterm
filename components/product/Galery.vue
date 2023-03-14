@@ -1,12 +1,12 @@
 <template>
     <div class="galery">
         <Photoswipe>
+        <link :href="`https://new.arhiterm.by`+productItems.img" itemprop="image">
         <div class="galery-index" :class="{ 'galery-index-one': srcList.length=='' }">
             <nuxt-img 
                 provider="twicpics"
                 loading="lazy"
                 width="400" height="400"
-                itemprop="image"
                 :src="productItems.img"
                 :data-pswp-src="'https://new.arhiterm.by'+productItems.img"
                 :alt="productItems.name+' - изображение товара '"

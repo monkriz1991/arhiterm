@@ -17,6 +17,10 @@
         </el-skeleton>
         <div style="display: contents;" v-show="showFirst" >
         <div v-if="width>991" class="navbar-top">
+          <nuxt-link class="navbar-top-discount" :to="`/info/discount_order`">
+            Скидки в Архитерм
+            <i class="el-icon-present"></i>
+          </nuxt-link>
           <div  class="top-phone button-nav-meny">
             <el-button
             circle
@@ -25,6 +29,7 @@
             </el-button>
             <a href="tel:+37529343-16-16">+375 (29) 343-16-16<span>(МТС)</span></a>
           </div>
+          <b class="b-namv">|</b>
           <nuxt-link :to="`/info/contacts`">
             Контакты
           </nuxt-link>

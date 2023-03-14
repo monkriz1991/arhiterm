@@ -92,6 +92,7 @@
               <span v-else>{{multiplicity}} {{units}}</span>
             </div>
             <el-button
+            type="info"
             slot="reference"
             icon="el-icon-warning-outline"
             size="mini"
