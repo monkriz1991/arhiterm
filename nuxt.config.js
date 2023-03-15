@@ -70,19 +70,19 @@ css: [
   '@/assets/css/main.css',
   'element-ui/lib/theme-chalk/index.css'
 ],
-render: {
+// render: {
   // http2: {
   //     push: true,
   //     pushAssets: (req, res, publicPath, preloadFiles) => preloadFiles
   //     .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
   //   },
   // compressor: false,
-  resourceHints: false,
-  etag: false,
-  static: {
-    etag: false
-  }
-},
+//   resourceHints: false,
+//   etag: false,
+//   static: {
+//     etag: false
+//   }
+// },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 plugins: [
   { src: '~/plugins/element-ui'},
@@ -180,13 +180,11 @@ gtm: {
     }
   ],
 
-  // target: 'static',
-  // ssr: true,
-
-  // generate: {
-  //   fallback: '404.html',    
-  // },
-
+// target: 'static',
+ssr: false,
+generate: {
+  subFolders: false
+},
   image: {
     //provider: 'twicpics'
     twicpics: {
@@ -220,9 +218,9 @@ gtm: {
     },
 
   },
-  generate: {
-    exclude: ['/', '/catalog/', '/product/','/factory/']
-  },
+  // generate: {
+  //   exclude: ['/', '/catalog/', '/product/','/factory/']
+  // },
   // generate: {
   //   subFolders: false
   // },
@@ -314,20 +312,27 @@ gtm: {
    //postcss: null,
    
   build: {
-    vendor: ['element-ui'],
-    babel: {
-      "presets": ["@babel/preset-env"],
-      "plugins": [
-        [
-          "component",
-          {
-            "libraryName": "element-ui",
-            "styleLibraryName": "theme-chalk"
-          }
-        ]
-      ]
-    },
-    transpile: [/^element-ui/,'vee-validate/dist/rules'],
+    postcss: {
+      preset: {
+        features: {
+          customProperties: false
+        }
+      }
+    }
+    // vendor: ['element-ui'],
+    // babel: {
+    //   "presets": ["@babel/preset-env"],
+    //   "plugins": [
+    //     [
+    //       "component",
+    //       {
+    //         "libraryName": "element-ui",
+    //         "styleLibraryName": "theme-chalk"
+    //       }
+    //     ]
+    //   ]
+    // },
+    // transpile: [/^element-ui/,'vee-validate/dist/rules'],
     // optimizeCss: false,
     // filenames: {
     //   app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
