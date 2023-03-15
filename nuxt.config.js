@@ -139,7 +139,7 @@ modules: [
   // '@nuxtjs/sitemap',
   'nuxt-ssr-cache',
   // 'nuxt-webfontloader',
-  // '@nuxtjs/redirect-module',
+  '@nuxtjs/redirect-module',
   // 'nuxt-purgecss',
   // ['bootstrap-vue/nuxt'],
   ['nuxt-vuex-localstorage', {
@@ -169,16 +169,16 @@ gtm: {
 //   enabled: true, // Always enable purgecss
 //   safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
 // },
-  // redirect: [
-  //   {
-  //     from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
-  //     to: (from, req) => {
-  //       const base = req._parsedUrl.pathname.replace(/\/$/, '');
-  //       const search = req._parsedUrl.search;
-  //       return base + (search != null ? search : '')
-  //     }
-  //   }
-  // ],
+  redirect: [
+    {
+      from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
+      to: (from, req) => {
+        const base = req._parsedUrl.pathname.replace(/\/$/, '');
+        const search = req._parsedUrl.search;
+        return base + (search != null ? search : '')
+      }
+    }
+  ],
 
   // target: 'static',
   // ssr: true,
