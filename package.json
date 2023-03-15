@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.4",
+    "@capacitor/cli": "^4.7.0",
     "@nuxt/image": "^0.6.2",
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
