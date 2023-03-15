@@ -180,7 +180,7 @@ gtm: {
     }
   ],
 
-  // target: 'static',
+  target: 'static',
   // ssr: true,
 
   // generate: {
