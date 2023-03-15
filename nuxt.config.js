@@ -140,7 +140,7 @@ modules: [
   'nuxt-ssr-cache',
   'nuxt-webfontloader',
   '@nuxtjs/redirect-module',
-  'nuxt-purgecss',
+  // 'nuxt-purgecss',
   // ['bootstrap-vue/nuxt'],
   ['nuxt-vuex-localstorage', {
     localStorage: ['crate']
@@ -165,10 +165,10 @@ modules: [
 gtm: {
   id: 'G-ZEZSNWGXM4'
 },
-purgecss: {
-  enabled: true, // Always enable purgecss
-  safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
-},
+// purgecss: {
+//   enabled: true, // Always enable purgecss
+//   safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
+// },
   redirect: [
     {
       from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
@@ -365,30 +365,30 @@ purgecss: {
         ignoreOrder: true
       }
     }),
-    postcss: {
-      plugins: {
-        ...(!isDev && {
-          cssnano: {
-            preset: ['advanced', {
-              autoprefixer: false,
-              cssDeclarationSorter: false,
-              zindex: false,
-              discardComments: {
-                removeAll: true
-              }
-            }]
-          }
-        })
-      },
-      ...(!isDev && {
-        preset: {
-          browsers: 'cover 99.5%',
-          autoprefixer: true
-        }
-      }),
+    // postcss: {
+    //   plugins: {
+    //     ...(!isDev && {
+    //       cssnano: {
+    //         preset: ['advanced', {
+    //           autoprefixer: false,
+    //           cssDeclarationSorter: false,
+    //           zindex: false,
+    //           discardComments: {
+    //             removeAll: true
+    //           }
+    //         }]
+    //       }
+    //     })
+    //   },
+    //   ...(!isDev && {
+    //     preset: {
+    //       browsers: 'cover 99.5%',
+    //       autoprefixer: true
+    //     }
+    //   }),
 
-      order: 'cssnanoLast'
-    },
+    //   order: 'cssnanoLast'
+    // },
   }
 
 }
