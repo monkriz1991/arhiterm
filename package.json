@@ -12,8 +12,6 @@
   },
   "dependencies": {
     "@capacitor/android": "^4.7.0",
-    "@capacitor/app": "^4.1.1",
-    "@capacitor/cli": "^4.7.0",
     "@capacitor/core": "^4.7.0",
     "@nuxtjs/auth-next": "5.0.0-1622309801.87126e3",
     "@nuxtjs/axios": "^5.13.1",
