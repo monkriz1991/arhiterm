@@ -8,7 +8,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint": "npm run lint:js"
+    "lint": "npm run lint:js",
+    "generate-capacitor": "nuxt generate --no-ssr && npx cap copy",
+    "resources": "cordova-res-generator -p android,ios && node resources/sync.js android"
   },
   "dependencies": {
     "@capacitor/android": "^4.7.0",
@@ -23,6 +25,7 @@
     "@nuxtjs/yandex-metrika": "^1.4.0",
     "@webzlodimir/vue-bottom-sheet": "^1.3.0",
     "add": "^2.0.6",
+    "cordova-res-generator": "^0.4.2",
     "core-js": "^3.9.1",
     "element-ui": "^2.15.1",
     "hooper": "^0.3.4",
