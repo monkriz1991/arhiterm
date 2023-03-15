@@ -46,6 +46,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "babel-eslint": "^10.1.0",
     "babel-plugin-component": "^1.1.1",
-    "cordova-res": "^0.15.4"
+    "cordova-res": "^0.15.4",
+    "jetifier": "^2.0.0"
   }
 }
