@@ -38,6 +38,9 @@ jobs:
       - name: Generate boundle static app
         run: npm run generate
 
+      - name: Capacitor sync
+        run: npx cap sync
+
       - name: Capacitor update
         run: npx cap add android
 
