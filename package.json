@@ -8,9 +8,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint": "npm run lint:js",
-    "generate-capacitor": "nuxt generate --no-ssr && npx cap copy",
-    "resources": "cordova-res-generator -p android,ios && node resources/sync.js android"
+    "lint": "npm run lint:js"
   },
   "dependencies": {
     "@capacitor/android": "^4.7.0",
