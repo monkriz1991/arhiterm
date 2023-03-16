@@ -312,13 +312,13 @@ generate: {
    //postcss: null,
    
   build: {
-    postcss: {
-      preset: {
-        features: {
-          customProperties: false
-        }
-      }
-    }
+    // postcss: {
+    //   preset: {
+    //     features: {
+    //       customProperties: false
+    //     }
+    //   }
+    // }
     // vendor: ['element-ui'],
     // babel: {
     //   "presets": ["@babel/preset-env"],
