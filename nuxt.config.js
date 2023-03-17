@@ -146,17 +146,17 @@ modules: [
     localStorage: ['crate']
   }],
   [
-    '@nuxtjs/yandex-metrika',
-    {
-      webvisor: true,
-      id: '7416499',
+    //'@nuxtjs/yandex-metrika',
+   // {
+     // webvisor: true,
+      //id: '7416499',
       // defer: true,
       // clickmap:true,
       // usetriggerEventCDN:true,
       // trackLinks:true,
       // triggerEvent:true,
       // accurateTrackBounce:true,
-    }
+    //}
   ],
 ],
 // bootstrapVue: {
