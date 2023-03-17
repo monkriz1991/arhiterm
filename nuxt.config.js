@@ -93,7 +93,7 @@ plugins: [
   // { src: '~plugins/vue-js-modal.js'},
   // { src: '~plugins/ga.js', mode: 'client' },
   // '~/plugins/gtm',
-  { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
+  // { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
   { src: '~/plugins/vue-observe-visibility.js', mode: 'client' },
   { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
 ],
