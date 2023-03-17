@@ -55,14 +55,14 @@ export default {
     ]
   },
 
-webfontloader: {
-  events: false,
-  preconnect: true,
-  google: {
-    families: ['Montserrat:400,500,600,700,800:cyrillic&display=swap']
-  },
-  timeout: 5000
-},
+// webfontloader: {
+//   events: false,
+//   preconnect: true,
+//   google: {
+//     families: ['Montserrat:400,500,600,700,800:cyrillic&display=swap']
+//   },
+//   timeout: 5000
+// },
 loading: {color:'blue'},
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -138,7 +138,7 @@ modules: [
   '@nuxtjs/auth-next',
   // '@nuxtjs/sitemap',
   'nuxt-ssr-cache',
-  'nuxt-webfontloader',
+  // 'nuxt-webfontloader',
   '@nuxtjs/redirect-module',
   // 'nuxt-purgecss',
   // ['bootstrap-vue/nuxt'],
