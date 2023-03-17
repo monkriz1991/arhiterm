@@ -55,14 +55,14 @@ export default {
     ]
   },
 
-// webfontloader: {
-//   events: false,
-//   preconnect: true,
-//   google: {
-//     families: ['Montserrat:400,500,600,700,800:cyrillic&display=swap']
-//   },
-//   timeout: 5000
-// },
+webfontloader: {
+  events: false,
+  preconnect: true,
+  google: {
+    families: ['Montserrat:400,500,600,700,800:cyrillic&display=swap']
+  },
+  timeout: 5000
+},
 loading: {color:'blue'},
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -87,15 +87,15 @@ css: [
 plugins: [
   { src: '~/plugins/element-ui'},
   '@/plugins/backbutton.js',
-  // { src: '~/plugins/vue-pswipe.js', mode: 'client' },
-  // { src: '~/plugins/vue-typer.js', mode: 'client'},
+  { src: '~/plugins/vue-pswipe.js', mode: 'client' },
+  { src: '~/plugins/vue-typer.js', mode: 'client'},
   // { src: '~/plugins/vs-pagination.js', mode: 'client' },
   // { src: '~plugins/vue-js-modal.js'},
   // { src: '~plugins/ga.js', mode: 'client' },
   // '~/plugins/gtm',
-  //  { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
-  // { src: '~/plugins/vue-observe-visibility.js', mode: 'client' },
-  // { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
+  { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
+  { src: '~/plugins/vue-observe-visibility.js', mode: 'client' },
+  { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
 ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -134,30 +134,30 @@ pwa: {
 modules: [
   // https://go.nuxtjs.dev/axios
   '@nuxtjs/axios',
-  // '@nuxtjs/gtm',
+  '@nuxtjs/gtm',
   '@nuxtjs/auth-next',
   // '@nuxtjs/sitemap',
   'nuxt-ssr-cache',
-  // 'nuxt-webfontloader',
-  // '@nuxtjs/redirect-module',
+  'nuxt-webfontloader',
+  '@nuxtjs/redirect-module',
   // 'nuxt-purgecss',
   // ['bootstrap-vue/nuxt'],
   ['nuxt-vuex-localstorage', {
     localStorage: ['crate']
   }],
-  //[
-    //'@nuxtjs/yandex-metrika',
-   // {
-     // webvisor: true,
-      //id: '7416499',
+  [
+    '@nuxtjs/yandex-metrika',
+    {
+      webvisor: true,
+      id: '7416499',
       // defer: true,
       // clickmap:true,
       // usetriggerEventCDN:true,
       // trackLinks:true,
       // triggerEvent:true,
       // accurateTrackBounce:true,
-    //}
-  //],
+    }
+  ],
 ],
 // bootstrapVue: {
 //   components: [ 'b-modal'],
@@ -169,16 +169,16 @@ gtm: {
 //   enabled: true, // Always enable purgecss
 //   safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
 // },
-  // redirect: [
-  //   {
-  //     from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
-  //     to: (from, req) => {
-  //       const base = req._parsedUrl.pathname.replace(/\/$/, '');
-  //       const search = req._parsedUrl.search;
-  //       return base + (search != null ? search : '')
-  //     }
-  //   }
-  // ],
+  redirect: [
+    {
+      from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
+      to: (from, req) => {
+        const base = req._parsedUrl.pathname.replace(/\/$/, '');
+        const search = req._parsedUrl.search;
+        return base + (search != null ? search : '')
+      }
+    }
+  ],
 
 // target: 'static',
 ssr: false,
@@ -311,7 +311,7 @@ generate: {
 
    //postcss: null,
    
-  //build: {
+  build: {
     // postcss: {
     //   preset: {
     //     features: {
@@ -394,6 +394,6 @@ generate: {
 
     //   order: 'cssnanoLast'
     // },
-  //}
+  }
 
 }
