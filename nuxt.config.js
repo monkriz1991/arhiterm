@@ -134,7 +134,7 @@ pwa: {
 modules: [
   // https://go.nuxtjs.dev/axios
   '@nuxtjs/axios',
-  '@nuxtjs/gtm',
+  // '@nuxtjs/gtm',
   '@nuxtjs/auth-next',
   // '@nuxtjs/sitemap',
   'nuxt-ssr-cache',
