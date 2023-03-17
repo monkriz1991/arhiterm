@@ -87,15 +87,15 @@ css: [
 plugins: [
   { src: '~/plugins/element-ui'},
   '@/plugins/backbutton.js',
-  { src: '~/plugins/vue-pswipe.js', mode: 'client' },
-  { src: '~/plugins/vue-typer.js', mode: 'client'},
+  // { src: '~/plugins/vue-pswipe.js', mode: 'client' },
+  // { src: '~/plugins/vue-typer.js', mode: 'client'},
   // { src: '~/plugins/vs-pagination.js', mode: 'client' },
   // { src: '~plugins/vue-js-modal.js'},
   // { src: '~plugins/ga.js', mode: 'client' },
   // '~/plugins/gtm',
-  // { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
-  { src: '~/plugins/vue-observe-visibility.js', mode: 'client' },
-  { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
+  //  { src: '~/plugins/vue-bottom-sheet.js', mode: 'client' },
+  // { src: '~/plugins/vue-observe-visibility.js', mode: 'client' },
+  // { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
 ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -103,12 +103,12 @@ components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 buildModules: [
-  [
-    '@nuxt/image',
-    {
-      provider: 'static',
-    },
-  ],
+  // [
+  //   '@nuxt/image',
+  //   {
+  //     provider: 'static',
+  //   },
+  // ],
   '@nuxtjs/pwa',
 ],
 pwa: {
@@ -139,13 +139,13 @@ modules: [
   // '@nuxtjs/sitemap',
   'nuxt-ssr-cache',
   // 'nuxt-webfontloader',
-  '@nuxtjs/redirect-module',
+  // '@nuxtjs/redirect-module',
   // 'nuxt-purgecss',
   // ['bootstrap-vue/nuxt'],
   ['nuxt-vuex-localstorage', {
     localStorage: ['crate']
   }],
-  [
+  //[
     //'@nuxtjs/yandex-metrika',
    // {
      // webvisor: true,
@@ -157,7 +157,7 @@ modules: [
       // triggerEvent:true,
       // accurateTrackBounce:true,
     //}
-  ],
+  //],
 ],
 // bootstrapVue: {
 //   components: [ 'b-modal'],
@@ -169,44 +169,44 @@ gtm: {
 //   enabled: true, // Always enable purgecss
 //   safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
 // },
-  redirect: [
-    {
-      from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
-      to: (from, req) => {
-        const base = req._parsedUrl.pathname.replace(/\/$/, '');
-        const search = req._parsedUrl.search;
-        return base + (search != null ? search : '')
-      }
-    }
-  ],
+  // redirect: [
+  //   {
+  //     from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
+  //     to: (from, req) => {
+  //       const base = req._parsedUrl.pathname.replace(/\/$/, '');
+  //       const search = req._parsedUrl.search;
+  //       return base + (search != null ? search : '')
+  //     }
+  //   }
+  // ],
 
 // target: 'static',
 ssr: false,
 generate: {
   subFolders: false
 },
-  image: {
-    //provider: 'twicpics'
-    twicpics: {
-      baseURL: 'https://new.arhiterm.by/'
-    },
-    presets: {
-      product: {
-        modifiers: {
-          format: 'webp',
-          fit: 'contain',
-          quality: '60'
-        }
-      }
-    },
-    imgix: {
-      baseURL: 'https://arhiterm.by/',
-      format: 'webp',
-      fit: 'contain',
-      quality: '60'
-    },
-    dir: 'static'
-  },
+  // image: {
+  //   //provider: 'twicpics'
+  //   twicpics: {
+  //     baseURL: 'https://new.arhiterm.by/'
+  //   },
+  //   presets: {
+  //     product: {
+  //       modifiers: {
+  //         format: 'webp',
+  //         fit: 'contain',
+  //         quality: '60'
+  //       }
+  //     }
+  //   },
+  //   imgix: {
+  //     baseURL: 'https://arhiterm.by/',
+  //     format: 'webp',
+  //     fit: 'contain',
+  //     quality: '60'
+  //   },
+  //   dir: 'static'
+  // },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -311,7 +311,7 @@ generate: {
 
    //postcss: null,
    
-  build: {
+  //build: {
     // postcss: {
     //   preset: {
     //     features: {
@@ -394,6 +394,6 @@ generate: {
 
     //   order: 'cssnanoLast'
     // },
-  }
+  //}
 
 }
