@@ -103,12 +103,12 @@ components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 buildModules: [
-  // [
-  //   '@nuxt/image',
-  //   {
-  //     provider: 'static',
-  //   },
-  // ],
+  [
+    '@nuxt/image',
+    {
+      provider: 'static',
+    },
+  ],
   '@nuxtjs/pwa',
 ],
 pwa: {
@@ -134,7 +134,7 @@ pwa: {
 modules: [
   // https://go.nuxtjs.dev/axios
   '@nuxtjs/axios',
-  // '@nuxtjs/gtm',
+  '@nuxtjs/gtm',
   '@nuxtjs/auth-next',
   // '@nuxtjs/sitemap',
   'nuxt-ssr-cache',
@@ -185,28 +185,28 @@ ssr: false,
 generate: {
   subFolders: false
 },
-  // image: {
-  //   //provider: 'twicpics'
-  //   twicpics: {
-  //     baseURL: 'https://new.arhiterm.by/'
-  //   },
-  //   presets: {
-  //     product: {
-  //       modifiers: {
-  //         format: 'webp',
-  //         fit: 'contain',
-  //         quality: '60'
-  //       }
-  //     }
-  //   },
-  //   imgix: {
-  //     baseURL: 'https://arhiterm.by/',
-  //     format: 'webp',
-  //     fit: 'contain',
-  //     quality: '60'
-  //   },
-  //   dir: 'static'
-  // },
+  image: {
+    //provider: 'twicpics'
+    twicpics: {
+      baseURL: 'https://new.arhiterm.by/'
+    },
+    presets: {
+      product: {
+        modifiers: {
+          format: 'webp',
+          fit: 'contain',
+          quality: '60'
+        }
+      }
+    },
+    imgix: {
+      baseURL: 'https://arhiterm.by/',
+      format: 'webp',
+      fit: 'contain',
+      quality: '60'
+    },
+    dir: 'static'
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
