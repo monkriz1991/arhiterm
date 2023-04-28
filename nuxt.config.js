@@ -70,19 +70,19 @@ css: [
   '@/assets/css/main.css',
   'element-ui/lib/theme-chalk/index.css'
 ],
-// render: {
+render: {
   // http2: {
   //     push: true,
   //     pushAssets: (req, res, publicPath, preloadFiles) => preloadFiles
   //     .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`)
   //   },
   // compressor: false,
-//   resourceHints: false,
-//   etag: false,
-//   static: {
-//     etag: false
-//   }
-// },
+  resourceHints: false,
+  etag: false,
+  static: {
+    etag: false
+  }
+},
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 plugins: [
   { src: '~/plugins/element-ui'},
@@ -136,11 +136,11 @@ modules: [
   '@nuxtjs/axios',
   '@nuxtjs/gtm',
   '@nuxtjs/auth-next',
-  // '@nuxtjs/sitemap',
+  '@nuxtjs/sitemap',
   'nuxt-ssr-cache',
   'nuxt-webfontloader',
   '@nuxtjs/redirect-module',
-  // 'nuxt-purgecss',
+  'nuxt-purgecss',
   // ['bootstrap-vue/nuxt'],
   ['nuxt-vuex-localstorage', {
     localStorage: ['crate']
@@ -165,10 +165,10 @@ modules: [
 gtm: {
   id: 'G-ZEZSNWGXM4'
 },
-// purgecss: {
-//   enabled: true, // Always enable purgecss
-//   safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
-// },
+purgecss: {
+  enabled: true, // Always enable purgecss
+  safelist: ['my-class'], // Add my-class token to the safelist (e.g. .my-class)
+},
   redirect: [
     {
       from: '(?!^\/$|^\/[?].*$)(.*\/[?](.*)$|.*\/$)',
@@ -180,11 +180,13 @@ gtm: {
     }
   ],
 
-// target: 'static',
-ssr: false,
-generate: {
-  subFolders: false
-},
+  // target: 'static',
+  // ssr: true,
+
+  // generate: {
+  //   fallback: '404.html',    
+  // },
+
   image: {
     //provider: 'twicpics'
     twicpics: {
@@ -218,57 +220,57 @@ generate: {
     },
 
   },
-  // generate: {
-  //   exclude: ['/', '/catalog/', '/product/','/factory/']
-  // },
+  generate: {
+    exclude: ['/', '/catalog/', '/product/','/factory/']
+  },
   // generate: {
   //   subFolders: false
   // },
-  //  sitemap: {
-  //   path: '/sitemap.xml',
-  //   cacheTime: 1000 * 60 * 15,
-  //   hostname: "https://arhiterm.by",
-  //   gzip: true,
-  //   generate: false,
-  //   exclude: [],
-  //   sitemaps: [
-  //     {
-  //       exclude: [
-  //         '/cabinet',
-  //         '/cabinet/**',
-  //         '/userCabinet',
-  //         '/userCabinet/**',
-  //       ],
-  //       path: '/sitemap/sitemap.xml',
-  //     },
-  //     {
-  //       path: '/catalog/sitemap.xml',
-  //       exclude: ['/**'],
-  //       routes: async () => {
-  //         const { data } = await axios.get('https://new.arhiterm.by/catalog/categories/?limit=999')
-  //         return data.results.map((category) => `/catalog/${category.kirilica_name}`)
-  //       }
-  //     },
-  //     {
-  //     path: '/product/sitemap.xml',
-  //     exclude: ['/**'],
-  //     routes: 
-  //       async () => {
-  //         const { data } = await axios.get('https://new.arhiterm.by/catalog/search/?limit=9999999')
-  //         return data.results.map((product) => `/product/${product.kirilica_name}`)
-  //       }
-  //     },
-  //     {
-  //       path: '/factory/sitemap.xml',
-  //       exclude: ['/**'],
-  //       routes: 
-  //         async () => {
-  //           const { data } = await axios.get('https://new.arhiterm.by/manufacturer/get/?is_active=true&limit=99999')
-  //           return data.results.map((factory) => `/factory/${factory.kirilica_name}`)
-  //         }
-  //       }
-  //   ]
-  // },
+   sitemap: {
+    path: '/sitemap.xml',
+    cacheTime: 1000 * 60 * 15,
+    hostname: "https://arhiterm.by",
+    gzip: true,
+    generate: false,
+    exclude: [],
+    sitemaps: [
+      {
+        exclude: [
+          '/cabinet',
+          '/cabinet/**',
+          '/userCabinet',
+          '/userCabinet/**',
+        ],
+        path: '/sitemap/sitemap.xml',
+      },
+      {
+        path: '/catalog/sitemap.xml',
+        exclude: ['/**'],
+        routes: async () => {
+          const { data } = await axios.get('https://new.arhiterm.by/catalog/categories/?limit=999')
+          return data.results.map((category) => `/catalog/${category.kirilica_name}`)
+        }
+      },
+      {
+      path: '/product/sitemap.xml',
+      exclude: ['/**'],
+      routes: 
+        async () => {
+          const { data } = await axios.get('https://new.arhiterm.by/catalog/search/?limit=9999999')
+          return data.results.map((product) => `/product/${product.kirilica_name}`)
+        }
+      },
+      {
+        path: '/factory/sitemap.xml',
+        exclude: ['/**'],
+        routes: 
+          async () => {
+            const { data } = await axios.get('https://new.arhiterm.by/manufacturer/get/?is_active=true&limit=99999')
+            return data.results.map((factory) => `/factory/${factory.kirilica_name}`)
+          }
+        }
+    ]
+  },
 
 
   serverMiddleware:  [
@@ -312,88 +314,81 @@ generate: {
    //postcss: null,
    
   build: {
-    // postcss: {
-    //   preset: {
-    //     features: {
-    //       customProperties: false
-    //     }
-    //   }
-    // }
-    // vendor: ['element-ui'],
-    // babel: {
-    //   "presets": ["@babel/preset-env"],
-    //   "plugins": [
-    //     [
-    //       "component",
-    //       {
-    //         "libraryName": "element-ui",
-    //         "styleLibraryName": "theme-chalk"
-    //       }
-    //     ]
-    //   ]
-    // },
-    // transpile: [/^element-ui/,'vee-validate/dist/rules'],
-    // optimizeCss: false,
-    // filenames: {
-    //   app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
-    //   chunk: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
-    //   css: ({ isDev }) => isDev ? '[name].css' : 'css/[contenthash].css',
-    //   img: ({ isDev }) => isDev ? '[path][name].[ext]' : 'img/[contenthash:7].[ext]',
-    //   font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[contenthash:7].[ext]',
-    //   video: ({ isDev }) => isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
-    // },
-    // ...(!isDev && {
-    //   html: {
-    //     minify: {
-    //       collapseBooleanAttributes: true,
-    //       decodeEntities: true,
-    //       minifyCSS: true,
-    //       minifyJS: true,
-    //       processConditionalComments: true,
-    //       removeEmptyAttributes: true,
-    //       removeRedundantAttributes: true,
-    //       trimCustomFragments: true,
-    //       useShortDoctype: true
-    //     }
-    //   }
-    // }),
-    // splitChunks: {
-    //   layouts: true,
-    //   pages: true,
-    //   commons: true
-    // },
-    // optimization: {
-    //   minimize: !isDev
-    // },
-    // ...(!isDev && {
-    //   extractCSS: {
-    //     ignoreOrder: true
-    //   }
-    // }),
-    // postcss: {
-    //   plugins: {
-    //     ...(!isDev && {
-    //       cssnano: {
-    //         preset: ['advanced', {
-    //           autoprefixer: false,
-    //           cssDeclarationSorter: false,
-    //           zindex: false,
-    //           discardComments: {
-    //             removeAll: true
-    //           }
-    //         }]
-    //       }
-    //     })
-    //   },
-    //   ...(!isDev && {
-    //     preset: {
-    //       browsers: 'cover 99.5%',
-    //       autoprefixer: true
-    //     }
-    //   }),
+    vendor: ['element-ui'],
+    babel: {
+      "presets": ["@babel/preset-env"],
+      "plugins": [
+        [
+          "component",
+          {
+            "libraryName": "element-ui",
+            "styleLibraryName": "theme-chalk"
+          }
+        ]
+      ]
+    },
+    transpile: [/^element-ui/,'vee-validate/dist/rules'],
+    optimizeCss: false,
+    filenames: {
+      app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
+      chunk: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
+      css: ({ isDev }) => isDev ? '[name].css' : 'css/[contenthash].css',
+      img: ({ isDev }) => isDev ? '[path][name].[ext]' : 'img/[contenthash:7].[ext]',
+      font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[contenthash:7].[ext]',
+      video: ({ isDev }) => isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
+    },
+    ...(!isDev && {
+      html: {
+        minify: {
+          collapseBooleanAttributes: true,
+          decodeEntities: true,
+          minifyCSS: true,
+          minifyJS: true,
+          processConditionalComments: true,
+          removeEmptyAttributes: true,
+          removeRedundantAttributes: true,
+          trimCustomFragments: true,
+          useShortDoctype: true
+        }
+      }
+    }),
+    splitChunks: {
+      layouts: true,
+      pages: true,
+      commons: true
+    },
+    optimization: {
+      minimize: !isDev
+    },
+    ...(!isDev && {
+      extractCSS: {
+        ignoreOrder: true
+      }
+    }),
+    postcss: {
+      plugins: {
+        ...(!isDev && {
+          cssnano: {
+            preset: ['advanced', {
+              autoprefixer: false,
+              cssDeclarationSorter: false,
+              zindex: false,
+              discardComments: {
+                removeAll: true
+              }
+            }]
+          }
+        })
+      },
+      ...(!isDev && {
+        preset: {
+          browsers: 'cover 99.5%',
+          autoprefixer: true
+        }
+      }),
 
-    //   order: 'cssnanoLast'
-    // },
+      order: 'cssnanoLast'
+    },
   }
 
 }

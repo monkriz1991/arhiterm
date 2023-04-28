@@ -34,18 +34,18 @@ export default ({
   computed: {
   },
   methods:{
-    // open2() {
-    //   this.$notify({
-    //     dangerouslyUseHTMLString: true,
-    //     title: 'Уважаемые клиенты!',
-    //     message: '<strong>30.12.22</strong> склад / офис: <strong><br>Выходной</strong>',
-    //     type: 'warning',
-    //     duration:50000,
-    //   });
-    // },
+    open2() {
+      this.$notify({
+        dangerouslyUseHTMLString: true,
+        title: 'Уважаемые клиенты!',
+        message: '<strong>29.04.23 график работы<br></strong> склад до <strong>13.00</strong><br>офис до <strong>14.00</strong>',
+        type: 'warning',
+        duration:50000,
+      });
+    },
   },
   mounted(){
-    // this.open2()
+     this.open2()
   }
 })
 </script>
