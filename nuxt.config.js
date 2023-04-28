@@ -365,30 +365,30 @@ purgecss: {
         ignoreOrder: true
       }
     }),
-    postcss: {
-      plugins: {
-        ...(!isDev && {
-          cssnano: {
-            preset: ['advanced', {
-              autoprefixer: false,
-              cssDeclarationSorter: false,
-              zindex: false,
-              discardComments: {
-                removeAll: true
-              }
-            }]
-          }
-        })
-      },
-      ...(!isDev && {
-        preset: {
-          browsers: 'cover 99.5%',
-          autoprefixer: true
-        }
-      }),
+    // postcss: {
+    //   plugins: {
+    //     ...(!isDev && {
+    //       cssnano: {
+    //         preset: ['advanced', {
+    //           autoprefixer: false,
+    //           cssDeclarationSorter: false,
+    //           zindex: false,
+    //           discardComments: {
+    //             removeAll: true
+    //           }
+    //         }]
+    //       }
+    //     })
+    //   },
+    //   ...(!isDev && {
+    //     preset: {
+    //       browsers: 'cover 99.5%',
+    //       autoprefixer: true
+    //     }
+    //   }),
 
-      order: 'cssnanoLast'
-    },
+    //   order: 'cssnanoLast'
+    // },
   }
 
 }
