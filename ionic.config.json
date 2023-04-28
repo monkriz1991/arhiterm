@@ -1,7 +1,8 @@
 {
   "name": "arhiterm",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "custom"
 }
