@@ -37,5 +37,5 @@ jobs:
           pass: ${{ secrets.SSH_PASS }}
           command: |
             cd /var/www/www-root/data/www/arhiterm.by/arhiterm
-            npm run build && npm run generate
+            npm run build
             pm2 restart Arhiterm.by
