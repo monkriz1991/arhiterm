@@ -369,16 +369,15 @@ export default {
         return a.position - b.position;
       });
     },
-    open2() {
-      this.$notify({
-        dangerouslyUseHTMLString: true,
-        title: "Уважаемые клиенты!",
-        message:
-          "<strong>13.05.23 <br>график работы склада: <br>- до 14.00</strong>",
-        type: "warning",
-        duration: 50000,
-      });
-    },
+    //   open2() {
+    //   this.$notify({
+    //     dangerouslyUseHTMLString: true,
+    //     title: 'Уважаемые клиенты!',
+    //     message: '<strong>29.04.23 график работы</strong><br> склад до <strong>13.00</strong><br>офис до <strong>14.00</strong>',
+    //     type: 'warning',
+    //     duration:50000,
+    //   });
+    // },
   },
   mounted() {
     this.setLoadingSkeleton();
@@ -395,7 +394,7 @@ export default {
       this.headerTop = this.$refs.header.getBoundingClientRect().top;
     });
 
-    this.open2();
+    // this.open2()
   },
   watch: {
     scrollY(newValue) {
