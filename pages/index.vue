@@ -148,12 +148,19 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
-  async asyncData({ app, params, route, error, store, $axios }) {
-    // await store.dispatch('category/getCategoryIndex');
-    let slides = await $axios.$get(`/administrate/get/slider/`);
-    await store.dispatch("main/getTop");
-    // await store.dispatch('category/getManufacturer')
-    return { slides: slides.results };
+  async asyncData({ app, params, route, error, store }) {
+    try {
+      // await store.dispatch('category/getCategoryIndex');
+      await store.dispatch("main/getSlider");
+      await store.dispatch("main/getTop");
+      // await store.dispatch('category/getManufacturer')
+    } catch (err) {
+      console.log(err);
+      return error({
+        statusCode: 404,
+        message: "Категории не найдены или сервер не доступен",
+      });
+    }
   },
   components: {
     Slider: () => import("~/components/index/Slider.vue"),
@@ -174,6 +181,7 @@ export default {
     ...mapGetters({
       facturer: "category/manufacturerIndex",
       category: "category/categoryIndex",
+      slides: "main/sliderItems",
       tovar: "main/top",
     }),
   },
