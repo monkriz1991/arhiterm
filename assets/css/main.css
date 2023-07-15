@@ -5227,21 +5227,23 @@ body .navbar-user .navbar-user-item {
   float: left;
 }
 .catalog-list-block-discount {
-  position: absolute;
-  top: -10px;
-  color: #fe8405;
-  margin: -5px 0 0 60px;
+  color: #000000;
+  margin: 0px 10px 0 0px;
+  float: left;
+  color: #d61616;
 }
-.catalog-list-block-discount > strong {
-  font-size: 13px;
+.catalog-list-block-discount > strong > .cost-price {
+  font-size: 15px;
   font-weight: 700;
   float: left;
+  -webkit-text-decoration: line-through;
+  text-decoration: line-through;
 }
-.catalog-list-block-discount > span {
-  font-size: 8px;
-  float: left;
-  margin: 5px 0 0 2px;
-  font-weight: 600;
+.catalog-list-block-discount > strong > .name-price {
+  font-size: 10px;
+  margin: 0 0 0 2px;
+}
+.cost-price {
 }
 .catalog-list-block-cost {
   float: left;
