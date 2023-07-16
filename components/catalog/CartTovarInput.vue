@@ -184,12 +184,12 @@ export default {
       this.input_cost =
         item.discont == null
           ? Math.ceil(item.price * this.multiplicity * 100) / 100
-          : Math.ceil(item.discont * this.multiplicity * 100) / 100;
+          : Math.ceil(item.price * this.multiplicity * 100) / 100;
       this.$emit("update:price", item.price);
       this.priceCart =
         item.discont == null
           ? Math.ceil(item.price * this.multiplicity * 100) / 100
-          : Math.ceil(item.discont * this.multiplicity * 100) / 100;
+          : Math.ceil(item.price * this.multiplicity * 100) / 100;
       this.name_radioGroup =
         item.filter_show_name != null ? item.filter_show_name : "Артикул";
       this.$emit("NewChar", item);
@@ -259,21 +259,14 @@ export default {
       }
     },
     discontStart(item) {
-      if (item.discont != null) {
-        this.priceCart =
-          Math.ceil(item.discont * this.multiplicity * 100) / 100;
-        this.input_cost =
-          Math.ceil(item.discont * this.multiplicity * 100) / 100;
-      } else {
-        this.priceCart =
-          item != undefined
-            ? Math.ceil(item.price * this.multiplicity * 100) / 100
-            : 0;
-        this.input_cost =
-          item != undefined
-            ? Math.ceil(item.price * this.multiplicity * 100) / 100
-            : 0;
-      }
+      this.priceCart =
+        item != undefined
+          ? Math.ceil(item.price * this.multiplicity * 100) / 100
+          : 0;
+      this.input_cost =
+        item != undefined
+          ? Math.ceil(item.price * this.multiplicity * 100) / 100
+          : 0;
     },
     /** Изменение кол. товара */
     handleChange(value) {
