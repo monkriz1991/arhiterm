@@ -148,12 +148,13 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
-  async asyncData({ app, params, route, error, store }) {
+  async asyncData({ app, params, route, error, store, $axios }) {
     try {
       // await store.dispatch('category/getCategoryIndex');
-      await store.dispatch("main/getSlider");
+      let slides = await $axios.$get(`/administrate/get/slider/`);
       await store.dispatch("main/getTop");
       // await store.dispatch('category/getManufacturer')
+      return { slides: slides.results };
     } catch (err) {
       console.log(err);
       return error({
@@ -181,7 +182,6 @@ export default {
     ...mapGetters({
       facturer: "category/manufacturerIndex",
       category: "category/categoryIndex",
-      slides: "main/sliderItems",
       tovar: "main/top",
     }),
   },
