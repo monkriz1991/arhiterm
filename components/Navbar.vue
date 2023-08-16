@@ -27,8 +27,8 @@
                 @click="dialogVisiblePhone()"
               >
               </el-button>
-              <a href="tel:+37529343-16-16"
-                >+375 (29) 343-16-16<span>(МТС)</span></a
+              <a href="tel:+37533343-16-16"
+                >+375 (33) 343-16-16<span>(МТС)</span></a
               >
             </div>
             <b class="b-namv">|</b>
