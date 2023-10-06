@@ -29,7 +29,7 @@
               itemscope
               itemtype="http://schema.org/PostalAddress"
             >
-              <span itemprop="postalCode">220125</span>
+              <span itemprop="postalCode">220081</span>
               <span itemprop="addressLocality">Минск</span>
               <span itemprop="streetAddress"
                 >ул. Лопатина, 7а/1, офис 904, Бизнес-центр «Премьер»</span
