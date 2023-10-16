@@ -40,9 +40,9 @@
         <div class="contact-block-inf">
           <div class="contact-block-desc">
             <span>Понедельник - Четверг</span>
-            <span>Офис с 8:30 до 16:30</span>
+            <span>Склад с 8:30 до 16:30</span>
             <span>Пятница</span>
-            <span>Офис с 8:30 до 16:00</span>
+            <span>Склад с 8:30 до 16:00</span>
             <span>Суббота, Воскресенье - Выходной</span><br />
             <span
               >Беларусь, Минская обл., Боровляны, ул. 40 лет Победы, 19</span
