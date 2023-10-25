@@ -19,12 +19,8 @@
             <strong>1 км от Стройрынка «Уручье»!</strong>
           </div>
           <div class="contact-block-phone">
-            <a href="tel:+375293431616"
-              >+375 (29) 343-16-16 <span>(А1)</span></a
-            >
-            <a href="tel:+375333431616"
-              >+375 (33) 343-16-16 <span>(МТС)</span></a
-            >
+            <a href="tel:+375293431616">+375 (29) 343-16-16 <span>А1</span></a>
+            <a href="tel:+375333431616">+375 (33) 343-16-16 <span>МТС</span></a>
           </div>
           <div class="contact-block-phone-all">
             <p><strong>Viber:</strong><span>+375 (29) 343-16-16 </span></p>
@@ -56,11 +52,9 @@
           <div class="contact-block-phone">
             <strong>Выписка документов на складе:</strong>
             <a href="tel:+375175472120"
-              >375 (17) 547-21-20 <span>(Городской)</span></a
+              >375 (17) 547-21-20 <span>Городской</span></a
             >
-            <a href="tel:+375447411192"
-              >+375 (44) 741-11-92 <span>(А1)</span></a
-            >
+            <a href="tel:+375447411192">+375 (44) 741-11-92 <span>А1</span></a>
           </div>
         </div>
       </div>
