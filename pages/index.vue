@@ -148,6 +148,12 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
+  // async fetch() {
+  //   let mountains = await fetch(
+  //     `https://new.arhiterm.by/administrate/get/slider/`
+  //   ).then((res) => res.json());
+  //   console.log(mountains);
+  // },
   async asyncData({ app, params, route, error, store, $axios }) {
     try {
       // await store.dispatch('category/getCategoryIndex');

@@ -224,7 +224,7 @@ export default {
   axios: {
     proxy: false,
     baseURL: "https://new.arhiterm.by",
-    timeout: 1000 * 5,
+    // timeout: 1000 * 5,
     headers: {
       "Content-Type": "application/json",
     },
