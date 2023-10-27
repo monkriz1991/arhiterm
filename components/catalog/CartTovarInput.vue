@@ -45,7 +45,7 @@
       <span>Код товара</span>
       <b>:</b>
       <strong>{{ kodProduct }}</strong>
-      <div class="kod-product-comment" v-if="coment_product != ''">
+      <div class="kod-product-comment" v-if="coment_product">
         <i class="el-icon-warning"></i>
         {{ coment_product }}
       </div>
