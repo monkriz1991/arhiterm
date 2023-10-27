@@ -156,11 +156,11 @@ export default {
   // },
   async asyncData({ app, params, route, error, store, $axios }) {
     try {
-      // await store.dispatch('category/getCategoryIndex');
       let slides = await $axios.$get(`/administrate/get/slider/`);
-      await store.dispatch("main/getTop");
-      // await store.dispatch('category/getManufacturer')
-      return { slides: slides.results };
+      let tovar = await $axios.$get(
+        "/catalog/product/?is_sale=true&limit=25&ordering=position"
+      );
+      return { slides: slides.results, tovar: tovar.results };
     } catch (err) {
       console.log(err);
       return error({
@@ -188,7 +188,6 @@ export default {
     ...mapGetters({
       facturer: "category/manufacturerIndex",
       category: "category/categoryIndex",
-      tovar: "main/top",
     }),
   },
   methods: {
