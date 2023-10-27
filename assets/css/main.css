@@ -5332,12 +5332,72 @@ body .navbar-user .navbar-user-item {
   background-size: 74% auto;
   background-position: 0% center;
 }
+.catalog-section {
+  float: left;
+  width: 100%;
+  padding: 50px 0;
+}
+.catalog-section h1 {
+  float: left;
+  width: 100%;
+  margin: 10px 0 25px;
+  font-size: 23px;
+  font-weight: 900;
+  color: #222222;
+  white-space: nowrap;
+}
+.catalog-section {
+}
+.catalog-section-block {
+  padding: 20px;
+  float: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #000;
+  width: 100%;
+  /* text-align: center; */
+  border-radius: 13px;
+  border: 1px solid #cdcdcd;
+  margin: 0 0 10px;
+}
+.catalog-section-block-img {
+  height: 100px;
+}
+.catalog-section-block-img img {
+  object-fit: contain;
+}
+.catalog-section-block span {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 15px 0 0 0;
+  float: left;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.kod-product-comment {
+  display: inline-block;
+  margin: 0 0 0 20px;
+  font-weight: 500;
+  font-size: 13px;
+  color: #fd9a05;
+}
 @media only screen and (min-width: 1200px) {
   .el-skeleton .el-col-lg-5 {
     width: 20%;
   }
 }
 @media (max-width: 991px) {
+  .catalog-section {
+    padding: 10px 0;
+  }
+  .catalog-section h1 {
+    font-size: 17px;
+  }
+  .catalog-section-block span {
+    font-size: 13px;
+  }
   .title {
     display: block;
     /* letter-spacing: 1px; */

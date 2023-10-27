@@ -45,6 +45,10 @@
       <span>Код товара</span>
       <b>:</b>
       <strong>{{ kodProduct }}</strong>
+      <div class="kod-product-comment" v-if="coment_product != ''">
+        <i class="el-icon-warning"></i>
+        {{ coment_product }}
+      </div>
     </div>
     <div class="cost-product-price-catalog">
       <span>{{ priceCart }}</span>
@@ -133,6 +137,8 @@ export default {
     return {
       num: 1,
       active_id: null,
+      coment_product:
+        this.product_data[0] != undefined ? this.product_data[0].comment : "",
       arr_basket_id: [],
       classBasket: "none-basket",
       input_cost:
@@ -202,6 +208,7 @@ export default {
       if (item.price == "0.00") {
         this.disableButton = "hiden";
       }
+      this.coment_product = item.comment;
     },
     addToChosen() {
       this.$emit("addToChosen", {
