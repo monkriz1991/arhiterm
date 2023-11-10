@@ -160,6 +160,7 @@ export default {
       let tovar = await $axios.$get(
         "/catalog/product/?is_sale=true&limit=25&ordering=position"
       );
+
       return { slides: slides.results, tovar: tovar.results };
     } catch (err) {
       console.log(err);
