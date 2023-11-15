@@ -9,6 +9,7 @@ Disallow: /userCabinet/*
 Disallow: /*card_filter=
 Disallow: /*manuf=
 Disallow: /*etext
+Disallow: /*filter
 Disallow: /*yadclid
 Disallow: /*standalone
 Disallow: /*status
