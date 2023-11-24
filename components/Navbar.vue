@@ -369,19 +369,19 @@ export default {
         return a.position - b.position;
       });
     },
-    open2() {
-      this.$notify({
-        dangerouslyUseHTMLString: true,
-        title: "Уважаемые клиенты!",
-        message:
-          "<strong>24 ноября склад <br>ООО 'Архитерм' работает до 14:00 в связи <br>с производственной необходимостью</strong>",
-        type: "warning",
-        duration: 9000,
-      });
-    },
+    // open2() {
+    //   this.$notify({
+    //     dangerouslyUseHTMLString: true,
+    //     title: "Уважаемые клиенты!",
+    //     message:
+    //       "<strong>24 ноября склад <br>ООО 'Архитерм' работает до 14:00 в связи <br>с производственной необходимостью</strong>",
+    //     type: "warning",
+    //     duration: 9000,
+    //   });
+    // },
   },
   beforeMount() {
-    this.open2();
+    // this.open2();
   },
   mounted() {
     this.setLoadingSkeleton();
