@@ -380,7 +380,9 @@ export default {
       });
     },
   },
-
+  beforeMount() {
+    this.open2();
+  },
   mounted() {
     this.setLoadingSkeleton();
     this.Actions_worktime();
@@ -395,8 +397,6 @@ export default {
       });
       this.headerTop = this.$refs.header.getBoundingClientRect().top;
     });
-
-    this.open2();
   },
   watch: {
     scrollY(newValue) {
