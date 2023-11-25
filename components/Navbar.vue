@@ -380,9 +380,9 @@ export default {
     //   });
     // },
   },
-  beforeMount() {
-    // this.open2();
-  },
+  //beforeMount() {
+  // this.open2();
+  //},
   mounted() {
     this.setLoadingSkeleton();
     this.Actions_worktime();
